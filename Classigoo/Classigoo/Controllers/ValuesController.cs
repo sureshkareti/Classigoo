@@ -7,12 +7,37 @@ using System.Web.Http;
 
 namespace Classigoo.Controllers
 {
-    [Authorize]
-    public class ValuesController : ApiController
+    //Authorize]
+    public class AddsController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+
+        public IHttpActionResult GetAllAdds()
         {
+            IList<tbl_Adds> Adds = null;
+
+            using (var ctx = new ClassigooEntities())
+            {
+
+                Adds = ctx.tbl_Adds.ToList();
+            }
+
+
+            if (Adds.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(Adds);
+        }
+    
+
+
+    // GET api/values
+    public IEnumerable<string> Get()
+        {
+
+
+
             return new string[] { "value1", "value2" };
         }
 
