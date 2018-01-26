@@ -106,11 +106,12 @@
                 </a>
             </div>
 
-            <div class="col-md-6 text-center">
-                <a href="#" class="btn btn-success" style="background-color:#dd4b39;color:#fff;border:1px double #dd4b39">
+            @*<div class="col-md-6 text-center">
+                <a  class="btn btn-success" style="background-color:#dd4b39;color:#fff;border:1px double #dd4b39" data-onsuccess="onSignIn">
                     <span class="fa fa-google-plus"></span> Sign in using Google
                 </a>
-            </div>
+            </div>*@
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
@@ -128,6 +129,18 @@
 
 
 @section Styles {
+   <meta name="google-signin-client_id" content="classig00-193315.apps.googleusercontent.com">
     <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+       <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 }
+<script type="text/javascript">
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+
+</script>
