@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "UnableToLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row loginform" style="max-width:970px !important;margin:auto;padding-bottom:120px;">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8" style="padding-top:30px">
+        <p>Reset Your Account Password</p>
+        <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
+
+            <div class="row form-group">
+
+                <div class="col-md-3">
+                    Email or Phone<span style="color:red">*</span>
+
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                    <p class="help-block">Enter your email or phone</p>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <input type="button" class="btn btn-primary" value="Log in" style="width:100px" />
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+
+}

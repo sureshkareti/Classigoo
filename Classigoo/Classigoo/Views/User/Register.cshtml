@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row loginform" style="max-width:970px !important;margin:auto;">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10" style="padding-top:30px">
+        <p>Register</p>
+        <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
+
+            <div class="row form-group">
+
+                <div class="col-md-7">
+                    <div class="row form-group">
+                        <div class="col-md-3 text-left">
+                            Phone<span style="color:red">*</span>
+
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" />
+                            <p class="help-block">Enter your phone no </p>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3 text-left">
+                            Password<span style="color:red">*</span>
+
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" />
+                            <p class="help-block">Enter your password  </p>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3 text-left">
+                            Name<span style="color:red">*</span>
+
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" />
+                            <p class="help-block">Enter Name</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-5 form-line">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <p>By registering, you get access to <strong>My Account:</strong> where you can </p>
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <span class="glyphicon glyphicon-arrow-right"></span> Manage your Ads (Edit, Delete, Upgrade)
+                        </div>
+                        <div class="col-md-12">
+                            <span class="glyphicon glyphicon-arrow-right"></span> Check responses to your Ads
+                        </div>
+                        <div class="col-md-12">
+                            <span class="glyphicon glyphicon-arrow-right"></span> Track payments
+                        </div>
+                        <div class="col-md-12">
+                            <span class="glyphicon glyphicon-arrow-right"></span> Manage your settings
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row form-group">
+
+                <div class="col-md-12">
+
+                    <div class="row form-group">
+                        <div class="col-md-2 text-right">
+
+                        </div>
+                        <div class="col-md-10" style="padding-right:0;padding-left:0">
+                            <input id="checkbox1" type="checkbox">
+                            <label for="checkbox1" style="font-weight:normal">
+                                <span style="color:red">*</span>By registering on OLX, you accept our <a href="#"> Terms of Use</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                @*<div class="col-md-4">
+
+                    </div>*@
+
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-7">
+
+                    <div class="row form-group">
+                        <div class="col-md-3 text-right">
+
+                        </div>
+                        <div class="col-md-9" style="padding-right:0">
+                            <input type="button" class="btn btn-primary" value="Log in" style="width:100px" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="col-md-1">
+
+    </div>
+</div>
+
+
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+
+}

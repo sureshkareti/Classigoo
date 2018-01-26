@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row loginform" style="max-width:970px !important;margin:auto;">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8" style="padding-top:30px">
+        <p>Login</p>
+        <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
+
+            <div class="row form-group">
+
+                <div class="col-md-3">
+                    Email or Phone
+
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    Password
+
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <input id="checkbox2" type="checkbox">
+                    <label for="checkbox2" style="font-weight:normal">
+                        Remember me
+                    </label>
+
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <div style="background-color:#ddd9d9;padding:10px;text-align:center;border:1px solid #ddd9d9;border-radius:5px">
+                        @*<input type="button" class="btn btn-primary" value="Log in" style="width:100px"/>*@
+                        <a href="~/User/Home" class="btn btn-primary" style="width:100px">Log in</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="row form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <a href="~/User/UnableToLogin">Unable to Login?</a>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2">
+
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                            <a href="~/User/Register">Register</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <hr />
+            <div class="row form-group  center-block">
+                <div class="col-md-12 text-center">
+                    <a href="#">Login with phone & OTP</a>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row form-group" style="padding-top:20px">
+            <div class="col-md-6 text-center">
+                <a href="#" class="btn btn-success" style="background-color:#4e6cab;color:#fff;border:1px double #4e6cab">
+                    <span class="fa fa-facebook-f"></span> Sign in using Facebook
+                </a>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <a href="#" class="btn btn-success" style="background-color:#dd4b39;color:#fff;border:1px double #dd4b39">
+                    <span class="fa fa-google-plus"></span> Sign in using Google
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                By logging in, you accept our <a href="#"> Terms of Use</a>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
+
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+
+}
