@@ -1,0 +1,660 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wraper">
+
+    <div class="col-md-3" style="background-color:#f8f8f8;padding:0">
+        <ul class="nav nav-pills nav-stacked">
+
+            <li style="padding-top:20px;"><span style="padding:30px 0px 5px 15px">Main categories</span></li>
+            <li><a href="#">All Ads</a></li>
+
+        </ul>
+        <hr />
+        <ul class="nav nav-pills nav-stacked categoryId">
+            <li class="active" data-link="category-properties"><a href="#">Properties</a></li>
+            <li data-link="category-cars"><a href="#">Cars</a></li>
+            <li data-link="category-EA"><a href="#">Electronics & Appliances</a></li>
+            <li data-link="category-furniture"><a href="#">Furniture</a></li>
+            <li data-link="category-jobs"><a href="#">Jobs</a></li>
+            <li data-link="category-mobiles"><a href="#">Mobiles</a></li>
+            <li data-link="category-bikes"><a href="#">Bikes</a></li>
+            <li data-link="category-BSH"><a href="#">Books, Sports & Hobbies</a></li>
+            <li data-link="category-fashion"><a href="#">Fashion</a></li>
+            <li data-link="category-pets"><a href="">Pets</a></li>
+            <li data-link="category-services"><a href="">Services</a></li>
+
+        </ul>
+
+    </div>
+    <div class="col-md-9" style="padding:10px;">
+        <div class="col-md-12" style="background-color:#fbfaae;padding:12px 16px 10px;border-radius:5px">
+            <a href="#" class="location-header" style="text-decoration:none;"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;All India</a> <span class="location-header-caption">(Select your city to see local ads)</span>
+        </div>
+        <div class="col-md-12 category-link" id="category-properties" style="display:block">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-home category-item-img" aria-hidden="true" style="color:#b3b300"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Properties</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/home/hm-sale.png" class="padding-ten" /></span>
+                        <p class="color-orange">For Rent</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/home/hm-rent.png" class="padding-ten" /></span>
+                        <p class="color-orange">For Sale</p>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-cars" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-car category-item-img" aria-hidden="true" style="color: #f70;"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Cars</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/cars/cars.png" class="padding-ten" /></span>
+                        <p class="color-orange">Cars</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/cars/cars-cmv.png" class="padding-ten" /></span>
+                        <p class="color-orange">Commercial Vehicles</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/cars/cars-ov.png" class="padding-ten" /></span>
+                        <p class="color-orange">Other Vehicles</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/cars/cars-sp.png" class="padding-ten" /></span>
+                        <p class="color-orange">Spare Parts</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-EA" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-desktop category-item-img" style="color:#cc5200" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Electronics & Appliances</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-laptop.png" class="padding-ten" /></span>
+                        <p class="color-orange">Computers & Laptops</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-tv.png" class="padding-ten" /></span>
+                        <p class="color-orange">TVs, Video - Audio</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-hd.png" class="padding-ten" /></span>
+                        <p class="color-orange">Hard Disks, Printers & Monitors</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-ac.png" class="padding-ten" /></span>
+                        <p class="color-orange">ACs</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-wm.png" class="padding-ten" /></span>
+                        <p class="color-orange">Washing Machines</p>
+                    </div>
+                </div>
+                <div class="col-md-1 col-xs-6 col-sm-6 category-item-sub-parent">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-ca.png" class="padding-ten" /></span>
+                        <p class="color-orange">Computer Accessories</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-camera.png" class="padding-ten" /></span>
+                        <p class="color-orange">Cameras & Lenses</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-kitchen.png" class="padding-ten" /></span>
+                        <p class="color-orange">Kitchen & Other Appliances</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-games.png" class="padding-ten" /></span>
+                        <p class="color-orange">Games & Entertainment</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/ea/ea-p.png" class="padding-ten" /></span>
+                        <p class="color-orange">Fridges</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-furniture" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-bed category-item-img" style="color:#867979" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Furniture</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fur/f-sd.png" class="padding-ten" /></span>
+                        <p class="color-orange">Sofa & Dining</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fur/f-bw.png" class="padding-ten" /></span>
+                        <p class="color-orange">Beds & Wardrobes</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fur/f-hd.png" class="padding-ten" /></span>
+                        <p class="color-orange">Home Decors & Garden</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fur/f-oh.png" class="padding-ten" /></span>
+                        <p class="color-orange">Other Household Items</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fur/f-kf.png" class="padding-ten" /></span>
+                        <p class="color-orange">Kids Furniture</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-12 category-link" id="category-jobs" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-suitcase category-item-img" style="color:#414141" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Jobs</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-de.png" class="padding-ten" /></span>
+                        <p class="color-orange">Data entry & Bank office</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-bpo.png" class="padding-ten" /></span>
+                        <p class="color-orange">BPO & Telecaller</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-tech.png" class="padding-ten" /></span>
+                        <p class="color-orange">Operator & Technician</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-sales.png" class="padding-ten" /></span>
+                        <p class="color-orange">Sales & Marketing</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-chef.png" class="padding-ten" /></span>
+                        <p class="color-orange">Cook</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-driver.png" class="padding-ten" /></span>
+                        <p class="color-orange">Driver</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-hotel.png" class="padding-ten" /></span>
+                        <p class="color-orange">Hotel & Travel Executive</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-it.png" class="padding-ten" /></span>
+                        <p class="color-orange">IT Engineer & Developer</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-desg.png" class="padding-ten" /></span>
+                        <p class="color-orange">Designer</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-assnt.png" class="padding-ten" /></span>
+                        <p class="color-orange">Office Assistant</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-recep.png" class="padding-ten" /></span>
+                        <p class="color-orange">Receptionist & Front office</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-truck.png" class="padding-ten" /></span>
+                        <p class="color-orange">Delivery & Collection</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-accnt.png" class="padding-ten" /></span>
+                        <p class="color-orange">Accountant</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-teacher.png" class="padding-ten" /></span>
+                        <p class="color-orange">Teacher</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/jobs/jobs-other.png" class="padding-ten" /></span>
+                        <p class="color-orange">Others</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6 col-sm-6 category-item-sub-parent">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-mobiles" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-mobile-phone category-item-img" style="color:#1a422d" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Mobiles</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/mobile/mobile-m.png" class="padding-ten" /></span>
+                        <p class="color-orange">Mobile Phones</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/mobile/mobile-pad.png" class="padding-ten" /></span>
+                        <p class="color-orange">Tablets</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/mobile/mobile-acc.png" class="padding-ten" /></span>
+                        <p class="color-orange">Accessories</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-bikes" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-motorcycle category-item-img" style="color:#0066ff" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Bikes</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/bike/bike-bike.png" class="padding-ten" /></span>
+                        <p class="color-orange">Motercycles</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/bike/bike-cycle.png" class="padding-ten" /></span>
+                        <p class="color-orange">Bicycles</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/bike/bike-scoter.png" class="padding-ten" /></span>
+                        <p class="color-orange">Scooters</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/bike/bike-spare.png" class="padding-ten" /></span>
+                        <p class="color-orange">Spare Parts</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-BSH" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-university category-item-img" style="color:#00b300" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Books, Sports & Hobbies</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/book/book-books.png" class="padding-ten" /></span>
+                        <p class="color-orange">Books</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/book/book-music.png" class="padding-ten" /></span>
+                        <p class="color-orange">Musical Instruments</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/book/book-sport.png" class="padding-ten" /></span>
+                        <p class="color-orange">Sports Equipment</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/book/book-gym.png" class="padding-ten" /></span>
+                        <p class="color-orange">Gym & Fitness</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/book/book-hobby.png" class="padding-ten" /></span>
+                        <p class="color-orange">Other Hobbies</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-fashion" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-shopping-basket category-item-img" style="color: #9900cc" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Fashion</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fashion/fashion-men.png" class="padding-ten" /></span>
+                        <p class="color-orange">Men</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fashion/fashion-women.png" class="padding-ten" /></span>
+                        <p class="color-orange">Women</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/fashion/fashion-kid.png" class="padding-ten" /></span>
+                        <p class="color-orange">Kids</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-pets" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-paw category-item-img" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Pets</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/pets/pets-fish.png" class="padding-ten" /></span>
+                        <p class="color-orange">Fishes & Aquarium</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/pets/pets-dog.png" class="padding-ten" /></span>
+                        <p class="color-orange">Dogs</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/pets/pets-other.png" class="padding-ten" /></span>
+                        <p class="color-orange">Other Pets</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/pets/pets-access.png" class="padding-ten" /></span>
+                        <p class="color-orange">Pet Food & Accessories</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 category-link" id="category-services" style="display:none">
+            <div class="row">
+                <div class="col-md-3 col-xs-6 col-sm-6 category-item-main-parent">
+                    <div class="category-item-main">
+                        <i class="fa fa-cogs category-item-img" style="color:#ef0482" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-md-9 col-xs-6 col-sm-6 category-item-main-name-parent">
+                    <div><span class="category-item-main-name">Services</span></div>
+                    <div><span class="category-item-main-count">3,07,708 Ads</span></div>
+                    <div><a href="#" class="category-item-main-link">View all Ads >></a></div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/services/ser-taxi.png" class="padding-ten" /></span>
+                        <p class="color-orange">Drivers & Taxi</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/services/ser-class.png" class="padding-ten" /></span>
+                        <p class="color-orange">Education & Classes</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/services/ser-comp.png" class="padding-ten" /></span>
+                        <p class="color-orange">Electronics & Computer</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/services/ser-medical.png" class="padding-ten" /></span>
+                        <p class="color-orange">Health & Beauty</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6 category-item-sub-parent">
+                    <div class="category-item-sub">
+                        <span><img src="~/images/icons/services/ser-other.png" class="padding-ten" /></span>
+                        <p class="color-orange">Other Services</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-6 col-sm-6">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section Styles{
+    <link href="@Url.Content("~/Content/Custome/home.css")" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts{
+    <script src="~/scripts/Custome/home.js"></script>
+}
