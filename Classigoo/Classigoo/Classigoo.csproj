@@ -250,13 +250,21 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <LastGenOutput>Classigoo.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapValidator.min.css" />
+    <Content Include="Content\Custome\account.css" />
+    <Content Include="Content\Custome\CustomStyles.css" />
+    <Content Include="Content\Custome\home.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -283,14 +291,80 @@
     <Content Include="Classigoo.edmx.diagram">
       <DependentUpon>Classigoo.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="images\background.png" />
+    <Content Include="images\icons\bike\bike-bike.png" />
+    <Content Include="images\icons\bike\bike-cycle.png" />
+    <Content Include="images\icons\bike\bike-scoter.png" />
+    <Content Include="images\icons\bike\bike-spare.png" />
+    <Content Include="images\icons\book\book-books.png" />
+    <Content Include="images\icons\book\book-gym.png" />
+    <Content Include="images\icons\book\book-hobby.png" />
+    <Content Include="images\icons\book\book-music.png" />
+    <Content Include="images\icons\book\book-sport.png" />
+    <Content Include="images\icons\cars\cars-cmv.png" />
+    <Content Include="images\icons\cars\cars-ov.png" />
+    <Content Include="images\icons\cars\cars-sp.png" />
+    <Content Include="images\icons\cars\cars.png" />
+    <Content Include="images\icons\ea\ea-ac.png" />
+    <Content Include="images\icons\ea\ea-ca.png" />
+    <Content Include="images\icons\ea\ea-camera.png" />
+    <Content Include="images\icons\ea\ea-games.png" />
+    <Content Include="images\icons\ea\ea-hd.png" />
+    <Content Include="images\icons\ea\ea-kitchen.png" />
+    <Content Include="images\icons\ea\ea-laptop.png" />
+    <Content Include="images\icons\ea\ea-p.png" />
+    <Content Include="images\icons\ea\ea-tv.png" />
+    <Content Include="images\icons\ea\ea-wm.png" />
+    <Content Include="images\icons\fashion\fashion-kid.png" />
+    <Content Include="images\icons\fashion\fashion-men.png" />
+    <Content Include="images\icons\fashion\fashion-women.png" />
+    <Content Include="images\icons\fur\f-bw.png" />
+    <Content Include="images\icons\fur\f-hd.png" />
+    <Content Include="images\icons\fur\f-kf.png" />
+    <Content Include="images\icons\fur\f-oh.png" />
+    <Content Include="images\icons\fur\f-sd.png" />
+    <Content Include="images\icons\home\hm-rent.png" />
+    <Content Include="images\icons\home\hm-sale.png" />
+    <Content Include="images\icons\jobs\jobs-accnt.png" />
+    <Content Include="images\icons\jobs\jobs-assnt.png" />
+    <Content Include="images\icons\jobs\jobs-bpo.png" />
+    <Content Include="images\icons\jobs\jobs-chef.png" />
+    <Content Include="images\icons\jobs\jobs-de.png" />
+    <Content Include="images\icons\jobs\jobs-desg.png" />
+    <Content Include="images\icons\jobs\jobs-driver.png" />
+    <Content Include="images\icons\jobs\jobs-hotel.png" />
+    <Content Include="images\icons\jobs\jobs-it.png" />
+    <Content Include="images\icons\jobs\jobs-other.png" />
+    <Content Include="images\icons\jobs\jobs-recep.png" />
+    <Content Include="images\icons\jobs\jobs-sales.png" />
+    <Content Include="images\icons\jobs\jobs-teacher.png" />
+    <Content Include="images\icons\jobs\jobs-tech.png" />
+    <Content Include="images\icons\jobs\jobs-truck.png" />
+    <Content Include="images\icons\mobile\mobile-acc.png" />
+    <Content Include="images\icons\mobile\mobile-m.png" />
+    <Content Include="images\icons\mobile\mobile-pad.png" />
+    <Content Include="images\icons\pets\pets-access.png" />
+    <Content Include="images\icons\pets\pets-dog.png" />
+    <Content Include="images\icons\pets\pets-fish.png" />
+    <Content Include="images\icons\pets\pets-other.png" />
+    <Content Include="images\icons\services\ser-class.png" />
+    <Content Include="images\icons\services\ser-comp.png" />
+    <Content Include="images\icons\services\ser-medical.png" />
+    <Content Include="images\icons\services\ser-other.png" />
+    <Content Include="images\icons\services\ser-taxi.png" />
+    <Content Include="images\testLogo.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrapValidator.min.js" />
+    <Content Include="fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\Custome\account.js" />
+    <Content Include="Scripts\Custome\home.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -302,13 +376,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,7 +393,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

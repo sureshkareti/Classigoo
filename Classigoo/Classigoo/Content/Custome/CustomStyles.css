@@ -1,0 +1,207 @@
+﻿body {
+}
+#innerLayout {
+    min-width: 960px;
+}
+.offersview #innerLayout {
+    overflow: hidden;
+}
+
+
+
+
+
+#header-container .nav {
+    min-height: 36px;
+}
+
+#header-container .homelink {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+#header-container .slogan {
+    top: 50px;
+    left: 108px;
+    position: absolute;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+#header-container .navi .lang-selector {
+    color: #787878;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 16px;
+    background: #f7f8f9;
+    padding: 7px 12px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#header-container .navi .userbox {
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 15px;
+    margin-top: 46px;
+    margin-bottom: 15px;
+    padding: 6px 20px 8px;
+}
+
+    #header-container .navi .userbox > li {
+        margin-left: 20px;
+    }
+
+    #header-container .navi .userbox .counter {
+        position: absolute;
+        left: 100%;
+        top: -9px;
+        font-weight: normal;
+        color: #2965be;
+    }
+
+#header-container .navi .postnewlink {
+    position: relative;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 15px;
+    float: right;
+    margin-top: 37px;
+    margin-bottom: 15px;
+    padding: 13px 21px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #ff7700;
+    color: #fff;
+    font-weight: bold;
+}
+
+    #header-container .navi .postnewlink:hover {
+        background: #ffa454;
+    }
+
+#header-container .navi .icon.accountshape {
+    margin: 0px 10px -2px 0px;
+}
+
+#header-container .breaklist .userbox-dd .link {
+    color: #C9D8EF;
+}
+
+#header-container .breaklist .notifycircle {
+    top: -2px;
+    margin-right: -9px;
+}
+
+#header-container .icon.website.big {
+    left: 0px;
+    top: 1px;
+    z-index: 10;
+    overflow: visible;
+}
+
+#header-container .icon.prevpagelanding {
+    display: none;
+}
+
+#header-container #observed-counter .suggesttitlebottom {
+    width: 290px;
+    right: 0px;
+    left: auto;
+    white-space: normal;
+    margin-top: 12px;
+}
+
+#header-container.businesstop .navi .breaklist {
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 8px 28px;
+}
+
+#header-container.businesstop .navi .breaklist, #header-container.businesstop .button.big {
+    margin: 26px 0px 30px;
+}
+
+    #header-container.businesstop .button.big, #header-container.businesstop .button.big > * {
+        font-size: 12px;
+        height: 32px;
+        line-height: 32px !important;
+    }
+
+#header-container.businesstop #topLoginLink strong {
+    font-weight: normal;
+}
+
+#header-container.businesstop .breaklist .link {
+    text-decoration: none;
+}
+
+#header-container.businesstop .breaklist .userbox-dd .link {
+    text-decoration: underline;
+}
+
+#header-container.businesstop .flexline {
+    table-layout: fixed;
+}
+
+    #header-container.businesstop .flexline > * {
+        vertical-align: middle;
+        height: 90px;
+    }
+
+    #header-container.businesstop .flexline > .logotype {
+        width: 90px;
+        padding-right: 20px;
+    }
+
+        #header-container.businesstop .flexline > .logotype img {
+            max-width: 90px;
+            max-height: 90px;
+        }
+
+#header-container.businesstop .sitecolor {
+    color: #AC0901;
+}
+
+
+
+form.adding fieldset ul.navi, .bottombox ul.navi {
+    padding: 20px 35px;
+}
+
+    form.adding fieldset ul.navi .button-form-change {
+        margin-right: 42px;
+    }
+
+    form.adding fieldset ul.navi .button.big4 {
+        background-color: #ff7700;
+        border-color: #ff7700;
+    }
+
+        form.adding fieldset ul.navi .button.big4 input[type="submit"] {
+            display: block;
+            width: 170px;
+        }
+        form.adding fieldset ul.navi .cancel {
+    line-height: 30px;
+}
+
+form.adding fieldset ul.navi .progress {
+    background: url(https://s1.olx.in/static/olxin/packed/img/2f7b9776076d5fceef4993b55c9383dedd.gif) no-repeat right center;
+    color: #A4A4A4;
+    line-height: 30px;
+    margin-right: 12px;
+    padding-right: 23px;
+}
+form.deactivateform fieldset ul.navi {
+    padding: 20px 35px;
+}
+
+    form.deactivateform fieldset ul.navi .button.big4 {
+        min-width: 160px;
+        text-align: center;
+    }
