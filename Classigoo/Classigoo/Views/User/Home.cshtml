@@ -1,8 +1,11 @@
-﻿
+﻿@model IEnumerable<Classigoo.tbl_Adds>
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using (Html.BeginForm())
+
+{
 
 <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
     <div class="col-md-5">
@@ -66,6 +69,15 @@
                         </div>
                         <hr />
                         <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                            @foreach (var item in Model)
+                            {
+                                <span>@item.id</span>
+                                <br />
+                                 <span>@item.title</span>
+                            }
+                            
+
+                            
                             <p>No Messages are </p>
                         </div>
 
@@ -117,6 +129,7 @@
 
                                         <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                             <p>No Messages.</p>
+                                            
                                         </div>
 
                                     </div>
@@ -371,7 +384,7 @@
 </div>
 
 
-
+}
 
 @section Styles {
     <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
