@@ -389,6 +389,8 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UnableToLogin.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Scripts\Json\categories.json" />
+    <Content Include="Scripts\Json\locations.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
