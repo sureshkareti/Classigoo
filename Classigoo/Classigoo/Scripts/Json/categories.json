@@ -1,0 +1,39 @@
+﻿{
+  "title": "All",
+  "data": [
+    {
+      "title": "Properties",
+      "data": [
+        {
+          "title": "For Sale",
+          "data": [ "Apartments", "Houses & Villas", "Builder Floors", "Land & Plots", "Shops & Offices", "Farm Houses" ]
+        },
+        {
+          "title": "For Rent",
+          "data": [ "Apartments", "Houses & Villas", "Builder Floors", "Guest Houses", "PG & Roommates", "Land & Plots", "Shops & Offices" ]
+        }
+      ]
+    },
+    {
+      "title": "Cars",
+      "data": [
+        {
+          "title": "Cars",
+          "data": [ "Maruti Suzuki", "Hyundai", "Tata", "Mahindra", "Toyota", "Honda", "Chevrolet", "Ford", "Skoda", "Volkswagen", "Fiat", "Nissan", "Renault", "Mitsubishi", "Mercedes-Benz", "Audi", "Mahindra Renault", "BMW", "Hindustan Motors", "Other Brands" ]
+        },
+        {
+          "title": "Commercial Vehicles"
+        },
+        {
+          "title": "Other Vehicles"
+        },
+        {
+          "title": "Spare Parts"
+        }
+
+      ]
+    }
+  ]
+
+
+}
