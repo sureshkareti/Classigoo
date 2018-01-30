@@ -23,6 +23,41 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Register(User User)
+        {
+
+            using (var client = new HttpClient())
+            {
+                User.Created = DateTime.Now;
+                User.Type = "Custom";
+                User.UserId = Guid.NewGuid();
+                client.BaseAddress = new Uri("http://localhost:51797/api/");
+
+                //HTTP POST
+                var postTask = client.PostAsJsonAsync<User>("UserApi", User);
+                try
+                {
+
+                    postTask.Wait();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Home");
+                }
+
+            }
+
+            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+
+            return View(User);
+        }
         public ActionResult UnableToLogin()
         {
             return View();

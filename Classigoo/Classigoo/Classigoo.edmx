@@ -12,8 +12,22 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="10" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Password" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="FbId" Type="varchar" MaxLength="150" />
+          <Property Name="Type" Type="varchar" MaxLength="10" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -21,6 +35,7 @@
       <Schema Namespace="ClassigooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ClassigooEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="tbl_Adds" EntityType="ClassigooModel.tbl_Adds" />
+          <EntitySet Name="Users" EntityType="ClassigooModel.User" />
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -28,6 +43,19 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FbId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,6 +68,20 @@
               <MappingFragment StoreEntitySet="tbl_Adds">
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ClassigooModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FbId" ColumnName="FbId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

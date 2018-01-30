@@ -1,10 +1,11 @@
-﻿
+﻿@model User
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@using (Ajax.BeginForm("Register", "User", new AjaxOptions { HttpMethod = "POST" }))
+{
 <div class="row loginform" style="max-width:970px !important;margin:auto;">
     <div class="col-md-1">
 
@@ -22,7 +23,9 @@
 
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" />
+                            
+                            @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
                             <p class="help-block">Enter your phone no </p>
                         </div>
 
@@ -33,7 +36,8 @@
 
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" />
+                           @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             <p class="help-block">Enter your password  </p>
                         </div>
 
@@ -44,7 +48,8 @@
 
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" />
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             <p class="help-block">Enter Name</p>
                         </div>
 
@@ -107,7 +112,7 @@
 
                         </div>
                         <div class="col-md-9" style="padding-right:0">
-                            <input type="button" class="btn btn-primary" value="Log in" style="width:100px" />
+                            <input type="submit" class="btn btn-primary" value="Register" style="width:100px" />
                         </div>
 
                     </div>
@@ -128,7 +133,7 @@
 
     </div>
 </div>
-
+}
 
 
 @section Styles {

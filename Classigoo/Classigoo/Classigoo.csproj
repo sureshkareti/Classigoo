@@ -226,6 +226,7 @@
     <Compile Include="Controllers\AddsController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,9 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="tbl_Adds.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
   </ItemGroup>
