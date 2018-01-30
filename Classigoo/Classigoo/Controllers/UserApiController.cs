@@ -78,6 +78,11 @@ namespace Classigoo.Controllers
             {
                 return BadRequest(ModelState);
             }
+            else
+            {
+                user.Created = DateTime.Now;
+                user.UserId = Guid.NewGuid();
+            }
 
             db.Users.Add(user);
 

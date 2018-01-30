@@ -368,6 +368,7 @@
     <Content Include="fonts\fontawesome-webfontd41d.eot" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\Custome\account.js" />
+    <Content Include="Scripts\Custome\custom.js" />
     <Content Include="Scripts\Custome\home.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

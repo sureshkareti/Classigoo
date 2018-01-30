@@ -29,9 +29,9 @@ namespace Classigoo.Controllers
 
             using (var client = new HttpClient())
             {
-                User.Created = DateTime.Now;
+                
                 User.Type = "Custom";
-                User.UserId = Guid.NewGuid();
+                
                 client.BaseAddress = new Uri("http://localhost:51797/api/");
 
                 //HTTP POST
