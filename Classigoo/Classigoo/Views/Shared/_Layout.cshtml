@@ -10,125 +10,126 @@
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />*@
-
     @RenderSection("Styles", false)
 </head>
 <body>
-
-    <div class="container" style="max-width:970px !important;padding:0;padding-bottom:0;background-color:white;">
-
-        <nav class="navbar navbar-default" style="margin-bottom:0;padding-bottom:0;background-color:white;border:1px solid white;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <a class="navbar-brand" href="~/Home/Index">
-                        <img src="~/images/testLogo.png" />
-                    </a>
-                    <span class="logo-title">india's largest market place</span>
-                </div>
-                <div id="navbar2" class="navbar-collapse collapse">
-                    <!--<ul class="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                    </ul>-->
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="~/User/Index" style="color:#2965be;font-weight:bold;font-size:18px"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
-                        <!--<li ><a href="#" style=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-                        <li><input type="button" class="btn  navbar-btn nav-freead " style="font-size:16px" value="Submit a Free Ad" /></li>
-                    </ul>
-
-
-                </div>
-            </div>
-        </nav>
-
-
-    </div>
-
-    <div class="container body-content" style="padding:0;width:100%">
-        @RenderBody()
-
+	<div class="main-wrapper">
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="logo">
+							<a href="~/Home/Index"><img src="~/images/testLogo.png" alt=""></a>
+						</div>
+					</div>
+                    <div class="col-lg-8">
+                        <div class="search-bar">
+                            <div class="search-bar-inner">
+                                <div class="row">
+                                    <div class="col-lg-3 ">
+                                        <input type="text" class="form-control input-lg " placeholder="All India" />
+                                    </div>
+                                    <div class="col-lg-8 ">
+                                        <input type="text" class="form-control input-lg" placeholder="3,12,578 Ads near you" />
+                                    </div>
+                                    <div class="col-lg-1 ">
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </a>
+                                        @*<input type="button" class="form-control input-lg" value="Search" />*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-lg-2">
+						<div class="login">
+							<a href="~/User/Index" style="color:#2965be;font-weight:bold;font-size:18px"><span class="glyphicon glyphicon-user"></span> My Account</a>
+						</div>
+						<div class="free-add">
+							<input type="button" class="btn  navbar-btn nav-freead " style="font-size:16px" value="Submit a Free Ad" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section class="body-wrapper">
+				@RenderBody()
+		</section>
         <footer>
             @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
             <div class="container-fluid footer-banner">
             </div>
-            <div class="row footer-navigation" style="max-width:970px !important;margin:auto;">
-                <div class="col-md-1">
-                    <img src="~/images/testLogo.png" />
-                </div>
-                <div class="col-md-2" style="padding:0">
-                    <ul>
-                        <li><a href="#">Locations Map</a> </li>
-                        <li><a href="#">Popular searches</a> </li>
-                        <li><a href="#">Archive</a> </li>
-                        <li><a href="#">Sitemap</a> </li>
-                        <li><a href="#">Featured Ads</a> </li>
-                    </ul>
-                </div>
-                <div class="col-md-2" style="padding:0">
-                    <ul>
-                        <li><a href="#">Terms of Use</a> </li>
-                        <li><a href="#">Help & Contact Us</a> </li>
-                    </ul>
-                </div>
-                <div class="col-md-2" style="padding:0">
-                    <ul>
-                        <li><span data-toggle="collapse" data-target="#demo">Who we are</span></li>
-                        <li><a href="#">Join OLX</a> </li>
-                        <li><a href="#">Happy OLXers</a> </li>
-                    </ul>
-                </div>
-                <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-md-12" style="text-align:center">
-                            Connect with us
+            <div class="container">
+                <div class="row footer-navigation" style="max-width:970px !important;margin:auto;">
+                    <div class="col-lg-1">
+                        <img src="~/images/testLogo.png" />
+                    </div>
+                    <div class="col-lg-2" style="padding:0">
+                        <ul>
+                            <li><a href="#">Locations Map</a> </li>
+                            <li><a href="#">Popular searches</a> </li>
+                            <li><a href="#">Archive</a> </li>
+                            <li><a href="#">Sitemap</a> </li>
+                            <li><a href="#">Featured Ads</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2" style="padding:0">
+                        <ul>
+                            <li><a href="#">Terms of Use</a> </li>
+                            <li><a href="#">Help & Contact Us</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2" style="padding:0">
+                        <ul>
+                            <li><span data-toggle="collapse" data-target="#demo">Who we are</span></li>
+                            <li><a href="#">Join OLX</a> </li>
+                            <li><a href="#">Happy OLXers</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <div class="col-lg-12" style="text-align:center">
+                                Connect with us
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="https://www.facebook.com/olxindia" target="_blank" style="float:right"><i class="fa fa-facebook-official" style="font-size:36px"></i></a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="#" target="_blank" style="float:right"><i class="fa fa-google-plus-circle" style="font-size:36px"></i></a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="#" target="_blank" style="float:right"><i class="fa fa-twitter" style="font-size:36px"></i></a>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="#" target="_blank" style="float:right"><i class="fa fa-instagram" style="font-size:36px"></i></a>
+                            </div>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
 
+                </div>
+                <div class="row" style="max-width:970px !important;margin:auto">
+
+                    <div class="col-lg-12">
+                        <div id="whoweare" style="height:70px;">
+                            <div id="demo" class="collapse">
+                                OLX.in is a free local classifieds site. Sell anything from used cars to mobiles, furniture, laptops, clothing and more. Submit ads for free and without creating an account. If you want to buy something - here you will find interesting items, cheaper than in the store. Start buying and selling in the most easy way on OLX.in.
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <a href="https://www.facebook.com/olxindia" target="_blank" style="float:right"><i class="fa fa-facebook-official" style="font-size:36px"></i></a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" target="_blank" style="float:right"><i class="fa fa-google-plus-circle" style="font-size:36px"></i></a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" target="_blank" style="float:right"><i class="fa fa-twitter" style="font-size:36px"></i></a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#" target="_blank" style="float:right"><i class="fa fa-instagram" style="font-size:36px"></i></a>
-                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
-            <div class="row" style="max-width:970px !important;margin:auto">
-
-                <div class="col-md-12">
-                    <div id="whoweare" style="height:70px;">
-                        <div id="demo" class="collapse">
-                            OLX.in is a free local classifieds site. Sell anything from used cars to mobiles, furniture, laptops, clothing and more. Submit ads for free and without creating an account. If you want to buy something - here you will find interesting items, cheaper than in the store. Start buying and selling in the most easy way on OLX.in.
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
         </footer>
-    </div>
-
+	</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
