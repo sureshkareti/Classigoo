@@ -142,12 +142,9 @@
 }
 <script type="text/javascript">
     function onSignIn(googleUser) {
-       // RegisterUser();
-        RegisterUser(googleUser.getBasicProfile());
-        //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-       // console.log('Name: ' + profile.getName());
-        //console.log('Image URL: ' + profile.getImageUrl());
-        //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+       
+        RegisterUser(googleUser.getBasicProfile(),"Gmail");
+        
     }
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -219,7 +216,7 @@
     FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
         console.log('Successful login for: ' + response.id);
-
+        RegisterUser(response,"Fb");
     });
   }
 </script>
