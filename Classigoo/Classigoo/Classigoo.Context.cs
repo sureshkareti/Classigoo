@@ -27,5 +27,7 @@ namespace Classigoo
     
         public virtual DbSet<tbl_Adds> tbl_Adds { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Add> Adds { get; set; }
+        public virtual DbSet<RealEstate> RealEstates { get; set; }
     }
 }
