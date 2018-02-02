@@ -5,6 +5,36 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ClassigooModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adds">
+          <Key>
+            <PropertyRef Name="AddId" />
+          </Key>
+          <Property Name="AddId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="varchar" MaxLength="10" />
+          <Property Name="LocationId" Type="varchar" MaxLength="10" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="RealEstate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="300" />
+          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Availability" Type="varchar" MaxLength="100" />
+          <Property Name="ListedBy" Type="varchar" MaxLength="100" />
+          <Property Name="Furnishing" Type="varchar" MaxLength="100" />
+          <Property Name="Bedrooms" Type="varchar" MaxLength="2" />
+          <Property Name="SquareFeets" Type="varchar" MaxLength="15" />
+          <Property Name="Squareyards" Type="varchar" MaxLength="15" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="TypeId" Type="varchar" MaxLength="10" />
+          <Property Name="SubCategoryId" Type="varchar" MaxLength="10" />
+          <Property Name="LocationId" Type="varchar" MaxLength="10" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="AddId" Type="int" />
+        </EntityType>
         <EntityType Name="tbl_Adds">
           <Key>
             <PropertyRef Name="id" />
@@ -25,9 +55,47 @@
           <Property Name="Type" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
+        <Association Name="FK_Adds_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Adds" Type="Self.Adds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Adds">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RealEstate_Adds">
+          <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RealEstate" Type="Self.RealEstate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adds">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="RealEstate">
+              <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ClassigooModelStoreContainer">
+          <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Adds" EntitySet="Adds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RealEstate_Adds" Association="Self.FK_RealEstate_Adds">
+            <End Role="Adds" EntitySet="Adds" />
+            <End Role="RealEstate" EntitySet="RealEstate" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -36,6 +104,16 @@
         <EntityContainer Name="ClassigooEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="tbl_Adds" EntityType="ClassigooModel.tbl_Adds" />
           <EntitySet Name="Users" EntityType="ClassigooModel.User" />
+          <EntitySet Name="Adds" EntityType="ClassigooModel.Add" />
+          <EntitySet Name="RealEstates" EntityType="ClassigooModel.RealEstate" />
+          <AssociationSet Name="FK_Adds_Users" Association="ClassigooModel.FK_Adds_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Add" EntitySet="Adds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RealEstate_Adds" Association="ClassigooModel.FK_RealEstate_Adds">
+            <End Role="Add" EntitySet="Adds" />
+            <End Role="RealEstate" EntitySet="RealEstates" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -56,7 +134,69 @@
           <Property Name="FbId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Created" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Adds" Relationship="ClassigooModel.FK_Adds_Users" FromRole="User" ToRole="Add" />
         </EntityType>
+        <EntityType Name="Add">
+          <Key>
+            <PropertyRef Name="AddId" />
+          </Key>
+          <Property Name="AddId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Guid" />
+          <NavigationProperty Name="User" Relationship="ClassigooModel.FK_Adds_Users" FromRole="Add" ToRole="User" />
+          <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
+        </EntityType>
+        <EntityType Name="RealEstate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Availability" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ListedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Furnishing" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bedrooms" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFeets" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Squareyards" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TypeId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LocationId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="AddId" Type="Int32" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="RealEstate" ToRole="Add" />
+        </EntityType>
+        <Association Name="FK_Adds_Users">
+          <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Add">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RealEstate_Adds">
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ClassigooModel.RealEstate" Role="RealEstate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Add">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="RealEstate">
+              <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -82,6 +222,38 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adds">
+            <EntityTypeMapping TypeName="ClassigooModel.Add">
+              <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RealEstates">
+            <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
+              <MappingFragment StoreEntitySet="RealEstate">
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Squareyards" ColumnName="Squareyards" />
+                <ScalarProperty Name="SquareFeets" ColumnName="SquareFeets" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="ListedBy" ColumnName="ListedBy" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
