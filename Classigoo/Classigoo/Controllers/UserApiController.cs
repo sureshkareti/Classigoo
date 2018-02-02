@@ -134,5 +134,23 @@ namespace Classigoo.Controllers
         {
             return db.Users.Count(e => e.UserId == id) > 0;
         }
+        [HttpGet]
+        public bool CheckUser(string id,string type)
+        {
+            bool IsUserExist = false;
+            if(type=="Gmail")
+            {
+                IsUserExist= db.Users.Count(e => e.Email == id) > 0;
+            }
+            else if(type=="Fb")
+            {
+                IsUserExist= db.Users.Count(e => e.FbId == id) > 0;
+            }
+            else if(type=="Custom")
+            {
+                IsUserExist= db.Users.Count(e => e.MobileNumber == id) > 0;
+            }
+            return IsUserExist;
+        }
     }
 }

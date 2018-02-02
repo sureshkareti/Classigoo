@@ -1,22 +1,45 @@
-﻿function RegisterUser(profile,type) {
+﻿function CheckUser(profile, type) {
     jQuery.support.cors = true;
     var user = {};
-    if (type = "Gmail")
+    var url="";
+    if (type =='Gmail')
     {
-      
         user.Name=profile.getName();
         user.Type= type;
         user.Email = profile.getEmail();
-       
+        url = 'http://localhost:51797/api/UserApi/CheckUser/?id=' + user.Email + '&type=Gmail';
     }
-    else if (type = "Fb")
+    else if (type == 'Fb')
     {
-        
-           user.Name=profile.name;
-           user.Type = type;
-           user.FbId = profile.id;
-       
-    }   
+        user.Name=profile.name;
+        user.Type = type;
+        user.FbId = profile.id;
+        url = 'http://localhost:51797/api/UserApi/CheckUser/?id=' + user.FbId + '&type=Fb';
+    }
+    //api/person/byName?firstName=a&lastName=b
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            if(data)
+            {
+                console.log("already registered");
+                window.location.href = "/User/Home";
+            }
+            else
+            {
+                RegisterUser(user);
+            }
+        },
+        error: function (x, y, z) {
+            console.log(x + '\n' + y + '\n' + z);
+        }
+    });
+}
+function RegisterUser(user)
+{
     $.ajax({
         url: 'http://localhost:51797/api/UserApi',
         type: 'POST',
@@ -24,8 +47,7 @@
         contentType: "application/json;charset=utf-8",
         success: function (data) {
 
-           
-            window.location.href = '<%= Url.Action("User", "Home") %>';
+            window.location.href = "/User/Home";
            
         },
         error: function (x, y, z) {

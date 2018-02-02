@@ -25,6 +25,21 @@ namespace Classigoo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            // Route for POST method
+
+            config.Routes.MapHttpRoute(
+            name: "DefaultApi2",
+            routeTemplate: "api/{controller}/{action}/{id}",
+            defaults: new { id = RouteParameter.Optional }
+            );
+
+            //   Route  GET method
+
+            config.Routes.MapHttpRoute(
+               name: "DefaultApi1",
+               routeTemplate: "api/{controller}/{action}/{id}",
+               defaults: new { action = "get", id = RouteParameter.Optional }
+            );
         }
     }
 }
