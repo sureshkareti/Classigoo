@@ -3,7 +3,8 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using (Ajax.BeginForm("Login", "User", new AjaxOptions { HttpMethod = "POST" }))
+{
 <div class="row loginform" style="max-width:970px !important;margin:auto;">
     <div class="col-md-2">
 
@@ -12,6 +13,8 @@
         <p>Login</p>
         <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
 
+            <span name="status">@ViewBag.status</span>
+            <br />
             <div class="row form-group">
 
                 <div class="col-md-3">
@@ -19,7 +22,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" name="email-phone" />
                 </div>
                 <div class="col-md-3">
 
@@ -31,7 +34,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" />
+                    <input type="password" class="form-control" name="pwd" />
                 </div>
                 <div class="col-md-3">
 
@@ -59,8 +62,8 @@
                 </div>
                 <div class="col-md-6">
                     <div style="background-color:#ddd9d9;padding:10px;text-align:center;border:1px solid #ddd9d9;border-radius:5px">
-                        @*<input type="button" class="btn btn-primary" value="Log in" style="width:100px"/>*@
-                        <a href="~/User/Home" class="btn btn-primary" style="width:100px">Log in</a>
+                       
+                        <input type="submit" class="btn btn-primary" value="Log in" style="width:100px" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -130,7 +133,7 @@
 
     </div>
 </div>
-
+}
 
 
 @section Styles {

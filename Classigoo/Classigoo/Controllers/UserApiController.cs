@@ -152,5 +152,11 @@ namespace Classigoo.Controllers
             }
             return IsUserExist;
         }
+        [HttpGet]
+        public bool IsValidUser(string userName, string pwd)
+        {
+
+            return db.Users.Where(u => u.MobileNumber == userName).Where(u => u.Password == pwd).Count() > 0;
+        }
     }
 }

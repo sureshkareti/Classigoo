@@ -13,7 +13,8 @@
     <div class="col-md-10" style="padding-top:30px">
         <p>Register</p>
         <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
-
+            <span name="status">@ViewBag.status</span>
+            <br />
             <div class="row form-group">
 
                 <div class="col-md-7">
@@ -36,7 +37,7 @@
 
                         </div>
                         <div class="col-md-9">
-                           @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                           @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             <p class="help-block">Enter your password  </p>
                         </div>

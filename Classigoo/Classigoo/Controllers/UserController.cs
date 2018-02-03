@@ -9,10 +9,53 @@ namespace Classigoo.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
         public ActionResult Login()
         {
             return View();
+        }
+
+        // POST: User
+        [HttpPost]
+        public ActionResult Login(FormCollection coll)
+        {
+            bool IsValidUser = false;
+            using (var client = new HttpClient())
+            {
+                string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd="+ coll["pwd"] + "";
+                client.BaseAddress = new Uri(url);
+                //HTTP GET
+                var responseTask = client.GetAsync(url);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<bool>();
+                    readTask.Wait();
+
+                    IsValidUser = readTask.Result;
+                    
+                }
+                else //web api sent error response 
+                {
+                    //log response status here..
+
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
+            }
+            if(IsValidUser)
+            {
+             return   RedirectToAction("Home","User");
+            }
+            else
+            {
+                @ViewBag.status = " Invalid Email/Phone Number or Password";
+            }
+
+            return View();
+
+
+            
         }
 
         public ActionResult Index()
@@ -46,7 +89,7 @@ namespace Classigoo.Controllers
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Home");
+                        return RedirectToAction("Home","User");
                     }
                     else
                     {
@@ -57,8 +100,12 @@ namespace Classigoo.Controllers
 
            
             }
-            
-              return  RedirectToAction("Home");
+            else
+            {
+                @ViewBag.status = " Phone Number "+User.MobileNumber+ " already Registered";
+            }
+
+            return View();
            
         }
 
