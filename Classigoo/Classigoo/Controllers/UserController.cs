@@ -26,38 +26,77 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Register(User User)
         {
-
-            using (var client = new HttpClient())
+            if (!IsUserExist(User.MobileNumber))
             {
-                
-                User.Type = "Custom";
-                
-                client.BaseAddress = new Uri("http://localhost:51797/api/");
-
-                //HTTP POST
-                var postTask = client.PostAsJsonAsync<User>("UserApi", User);
-                try
+                using (var client = new HttpClient())
                 {
 
-                    postTask.Wait();
-                }
-                catch (Exception ex)
-                {
+                    User.Type = "Custom";
+
+                    client.BaseAddress = new Uri("http://localhost:51797/api/");
+                    var postTask = client.PostAsJsonAsync<User>("UserApi", User);
+                    try
+                    {
+                        postTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                    }
 
                 }
 
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Home");
-                }
-
+           
             }
-
-            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-
-            return View(User);
+            
+              return  RedirectToAction("Home");
+           
         }
+
+    
+
+    public bool IsUserExist(string id)
+    {
+        bool IsUserExist = false;
+        using (var client = new HttpClient())
+        {
+            string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=Custom";
+            client.BaseAddress = new Uri(url);
+            //HTTP GET
+            var responseTask = client.GetAsync(url);
+            responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<bool>();
+                readTask.Wait();
+
+                IsUserExist = readTask.Result;
+            }
+            else //web api sent error response 
+            {
+                //log response status here..
+
+                ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+            }
+        }
+        
+        return IsUserExist;
+
+    }
+
+
+
         public ActionResult UnableToLogin()
         {
             return View();

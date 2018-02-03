@@ -16,7 +16,6 @@
         user.FbId = profile.id;
         url = 'http://localhost:51797/api/UserApi/CheckUser/?id=' + user.FbId + '&type=Fb';
     }
-    //api/person/byName?firstName=a&lastName=b
     $.ajax({
         url: url,
         type: 'GET',
