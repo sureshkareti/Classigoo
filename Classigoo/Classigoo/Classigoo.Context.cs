@@ -12,6 +12,8 @@ namespace Classigoo
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ClassigooEntities : DbContext
     {
@@ -29,5 +31,22 @@ namespace Classigoo
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Add> Adds { get; set; }
         public virtual DbSet<RealEstate> RealEstates { get; set; }
+    
+        public virtual int FillAds(string categoryId, string locationId, Nullable<System.Guid> userId, ObjectParameter addId)
+        {
+            var categoryIdParameter = categoryId != null ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(string));
+    
+            var locationIdParameter = locationId != null ?
+                new ObjectParameter("LocationId", locationId) :
+                new ObjectParameter("LocationId", typeof(string));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryIdParameter, locationIdParameter, userIdParameter, addId);
+        }
     }
 }

@@ -29,6 +29,10 @@ namespace Classigoo
         public string LocationId { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
         public Nullable<int> AddId { get; set; }
+        public string ImgUrlPrimary { get; set; }
+        public string ImgUrlSeconday { get; set; }
+        public string ImgUrlThird { get; set; }
+        public string ImgUrlFourth { get; set; }
     
         public virtual Add Add { get; set; }
     }

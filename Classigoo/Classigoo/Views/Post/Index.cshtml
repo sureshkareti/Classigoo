@@ -4,71 +4,76 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row" style="max-width:800px !important;margin:auto;">
-    <div class="col-md-12">
-        Submit a Free Classified Ad
-    </div>
-    <div class="col-md-12">
-        <div class="row form-group">
-            <div class="col-md-3" style="text-align:right">
-                Ad Title
-            </div>
-            <div class="col-md-9">
-                <input type="text" class="form-control" />
-            </div>
+@using (Ajax.BeginForm("Index", "Post", new AjaxOptions { HttpMethod = "POST" }))
+{
+
+    <div class="row" style="max-width:800px !important;margin:auto;">
+        <div class="col-md-12">
+            Submit a Free Classified Ad
         </div>
-        <div class="row form-group">
-            <div class="col-md-3" style="text-align:right">
-                Category
+        <div class="col-md-12">
+            <div class="row form-group">
+                <div class="col-md-3" style="text-align:right">
+                    Ad Title
+                </div>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" />
+                </div>
             </div>
-            <div class="col-md-9">
-                <select id="myList" class="form-control">
-                    <option value="Properties">Properties</option>
-                    <option value="Cars">Cars</option>
-                    <option value="Electronics & Appliances">Electronics & Appliances</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Jobs">Jobs</option>
-                    <option value="Mobiles">Mobiles</option>
-                    <option value="Bikes">Bikes</option>
-                    <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Pets">Pets</option>
-                    <option value="Services">Services</option>
+            <div class="row form-group">
+                <div class="col-md-3" style="text-align:right">
+                    Category
+                </div>
+                <div class="col-md-9">
+                    <select id="myList" class="form-control">
+                        <option value="Properties">Properties</option>
+                        <option value="Cars">Cars</option>
+                        <option value="Electronics & Appliances">Electronics & Appliances</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Jobs">Jobs</option>
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Bikes">Bikes</option>
+                        <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Pets">Pets</option>
+                        <option value="Services">Services</option>
 
-                </select>
+                    </select>
+                </div>
             </div>
-        </div>
-     <hr />
-        <div class="row form-group">
-            <div class="col-md-3" style="text-align:right">
-                Add Description
+            <hr />
+            <div class="row form-group">
+                <div class="col-md-3" style="text-align:right">
+                    Add Description
+                </div>
+                <div class="col-md-9">
+                    <textarea id="txtDiscription" class="form-control"></textarea>
+                </div>
             </div>
-            <div class="col-md-9">
-               <textarea id="txtDiscription" class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-3" style="text-align:right">
-                Upload Photos
-                
-            </div>
-            <div class="col-md-9" style="height:150px;">
-                <div class="row">
-                    <div class="col-md-3" style="border:1px solid gray;width:100%;height:100%">
+            <div class="row form-group">
+                <div class="col-md-3" style="text-align:right">
+                    Upload Photos
 
-                    </div>
-                    <div class="col-md-3">
+                </div>
+                <div class="col-md-9" style="height:150px;">
+                    <div class="row">
+                        <div class="col-md-3" style="border:1px solid gray;width:100%;height:100%">
 
-                    </div>
-                    <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
 
-                    </div>
-                    <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
 
+                        </div>
+                        <div class="col-md-3">
+                            <input type="submit" value="PostAdd" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--/Slider-->
     </div>
-    <!--/Slider-->
-</div>
+
+}

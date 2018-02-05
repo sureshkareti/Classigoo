@@ -7,34 +7,39 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Classigoo;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
 
 namespace Classigoo.Controllers
 {
     public class PostApiController : ApiController
     {
         // POST: api/PostApi
-        [ResponseType(typeof(void))]
+        [HttpPost]
+        [ResponseType(typeof(int))]
         public IHttpActionResult PostAdd(Add add)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            int insertedAddId = 0;          
 
             try
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                    classigooEntities.Adds.Add(add);
-                    classigooEntities.SaveChanges();
+                    ObjectParameter Output = new ObjectParameter("AddId", typeof(int));
+                    classigooEntities.FillAds(add.CategoryId, add.LocationId, add.UserId, Output);
+
+                    int responceCode = classigooEntities.SaveChanges();
+                    if (responceCode == 0)
+                    {
+                        insertedAddId =(int)Output.Value;
+                    }                 
                 }
             }
             catch(DbUpdateException)
             {
-
+                return Ok(0);
             }
 
-            return StatusCode(HttpStatusCode.Created);
+            return Ok(insertedAddId);
         }
 
         // POST: api/PostApi

@@ -34,6 +34,10 @@
           <Property Name="LocationId" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
+          <Property Name="ImgUrlPrimary" Type="varchar(max)" />
+          <Property Name="ImgUrlSeconday" Type="varchar(max)" />
+          <Property Name="ImgUrlThird" Type="varchar(max)" />
+          <Property Name="ImgUrlFourth" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -83,6 +87,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="FillAds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="varchar" Mode="In" />
+          <Parameter Name="LocationId" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="AddId" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
@@ -114,6 +124,12 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="RealEstate" EntitySet="RealEstates" />
           </AssociationSet>
+          <FunctionImport Name="FillAds">
+            <Parameter Name="CategoryId" Mode="In" Type="String" />
+            <Parameter Name="LocationId" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="Guid" />
+            <Parameter Name="AddId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -168,6 +184,10 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="RealEstate" ToRole="Add" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -239,6 +259,10 @@
           <EntitySetMapping Name="RealEstates">
             <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
               <MappingFragment StoreEntitySet="RealEstate">
+                <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
+                <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
+                <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
+                <ScalarProperty Name="ImgUrlPrimary" ColumnName="ImgUrlPrimary" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
@@ -257,6 +281,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FillAds" FunctionName="ClassigooModel.Store.FillAds" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
