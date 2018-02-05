@@ -77,7 +77,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Register(User User)
         {
-            if (!IsUserExist(User.MobileNumber))
+            if (!IsUserExist(User.MobileNumber,"Custom"))
             {
                 using (var client = new HttpClient())
                 {
@@ -116,12 +116,12 @@ namespace Classigoo.Controllers
             return View();
            
         }
-        public bool IsUserExist(string id)
+       public bool IsUserExist(string id,string type)
        {
         bool IsUserExist = false;
         using (var client = new HttpClient())
         {
-            string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=Custom";
+            string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type="+type;
             client.BaseAddress = new Uri(url);
             //HTTP GET
             var responseTask = client.GetAsync(url);
@@ -208,16 +208,43 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
-            ChangePassword(coll["txtPasscode"]);
+            User user = GetUserDetails((Guid)Session["UserId"]);
+            if(!IsUserExist(coll["txtEmail"],"Gmail"))
+            {
+                user.Email = coll["txtEmail"];
+                UpdateUserDetails(user);
+            }
+            else
+            {
+                @ViewBag.status = "Email already registered";
+            }
+            if (!IsUserExist(coll["txtPhone"], "Custom"))
+            {
+                user.MobileNumber = coll["txtPhone"];
+                UpdateUserDetails(user);
+            }
+            else
+            {
+                @ViewBag.status = "Mobile Number already registered";
+            }
+            if (coll["txtOldPasscode"] ==user.Password)
+            {
+                user.Password = coll["txtPasscode"];
+                UpdateUserDetails(user);
+            }
+            else
+            {
+                @ViewBag.status = "Old Password is incorrect";
+            }
+            
             return View();
         }
-        public void ChangePassword(string password)
+        public void UpdateUserDetails(User user)
         {
             using (var client = new HttpClient())
             {
-                User user = GetUserDetails((Guid)Session["UserId"]);
-                user.Password = password;
-                string url = "http://localhost:51797/api/UserApi/ChangePassword/?user="+user;
+               
+                string url = "http://localhost:51797/api/UserApi/UpdateUserDetails/?user=" + user;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync<User>(url, user);
                 try

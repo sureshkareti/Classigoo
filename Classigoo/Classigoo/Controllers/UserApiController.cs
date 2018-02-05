@@ -170,7 +170,7 @@ namespace Classigoo.Controllers
             
         }
         [HttpPut]
-        public IHttpActionResult ChangePassword(User user)
+        public IHttpActionResult UpdateUserDetails(User user)
         {
             try
             {
