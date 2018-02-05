@@ -18,34 +18,42 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection coll)
         {
-            bool IsValidUser = false;
-            using (var client = new HttpClient())
+            Guid UserId = Guid.Empty;
+            try
             {
-                string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd="+ coll["pwd"] + "";
-                client.BaseAddress = new Uri(url);
-                //HTTP GET
-                var responseTask = client.GetAsync(url);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var readTask = result.Content.ReadAsAsync<bool>();
-                    readTask.Wait();
+                    string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "";
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
 
-                    IsValidUser = readTask.Result;
-                    
-                }
-                else //web api sent error response 
-                {
-                    //log response status here..
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<Guid>();
+                        readTask.Wait();
 
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                         UserId = readTask.Result;
+                        
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
                 }
             }
-            if(IsValidUser)
+            catch(Exception ex)
             {
-             return   RedirectToAction("Home","User");
+
+            }
+            if(UserId!=Guid.Empty)
+            {
+                Session["UserId"] = UserId;
+                return   RedirectToAction("UserDashboard", "User");
             }
             else
             {
@@ -108,11 +116,8 @@ namespace Classigoo.Controllers
             return View();
            
         }
-
-    
-
-    public bool IsUserExist(string id)
-    {
+        public bool IsUserExist(string id)
+       {
         bool IsUserExist = false;
         using (var client = new HttpClient())
         {
@@ -150,36 +155,16 @@ namespace Classigoo.Controllers
         }
         public ActionResult Home()
         {
-            IEnumerable<tbl_Adds> students = null;
-
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:51797/api/");
-                //HTTP GET
-                var responseTask = client.GetAsync("Adds");
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<IList<tbl_Adds>>();
-                    readTask.Wait();
-
-                    students = readTask.Result;
-                }
-                else //web api sent error response 
-                {
-                    //log response status here..
-
-                    students = Enumerable.Empty<tbl_Adds>();
-
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                }
-            }
-            return View(students);
+           
+            return View();
            
         }
-
+        [HttpPost]
+        public ActionResult Home(FormCollection coll)
+        {
+            
+            return View();
+        }
         public ActionResult PostAdd()
         {
             return View();
@@ -214,6 +199,82 @@ namespace Classigoo.Controllers
             ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
             return View(Add);
+        }
+
+        public ActionResult UserDashboard()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UserDashboard(FormCollection coll)
+        {
+            ChangePassword(coll["txtPasscode"]);
+            return View();
+        }
+        public void ChangePassword(string password)
+        {
+            using (var client = new HttpClient())
+            {
+                User user = GetUserDetails((Guid)Session["UserId"]);
+                user.Password = password;
+                string url = "http://localhost:51797/api/UserApi/ChangePassword/?user="+user;
+                client.BaseAddress = new Uri(url);
+                var postTask = client.PutAsJsonAsync<User>(url, user);
+                try
+                {
+                    postTask.Wait();
+                }
+                catch (Exception ex)
+                {
+
+                }
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    //return RedirectToAction("Home", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                }
+
+            }
+        }
+        public User GetUserDetails(Guid id)
+        {
+            User user = new User();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string url = "http://localhost:51797/api/UserApi/GetUser/?id=" + id;
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<User>();
+                        readTask.Wait();
+
+                        user= readTask.Result;
+
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return user;
         }
     }
     }

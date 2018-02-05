@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "UserDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Ajax.BeginForm("UserDashboard", "User", new AjaxOptions { HttpMethod = "POST" }))
+{
+    <div class="row loginform" style="max-width:970px !important;margin:auto;">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" style="padding-top:30px">
+            <p>Login</p>
+            <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
+
+                <span name="status">@ViewBag.status</span>
+                <br />
+                <div class="panel-body">
+                    <form id="frmChangePassword">
+                        <div class="row  form-group">
+                            <div class="col-md-4">
+                                <span>Old Password<span style="color:red">*</span></span>
+                                <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                            </div>
+                        </div>
+                        <div class="row  form-group">
+                            <div class="col-md-4">
+                                <span>New Password<span style="color:red">*</span></span>
+                                <input type="password" name="txtPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                            </div>
+                        </div>
+                        <div class="row  form-group">
+                            <div class="col-md-4">
+                                <span>Repeat new password<span style="color:red">*</span></span>
+                                <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                            </div>
+                        </div>
+                        <div class="row  form-group">
+                            <div class="col-md-4">
+                                <input type="submit" class="btn btn-primary" value="Change Password" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <a href="~/User/UnableToLogin">Unable to Login?</a>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4 text-right">
+                                <a href="~/User/Register">Register</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group  center-block">
+                    <div class="col-md-12 text-center">
+                        <a href="#">Login with phone & OTP</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    By logging in, you accept our <a href="#"> Terms of Use</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+}
+

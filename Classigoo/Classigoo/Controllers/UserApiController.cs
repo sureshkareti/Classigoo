@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web;
 using Classigoo;
 
 namespace Classigoo.Controllers
@@ -135,7 +136,7 @@ namespace Classigoo.Controllers
             return db.Users.Count(e => e.UserId == id) > 0;
         }
         [HttpGet]
-        public bool CheckUser(string id,string type)
+        public IHttpActionResult CheckUser(string id,string type)
         {
             bool IsUserExist = false;
             if(type=="Gmail")
@@ -150,13 +151,59 @@ namespace Classigoo.Controllers
             {
                 IsUserExist= db.Users.Count(e => e.MobileNumber == id) > 0;
             }
-            return IsUserExist;
+            return Ok(IsUserExist);
         }
         [HttpGet]
-        public bool IsValidUser(string userName, string pwd)
+        public IHttpActionResult IsValidUser(string userName, string pwd)
         {
-
-            return db.Users.Where(u => u.MobileNumber == userName).Where(u => u.Password == pwd).Count() > 0;
+        
+            var user = db.Users.Where(u => u.MobileNumber == userName).Where(u => u.Password == pwd).ToList();
+            if(user.Count()>0)
+            {
+                
+                return Ok(user[0].UserId);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
+        [HttpPut]
+        public IHttpActionResult ChangePassword(User user)
+        {
+            try
+            {
+              
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                db.Entry(user).State = EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserExists(user.UserId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+        
     }
 }
