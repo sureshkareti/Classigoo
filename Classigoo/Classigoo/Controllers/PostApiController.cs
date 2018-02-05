@@ -43,29 +43,29 @@ namespace Classigoo.Controllers
         }
 
         // POST: api/PostApi
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PostRealEstate(RealEstate realEstate)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+       // [ResponseType(typeof(void))]
+        //public IHttpActionResult PostRealEstate(RealEstate realEstate)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                using (ClassigooEntities classigooEntities = new ClassigooEntities())
-                {
-                    classigooEntities.RealEstates.Add(realEstate);
-                    classigooEntities.SaveChanges();
-                }
-            }
-            catch (DbUpdateException)
-            {
+        //    try
+        //    {
+        //        using (ClassigooEntities classigooEntities = new ClassigooEntities())
+        //        {
+        //            classigooEntities.RealEstates.Add(realEstate);
+        //            classigooEntities.SaveChanges();
+        //        }
+        //    }
+        //    catch (DbUpdateException)
+        //    {
 
-            }
+        //    }
 
-            return StatusCode(HttpStatusCode.Created);
-        }
+        //    return StatusCode(HttpStatusCode.Created);
+        //}
 
     }
 }
