@@ -41,9 +41,9 @@ namespace Classigoo.Controllers
             return insertedAddId;
         }
 
-       
+       [HttpPost]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PostRealEstate(RealEstate realEstate)
+        public IHttpActionResult RealEstate(RealEstate realEstate)
         {
             if (!ModelState.IsValid)
             {
