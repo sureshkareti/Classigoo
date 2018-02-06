@@ -12,6 +12,8 @@
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/font-awesome.css" rel="stylesheet" />*@
     @RenderSection("Styles", false)
+    <link href="~/Content/slick-theme.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/slick.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="main-wrapper">
@@ -136,8 +138,19 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scripts/jquery-3.2.1.js")
+    @Scripts.Render("~/scripts/bootstrap.js")
+    @Scripts.Render("~/scripts/slick.js")
+    <script>
+    $(document).ready(function () {
+        $(".regular").slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+    })
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

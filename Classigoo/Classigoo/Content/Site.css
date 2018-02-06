@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900");
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+body {
     /*padding-top: 5px;
     paddin;g-bottom: 20px;*/
     font-family: "Roboto",Arial,Helvetica,sans-serif;
@@ -173,7 +175,7 @@ textarea {
 /* customised css */
 body{
     background: #f4f4f4;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     color: #7b818c;
     font-weight: 400;
     min-height: 500px;
@@ -233,6 +235,9 @@ header{
     box-shadow: inset 0px 0px 0px 1px rgb(32, 91, 162), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.15);
     text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);*/
 
+}
+.search-bar-inner input{
+    border-radius: 0;
 }
 .search-item-1{
     margin-right: -15px;
@@ -356,6 +361,30 @@ body:not(.is-touch) .grid:hover > .image {
 body:not(.is-touch) .grid:hover .content {
     max-height: 15em;
     opacity: 1;
+}
+.left-container{
+    padding: 20px 25px;
+    background: #ffffff;
+    position: relative;
+}
+.left-container::after{
+    position: absolute;
+    right:0;
+    top:0;
+    height: 100%;
+    content:'';
+    width: 2px;
+    background: rgba(160, 160, 160, 0.3);
+    margin-right: -15px;
+}
+.right-container{
+    background: #ffffff;
+    min-height: 354px;
+}
+.slider-container{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(160, 160, 160, 0.3);
 }
 .grid-menu{
     //background: #ffffff;

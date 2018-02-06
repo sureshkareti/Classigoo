@@ -21,7 +21,7 @@ namespace Classigoo.Controllers
             Guid userId = new Guid("280BF190-3FE3-4E1C-8F6E-E66EDD7E272F");
             Add add = new Add() { CategoryId = "1234", LocationId = "1234", UserId = userId };
 
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 //client.BaseAddress = new Uri("http://localhost:51797/api/");
 
@@ -42,10 +42,10 @@ namespace Classigoo.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     var returnResult = result.Content.ReadAsAsync<int>();
-                         
+
                     returnResult.Wait();
 
-                    int value  = returnResult.Result;
+                    int value = returnResult.Result;
 
                     RealEstate objRealEstate = new RealEstate()
                     {
@@ -68,10 +68,22 @@ namespace Classigoo.Controllers
                         ImgUrlFourth = "img4/testFolder/4.jpg"
                     };
 
-                    string realEstatePostUrl = "http://localhost:51797/api/PostApi/P/?add=" + add;
+                    string realEstatePostUrl = "http://localhost:51797/PostApi/RealEstate?realEstate=" + objRealEstate;
                     client.BaseAddress = new Uri(realEstatePostUrl);
+                    var realEstatepostTask = client.PostAsJsonAsync<Add>(realEstatePostUrl, add);
+                    try
+                    {
+                        realEstatepostTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
 
-                   
+                    }
+                    var realEstatePostTask = postTask.Result;
+                    if (realEstatePostTask.IsSuccessStatusCode)
+                    {
+
+                    }
 
                         return RedirectToAction("Home", "User");
                 }
