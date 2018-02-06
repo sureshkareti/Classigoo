@@ -71,20 +71,7 @@ namespace Classigoo.Controllers
                     string realEstatePostUrl = "http://localhost:51797/api/PostApi/P/?add=" + add;
                     client.BaseAddress = new Uri(realEstatePostUrl);
 
-                    var postTask = client.PostAsJsonAsync<Add>(realEstatePostUrl, add);
-                    try
-                    {
-                        postTask.Wait();
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    var result = postTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-
-                    }
+                   
 
                         return RedirectToAction("Home", "User");
                 }
