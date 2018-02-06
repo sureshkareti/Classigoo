@@ -14,9 +14,8 @@ namespace Classigoo.Controllers
     public class PostApiController : ApiController
     {
         // POST: api/PostApi
-        [HttpPost]
-        [ResponseType(typeof(int))]
-        public IHttpActionResult PostAdd(Add add)
+        [HttpPost]     
+        public int PostAdd(Add add)
         {
             int insertedAddId = 0;          
 
@@ -36,36 +35,36 @@ namespace Classigoo.Controllers
             }
             catch(DbUpdateException)
             {
-                return Ok(0);
+                return 0;
             }
 
-            return Ok(insertedAddId);
+            return insertedAddId;
         }
 
-        // POST: api/PostApi
-       // [ResponseType(typeof(void))]
-        //public IHttpActionResult PostRealEstate(RealEstate realEstate)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+       [HttpPost]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult RealEstate(RealEstate realEstate)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    try
-        //    {
-        //        using (ClassigooEntities classigooEntities = new ClassigooEntities())
-        //        {
-        //            classigooEntities.RealEstates.Add(realEstate);
-        //            classigooEntities.SaveChanges();
-        //        }
-        //    }
-        //    catch (DbUpdateException)
-        //    {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    classigooEntities.RealEstates.Add(realEstate);
+                    classigooEntities.SaveChanges();
+                }
+            }
+            catch (DbUpdateException)
+            {
 
-        //    }
+            }
 
-        //    return StatusCode(HttpStatusCode.Created);
-        //}
+            return StatusCode(HttpStatusCode.Created);
+        }
 
     }
 }
