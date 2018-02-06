@@ -41,7 +41,52 @@ namespace Classigoo.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Home", "User");
+                    var returnResult = result.Content.ReadAsAsync<int>();
+                         
+                    returnResult.Wait();
+
+                    int value  = returnResult.Result;
+
+                    RealEstate objRealEstate = new RealEstate()
+                    {
+                        Title = "Test title",
+                        Price = "25000",
+                        Availability = "Construnction going",
+                        ListedBy = "Owner",
+                        Furnishing = "Yes",
+                        Bedrooms = "2",
+                        SquareFeets = "260",
+                        Description = "this is test description",
+                        TypeId = "2",
+                        SubCategoryId = "24",
+                        LocationId = "23",
+                        Created = DateTime.Now.Date,
+                        AddId = value,
+                        ImgUrlPrimary = "img1/testFolder/1.jpg",
+                        ImgUrlSeconday = "img2/testFolder/2.jpg",
+                        ImgUrlThird = "img3/testFolder/3.jpg",
+                        ImgUrlFourth = "img4/testFolder/4.jpg"
+                    };
+
+                    string realEstatePostUrl = "http://localhost:51797/api/PostApi/P/?add=" + add;
+                    client.BaseAddress = new Uri(realEstatePostUrl);
+
+                    var postTask = client.PostAsJsonAsync<Add>(realEstatePostUrl, add);
+                    try
+                    {
+                        postTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+
+                    }
+
+                        return RedirectToAction("Home", "User");
                 }
 
             }
