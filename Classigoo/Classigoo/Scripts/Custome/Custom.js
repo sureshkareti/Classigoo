@@ -1,4 +1,18 @@
-﻿function CheckUser(profile, type) {
+﻿$(document).ready(function () {
+    $('input[name="email-phone"]').change(function () {
+        var emailorphone = $('input[name="email-phone"]').val();
+        var emailReg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+        var IndNumReg = /^\d{10}$/;
+        if (!emailReg.test(emailorphone) || emailorphone == '') {
+            if (!IndNumReg.test(emailorphone) || emailorphone == '') {
+                console.log('Invalid email or phone format');
+            }
+        }
+
+
+    });
+});
+function CheckUser(profile, type) {
     jQuery.support.cors = true;
     var user = {};
     var url="";
@@ -53,4 +67,23 @@ function RegisterUser(user)
             console.log(x + '\n' + y + '\n' + z);
         }
     });
+}
+function CheckEmail()
+{
+    var email = $('input[name="email"]').val();
+    var emailReg = '/^([w-.]+@([w-]+.)+[w-]{2,4})?$/';
+    if(!emailReg.test(email) || email == '')
+    {
+        console.log('Please enter a valid email address.');
+        return false;
+    }
+}
+function CheckPhoneNo()
+{
+    var phone = $('input[name="phone"]').val();
+   var intRegex = /[0-9 -()+]+$/;
+    if ((phone.length < 6) || (!intRegex.test(phone))) {
+        alert('Please enter a valid phone number.');
+        return false;
+    }
 }

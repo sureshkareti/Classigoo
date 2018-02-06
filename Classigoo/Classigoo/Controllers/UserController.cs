@@ -209,34 +209,34 @@ namespace Classigoo.Controllers
         public ActionResult UserDashboard(FormCollection coll)
         {
             User user = GetUserDetails((Guid)Session["UserId"]);
-            if(!IsUserExist(coll["txtEmail"],"Gmail"))
-            {
-                user.Email = coll["txtEmail"];
-                UpdateUserDetails(user);
-            }
-            else
-            {
-                @ViewBag.status = "Email already registered";
-            }
-            if (!IsUserExist(coll["txtPhone"], "Custom"))
-            {
-                user.MobileNumber = coll["txtPhone"];
-                UpdateUserDetails(user);
-            }
-            else
-            {
-                @ViewBag.status = "Mobile Number already registered";
-            }
-            if (coll["txtOldPasscode"] ==user.Password)
-            {
-                user.Password = coll["txtPasscode"];
-                UpdateUserDetails(user);
-            }
-            else
-            {
-                @ViewBag.status = "Old Password is incorrect";
-            }
-            
+            //if(!IsUserExist(coll["txtEmail"],"Gmail"))
+            //{
+            //    user.Email = coll["txtEmail"];
+            //    UpdateUserDetails(user);
+            //}
+            //else
+            //{
+            //    @ViewBag.status = "Email already registered";
+            //}
+            //if (!IsUserExist(coll["txtPhone"], "Custom"))
+            //{
+            //    user.MobileNumber = coll["txtPhone"];
+            //    UpdateUserDetails(user);
+            //}
+            //else
+            //{
+            //    @ViewBag.status = "Mobile Number already registered";
+            //}
+            //if (coll["txtOldPasscode"] == user.Password)
+            //{
+            //    user.Password = coll["txtPasscode"];
+            //    UpdateUserDetails(user);
+            //}
+            //else
+            //{
+            //    @ViewBag.status = "Old Password is incorrect";
+            //}
+
             return View();
         }
         public void UpdateUserDetails(User user)

@@ -37,39 +37,39 @@ namespace Classigoo.Controllers
         }
 
         // PUT: api/UsersApi/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(Guid id, User user)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(void))]
+        //public IHttpActionResult PutUser(Guid id, User user)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != user.UserId)
-            {
-                return BadRequest();
-            }
+        //    if (id != user.UserId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(user).State = EntityState.Modified;
+        //    db.Entry(user).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!UserExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/UsersApi
         [ResponseType(typeof(User))]
