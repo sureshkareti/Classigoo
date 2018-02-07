@@ -23,7 +23,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "";
+              string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);

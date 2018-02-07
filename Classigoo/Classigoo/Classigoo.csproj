@@ -377,6 +377,8 @@
     <Content Include="Scripts\Custome\account.js" />
     <Content Include="Scripts\Custome\custom.js" />
     <Content Include="Scripts\Custome\home.js" />
+    <Content Include="Scripts\Custome\platform.js" />
+    <Content Include="Scripts\Custome\sdk.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

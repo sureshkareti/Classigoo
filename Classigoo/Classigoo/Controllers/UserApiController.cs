@@ -154,10 +154,18 @@ namespace Classigoo.Controllers
             return Ok(IsUserExist);
         }
         [HttpGet]
-        public IHttpActionResult IsValidUser(string userName, string pwd)
+        public IHttpActionResult IsValidUser(string userName, string pwd,string logintype)
         {
-        
-            var user = db.Users.Where(u => u.MobileNumber == userName).Where(u => u.Password == pwd).ToList();
+            List<User> user = new List<User>();
+            if (logintype=="email")
+            {
+                 user = db.Users.Where(u => u.Email == userName).Where(u => u.Password == pwd).ToList();
+            }
+            else if(logintype=="phone")
+            {
+                user = db.Users.Where(u => u.MobileNumber == userName).Where(u => u.Password == pwd).ToList();
+            }
+            
             if(user.Count()>0)
             {
                 

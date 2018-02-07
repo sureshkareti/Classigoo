@@ -1,15 +1,28 @@
 ﻿$(document).ready(function () {
     $('input[name="email-phone"]').change(function () {
         var emailorphone = $('input[name="email-phone"]').val();
-        var emailReg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+        var EmailReg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
         var IndNumReg = /^\d{10}$/;
-        if (!emailReg.test(emailorphone) || emailorphone == '') {
-            if (!IndNumReg.test(emailorphone) || emailorphone == '') {
-                console.log('Invalid email or phone format');
+        var LoginType = "";
+        if(emailorphone!= '')
+        {
+            if (EmailReg.test(emailorphone))
+            {
+                LoginType = "email";
+                $("#logintype").val(LoginType);
+            }
+           else if (IndNumReg.test(emailorphone))
+            {
+               LoginType = "phone";
+               $("#logintype").val(LoginType);
+           }
+            if (LoginType=='')
+            {
+                console.log("Invalid phone number or email");
+                
             }
         }
-
-
+      
     });
 });
 function CheckUser(profile, type) {

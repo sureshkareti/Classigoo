@@ -22,7 +22,7 @@
 
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="email-phone" />
+                    <input type="text" class="form-control" name="email-phone"  />
                 </div>
                 <div class="col-md-3">
 
@@ -125,7 +125,7 @@
             <div class="col-md-12 text-center">
                 By logging in, you accept our <a href="#"> Terms of Use</a>
             </div>
-
+            @Html.Hidden("logintype")
         </div>
 
     </div>
@@ -139,8 +139,8 @@
 @section Styles {
     <meta name="google-signin-client_id" content="443252547392-5hvtt0c60miftkn14hudh9p7q43ctvl2.apps.googleusercontent.com">
     <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="~/Scripts/Custome/Custom.js" async defer></script>
+    <script src="~/Scripts/Custome/platform.js" async defer></script>
+    <script src="~/Scripts/Custome/Custom.js" type="text/javascript"></script>
 
 }
 <script type="text/javascript">
