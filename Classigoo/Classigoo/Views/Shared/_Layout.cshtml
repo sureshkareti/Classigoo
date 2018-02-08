@@ -22,16 +22,25 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="~/Home/Index"><img src="~/images/testLogo.png" alt=""></a>
+                            <a href="~/Home/Index"><img src="~/images/logo.jpg" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         <div class="search-bar">
                             <div class="search-bar-inner">
                                 <div class="row">
                                     <div class="col-lg-3 ">
-                                        <div class="search-item-1">
-                                            <input type="text" class="form-control input-lg " placeholder="All India" />
+                                        <div class="search-item-1 dropdown ">
+                                            <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown"  value="All India"/>
+                                            <ul class="dropdown-menu">
+                                                <li><input class="location-btn" type="search" placeholder="type your search"/></li>
+                                                <li><a href="#">All india</a></li>
+                                                <li><a href="#">Hyderabad</a></li>
+                                                <li><a href="#">Banglore</a></li>
+                                                <li><a href="#">Chennai</a></li>
+                                                <li><a href="#">Delhi</a></li>
+                                                <li><a href="#">Hyderabad</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 ">
@@ -40,7 +49,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-1 ">
-                                        <a href="#">
+                                        <a href="#" class="search-btn">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </a>
                                         @*<input type="button" class="form-control input-lg" value="Search" />*@
@@ -49,12 +58,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="login">
-                            <a href="~/User/Login" style="color:#2965be;font-weight:bold;font-size:18px"><span class="glyphicon glyphicon-user"></span> My Account</a>
+                    <div class="col-lg-3">
+                        <div class="login ">
+                            <a href="~/User/Login" ><span class="glyphicon glyphicon-user"></span> Login/Register</a>
                         </div>
                         <div class="free-add">
-                            <input type="button" class="btn  navbar-btn nav-freead " style="font-size:16px" value="Submit a Free Ad" />
+                            <input type="button" class="btn  navbar-btn nav-freead " value="Submit a Free Ad" />
                         </div>
                     </div>
                 </div>

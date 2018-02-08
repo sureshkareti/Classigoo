@@ -202,25 +202,40 @@ header{
     padding-top: 125px;
 }
 .logo img{
-    height: 75px;
+    height: 55px;
 }
 .search-bar{
-    padding: 10px;
+    //padding: 10px;
    // background: rgba(83, 133, 193, 0.3);
     border-radius: 9px;
 }
-.search-bar a{
+.search-bar .search-btn{
     color: #ffffff;
     font-size: 30px;
     display: block;
     margin-left: -30px;
-    border: 1px solid #2965be;
-    background: #2965be;
+    border: 1px solid #3fc0de;
+    background: #3fc0de;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .search-bar a>span{
     margin-left: 14px;
+}
+.dropdown-menu .location-btn{
+    display: block;
+    border: 0;
+    padding-left: 21px;
+}
+.dropdown-menu li{
+    border-bottom: 1px solid #3fc0de;
+}
+.dropdown-menu li:hover a{
+    background: #1399d3;
+    color: #ffffff;
+}
+.dropdown-menu li:last-child{
+    border-bottom: 0;
 }
 .search-bar-inner{
     margin-top: 5px;
@@ -238,14 +253,35 @@ header{
 }
 .search-bar-inner input{
     border-radius: 0;
+    border-color: #3fc0de;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #09558c;
+
 }
 .search-item-1{
     margin-right: -15px;
+    position:relative;
+}
+.search-item-1::after {
+    content: "\e114";
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 13px;
+    margin-top: 13px;
+}
+.search-item-1 input{
+   color: #7b818c;
 }
 .search-item-1 input{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right-width: 0;
+    
 }
 .search-item-2{
     margin-left: -15px
@@ -385,6 +421,20 @@ body:not(.is-touch) .grid:hover .content {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid rgba(160, 160, 160, 0.3);
+}
+.login, .free-add{
+    float: left;
+}
+.login a{
+    display: inline-block;
+    color: #3fc0de;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+.free-add input{
+    background: #1399d3;
+    font-weight: bold;
 }
 .grid-menu{
     //background: #ffffff;
