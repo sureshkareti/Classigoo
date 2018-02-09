@@ -208,7 +208,8 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
-            User user = GetUserDetails((Guid)Session["UserId"]);
+            GetMyAdds((Guid)Session["UserId"]);
+           // User user = GetUserDetails((Guid)Session["UserId"]);
             //if(!IsUserExist(coll["txtEmail"],"Gmail"))
             //{
             //    user.Email = coll["txtEmail"];
@@ -302,6 +303,42 @@ namespace Classigoo.Controllers
 
             }
             return user;
+        }
+        public void GetMyAdds(Guid id)
+        {
+            List<Add> addColl = new List<Add>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string url = "http://localhost:51797/api/UserApi/GetMyAdds/?userId=" + id;
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Add>>();
+                        readTask.Wait();
+
+                        addColl = readTask.Result;
+
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
         }
     }
     }
