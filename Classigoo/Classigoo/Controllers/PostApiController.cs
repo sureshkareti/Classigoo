@@ -11,7 +11,7 @@ using System.Data.Entity.Core.Objects;
 
 namespace Classigoo.Controllers
 {
-    [Route("api/controller/action")]
+    
     public class PostApiController : ApiController
     {
         // POST: api/PostApi
