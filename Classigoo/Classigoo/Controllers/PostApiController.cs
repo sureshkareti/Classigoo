@@ -11,10 +11,13 @@ using System.Data.Entity.Core.Objects;
 
 namespace Classigoo.Controllers
 {
+    [Route("api/controller/action")]
     public class PostApiController : ApiController
     {
         // POST: api/PostApi
-        [HttpPost]     
+        
+        [HttpPost]
+        [ActionName("PostAdd")]
         public int PostAdd(Add add)
         {
             int insertedAddId = 0;          
@@ -41,7 +44,9 @@ namespace Classigoo.Controllers
             return insertedAddId;
         }
 
-       [HttpPost]
+      
+        [HttpPost]
+        [ActionName("RealEstate")]
         [ResponseType(typeof(void))]
         public IHttpActionResult RealEstate(RealEstate realEstate)
         {
