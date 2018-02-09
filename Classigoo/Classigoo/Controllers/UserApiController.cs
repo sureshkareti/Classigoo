@@ -212,6 +212,15 @@ namespace Classigoo.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-        
+        [HttpGet]
+        [ActionName("GetMyAdds")]
+        public IHttpActionResult GetMyAdds(Guid userId)
+        {
+            var adds = db.Adds.Where(a => a.UserId == userId).ToList();
+            if(adds.Count>0)
+            return Ok(adds);
+            else
+                return NotFound();
+        }
     }
 }
