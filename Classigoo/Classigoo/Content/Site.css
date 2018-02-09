@@ -342,7 +342,7 @@ body:not(.is-touch) .grid:hover > .image {
     display: block;
     width: 100%;
     border-radius:50%;
-    border: 1px solid #0c7db4;
+    border: 1px solid #dbdbdb;
 }
 .grid a h3{
     font-size: 0px;
@@ -456,4 +456,64 @@ body:not(.is-touch) .grid:hover .content {
 footer{
     background: #ffffff;
     margin-top: 50px;
+}
+.sec{
+    max-width: 650px;
+    margin: 0 auto;
+}
+.post-add{
+    background: #ffffff;
+}
+img {
+    width:100%;
+}
+.grid-item .grid-img{
+    border-radius: 50%;
+    border: 1px solid #7b818c;
+    overflow: hidden;
+}
+.content-footer{
+    text-align: right;
+}
+.sec h2, .sec .form-control, .sec select{
+    margin: 30px 0;
+}
+.sec label{
+    margin: 30px 0;
+    display: block;
+    text-align: right;
+}
+.grid-item{
+    margin-bottom:30px;
+}
+.section{
+    display: none;
+}
+.section.sec-1{
+    display: block;
+}
+.sec-1 h3, .sec-2 h3, .sec-3 h3, .sec-4 h3{
+    display: inline-block;
+}
+.top-sec, .header.open{
+    border-bottom: 1px solid #cccccc;
+}
+.header .selected{
+    display: none;
+}
+.header .selected a{
+    margin-top: 20px;
+}
+.header.open .selected{
+    display: block;
+    margin: 20px 0;
+}
+.header.open h2{
+    display: none;
+}
+.grid-img{
+    opacity: 0.5;
+}
+.grid-img.active{
+    opacity: 1;
 }

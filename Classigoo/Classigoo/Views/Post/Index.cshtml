@@ -4,76 +4,268 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Ajax.BeginForm("Index", "Post", new AjaxOptions { HttpMethod = "POST" }))
-{
 
-    <div class="row" style="max-width:800px !important;margin:auto;">
-        <div class="col-md-12">
-            Submit a Free Classified Ad
+    <div class="post-add">
+        <div class="top-sec">
+            <div class="container sec">
+                <h1>Submit a free classified add</h1>
+            </div>
         </div>
-        <div class="col-md-12">
-            <div class="row form-group">
-                <div class="col-md-3" style="text-align:right">
-                    Ad Title
-                </div>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-md-3" style="text-align:right">
-                    Category
-                </div>
-                <div class="col-md-9">
-                    <select id="myList" class="form-control">
-                        <option value="Properties">Properties</option>
-                        <option value="Cars">Cars</option>
-                        <option value="Electronics & Appliances">Electronics & Appliances</option>
-                        <option value="Furniture">Furniture</option>
-                        <option value="Jobs">Jobs</option>
-                        <option value="Mobiles">Mobiles</option>
-                        <option value="Bikes">Bikes</option>
-                        <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
-                        <option value="Fashion">Fashion</option>
-                        <option value="Pets">Pets</option>
-                        <option value="Services">Services</option>
-
-                    </select>
+        <section class="section sec-1">
+            <div class="header">
+                <div class="container sec">
+                    <h2>Select Your Category</h2>
+                    <div class="selected">
+                        <h3>CAR</h3><a class="pull-right" href="javascript:void(0)">Edit</a>
+                    </div>
                 </div>
             </div>
-            <hr />
-            <div class="row form-group">
-                <div class="col-md-3" style="text-align:right">
-                    Add Description
-                </div>
-                <div class="col-md-9">
-                    <textarea id="txtDiscription" class="form-control"></textarea>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-md-3" style="text-align:right">
-                    Upload Photos
-
-                </div>
-                <div class="col-md-9" style="height:150px;">
+            <div class="content">
+                <div class="container sec">
                     <div class="row">
-                        <div class="col-md-3" style="border:1px solid gray;width:100%;height:100%">
-
+                        <div class="col-lg-3">
+                            <label>Title</label>
                         </div>
-                        <div class="col-md-3">
-
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" />
                         </div>
-                        <div class="col-md-3">
-
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <input type="submit" value="PostAdd" />
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-footer">                        
+                        <input type="button" class="next-step btn btn-success" value="next" />                        
+                    </div>
+                </div>  
+            </div>              
+        </section>
+        <section class="section sec-2">
+            <div class="header">
+                <div class="container sec">
+                    <h2>Select Your Model</h2>
+                    <div class="selected">
+                        <h3>Model details</h3><a class="pull-right" href="javascript:void(0)">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container sec">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Category</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <select id="myList" class="form-control">
+                                <option value="Properties">Select</option>
+                                <option value="Properties">Properties</option>
+                                <option value="Cars">Cars</option>
+                                <option value="Electronics & Appliances">Electronics & Appliances</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Jobs">Jobs</option>
+                                <option value="Mobiles">Mobiles</option>
+                                <option value="Bikes">Bikes</option>
+                                <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Pets">Pets</option>
+                                <option value="Services">Services</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Property</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <select id="myList" class="form-control">
+                                <option value="Properties">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="content-footer">
+                        <input type="button" class="next-step btn btn-success" value="next" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section sec-3">
+            <div class="vehicle-props">
+                <div class="header">
+                    <div class="container sec">
+                        <h2>Select Your Category</h2>
+                        <div class="selected">
+                            <h3>CAR</h3><a class="pull-right" href="javascript:void(0)">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="container sec">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Model</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select id="myList" class="form-control">
+                                    <option value="Properties">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Year</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Fuel</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select id="myList" class="form-control">
+                                    <option value="Properties">Select</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>KL Driven</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="content-footer">
+                            <input type="button" class="next-step btn btn-success" value="next" />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--/Slider-->
+        </section>
+        <section class="section sec-4">
+            <div class="header">
+                <div class="container sec">
+                    <h2>Please fill your details</h2>
+                    <div class="selected">
+                        <h3>your personal details</h3><a class="pull-right" href="javascript:void(0)">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container sec">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Mobile</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>City</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="content-footer">
+                        <input type="button" class="submit btn btn-success" value="Submit" />
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-}
+    <script type="text/javascript">
+        $(function () {
+            $('.next-step').click(function () {
+                var parent = $(this).parents('.section');
+                $(parent).find('.header').addClass('open');
+                $(parent).find('.content').slideUp();
+                $(parent).next('.section').slideDown();
+            })
+            $('.grid-img').click(function () {
+                $('.grid-img').removeClass('active');
+                $(this).addClass('active');
+            })
+        })
+    </script>
