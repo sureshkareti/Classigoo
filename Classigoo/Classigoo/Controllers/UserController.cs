@@ -342,11 +342,12 @@ namespace Classigoo.Controllers
             }
             return addColl;
         }
-        public ActionResult PreviewAdd()
+        
+        public ActionResult PreviewAdd(RealEstate add)
         {
 
 
-           return View();
+           return View(add);
         }
     }
     }

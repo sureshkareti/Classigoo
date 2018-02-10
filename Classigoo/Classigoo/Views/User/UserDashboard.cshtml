@@ -16,11 +16,14 @@
                         <th>Image</th>
                         <th>Price</th>
                         <th>SquareFeets</th>
+                        <th>Preview</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in @Model)
                     {
+                        
                         <tr>
                             <td>@item.Created</td>
                             @foreach (var add in @item.RealEstates)
@@ -29,7 +32,8 @@
                             <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
                             <td>@add.Price</td>
                             <td>@add.SquareFeets</td>
-                            <td>@Html.ActionLink("Preview", "PreviewAdd", "User",new {  }, null)</td>
+                            <td>@Html.ActionLink("Preview", "PreviewAdd", "User",
+                               item.RealEstates,new { } )</td>
                             <td><a href="">Edit</a></td>
                             }
                             
