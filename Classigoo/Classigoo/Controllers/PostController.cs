@@ -20,7 +20,7 @@ namespace Classigoo.Controllers
         {
             int postId = 0;
 
-            Guid userId = new Guid("280BF190-3FE3-4E1C-8F6E-E66EDD7E272F");
+            Guid userId = new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f");//19e2aca5-28a9-41ca-a641-e81c9139e34f 280BF190-3FE3-4E1C-8F6E-E66EDD7E272F
             Add add = new Add() { CategoryId = "1234", LocationId = "1234", UserId = userId };
 
             using (var client = new HttpClient())
@@ -28,7 +28,7 @@ namespace Classigoo.Controllers
                 //client.BaseAddress = new Uri("http://localhost:51797/api/");
 
 
-                string url = "http://localhost:51797/api/PostApi/PostAdd/?add=" + add;
+                string url = "http://localhost:51797/api/PostApi/PostAdd";
                 client.BaseAddress = new Uri(url);
 
                 var postTask = client.PostAsJsonAsync<Add>(url, add);
@@ -74,9 +74,9 @@ namespace Classigoo.Controllers
                     ImgUrlFourth = "img4/testFolder/4.jpg"
                 };
 
-                string realEstatePostUrl = "http://localhost:51797/api/PostApi/RealEstate?realEstate=" + objRealEstate;
+                string realEstatePostUrl = "http://localhost:51797/api/PostApi/RealEstate";
                 client.BaseAddress = new Uri(realEstatePostUrl);
-                var realEstatepostTask = client.PostAsJsonAsync<Add>(realEstatePostUrl, add);
+                var realEstatepostTask = client.PostAsJsonAsync<RealEstate>(realEstatePostUrl, objRealEstate);
                 try
                 {
                     realEstatepostTask.Wait();
