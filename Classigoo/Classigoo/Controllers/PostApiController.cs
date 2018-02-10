@@ -11,16 +11,16 @@ using System.Data.Entity.Core.Objects;
 
 namespace Classigoo.Controllers
 {
-    
+
     public class PostApiController : ApiController
     {
         // POST: api/PostApi
-        
+
         [HttpPost]
         [ActionName("PostAdd")]
         public int PostAdd(Add add)
         {
-            int insertedAddId = 0;          
+            int insertedAddId = 0;
 
             try
             {
@@ -32,11 +32,11 @@ namespace Classigoo.Controllers
                     int responceCode = classigooEntities.SaveChanges();
                     if (responceCode == 0)
                     {
-                        insertedAddId =(int)Output.Value;
-                    }                 
+                        insertedAddId = (int)Output.Value;
+                    }
                 }
             }
-            catch(DbUpdateException)
+            catch (DbUpdateException)
             {
                 return 0;
             }
@@ -44,10 +44,9 @@ namespace Classigoo.Controllers
             return insertedAddId;
         }
 
-      
+
         [HttpPost]
         [ActionName("RealEstate")]
-        [ResponseType(typeof(void))]
         public IHttpActionResult RealEstate(RealEstate realEstate)
         {
             if (!ModelState.IsValid)
