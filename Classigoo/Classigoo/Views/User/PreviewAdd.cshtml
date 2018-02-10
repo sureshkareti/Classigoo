@@ -1,10 +1,37 @@
 ﻿@model RealEstate
-{
-    @ViewBag.Title = "PreviewAdd";
+@{
+    ViewBag.Title = "PreviewAdd";
 }
 
-<h2>PreviewAdd</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>SquareFeets</th>
+            <th>Preview</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+     
+            <tr>
+              
+                
+              <td>@Model.Title</td>
+                <td>@Model.Created</td>
+              <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+              <td>@Model.Price</td>
+              <td>@Model.SquareFeets</td>
+                <td>@Model.Bedrooms</td>
+                <td>@Model.Availability</td>
+                            
+                
 
 
-   <h2>@Model.Title</h2>
-
+            </tr>
+        
+    </tbody>
+</table>
