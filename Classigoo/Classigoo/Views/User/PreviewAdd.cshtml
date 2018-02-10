@@ -1,0 +1,11 @@
+﻿@model IEnumerable<RealEstate>
+{
+    ViewBag.Title = "PreviewAdd";
+}
+
+<h2>PreviewAdd</h2>
+
+@foreach (var item in Model)
+{
+   <h2>@item.Title</h2>
+}

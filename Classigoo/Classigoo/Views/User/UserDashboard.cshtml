@@ -1,14 +1,46 @@
-﻿@{
+﻿@model IEnumerable<Add> 
+@{
     ViewBag.Title = "UserDashboard";
+   
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using (Ajax.BeginForm("UserDashboard", "User", new AjaxOptions { HttpMethod = "POST" }))
 {
     <div class="row loginform" style="max-width:970px !important;margin:auto;">
         <div class="col-md-2">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Created</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>SquareFeets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in @Model)
+                    {
+                        <tr>
+                            <td>@item.Created</td>
+                            @foreach (var add in @item.RealEstates)
+                            {
+                            <td>@add.Title</td>
+                            <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                            <td>@add.Price</td>
+                            <td>@add.SquareFeets</td>
+                            <td>@Html.ActionLink("Preview", "PreviewAdd", "User",new {  }, null)</td>
+                            <td><a href="">Edit</a></td>
+                            }
+                            
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
         </div>
-        <div class="col-md-8" style="padding-top:30px">
+        @*<div class="col-md-8" style="padding-top:30px">
             <p>Login</p>
             <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
 
@@ -19,31 +51,31 @@
                         <div class="row  form-group">
                             <div class="col-md-4">
                                 <span>Old Password<span style="color:red">*</span></span>
-                                <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                <input type="password" name="txtOldPasscode" class="form-control"  />
                             </div>
                         </div>
                         <div class="row  form-group">
                             <div class="col-md-4">
                                 <span>New Password<span style="color:red">*</span></span>
-                                <input type="password" name="txtPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                <input type="password" name="txtPasscode" class="form-control"  />
                             </div>
                         </div>
                         <div class="row  form-group">
                             <div class="col-md-4">
                                 <span>Repeat new password<span style="color:red">*</span></span>
-                                <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                <input type="password" class="form-control" name="txtConfirmPasscode"  />
                             </div>
                         </div>
                         <div class="row  form-group">
                             <div class="col-md-4">
                                 <span>Email<span style="color:red">*</span></span>
-                                <input type="text" class="form-control" name="txtEmail" required="required" data-error="This field is required." />
+                                <input type="text" class="form-control" name="txtEmail" />
                             </div>
                         </div>
                         <div class="row  form-group">
                             <div class="col-md-4">
                                 <span>Phone<span style="color:red">*</span></span>
-                                <input type="text" class="form-control" name="txtPhone" required="required" data-error="This field is required." />
+                                <input type="text" class="form-control" name="txtPhone"  />
                             </div>
                         </div>
                         <div class="row  form-group">
@@ -93,10 +125,10 @@
 
             </div>
 
-        </div>
-        <div class="col-md-2">
+        </div>*@
+        @*<div class="col-md-2">
 
-        </div>
+        </div>*@
     </div>
 }
 

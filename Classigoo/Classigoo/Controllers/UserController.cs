@@ -203,13 +203,15 @@ namespace Classigoo.Controllers
 
         public ActionResult UserDashboard()
         {
-            return View();
+            List<Add> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            return View(addColl);
         }
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
-            GetMyAdds((Guid)Session["UserId"]);
-           // User user = GetUserDetails((Guid)Session["UserId"]);
+         // List<Add> addColl=  GetMyAdds((Guid)Session["UserId"]);
+           
+            // User user = GetUserDetails((Guid)Session["UserId"]);
             //if(!IsUserExist(coll["txtEmail"],"Gmail"))
             //{
             //    user.Email = coll["txtEmail"];
@@ -304,7 +306,7 @@ namespace Classigoo.Controllers
             }
             return user;
         }
-        public void GetMyAdds(Guid id)
+        public List<Add> GetMyAdds(Guid id)
         {
             List<Add> addColl = new List<Add>();
             try
@@ -338,7 +340,13 @@ namespace Classigoo.Controllers
             {
 
             }
-           
+            return addColl;
+        }
+        public ActionResult PreviewAdd()
+        {
+
+
+           return View();
         }
     }
     }
