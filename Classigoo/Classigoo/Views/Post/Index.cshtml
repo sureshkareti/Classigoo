@@ -16,7 +16,7 @@
                 <div class="container sec">
                     <h2>Select Your Category</h2>
                     <div class="selected">
-                        <h3>CAR</h3><a class="pull-right" href="javascript:void(0)">Edit</a>
+                        <h3 id="category"></h3><a class="pull-right" href="javascript:void(0)">Edit</a>
                     </div>
                 </div>
             </div>
@@ -35,6 +35,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="property" value="property" class="category hidden"/>
                                 </div>
                             </div>
                         </div>
@@ -42,6 +43,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="car" value="Car" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -49,6 +51,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="electronies" value="electronies" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -56,6 +59,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="mobile" value="mobile" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -63,6 +67,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="furnitures" value="furnitures" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -70,6 +75,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="jobs" value="jobs" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -77,6 +83,7 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="mobiles" value="mobiles" class="category hidden" />
                                 </div>
                             </div>
                         </div>
@@ -84,12 +91,13 @@
                             <div class="grid-item">
                                 <div class="grid-img">
                                     <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
+                                    <input type="hidden" name="bikes" value="sports" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="content-footer">                        
-                        <input type="button" class="next-step btn btn-success" value="next" />                        
+                        <input type="button" class="next-step btn btn-success" disabled value="next" />                        
                     </div>
                 </div>  
             </div>              
@@ -255,17 +263,9 @@
             </div>
         </section>
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $('.next-step').click(function () {
-                var parent = $(this).parents('.section');
-                $(parent).find('.header').addClass('open');
-                $(parent).find('.content').slideUp();
-                $(parent).next('.section').slideDown();
-            })
-            $('.grid-img').click(function () {
-                $('.grid-img').removeClass('active');
-                $(this).addClass('active');
-            })
-        })
-    </script>
+<div class="border first">
+    <div class="border-theme blue-border">&nbsp;</div>
+    <div class="border-theme green-border">&nbsp;</div>
+    <div class="border-theme violet-border">&nbsp;</div>
+    <div class="border-theme orange-border">&nbsp;</div>
+</div>
