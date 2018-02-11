@@ -229,6 +229,8 @@
     <Compile Include="Controllers\AddsController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SearchApiController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -408,6 +410,7 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\User\UserDashboard.cshtml" />
     <Content Include="Views\User\PreviewAdd.cshtml" />
+    <Content Include="Views\Search\DisplayAdds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
