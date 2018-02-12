@@ -72,8 +72,10 @@ namespace Classigoo.Controllers
         //}
 
         // POST: api/UsersApi
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        
+        [HttpPost]
+        [ActionName("AddUser")]
+        public IHttpActionResult AddUser(User user)
         {
             if (!ModelState.IsValid)
             {
@@ -103,7 +105,7 @@ namespace Classigoo.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = user.UserId }, user);
+            return Ok(user);
         }
 
         // DELETE: api/UsersApi/5
@@ -178,6 +180,7 @@ namespace Classigoo.Controllers
             
         }
         [HttpPut]
+        [ActionName("UpdateUserDetails")]
         public IHttpActionResult UpdateUserDetails(User user)
         {
             try

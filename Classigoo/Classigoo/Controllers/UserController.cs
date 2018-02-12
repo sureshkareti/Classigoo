@@ -83,9 +83,9 @@ namespace Classigoo.Controllers
                 {
 
                     User.Type = "Custom";
-
-                    client.BaseAddress = new Uri("http://localhost:51797/api/");
-                    var postTask = client.PostAsJsonAsync<User>("UserApi", User);
+                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + User;
+                    client.BaseAddress = new Uri(url);
+                    var postTask = client.PostAsJsonAsync<User>(url, User);
                     try
                     {
                         postTask.Wait();

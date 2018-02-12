@@ -67,7 +67,7 @@ function CheckUser(profile, type) {
 function RegisterUser(user)
 {
     $.ajax({
-        url: 'http://localhost:51797/api/UserApi',
+        url: 'http://localhost:51797/api/UserApi/AddUser/?id=' + user,
         type: 'POST',
         data: JSON.stringify(user),
         contentType: "application/json;charset=utf-8",
