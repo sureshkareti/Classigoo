@@ -497,6 +497,13 @@ img {
 .sec-1 h3, .sec-2 h3, .sec-3 h3, .sec-4 h3{
     display: inline-block;
     color: #0c7db4;
+    padding: 15px 0 15px 0px;
+    margin: 0;
+}
+.sec-1 h3{
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 60px;
 }
 .top-sec, .header.open{
     border-bottom: 1px solid #cccccc;
@@ -626,4 +633,7 @@ img {
     height: 8px;
     margin-right: 0;
     margin-left: 0;
+}
+#category-list1, #category-list2{
+    display: none;
 }
