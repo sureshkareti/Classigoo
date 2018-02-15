@@ -272,6 +272,8 @@
     <Content Include="Content\bootstrapValidator.min.css" />
     <Content Include="Content\Custome\account.css" />
     <Content Include="Content\Custome\CustomStyles.css" />
+    <Content Include="Content\Custome\easy-autocomplete.min.css" />
+    <Content Include="Content\Custome\easy-autocomplete.themes.min.css" />
     <Content Include="Content\Custome\home.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\Site.css" />
@@ -379,6 +381,7 @@
     <Content Include="Scripts\Custome\account.js" />
     <Content Include="Scripts\Custome\custom.js" />
     <Content Include="Scripts\Custome\home.js" />
+    <Content Include="Scripts\Custome\jquery.easy-autocomplete.min.js" />
     <Content Include="Scripts\Custome\platform.js" />
     <Content Include="Scripts\Custome\sdk.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
