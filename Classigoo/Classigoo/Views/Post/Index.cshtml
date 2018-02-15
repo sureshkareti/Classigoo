@@ -34,67 +34,91 @@
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="property" value="property" class="category hidden"/>
+                                    <a href="#properties"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="propertis" value="propertis" class="category hidden"/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="car" value="Car" class="category hidden" />
+                                    <a href="#cars"><img src="~/images/car.jpg" /></a>
+                                    <input type="radio" name="Cars" value="Cars" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="electronies" value="electronies" class="category hidden" />
+                                    <a href="#electronics"><img src="~/images/pic01.jpg" /></a>
+                                    <input type="radio" name="electronies" value="Electronics & Appliance" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="mobile" value="mobile" class="category hidden" />
+                                    <a href="#furniture"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Furniture" value="Furniture" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="furnitures" value="furnitures" class="category hidden" />
+                                    <a href="#jobs"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Jobs" value="Jobs" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="jobs" value="jobs" class="category hidden" />
+                                    <a href="#mobile"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Mobiles" value="Mobiles" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="radio" name="mobiles" value="mobiles" class="category hidden" />
+                                    <a href="#electronics"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Bikes" value="Bikes" class="category hidden" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="grid-item">
                                 <div class="grid-img">
-                                    <a href="javascript:void(0)"><img src="~/images/bike.jpg" /></a>
-                                    <input type="hidden" name="bikes" value="sports" class="category hidden" />
+                                    <a href="#bikes"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Books" value="Books, Sports & Hobbies" class="category hidden" />
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="#books&sports"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Fashion" value="Fashion" class="category hidden" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="#fashion"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Pets" value="Pets" class="category hidden" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="grid-item">
+                                <div class="grid-img">
+                                    <a href="#pets"><img src="~/images/bike.jpg" /></a>
+                                    <input type="radio" name="Services" value="Services" class="category hidden" />
+                                </div>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="content-footer">                        
                         <input type="button" class="next-step btn btn-success" disabled value="next" />                        
@@ -113,45 +137,133 @@
             </div>
             <div class="content">
                 <div class="container sec">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>Category</label>
+                    <div id="properties" class="sub-category">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Category</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select id="categoryList" class="form-control">
+                                    <option value="select">Select</option>
+                                    <option value="for-sale">For Sale</option>
+                                    <option value="for-rent">For Rent</option>                                    
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <select id="myList" class="form-control">
-                                <option value="Properties">Select</option>
-                                <option value="Properties">Properties</option>
-                                <option value="Cars">Cars</option>
-                                <option value="Electronics & Appliances">Electronics & Appliances</option>
-                                <option value="Furniture">Furniture</option>
-                                <option value="Jobs">Jobs</option>
-                                <option value="Mobiles">Mobiles</option>
-                                <option value="Bikes">Bikes</option>
-                                <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
-                                <option value="Fashion">Fashion</option>
-                                <option value="Pets">Pets</option>
-                                <option value="Services">Services</option>
-                            </select>
+                        <div class="row" id="category-list1">
+                            <div class="col-lg-3">
+                                <label>Property</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-control">
+                                    <option value="select">Select</option>
+                                    <option value="house&villas">Houses & Villas</option>
+                                    <option value="apartments">Apartments</option>
+                                    <option value="builder">Builder Floor</option>
+                                    <option value="land&plots">Land & Plots</option>
+                                    <option value="shops&plots">Shops & Offices</option>
+                                    <option value="farm_houses">Farm Houses</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row" id="category-list2">
+                            <div class="col-lg-3">
+                                <label>Property</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-control">
+                                    <option value="Properties">Select</option>
+                                    <option value="house&villas">Houses & Villas</option>
+                                    <option value="apartments">Apartments</option>
+                                    <option value="pg&roommates">PG & Roommates</option>
+                                    <option value="builder">Builder Floor</option>
+                                    <option value="land&plots">Land & Plots</option>
+                                    <option value="shop&offices">Shops & Offices</option>
+                                    <option value="farm_houses">Farm Houses</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>Property</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <select id="myList" class="form-control">
-                                <option value="Properties">Select</option>
-                            </select>
+                    <div id="cars" class="sub-category">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Category</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select class="form-control">
+                                    <option value="for-sale">Select</option>
+                                    <option value="for-sale">Cars</option>
+                                    <option value="for-rent">Commercial Vehicles</option>
+                                    <option value="for-rent">Other Vehicles</option>
+                                    <option value="for-rent">Spare Parts</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <div id="electronics" class="sub-category">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Category</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <select id="myList" class="form-control">
+                                    <option value="for-sale">Select</option>
+                                    <option value="for-sale">Cars</option>
+                                    <option value="for-rent">Commercial Vehicles</option>
+                                    <option value="for-rent">Other Vehicles</option>
+                                    <option value="for-rent">Spare Parts</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="furniture" class="sub-category">
+                        <select class="form-control">
+                            <option value="for-sale">Select</option>
+                            <option value="for-sale">Computers & Laptops</option>
+                            <option value="for-rent">TVs, Video - Audio</option>
+                            <option value="for-rent">Hard Disks, Printers & Monitors</option>
+                            <option value="for-rent">ACs</option>
+                            <option value="for-sale">Washing Machines</option>
+                            <option value="for-rent">Fridges</option>
+                            <option value="for-rent">Computer Accessories</option>
+                            <option value="for-rent">Cameras & Lenses</option>
+                            <option value="for-sale">Kitchen & Other Appliances</option>
+                            <option value="for-sale">Games & Entertainment</option>
+                        </select>
+                    </div>
+                    <div id="jobs" class="sub-category">
+                        <select class="form-control">
+                            <option value="for-sale">Select</option>
+                            <option value="for-sale">Sofa & Dining</option>
+                            <option value="for-rent">Beds & Wardrobes</option>
+                            <option value="for-rent">Home Decor & Garden</option>
+                            <option value="for-rent">Other Household Items</option>
+                            <option value="for-rent">Kids Furniture</option>
+                        </select>
+                    </div>
+                    <div id="mobile" class="sub-category">
+                    </div>
+                    <div id="electronics" class="sub-category">
+                    </div>
+                    <div id="bike">
+                    </div>
+                    <div id="books&sports" class="sub-category">
+                    </div>
+                    <div id="fashion" class="sub-category">
+                    </div>
+                    <div id="pets" class="sub-category">
+                    </div>
+                    <div id="services" class="sub-category">
+                    </div>
+                    
                     <div class="content-footer">
-                        <input type="button" class="next-step btn btn-success" value="next" />
+                        <input type="button" class="next-step btn btn-success" disabled value="next" />
                     </div>
                 </div>
             </div>
         </section>
         <section class="section sec-3">
-            <div class="vehicle-props">
+            <div id="props">
                 <div class="header">
                     <div class="container sec">
                         <h2>Select Your Category</h2>
@@ -162,64 +274,157 @@
                 </div>
                 <div class="content">
                     <div class="container sec">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>Price</label>
+                        <div id="properties_level_2" class="level-1">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Price</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" />
+                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" />
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Bedrooms</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <select class="form-control">
+                                        <option value="select">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="4+">4+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Furnishing</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <select class="form-control">
+                                        <option value="select">Select</option>
+                                        <option value="1">Furnished</option>
+                                        <option value="2">Un Furnished</option>
+                                        <option value="3">Semi-Furnished</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Availability</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <select class="form-control">
+                                        <option value="select">Select</option>
+                                        <option value="1">Under Construction</option>
+                                        <option value="2">Ready to Move</option>
+                                        <option value="3">New Launch</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Listed By</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <select class="form-control">
+                                        <option value="select">Select</option>
+                                        <option value="1">Owner</option>
+                                        <option value="2">Dealer</option>
+                                        <option value="3">Builder</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Square feet</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Ad Description</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" class="form-control" />
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>Model</label>
+                        <div id="car_level_2" class="level-1">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Price</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" />
+                                </div>
                             </div>
-                            <div class="col-lg-6">
-                                <select id="myList" class="form-control">
-                                    <option value="Properties">Select</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Model</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <select id="myList" class="form-control">
+                                        <option value="Properties">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Year</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Fuel</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <select id="myList" class="form-control">
+                                        <option value="Properties">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>KL Driven</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>Description</label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <textarea class="form-control"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>Year</label>
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>Fuel</label>
-                            </div>
-                            <div class="col-lg-6">
-                                <select id="myList" class="form-control">
-                                    <option value="Properties">Select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>KL Driven</label>
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <label>Description</label>
-                            </div>
-                            <div class="col-lg-6">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
+                        <div id="electronics_level_2" class="level-1"></div>
+                        <div id="furniture_level_2" class="level-1"></div>
+                        <div id="job_level_2" class="level-1"></div>
+                        <div id="mobile_level_2" class="level-1"></div>
+                        
+                        <div id="electronics_level_2" class="level-1"></div>
+                        <div id="bikes_level_2" class="level-1"></div>
+                        <div id="books&sports_level_2" class="level-1"></div>
+                        <div id="fashion_level_2" class="level-1"></div>
+                        <div id="pets_level_2" class="level-1"></div>
                         <div class="content-footer">
                             <input type="button" class="next-step btn btn-success" value="next" />
                         </div>
                     </div>
                 </div>
             </div>
+            
         </section>
         <section class="section sec-4">
             <div class="header">
@@ -232,28 +437,33 @@
             </div>
             <div class="content">
                 <div class="container sec">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>Name</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" />
-                        </div>
+                    <div id="properties_props_level2">
+                        
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>Mobile</label>
+                    <div id="car_props_level2">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" />
+                            </div>
                         </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" />
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Mobile</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>City</label>
-                        </div>
-                        <div class="col-lg-9">
-                            <input type="text" class="form-control" />
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>City</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" />
+                            </div>
                         </div>
                     </div>
                     <div class="content-footer">

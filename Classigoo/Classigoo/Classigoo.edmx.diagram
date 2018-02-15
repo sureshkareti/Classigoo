@@ -11,6 +11,10 @@
         <EntityTypeShape EntityType="ClassigooModel.RealEstate" Width="1.5" PointX="7.875" PointY="5.25" />
         <AssociationConnector Association="ClassigooModel.FK_Adds_Users" />
         <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.Car" Width="1.5" PointX="7.875" PointY="12.25" />
+        <EntityTypeShape EntityType="ClassigooModel.Electronic" Width="1.5" PointX="7.875" PointY="0.75" />
+        <AssociationConnector Association="ClassigooModel.FK_Cars_Adds" />
+        <AssociationConnector Association="ClassigooModel.FK_Electronics_Adds" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

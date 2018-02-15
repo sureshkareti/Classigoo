@@ -217,26 +217,39 @@
                 $(parent).next('.section').slideDown();
                 var selected_header = '';
                 var parent_class = parent[0].className;
-                if (parent_class.indexOf('sec-1')!=-1) {
+                if (parent_class.indexOf('sec-1') != -1) {
                     selected_header = $('.category:checked').val();
+                    selected_img = classigoo.sec_1.selected_img;
+                    $('#category').css("background-image", "url(" + selected_img + ")");
                     $(post_add).addClass('sec1');
                 } else if (parent_class.indexOf('sec-2') != -1) {
-                    selected_header = "Section 2 Details"
+                    var second_list = ''
+                    if ($('#category-list1').is(":visible")) {
+                        second_list = $('#category-list1 option:selected').val();
+                    } else if ($('#category-list2').is(":visible")) {
+                        second_list = $('#category-list2 option:selected').val();
+                    }
+                    selected_header = $('#categoryList').val() + " > " + second_list;
                     $(post_add).addClass('sec2');
                 } else if (parent_class.indexOf('sec-3') != -1) {
                     selected_header = "Section 3 Details"
                     $(post_add).addClass('sec3');
-                }else {
+                } else {
                     selected_header = "Section 4 Details"
                     $(post_add).addClass('sec4');
                 }
                 $(parent).find('.selected h3').html(selected_header);
             })
-            $('.grid-img').click(function () {
+            $('.grid-img a').click(function (e) {
+                e.preventDefault();
                 $('.grid-img').removeClass('active');
-                $(this).addClass('active');
+                $(this).parent().addClass('active');
                 $('.category').prop("checked", false)
-                $(this).find('.category').prop("checked", true);
+                $(this).parent().find('.category').prop("checked", true);
+                $('.sub-category, .level-1').hide();
+                showHideProperty(this.hash);
+                showHideProperty(this.hash+"_level_2");
+                classigoo.sec_1.selected_img = $(this).children().prop('src');
             })
             $('.sec-1 .grid-img').one('click', function () {
                 $('.sec-1 .next-step').removeAttr('disabled')
@@ -245,7 +258,35 @@
                 $(this).parents('.header').next('.content').slideDown();
                 $(this).parents('.header').removeClass('open')
             })
-        })
+            $('#categoryList').change(function () {
+                var selected_val = $(this).val();
+                if (selected_val == 'for-sale') {
+                    $('#category-list2').hide();
+                    $('#category-list1').show();
+                } else if (selected_val == 'for-rent') {
+                    $('#category-list1').hide();
+                    $('#category-list2').show();
+                } else {
+                    $('#category-list1, #category-list2').hide();
+                    $(this).parents('.sec').find('.content-footer input').attr('disabled', true)
+                }
+            })
+            $('#category-list1, #category-list2').change(function () {
+                if ($(this).find('select option:selected').val() != 'select') {
+                    $(this).parents('.sec').find('.content-footer input').removeAttr('disabled')
+                } else {
+                    $(this).parents('.sec').find('.content-footer input').attr('disabled',true)
+                }
+            })
+        });
+        function showHideProperty(id) {
+            $(id).show();
+        }
+        var classigoo = {
+            sec_1: {
+                selected_img : ''
+            }
+        }
     </script>
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/scripts/bootstrap.js")
