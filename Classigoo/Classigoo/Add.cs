@@ -18,6 +18,8 @@ namespace Classigoo
         public Add()
         {
             this.RealEstates = new HashSet<RealEstate>();
+            this.Cars = new HashSet<Car>();
+            this.Electronics = new HashSet<Electronic>();
         }
     
         public int AddId { get; set; }
@@ -29,5 +31,9 @@ namespace Classigoo
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RealEstate> RealEstates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Car> Cars { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Electronic> Electronics { get; set; }
     }
 }
