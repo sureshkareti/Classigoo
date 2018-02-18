@@ -1,4 +1,4 @@
-﻿@model RealEstate
+﻿@model ParentCategory
 @{
     ViewBag.Title = "PreviewAdd";
 }
@@ -17,9 +17,10 @@
     </thead>
     <tbody>
      
+            
             <tr>
               
-                
+               
               <td>@Model.Title</td>
                 <td>@Model.Created</td>
               <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
@@ -32,6 +33,36 @@
 
 
             </tr>
+             
+        @*<tr>
+
+
+            <td>@Model.Realestate.Title</td>
+            <td>@Model.Realestate.Created</td>
+            <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+            <td>@Model.Realestate.Price</td>
+            <td>@Model.Realestate.SquareFeets</td>
+            <td>@Model.Realestate.Bedrooms</td>
+            <td>@Model.Realestate.Availability</td>
+
+
+
+
+        </tr><tr>
+
+
+    <td>@Model.Realestate.Title</td>
+    <td>@Model.Realestate.Created</td>
+    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+    <td>@Model.Realestate.Price</td>
+    <td>@Model.Realestate.SquareFeets</td>
+    <td>@Model.Realestate.Bedrooms</td>
+    <td>@Model.Realestate.Availability</td>
+
+
+
+
+</tr>*@
         
     </tbody>
 </table>

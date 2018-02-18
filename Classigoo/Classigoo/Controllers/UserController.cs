@@ -343,9 +343,9 @@ namespace Classigoo.Controllers
             return addColl;
         }
         
-        public ActionResult PreviewAdd(RealEstate add)
+        public ActionResult PreviewAdd(ParentCategory add,string type)
         {
-
+            ViewBag.AddType = type;
 
            return View(add);
         }
