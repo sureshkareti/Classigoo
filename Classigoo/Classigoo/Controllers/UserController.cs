@@ -23,7 +23,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
+              string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -35,8 +35,8 @@ namespace Classigoo.Controllers
                         var readTask = result.Content.ReadAsAsync<Guid>();
                         readTask.Wait();
 
-                        UserId = readTask.Result;
-
+                         UserId = readTask.Result;
+                        
                     }
                     else //web api sent error response 
                     {
@@ -46,14 +46,14 @@ namespace Classigoo.Controllers
                     }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
 
             }
-            if (UserId != Guid.Empty)
+            if(UserId!=Guid.Empty)
             {
                 Session["UserId"] = UserId;
-                return RedirectToAction("UserDashboard", "User");
+                return   RedirectToAction("UserDashboard", "User");
             }
             else
             {
@@ -63,7 +63,7 @@ namespace Classigoo.Controllers
             return View();
 
 
-
+            
         }
 
         public ActionResult Index()
@@ -77,7 +77,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Register(User User)
         {
-            if (!IsUserExist(User.MobileNumber, "Custom"))
+            if (!IsUserExist(User.MobileNumber,"Custom"))
             {
                 using (var client = new HttpClient())
                 {
@@ -97,7 +97,7 @@ namespace Classigoo.Controllers
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Home", "User");
+                        return RedirectToAction("Home","User");
                     }
                     else
                     {
@@ -106,46 +106,46 @@ namespace Classigoo.Controllers
 
                 }
 
-
+           
             }
             else
             {
-                @ViewBag.status = " Phone Number " + User.MobileNumber + " already Registered";
+                @ViewBag.status = " Phone Number "+User.MobileNumber+ " already Registered";
             }
 
             return View();
-
+           
         }
-        public bool IsUserExist(string id, string type)
+       public bool IsUserExist(string id,string type)
+       {
+        bool IsUserExist = false;
+        using (var client = new HttpClient())
         {
-            bool IsUserExist = false;
-            using (var client = new HttpClient())
+            string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type="+type;
+            client.BaseAddress = new Uri(url);
+            //HTTP GET
+            var responseTask = client.GetAsync(url);
+            responseTask.Wait();
+
+            var result = responseTask.Result;
+            if (result.IsSuccessStatusCode)
             {
-                string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
-                client.BaseAddress = new Uri(url);
-                //HTTP GET
-                var responseTask = client.GetAsync(url);
-                responseTask.Wait();
+                var readTask = result.Content.ReadAsAsync<bool>();
+                readTask.Wait();
 
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<bool>();
-                    readTask.Wait();
-
-                    IsUserExist = readTask.Result;
-                }
-                else //web api sent error response 
-                {
-                    //log response status here..
-
-                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                }
+                IsUserExist = readTask.Result;
             }
+            else //web api sent error response 
+            {
+                //log response status here..
 
-            return IsUserExist;
-
+                ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+            }
         }
+        
+        return IsUserExist;
+
+    }
 
 
 
@@ -155,14 +155,14 @@ namespace Classigoo.Controllers
         }
         public ActionResult Home()
         {
-
+           
             return View();
-
+           
         }
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
-
+            
             return View();
         }
         public ActionResult PostAdd()
@@ -209,8 +209,8 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
-            // List<Add> addColl=  GetMyAdds((Guid)Session["UserId"]);
-
+         // List<Add> addColl=  GetMyAdds((Guid)Session["UserId"]);
+           
             // User user = GetUserDetails((Guid)Session["UserId"]);
             //if(!IsUserExist(coll["txtEmail"],"Gmail"))
             //{
@@ -246,7 +246,7 @@ namespace Classigoo.Controllers
         {
             using (var client = new HttpClient())
             {
-
+               
                 string url = "http://localhost:51797/api/UserApi/UpdateUserDetails/?user=" + user;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync<User>(url, user);
@@ -289,7 +289,7 @@ namespace Classigoo.Controllers
                         var readTask = result.Content.ReadAsAsync<User>();
                         readTask.Wait();
 
-                        user = readTask.Result;
+                        user= readTask.Result;
 
                     }
                     else //web api sent error response 
@@ -342,17 +342,12 @@ namespace Classigoo.Controllers
             }
             return addColl;
         }
-
-        public ActionResult PreviewAdd(RealEstate add)
+        
+        public ActionResult PreviewAdd(ParentCategory add,string type)
         {
+            ViewBag.AddType = type;
 
-
-            return View(add);
-        }
-
-        public ActionResult ShowAdd()
-        {
-            return View();
+           return View(add);
         }
     }
-}
+    }
