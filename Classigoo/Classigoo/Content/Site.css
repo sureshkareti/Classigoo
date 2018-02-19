@@ -7,21 +7,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    /*padding-left: 15px;
-    padding-right: 15px;*/
+.container{
+    max-width: 1080px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-/*input,
-select,
-textarea {
-    max-width: 280px;
-}*/
-
- 
 .navbar-brand {
     line-height: 98px;
     height: 98px;
@@ -183,14 +172,7 @@ body{
 .main-wrapper{
     position: relative;
 }
-/*.main-wrapper{
-    background-image: url('../images/banner.jpg');
-    background-size: cover;
-    background-position: top;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    border-top: 0.5em solid #5385c1;
-}*/
+
 header{
     padding: 10px 0;
     background: #ffffff;
@@ -202,7 +184,7 @@ header{
     padding-top: 125px;
 }
 .logo img{
-    height: 55px;
+    max-width: 200px;
 }
 .search-bar{
     //padding: 10px;
@@ -220,36 +202,38 @@ header{
     border-bottom-right-radius: 5px;
 }
 .search-bar a>span{
-    margin-left: 14px;
+    margin-left: 6px;
 }
 .dropdown-menu .location-btn{
     display: block;
     border: 0;
-    padding-left: 21px;
+    padding: 6px 0px 6px 15px;
 }
-.dropdown-menu li{
+.dropdown-menu li, .top-cities > span{
     border-bottom: 1px solid #0c7db4;
-}
-.dropdown-menu li:hover a{
-    background: #1399d3;
-    color: #ffffff;
 }
 .dropdown-menu li:last-child{
     border-bottom: 0;
 }
+.top-cities ul{
+    list-style: none;
+    padding: 0;
+    max-height: 152px;
+    overflow-x: auto;
+}
+.top-cities > ul > li > a, .dropdown-menu .top-cities > span{
+    display:block;
+    padding: 6px 0 6px 15px;
+    text-decoration: none;
+    color: #1274c0;
+    cursor: pointer;
+}
+.top-cities > ul > li:hover > a, .dropdown-menu .top-cities > span:hover{
+    background: #1274c0;
+    color: #ffffff;
+}
 .search-bar-inner{
     margin-top: 5px;
-    /*padding: 15px;
-    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url(../images/bg02.png);
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url(../images/bg02.png);
-    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url(../images/bg02.png);
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url(../images/bg02.png);
-    background-color: #5385c1;
-    background-color: rgb(83, 133, 193);
-    border-radius: 8px;
-    box-shadow: inset 0px 0px 0px 1px rgb(32, 91, 162), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.15);
-    text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);*/
-
 }
 .search-bar-inner input{
     border-radius: 0;
@@ -262,26 +246,41 @@ header{
 .search-item-1{
     margin-right: -15px;
     position:relative;
+    margin-left: -35px;
 }
-.search-item-1::after {
-    content: "\e114";
+.search-item-1 > input{
+    border: none;
+    padding: 8px;
+    color: #7b818c;
+    text-align: left;
+    background: #F1EDEC;
+    font-size: 16px;
+}
+.search-item-1::after, .category-search::after {
     font-family: 'Glyphicons Halflings';
     position: absolute;
     right: 0;
     top: 0;
     font-size: 14px;
     font-weight: normal;
-    margin-right: 13px;
+    margin-right: 8px;
     margin-top: 13px;
 }
-.search-item-1 input{
-   color: #7b818c;
+.search-item-1::after{
+     content: "\e062";
 }
-.search-item-1 input{
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right-width: 0;
-    
+.category-search::after{
+    content: "\F15F";
+}
+.search-item-1 .dropdown-menu{
+    max-height: 220px;
+    padding-top: 0;
+}
+.category-search{
+    margin-right:-15px;
+}
+.category-search > input{
+    padding-left: 0;
 }
 .search-item-2{
     margin-left: -15px
@@ -443,12 +442,13 @@ body:not(.is-touch) .grid:hover .content {
 .login a{
     display: inline-block;
     color: #0c7db4;
-    font-size: 16px;
-    margin-right: 10px;
+    font-size: 14px;
+    margin-right: 6px;
     margin-top: 15px;
 }
 .free-add input{
     font-weight: bold;
+    padding: 6px 6px;
 }
 .grid-menu{
     //background: #ffffff;
