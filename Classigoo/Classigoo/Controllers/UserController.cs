@@ -349,5 +349,10 @@ namespace Classigoo.Controllers
 
            return View(add);
         }
+        public ActionResult ShowAdd()
+        {
+            
+            return View();
+        }
     }
     }
