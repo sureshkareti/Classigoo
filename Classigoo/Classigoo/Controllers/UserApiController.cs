@@ -225,5 +225,15 @@ namespace Classigoo.Controllers
             else
                 return NotFound();
         }
+        [HttpGet]
+        [ActionName("GetAddById")]
+        public IHttpActionResult GetAddById(int addId)
+        {
+            Add add = db.Adds.Find(addId);
+            if (add!=null)
+                return Ok(add);
+            else
+                return NotFound();
+        }
     }
 }

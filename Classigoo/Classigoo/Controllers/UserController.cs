@@ -343,11 +343,42 @@ namespace Classigoo.Controllers
             return addColl;
         }
         
-        public ActionResult PreviewAdd(ParentCategory add,string type)
+        public ActionResult PreviewAdd(int addId)
         {
-            ViewBag.AddType = type;
 
-           return View(add);
+            Add add=new Add();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string url = "http://localhost:51797/api/UserApi/GetAddById/?addId=" + addId;
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<Add>();
+                        readTask.Wait();
+
+                        add = readTask.Result;
+
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(add);
         }
         public ActionResult ShowAdd()
         {

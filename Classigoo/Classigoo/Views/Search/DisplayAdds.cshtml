@@ -21,26 +21,60 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in @Model)
-                    {
+    @foreach (var item in @Model)
+    {
 
-                        <tr>
-                            <td>@item.Created</td>
-                            @foreach (var add in @item.RealEstates)
-                            {
-                                <td>@add.Title</td>
+        <tr>
+            <td>@item.Created</td>
+            @foreach (var add in @item.RealEstates)
+            {
+                <td>@add.Title</td>
                                 <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
                                 <td>@add.Price</td>
                                 <td>@add.SquareFeets</td>
                                 <td>
-                             @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
-                            </td>
-                            <td><a href="">Edit</a></td>
-                            }
+                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
+                                </td>
+                                <td><a href="">Edit</a></td>
+            }
 
 
-                        </tr>
-                    }
+        </tr>
+        <tr>
+            <td>@item.Created</td>
+            @foreach (var add in @item.Cars)
+            {
+                <td>@add.Title</td>
+                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                                <td>@add.Price</td>
+                                <td>@add.Description</td>
+                                <td>
+                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
+                                </td>
+                                <td><a href="">Edit</a></td>
+            }
+
+
+        </tr>
+        <tr>
+            <td>@item.Created</td>
+            @foreach (var add in @item.Electronics)
+            {
+                <td>@add.Title</td>
+                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                                <td>@add.Price</td>
+                                <td>@add.Description</td>
+                                <td>
+                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
+                                </td>
+                                <td><a href="">Edit</a></td>
+            }
+
+
+        </tr>
+
+
+    }
                 </tbody>
             </table>
 

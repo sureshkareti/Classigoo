@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     
-@using (Ajax.BeginForm("UserDashboard", "User", new AjaxOptions { HttpMethod = "POST" }))
+@using (Ajax.BeginForm("UserDashboard", "User", new AjaxOptions { HttpMethod = "GET" }))
 {
     <div class="row loginform" style="max-width:970px !important;margin:auto;">
         <div class="col-md-2">
@@ -34,7 +34,7 @@
                             <td>@add.Price</td>
                             <td>@add.SquareFeets</td>
                             <td>@Html.ActionLink("Preview", "PreviewAdd", "User",
-                              add, new { } )</td>
+                              new { addId=add.AddId} , new { } )</td>
                             <td><a href="">Edit</a></td>
                             }
                             @foreach (var add in @item.Cars)
@@ -45,7 +45,7 @@
                                 <td>@add.Description</td>
                                 <td>
                                     @Html.ActionLink("Preview", "PreviewAdd", "User",
-                                add , new {  })
+                                new { addId = add.AddId }, new {  })
                             </td>
                             <td><a href="">Edit</a></td>
                             }
@@ -57,7 +57,7 @@
                                 <td>@add.Description</td>
                                 <td>
                                     @Html.ActionLink("Preview", "PreviewAdd", "User",
-                               add, new { })
+                               new { addId = add.AddId }, new { })
                             </td>
                             <td><a href="">Edit</a></td>
                             }

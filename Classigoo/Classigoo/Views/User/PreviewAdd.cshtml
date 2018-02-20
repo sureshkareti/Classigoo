@@ -1,4 +1,4 @@
-﻿@model ParentCategory
+﻿@model Add
 @{
     ViewBag.Title = "PreviewAdd";
 }
@@ -8,62 +8,44 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Created</th>
             <th>Image</th>
             <th>Price</th>
             <th>SquareFeets</th>
             <th>Preview</th>
-            <th>Edit</th>
         </tr>
     </thead>
     <tbody>
      
             
             <tr>
-              
-               
-              <td>@Model.Title</td>
                 <td>@Model.Created</td>
-              <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-              <td>@Model.Price</td>
-              <td>@Model.SquareFeets</td>
-                <td>@Model.Bedrooms</td>
-                <td>@Model.Availability</td>
+                @foreach (var add in Model.RealEstates)
+                {
+                    <td>@add.Title</td>
+                            <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                            <td>@add.Price</td>
+                            <td>@add.SquareFeets</td>
+                }
+                @foreach (var add in Model.Cars)
+                {
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                            <td>@add.Price</td>
+                            <td>@add.Description</td>
+                           
+                }
+                @foreach (var add in Model.Electronics)
+                {
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                            <td>@add.Price</td>
+                            <td>@add.Description</td>
                             
-                
-
-
-            </tr>
+                }
+                            
+           </tr>
              
-        @*<tr>
-
-
-            <td>@Model.Realestate.Title</td>
-            <td>@Model.Realestate.Created</td>
-            <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-            <td>@Model.Realestate.Price</td>
-            <td>@Model.Realestate.SquareFeets</td>
-            <td>@Model.Realestate.Bedrooms</td>
-            <td>@Model.Realestate.Availability</td>
-
-
-
-
-        </tr><tr>
-
-
-    <td>@Model.Realestate.Title</td>
-    <td>@Model.Realestate.Created</td>
-    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-    <td>@Model.Realestate.Price</td>
-    <td>@Model.Realestate.SquareFeets</td>
-    <td>@Model.Realestate.Bedrooms</td>
-    <td>@Model.Realestate.Availability</td>
-
-
-
-
-</tr>*@
+        
         
     </tbody>
 </table>
