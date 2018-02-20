@@ -26,16 +26,16 @@
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <div class="logo">
-                            <a href="~/Home/Index"><img src="~/images/logo.png" alt=""></a>
+                            <a href="~/Home/Index"><img src="~/images/logo-2.png" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="search-bar">
                             <div class="search-bar-inner">
                                 <div class="row">
-                                    <div class="col-lg-2 ">
+                                    <div class="col-lg-3">
                                         <div class="search-item-1 dropdown ">
                                            <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown"  value="All India"/>
                                             <ul class="dropdown-menu">
@@ -52,6 +52,17 @@
                                                         <li><a href="#">Delhi</a></li>
                                                         <li><a href="#">Hyderabad</a></li>
                                                     </ul>
+                                                </li>
+                                                <li class="states">
+                                                    <span>States</span>
+                                                    <ul>
+                                                        <li><a href="#">Andhra pradesh</a></li>
+                                                        <li><a href="#">Telangana</a></li>
+                                                        <li><a href="#">Thamilanadu</a></li>
+                                                        <li><a href="#">Kerala</a></li>
+                                                        <li><a href="#">Maharastra</a></li>
+                                                        <li><a href="#">Delhi</a></li>
+                                                    </ul>
                                                 </li>                                                
                                             </ul>
                                         </div>
@@ -60,25 +71,21 @@
                                         <div class="category-search dropdown ">
                                             <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" />
                                             <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="javascript:void(0)">Properties</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cars</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cars</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cars</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cars</a>
-                                                </li>
+                                                <li><a href="javascript:void(0)">Properties</a></li>
+                                                <li><a href="javascript:void(0)">Cars</a></li>
+                                                <li><a href="javascript:void(0)">Electronics & Appliance</a></li>
+                                                <li><a href="javascript:void(0)">Furniture</a></li>
+                                                <li><a href="javascript:void(0)">Jobs</a></li>
+                                                <li><a href="javascript:void(0)">Mobiles</a></li>
+                                                <li><a href="javascript:void(0)">Bikes</a></li>
+                                                <li><a href="javascript:void(0)">Books, Sports & Hobbies</a></li>
+                                                <li><a href="javascript:void(0)">Fashion</a></li>
+                                                <li><a href="javascript:void(0)">Pets</a></li>
+                                                <li><a href="javascript:void(0)">Services</a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-5">
                                         <div class="search-item-2">
                                             <input type="text" class="form-control input-lg" placeholder="3,12,578 Ads near you" />
                                         </div>
@@ -304,6 +311,15 @@
                 } else {
                     $(this).parents('.sec').find('.content-footer input').attr('disabled',true)
                 }
+            })
+            $('.top-cities span').click(function (e) {
+                e.preventDefault();
+                $(this).toggleClass('active');
+                $('.top-cities ul').slideToggle();
+                return false;
+            });
+            $('.category-search .dropdown-menu li a').click(function () {
+                $(this).parents('.category-search').find('input').val($(this).text());
             })
         });
         function showHideProperty(id) {

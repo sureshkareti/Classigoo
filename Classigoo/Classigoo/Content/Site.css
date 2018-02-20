@@ -193,7 +193,7 @@ header{
 }
 .search-bar .search-btn{
     color: #ffffff;
-    font-size: 30px;
+    font-size: 27px;
     display: block;
     margin-left: -30px;
     border: 1px solid #0c7db4;
@@ -202,26 +202,49 @@ header{
     border-bottom-right-radius: 5px;
 }
 .search-bar a>span{
-    margin-left: 6px;
+    margin-left: 10px;
 }
 .dropdown-menu .location-btn{
     display: block;
     border: 0;
     padding: 6px 0px 6px 15px;
 }
-.dropdown-menu li, .top-cities > span{
-    border-bottom: 1px solid #0c7db4;
+.dropdown-menu li, .top-cities > span.active, .states > span{
+    border-bottom: 1px solid #b0dcf1;
 }
 .dropdown-menu li:last-child{
     border-bottom: 0;
 }
-.top-cities ul{
+.top-cities ul, .states ul{
     list-style: none;
     padding: 0;
     max-height: 152px;
     overflow-x: auto;
 }
-.top-cities > ul > li > a, .dropdown-menu .top-cities > span{
+.states ul{
+    max-height:120px;
+}
+.top-cities span{
+    position: relative;
+}
+.top-cities ul{
+    display: none;
+}
+.top-cities span:after{
+    content: "\e114";
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 16px;
+    margin-top: 5px;
+}
+.top-cities span.active:after {
+    content: "\e113";
+}
+.top-cities > ul > li > a, .dropdown-menu .top-cities > span, .states > ul > li > a, .states > span{
     display:block;
     padding: 6px 0 6px 15px;
     text-decoration: none;
@@ -246,7 +269,7 @@ header{
 .search-item-1{
     margin-right: -15px;
     position:relative;
-    margin-left: -35px;
+    margin-left: -15px;
 }
 .search-item-1 > input{
     border: none;
@@ -263,21 +286,22 @@ header{
     top: 0;
     font-size: 14px;
     font-weight: normal;
-    margin-right: 8px;
-    margin-top: 13px;
+    margin-right: 4px;
+    margin-top: 10px;
 }
 .search-item-1::after{
      content: "\e062";
 }
 .category-search::after{
-    content: "\F15F";
+    content: "\e114";
 }
 .search-item-1 .dropdown-menu{
     max-height: 220px;
     padding-top: 0;
+    overflow: hidden;
 }
 .category-search{
-    margin-right:-15px;
+    margin-right:-16px;
 }
 .category-search > input{
     padding-left: 0;
@@ -636,4 +660,12 @@ img {
 }
 #category-list1, #category-list2{
     display: none;
+}
+.search-bar-inner .input-lg{
+    height: 40px;
+    padding: 6px 20px 6px 10px;
+}
+.search-bar-inner .category-search .input-lg{
+    /*padding-right: 0;
+    border-right: 20px solid #ffffff;*/
 }
