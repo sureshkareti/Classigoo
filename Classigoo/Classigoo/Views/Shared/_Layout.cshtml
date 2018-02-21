@@ -37,12 +37,12 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="search-item-1 dropdown ">
-                                           <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown"  value="All India"/>
-                                            <ul class="dropdown-menu">
-                                                <li class="search-city">
+                                           <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown"  value="All India" />
+                                            @*<ul class="dropdown-menu">
+                                                <li class="search-city">*@
                                                     <input class="location-btn" type="search" placeholder="type your search" id="locations"/>
-                                                </li>
-                                                <li class="top-cities">
+                                                @*</li>*@
+                                                @*<li class="top-cities">
                                                     <span >Top Cities</span>
                                                     <ul>
                                                         <li><a href="#">All india</a></li>
@@ -63,8 +63,8 @@
                                                         <li><a href="#">Maharastra</a></li>
                                                         <li><a href="#">Delhi</a></li>
                                                     </ul>
-                                                </li>                                                
-                                            </ul>
+                                                </li>*@
+                                            @*</ul>*@
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -188,40 +188,26 @@
             </div>
         </footer>
     </div>
-    
+
     <script type="text/javascript">
         $(document).ready(function () {
 
-            //var JSONItems = [];
-            //$.getJSON("Scripts/Json/locations.json", function (data) {
-            //    JSONItems = data;
-            //   // console.log(JSONItems);
-            //});
-            //var result = "";
-            ////JSONItems[0].subregions[0].name_long
-            //$.each(JSONItems, function (i, v) {
 
-            //    $.each(JSONItems[i].subregions, function (j,k) {
-            //        result.append(v.name_long);
-            //    });
-               
-                
-            //});
-            //if (JSONItems.length > 0) {
-            //    for (var i = 0; i < JSONItems.length; i++) {
-            //        for (var j = 0; j < JSONItems[i].subregions.length; j++) {
-            //            result.append(JSONItems[i].subregions[j].name_long);
-            //        }
-            //    }
+            var Items = [];
+            //$.getJSON("Scripts/Json/locations.json", function (JSONItems) {
+            //    Items = JSONItems;
+
             //    var options = {
-            //        data: JSONItems,
+            //        data: Items,
 
-            //        getValue: result,
+            //        getValue: $.each(Items, function (i, field) {
+            //            return (field.subregions[i].name_long).text();
+            //        }),
             //    };
 
             //    $("#locations").easyAutocomplete(options);
-            //}
 
+            //});
             //var options = {
             //    url: "http://localhost:51797/Scripts/Json/locations.json",
 
@@ -234,7 +220,35 @@
             //        }
             //    }
             //};
+
+
+            (function () {
+                var flickerAPI = "Scripts/Json/locations.json";
+                $.getJSON(flickerAPI, {
+                    tags: "mount rainier",
+                    tagmode: "any",
+                    format: "json"
+                })
+                  .done(function (data) {
+                      console.log(data);
+                  });
+            })();
+
             
+
+            //$.getJSON("Scripts/Json/locations.json", function (JSONItems) {
+            //    Items = JSONItems;
+
+            //    var options = {
+            //        data: Items,
+
+            //        getValue: "name",
+            //    };
+
+            //    $("#locations").easyAutocomplete(options);
+
+            //});
+
             $(".regular").slick({
                 dots: true,
                 infinite: true,
