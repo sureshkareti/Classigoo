@@ -189,7 +189,7 @@
         </footer>
     </div>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
 
 
@@ -222,17 +222,6 @@
             //};
 
 
-            (function () {
-                var flickerAPI = "Scripts/Json/locations.json";
-                $.getJSON(flickerAPI, {
-                    tags: "mount rainier",
-                    tagmode: "any",
-                    format: "json"
-                })
-                  .done(function (data) {
-                      console.log(data);
-                  });
-            })();
 
             
 
@@ -254,6 +243,17 @@
                 infinite: true,
                 slidesToShow: 3,
                 slidesToScroll: 3
+            });
+            $.get('../Scripts/Json/locations.json', function (data) {
+                     var options = {
+                        data: data,
+
+                        getValue: $.each(data, function (i, field) {
+                            return (field.subregions[i].name_long);
+                        })
+                    };
+
+                    $("#locations").easyAutocomplete(options);
             });
         });
         $(function () {
