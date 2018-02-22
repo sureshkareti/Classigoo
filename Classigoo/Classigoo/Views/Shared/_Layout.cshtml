@@ -244,8 +244,22 @@
                         data: data,
 
                         getValue: $.each(data, function (i, field) {
-                            return (field.subregions[i].name_long);
-                        })
+                            var j;
+                            for (j in field.subregions)
+                            {
+                                return field.subregions[j].name_long;
+                                
+                            }
+                            
+                         }),
+                            //getValue: function (element) {
+                            //     return $(element).find("name").text();
+                            // },
+                            list: {
+                                match: {
+                                    enabled: true
+                                }
+                            }
                     };
 
                     $("#locations").easyAutocomplete(options);
