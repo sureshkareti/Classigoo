@@ -124,14 +124,15 @@ body {
 }
 
 .footer-banner {
-    background: url(../images/background.png) no-repeat;
-    height: 200px;
+    /*background: url(../images/background.png) no-repeat;
+    height: 200px;*/
     width: 100%;
     border: 1px solid white;
     content: "";
 }
 
 .footer-navigation {
+    padding-top: 50px; 
 }
 
 .footer-navigation ul {
