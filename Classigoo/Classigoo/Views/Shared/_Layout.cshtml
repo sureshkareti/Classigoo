@@ -245,26 +245,18 @@
                 slidesToScroll: 3
             });
             $.get('../Scripts/Json/locations.json', function (data) {
-                     var options = {
-                        data: data,
+                var filtered = new Array();
+                $.each(data, function (i, field) {
+                    var j;
+                    for (j in field.subregions) {
+                        filtered.push(field.subregions[j].name_long);
 
-                        getValue: $.each(data, function (i, field) {
-                            var j;
-                            for (j in field.subregions)
-                            {
-                                return field.subregions[j].name_long;
-                                
-                            }
-                            
-                         }),
-                            //getValue: function (element) {
-                            //     return $(element).find("name").text();
-                            // },
-                            list: {
-                                match: {
-                                    enabled: true
-                                }
-                            }
+                    }
+
+                });
+                     var options = {
+                         data: filtered
+
                     };
 
                     $("#locations").easyAutocomplete(options);
