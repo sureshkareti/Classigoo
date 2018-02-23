@@ -208,7 +208,15 @@
 
                 });
                      var options = {
-                         data: filtered
+                         data: filtered,
+                         list: {
+                             match: {
+                                 enabled: true
+                             },
+                             onSelectItemEvent: function () {
+                                 $("#locations").attr("value", $("#locations").getSelectedItemData());
+                             }
+                         }
 
                     };
 

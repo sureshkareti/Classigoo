@@ -1,38 +1,38 @@
 ﻿[{
     "id": 7598,
-    "name": "sdf & Nicobar Islands",
-    "url": "andamannicobar",
+    "name": "Telangana",
+    "url": "Telangana",
     "subregions": [
       {
         "id": "2323",
-        "name": "Bakultala",
-        "name_long": "aaa Bakultala, Andaman & Nicobar Islands",
-        "url": "bakultala"
+        "name": "Hyderabad",
+        "name_long": "Hyderabad, Telangana",
+        "url": "Hyderabad"
       },
       {
         "id": "2645",
-        "name": " dkkd Bambooflatdff",
-        "name_long": "bbb Bambooflat, Andaman & Nicobar Islands",
-        "url": "bambooflat"
+        "name": "Warangal",
+        "name_long": "Warangal, Telangana",
+        "url": "Warangal"
       }
       
     ]
   },
   {
     "id": 7599,
-    "name": "kdkdk Andaman & Nicobar Islands",
+    "name": "Andaman & Nicobar Islands",
     "url": "andamannicobar",
     "subregions": [
       {
         "id": "39323583",
-        "name": "ccc Bakultala",
-        "name_long": "cccc Bakultala, Andaman & Nicobar Islands",
+        "name": "Bakultala",
+        "name_long": "Bakultala, Andaman & Nicobar Islands",
         "url": "bakultala"
       },
       {
         "id": "39333569",
-        "name": "ddd Bambooflat",
-        "name_long": "ddd Bambooflat, Andaman & Nicobar Islands",
+        "name": "Bambooflat",
+        "name_long": "Bambooflat, Andaman & Nicobar Islands",
         "url": "bambooflat"
       },
       {
