@@ -22,46 +22,49 @@
     @foreach (var item in @Model)
     {
 
-        <tr>
+        
             
-            @foreach (var add in @item.RealEstates)
+            foreach (var add in @item.RealEstates)
             {
-                            <td>@item.Created</td>
-                             <td>@add.Title</td>
-                                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
-                                <td>@add.SquareFeets</td>
+                <tr>
+                    <td>@item.Created</td>
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                    <td>@add.Price</td>
+                    <td>@add.SquareFeets</td>
+                </tr>
             }
 
 
-        </tr>
-        <tr>
-            
-            @foreach (var add in @item.Cars)
+
+        
+
+            foreach (var add in @item.Cars)
             {
+       <tr>
                 <td>@item.Created</td>
                 <td>@add.Title</td>
                 <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
+                <td>@add.Price</td>
                                 <td>@add.Description</td>
+                            </tr>
             }
 
-
-        </tr>
-        <tr>
             
-            @foreach (var add in @item.Electronics)
+            foreach (var add in @item.Electronics)
             {
-                <td>@item.Created</td>
-                <td>@add.Title</td>
-                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
-                                <td>@add.Description</td>
-                                
+                <tr>
+                    <td>@item.Created</td>
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                    <td>@add.Price</td>
+                    <td>@add.Description</td>
+                </tr>
+
             }
 
 
-        </tr>
+
 
 
     }

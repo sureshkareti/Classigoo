@@ -14,6 +14,7 @@
           <Property Name="LocationId" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
           <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Location" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Cars">
           <Key>
@@ -36,6 +37,7 @@
           <Property Name="LocationId" Type="varchar(max)" />
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
+          <Property Name="Location" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Electronics">
           <Key>
@@ -54,6 +56,7 @@
           <Property Name="LocationId" Type="varchar(max)" />
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
+          <Property Name="Location" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="RealEstate">
           <Key>
@@ -78,6 +81,7 @@
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
+          <Property Name="Location" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -253,6 +257,7 @@
           <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
           <NavigationProperty Name="Cars" Relationship="ClassigooModel.FK_Cars_Adds" FromRole="Add" ToRole="Car" />
           <NavigationProperty Name="Electronics" Relationship="ClassigooModel.FK_Electronics_Adds" FromRole="Add" ToRole="Electronic" />
+          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="RealEstate">
           <Key>
@@ -278,6 +283,7 @@
           <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -329,6 +335,7 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Cars_Adds" FromRole="Car" ToRole="Add" />
+          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Electronic">
           <Key>
@@ -348,6 +355,7 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Electronics_Adds" FromRole="Electronic" ToRole="Add" />
+          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Cars_Adds">
           <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
@@ -408,6 +416,7 @@
           <EntitySetMapping Name="Adds">
             <EntityTypeMapping TypeName="ClassigooModel.Add">
               <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
@@ -419,6 +428,7 @@
           <EntitySetMapping Name="RealEstates">
             <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
               <MappingFragment StoreEntitySet="RealEstate">
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
                 <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
                 <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
@@ -445,6 +455,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="ClassigooModel.Car">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
@@ -468,6 +479,7 @@
           <EntitySetMapping Name="Electronics">
             <EntityTypeMapping TypeName="ClassigooModel.Electronic">
               <MappingFragment StoreEntitySet="Electronics">
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />

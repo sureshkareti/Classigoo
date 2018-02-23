@@ -14,9 +14,9 @@ namespace Classigoo.Controllers
 
         [HttpGet]
         [ActionName("GetAdds")]
-        public IHttpActionResult GetAdds()
+        public IHttpActionResult GetAdds(string location)
         {
-            var adds = db.Adds.ToList();
+            var adds = db.Adds.Where(a=>a.Location==location).ToList();
             if (adds.Count > 0)
                 return Ok(adds);
             else

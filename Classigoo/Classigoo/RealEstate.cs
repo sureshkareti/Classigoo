@@ -33,6 +33,7 @@ namespace Classigoo
         public string ImgUrlSeconday { get; set; }
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
+        public string Location { get; set; }
     
         public virtual Add Add { get; set; }
     }

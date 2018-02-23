@@ -91,7 +91,9 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-1 ">
-                                        <a href="~/Search/GetAdds" class="search-btn">
+                                        @*@Html.ActionLink("g", "GetAdds", "Search",
+                              new { location = "Hyderabad, Telangana" }, new {@class="search-btn" })*@
+                                       <a href='@Url.Action("GetAdds", "Search", new{ location = "Hyderabad, Telangana" })' class="search-btn">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </a>
                                         @*<input type="button" class="form-control input-lg" value="Search" />*@
