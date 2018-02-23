@@ -13,8 +13,8 @@ namespace Classigoo.Controllers
 
 
         [HttpGet]
-        [ActionName("GetAllAdds")]
-        public IHttpActionResult GetAllAdds()
+        [ActionName("GetAdds")]
+        public IHttpActionResult GetAdds()
         {
             var adds = db.Adds.ToList();
             if (adds.Count > 0)
