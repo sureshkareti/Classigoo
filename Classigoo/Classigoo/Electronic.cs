@@ -27,6 +27,7 @@ namespace Classigoo
         public string LocationId { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
         public Nullable<int> AddId { get; set; }
+        public string Location { get; set; }
     
         public virtual Add Add { get; set; }
     }

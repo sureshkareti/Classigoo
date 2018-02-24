@@ -16,62 +16,55 @@
                         <th>Image</th>
                         <th>Price</th>
                         <th>SquareFeets</th>
-                        <th>Preview</th>
-                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
     @foreach (var item in @Model)
     {
 
-        <tr>
-            <td>@item.Created</td>
-            @foreach (var add in @item.RealEstates)
+        
+            
+            foreach (var add in @item.RealEstates)
             {
-                <td>@add.Title</td>
-                                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
-                                <td>@add.SquareFeets</td>
-                                <td>
-                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
-                                </td>
-                                <td><a href="">Edit</a></td>
+                <tr>
+                    <td>@item.Created</td>
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                    <td>@add.Price</td>
+                    <td>@add.SquareFeets</td>
+                </tr>
             }
 
 
-        </tr>
-        <tr>
-            <td>@item.Created</td>
-            @foreach (var add in @item.Cars)
-            {
-                <td>@add.Title</td>
-                <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
-                                <td>@add.Description</td>
-                                <td>
-                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
-                                </td>
-                                <td><a href="">Edit</a></td>
-            }
 
+        
 
-        </tr>
-        <tr>
-            <td>@item.Created</td>
-            @foreach (var add in @item.Electronics)
+            foreach (var add in @item.Cars)
             {
+       <tr>
+                <td>@item.Created</td>
                 <td>@add.Title</td>
                 <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
-                                <td>@add.Price</td>
+                <td>@add.Price</td>
                                 <td>@add.Description</td>
-                                <td>
-                                    @Html.ActionLink("Preview", "PreviewAdd", "User", add, new { })
-                                </td>
-                                <td><a href="">Edit</a></td>
+                            </tr>
+            }
+
+            
+            foreach (var add in @item.Electronics)
+            {
+                <tr>
+                    <td>@item.Created</td>
+                    <td>@add.Title</td>
+                    <td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>
+                    <td>@add.Price</td>
+                    <td>@add.Description</td>
+                </tr>
+
             }
 
 
-        </tr>
+
 
 
     }

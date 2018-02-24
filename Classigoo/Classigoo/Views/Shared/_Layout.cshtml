@@ -37,10 +37,10 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="search-item-1 dropdown ">
-                                           <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown"  value="All India" />
+                                   <input @*type="button"*@ @*class="form-control input-lg dropdown-toggle"*@  class="location-btn" type="search" placeholder="type your search"data-toggle="dropdown"  value="All India" id="locations" />
                                             @*<ul class="dropdown-menu">
                                                 <li class="search-city">*@
-                                                    <input class="location-btn" type="search" placeholder="type your search" id="locations"/>
+                                                    @*<input class="location-btn" type="search" placeholder="type your search" />*@
                                                 @*</li>*@
                                                 @*<li class="top-cities">
                                                     <span >Top Cities</span>
@@ -91,7 +91,9 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-1 ">
-                                        <a href="#" class="search-btn">
+                                        @*@Html.ActionLink("g", "GetAdds", "Search",
+                              new { location = "Hyderabad, Telangana" }, new {@class="search-btn" })*@
+                                       <a href='@Url.Action("GetAdds", "Search", new{ location = "Hyderabad, Telangana" })' class="search-btn">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </a>
                                         @*<input type="button" class="form-control input-lg" value="Search" />*@
@@ -186,53 +188,6 @@
 
     <script>
         $(document).ready(function () {
-
-
-            var Items = [];
-            //$.getJSON("Scripts/Json/locations.json", function (JSONItems) {
-            //    Items = JSONItems;
-
-            //    var options = {
-            //        data: Items,
-
-            //        getValue: $.each(Items, function (i, field) {
-            //            return (field.subregions[i].name_long).text();
-            //        }),
-            //    };
-
-            //    $("#locations").easyAutocomplete(options);
-
-            //});
-            //var options = {
-            //    url: "http://localhost:51797/Scripts/Json/locations.json",
-
-            //    getValue: function (element) {
-            //        return $(element).find("name").text();
-            //    },
-            //    list: {
-            //        match: {
-            //            enabled: true
-            //        }
-            //    }
-            //};
-
-
-
-            
-
-            //$.getJSON("Scripts/Json/locations.json", function (JSONItems) {
-            //    Items = JSONItems;
-
-            //    var options = {
-            //        data: Items,
-
-            //        getValue: "name",
-            //    };
-
-            //    $("#locations").easyAutocomplete(options);
-
-            //});
-
             $(".regular").slick({
                 dots: true,
                 infinite: true,
@@ -240,26 +195,26 @@
                 slidesToScroll: 3
             });
             $.get('../Scripts/Json/locations.json', function (data) {
-                     var options = {
-                        data: data,
+                var filtered = new Array();
+                $.each(data, function (i, field) {
+                    var j;
+                    for (j in field.subregions) {
+                        filtered.push(field.subregions[j].name_long);
 
-                        getValue: $.each(data, function (i, field) {
-                            var j;
-                            for (j in field.subregions)
-                            {
-                                return field.subregions[j].name_long;
-                                
-                            }
-                            
-                         }),
-                            //getValue: function (element) {
-                            //     return $(element).find("name").text();
-                            // },
-                            list: {
-                                match: {
-                                    enabled: true
-                                }
-                            }
+                    }
+
+                });
+                     var options = {
+                         data: filtered,
+                         list: {
+                             match: {
+                                 enabled: true
+                             },
+                             onSelectItemEvent: function () {
+                                 $("#locations").attr("value", $("#locations").getSelectedItemData());
+                             }
+                         }
+
                     };
 
                     $("#locations").easyAutocomplete(options);
