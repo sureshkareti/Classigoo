@@ -132,7 +132,7 @@ body {
 }
 
 .footer-navigation {
-    padding-top: 50px; 
+    padding-top: 30px; 
 }
 
 .footer-navigation ul {
@@ -140,9 +140,11 @@ body {
 }
 
 .footer-navigation li a {
+    display: block;
     color: #414141;
     cursor: pointer;
     text-decoration: none;
+    padding: 3px 0;
 }
 
 .footer-navigation li span:hover {
@@ -271,6 +273,7 @@ header{
     margin-right: -15px;
     position:relative;
     margin-left: -15px;
+    margin-top: 3px;
 }
 .search-item-1 > input{
     border: none;
@@ -303,6 +306,42 @@ header{
 }
 .category-search{
     margin-right:-16px;
+    position: relative;
+}
+.category-search .model-window{
+    display: none;
+    background: #ffffff;
+    position: absolute;
+    width: 443px;
+    top: 40px;
+    left: 0;
+    box-shadow: 0px 0px 2px inset;
+    margin-top: 2px;
+}
+.category-search .model-header ul, .category-search .model-body ul{
+   padding: 0;
+   list-style: none;
+   display: table;
+   width: 100%;
+   margin: 0;
+}
+.category-search .model-body ul{
+    border-top: 1px solid;
+    display:none;
+}
+.category-search .model-body ul:first-child{
+    display:block;
+}
+.category-search .model-header ul li{
+  display: table-cell;
+  border-right: 1px solid;
+}
+.category-search .model-header ul li:last-child{
+  border-right: 0;
+}
+.category-search .model-header ul li a, .category-search .model-body ul li a{
+    display: block;
+    padding: 5px 10px;
 }
 .category-search > input{
     padding-left: 0;
@@ -669,4 +708,10 @@ img {
 .search-bar-inner .category-search .input-lg{
     /*padding-right: 0;
     border-right: 20px solid #ffffff;*/
+}
+.easy-autocomplete, .easy-autocomplete input{
+    width: 100% !important;
+}
+.logo{
+    margin-top: 10px;
 }

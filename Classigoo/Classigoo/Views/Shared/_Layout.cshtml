@@ -71,18 +71,31 @@
                                         <div class="category-search dropdown ">
                                             <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" />
                                             <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0)">Properties</a></li>
-                                                <li><a href="javascript:void(0)">Cars</a></li>
-                                                <li><a href="javascript:void(0)">Electronics & Appliance</a></li>
-                                                <li><a href="javascript:void(0)">Furniture</a></li>
-                                                <li><a href="javascript:void(0)">Jobs</a></li>
-                                                <li><a href="javascript:void(0)">Mobiles</a></li>
-                                                <li><a href="javascript:void(0)">Bikes</a></li>
-                                                <li><a href="javascript:void(0)">Books, Sports & Hobbies</a></li>
-                                                <li><a href="javascript:void(0)">Fashion</a></li>
-                                                <li><a href="javascript:void(0)">Pets</a></li>
-                                                <li><a href="javascript:void(0)">Services</a></li>
+                                                <li><a href="javascript:void(0)" value="prop">Properties</a></li>
+                                                <li><a href="javascript:void(0)" value="cars">Cars</a></li>
+                                                <li><a href="javascript:void(0)" value="ele">Electronics & Appliance</a></li>
+                                                <li><a href="javascript:void(0)" value="furn">Furniture</a></li>
+                                                <li><a href="javascript:void(0)" value="jobs">Jobs</a></li>
+                                                <li><a href="javascript:void(0)" value="mob">Mobiles</a></li>
+                                                <li><a href="javascript:void(0)" value="bikes">Bikes</a></li>
+                                                <li><a href="javascript:void(0)" value="bsh">Books, Sports & Hobbies</a></li>
+                                                <li><a href="javascript:void(0)" value="fashion">Fashion</a></li>
+                                                <li><a href="javascript:void(0)" value="pets">Pets</a></li>
+                                                <li><a href="javascript:void(0)" value="services">Services</a></li>
                                             </ul>
+                                            <div class="model-window">
+                                                <div class="model-header">
+                                                    <ul>
+                                                        <li><a href="javascript:void(0)">one</a></li>
+                                                        <li><a href="javascript:void(0)">Two</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="model-body">
+                                                    <ul>
+                                                        <li><a href="">test</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
@@ -141,8 +154,8 @@
                     <div class="col-lg-2" >
                         <ul>
                             <li><span data-toggle="collapse" data-target="#demo">Who we are</span></li>
-                            <li><a href="#">Join OLX</a> </li>
-                            <li><a href="#">Happy OLXers</a> </li>
+                            <li><a href="#">Join ClassiGoo</a> </li>
+                            <li><a href="#">Happy ClassiGoo</a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-4">
@@ -297,15 +310,226 @@
                 return false;
             });
             $('.category-search .dropdown-menu li a').click(function () {
-                $(this).parents('.category-search').find('input').val($(this).text());
+                var propTarget = $(this).parents('.category-search').find('input');
+                propTarget.val($(this).text());
+                propTarget.prop('id', $(this).attr('value'));
+                $('.model-window>.model-header').html('');
+                $('.model-window>.model-body').html('');
+                renderProperties($(this).attr('value'))
             })
         });
+        function openModel() {
+            $('.model-window').slideDown();
+        }
         function showHideProperty(id) {
             $(id).show();
         }
-        var classigoo = {
-            sec_1: {
-                selected_img : ''
+        function renderProperties(prop) {
+            //alert(prop)
+            var childProps = properties[prop];
+            var tabProp = "<ul>";
+            var tabChild =""
+            var propName = childProps.name;
+            $.each(childProps.values, function (index, value) {
+                console.log("--parent " + value.name);
+                tabProp += "<li id='" + index + "'><a href='javascript:void(0)'>" + value.name + "</a></li>";
+                tabChild += "<ul>"
+                $.each(value.childProps, function (index, value) {
+                    console.log("----child " + value);
+                    tabChild += "<li id='" + index + "'><a href='javascript:void(0)'>" + value + "</a></li>";
+                });
+                tabChild += "</ul>";
+            });
+            tabProp += "</ul>";
+            $('.model-window>.model-header').html(tabProp);
+            $('.model-window>.model-body').html(tabChild);
+            openModel();
+        }
+        //var classigoo = {
+        //    sec_1: {
+        //        selected_img : ''
+        //    }
+        //}
+        var properties = {
+            "prop": {
+                id: 11,
+                name: "Properties",
+                values : {
+                    111: {
+                        name: "For Sale",
+                        childProps: {
+                            1111: "Apartments",
+                            1112: "Houses & Villas",
+                            1113: "Builder Floor",
+                            1114: "Land & Plots",
+                            1115: "Shops & Offices",
+                            1116: "Farm Houses"
+                        }
+                    },
+                    112: {
+                        name: "For Rent",
+                        childProps: {
+                            1121: "Apartments",
+                            1122: "Houses & Villas",
+                            1123: "Builder Floors",
+                            1124: "PG & Roommates",
+                            1125: "Shops & Offices",
+                            1126: "Land & Plots",
+                            1126: "Guest Houses"
+                        }
+                    }
+                }
+            },
+            "cars": {
+                id: 12,
+                name: "Cars",
+                values: {
+                    121: {
+                        name: "For Sale",
+                        childProps: {
+                            1211: "Maruti Suzuki",
+                            1212: "Hyundai",
+                            1213: "Tata",
+                            1214: "Mahindra",
+                            1215: "Toyota",
+                            1216: "Honda",
+                            1217: "Chevrolet",
+                            1218: "Ford",
+                            1219: "Skoda",
+                            12110: "Volkswagen",
+                            12111: "Fiat",
+                            12112: "Nissan",
+                            12113: "Renault",
+                            12114: "Mitsubishi",
+                            12115: "Mercedes-Benz",
+                            12116: "Audi",
+                            12117: "Mahindra Renault",
+                            12118: "BMW",
+                            12119: "Hindustan Motors",
+                            12120: "Other Brands"
+                        }
+                    },
+                    122: {
+                        name: "Commercial Vehicles",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    123: {
+                        name: "Other Vehicles",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    124: {
+                        name: "Spare Parts",
+                        childProps: {
+                            0: ""
+                        }
+                    }
+                }
+            },
+            "ele": {
+                id: 13,
+                name: "Electronics & Appliance",
+                values: {
+                    131: {
+                        name: "Computers & Laptops",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    132: {
+                        name: "TVs, Video - Audio",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    133: {
+                        name: "Hard Disks, Printers & Monitors",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    134: {
+                        name: "ACs",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    135: {
+                        name: "Washing Machines",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    136: {
+                        name: "Fridges",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    137: {
+                        name: "Computer Accessories",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    138: {
+                        name: "Cameras & Lenses",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    139: {
+                        name: "Kitchen & Other Appliances",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    1310: {
+                        name: "Games & Entertainment",
+                        childProps: {
+                            0: ""
+                        }
+                    }
+                }
+            },
+            "furn": {
+                id: 14,
+                name: "Furniture",
+                values: {
+                    141: {
+                        name: "Sofa & Dining",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    142: {
+                        name: "Beds & Wardrobes",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    143: {
+                        name: "Home Decor & Garden",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    144: {
+                        name: "Other Household Items",
+                        childProps: {
+                            0: ""
+                        }
+                    },
+                    145: {
+                        name: "Kids Furniture",
+                        childProps: {
+                            0: ""
+                        }
+                    }
+                }
             }
         }
     </script>
