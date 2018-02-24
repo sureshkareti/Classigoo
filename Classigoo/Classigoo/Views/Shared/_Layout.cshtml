@@ -106,7 +106,7 @@
                                     <div class="col-lg-1 ">
                                         @*@Html.ActionLink("g", "GetAdds", "Search",
                               new { location = "Hyderabad, Telangana" }, new {@class="search-btn" })*@
-                                       <a href='@Url.Action("GetAdds", "Search", new{ location = "Hyderabad, Telangana" })' class="search-btn">
+                                       <a href="javascript:void(0);"  class="search-btn" onclick="getAdds()">
                                             <span class="glyphicon glyphicon-search"></span>
                                         </a>
                                         @*<input type="button" class="form-control input-lg" value="Search" />*@
@@ -200,7 +200,31 @@
     </div>
 
     <script>
+        function getAdds() {
+           window.location.href = "/Search/GetAdds?location=" + $("#locations").val();
+        //    var location = $("#locations").val();
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "/Search/GetAdds?location=" + $("#locations").val(),
+
+        //        success: function (response) {
+        //            $('.grid-menu').html(response);
+        //        },
+        //        failure: function (response) {
+        //            console.log(response.responseText);
+        //        },
+        //        error: function (response) {
+        //            console.log(response.responseText);
+        //        }
+        //    });
+        }
         $(document).ready(function () {
+
+            var location = '@Session["Location"]';
+            if (location) {
+                $("#locations").attr("value", location);
+            }3
+
             $(".regular").slick({
                 dots: true,
                 infinite: true,
@@ -225,6 +249,7 @@
                              },
                              onSelectItemEvent: function () {
                                  $("#locations").attr("value", $("#locations").getSelectedItemData());
+                                 var a = '<%=Session["TireLn"]%>';
                              }
                          }
 

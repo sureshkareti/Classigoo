@@ -12,6 +12,7 @@ namespace Classigoo.Controllers
         // GET: Search
         public ActionResult GetAdds(string location)
         {
+            Session["Location"] = location;
             List<Add> addColl = new List<Add>();
             using (var client = new HttpClient())
             {
@@ -44,4 +45,5 @@ namespace Classigoo.Controllers
             return View("DisplayAdds", addColl);
         }
     }
+    
 }
