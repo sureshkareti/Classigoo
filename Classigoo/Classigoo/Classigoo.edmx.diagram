@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8bdf6c8e6a44c46aea92f435f5a9d72" Name="Diagram1" >
+      <Diagram DiagramId="d8bdf6c8e6a44c46aea92f435f5a9d72" Name="Diagram1" ZoomLevel="82" >
         <EntityTypeShape EntityType="ClassigooModel.tbl_Adds" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="ClassigooModel.User" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ClassigooModel.Add" Width="1.5" PointX="5.625" PointY="6.125" />
-        <EntityTypeShape EntityType="ClassigooModel.RealEstate" Width="1.5" PointX="7.875" PointY="5.25" />
         <AssociationConnector Association="ClassigooModel.FK_Adds_Users" />
-        <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
-        <EntityTypeShape EntityType="ClassigooModel.Car" Width="1.5" PointX="7.875" PointY="12.25" />
-        <EntityTypeShape EntityType="ClassigooModel.Electronic" Width="1.5" PointX="7.875" PointY="0.75" />
+        <EntityTypeShape EntityType="ClassigooModel.Car" Width="1.5" PointX="7.875" PointY="11.5" />
         <AssociationConnector Association="ClassigooModel.FK_Cars_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.Electronic" Width="1.5" PointX="7.875" PointY="16.625" />
+        <EntityTypeShape EntityType="ClassigooModel.RealEstate" Width="1.5" PointX="7.875" PointY="3.25" />
         <AssociationConnector Association="ClassigooModel.FK_Electronics_Adds" />
+        <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -65,7 +65,6 @@ namespace Classigoo.Controllers
                     Description = "this is test description",
                     TypeId = "2",
                     SubCategoryId = "24",
-                    LocationId = "23",
                     Created = DateTime.Now.Date,
                     AddId = postId,
                     ImgUrlPrimary = "img1/testFolder/1.jpg",
