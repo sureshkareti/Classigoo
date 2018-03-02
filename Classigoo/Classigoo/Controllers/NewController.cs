@@ -13,5 +13,9 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+        public ActionResult Detail()
+        {
+            return View();
+        }
     }
 }
