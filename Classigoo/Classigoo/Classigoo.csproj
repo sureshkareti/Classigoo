@@ -290,6 +290,7 @@
     <Content Include="Content\CssNew\simple-line-icons.css" />
     <Content Include="Content\CssNew\style.css" />
     <Content Include="Content\CssNew\themify-icons.css" />
+    <Content Include="Content\CustomeNew\Style.css" />
     <Content Include="Content\Custome\account.css" />
     <Content Include="Content\Custome\bootstrap.min.css" />
     <Content Include="Content\Custome\CustomStyles.css" />
@@ -401,6 +402,7 @@
     <Content Include="images\icons\services\ser-medical.png" />
     <Content Include="images\icons\services\ser-other.png" />
     <Content Include="images\icons\services\ser-taxi.png" />
+    <Content Include="images\logo.jpg" />
     <Content Include="images\testLogo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

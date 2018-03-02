@@ -83,7 +83,8 @@ html, html a {
   height: 502px; }
 
 body {
-  width: 100%;
+  /*width: 100%;*/
+  max-width:970px !important;margin:auto;
   height: 100%;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
@@ -129,9 +130,12 @@ img {
   display: inline-block; }
 
 .img-responsive {
-  max-width: 100%;
-  height: auto;
-  display: block; }
+  /*width:300px;*/
+  /*height:70px;*/
+  height: 50px;
+  display: block;
+
+}
 
 a {
   color: inherit;
@@ -461,6 +465,37 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     transition: 0.3s ease-in; }
     .user-panel a:hover, .user-panel a:focus, .user-panel a:active {
       color: #fd880a; }
+
+
+
+    .user-panel1 {
+        float:right;
+        border:1px solid red;
+        right:100px;
+
+  /*width: 285px;
+  float: left;
+  /*position: fixed;*/
+  /*right: 0;*/
+  /*z-index: 1033;
+  padding: 30px 0;
+  min-height: 80px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;*/
+
+    }
+  .user-panel1 a {
+    display: inline-block;
+    margin: 0 24px;
+    color: #fff;
+    -webkit-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in; }
+    .user-panel1 a:hover, .user-panel1 a:focus, .user-panel1 a:active {
+      color: #fd880a; }
+
+
 
 .navbar-toggle-btn {
   color: #fff; }
