@@ -10,13 +10,13 @@ namespace Classigoo.Controllers
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult GetAdds(string location)
+        public ActionResult GetAdds(string location, string category)
         {
             Session["Location"] = location;
             List<Add> addColl = new List<Add>();
             using (var client = new HttpClient())
             {
-                string url = "http://localhost:51797/api/SearchApi/GetAdds/?location="+location;
+                string url = "http://localhost:51797/api/SearchApi/GetAdds/?location="+location+ "&category="+category;
                 client.BaseAddress = new Uri(url);
                 //HTTP GET
                 var responseTask = client.GetAsync(url);

@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="category-search dropdown ">
-                                            <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" />
+                                            <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" id="categories"/>
                                             <ul class="dropdown-menu">
                                                 <li><a href="javascript:void(0)" value="prop">Properties</a></li>
                                                 <li><a href="javascript:void(0)" value="cars">Cars</a></li>
@@ -201,7 +201,7 @@
 
     <script>
         function getAdds() {
-           window.location.href = "/Search/GetAdds?location=" + $("#locations").val();
+            window.location.href = "/Search/GetAdds?location=" + $("#locations").val() + "&category=" + "Cars";
         //    var location = $("#locations").val();
         //    $.ajax({
         //        type: "GET",

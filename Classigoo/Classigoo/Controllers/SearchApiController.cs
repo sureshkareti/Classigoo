@@ -14,7 +14,7 @@ namespace Classigoo.Controllers
 
         [HttpGet]
         [ActionName("GetAdds")]
-        public IHttpActionResult GetAdds(string location)
+        public IHttpActionResult GetAdds(string location,string category)
         {
             var adds = new List<Add>();
             if(location== "All India")
@@ -23,7 +23,7 @@ namespace Classigoo.Controllers
             }
             else
             {
-                 adds = db.Adds.Where(a => a.Location == location).ToList();
+                 adds = db.Adds.Where(a=>a.Category==category).Where(a=>a.Location==location).ToList();
             }
             
             if (adds.Count > 0)
