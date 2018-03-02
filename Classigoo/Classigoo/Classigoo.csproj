@@ -488,6 +488,7 @@
     <Content Include="Scripts\Json\categories.json" />
     <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\User\ShowAdd.cshtml" />
+    <Content Include="Views\New\ShowAdds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

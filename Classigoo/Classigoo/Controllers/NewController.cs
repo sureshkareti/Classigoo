@@ -17,5 +17,9 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+        public ActionResult ShowAdds()
+        {
+            return View();
+        }
     }
 }
