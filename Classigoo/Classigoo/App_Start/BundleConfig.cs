@@ -20,9 +20,13 @@ namespace Classigoo
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css",
+            //          "~/Content/Site.css").Include("~/Content/font-awesome.css", new CssRewriteUrlTransform()));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.css").Include("~/Content/font-awesome.css", new CssRewriteUrlTransform()));
+                      "~/Content/CustomeNew/Style.css").Include("~/Content/font-awesome.css", new CssRewriteUrlTransform()));
         }
     }
 }

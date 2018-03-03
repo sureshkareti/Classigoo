@@ -290,6 +290,7 @@
     <Content Include="Content\CssNew\simple-line-icons.css" />
     <Content Include="Content\CssNew\style.css" />
     <Content Include="Content\CssNew\themify-icons.css" />
+    <Content Include="Content\CustomeNew\Index1.css" />
     <Content Include="Content\CustomeNew\Style.css" />
     <Content Include="Content\Custome\account.css" />
     <Content Include="Content\Custome\bootstrap.min.css" />
@@ -342,6 +343,8 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
     </Content>
     <Content Include="images\background.png" />
+    <Content Include="images\cg.jpg" />
+    <Content Include="images\icons-bg.PNG" />
     <Content Include="images\icons\bike\bike-bike.png" />
     <Content Include="images\icons\bike\bike-cycle.png" />
     <Content Include="images\icons\bike\bike-scoter.png" />
@@ -444,6 +447,7 @@
     <Content Include="Scripts\ScriptsNew\retina-1.1.0.min.js" />
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
     <Content Include="Views\New\Detail.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
@@ -489,6 +493,7 @@
     <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\User\ShowAdd.cshtml" />
     <Content Include="Views\New\ShowAdds.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
