@@ -64,4 +64,22 @@ namespace Classigoo
 
 
     }
+
+    public class AddsModel
+    {
+        ///<summary>
+        /// Gets or sets Adds.
+        ///</summary>
+        public List<Add> Adds { get; set; }
+
+        ///<summary>
+        /// Gets or sets CurrentPageIndex.
+        ///</summary>
+        public int CurrentPageIndex { get; set; }
+
+        ///<summary>
+        /// Gets or sets PageCount.
+        ///</summary>
+        public int PageCount { get; set; }
+    }
 }
