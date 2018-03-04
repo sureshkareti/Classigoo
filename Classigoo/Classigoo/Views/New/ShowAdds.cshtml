@@ -1,12 +1,7 @@
-﻿
+﻿@model AddsModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-<html>
-
-<!-- Mirrored from www.pxcreate.com/bootstrap/classic/bloglist.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Mar 2018 05:46:35 GMT -->
 <head>
     <title>Classic - A Bootstrap Classified Ads Template</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -34,131 +29,9 @@
           <script src="js/respond.min.js"></script>
          <![endif]-->
 </head>
-<body>
-    <!-- Header Start -->
-    @*<header id="header">
-        <div class="headerdetails">
-            <div class="container">
-                <a class="logo pull-left" href="index.html"><img title="Classifieds" alt="Classifieds" src="img/logo.png"></a>
-                <div id="mainmenu" class=" pull-right">
-                    <!-- Navigation -->
-                    <nav class="subnav">
-                        <div class="menurelative">
-                            <a class="btn btn-orange mainmenumobile">Menu</a>
-                            <ul class="nav-pills mainmenucontain">
-                                <li>
-                                    <a class="active home submenu2">Home</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="index.html">Home With Map</a> </li>
-                                            <li> <a class="" href="index1.html">Home With Image </a> </li>
-                                            <li> <a class="" href="index2.html">Home - 2 Column</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">Listing</a>
-                                    <div class="submenu">
-                                        <ul class="pull-left">
-                                            <li> <a class="" href="listing.html">Listing List View</a> </li>
-                                            <li> <a class="" href="listing-grid.html">Listing Grid View</a> </li>
-                                            <li><a class="" href="#"><img title="" alt="" src="img/ad1.jpg" width="200"></a></li>
-                                        </ul>
-                                        <div id="topdeal">
-                                            <h3>Top Deal</h3>
-                                            <ul>
-                                                <li>
-                                                    <img width="100" src="img/blog1.jpg" alt="blog" title="blog" class="pull-left">
-                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
 
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                </li>
-                                                <li>
-                                                    <img width="100" src="img/blog2.jpg" alt="blog" title="blog" class="pull-left">
-                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
-
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li> <a class="" href="detail.html">Detail Page</a> </li>
-                                <li>
-                                    <a class="submenu2">Blog</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="blog.html">Blog Detail</a> </li>
-                                            <li> <a class="" href="bloggrid.html">Blog Grid</a> </li>
-                                            <li> <a class="" href="bloglist.html">Blog List</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">My Account</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="login.html">Login</a> </li>
-                                            <li> <a class="" href="register.html">Register</a> </li>
-                                            <li> <a class="" href="account.html">Dashboard</a> </li>
-                                            <li> <a class="" href="profile.html">Edit Profile</a> </li>
-                                            <li> <a class="" href="post-ad.html">Post An Ad</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li> <a class="" href="contact.html">Contact</a> </li>
-                                <li> <a class="" href="features.html">Features</a> </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <div class="mt10 pull-right">
-                        <!--Social -->
-                        <div class="socialtop pull-right">
-                            <ul class="pull-right">
-                                <li><a class="tooltip-test" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--Top Search -->
-
-                        <div class="email"> <i class="fa fa-envelope-o"></i> Email : <a href="maito:test@pxcreate.com" class="black">test@pxcreate.com </a></div>
-                        <div class="call"><i class="fa fa-phone"></i> Call Us : <span class="black">+ 99 123 456 7890 </span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>*@
-    <!-- Header End -->
     <div id="maincontainer">
-        <!-- Search Start-->
-        @*<section id="searchinner">
-            <div class="container">
-                <div class="searchcontianer">
-                    <form class="form-inline">
-                        <div class="btn-group">
-                            <input type="search" placeholder="Search Here" class="form-control mainserarch">
-                            <button data-toggle="dropdown" class="btn  dropdown-toggle category" type="button"> Select Categories <span class="caret"></span> </button>
-                            <ul class="dropdown-menu categorydropdown">
-                                <li><a href="#">Real Estate</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Item For Sale</a></li>
-                                <li><a href="#">Jobs</a></li>
-                                <li><a href="#">Personal</a></li>
-                            </ul>
-                            <input type="submit" value="Search" class="btn btn-orange tooltip-test mainserarchsubmit">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <a class="postad" href="post-ad.html"><span> <i class="fa fa-pencil"></i> Post An Ad</span></a>
-        </section>*@
+
         <div class="container">
             <!--  breadcrumb -->
             <ul class="breadcrumb">
@@ -239,7 +112,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 mt40column">
                     <!--Sorting-->
                     <div class="sorting well">
-                        <form class=" form-inline pull-left">
+                        <form class="form-inline pull-left">
                             Sort By :
                             <select class="span2">
                                 <option>Default</option>
@@ -263,518 +136,16 @@
                         </div>
                     </div>
                     <!-- Listing-->
-                    <div class="mt40" id="bloglist">
-                        <div class="bloglisting list">
-                            <ul>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your First Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="personal category color2"> <i class="fa fa-plane"></i> Vehicle </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your Second Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="personal category color3"> <i class="fa fa-thumbs-o-up"></i> Services </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your Third Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="personal category color4"> <i class="fa fa-home"></i> For Rent </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your Fourth Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="personal category color5"> <i class="fa fa-suitcase"></i> Jobs </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your Fifth Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="personal category color6"> <i class="fa fa-users"></i> Community </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your Sixth Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                                <li class="clearfix">
-                                    <div class="col-sm-2">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <h3><a class="title" href="#">Display Your First Blog Title here </a></h3>
-                                        <ul class="icondetail">
-                                            <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                        </ul>
-                                        <div class="tag"></div>
-                                        <div class="discrption">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <br>
-                                            <a class="readmore" href="blog.html">Read More...</a>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-sm-2">
-                                        <div class="share">
-                                            Share On : <br>
-                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                        </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                    </div>*@
-                                </li>
-                            </ul>
-                            <!-- Paging-->
-                            <div class="mt30 clearfix">
-                                <ul class="pagination pull-right">
-                                    <li><a>Prev</a> </li>
-                                    <li class="active"> <a>1</a> </li>
-                                    <li><a>2</a> </li>
-                                    <li><a>3</a> </li>
-                                    <li><a>4</a> </li>
-                                    <li><a>Next</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bloglisting grid">
-                            <ul class="mt30 clearfix row">
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color6"> <i class="fa fa-mobile-phone"></i> Mobile</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="category color2"> <i class="fa fa-cutlery"></i> Food</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your Second Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="category color9"> <i class="fa fa-glass"></i> Hobbies</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="mt30 clearfix row">
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color10"> <i class="fa fa-video-camera"></i> Movies</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your Fourth Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="category color7"> <i class="fa fa-camera"></i> Camera</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your Next Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product3.jpg" alt=""></a>
-                                        <div class="category color3"> <i class="fa fa-user-md"></i> Health</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="mt30 clearfix row">
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color1"> <i class="fa fa-mobile-phone"></i> Mobile</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                                        <div class="category color4"> <i class="fa fa-cutlery"></i> Food</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your Second Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div*@>
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color6"> <i class="fa fa-glass"></i> Hobbies</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="mt30 clearfix row">
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color6"> <i class="fa fa-mobile-phone"></i> Mobile</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product3.jpg" alt=""></a>
-                                        <div class="category color2"> <i class="fa fa-cutlery"></i> Food</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your Second Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-sm-4">
-                                    <div class="searchgrid">
-                                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product1.jpg" alt=""></a>
-                                        <div class="category color9"> <i class="fa fa-glass"></i> Hobbies</div>
-                                        <div>
-                                            <h3><a class="title" href="#">Your First Blog Title</a></h3>
-                                            <ul class="icondetail">
-                                                <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                                <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                            </ul>
-                                        </div>
-                                        @*<div>
-                                            <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                            <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                        </div>*@
-                                    </div>
-                                </li>
-                            </ul>
-                            <!-- Paging-->
-                            <div class="mt30 clearfix">
-                                <ul class="pagination pull-right">
-                                    <li><a>Prev</a> </li>
-                                    <li class="active"> <a>1</a> </li>
-                                    <li><a>2</a> </li>
-                                    <li><a>3</a> </li>
-                                    <li><a>4</a> </li>
-                                    <li><a>Next</a> </li>
-                                </ul>
-                            </div>
+                      <div class="mt40" id="bloglist">
+                        @Html.Partial("DisplayAdds",Model)
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Social-->
-        @*<div class="container mt20">
-            <h2 class="heading3">Social</h2>
-            <div class="mt40" id="social">
-                <ul class="row clearfix">
-                    <li class="col-md-3 col-sm-6">
-                        <h5 class="heading5">Twitter</h5>
-                        <div id="twitter"> </div>
-                    </li>
-                    <li class="col-md-3 col-sm-6 mt40column">
-                        <h5 class="heading5">Flickr</h5>
-                        <div class="social-feed flickr-feed"> </div>
-                    </li>
-                    <li class="col-md-3 col-sm-6 mt40column">
-                        <h5 class="heading5">Youtube</h5>
-                        <div class="social-feed youtube-feed"> </div>
-                    </li>
-                    <li class="col-md-3 col-sm-6 mt40column">
-                        <h5 class="heading5">Facebook</h5>
-                        <div class="">
-                            <div id="fb-root"></div>
-                            <script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "../../../connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-                            <div class="fb-like-box" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>*@
-        <!-- Newsletter-->
-        @*<section class="mt40 newsletter" id="newslettersignup">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <div class="pull-left ">
-                            <h5 class="heading5 borderbottm"> Newsletters Signup</h5>
-                            Sign up to Our Newsletter &amp; get attractive Offers by subscribing to our newsletters.
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="pull-right mt20 surbscribeform">
-                            <form class="form-inline">
-                                <div class="input-prepend">
-                                    <input type="text" class="subscribeinput" id="inputIcon" placeholder="Subscribe to Newsletter">
-                                    <input type="submit" class="btn btn-orange" value="Subscribe">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
-        <!-- Footer -->
-        <footer id="footer">
-            @*<section id="quicklink">
-                <div class="container">
-                    <div class="row">
-                        <ul class="quicklinks">
-                            <li> <a class="active home" href="index.html">Home</a> </li>
-                            <li> <a class="" href="listing.html">Listing</a> </li>
-                            <li> <a class="" href="detail.html">Detail Page</a> </li>
-                            <li> <a class="" href="login.html">Login</a> </li>
-                            <li> <a class="" href="register.html">Register</a> </li>
-                            <li> <a class="" href="account.html">My Account</a> </li>
-                            <li> <a class="" href="contact.html">Contact</a> </li>
-                            <li> <a class="" href="features.html">Features</a> </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>*@
-            <section class="copyrightbottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left"> Copyright © 2014. Classic. All rights reserved </div>
-                        <div class="pull-right"> Developed by pxcreate</div>
-                    </div>
-                </div>
-            </section>
-        </footer>
+    </div>
+        
         <!-- Got to top -->
         <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
-    </div>
-    @*<div id="styleswitch">
-            <h3>Style Color switcher <i class="fa fa-cogs"></i> </h3>
-            <a href="javascript: void(0)" title="switch styling" id="color1">color1</a> <a href="javascript: void(0)" title="switch styling" id="color2">color2</a> <a href="javascript: void(0)" title="switch styling" id="color3">color3</a> <a href="javascript: void(0)" title="switch styling" id="color4">color4</a> <a href="javascript: void(0)" title="switch styling" id="color5">color5</a> <a href="javascript: void(0)" title="switch styling" id="color6">color6</a> <a href="javascript: void(0)" title="switch styling" id="color7">color7</a> <a href="javascript: void(0)" title="switch styling" id="color8">color8</a> <a href="javascript: void(0)" title="switch styling" id="color9">color9</a> <a href="javascript: void(0)" title="switch styling" id="color10">color10</a> <a href="javascript: void(0)" title="switch styling" id="color11">color11</a> <a href="javascript: void(0)" title="switch styling" id="color12">color12</a> <a href="javascript: void(0)" title="switch styling" id="color13">color13</a> <a href="javascript: void(0)" title="switch styling" id="color14">color14</a> <a href="javascript: void(0)" title="switch styling" id="color15">color15</a> <a href="javascript: void(0)" title="switch styling" id="color16">color16</a> <a href="javascript: void(0)" title="switch styling" id="color17">color17</a> <a href="javascript: void(0)" title="switch styling" id="color18">color18</a> <a href="javascript: void(0)" title="switch styling" id="color19">color19</a> <a href="javascript: void(0)" title="switch styling" id="color20">color20</a>
-        </div>*@
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
@@ -820,21 +191,53 @@
     <!-- Custom -->
     @*<script src="js/custom.js"></script>*@
     <script src="~/Scripts/custom.js"></script>
-
-    @*<script type="text/javascript" src="js/jquery.style-switcher.js"></script>*@
     <script type="text/javascript">
-$(document).ready(function() {
-	//$('#styleswitch').styleSwitcher();
-	//$("#styleswitch h3").click(function () {
-	//	if($(this).parent().css("left") == "-200px"){
-	//		$(this).parent().animate({left:'0px'}, {queue: false, duration: 500});
- 	//	} else {
-    //	$(this).parent().animate({left:'-200px'}, {queue: false, duration: 500});
-  	//	}
- 	// });
-});
-    </script>
-</body>
+        function getAddsbyPage(pageNum)
+        {
+            var page = parseInt(pageNum); 
+            
+            $.ajax({
+                url: '@Url.Action("DisplayAdds")',
+                type: 'POST',
+                dataType: "html",
+                data: { "currentPageIndex": page },
+                success: function (data) {
+                    //var htmlData = $.parseHTML(data);
+                    $("#bloglist").html(data);
+                    $(".bloglisting").css("display", "block");
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+            
+        }
+        $(document).ready(function () {
+            @*$('.page-number').click(function () {
+                var page = parseInt($(this).html());
 
-<!-- Mirrored from www.pxcreate.com/bootstrap/classic/bloglist.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Mar 2018 05:46:35 GMT -->
-</html>
+                $.ajax({
+                    url: '@Url.Action("DisplayAdds")',
+                    type: 'POST',
+                    dataType: "html",
+                    data: { "currentPageIndex": page },
+                    success: function (data) {
+                        //var htmlData = $.parseHTML(data);
+                        $("#bloglist").html(data);
+                    },
+                    failure: function (response) {
+                        console.log(response.responseText);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    }
+                });
+            });*@
+        });
+             
+
+
+    </script>

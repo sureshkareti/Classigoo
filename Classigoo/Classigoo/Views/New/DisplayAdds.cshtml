@@ -1,0 +1,104 @@
+﻿@model AddsModel
+@{
+    Layout = null;
+}
+<div class="bloglisting list">
+
+    @foreach (var add in Model.Adds)
+    {
+        foreach (var realestate in add.RealEstates)
+        {
+            <ul>
+                <li class="clearfix">
+                   
+                    <div class="col-sm-2">
+                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
+                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><a class="title" href="#">@realestate.Title </a></h3>
+                        <ul class="icondetail">
+                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
+                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
+                            <li><i class="fa fa-calendar"></i> Posted On :@realestate.Created </li>
+                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
+                        </ul>
+                        <div class="tag"></div>
+                        <div class="discrption">
+                            @realestate.Description <br>
+                            
+                        </div>
+                    </div>
+                </li>
+                </ul>
+        }
+        foreach (var car in add.Cars)
+        {
+            <ul>
+                <li class="clearfix">
+                    
+                    <div class="col-sm-2">
+                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
+                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><a class="title" href="#">@car.Title </a></h3>
+                        <ul class="icondetail">
+                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
+                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
+                            <li><i class="fa fa-calendar"></i> Posted On :@car.Created </li>
+                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
+                        </ul>
+                        <div class="tag"></div>
+                        <div class="discrption">
+                            @car.Description <br>
+                           
+                        </div>
+                    </div>
+                </li>
+                </ul>
+        }
+        foreach (var electronic in add.Electronics)
+        {
+            <ul>
+                <li class="clearfix">
+                    
+                    <div class="col-sm-2">
+                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
+                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><a class="title" href="#">@electronic.Title </a></h3>
+                        <ul class="icondetail">
+                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
+                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
+                            <li><i class="fa fa-calendar"></i> Posted On :@electronic.Created </li>
+                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
+                        </ul>
+                        <div class="tag"></div>
+                        <div class="discrption">
+                            @electronic.Description<br>
+                            
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        }
+    }
+            
+    </div>
+<!-- Paging-->
+<div class="mt30 clearfix" id="divpage-number">
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
+    }
+    @*<ul class="pagination pull-right">
+            <li><a>Prev</a> </li>
+            <li class="active"> <a>1</a> </li>
+            <li><a>2</a> </li>
+            <li><a>3</a> </li>
+            <li><a>4</a> </li>
+            <li><a>Next</a> </li>
+        </ul>*@
+    </div>

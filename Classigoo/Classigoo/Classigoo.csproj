@@ -494,6 +494,7 @@
     <Content Include="Views\User\ShowAdd.cshtml" />
     <Content Include="Views\New\ShowAdds.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\New\DisplayAdds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
