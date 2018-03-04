@@ -2,6 +2,27 @@
 @{
     Layout = null;
 }
+<div class="mt30 clearfix" id="divpage-number">
+    <ul class="pagination pull-right">
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+
+            if (i == Model.CurrentPageIndex)
+            {
+                <li>
+                    <a class="page-number" href="javascript:void(0);" style="background: #2965be;color: #fff;pointer-events:none;">@i</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
 <div class="bloglisting list">
 
     @foreach (var add in Model.Adds)
@@ -89,16 +110,22 @@
     </div>
 <!-- Paging-->
 <div class="mt30 clearfix" id="divpage-number">
-    @for (int i = 1; i <= Model.PageCount; i++)
-    {
-        <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
-    }
-    @*<ul class="pagination pull-right">
-            <li><a>Prev</a> </li>
-            <li class="active"> <a>1</a> </li>
-            <li><a>2</a> </li>
-            <li><a>3</a> </li>
-            <li><a>4</a> </li>
-            <li><a>Next</a> </li>
-        </ul>*@
-    </div>
+    <ul class="pagination pull-right">
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+
+                    if (i == Model.CurrentPageIndex)
+                    {
+                        <li>
+                            <a class="page-number" href="javascript:void(0);" style="background: #2965be;color: #fff;pointer-events:none;">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
+                        </li>
+                    }
+                }
+</ul>
+</div>
