@@ -1,0 +1,654 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="breadcrumb-block">
+
+    </div>
+    <div class="add-listing-wrap">
+        <div class="container">
+            <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
+                <p>
+                    <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                </p>
+            </div>
+
+            <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
+                <h4>Submit a Free Classified Ad</h4>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Title</label>
+                                    
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" value="email@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="category-search dropdown " style="display:block;">
+                                        <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" id="categories" />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="javascript:void(0)" value="prop">Properties</a></li>
+                                            <li><a href="javascript:void(0)" value="cars">Cars</a></li>
+                                            <li><a href="javascript:void(0)" value="ele">Electronics & Appliance</a></li>
+                                            <li><a href="javascript:void(0)" value="furn">Furniture</a></li>
+                                            <li><a href="javascript:void(0)" value="jobs">Jobs</a></li>
+                                            <li><a href="javascript:void(0)" value="mob">Mobiles</a></li>
+                                            <li><a href="javascript:void(0)" value="bikes">Bikes</a></li>
+                                            <li><a href="javascript:void(0)" value="bsh">Books, Sports & Hobbies</a></li>
+                                            <li><a href="javascript:void(0)" value="fashion">Fashion</a></li>
+                                            <li><a href="javascript:void(0)" value="pets">Pets</a></li>
+                                            <li><a href="javascript:void(0)" value="services">Services</a></li>
+                                        </ul>
+                                        @*<div class="model-window">
+                                            <div class="model-header">
+                                                <ul>
+                                                    <li><a href="javascript:void(0)">one</a></li>
+                                                    <li><a href="javascript:void(0)">Two</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="model-body">
+                                                <ul>
+                                                    <li><a href="">test</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>*@
+                                    </div>
+
+                                    <div class="panel with-nav-tabs panel-default">
+                                        <div class="panel-heading">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#tab1default" data-toggle="tab">Properties</a></li>
+                                                <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
+                                                <li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#tab4default" data-toggle="tab">Default 4</a></li>
+                                                        <li><a href="#tab5default" data-toggle="tab">Default 5</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="tab-content">
+
+                                                <div class="tab-pane fade in active" id="tab1default">
+
+                                                   
+                                                
+                                                    <div class="panel with-nav-tabs panel-default">
+                                                        <div class="panel-heading">
+                                                            <ul class="nav nav-tabs">
+                                                                <li class="active"><a href="#tab1-1default" data-toggle="tab">For Sale</a></li>
+                                                                <li class="active"><a href="#tab1-2default" data-toggle="tab">For Rent</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="tab-content">
+
+                                                                <div class="tab-pane fade in active" id="tab1-1default">
+                                                                    Plots / Land
+                                                                    Agricultural Land 
+                                                                    Shops & Offices
+                                                                    Apartments
+                                                                    Independent Houses & Villas
+                                                                </div>
+                                                                <div class="tab-pane fade" id="tab1-2default">
+                                                                    Apartments
+                                                                    Independent Houses & Villas
+                                                                    Shops & Offices
+                                                                    Hostels & PG
+                                                                    Shops & Offices
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                default1
+                                                </div>
+                                                <div class="tab-pane fade" id="tab2default">Default 2</div>
+                                                <div class="tab-pane fade" id="tab3default">Default 3</div>
+                                                <div class="tab-pane fade" id="tab4default">Default 4</div>
+                                                <div class="tab-pane fade" id="tab5default">Default 5</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+
+                       
+
+
+                        <div class="businessinfo-left-block">
+                            <div class="form-group">
+                                <label for="listing_name">Listing Name</label>
+                                <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
+                                <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="listing_email">Contact Email</label>
+                                <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="listing_phone_no">Contact Phone</label>
+                                <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="listing_website">Website</label>
+                                <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- businessinfo-listing -->
+            <!-- add-listing-tost-block -->
+            @*<form id="add_listing_form" class="form-common add-listing-form" action="#" novalidate="novalidate">
+                    <div class="listing-block businessinfo-listing">
+                        <h4>Business Information</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="businessinfo-left-block">
+                                    <div class="form-group">
+                                        <label for="listing_name">Listing Name</label>
+                                        <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
+                                        <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="listing_email">Contact Email</label>
+                                        <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="listing_phone_no">Contact Phone</label>
+                                        <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="listing_website">Website</label>
+                                        <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="businessinfo-right-block">
+                                    <div id="add_listing_map" class="add-listing-map"></div>
+                                    <div class="form-group">
+                                        <label for="listing_address">Location (Full Address)</label>
+                                        <input id="listing_address" type="text" class="form-control" placeholder="Find your place in gogle map" aria-required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="listing_region">Listing Region</label>
+                                        <input id="listing_region" type="text" class="form-control" placeholder="Select your listing region" aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- businessinfo-listing -->
+                    <div class="listing-block Others-Information-listing">
+                        <h4>Others Information</h4>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="listing_category">Category</label>
+                                    <select id="listing_category" class="form-control">
+                                        <option>Default select</option>
+                                        <option>First select</option>
+                                        <option>Second select</option>
+                                        <option>Third select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="listing_price">Price</label>
+                                    <select id="listing_price" class="form-control">
+                                        <option>Default select</option>
+                                        <option>Price One</option>
+                                        <option>Price Two</option>
+                                        <option>Price Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group listing-price">
+                                    <input id="listing_price_from" type="text" class="form-control" placeholder="Price From" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group listing-price">
+                                    <input id="listing_price_to" type="text" class="form-control" placeholder="Price To" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="listing-features-block">
+                                    <h5>Select listing features</h5>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- block-checkbox block -->
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- block-checkbox block -->
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- block-checkbox block -->
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input">
+                                                                <span class="custom-control-indicator"></span>
+                                                                <span class="custom-control-description">Air Conditioned</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- block-checkbox block -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- listing-features-block -->
+                                <div class="listing-additionalinfo-block">
+                                    <h5>Aditional info</h5>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group additionalinfo-toggle-switch">
+                                                        <input type="checkbox" checked id="aditionalInfo1">
+                                                        <label for="aditionalInfo1">Pet Friendly</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group additionalinfo-toggle-switch">
+                                                        <input type="checkbox" checked id="aditionalInfo2">
+                                                        <label for="aditionalInfo2">Wheel Accessible</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group additionalinfo-toggle-switch">
+                                                        <input type="checkbox" id="aditionalInfo3">
+                                                        <label for="aditionalInfo3">Child Friendly</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group additionalinfo-toggle-switch">
+                                                        <input type="checkbox" checked id="aditionalInfo4">
+                                                        <label for="aditionalInfo4">First Aid Service</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group additionalinfo-toggle-switch">
+                                                        <input type="checkbox" checked id="aditionalInfo5">
+                                                        <label for="aditionalInfo5">Fire Safety</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- listing-additionalinfo-block -->
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input id="listing_others" type="text" class="form-control" placeholder="Others" aria-required="true">
+                                </div>
+                                <div class="listing-businesshour-block">
+                                    <h5>Business Hours</h5>
+                                    <div class="form-check">
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Monday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Tuesday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Wednesday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Thursday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Frinday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Saturday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                        <div class="multiple-label-checkbox-block">
+                                            <p><strong>Sunday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">Closed</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- listing-businesshour-block -->
+                                <div class="form-group time-zone-block">
+                                    <label for="listing_timezone">Time Zone</label>
+                                    <select id="listing_timezone" class="form-control">
+                                        <option>Select your business time zone.. Ex: UTC +0</option>
+                                        <option>Select your business time zone.. Ex: UTC +10</option>
+                                        <option>Select your business time zone.. Ex: UTC +20</option>
+                                        <option>Select your business time zone.. Ex: UTC +30</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Others-Information-listing -->
+                    <div class="listing-block details-listing">
+                        <h4>Listing Details</h4>
+                        <div class="form-group listing-compose-block">
+                            <label for="listing_descreption">Description</label>
+                            <textarea rows="5" cols="50" id="listing_descreption" class="form-control compose-box" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group textarea-form-group">
+                                    <label for="listing_kewords">Keywords</label>
+                                    <textarea rows="5" cols="50" id="listing_kewords" class="form-control" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
+                                </div>
+                                <div class="promotional-video-block form-group">
+                                    <label for="listing_youtube_video_1">Promotional Video</label>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input id="listing_youtube_video_1" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_youtube_video_2" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input id="listing_youtube_video_3" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_youtube_video_4" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="listing_faq">FAQ</label>
+                                    <input id="listing_faq" type="text" class="form-control" placeholder="Question" aria-required="true">
+                                </div>
+                                <div class="form-group textarea-form-group">
+                                    <textarea rows="5" cols="50" id="listing_answer" class="form-control" placeholder="Answer"></textarea>
+                                </div>
+                                <button type="button" class="listing-btn-large">+ Add New</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="social-profile-block form-group">
+                                    <label for="listing_facebook_url">Social Profile</label>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input id="listing_facebook_url" type="text" class="form-control" placeholder="Facebook URL" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_twitter_url" type="text" class="form-control" placeholder="Twitter URL" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_instagram_url" type="text" class="form-control" placeholder="Instagram URL" aria-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <input id="listing_googleplus_url" type="text" class="form-control" placeholder="Google Plus URL" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_youtube_url" type="text" class="form-control" placeholder="YouTube URL" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="listing_linkedin_url" type="text" class="form-control" placeholder="Linkedin URL" aria-required="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uload-images-block">
+                                    <h5>Upload Images</h5>
+                                    <div class="form-group form-group-file-type">
+                                        <label for="listing_company_logo">Company Logo</label>
+                                        <input type="file" class="form-control-file" id="listing_company_logo">
+                                        <span>Maximum file size: 20 MB.</span>
+                                    </div>
+                                    <div class="form-group form-group-file-type">
+                                        <label for="listing_company_cover_photo">Cover Image</label>
+                                        <input type="file" class="form-control-file" id="listing_company_cover_photo">
+                                        <span>Maximum file size: 20 MB.</span>
+                                    </div>
+                                    <div class="form-group form-group-file-type">
+                                        <label for="listing_company_slide_photo">Slide Show Images</label>
+                                        <input type="file" class="form-control-file" id="listing_company_slide_photo">
+                                        <span>Maximum file size: 90 MB.</span>
+                                    </div>
+                                    <div class="form-group form-group-file-type">
+                                        <label for="listing_company_gallary_photo">Gallery Images (optional)</label>
+                                        <input type="file" class="form-control-file" id="listing_company_gallary_photo">
+                                        <span>Maximum file size: 90 MB.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- details-listing -->
+                    <div class="listing-block attach-document-listing">
+                        <h4>Attach Documents</h4>
+                        <div class="form-group form-group-file-type">
+                            <label for="listing_company_profile">Company Profile</label>
+                            <input type="file" class="form-control-file" id="listing_company_profile">
+                            <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
+                        </div>
+                        <div class="form-group form-group-file-type">
+                            <label for="listing_company_brochure">Company Brochure</label>
+                            <input type="file" class="form-control-file" id="listing_company_brochure">
+                            <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
+                        </div>
+                        <div class="form-group form-group-file-type">
+                            <label for="listing_company_resturant">Food Menu (Restaurant)</label>
+                            <input type="file" class="form-control-file" id="listing_company_resturant">
+                            <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
+                        </div>
+                        <div class="form-group form-group-file-type">
+                            <label for="listing_company_document">Others Document</label>
+                            <input type="file" class="form-control-file" id="listing_company_document">
+                            <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
+                        </div>
+                    </div>
+                    <!-- attach-document-listing -->
+                    <div class="listing-block prview-listing">
+                        <h4>Enter your information to Sign up & get approval notification</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="listing_user_name">Your Name</label>
+                                    <input id="listing_user_name" type="text" class="form-control" placeholder="Enter your full name here" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="listing_user_email">Email</label>
+                                    <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-center">To Review your listing click the button below</h4>
+                        <button type="submit" class="listing-btn-large">Save & Preview</button>
+                    </div>
+                    <!-- prview-listing -->
+                </form>*@
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
+}
