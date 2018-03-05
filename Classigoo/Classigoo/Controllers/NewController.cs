@@ -29,7 +29,7 @@ namespace Classigoo.Controllers
 
         private AddsModel GetAdds(int currentPage)
         {
-            int maxRows = 5;
+            int maxRows = 10;
             ClassigooEntities db = new ClassigooEntities();
             
                 AddsModel addColl = new AddsModel();
