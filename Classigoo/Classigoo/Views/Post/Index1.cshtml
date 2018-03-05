@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="category-search dropdown " style="display:block;">
-                                        <input type="button" class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" id="categories" />
-                                        <ul class="dropdown-menu">
+                                        <input type="button" readonly class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" id="categories" />
+                                        <ul class="dropdown-menu" id="categoryUL" style="width:100%">
                                             <li><a href="javascript:void(0)" value="prop">Properties</a></li>
                                             <li><a href="javascript:void(0)" value="cars">Cars</a></li>
                                             <li><a href="javascript:void(0)" value="ele">Electronics & Appliance</a></li>
@@ -67,7 +67,7 @@
                                             </div>*@
                                     </div>
 
-                                    <div class="panel with-nav-tabs panel-default">
+                                    <div class="panel with-nav-tabs panel-default" style="display:none">
                                         <div class="panel-heading">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#tabPro" data-toggle="tab">Properties</a></li>
@@ -113,17 +113,104 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="tabCV">Default 2</div>
+                                                <div class="tab-pane fade" id="tabCV">
+                                                    <div class="tab-pane fade in active" id="tabPro">
+                                                        <div class="panel with-nav-tabs panel-default">
+                                                            <div class="panel-heading">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
+                                                                    <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="tab-content">
+
+                                                                    <div class="tab-pane fade in active" id="tabProForSale">
+                                                                        <a href="#">Plots/Land</a><br />
+                                                                        <a href="#"> Agricultural Land</a><br />
+                                                                        <a href="#">Shops & Offices</a><br />
+                                                                        <a href="#">Apartments</a><br />
+                                                                        <a href="#">Independent Houses & Villas</a>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="tabProForRent">
+                                                                        <a href="#">Apartments</a><br />
+                                                                        <a href="#">Independent Houses & Villas</a><br />
+                                                                        <a href="#">Hostels & PG</a><br />
+                                                                        <a href="#">Shops & Offices</a>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="tab-pane fade" id="tabTV">Default 3</div>
                                                 <div class="tab-pane fade" id="tabAV">Default 4</div>
                                                 <div class="tab-pane fade" id="tabPV">Default 5</div>
-                                                <div class="tab-pane fade" id="tabCars">Default 3</div>
+                                                <div class="tab-pane fade" id="tabCars">
+                                                    <div class="tab-pane fade in active" id="tabPro">
+                                                        <div class="panel with-nav-tabs panel-default">
+                                                            <div class="panel-heading">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tabCarsModel" data-toggle="tab">Model</a></li>                                                                   
+                                                                </ul>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="tab-content">
+
+                                                                    <div class="tab-pane fade in active" id="tabCarsModel" style="max-height:200px;overflow-y:scroll;">
+                                                                        <a href='#'>Maruti Suzuki</a><br />
+                                                                        <a href='#'>Hyundai</a><br />
+                                                                        <a href='#'>Tata</a><br />
+                                                                        <a href='#'>Mahindra</a><br />
+                                                                        <a href='#'>Toyoto</a><br />
+                                                                        <a href='#'>Honda</a><br />
+                                                                        <a href='#'>Chevrolet</a><br />
+                                                                        <a href='#'>Ford</a><br />
+                                                                        <a href='#'>Skoda</a><br />
+                                                                        <a href='#'>Volkswagen</a><br />
+                                                                        <a href='#'>Fiat</a><br />
+                                                                        <a href='#'>Nissan</a><br />
+                                                                        <a href='#'>Renault</a><br />
+                                                                        <a href='#'>Mitsubishi</a><br />
+                                                                        <a href='#'>Mercedes-Benz</a><br />
+                                                                        <a href='#'>Audi</a><br />
+                                                                        <a href='#'>Mahindra Renault</a><br />
+                                                                        <a href='#'>BMW</a><br />
+                                                                        <a href='#'>Hindustan Motors</a>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </div>
                                                 <div class="tab-pane fade" id="tabBikes">Default 4</div>
                                                 <div class="tab-pane fade" id="tabME">Default 5</div>
                                                 <div class="tab-pane fade" id="tabAll">Default 5</div>
                                             </div>
                                         </div>
                                     </div>
+
+                                   
+
+                                    <ul class="nav navbar-nav">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Iasmani Pinazo <span class="glyphicon glyphicon-user pull-right"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
 
                                 </div>
                             </div>
@@ -649,3 +736,12 @@
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }
+
+<script type="text/javascript">
+    $("#categoryUL li").click(function (e,args) {    
+        var selectedCate = $(this).text();
+        $("#categories").val("test" + ">");
+       
+    });
+</script>
+
