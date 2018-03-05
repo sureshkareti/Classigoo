@@ -130,15 +130,17 @@
                                 <option>30</option>
                             </select>
                         </form>
-                        <div class="btn-group pull-right">
+                        @*<div class="btn-group pull-right">
                             <button class="btn btn-orange" id="list"><i class="fa fa-th-list fa-white"></i> </button>
                             <button class="btn " id="grid"><i class="fa fa-th fa "></i></button>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- Listing-->
                       <div class="mt40" id="bloglist">
-                        @Html.Partial("DisplayAdds",Model)
-                        </div>
+                          
+                              @Html.Partial("DisplayAdds", Model)
+                              
+                          </div>
                     </div>
                 </div>
             </div>
