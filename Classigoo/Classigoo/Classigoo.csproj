@@ -434,6 +434,7 @@
     <Content Include="Scripts\Custome\home.js" />
     <Content Include="Scripts\Custome\jquery.easy-autocomplete.min.js" />
     <Content Include="Scripts\Custome\platform.js" />
+    <Content Include="Scripts\Custome\post.js" />
     <Content Include="Scripts\Custome\sdk.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
