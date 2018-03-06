@@ -464,6 +464,7 @@
     <Content Include="Scripts\ScriptsNew\owl.carousel.min.html" />
     <Content Include="Scripts\ScriptsNew\tether.min.js" />
     <Content Include="Scripts\ScriptsNew\tinymce.min.js" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
