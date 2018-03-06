@@ -594,6 +594,7 @@
     <Content Include="Scripts\Custome\home.js" />
     <Content Include="Scripts\Custome\jquery.easy-autocomplete.min.js" />
     <Content Include="Scripts\Custome\platform.js" />
+    <Content Include="Scripts\Custome\post.js" />
     <Content Include="Scripts\Custome\sdk.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -700,6 +701,7 @@
     <Content Include="Scripts\ScriptsNew\owl.carousel.min.html" />
     <Content Include="Scripts\ScriptsNew\tether.min.js" />
     <Content Include="Scripts\ScriptsNew\tinymce.min.js" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
