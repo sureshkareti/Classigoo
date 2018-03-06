@@ -1,35 +1,27 @@
-﻿@model AddsModel
+﻿
 @{
     Layout = null;
 }
-<div class="mt30 clearfix" id="divpage-number">
-    <ul class="pagination pull-right">
-        @for (int i = 1; i <= Model.PageCount; i++)
-        {
 
-            if (i == Model.CurrentPageIndex)
-            {
-                <li>
-                    <a class="page-number" href="javascript:void(0);" style="background: #2965be;color: #fff;pointer-events:none;">@i</a>
-                </li>
-            }
-            else
-            {
-                <li>
-                    <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
-                </li>
-            }
-        }
-    </ul>
-</div>
-
+<table id="tblMember" class="table" style="width: 100%">
+    <thead>
+        <tr>
+            <th>AddId</th>
+            <th>Location</th>
+            <th>Createddate</th>
+            <th>Title</th>
+            <th>Description</th>
+            
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table> 
 <div class="bloglisting list">
 
-    @foreach (var add in Model.Adds)
-    {
-        foreach (var realestate in add.RealEstates)
-        {
-            <ul>
+    @*@foreach (var add in Model.Adds)
+    {*@
+       
+            @*<ul>
                 <li class="clearfix">
                    
                     <div class="col-sm-2">
@@ -37,79 +29,28 @@
                         <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
                     </div>
                     <div class="col-sm-8">
-                        <h3><a class="title" href="#">@realestate.Title </a></h3>
+                        <h3><a class="title" href="#">@add.Title </a></h3>
                         <ul class="icondetail">
                             <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
-                            <li><i class="fa fa-calendar"></i> Posted On :@realestate.Created </li>
+                            <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
+                            <li><i class="fa fa-calendar"></i> Posted On :@add.Createddate </li>
                             <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
                         </ul>
                         <div class="tag"></div>
                         <div class="discrption">
-                            @realestate.Description <br>
+                            @add.Description <br>
                             
                         </div>
                     </div>
                 </li>
-                </ul>
-        }
-        foreach (var car in add.Cars)
-        {
-            <ul>
-                <li class="clearfix">
-                    
-                    <div class="col-sm-2">
-                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
-                    </div>
-                    <div class="col-sm-8">
-                        <h3><a class="title" href="#">@car.Title </a></h3>
-                        <ul class="icondetail">
-                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
-                            <li><i class="fa fa-calendar"></i> Posted On :@car.Created </li>
-                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                        </ul>
-                        <div class="tag"></div>
-                        <div class="discrption">
-                            @car.Description <br>
-                           
-                        </div>
-                    </div>
-                </li>
-                </ul>
-        }
-        foreach (var electronic in add.Electronics)
-        {
-            <ul>
-                <li class="clearfix">
-                    
-                    <div class="col-sm-2">
-                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
-                    </div>
-                    <div class="col-sm-8">
-                        <h3><a class="title" href="#">@electronic.Title </a></h3>
-                        <ul class="icondetail">
-                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                            <li><i class="fa fa-map-marker"></i> Location : California, U.S.</li>
-                            <li><i class="fa fa-calendar"></i> Posted On :@electronic.Created </li>
-                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                        </ul>
-                        <div class="tag"></div>
-                        <div class="discrption">
-                            @electronic.Description<br>
-                            
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        }
-    }
+                </ul>*@
+        
+        
+    @*}*@
             
     </div>
 <!-- Paging-->
-<div class="mt30 clearfix" id="divpage-number">
+@*<div class="mt30 clearfix" id="divpage-number">
     <ul class="pagination pull-right">
                 @for (int i = 1; i <= Model.PageCount; i++)
                 {
@@ -128,4 +69,32 @@
                     }
                 }
 </ul>
-</div>
+</div>*@
+
+<script>
+
+   var oTable;
+   $(document).ready(function () {
+     // destroy existing datatable before, initiating
+     if (oTable != undefined) {
+       oTable.fnDestroy();
+     };
+     oTable = $('#tblMember').dataTable({
+       "bServerSide": true,
+       "sAjaxSource": '@Url.Action("GetDataForDatatable","New")',
+       "bProcessing": true,
+       "Columns": [
+               { "sName": "AddId" },
+               { "sName": "Location" },
+               { "sName": "Createddate" },
+               { "sName": "Title" },
+               { "sName": "Description" }
+
+       ], "columnDefs": [{
+           "defaultContent": "-",
+           "targets": "_all"
+       }]
+     });
+   })
+</script>
+
