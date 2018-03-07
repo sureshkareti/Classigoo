@@ -208,8 +208,26 @@
                 data: { "currentPageIndex": page },
                 success: function (data) {
                     //var htmlData = $.parseHTML(data);
-                    $("#bloglist").html(data);
-                    $(".bloglisting").css("display", "block");
+                    //$("#bloglist").html(data);
+                    //$(".bloglisting").css("display", "block");
+
+
+                    var datatableVariable = $('#tblMember').DataTable({
+                        data: data,
+                        columns: [
+                            { 'data': 'sEcho' },
+                            { 'data': 'iTotalRecords' },
+                            { 'data': 'lastName' },
+                            {
+                                'data': 'feesPaid', 'render': function (feesPaid) {
+                                    return '$ ' + feesPaid;
+                                }
+                            },
+                            { 'data': 'iTotalDisplayRecords' },
+                            { 'data': 'aaData' }
+                           
+                            ]
+                    });
                 },
                 failure: function (response) {
                     console.log(response.responseText);

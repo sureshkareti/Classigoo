@@ -79,22 +79,42 @@
      if (oTable != undefined) {
        oTable.fnDestroy();
      };
-     oTable = $('#tblMember').dataTable({
+       @*oTable = $('#tblMember').dataTable({
        "bServerSide": true,
        "sAjaxSource": '@Url.Action("GetDataForDatatable","New")',
        "bProcessing": true,
        "Columns": [
-               { "sName": "AddId" },
-               { "sName": "Location" },
-               { "sName": "Createddate" },
-               { "sName": "Title" },
-               { "sName": "Description" }
+               { "data": "AddId" },
+               { "data": "Location" },
+               { "data": "Createddate" },
+               { "data": "Title" },
+               { "data": "Description" }
 
        ], "columnDefs": [{
            "defaultContent": "-",
            "targets": "_all"
        }]
-     });
-   })
+     });*@
+
+
+       $.ajax({
+           type: "POST",
+           dataType: "json",
+           url: '@Url.Action("GetDataForDatatable","New")',
+           success: function (data) {
+               console.log(data);
+               var datatableVariable = $('#tblMember').DataTable({
+                   data: data,
+                   columns: [
+                       { 'data': 'sEcho' },
+                       { 'data': 'iTotalRecords' },
+                       { 'data': 'iTotalDisplayRecords' },
+
+                       { 'data': 'aaData' }
+                   ]
+               });
+           }
+           });
+   });
 </script>
 

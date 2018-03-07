@@ -38,10 +38,10 @@
                                 </div>
                                 <div class="col-md-7">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item" id="cat-nav-l0"><a href="javascript:void(0)"><i class="fa fa-home"></i></a></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><a href="javascript:void(0)" ></a></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><a href="javascript:void(0)"  > </a></li>
-                                        <li class="breadcrumb-item active" id="cat-nav-l3" style="display:none"><a href="javascript:void(0)" > </a></li>
+                                        <li class="breadcrumb-item" id="cat-nav-l0"><a href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
+                                        <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
+                                        <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
+                                        <li class="breadcrumb-item active" id="cat-nav-l3" style="display:none"><span></span></li>
                                     </ol>
 
                                     <div>
@@ -69,9 +69,9 @@
                                     </div>
 
 
-                                    <div class="panel with-nav-tabs panel-default" style="display:block">
+                                    <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
                                         <div class="panel-heading">
-                                            <ul class="nav nav-tabs">
+                                            <ul class="nav nav-tabs idtabCategoriesul">
                                                 <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
                                                 <li style="display:none" id="idtabPro"><a href="#tabPro"  data-toggle="tab">Properties</a></li>
                                                 <li style="display:none" id="idtabCV"><a href="#tabCV"  data-toggle="tab">Construction Vehicles</a></li>
@@ -99,6 +99,38 @@
                                                     <a href='javascript:void(0)' id="catAll" class="post-category-li">All Vehicles Hire/Engage / Lease</a><br />
                                                 </div>
                                                 <div class="tab-pane fade in" id="tabPro">
+
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+
+                                                    <div class="panel with-nav-tabs panel-default">
+                                                        <div class="panel-heading">
+                                                            <ul class="nav nav-tabs ">
+                                                                <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
+                                                                <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="tab-content tabProChilds">
+
+                                                                <div class="tab-pane fade in active" id="tabProForSale">
+                                                                    <a href="#">Plots/Land</a><br />
+                                                                    <a href="#"> Agricultural Land</a><br />
+                                                                    <a href="#">Shops & Offices</a><br />
+                                                                    <a href="#">Apartments</a><br />
+                                                                    <a href="#">Independent Houses & Villas</a>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="tabProForRent">
+                                                                    <a href="#">Apartments</a><br />
+                                                                    <a href="#">Independent Houses & Villas</a><br />
+                                                                    <a href="#">Hostels & PG</a><br />
+                                                                    <a href="#">Shops & Offices</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade in" id="tabCV">
                                                     <div class="panel with-nav-tabs panel-default">
                                                         <div class="panel-heading">
                                                             <ul class="nav nav-tabs">
@@ -123,37 +155,6 @@
                                                                     <a href="#">Shops & Offices</a>
                                                                 </div>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="tabCV">
-                                                    <div class="tab-pane fade in active" id="tabPro">
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                    <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content">
-
-                                                                    <div class="tab-pane fade in active" id="tabProForSale">
-                                                                        <a href="#">Plots/Land</a><br />
-                                                                        <a href="#"> Agricultural Land</a><br />
-                                                                        <a href="#">Shops & Offices</a><br />
-                                                                        <a href="#">Apartments</a><br />
-                                                                        <a href="#">Independent Houses & Villas</a>
-                                                                    </div>
-                                                                    <div class="tab-pane fade" id="tabProForRent">
-                                                                        <a href="#">Apartments</a><br />
-                                                                        <a href="#">Independent Houses & Villas</a><br />
-                                                                        <a href="#">Hostels & PG</a><br />
-                                                                        <a href="#">Shops & Offices</a>
-                                                                    </div>
-
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -893,7 +894,7 @@
         var selectedCate = $(this).text();
         if (selectedCate == "Properties") {
            
-            $("#cat-nav-l1 a").text("Properties");
+            $("#cat-nav-l1 span").text("Properties");
             $("#cat-nav-l1").css("display", "inline");
 
             
@@ -908,11 +909,39 @@
         }
         else if (selectedCate == "Construction Vehicles") {
 
+            $("#cat-nav-l1 a").text("Construction Vehicles");
+            $("#cat-nav-l1").css("display", "inline");
+
+            $(".idtabCategoriesul li").removeClass("active");
+            $(".idtabCategoriesul li").css("display", "none");
+            $('.idtabCategoriesul li').each(function (i) {
+                $($(this).find('a').attr('href')).removeClass("active");
+            });
+
+
+            $("#idtabCV").css("display", "block");
+            $("#idtabCV").addClass("active");
+            $("#tabCV").addClass("active");
+
         }
         else if (selectedCate == "Transportation Vehicles") {
 
+            $("#cat-nav-l1 a").text("Transportation Vehicles");
+            $("#cat-nav-l1").css("display", "inline");
+
+            $(".idtabCategoriesul li").removeClass("active");
+            $(".idtabCategoriesul li").css("display", "none");
+            $('.idtabCategoriesul li').each(function (i) {
+                $($(this).find('a').attr('href')).removeClass("active");
+            });
+
+
+            $("#idtabTV").css("display", "block");
+            $("#idtabTV").addClass("active");
+            $("#tabTV").addClass("active");
         }
         else if (selectedCate == "Agricultural Vehicles") {
+
 
         }
         else if (selectedCate == "Passenger Vehicles") {
@@ -929,31 +958,59 @@
         }
         else if (selectedCate == "All Vehicles Hire/Engage / Lease") {
 
-        }
+        }     
+    });
 
-        
+    $(".tabProChilds a").click(function () {
+
+        var secondLevl = $(this).parent().attr('id');
+
+        var thirdLevel = $(this).text();
+
+        if (secondLevl== "tabProForSale") {
+            $("#cat-nav-l2 span").text("ForSale");
+        }
+        else
+        {
+            $("#cat-nav-l2 span").text("ForRent");
+        }       
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l3 span").text(thirdLevel);
+        $("#cat-nav-l3").css("display", "inline");
+                
+        $("#divCategories").css('display', 'none');
     });
 
 
     $("#cat-nav-l0 a").click(function () {
-             
+        RefreshCategories();
+    });
+    
+    $(".backHome").click(function () {
+
+        RefreshCategories();
+    });
+
+    function RefreshCategories()
+    {
+        $("#divCategories").css('display', 'block');
+
         $("#cat-nav-l1").css("display", "none");
         $("#cat-nav-l2").css("display", "none");
         $("#cat-nav-l3").css("display", "none");
 
+        $(".idtabCategoriesul li").removeClass("active");
+        $(".idtabCategoriesul li").css("display", "none");
+
+        $('.idtabCategoriesul li').each(function (i) {
+            $($(this).find('a').attr('href')).removeClass("active");
+        });
+
         $("#idtabCategories").css("display", "block");
         $("#idtabCategories").addClass("active");
         $("#tabCategories").addClass("active");
-
-
-        $("#idtabPro").css("display", "none");
-        $("#idtabPro").removeClass("active");
-        $("#tabPro").removeClass("active");
-       
-        
-    });
-    
-
+    }
 
 
 </script>
