@@ -100,7 +100,7 @@
                                                     <a href='javascript:void(0)' id="catCars" class="post-category-li">Cars</a><br />
                                                     <a href='javascript:void(0)' id="catBikes" class="post-category-li">Bikes</a><br />
                                                     <a href='javascript:void(0)' id="catME" class="post-category-li">Mobiles & Electronics</a><br />
-                                                    <a href='javascript:void(0)' id="catAll" class="post-category-li">All Vehicles Hire/Engage / Lease</a><br />
+                                                    <a href='javascript:void(0)' id="catAll" class="post-category-li">All Vehicles Hire/Engage/Lease</a><br />
                                                 </div>
                                                 <div class="tab-pane fade in" id="tabPro">
 
@@ -115,7 +115,6 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             <div class="tab-content tabProChilds">
-
                                                                 <div class="tab-pane fade in active" id="tabProForSale">
                                                                     <a href="javascript:void(0)">Plots/Land</a><br />
                                                                     <a href="javascript:void(0)"> Agricultural Land</a><br />
@@ -203,8 +202,71 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="tabBikes">Default 4</div>
-                                                <div class="tab-pane fade" id="tabME">Default 5</div>
+                                                <div class="tab-pane fade in" id="tabBikes">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <div class="panel with-nav-tabs panel-default">
+                                                        <div class="panel-heading">
+                                                            <ul class="nav nav-tabs">
+                                                                <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
+                                                                <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
+                                                                <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
+                                                                <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="tab-content tabBikesChilds">
+                                                                <div class="tab-pane fade in active" id="tabBikesMotorcycles" style="max-height:200px;overflow-y:scroll;">
+                                                                    <a href="javascript:void(0)">Bajaj</a><br />
+                                                                    <a href="javascript:void(0)">Hero Honda</a><br />
+                                                                    <a href="javascript:void(0)">Yamaha</a><br />
+                                                                    <a href="javascript:void(0)">Royal Enfield</a><br />
+                                                                    <a href="javascript:void(0)">Honda</a><br />
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">TVS</a><br />
+                                                                    <a href="javascript:void(0)">Suzuki</a><br />
+                                                                    <a href="javascript:void(0)">KTM</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a><br />
+                                                                 
+                                                                </div>
+                                                                <div class="tab-pane fade" id="tabBikesScooters">
+                                                                    <a href="javascript:void(0)">Honda</a><br />
+                                                                    <a href="javascript:void(0)">TVS</a><br />
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">Suzuki</a><br />
+                                                                    <a href="javascript:void(0)">Bajaj</a><br />
+                                                                    <a href="javascript:void(0)">Mahindra</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a>
+                                                                    
+                                                                </div>
+                                                                <div class="tab-pane fade" id="tabBikesBicycles">
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">Hercules</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a><br />
+                                                                   
+                                                                </div>
+                                                                <div class="tab-pane fade" id="tabBikesSpareParts">
+                                                                    <a href="javascript:void(0)">Spare Parts</a><br />
+                                                                   
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade in" id="tabME">                                               
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)">Computers & Laptops</a><br />
+                                                    <a href="javascript:void(0)">TVs, Video - Audio</a><br />
+                                                    <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
+                                                    <a href="javascript:void(0)">ACs</a><br />
+                                                    <a href="javascript:void(0)">Washing Machines</a><br />
+                                                    <a href="javascript:void(0)">Fridges</a><br />
+                                                    <a href="javascript:void(0)">Computer Accessories</a><br />
+                                                    <a href="javascript:void(0)">Cameras & Lenses</a><br />
+                                                    <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
+                                                    <a href="javascript:void(0)">Games & Entertainment</a>
+
+                                                </div>
                                                 <div class="tab-pane fade" id="tabAll">Default 5</div>
                                             </div>
                                         </div>
@@ -960,13 +1022,26 @@
 
         }
         else if (selectedCate == "Bikes") {
+            PathSetFirstLevel("Bikes");
 
+            $("#idtabBikes").css("display", "block");
+            $("#idtabBikes").addClass("active");
+            $("#tabBikes").addClass("active");
         }
         else if (selectedCate == "Mobiles & Electronics") {
+            PathSetFirstLevel("Mobiles & Electronics");
 
+            $("#idtabME").css("display", "block");
+            $("#idtabME").addClass("active");
+            $("#tabME").addClass("active");
         }
-        else if (selectedCate == "All Vehicles Hire/Engage / Lease") {
+        else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
 
+            PathSetFirstLevel("All Vehicles Hire/Engage/Lease");         
+
+            $("#cat-nav-l4").css("display", "inline");
+
+            $("#divCategories").css('display', 'none');
         }
     });
     //properties childs
@@ -994,7 +1069,7 @@
 
     });
 
-    //cars chailds
+    //cars childs
     $("#tabCarsModel a").click(function () {
         var thirdLevel = $(this).text();
 
@@ -1004,6 +1079,50 @@
 
         $("#cat-nav-l3 span").text(thirdLevel);
         $("#cat-nav-l3").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+    });
+
+    //Bikes childs
+    $(".tabBikesChilds a").click(function () {
+
+        var secondLevl = $(this).parent().attr('id');
+
+        var thirdLevel = $(this).text();
+
+        if (secondLevl == "tabBikesMotorcycles") {
+            $("#cat-nav-l2 span").text("Motorcycles");
+        }
+        else if (secondLevl == "tabBikesScooters") {
+            $("#cat-nav-l2 span").text("Scooters");
+        }
+        else if (secondLevl == "tabBikesBicycles") {
+            $("#cat-nav-l2 span").text("Bicycles");
+        }
+        else if (secondLevl == "tabBikesSpareParts") {
+            $("#cat-nav-l2 span").text("SpareParts");
+        }
+
+
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l3 span").text(thirdLevel);
+        $("#cat-nav-l3").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+
+    });
+
+    //Mobile & Electronics
+    $("#tabME a").click(function () {
+
+        var secondLevel = $(this).text();
+        $("#cat-nav-l2 span").text(secondLevel);
+        $("#cat-nav-l2").css("display", "inline");
 
         $("#cat-nav-l4").css("display", "inline");
 
