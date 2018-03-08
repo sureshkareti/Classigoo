@@ -1,100 +1,87 @@
-﻿
+﻿@model AddsModel
 @{
     Layout = null;
 }
-
-<table id="tblMember" class="table" style="width: 100%">
-    <thead>
-        <tr>
-            <th>AddId</th>
-            <th>Location</th>
-            <th>Createddate</th>
-            <th>Title</th>
-            <th>Description</th>
-            
-        </tr>
-    </thead>
-    <tbody></tbody>
-</table> 
-<div class="bloglisting list">
-
-    @*@foreach (var add in Model.Adds)
-    {*@
-       
-            @*<ul>
-                <li class="clearfix">
-                   
-                    <div class="col-sm-2">
-                        <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
-                        <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
-                    </div>
-                    <div class="col-sm-8">
-                        <h3><a class="title" href="#">@add.Title </a></h3>
-                        <ul class="icondetail">
-                            <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                            <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
-                            <li><i class="fa fa-calendar"></i> Posted On :@add.Createddate </li>
-                            <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                        </ul>
-                        <div class="tag"></div>
-                        <div class="discrption">
-                            @add.Description <br>
-                            
-                        </div>
-                    </div>
-                </li>
-                </ul>*@
-        
-        
-    @*}*@
-            
-    </div>
 <!-- Paging-->
-@*<div class="mt30 clearfix" id="divpage-number">
-    <ul class="pagination pull-right">
-                @for (int i = 1; i <= Model.PageCount; i++)
-                {
+<div class="mt30 clearfix" id="divpage-number">
+        
+<div id="page-selection" class="pagination pull-right"></div>         
+    
+</div>
+<!-- Paging-->
+    <div class="bloglisting list" id="content">
 
-                    if (i == Model.CurrentPageIndex)
-                    {
-                        <li>
-                            <a class="page-number" href="javascript:void(0);" style="background: #2965be;color: #fff;pointer-events:none;">@i</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>
-                            <a class="page-number" href="javascript:void(0);" onclick="getAddsbyPage(@i)">@i</a>
-                        </li>
-                    }
-                }
-</ul>
-</div>*@
+      @foreach (var add in Model.Adds)
+      { 
 
+        <ul>
+            <li class="clearfix">
+
+                <div class="col-sm-2">
+                    <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
+                    <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
+                </div>
+                <div class="col-sm-8">
+                    <h3><a class="title" href="#">@add.Title </a></h3>
+                    <ul class="icondetail">
+                        <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
+                        <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
+                        <li><i class="fa fa-calendar"></i> Posted On :@add.Createddate </li>
+                        <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
+                    </ul>
+                    <div class="tag"></div>
+                    <div class="discrption">
+                        @add.Description <br>
+
+                    </div>
+                </div>
+            </li>
+            </ul>
+
+
+        }
+
+    </div>
+<script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
 <script>
+        // init bootpag
+        $('#page-selection').bootpag({
+            total: @Model.PageCount,
+            page:@Model.CurrentPageIndex,
+            maxVisible: 10,
+            leaps: true,
+            firstLastUse: true,
+            first: 'First',
+            last: 'Last'
+        }).on('page', function(event, num){
+            
+            getAddsbyPage(num);
+        })// or some ajax content loading...
+    
+        function getAddsbyPage(pageNum)
+        {
+            var page = parseInt(pageNum);
 
-   var oTable;
-   $(document).ready(function () {
-     // destroy existing datatable before, initiating
-     if (oTable != undefined) {
-       oTable.fnDestroy();
-     };
-     oTable = $('#tblMember').dataTable({
-       "bServerSide": true,
-       "sAjaxSource": '@Url.Action("GetDataForDatatable","New")',
-       "bProcessing": true,
-       "Columns": [
-               { "sName": "AddId" },
-               { "sName": "Location" },
-               { "sName": "Createddate" },
-               { "sName": "Title" },
-               { "sName": "Description" }
+            $.ajax({
+                url: '@Url.Action("DisplayAdds")',
+                type: 'POST',
+                dataType: "html",
+                data: { "currentPageIndex": page },
+                success: function (data) {
+                    //var htmlData = $.parseHTML(data);
+                    $("#content").html(data);
+                    $(".bloglisting").css("display", "block");
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
 
-       ], "columnDefs": [{
-           "defaultContent": "-",
-           "targets": "_all"
-       }]
-     });
-   })
+        }
+       
 </script>
+
 

@@ -1,4 +1,4 @@
-﻿
+﻿@model AddsModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -139,7 +139,7 @@
                     <!-- Listing-->
                       <div class="mt40" id="bloglist">
                           
-                              @Html.Partial("DisplayAdds")
+                              @Html.Partial("DisplayAdds",Model)
                               
                           </div>
                     </div>
@@ -196,53 +196,6 @@
     <script src="~/Scripts/custom.js"></script>
 
 <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        function getAddsbyPage(pageNum)
-        {
-            var page = parseInt(pageNum); 
-            
-            $.ajax({
-                url: '@Url.Action("DisplayAdds")',
-                type: 'POST',
-                dataType: "html",
-                data: { "currentPageIndex": page },
-                success: function (data) {
-                    //var htmlData = $.parseHTML(data);
-                    $("#bloglist").html(data);
-                    $(".bloglisting").css("display", "block");
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                }
-            });
-            
-        }
-        $(document).ready(function () {
-            @*$('.page-number').click(function () {
-                var page = parseInt($(this).html());
+<script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
 
-                $.ajax({
-                    url: '@Url.Action("DisplayAdds")',
-                    type: 'POST',
-                    dataType: "html",
-                    data: { "currentPageIndex": page },
-                    success: function (data) {
-                        //var htmlData = $.parseHTML(data);
-                        $("#bloglist").html(data);
-                    },
-                    failure: function (response) {
-                        console.log(response.responseText);
-                    },
-                    error: function (response) {
-                        console.log(response.responseText);
-                    }
-                });
-            });*@
-        });
-             
-
-
-    </script>
+    

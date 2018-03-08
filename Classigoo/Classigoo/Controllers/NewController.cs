@@ -20,15 +20,15 @@ namespace Classigoo.Controllers
         {
             return View(GetAdds(1));
         }
-        //[HttpPost]
-        //public ActionResult DisplayAdds(int currentPageIndex)
-        //{
-        //    return PartialView(GetAdds(currentPageIndex));
-        //}
+        [HttpPost]
+        public ActionResult DisplayAdds(int currentPageIndex)
+        {
+            return PartialView(GetAdds(currentPageIndex));
+        }
 
         private AddsModel GetAdds(int currentPage)
         {
-            int maxRows = 10;
+            int maxRows = 5;
             ClassigooEntities db = new ClassigooEntities();
             
             AddsModel addColl = new AddsModel();
@@ -55,7 +55,7 @@ namespace Classigoo.Controllers
         {
             CustomAdd customAdd = new CustomAdd();
             customAdd.Location = add.Location;
-            customAdd.Createddate = (DateTime)add.Created;
+            customAdd.Createddate = add.Created.ToString();
             customAdd.AddId = add.AddId;
             switch (add.Category)
             {
@@ -91,7 +91,7 @@ namespace Classigoo.Controllers
             return customAdd;
         }
 
-
+        
         public ActionResult GetDataForDatatable(JQueryDataTableParams param)
         {
             ClassigooEntities db = new ClassigooEntities();
@@ -123,7 +123,7 @@ namespace Classigoo.Controllers
                      .Take(param.iDisplayLength);
 
             var result = from a in displayedMembers
-                         select new CustomAdd {AddId=a.AddId,Location=a.Location,Createddate=(DateTime)a.Created,
+                         select new CustomAdd {AddId=a.AddId,Location=a.Location,Createddate=a.Created.ToString(),
                          Title="dfadf",Description="rerwe"
                          };
 

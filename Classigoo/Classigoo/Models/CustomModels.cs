@@ -17,7 +17,7 @@ namespace Classigoo
     {
         public int AddId { get; set; }
         public string Title { get; set; }
-        public DateTime Createddate { set; get; }
+        public string Createddate { set; get; }
         public string Description { set; get; }
         public string Location { set; get; }
     }
