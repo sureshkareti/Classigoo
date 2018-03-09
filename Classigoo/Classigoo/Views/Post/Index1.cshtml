@@ -45,33 +45,11 @@
                                         <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
                                         <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
                                     </ol>
-
-
-
                                     <div>
-
-
-                                        @*<div class="dropdown " style="display:block;">
-
-                                                <input type="button" readonly class="form-control input-lg dropdown-toggle" data-toggle="dropdown" value="All Categories" id="categories" />
-                                                <ul class="dropdown-menu" id="categoryUL" style="width:100%">
-                                                    <li><a href="javascript:void(0)" value="prop">Properties</a></li>
-                                                    <li><a href="javascript:void(0)" value="cars">Cars</a></li>
-                                                    <li><a href="javascript:void(0)" value="ele">Electronics & Appliance</a></li>
-                                                    <li><a href="javascript:void(0)" value="furn">Furniture</a></li>
-                                                    <li><a href="javascript:void(0)" value="jobs">Jobs</a></li>
-                                                    <li><a href="javascript:void(0)" value="mob">Mobiles</a></li>
-                                                    <li><a href="javascript:void(0)" value="bikes">Bikes</a></li>
-                                                    <li><a href="javascript:void(0)" value="bsh">Books, Sports & Hobbies</a></li>
-                                                    <li><a href="javascript:void(0)" value="fashion">Fashion</a></li>
-                                                    <li><a href="javascript:void(0)" value="pets">Pets</a></li>
-                                                    <li><a href="javascript:void(0)" value="services">Services</a></li>
-                                                </ul>
-
-                                            </div>*@
-
+                                        <input type="hidden" id="hdnCateFristLevel" />
+                                        <input type="hidden" id="hdnCateSecondLevel" />
+                                        <input type="hidden" id="hdnCateThirdLevel" />
                                     </div>
-
 
                                     <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
                                         <div class="panel-heading">
@@ -91,16 +69,16 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="tab-content">
-                                                <div class="tab-pane fade in active" id="tabCategories">
-                                                    <a href='javascript:void(0)' id="catPro" class="post-category-li">Properties</a><br />
-                                                    <a href='javascript:void(0)' id="catCV" class="post-category-li">Construction Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catTV" class="post-category-li">Transportation Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catAV" class="post-category-li">Agricultural Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catPV" class="post-category-li">Passenger Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catCars" class="post-category-li">Cars</a><br />
-                                                    <a href='javascript:void(0)' id="catBikes" class="post-category-li">Bikes</a><br />
-                                                    <a href='javascript:void(0)' id="catME" class="post-category-li">Mobiles & Electronics</a><br />
-                                                    <a href='javascript:void(0)' id="catAll" class="post-category-li">All Vehicles Hire/Engage / Lease</a><br />
+                                                <div class="tab-pane fade in active sub-category-items" id="tabCategories">
+                                                    <a href='javascript:void(0)' id="catPro">Properties</a><br />
+                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catCars">Cars</a><br />
+                                                    <a href='javascript:void(0)' id="catBikes">Bikes</a><br />
+                                                    <a href='javascript:void(0)' id="catME">Mobiles & Electronics</a><br />
+                                                    <a href='javascript:void(0)' id="catAll">All Vehicles Hire/Engage/Lease</a><br />
                                                 </div>
                                                 <div class="tab-pane fade in" id="tabPro">
 
@@ -115,15 +93,14 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             <div class="tab-content tabProChilds">
-
-                                                                <div class="tab-pane fade in active" id="tabProForSale">
+                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
                                                                     <a href="javascript:void(0)">Plots/Land</a><br />
-                                                                    <a href="javascript:void(0)"> Agricultural Land</a><br />
+                                                                    <a href="javascript:void(0)">Agricultural Land</a><br />
                                                                     <a href="javascript:void(0)">Shops & Offices</a><br />
                                                                     <a href="javascript:void(0)">Apartments</a><br />
                                                                     <a href="javascript:void(0)">Independent Houses & Villas</a>
                                                                 </div>
-                                                                <div class="tab-pane fade" id="tabProForRent">
+                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
                                                                     <a href="javascript:void(0)">Apartments</a><br />
                                                                     <a href="javascript:void(0)">Independent Houses & Villas</a><br />
                                                                     <a href="javascript:void(0)">Hostels & PG</a><br />
@@ -134,38 +111,33 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade in" id="tabCV">
-                                                    <div class="panel with-nav-tabs panel-default">
-                                                        <div class="panel-heading">
-                                                            <ul class="nav nav-tabs">
-                                                                <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <div class="tab-content">
-
-                                                                <div class="tab-pane fade in active" id="tabProForSale">
-                                                                    <a href="#">Plots/Land</a><br />
-                                                                    <a href="#"> Agricultural Land</a><br />
-                                                                    <a href="#">Shops & Offices</a><br />
-                                                                    <a href="#">Apartments</a><br />
-                                                                    <a href="#">Independent Houses & Villas</a>
-                                                                </div>
-                                                                <div class="tab-pane fade" id="tabProForRent">
-                                                                    <a href="#">Apartments</a><br />
-                                                                    <a href="#">Independent Houses & Villas</a><br />
-                                                                    <a href="#">Hostels & PG</a><br />
-                                                                    <a href="#">Shops & Offices</a>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)">Backhoe Loader</a><br />
+                                                    <a href="javascript:void(0)">Excavator</a><br />
+                                                    <a href="javascript:void(0)">Wheel Loader</a><br />
+                                                    <a href="javascript:void(0)">Crane</a><br />
+                                                    <a href="javascript:void(0)">Dozer</a><br />
+                                                    <a href="javascript:void(0)">Transit Mixer</a><br />
+                                                    <a href="javascript:void(0)">Soil Compactor</a><br />
+                                                    <a href="javascript:void(0)">Rock Breaker</a><br />
+                                                    <a href="javascript:void(0)">Motor Grader</a><br />
+                                                    <a href="javascript:void(0)">Forklift</a><br />
+                                                    <a href="javascript:void(0)">Dumper</a><br />
+                                                    <a href="javascript:void(0)">Batching Plant</a><br />
                                                 </div>
-                                                <div class="tab-pane fade" id="tabTV">Default 3</div>
-                                                <div class="tab-pane fade" id="tabAV">Default 4</div>
-                                                <div class="tab-pane fade" id="tabPV">Default 5</div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">Default 3</div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)">Combine / Harvestor</a><br />
+                                                    <a href="javascript:void(0)">Rice Transplator</a><br />
+                                                    <a href="javascript:void(0)">Rotary Tiller</a><br />
+                                                    <a href="javascript:void(0)">Sprayer</a><br />
+                                                    <a href="javascript:void(0)">Thrasher</a><br />
+                                                    <a href="javascript:void(0)">Tractors</a><br />
+
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">Default 5</div>
                                                 <div class="tab-pane fade in" id="tabCars">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
@@ -176,8 +148,7 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             <div class="tab-content">
-
-                                                                <div class="tab-pane fade in active" id="tabCarsModel" style="max-height:200px;overflow-y:scroll;">
+                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
                                                                     <a href='javascript:void(0)'>Maruti Suzuki</a><br />
                                                                     <a href='javascript:void(0)'>Hyundai</a><br />
                                                                     <a href='javascript:void(0)'>Tata</a><br />
@@ -203,167 +174,253 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade" id="tabBikes">Default 4</div>
-                                                <div class="tab-pane fade" id="tabME">Default 5</div>
+                                                <div class="tab-pane fade in" id="tabBikes">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <div class="panel with-nav-tabs panel-default">
+                                                        <div class="panel-heading">
+                                                            <ul class="nav nav-tabs">
+                                                                <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
+                                                                <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
+                                                                <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
+                                                                <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="tab-content tabBikesChilds">
+                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
+                                                                    <a href="javascript:void(0)">Bajaj</a><br />
+                                                                    <a href="javascript:void(0)">Hero Honda</a><br />
+                                                                    <a href="javascript:void(0)">Yamaha</a><br />
+                                                                    <a href="javascript:void(0)">Royal Enfield</a><br />
+                                                                    <a href="javascript:void(0)">Honda</a><br />
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">TVS</a><br />
+                                                                    <a href="javascript:void(0)">Suzuki</a><br />
+                                                                    <a href="javascript:void(0)">KTM</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                </div>
+                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
+                                                                    <a href="javascript:void(0)">Honda</a><br />
+                                                                    <a href="javascript:void(0)">TVS</a><br />
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">Suzuki</a><br />
+                                                                    <a href="javascript:void(0)">Bajaj</a><br />
+                                                                    <a href="javascript:void(0)">Mahindra</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a>
+
+                                                                </div>
+                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
+                                                                    <a href="javascript:void(0)">Hero</a><br />
+                                                                    <a href="javascript:void(0)">Hercules</a><br />
+                                                                    <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                </div>
+                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
+                                                                    <a href="javascript:void(0)">Spare Parts</a><br />
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)">Computers & Laptops</a><br />
+                                                    <a href="javascript:void(0)">TVs, Video - Audio</a><br />
+                                                    <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
+                                                    <a href="javascript:void(0)">ACs</a><br />
+                                                    <a href="javascript:void(0)">Washing Machines</a><br />
+                                                    <a href="javascript:void(0)">Fridges</a><br />
+                                                    <a href="javascript:void(0)">Computer Accessories</a><br />
+                                                    <a href="javascript:void(0)">Cameras & Lenses</a><br />
+                                                    <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
+                                                    <a href="javascript:void(0)">Games & Entertainment</a>
+
+                                                </div>
                                                 <div class="tab-pane fade" id="tabAll">Default 5</div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        @*<div class="panel with-nav-tabs panel-default" style="display:block">
-                                                <div class="panel-heading">
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="active"><a href="#tabPro" data-toggle="tab">Properties</a></li>
-                                                        <li><a href="#tabCV" data-toggle="tab">Construction Vehicles</a></li>
-                                                        <li><a href="#tabTV" data-toggle="tab">Transportation Vehicles</a></li>
-                                                        <li><a href="#tabAV" data-toggle="tab">Agricultural Vehicles</a></li>
-                                                        <li><a href="#tabPV" data-toggle="tab">Passenger Vehicles</a></li>
-                                                        <li><a href="#tabCars" data-toggle="tab">Cars</a></li>
-                                                        <li><a href="#tabBikes" data-toggle="tab">Bikes</a></li>
-                                                        <li><a href="#tabME" data-toggle="tab">Mobiles & Electronics </a></li>
-                                                        <li><a href="#tabAll" data-toggle="tab">All Vehicles Hire/Engage / Lease</a></li>
-
-                                                    </ul>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane fade in active" id="tabPro">
-                                                            <div class="panel with-nav-tabs panel-default">
-                                                                <div class="panel-heading">
-                                                                    <ul class="nav nav-tabs">
-                                                                        <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                        <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="panel-body">
-                                                                    <div class="tab-content">
-
-                                                                        <div class="tab-pane fade in active" id="tabProForSale">
-                                                                            <a href="#">Plots/Land</a><br />
-                                                                            <a href="#"> Agricultural Land</a><br />
-                                                                            <a href="#">Shops & Offices</a><br />
-                                                                            <a href="#">Apartments</a><br />
-                                                                            <a href="#">Independent Houses & Villas</a>
-                                                                        </div>
-                                                                        <div class="tab-pane fade" id="tabProForRent">
-                                                                            <a href="#">Apartments</a><br />
-                                                                            <a href="#">Independent Houses & Villas</a><br />
-                                                                            <a href="#">Hostels & PG</a><br />
-                                                                            <a href="#">Shops & Offices</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tabCV">
-                                                            <div class="tab-pane fade in active" id="tabPro">
-                                                                <div class="panel with-nav-tabs panel-default">
-                                                                    <div class="panel-heading">
-                                                                        <ul class="nav nav-tabs">
-                                                                            <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                            <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="panel-body">
-                                                                        <div class="tab-content">
-
-                                                                            <div class="tab-pane fade in active" id="tabProForSale">
-                                                                                <a href="#">Plots/Land</a><br />
-                                                                                <a href="#"> Agricultural Land</a><br />
-                                                                                <a href="#">Shops & Offices</a><br />
-                                                                                <a href="#">Apartments</a><br />
-                                                                                <a href="#">Independent Houses & Villas</a>
-                                                                            </div>
-                                                                            <div class="tab-pane fade" id="tabProForRent">
-                                                                                <a href="#">Apartments</a><br />
-                                                                                <a href="#">Independent Houses & Villas</a><br />
-                                                                                <a href="#">Hostels & PG</a><br />
-                                                                                <a href="#">Shops & Offices</a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tabTV">Default 3</div>
-                                                        <div class="tab-pane fade" id="tabAV">Default 4</div>
-                                                        <div class="tab-pane fade" id="tabPV">Default 5</div>
-                                                        <div class="tab-pane fade" id="tabCars">
-                                                            <div class="tab-pane fade in active" id="tabPro">
-                                                                <div class="panel with-nav-tabs panel-default">
-                                                                    <div class="panel-heading">
-                                                                        <ul class="nav nav-tabs">
-                                                                            <li class="active"><a href="#tabCarsModel" data-toggle="tab">Model</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="panel-body">
-                                                                        <div class="tab-content">
-
-                                                                            <div class="tab-pane fade in active" id="tabCarsModel" style="max-height:200px;overflow-y:scroll;">
-                                                                                <a href='#'>Maruti Suzuki</a><br />
-                                                                                <a href='#'>Hyundai</a><br />
-                                                                                <a href='#'>Tata</a><br />
-                                                                                <a href='#'>Mahindra</a><br />
-                                                                                <a href='#'>Toyoto</a><br />
-                                                                                <a href='#'>Honda</a><br />
-                                                                                <a href='#'>Chevrolet</a><br />
-                                                                                <a href='#'>Ford</a><br />
-                                                                                <a href='#'>Skoda</a><br />
-                                                                                <a href='#'>Volkswagen</a><br />
-                                                                                <a href='#'>Fiat</a><br />
-                                                                                <a href='#'>Nissan</a><br />
-                                                                                <a href='#'>Renault</a><br />
-                                                                                <a href='#'>Mitsubishi</a><br />
-                                                                                <a href='#'>Mercedes-Benz</a><br />
-                                                                                <a href='#'>Audi</a><br />
-                                                                                <a href='#'>Mahindra Renault</a><br />
-                                                                                <a href='#'>BMW</a><br />
-                                                                                <a href='#'>Hindustan Motors</a>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="tab-pane fade" id="tabBikes">Default 4</div>
-                                                        <div class="tab-pane fade" id="tabME">Default 5</div>
-                                                        <div class="tab-pane fade" id="tabAll">Default 5</div>
-                                                    </div>
-                                                </div>
-                                            </div>*@
-
-                                    </div>
-
-                                    @*<ul class="nav navbar-nav">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Iasmani Pinazo <span class="glyphicon glyphicon-user pull-right"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>*@
-
+                                    <input type="button" id="tstButton" value="test me" />
                                 </div>
 
                             </div>
+                            <div>
+                                <div class="forallcollapse" id="forProperties" style="display:none">
+                                    <div class="form-group row">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control col-md-7" value="">
+                                            <small class="text-muted">Please enter price in repease</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-bedrooms" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlBedrooms" class="form-control">
+                                                <option>Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>4+</option>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-furnishing" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlBedrooms" class="form-control">
+                                                <option>Select</option>
+                                                <option>Furnished</option>
+                                                <option>Unfurnished</option>
+                                                <option>Semi-Furnished</option>                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-availability" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlAvailability" class="form-control">
+                                                <option>Select</option>
+                                                <option>Under Construction</option>
+                                                <option>Ready to Move</option>
+                                                <option>New Launch</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-3" style="text-align:right" >
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlPostedBy" class="form-control">
+                                                <option>Select</option>
+                                                <option>Owner</option>
+                                                <option>Dealer</option>
+                                                <option>Builder</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-sqarefeets" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtSquareFeet" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in square feets</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-squareyards" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtSquareYards" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in square yards</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-acres" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtAcres" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in acres</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                           
+                                            <textarea id="txtAddDetails" rows="7" class="form-control col-md-7">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="form-group row forallcollapse" id="forCV" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        this is for construction vehicles
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forTV" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        this is for transportation vehicles
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forAV" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        this is for agriculture vehicles
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forPV" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        this is for passangervehicles
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forCars" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        for cars
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forBikes" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        for bikes
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forME" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        for ME
+                                    </div>
+                                </div>
+                                <div class="form-group row forallcollapse" id="forAll" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        for all
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
-
-
-
-
 
                         <div class="businessinfo-left-block">
                             <div class="form-group">
@@ -897,13 +954,15 @@
         var selectedCate = $(this).text();
         if (selectedCate == "Properties") {
 
-            $("#cat-nav-l1 span").text("Properties");
-            $("#cat-nav-l1").css("display", "inline");
+            //$("#cat-nav-l1 span").text("Properties");
+            //$("#cat-nav-l1").css("display", "inline");
 
 
-            $("#idtabCategories").removeClass("active");
-            $("#idtabCategories").css("display", "none");
-            $("#tabCategories").removeClass("active");
+            //$("#idtabCategories").removeClass("active");
+            //$("#idtabCategories").css("display", "none");
+            //$("#tabCategories").removeClass("active");
+
+            PathSetFirstLevel("Properties");
 
             $("#idtabPro").css("display", "block");
             $("#idtabPro").addClass("active");
@@ -912,14 +971,16 @@
         }
         else if (selectedCate == "Construction Vehicles") {
 
-            $("#cat-nav-l1 a").text("Construction Vehicles");
-            $("#cat-nav-l1").css("display", "inline");
+            PathSetFirstLevel("Construction Vehicles");
 
-            $(".idtabCategoriesul li").removeClass("active");
-            $(".idtabCategoriesul li").css("display", "none");
-            $('.idtabCategoriesul li').each(function (i) {
-                $($(this).find('a').attr('href')).removeClass("active");
-            });
+            //$("#cat-nav-l1 a").text("Construction Vehicles");
+            //$("#cat-nav-l1").css("display", "inline");
+
+            //$(".idtabCategoriesul li").removeClass("active");
+            //$(".idtabCategoriesul li").css("display", "none");
+            //$('.idtabCategoriesul li').each(function (i) {
+            //    $($(this).find('a').attr('href')).removeClass("active");
+            //});
 
 
             $("#idtabCV").css("display", "block");
@@ -929,15 +990,17 @@
         }
         else if (selectedCate == "Transportation Vehicles") {
 
-            $("#cat-nav-l1 a").text("Transportation Vehicles");
-            $("#cat-nav-l1").css("display", "inline");
+            //$("#cat-nav-l1 a").text("Transportation Vehicles");
+            //$("#cat-nav-l1").css("display", "inline");
 
-            $(".idtabCategoriesul li").removeClass("active");
-            $(".idtabCategoriesul li").css("display", "none");
-            $('.idtabCategoriesul li').each(function (i) {
-                $($(this).find('a').attr('href')).removeClass("active");
-            });
 
+            //$(".idtabCategoriesul li").removeClass("active");
+            //$(".idtabCategoriesul li").css("display", "none");
+            //$('.idtabCategoriesul li').each(function (i) {
+            //    $($(this).find('a').attr('href')).removeClass("active");
+            //});
+
+            PathSetFirstLevel("Transportation Vehicles");
 
             $("#idtabTV").css("display", "block");
             $("#idtabTV").addClass("active");
@@ -945,30 +1008,49 @@
         }
         else if (selectedCate == "Agricultural Vehicles") {
 
+            PathSetFirstLevel("Agricultural Vehicles");
+
+            $("#idtabAV").css("display", "block");
+            $("#idtabAV").addClass("active");
+            $("#tabAV").addClass("active");
 
         }
         else if (selectedCate == "Passenger Vehicles") {
 
         }
         else if (selectedCate == "Cars") {
-            
+
             PathSetFirstLevel("Cars");
-            
+
             $("#idtabCars").css("display", "block");
             $("#idtabCars").addClass("active");
             $("#tabCars").addClass("active");
 
         }
         else if (selectedCate == "Bikes") {
+            PathSetFirstLevel("Bikes");
 
+            $("#idtabBikes").css("display", "block");
+            $("#idtabBikes").addClass("active");
+            $("#tabBikes").addClass("active");
         }
         else if (selectedCate == "Mobiles & Electronics") {
+            PathSetFirstLevel("Mobiles & Electronics");
 
+            $("#idtabME").css("display", "block");
+            $("#idtabME").addClass("active");
+            $("#tabME").addClass("active");
         }
-        else if (selectedCate == "All Vehicles Hire/Engage / Lease") {
+        else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
 
+            PathSetFirstLevel("All Vehicles Hire/Engage/Lease");
+
+            $("#cat-nav-l4").css("display", "inline");
+
+            $("#divCategories").css('display', 'none');
         }
     });
+
     //properties childs
     $(".tabProChilds a").click(function () {
 
@@ -978,48 +1060,147 @@
 
         if (secondLevl == "tabProForSale") {
             $("#cat-nav-l2 span").text("ForSale");
+            $("#hdnCateSecondLevel").val("ForSale");
+
         }
         else {
             $("#cat-nav-l2 span").text("ForRent");
+            $("#hdnCateSecondLevel").val("ForRent");
+
         }
         $("#cat-nav-l2").css("display", "inline");
 
         $("#cat-nav-l3 span").text(thirdLevel);
+        $("#hdnCateThirdLevel").val(thirdLevel);
+
         $("#cat-nav-l3").css("display", "inline");
 
         $("#cat-nav-l4").css("display", "inline");
 
         $("#divCategories").css('display', 'none');
 
+        DisplayRespectiveFields("Properties");
 
     });
 
-    //cars chailds
+    //cars childs
     $("#tabCarsModel a").click(function () {
         var thirdLevel = $(this).text();
 
         $("#cat-nav-l2 span").text("Model");
+        $("#hdnCateSecondLevel").val("Model");
 
         $("#cat-nav-l2").css("display", "inline");
 
         $("#cat-nav-l3 span").text(thirdLevel);
+        $("#hdnCateThirdLevel").val(thirdLevel);
         $("#cat-nav-l3").css("display", "inline");
 
         $("#cat-nav-l4").css("display", "inline");
 
         $("#divCategories").css('display', 'none');
+
+        DisplayRespectiveFields("Cars");
+
     });
 
+    //Construction vehicles childs
+    $("#tabCV a").click(function () {
+        var secondLevel = $(this).text();
+
+        $("#cat-nav-l2 span").text(secondLevel);
+        $("#hdnCateSecondLevel").val(secondLevel);
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+
+        DisplayRespectiveFields("Construction Vehicles");
+    });
+
+    //Agricultural Vehicles childs
+    $("#tabAV a").click(function () {
+        var secondLevel = $(this).text();
+
+        $("#cat-nav-l2 span").text(secondLevel);
+        $("#hdnCateSecondLevel").val(secondLevel);
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+        DisplayRespectiveFields("Agricultural Vehicles");
+    });
+
+    //Bikes childs
+    $(".tabBikesChilds a").click(function () {
+
+        var secondLevl = $(this).parent().attr('id');
+
+        var thirdLevel = $(this).text();
+
+        if (secondLevl == "tabBikesMotorcycles") {
+            $("#cat-nav-l2 span").text("Motorcycles");
+            $("#hdnCateSecondLevel").val("Motorcycles");
+        }
+        else if (secondLevl == "tabBikesScooters") {
+            $("#cat-nav-l2 span").text("Scooters");
+            $("#hdnCateSecondLevel").val("Scooters");
+        }
+        else if (secondLevl == "tabBikesBicycles") {
+            $("#cat-nav-l2 span").text("Bicycles");
+            $("#hdnCateSecondLevel").val("Bicycles");
+        }
+        else if (secondLevl == "tabBikesSpareParts") {
+            $("#cat-nav-l2 span").text("SpareParts");
+            $("#hdnCateSecondLevel").val("SpareParts");
+        }
+
+
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l3 span").text(thirdLevel);
+        $("#hdnCateThirdLevel").val(thirdLevel);
+        $("#cat-nav-l3").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+
+        DisplayRespectiveFields("Bikes");
+
+    });
+
+    //Mobile & Electronics
+    $("#tabME a").click(function () {
+
+        var secondLevel = $(this).text();
+
+        $("#cat-nav-l2 span").text(secondLevel);
+        $("#hdnCateSecondLevel").val(secondLevel);
+        $("#cat-nav-l2").css("display", "inline");
+
+        $("#cat-nav-l4").css("display", "inline");
+
+        $("#divCategories").css('display', 'none');
+        DisplayRespectiveFields("Mobiles & Electronics");
+
+    });
+
+    //home buttion on categories navigation
     $("#cat-nav-l0 a").click(function () {
         $("#cat-nav-l4").css("display", "none");
         RefreshCategories();
     });
 
+    //edit buttion on categories navigation
     $("#cat-nav-l4 a").click(function () {
         $("#cat-nav-l4").css("display", "none");
         RefreshCategories();
     });
 
+    //back button categories list
     $(".backHome").click(function () {
 
         RefreshCategories();
@@ -1027,6 +1208,10 @@
 
     function RefreshCategories() {
         $("#divCategories").css('display', 'block');
+
+        $("#hdnCateFristLevel").val("");
+        $("#hdnCateSecondLevel").val("");
+        $("#hdnCateThirdLevel").val("");
 
         $("#cat-nav-l1").css("display", "none");
         $("#cat-nav-l2").css("display", "none");
@@ -1044,11 +1229,12 @@
         $("#tabCategories").addClass("active");
     }
 
-
     function PathSetFirstLevel(firstlevel) {
-        
+
+        $("#hdnCateFristLevel").val(firstlevel);
+
         $("#cat-nav-l1 span").text(firstlevel);
-        
+
         $("#cat-nav-l1").css("display", "inline");
 
         $(".idtabCategoriesul li").removeClass("active");
@@ -1057,4 +1243,95 @@
             $($(this).find('a').attr('href')).removeClass("active");
         });
     }
+
+    $("#tstButton").click(function () {
+        alert($("#hdnCateFristLevel").val());
+        alert($("#hdnCateSecondLevel").val());
+        alert($("#hdnCateThirdLevel").val());
+    });
+
+    function DisplayRespectiveFields(selectedcategory) {
+
+        $(".forallcollapse").css('display', 'none');
+
+        var selectedCate = selectedcategory;
+        if (selectedCate == "Properties") {
+
+            var selectedPrtoperty = $("#hdnCateThirdLevel").val().trim();
+
+            $("#forProperties").css('display', 'block');
+           
+
+           if (selectedPrtoperty == "Agricultural Land") {          
+               $("#pro-availability").css('display', 'block');
+               $("#pro-acres").css('display', 'block');
+
+               $("#pro-sqarefeets").css('display', 'none');
+               $("#pro-furnishing").css('display', 'none');
+               $("#pro-bedrooms").css('display', 'none');
+               $("#pro-squareyards").css('display', 'none');
+           }
+
+            if (selectedPrtoperty == "Plots/Land") {
+                $("#pro-availability").css('display', 'block');                
+                $("#pro-squareyards").css('display', 'block');
+
+                $("#pro-sqarefeets").css('display', 'none');
+                $("#pro-furnishing").css('display', 'none');
+                $("#pro-bedrooms").css('display', 'none');
+                $("#pro-acres").css('display', 'none');
+            }
+
+            
+
+            if (selectedPrtoperty == "Shops & Offices") {
+                $("#pro-availability").css('display', 'block');
+                $("#pro-sqarefeets").css('display', 'block');
+                $("#pro-furnishing").css('display', 'block');
+
+                $("#pro-bedrooms").css('display', 'none');
+                $("#pro-acres").css('display', 'none');
+                $("#pro-squareyards").css('display', 'none');
+            }
+
+            if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
+                $("#pro-availability").css('display', 'block');
+                $("#pro-sqarefeets").css('display', 'block');
+                $("#pro-furnishing").css('display', 'block');
+                $("#pro-bedrooms").css('display', 'block');
+
+                $("#pro-acres").css('display', 'none');
+                $("#pro-squareyards").css('display', 'none');
+            }
+
+            
+        }
+        else if (selectedCate == "Construction Vehicles") {
+            $("#forCV").css('display', 'block');
+        }
+        else if (selectedCate == "Transportation Vehicles") {
+            $("#forTV").css('display', 'block');
+        }
+        else if (selectedCate == "Agricultural Vehicles") {
+            $("#forAV").css('display', 'block');
+        }
+        else if (selectedCate == "Passenger Vehicles") {
+            $("#forPV").css('display', 'block');
+        }
+        else if (selectedCate == "Cars") {
+            $("#forCars").css('display', 'block');
+        }
+        else if (selectedCate == "Bikes") {
+            $("#forBikes").css('display', 'block');
+        }
+        else if (selectedCate == "Mobiles & Electronics") {
+            $("#forME").css('display', 'block');
+        }
+        else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
+            $("#forAll").css('display', 'block');
+        }
+    }
+
+
+
 </script>

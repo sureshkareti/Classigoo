@@ -3074,7 +3074,13 @@ ul.social {
 
 }
 
+.sub-category-items a :hover {
+    color: #fd880a;
+}
 
+.max-length-subcategory{
+    max-height:200px;overflow-y:scroll;
+}
 
 /*.nav {
     left:50%;
