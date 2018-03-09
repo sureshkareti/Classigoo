@@ -95,7 +95,7 @@
                                                             <div class="tab-content tabProChilds">
                                                                 <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
                                                                     <a href="javascript:void(0)">Plots/Land</a><br />
-                                                                    <a href="javascript:void(0)"> Agricultural Land</a><br />
+                                                                    <a href="javascript:void(0)">Agricultural Land</a><br />
                                                                     <a href="javascript:void(0)">Shops & Offices</a><br />
                                                                     <a href="javascript:void(0)">Apartments</a><br />
                                                                     <a href="javascript:void(0)">Independent Houses & Villas</a>
@@ -148,7 +148,6 @@
                                                         </div>
                                                         <div class="panel-body">
                                                             <div class="tab-content">
-
                                                                 <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
                                                                     <a href='javascript:void(0)'>Maruti Suzuki</a><br />
                                                                     <a href='javascript:void(0)'>Hyundai</a><br />
@@ -256,69 +255,103 @@
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
+                                            <input type="text" class="form-control col-md-7" value="">
                                             <small class="text-muted">Please enter price in repease</small>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="form-group row" id="pro-bedrooms" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlBedrooms" class="form-control">
+                                                <option>Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>4+</option>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-furnishing" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select id="ddlBedrooms" class="form-control">
+                                                <option>Select</option>
+                                                <option>Furnished</option>
+                                                <option>Unfurnished</option>
+                                                <option>Semi-Furnished</option>                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-availability" style="display:none">
                                         <div class="col-md-3" style="text-align:right">
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
                                         </div>
                                         <div class="col-md-4">
-
-
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
+                                            <select id="ddlAvailability" class="form-control">
+                                                <option>Select</option>
+                                                <option>Under Construction</option>
+                                                <option>Ready to Move</option>
+                                                <option>New Launch</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
+                                        <div class="col-md-3" style="text-align:right" >
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
+                                            <select id="ddlPostedBy" class="form-control">
+                                                <option>Select</option>
+                                                <option>Owner</option>
+                                                <option>Dealer</option>
+                                                <option>Builder</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-sqarefeets" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtSquareFeet" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in square feets</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-squareyards" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtSquareYards" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in square yards</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="pro-acres" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" id="txtAcres" class="form-control col-md-7">
+                                            <small class="text-muted">please enter in acres</small>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
                                         </div>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="email@example.com">
-                                        </div>
-                                    </div>
+                                        <div class="col-md-7">
+                                           
+                                            <textarea id="txtAddDetails" rows="7" class="form-control col-md-7">
 
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                  
                                 </div>
 
                                 <div class="form-group row forallcollapse" id="forCV" style="display:none">
@@ -1223,7 +1256,55 @@
 
         var selectedCate = selectedcategory;
         if (selectedCate == "Properties") {
+
+            var selectedPrtoperty = $("#hdnCateThirdLevel").val().trim();
+
             $("#forProperties").css('display', 'block');
+           
+
+           if (selectedPrtoperty == "Agricultural Land") {          
+               $("#pro-availability").css('display', 'block');
+               $("#pro-acres").css('display', 'block');
+
+               $("#pro-sqarefeets").css('display', 'none');
+               $("#pro-furnishing").css('display', 'none');
+               $("#pro-bedrooms").css('display', 'none');
+               $("#pro-squareyards").css('display', 'none');
+           }
+
+            if (selectedPrtoperty == "Plots/Land") {
+                $("#pro-availability").css('display', 'block');                
+                $("#pro-squareyards").css('display', 'block');
+
+                $("#pro-sqarefeets").css('display', 'none');
+                $("#pro-furnishing").css('display', 'none');
+                $("#pro-bedrooms").css('display', 'none');
+                $("#pro-acres").css('display', 'none');
+            }
+
+            
+
+            if (selectedPrtoperty == "Shops & Offices") {
+                $("#pro-availability").css('display', 'block');
+                $("#pro-sqarefeets").css('display', 'block');
+                $("#pro-furnishing").css('display', 'block');
+
+                $("#pro-bedrooms").css('display', 'none');
+                $("#pro-acres").css('display', 'none');
+                $("#pro-squareyards").css('display', 'none');
+            }
+
+            if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
+                $("#pro-availability").css('display', 'block');
+                $("#pro-sqarefeets").css('display', 'block');
+                $("#pro-furnishing").css('display', 'block');
+                $("#pro-bedrooms").css('display', 'block');
+
+                $("#pro-acres").css('display', 'none');
+                $("#pro-squareyards").css('display', 'none');
+            }
+
+            
         }
         else if (selectedCate == "Construction Vehicles") {
             $("#forCV").css('display', 'block');
