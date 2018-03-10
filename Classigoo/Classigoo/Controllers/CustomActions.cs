@@ -22,6 +22,7 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                            customAdd.Category = "RealEstate";
                         }
                         break;
                     }
@@ -31,6 +32,8 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                            customAdd.Category = "Cars";
+
                         }
                         break;
                     }
@@ -40,6 +43,7 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                            customAdd.Category = "Electronics";
                         }
                         break;
                     }

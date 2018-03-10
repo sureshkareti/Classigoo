@@ -192,9 +192,9 @@
                     <!-- Product Description tab & comments-->
                     <div class="productdesc">
                         <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#description">Description</a> </li>
-                            <li><a href="#specification">Specification</a> </li>
-                            <li><a href="#contact">Send Message</a> </li>
+                            <li id="tabdesc"><a href="#description">Description</a> </li>
+                            <li id="tabspec"><a href="#specification">Specification</a> </li>
+                            <li id="tabcontact"><a href="#contact">Send Message</a> </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="description">
@@ -209,9 +209,9 @@
                                     <li> Expandable Storage Capacity of 64 GB</li>
                                 </ul>
                             </div>
-                            <div class="tab-pane " id="specification">
+                            <div class="tab-pane " id="cars-specification">
                                 <ul class="productinfo">
-                                    <li> <span class="productinfoleft"> Brand:</span> Samsung </li>
+                                    <li> <span class="productinfoleft"> Brand:</span> Maruthi </li>
                                     <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
                                     <li> <span class="productinfoleft"> SIM Type: </span> Dual SIM, GSM + GSM </li>
                                     <li> <span class="productinfoleft"> Old Price: </span> $500.00 </li>
@@ -220,6 +220,22 @@
                                     <li> <span class="productinfoleft"> Call Features:</span> Loudspeaker </li>
                                     <li> <span class="productinfoleft"> Handset Color:</span> Pure White </li>
                                 </ul>
+                                
+                            </div>
+                            <div class="tab-pane " id="electronics-specification">
+                                <ul class="productinfo">
+                                    <li> <span class="productinfoleft"> Brand:</span>Electronics  </li>
+                                    <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
+                                    <li> <span class="productinfoleft"> SIM Type: </span> Dual SIM, GSM + GSM </li>
+                                    <li> <span class="productinfoleft"> Old Price: </span> $500.00 </li>
+                                    <li> <span class="productinfoleft"> Touch Screen: </span> Yes, Capacitive</li>
+                                    <li> <span class="productinfoleft"> Ex Tax: </span> $500.00 </li>
+                                    <li> <span class="productinfoleft"> Call Features:</span> Loudspeaker </li>
+                                    <li> <span class="productinfoleft"> Handset Color:</span> Pure White </li>
+                                </ul>
+
+                            </div>
+                            <div class="tab-pane " id="realestate-specification">
                                 <ul class="productinfo">
                                     <li> <span class="productinfoleft"> Bedrooms:</span> Samsung </li>
                                     <li> <span class="productinfoleft"> Furnishing:</span> Galaxy S Duos 2 </li>
@@ -473,14 +489,58 @@
     @*<script type="text/javascript" src="js/jquery.style-switcher.js"></script>*@
     <script type="text/javascript">
 $(document).ready(function() {
-	//$('#styleswitch').styleSwitcher();
-	//$("#styleswitch h3").click(function () {
-	//	if($(this).parent().css("left") == "-200px"){
-	//		$(this).parent().animate({left:'0px'}, {queue: false, duration: 500});
- 	//	} else {
-    //	$(this).parent().animate({left:'-200px'}, {queue: false, duration: 500});
-  	//	}
- 	// });
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        var selectedTab = $(this).context.innerText;
+        var selectedCategory = '@Model.Category.ToString()';
+        ClearTabs();
+        if (selectedTab == "Specification") {
+            $("#tabspec").addClass("active");
+            if(selectedCategory=="RealEstate")
+            {
+                $("#realestate-specification").css("display", "block");
+            
+                }
+            else if(selectedCategory=="Cars")
+            {
+                $("#cars-specification").css("display", "block");
+               
+            }
+            else if(selectedCategory=="Electronics")
+            {
+                $("#electronics-specification").css("display", "block");
+               
+            }
+        }
+        else if (selectedTab == "Description")
+        {
+            $("#description").css("display", "block");
+           
+            $("#tabdesc").addClass("active");
+            
+        }
+        else if (selectedTab == "Send Message")
+        {
+            $("#contact").css("display", "block");
+           
+            $("#tabcontact").addClass("active");
+        }
+    })
+   $('#myTab a:first').tab('show') // Select first tab
+    //Tab Why Us
+    //$('.myTabclass a').click(function (e) {
+    //    e.preventDefault()
+    //    $(this).tab('show');
+    //})
+    //$('.myTabclass a:first').tab('show') // Select first tab
+    function ClearTabs()
+    {
+        $(".tab-content > .tab-pane").removeClass("active");
+        $(".tab-content > .tab-pane").css("display", "none");
+        $('#myTab li').removeClass("active");
+           
+        
+    }
 });
     </script>
 
