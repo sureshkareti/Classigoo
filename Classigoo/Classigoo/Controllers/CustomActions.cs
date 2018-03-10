@@ -11,7 +11,7 @@ namespace Classigoo.Controllers
         {
             CustomAdd customAdd = new CustomAdd();
             customAdd.Location = add.Location;
-            customAdd.Createddate = add.Created.ToString();
+            customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
             customAdd.Price = "500Rs";
             switch (add.Category)
@@ -23,6 +23,7 @@ namespace Classigoo.Controllers
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
                             customAdd.Category = "RealEstate";
+                            customAdd.RealEstate = item;
                         }
                         break;
                     }
@@ -33,6 +34,7 @@ namespace Classigoo.Controllers
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
                             customAdd.Category = "Cars";
+                            customAdd.Cars = item;
 
                         }
                         break;
@@ -44,6 +46,7 @@ namespace Classigoo.Controllers
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
                             customAdd.Category = "Electronics";
+                            customAdd.Electronics = item;
                         }
                         break;
                     }
