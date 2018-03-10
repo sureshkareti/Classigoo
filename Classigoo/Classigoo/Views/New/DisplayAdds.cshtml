@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-<!-- Paging-->
+
 <style>
     .request-overlay {
     z-index: 9999;
@@ -21,7 +21,7 @@
 <div id="page-selection" class="pagination pull-right"></div>         
     
 </div>
-<!-- Paging-->
+
 
     <div class="bloglisting list" id="content">
 
@@ -32,11 +32,11 @@
             <li class="clearfix">
 
                 <div class="col-sm-2">
-                    <a class="thumbnail" href="detail.html"><img src="../Content/img/product2.jpg" alt=""></a>
+                   <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })" ><img src="../Content/img/product2.jpg" alt=""></a>
                     <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
                 </div>
                 <div class="col-sm-8">
-                    <h3><a class="title" href="#">@add.Title </a></h3>
+                    <h3><a class="title" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })">@add.Title </a></h3>
                     <ul class="icondetail">
                         <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
                         <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
@@ -89,13 +89,16 @@
                     //var htmlData = $.parseHTML(data);
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
-                    $("#requestOverlay").remove();/*Remove overlay*/
+                    
                 },
                 failure: function (response) {
                     console.log(response.responseText);
                 },
                 error: function (response) {
                     console.log(response.responseText);
+                },
+                complete: function (data) {
+                    $("#requestOverlay").remove();/*Remove overlay*/
                 }
             });
 

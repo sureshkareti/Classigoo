@@ -347,6 +347,7 @@ namespace Classigoo.Controllers
         {
 
             Add add=new Add();
+            CustomAdd customAdd = new CustomAdd();
             try
             {
                 using (var client = new HttpClient())
@@ -364,6 +365,9 @@ namespace Classigoo.Controllers
                         readTask.Wait();
 
                         add = readTask.Result;
+                        CustomActions obj = new CustomActions();
+                        customAdd= obj.CheckCategory(add);
+                        
 
                     }
                     else //web api sent error response 
@@ -378,7 +382,7 @@ namespace Classigoo.Controllers
             {
 
             }
-            return View(add);
+            return View(customAdd);
         }
         public ActionResult ShowAdd()
         {

@@ -92,60 +92,6 @@ namespace Classigoo.Controllers
         }
 
         
-        public ActionResult GetDataForDatatable(JQueryDataTableParams param)
-        {
-            ClassigooEntities db = new ClassigooEntities();
-            IQueryable<Add> memberCol = db.Adds.AsQueryable();
-            int totalCount = memberCol.Count();
-            IEnumerable<Add> filteredMembers = memberCol;
-       
-            //if (!string.IsNullOrEmpty(param.sSearch))
-            //{
-            //    filteredMembers = memberCol
-            //            .Where(m => m.FirstName.Contains(param.sSearch) ||
-            //               m.LastName.Contains(param.sSearch) ||
-            //               m.Company.Contains(param.sSearch) ||
-            //               m.JobTitle.Contains(param.sSearch));
-            //}
-
-            //Func<Member, string> orderingFunction = (m => param.iSortCol_0 == 0 ? m.FirstName :
-            //                      sortIdx == 1 ? m.LastName :
-            //                      sortIdx == 2 ? m.Company :
-            //                      m.JobTitle);
-
-            //if (param.sSortDir_0 == "asc")
-            //    filteredMembers = filteredMembers.OrderBy(orderingFunction);
-            //else
-            //    filteredMembers = filteredMembers.OrderByDescending(orderingFunction);
-
-            var displayedMembers = filteredMembers
-                     .Skip(param.iDisplayStart)
-                     .Take(param.iDisplayLength);
-
-            var result = from a in displayedMembers
-                         select new CustomAdd {AddId=a.AddId,Location=a.Location,Createddate=a.Created.ToString(),
-                         Title="dfadf",Description="rerwe"
-                         };
-
-            //AddsModel addColl = new AddsModel();
-            //List<CustomAdd> coll = new List<CustomAdd>();
-            //List<Add> addsByPage = (from add in db.Adds
-            //                        select add)
-            //            .OrderBy(add => add.Category)
-            //            .Skip(param.iDisplayStart)
-            //            .Take(param.iDisplayLength).ToList();
-            //foreach (var add in addsByPage)
-            //{
-            //    coll.Add(CheckCategory(add));
-            //}
-            return Json(new
-            {
-                sEcho = param.sEcho,
-                iTotalRecords = totalCount,
-                iTotalDisplayRecords = filteredMembers.Count(),
-                aaData = result
-            },
-               JsonRequestBehavior.AllowGet);
-        }
+        
     }
 }

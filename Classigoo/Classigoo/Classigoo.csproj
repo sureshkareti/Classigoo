@@ -228,6 +228,7 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomActions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AddsController.cs" />
     <Compile Include="Controllers\NewController.cs" />
