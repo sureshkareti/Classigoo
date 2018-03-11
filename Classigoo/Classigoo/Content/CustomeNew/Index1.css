@@ -3082,6 +3082,67 @@ ul.social {
     max-height:200px;overflow-y:scroll;
 }
 
+
+.wrimagecard{	
+	margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    position: relative;
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.wrimagecard .fa{
+	position: relative;
+    font-size: 70px;
+}
+.wrimagecard-topimage_header{
+padding: 20px;
+}
+a.wrimagecard:hover, .wrimagecard-topimage:hover {
+    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+}
+.wrimagecard-topimage a {
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+.wrimagecard-topimage_title {
+    padding: 20px 24px;
+    height: 80px;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+.wrimagecard-topimage a {
+    border-bottom: none;
+    text-decoration: none;
+    color: #525c65;
+    transition: color 0.3s ease;
+}
+
+.w3-card,.w3-card-2{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+.w3-container:after,.w3-container:before{content:"";display:table;clear:both}
+.w3-container{padding-top:2px;padding-bottom:5px;text-align:center}
+
+.icon.add2 {
+    width: 31px;
+    height: 30px;
+    background-position: -230px -143px;
+}
+
+.icon{
+    background: url(https://s2.olx.in/static/olxin/packed/img/2f5a775….png) no-repeat;
+}
+
+.margin0_a {
+    margin: 0 auto;
+}
+
+.rel {
+    position: relative;
+}
+
 /*.nav {
     left:50%;
     margin-left:-150px;
