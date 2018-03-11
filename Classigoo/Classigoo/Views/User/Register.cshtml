@@ -6,7 +6,7 @@
 
 @using (Html.BeginForm("Register", "User", FormMethod.Post, new { data_toggle = "validator" }))
 { 
-    <div class="panel panel-primary" style="width:750px;margin:0px auto">
+    <div class="panel panel-primary row loginform" style="max-width:970px !important;margin:auto;">
         <div class="panel-heading">Registration</div>
         <div class="panel-body">
                 <div class="col-md-1">
@@ -110,5 +110,6 @@
 }
    
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Custome/account.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
