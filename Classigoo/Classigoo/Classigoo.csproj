@@ -444,6 +444,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ScriptsNew\all.js" />
+    <Content Include="Scripts\ScriptsNew\bootstrapvalidator.min.js" />
     <Content Include="Scripts\ScriptsNew\jquery.bootpag.min.js" />
     <Content Include="Scripts\ScriptsNew\jquery.flexslider.js" />
     <Content Include="Scripts\ScriptsNew\jquery.js" />

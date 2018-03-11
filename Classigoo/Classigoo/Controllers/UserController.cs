@@ -75,17 +75,21 @@ namespace Classigoo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(User User)
+        public ActionResult Register(FormCollection coll)
         {
-            if (!IsUserExist(User.MobileNumber,"Custom"))
+            User user = new User();
+            user.MobileNumber = coll["inputPhone"];
+            user.Name = coll["inputName"];
+            user.Password = coll["inputPassword"];
+            if (!IsUserExist(user.MobileNumber,"Custom"))
             {
                 using (var client = new HttpClient())
                 {
 
-                    User.Type = "Custom";
-                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + User;
+                    user.Type = "Custom";
+                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + user;
                     client.BaseAddress = new Uri(url);
-                    var postTask = client.PostAsJsonAsync<User>(url, User);
+                    var postTask = client.PostAsJsonAsync<User>(url, user);
                     try
                     {
                         postTask.Wait();
@@ -110,7 +114,7 @@ namespace Classigoo.Controllers
             }
             else
             {
-                @ViewBag.status = " Phone Number "+User.MobileNumber+ " already Registered";
+                @ViewBag.status = " Phone Number "+ user.MobileNumber+ " already Registered";
             }
 
             return View();
