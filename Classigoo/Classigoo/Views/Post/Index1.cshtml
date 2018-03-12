@@ -28,7 +28,7 @@
 
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" value="email@example.com">
+                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" placeholder="enter title here">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -244,7 +244,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="button" id="tstButton" value="test me" />
+                                    @*<input type="button" id="tstButton" value="test me" />*@
                                 </div>
 
                             </div>
@@ -486,27 +486,62 @@
                                    
                                 </div>
                             </div>
+                            <div class="form-group row">
+                               <hr />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Name</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtName" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Phone number</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtPhonenumber">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtCity">
+                                    <small class="text-muted">Type your city name and select the matching city</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control col-md-7" id="txtLocalcity">
+                                    <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                              <hr />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-9" style="text-align:right">
+                                    
+
+                                </div>
+                                <div class="col-md-3">
+                                   <input type="button" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                </div>
+                            </div>
+
                         </form>
 
-                        <div class="businessinfo-left-block">
-                            <div class="form-group">
-                                <label for="listing_name">Listing Name</label>
-                                <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
-                                <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_email">Contact Email</label>
-                                <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_phone_no">Contact Phone</label>
-                                <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_website">Website</label>
-                                <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -1032,14 +1067,17 @@
             reader.readAsDataURL(fileuploaded[0]);
         }
 
-        $("#btnFucFirstEdit").css('display', 'none');
+        $("#btnFucFirstEdit").parent().css('display', 'none');
         $("#btnFucFirstDelete").parent().css('display', 'block');
         $("#btnFucFirstDelete").parent().css('text-align', 'center');
 
     });
     $("#fucSecond").change(function () {
         //readURL(this);
+        alert("2");
+
         var fileuploaded = $("#fucSecond").get(0).files;
+        alert(fileuploaded[0].name);
         if (fileuploaded[0]) {
             var reader = new FileReader();
 
@@ -1049,7 +1087,7 @@
             reader.readAsDataURL(fileuploaded[0]);
         }
 
-        $("#btnFucSecondEdit").css('display', 'none');
+        $("#btnFucSecondEdit").parent().css('display', 'none');
         $("#btnFucSecondDelete").parent().css('display', 'block');
         $("#btnFucSecondDelete").parent().css('text-align', 'center');
 
@@ -1067,7 +1105,7 @@
             reader.readAsDataURL(fileuploaded[0]);
         }
 
-        $("#btnFucThirdEdit").css('display', 'none');
+        $("#btnFucThirdEdit").parent().css('display', 'none');
         $("#btnFucThirdDelete").parent().css('display', 'block');
         $("#btnFucThirdDelete").parent().css('text-align', 'center');
 
@@ -1086,7 +1124,7 @@
             reader.readAsDataURL(fileuploaded[0]);
         }
 
-        $("#btnFucFourEdit").css('display', 'none');
+        $("#btnFucFourEdit").parent().css('display', 'none');
         $("#btnFucFourDelete").parent().css('display', 'block');
         $("#btnFucFourDelete").parent().css('text-align', 'center');
 
@@ -1097,14 +1135,47 @@
         $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
         $('#imgFucFirst').attr('src', '/images/cg.jpg');
 
-        $("#btnFucFirstEdit").parent().css('text-align', 'center');
-        $("#btnFucFirstEdit").css('display', 'block');
-        
-        
+        $("#btnFucFirstEdit").parent().css('display', 'block');
+        $("#btnFucFirstEdit").parent().css('text-align', 'center');      
+           
         $("#btnFucFirstDelete").parent().css('display', 'none');
         
     });
 
+    $("#btnFucThirdDelete").click(function () {
+
+        $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
+        $('#imgFucThird').attr('src', '/images/cg.jpg');
+
+        $("#btnFucThirdEdit").parent().css('display', 'block');
+        $("#btnFucThirdEdit").parent().css('text-align', 'center');
+
+        $("#btnFucThirdDelete").parent().css('display', 'none');
+
+    });
+
+    $("#btnFucSecondDelete").click(function () {
+
+        $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
+        $('#imgFucSecond').attr('src', '/images/cg.jpg');
+
+        $("#btnFucSecondEdit").parent().css('display', 'block');
+        $("#btnFucSecondEdit").parent().css('text-align', 'center');
+
+        $("#btnFucSecondDelete").parent().css('display', 'none');
+
+    });
+    $("#btnFucFourDelete").click(function () {
+
+        $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
+        $('#imgFucFour').attr('src', '/images/cg.jpg');
+
+        $("#btnFucFourEdit").parent().css('display', 'block');
+        $("#btnFucFourEdit").parent().css('text-align', 'center');
+
+        $("#btnFucFourDelete").parent().css('display', 'none');
+
+    });
 
     //function readURL(input) {
 
