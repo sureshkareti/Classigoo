@@ -2,7 +2,10 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("Login", "User", FormMethod.Post,new { data_toggle = "validator" }))
+@{
+    string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
+}
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new {id="LoginForm", data_toggle = "validator" }))
 {
 <div class="row loginform" style="max-width:970px !important;margin:auto;">
     <div class="col-md-2">
@@ -14,16 +17,15 @@
 
             <span name="status">@ViewBag.status</span>
             <br />
-            <div class="row form-group" id="divemailphone">
+            <div class="row form-group">
 
                 <div class="col-md-3">
                     
                     <label for="inputEmailPhone" class="control-label">Email or Phone</label>
                 </div>
                 <div class="col-md-6">
-    @*<input type="text" class="form-control" name="email-phone" id="inputEmailPhone" data-error="Please enter a Email or PhoneNumber."  placeholder="Email or PhoneNumber" required />*@
-                   <input type="email" multiple pattern="^\d{10}$" class="form-control" id="inputEmailPhone" name="email-phone"  placeholder="Email or PhoneNumber" data-error="Please enter a valid Email or PhoneNumber." required />
-                     <div class="help-block with-errors" id="erroremailphone"></div>
+                   <input type="text" pattern =@emailPattern|^\d{10}$ class="form-control" id="inputEmailPhone" name="email-phone"  placeholder="Email or PhoneNumber" data-error="Please enter a valid Email or PhoneNumber."  required />
+                     <div class="help-block with-errors" ></div>
                 </div>
                 <div class="col-md-3">
 

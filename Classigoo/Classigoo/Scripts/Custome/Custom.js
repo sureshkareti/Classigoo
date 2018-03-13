@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
-       
+        
 });
+
 function CheckLoginType()
 {
     var emailorphone = $('input[name="email-phone"]').val();
@@ -11,12 +12,12 @@ function CheckLoginType()
         if (EmailReg.test(emailorphone)) {
             LoginType = "email";
             $("#logintype").val(LoginType);
-            return true;
+            
         }
         else if (IndNumReg.test(emailorphone)) {
             LoginType = "phone";
             $("#logintype").val(LoginType);
-            return true;
+           
         }
         if (LoginType == '') {
            // alert("Invalid phone number or email");
