@@ -4,140 +4,112 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Ajax.BeginForm("Register", "User", new AjaxOptions { HttpMethod = "POST" }))
-{
-<div class="row loginform" style="max-width:970px !important;margin:auto;">
-    <div class="col-md-1">
-
-    </div>
-    <div class="col-md-10" style="padding-top:30px">
-        <p>Register</p>
-        <div style="border:1px solid #ddd9d9;padding:20px 20px 0 20px;border-radius:5px;">
-            <span name="status">@ViewBag.status</span>
-            <br />
-            <div class="row form-group">
-
-                <div class="col-md-7">
-                    <div class="row form-group">
-                        <div class="col-md-3 text-left">
-                            Phone<span style="color:red">*</span>
-
-                        </div>
-                        <div class="col-md-9">
-                            
-                            @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
-                            <p class="help-block">Enter your phone no </p>
-                        </div>
-
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-3 text-left">
-                            Password<span style="color:red">*</span>
-
-                        </div>
-                        <div class="col-md-9">
-                           @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            <p class="help-block">Enter your password  </p>
-                        </div>
-
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-3 text-left">
-                            Name<span style="color:red">*</span>
-
-                        </div>
-                        <div class="col-md-9">
-                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                            <p class="help-block">Enter Name</p>
-                        </div>
-
-                    </div>
+@using (Html.BeginForm("Register", "User", FormMethod.Post, new { data_toggle = "validator" }))
+{ 
+    <div class="panel panel-primary row loginform" style="max-width:970px !important;margin:auto;">
+        <div class="panel-heading">Registration</div>
+        <div class="panel-body">
+                <div class="col-md-1">
 
                 </div>
-                <div class="col-md-5 form-line">
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <p>By registering, you get access to <strong>My Account:</strong> where you can </p>
+                <div class="col-md-10" style="padding-top:30px">
+                   
+                    <div >
+                        <span name="status">@ViewBag.status</span>
+                        <br />
+                        <div class="row form-group">
 
+                            <div class="col-md-7">
+                                <div class="row form-group">
+                                    <div class="col-md-3 text-left">
+
+                                        <label class="control-label" for="inputPhone">Phone</label>
+                                    </div>
+                                    <div class="col-md-9">
+
+                                        <input class="form-control" pattern="^\d{10}$" data-error="Please enter a valid 10 digit Phone Number." id="inputPhone" name="inputPhone" placeholder="Phone Number" type="text" required />
+                                        <div class="help-block with-errors"></div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-3 text-left">
+
+                                        <label for="inputPassword" class="control-label">Password</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                       
+                                        <input type="password" data-minlength="5" maxlength="20" class="form-control" id="inputPassword" name="inputPassword" data-error="Please enter a minimum of 5 letters Password." placeholder="Password" required />
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-3 text-left">
+
+                                        <label class="control-label" for="inputName">Name</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                    
+                                        <input class="form-control" data-minlength="2" maxlength="20" pattern="^[A-z]+$" data-error="Please enter a minimum of 2 characters Name." id="inputName" name="inputName" placeholder="Name" type="text" required />
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                          
                         </div>
+                        <div class="row form-group">
+
+                            <div class="col-md-12">
+
+                                <div class="row form-group">
+                                    <div class="col-md-2 text-right">
+
+                                    </div>
+                                    <div class="col-md-10" style="padding-right:0;padding-left:0">
+                                        <label style="font-weight:normal" for="inputAccept" >
+                                        <input id="inputAccept" type="checkbox" required data-error="required"/>
+
+                                            <span style="color:red">*</span>By registering on Classigoo, you accept our <a href="#"> Terms of Use</a>
+                                        </label>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-7">
+
+                                <div class="row form-group">
+                                    <div class="col-md-3 text-right">
+
+                                    </div>
+                                    <div class="col-md-9" style="padding-right:0">
+                                        <input type="submit" class="btn btn-primary" value="Register" style="width:100px" />
+                                    </div>
+
+                                </div>
+                            </div>
+                          
+                        </div>
+
+
                     </div>
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-arrow-right"></span> Manage your Ads (Edit, Delete, Upgrade)
-                        </div>
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-arrow-right"></span> Check responses to your Ads
-                        </div>
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-arrow-right"></span> Track payments
-                        </div>
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-arrow-right"></span> Manage your settings
-                        </div>
-                    </div>
-                </div>
 
-
-            </div>
-            <div class="row form-group">
-
-                <div class="col-md-12">
-
-                    <div class="row form-group">
-                        <div class="col-md-2 text-right">
-
-                        </div>
-                        <div class="col-md-10" style="padding-right:0;padding-left:0">
-                            <input id="checkbox1" type="checkbox">
-                            <label for="checkbox1" style="font-weight:normal">
-                                <span style="color:red">*</span>By registering on OLX, you accept our <a href="#"> Terms of Use</a>
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
-                @*<div class="col-md-4">
-
-                    </div>*@
-
-
-            </div>
-            <div class="row form-group">
-                <div class="col-md-7">
-
-                    <div class="row form-group">
-                        <div class="col-md-3 text-right">
-
-                        </div>
-                        <div class="col-md-9" style="padding-right:0">
-                            <input type="submit" class="btn btn-primary" value="Register" style="width:100px" />
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-md-4">
 
                 </div>
-
-
-            </div>
-
-
+          
         </div>
-
-
     </div>
-    <div class="col-md-1">
-
-    </div>
-</div>
-}
-
-
-@section Styles {
-    <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
 
 }
+   
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Custome/account.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>

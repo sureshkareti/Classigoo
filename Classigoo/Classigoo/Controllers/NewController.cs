@@ -55,16 +55,18 @@ namespace Classigoo.Controllers
         {
             CustomAdd customAdd = new CustomAdd();
             customAdd.Location = add.Location;
-            customAdd.Createddate = add.Created.ToString();
+            customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
             switch (add.Category)
             {
                 case "RealEstate":
-                    { 
-                         foreach(var item in add.RealEstates)
+                    {
+                        
+                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                           
                         }
                         break;
                     }
@@ -74,6 +76,7 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                           
                         }
                         break;
                     }
@@ -83,6 +86,7 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
+                            
                         }
                         break;
                     }

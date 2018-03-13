@@ -177,17 +177,7 @@ $(document).ready(function(){
 	});
 	
 //Tab 
-	$('#myTab a').click(function (e) {
-		e.preventDefault()
-  		$(this).tab('show');
-	})
-	$('#myTab a:first').tab('show') // Select first tab
-	//Tab Why Us
-	$('.myTabclass a').click(function (e) {
-		e.preventDefault()
-  		$(this).tab('show');
-	})
-	$('.myTabclass a:first').tab('show') // Select first tab
+	
 
 // Tooltip	
 	$('.tooltip-test').tooltip();
