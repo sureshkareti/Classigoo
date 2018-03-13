@@ -28,7 +28,7 @@
 
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" value="email@example.com">
+                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" placeholder="enter title here">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -244,7 +244,7 @@
                                         </div>
                                     </div>
 
-                                    <input type="button" id="tstButton" value="test me" />
+                                    @*<input type="button" id="tstButton" value="test me" />*@
                                 </div>
 
                             </div>
@@ -271,7 +271,7 @@
                                                 <option>3</option>
                                                 <option>4</option>
                                                 <option>4+</option>
-                                            </select>                                            
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row" id="pro-furnishing" style="display:none">
@@ -283,8 +283,8 @@
                                                 <option>Select</option>
                                                 <option>Furnished</option>
                                                 <option>Unfurnished</option>
-                                                <option>Semi-Furnished</option> 
-                                                                                           
+                                                <option>Semi-Furnished</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -302,7 +302,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right" >
+                                        <div class="col-md-3" style="text-align:right">
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
                                         </div>
                                         <div class="col-md-4">
@@ -346,13 +346,11 @@
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
                                         </div>
                                         <div class="col-md-7">
-                                           
-                                            <textarea id="txtAddDetails" rows="7" class="form-control col-md-7">
 
-                                            </textarea>
+                                            <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
                                         </div>
                                     </div>
-                                  
+
                                 </div>
 
                                 <div class="form-group row forallcollapse" id="forCV" style="display:none">
@@ -421,27 +419,129 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
+
+                                </div>
+                                <div class="col-md-9">
+
+                                    <div class="col-md-3">
+                                        <div class="w3-card fileuploading">
+                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucFirst" style="width:100%;height:100px">
+                                            <div class="w3-container">
+                                                <div style="text-align:center">
+                                                    <input type="file" style="display:none" id="fucFirst" />
+                                                    <button type="button" id="btnFucFirstEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                </div>
+                                                <div style="display:none;">
+                                                    <button type="button" id="btnFucFirstDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" >
+                                        <div class="w3-card fileuploading">
+                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucSecond" style="width:100%;height:100px">
+                                            <div class="w3-container">
+                                                <div>
+                                                    <input type="file" style="display:none" id="fucSecond" />
+                                                    <button type="button" id="btnFucSecondEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                </div>
+                                                <div style="display:none;">
+                                                    <button type="button" id="btnFucSecondDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" >
+                                        <div class="w3-card fileuploading">
+                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucThird" style="width:100%;height:100px">
+                                            <div class="w3-container">
+                                                <div>
+                                                    <input type="file" style="display:none" id="fucThird" />
+                                                    <button type="button" id="btnFucThirdEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                </div>
+                                                <div style="display:none;">
+                                                    <button type="button" id="btnFucThirdDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="w3-card fileuploading">
+                                            <img src="~/images/cg.jpg" alt="Person"  id="imgFucFour" style="width:100%;height:100px">                                            
+                                            <div class="w3-container">
+                                                <div>
+                                                    <input type="file" style="display:none" id="fucFour" />
+                                                    <button type="button" id="btnFucFourEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                </div>
+                                                <div style="display:none;">
+                                                    <button type="button" id="btnFucFourDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                </div>                                           
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                               <hr />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Name</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtName" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Phone number</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtPhonenumber">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control col-md-7" id="txtCity">
+                                    <small class="text-muted">Type your city name and select the matching city</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control col-md-7" id="txtLocalcity">
+                                    <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                              <hr />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-9" style="text-align:right">
+                                    
+
+                                </div>
+                                <div class="col-md-3">
+                                   <input type="button" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                </div>
+                            </div>
+
                         </form>
 
-                        <div class="businessinfo-left-block">
-                            <div class="form-group">
-                                <label for="listing_name">Listing Name</label>
-                                <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
-                                <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_email">Contact Email</label>
-                                <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_phone_no">Contact Phone</label>
-                                <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
-                            </div>
-                            <div class="form-group">
-                                <label for="listing_website">Website</label>
-                                <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -945,6 +1045,155 @@
 }
 
 <script type="text/javascript">
+
+
+    $(".fileuploading").find(".btnFucEdit").click(function () {
+       $(this).parent().find('input:file').click();
+        //$("#fucThird").click();
+    });
+
+    $("#fucFirst").change(function () {
+        //readURL(this);
+        var fileuploaded = $("#fucFirst").get(0).files;
+
+        alert(fileuploaded[0].name);
+
+        if (fileuploaded[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgFucFirst').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fileuploaded[0]);
+        }
+
+        $("#btnFucFirstEdit").parent().css('display', 'none');
+        $("#btnFucFirstDelete").parent().css('display', 'block');
+        $("#btnFucFirstDelete").parent().css('text-align', 'center');
+
+    });
+    $("#fucSecond").change(function () {
+        //readURL(this);
+        alert("2");
+
+        var fileuploaded = $("#fucSecond").get(0).files;
+        alert(fileuploaded[0].name);
+        if (fileuploaded[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgFucSecond').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fileuploaded[0]);
+        }
+
+        $("#btnFucSecondEdit").parent().css('display', 'none');
+        $("#btnFucSecondDelete").parent().css('display', 'block');
+        $("#btnFucSecondDelete").parent().css('text-align', 'center');
+
+    });
+   
+    $("#fucThird").change(function () {
+        //readURL(this);
+        var fileuploaded = $("#fucThird").get(0).files;
+        if (fileuploaded[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgFucThird').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fileuploaded[0]);
+        }
+
+        $("#btnFucThirdEdit").parent().css('display', 'none');
+        $("#btnFucThirdDelete").parent().css('display', 'block');
+        $("#btnFucThirdDelete").parent().css('text-align', 'center');
+
+    });
+
+    $("#fucFour").change(function () {
+        alert('four');
+        //readURL(this);
+        var fileuploaded = $("#fucFour").get(0).files;
+        if (fileuploaded[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgFucFour').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fileuploaded[0]);
+        }
+
+        $("#btnFucFourEdit").parent().css('display', 'none');
+        $("#btnFucFourDelete").parent().css('display', 'block');
+        $("#btnFucFourDelete").parent().css('text-align', 'center');
+
+    });
+
+    $("#btnFucFirstDelete").click(function () {
+        
+        $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
+        $('#imgFucFirst').attr('src', '/images/cg.jpg');
+
+        $("#btnFucFirstEdit").parent().css('display', 'block');
+        $("#btnFucFirstEdit").parent().css('text-align', 'center');      
+           
+        $("#btnFucFirstDelete").parent().css('display', 'none');
+        
+    });
+
+    $("#btnFucThirdDelete").click(function () {
+
+        $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
+        $('#imgFucThird').attr('src', '/images/cg.jpg');
+
+        $("#btnFucThirdEdit").parent().css('display', 'block');
+        $("#btnFucThirdEdit").parent().css('text-align', 'center');
+
+        $("#btnFucThirdDelete").parent().css('display', 'none');
+
+    });
+
+    $("#btnFucSecondDelete").click(function () {
+
+        $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
+        $('#imgFucSecond').attr('src', '/images/cg.jpg');
+
+        $("#btnFucSecondEdit").parent().css('display', 'block');
+        $("#btnFucSecondEdit").parent().css('text-align', 'center');
+
+        $("#btnFucSecondDelete").parent().css('display', 'none');
+
+    });
+    $("#btnFucFourDelete").click(function () {
+
+        $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
+        $('#imgFucFour').attr('src', '/images/cg.jpg');
+
+        $("#btnFucFourEdit").parent().css('display', 'block');
+        $("#btnFucFourEdit").parent().css('text-align', 'center');
+
+        $("#btnFucFourDelete").parent().css('display', 'none');
+
+    });
+
+    //function readURL(input) {
+
+    //    alert("he");
+
+    //    if (input.files && input.files[0]) {
+    //        var reader = new FileReader();
+
+    //        reader.onload = function (e) {
+    //            $('#imgFucThird').attr('src', e.target.result);
+    //        }
+
+    //        reader.readAsDataURL(input.files[0]);
+    //    }
+    //}
+
+    
+
     $("#categoryUL li").click(function (e, args) {
         var selectedCate = $(this).text();
         $("#categories").val("test" + ">");
@@ -1261,20 +1510,20 @@
             var selectedPrtoperty = $("#hdnCateThirdLevel").val().trim();
 
             $("#forProperties").css('display', 'block');
-           
 
-           if (selectedPrtoperty == "Agricultural Land") {          
-               $("#pro-availability").css('display', 'block');
-               $("#pro-acres").css('display', 'block');
 
-               $("#pro-sqarefeets").css('display', 'none');
-               $("#pro-furnishing").css('display', 'none');
-               $("#pro-bedrooms").css('display', 'none');
-               $("#pro-squareyards").css('display', 'none');
-           }
+            if (selectedPrtoperty == "Agricultural Land") {
+                $("#pro-availability").css('display', 'block');
+                $("#pro-acres").css('display', 'block');
+
+                $("#pro-sqarefeets").css('display', 'none');
+                $("#pro-furnishing").css('display', 'none');
+                $("#pro-bedrooms").css('display', 'none');
+                $("#pro-squareyards").css('display', 'none');
+            }
 
             if (selectedPrtoperty == "Plots/Land") {
-                $("#pro-availability").css('display', 'block');                
+                $("#pro-availability").css('display', 'block');
                 $("#pro-squareyards").css('display', 'block');
 
                 $("#pro-sqarefeets").css('display', 'none');
@@ -1283,7 +1532,7 @@
                 $("#pro-acres").css('display', 'none');
             }
 
-            
+
 
             if (selectedPrtoperty == "Shops & Offices") {
                 $("#pro-availability").css('display', 'block');
@@ -1305,7 +1554,7 @@
                 $("#pro-squareyards").css('display', 'none');
             }
 
-            
+
         }
         else if (selectedCate == "Construction Vehicles") {
             $("#forCV").css('display', 'block');
