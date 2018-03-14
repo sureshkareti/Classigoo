@@ -1,7 +1,4 @@
-﻿$(document).ready(function () {
-        
-});
-
+﻿
 function CheckLoginType()
 {
     var emailorphone = $('input[name="email-phone"]').val();
@@ -19,21 +16,7 @@ function CheckLoginType()
             $("#logintype").val(LoginType);
            
         }
-        if (LoginType == '') {
-           // alert("Invalid phone number or email");
-            
-            $("#divemailphone").addClass("has-error");
-            $("#divemailphone").addClass("has-danger");
-            return false;
-        }
     }
-        if (LoginType == '') {
-            /// alert("Please enter phone number or email");
-            $("#divemailphone").addClass("has-error");
-            $("#divemailphone").addClass("has-danger");
-            return false;
-
-        }
 }
 function CheckUser(profile, type) {
     jQuery.support.cors = true;
