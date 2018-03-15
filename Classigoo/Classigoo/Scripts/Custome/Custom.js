@@ -1,38 +1,22 @@
-﻿$(document).ready(function () {
-       
-});
+﻿
 function CheckLoginType()
 {
     var emailorphone = $('input[name="email-phone"]').val();
-    var EmailReg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+    var EmailReg = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
     var IndNumReg = /^\d{10}$/;
     var LoginType = "";
     if (emailorphone != '') {
         if (EmailReg.test(emailorphone)) {
             LoginType = "email";
             $("#logintype").val(LoginType);
-            return true;
+            
         }
         else if (IndNumReg.test(emailorphone)) {
             LoginType = "phone";
             $("#logintype").val(LoginType);
-            return true;
-        }
-        if (LoginType == '') {
-           // alert("Invalid phone number or email");
-            
-            $("#divemailphone").addClass("has-error");
-            $("#divemailphone").addClass("has-danger");
-            return false;
+           
         }
     }
-        if (LoginType == '') {
-            /// alert("Please enter phone number or email");
-            $("#divemailphone").addClass("has-error");
-            $("#divemailphone").addClass("has-danger");
-            return false;
-
-        }
 }
 function CheckUser(profile, type) {
     jQuery.support.cors = true;

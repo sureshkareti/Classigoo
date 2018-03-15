@@ -3125,7 +3125,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 .w3-container:after,.w3-container:before{content:"";display:table;clear:both}
 .w3-container{padding-top:2px;padding-bottom:5px;text-align:center}
 
-.icon.add2 {
+/*.icon.add2 {
     width: 31px;
     height: 30px;
     background-position: -230px -143px;
@@ -3141,7 +3141,7 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 
 .rel {
     position: relative;
-}
+}*/
 
 /*.nav {
     left:50%;
