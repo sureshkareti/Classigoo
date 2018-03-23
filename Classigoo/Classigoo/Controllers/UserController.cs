@@ -53,7 +53,7 @@ namespace Classigoo.Controllers
             if(UserId!=Guid.Empty)
             {
                 Session["UserId"] = UserId;
-                return   RedirectToAction("UserDashboard", "User");
+                return   RedirectToAction("Home", "User");
             }
             else
             {
@@ -208,7 +208,7 @@ namespace Classigoo.Controllers
         public ActionResult UserDashboard()
         {
             List<Add> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
-            return View(addColl);
+            return View("Home", addColl);
         }
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Add> 
+@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -68,11 +69,70 @@
                         </div>
                         <hr />
                         <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                           
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Created</th>
+                                        <th>Title</th>
+                                        @*<th>Image</th>*@
+                                        <th>Price</th>
+                                        <th>SquareFeets</th>
+                                        <th>Preview</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @Model)
+                                    {
+
+                                        <tr>
+                                            <td>@item.Created</td>
+                                            @foreach (var add in @item.RealEstates)
+                                            {
+                                                <td>@add.Title</td>
+                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
+                                                <td>@add.Price</td>
+                                                <td>@add.SquareFeets</td>
+                                                <td>
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
+                              new { addId = add.AddId }, new { })
+                                            </td>
+                                            <td><a href="">Edit</a></td>
+                                            }
+                                            @foreach (var add in @item.Cars)
+                                            {
+                                                <td>@add.Title</td>
+                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
+                                                <td>@add.Price</td>
+                                                <td>@add.Description</td>
+                                                <td>
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
+                                new { addId = add.AddId }, new { })
+                                                </td>
+                                                <td><a href="">Edit</a></td>
+                                            }
+                                            @foreach (var add in @item.Electronics)
+                                            {
+                                                <td>@add.Title</td>
+                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
+                                                <td>@add.Price</td>
+                                                <td>@add.Description</td>
+                                                <td>
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
+                               new { addId = add.AddId }, new { })
+                                                </td>
+                                                <td><a href="">Edit</a></td>
+                                            }
+
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                             
 
                             
-                            <p>No Messages are </p>
+                            @*<p>No Messages are </p>*@
                         </div>
 
                     </div>
