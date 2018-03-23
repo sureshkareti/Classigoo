@@ -7,27 +7,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responisve, Bootstrap, Html5, Css3, Blog, Classified, Ads, Simple, Clean ">
-    <!-- CSS -->
-    @*<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">*@
-    @*<link href="~/Content/CssNew/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/Content/Custome/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Google Webfont -->
     <link href='http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans:400,300,400italic,600,700,800,800italic' rel='stylesheet' type='text/css'>
-    <!-- Main Css -->
     <link href="~/Content/CssNew/color1.css" rel="stylesheet" media="screen" id="color">
-    @*<link href="~/Content/CssNew/color1.css" rel="stylesheet" />*@
-    @*<link href="css/demo.css" rel="stylesheet">*@
     <link href="~/Content/CssNew/demo.css" rel="stylesheet" />
-    <!-- Font Icon -->
-    @*<link href="css/font-awesome.min.css" rel="stylesheet" media="screen">*@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/CssNew/font-awesome.min.css" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-         <![endif]-->
+
+    <style>
+        .divbgc {
+            background-color: #eae8e8;
+        }
+    </style>
 </head>
 
 <div id="maincontainer">
@@ -39,263 +30,327 @@
             <li class="active">Blog List</li>
         </ul>
         <div class="row mt40">
-            <!--  Sideabar -->
-            @*<aside class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <!--Caegogries-->
-                <div class="sidemodule">
-                    <h2 class="heading5"><span class="maintext"> Category</span></h2>
-                    <ul class="nav nav-list categories">
-                        <li> <a href="#">Real Estate </a></li>
-                        <li> <a href="#">Services </a></li>
-                        <li>
-                            <a href="#">Electronics </a>
-                            <ul class="nav nav-list">
-                                <li>
-                                    <a href="#">Mobiles & Tablets </a>
-                                    <ul class="nav nav-list">
-                                        <li class="active"> <a href="#">Mobile Phones </a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Latest Blog-->
-                <div class="mt40">
-                    <h5 class="heading5"><span class="maintext">Latest Blog</span></h5>
-                    <div id="latestblog">
-                        <ul>
-                            <li>
-                                <img class="pull-left" width="100" title="blog" alt="blog" src="img/blog1.jpg">
-                                <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> <span class="blogicon"><a><i class="fa fa-comment"></i> 5 Comments</a> </span> <span class="blogicon"><a class="orange"><i class="fa fa-user"></i> by : pxcreate </a> </span> </div>
-                                <a href="blog.html" class="blogtitle">Lorem Ipsum is simply dummy...</a>
-                            </li>
-                            <li>
-                                <img class="pull-left" width="100" title="blog" alt="blog" src="img/blog1.jpg">
-                                <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> <span class="blogicon"><a><i class="fa fa-comment"></i> 5 Comments</a> </span> <span class="blogicon"><a class="orange"><i class="fa fa-user"></i> by : pxcreate </a> </span> </div>
-                                <a href="blog.html" class="blogtitle">Dummy text of the printing text...</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Cloud Plgin-->
-                <div class="mt40">
-                    <h5 class="heading5"><span class="maintext">Cloud</span></h5>
-                    <div id="cloud"></div>
-                </div>
-                <!--Latest News-->
-                <div class="mt40">
-                    <h5 class="heading5"><span class="maintext">Latest News</span></h5>
-                    <div id="latestnews">
-                        <ul>
-                            <li>
-                                <div class="date">
-                                    <span class="datetext">25</span><br>
-                                    March 2014
-                                </div>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting dummy text of industry. <a href="#"> Read more</a>
-                            </li>
-                            <li>
-                                <div class="date">
-                                    <span class="datetext">05</span><br>
-                                    Jan 2014
-                                </div>
-                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a Latin.<a href="#"> Read more</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Ad Banner-->
-                <div class="mt40 banner"> <img title="Banner" alt="Banner" src="img/ad1.jpg"> </div>
-            </aside>*@
             <!--  Container -->
-            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 mt40column">
-                <!--Sorting-->
-                <div class="sorting well">
-                                        
-                    
-                    
-                    <ul>
-                        <li class="clearfix">
-
-                            <div class="col-lg-3">
-                                
-
-                                    <div>
-                                        <span>Brand Name</span><br>
-                                        <select class="span1">
-                                            <option>Default</option>
-                                            <option>Name</option>
-                                            <option>Pirce</option>
-                                            <option>Date </option>
-                                        </select>
-
-                                    
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-
-                                <div>
-                                    <span>Model</span><br>
-                                    <select class="span1">
-                                        <option>Default</option>
-                                        <option>Name</option>
-                                        <option>Pirce</option>
-                                        <option>Date </option>
-                                    </select>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-
-                                <div>
-                                    <span>Price Range</span><br>
-                                    <select class="span1">
-                                        <option>Default</option>
-                                        <option>Name</option>
-                                        <option>Pirce</option>
-                                        <option>Date </option>
-                                    </select>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-
-                                <div>
-                                    <span>Year</span><br>
-                                    <select class="span1">
-                                        <option>Default</option>
-                                        <option>Name</option>
-                                        <option>Pirce</option>
-                                        <option>Date </option>
-                                    </select>
-
-
-                                </div>
-                            </div>
-                            <br />
-                            <br />
-                            <br />
-                            <div class="col-lg-3">
-
-
-                                <div>
-                                    <span>Mileage</span><br>
-                                    <select class="span1">
-                                        <option>Default</option>
-                                        <option>Name</option>
-                                        <option>Pirce</option>
-                                        <option>Date </option>
-                                    </select>
-
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-
-                                <div>
-                                    <span>Fuel Type</span><br>
-                                    <select class="span1">
-                                        <option>Default</option>
-                                        <option>Name</option>
-                                        <option>Pirce</option>
-                                        <option>Date </option>
-                                    </select>
-
-
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+            <form class="form-common filter-form filter-header-form">
+                <div class="form-group outer-select-field">
+                    <a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
+                        <i class="fa fa-bars" aria-hidden="true"></i> Categories
+                    </a>
+                    <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Food, Drink">
+                </div>
+                <div class="form-group outer-select-field">
+                    <a class="input-dropedown-btn location-btn" href="javascript:void(0)">
+                        <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
+                    </a>
+                    <input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Food, Drink">
+                </div>
+                <div class="form-group outer-select-field">
+                    <a class="input-dropedown-btn" href="javascript:void(0)">
+                        <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
+                    </a>
+                    <input type="text" class="outer-select-input-box" id="listing_keword" placeholder="Ex: Food, Drink">
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="danger-btn">
+                        <i class="ti-search" aria-hidden="true"></i>
+                        Search
+                    </button>
 
                 </div>
-                @*<form class="form-inline pull-left">
-                        Sort By :
-                        <select class="span2">
-                            <option>Default</option>
-                            <option>Name</option>
-                            <option>Pirce</option>
-                            <option>Date </option>
-                        </select>
-                        &nbsp;&nbsp;
-                        Show:
-                        <select class="span1">
-                            <option>10</option>
-                            <option>15</option>
-                            <option>20</option>
-                            <option>25</option>
-                            <option>30</option>
-                        </select>
-                    </form>*@
-                @*<div class="btn-group pull-right">
-                        <button class="btn btn-orange" id="list"><i class="fa fa-th-list fa-white"></i> </button>
-                        <button class="btn " id="grid"><i class="fa fa-th fa "></i></button>
-                    </div>*@
-            </div>
-            <!-- Listing-->
-            <div class="mt40" id="bloglist">
+            </form>
+            <div class="divbgc">
+                <!--Sorting-->
+                <div class="clearfix" id="cars" style="display:none">
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Brand Name</span><br>
+                            <select class="selectpicker" id="BrandName">
+                                <option value="" disabled selected>Brand</option>
+                                <option>Maruti Suzuki</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Model</span><br>
+                            <select class="selectpicker" id="Model">
+                                <option value="" disabled selected>Default</option>
+                                <option>Name</option>
+                                <option>Pirce</option>
+                                <option>Date </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="dropdown">
+                            <span>Price Range</span><br>
+                            <select id="PriceFrom">
+                                <option value="" disabled selected>Price From</option>
+                                <option>&#8377;10,000</option>
+                                <option>&#8377;50,000</option>
+                                <option>&#8377;1,00,000 </option>
+                                <option>&#8377;5,00,000</option>
+                                <option>&#8377;10,00,000</option>
+                            </select>-
+                            <select id="PriceTo">
+                                <option value="" disabled selected>Price To</option>
+                                <option>&#8377;10,000</option>
+                                <option>&#8377;50,000</option>
+                                <option>&#8377;1,00,000 </option>
+                                <option>&#8377;5,00,000</option>
+                                <option>&#8377;10,00,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="dropdown">
+                            <span>Year</span><br>
+                            <select class="span1" id="YearFrom">
+                                <option value="" disabled selected>Year From</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                            </select>-<select class="span1" id="YearTo">
+                                <option value="" disabled selected>Year To</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <span>Mileage</span><br>
+                            <select class="span1" id="KMDriven">
+                                <option value="" disabled selected>KM Driven</option>
+                                <option>1,000</option>
+                                <option>10,000</option>
+                                <option>20,000 </option>
+                                <option>30,000</option>
+                                <option>50,000</option>
+                                <option>80,000</option>
+                                <option>1,00,000</option>
+                                <option>1,50,000</option>
+                                <option>2,00,000</option>
+                            </select>-<select class="span1" id="KMDriven1">
+                                <option value="" disabled selected>KM Driven</option>
+                                <option>1,000</option>
+                                <option>10,000</option>
+                                <option>20,000 </option>
+                                <option>30,000</option>
+                                <option>50,000</option>
+                                <option>80,000</option>
+                                <option>1,00,000</option>
+                                <option>1,50,000</option>
+                                <option>2,00,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Fuel Type</span><br>
+                            <select class="span1" id="FuelType">
+                                <option value="" disabled selected>Fuel</option>
+                                <option>All</option>
+                                <option>Petrol</option>
+                                <option>Diesel </option>
+                                <option>LPG</option>
+                                <option>CNG&Hybrids</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <div class="clearfix" id="realestate" style="display:none">
+                    <div>
+                        <div class="col-xs-6 col-sm-3">
+                            <span>Category</span><br>
+                            <select class="span1">
+                                <option>Select Category</option>
+                                <option>All</option>
+                                <option>Apartments</option>
+                                <option>Houses & Villas</option>
+                                <option>Builder Folders</option>
+                                <option>Land & Plots</option>
+                                <option>Shops & Offices</option>
+                                <option>Farm Houses</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <span>Super Builtup Area</span><br>
+                            <select class="span1" id="BuitupArea">
+                                <option value="0" disabled selected>Builtup Area</option>
+                                <option>300 ft²</option>
+                                <option>600 ft²</option>
+                                <option>900 ft² </option>
+                                <option>1,250 ft²</option>
+                                <option>1,500 ft²</option>
+                                <option>1,750 ft²</option>
+                                <option>2,250 ft²</option>
+                                <option>2,500 ft²</option>
+                                <option>5,000 ft²</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <span>Price Range</span><br>
+                            <select id="PriceFrom1">
+                                <option value="" disabled selected>Price From</option>
+                                <option>&#8377;10,000</option>
+                                <option>&#8377;50,000</option>
+                                <option>&#8377;1,00,000 </option>
+                                <option>&#8377;5,00,000</option>
+                                <option>&#8377;10,00,000</option>
+                                <option>&#8377;20,00,000 </option>
+                                <option>&#8377;50,00,000</option>
+                                <option>&#8377;1,00,00,000</option>
+                                <option>&#8377;2,00,00,000 </option>
+                                <option>&#8377;5,00,00,000</option>
+                            </select>-
+                            <select id="PriceTo2">
+                                <option value="" disabled selected>Price To</option>
+                                <option>&#8377;10,000</option>
+                                <option>&#8377;50,000</option>
+                                <option>&#8377;1,00,000 </option>
+                                <option>&#8377;5,00,000</option>
+                                <option>&#8377;10,00,000</option>
+                                <option>&#8377;20,00,000 </option>
+                                <option>&#8377;50,00,000</option>
+                                <option>&#8377;1,00,00,000</option>
+                                <option>&#8377;2,00,00,000 </option>
+                                <option>&#8377;5,00,00,000</option>
+                            </select>
+                        </div>
 
-                @Html.Partial("DisplayAdds", Model)
 
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;
+                    <div class="col-xs-6 col-sm-3">
+                        <span>Bed Rooms</span><br>
+                        <select name="langOpt[]" id="BedRooms">
+                            <option value="" disabled selected>Bed Rooms</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">4+</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Construction Status</span><br>
+                            <select class="langOpt" id="ConsructionStatus">
+                                <option value="" disabled selected>Construction Status</option>
+                                <option>All</option>
+                                <option>Under Construction</option>
+                                <option>Ready to Move</option>
+                                <option>New Launch</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Listed By</span><br>
+                            <select class="langOpt" id="ListedBy">
+                                <option value="" disabled selected>Listed By</option>
+                                <option>All</option>
+                                <option>Owner</option>
+                                <option>Dealer</option>
+                                <option>Builder</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div>
+                            <span>Furnishing</span><br>
+                            <select class="langOpt" id="Furnishing">
+                                <option value="" disabled selected>Furnishing</option>
+                                <option>All</option>
+                                <option>Furnished</option>
+                                <option>Unfurnished</option>
+                                <option>Semi-Furnished</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix" style="float:right">
+                    <a class="thumbnail" id="clearfilter" href="#"><img src="~/images/Deletion_icon.svg.png" alt="" height="25" width="25">Clear filters</a>
+                </div>
             </div>
+        </div>
+        <!-- Listing-->
+        <div class="mt40" id="bloglist">
+
+            @Html.Partial("DisplayAdds", Model)
+
         </div>
     </div>
 </div>
-    </div>
+
+
 
 <!-- Got to top -->
 <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
-<!-- Placed at the end of the document so the pages load faster -->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-@*<script src="js/jquery.js"></script>*@
+
 <script src="~/Scripts/ScriptsNew/jquery.js"></script>
-@*<script src="js/jquery-migrate-1.2.1.js"></script>*@
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-@*<script src="js/bootstrap.min.js"></script>*@
+
 <script src="~/Scripts/bootstrap.min.js"></script>
 
-<!-- include jQuery + carouFredSel plugin -->
-@*<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>*@
-@*<script src="~/Scripts/ScriptsNew/jquery.carouFredSel-6.2.1-packed.js"></script>*@
-
-<!-- Flex slider Blog-->
-@*<script src="js/jquery.flexslider.js"></script>*@
 <script src="~/Scripts/ScriptsNew/jquery.flexslider.js"></script>
 
-<!-- Jquery zoom on detail page-->
-@*<script src="js/zoomsl-3.0.min.js"></script>*@
 <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
-<!-- Jquery Validation-->
-@*<script type="text/javascript" src="js/jquery.validate.js"></script>*@
-<!-- Jquery Latest Tweet-->
-@*<script type="text/javascript" src="js/jquery.tweet.js"></script>*@
-<!-- Jquery Countdown-->
-@*<script type="text/javascript" src="js/jquery.countdown.js"></script>*@
-<!-- Social -->
-@*<script type="text/javascript" src="js/socialstream.jquery.js"></script>*@
-<!-- Jquery Map -->
-@*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script type="text/javascript" src="js/jquery.gmap.js"></script>*@
-<!-- Sparkline -->
-@*<script type="text/javascript" src="js/jquery.sparkline.min.js"></script>*@
 
-<!-- Cloud -->
-@*<script type="text/javascript" src="js/jqcloud-1.0.4.js"></script>*@
-<!-- Ratina View -->
-@*<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>*@
-@*<script src="~/Scripts/ScriptsNew/retina-1.1.0.min.js"></script>*@
 <script src="~/Scripts/ScriptsNew/all.js"></script>
-@*<script src="~/Scripts/ScriptsNew/jquery.sparkline.min.js"></script>*@
-<!-- Custom -->
-@*<script src="js/custom.js"></script>*@
+
 <script src="~/Scripts/custom.js"></script>
 <script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
+@*<script src="~/Scripts/ScriptsNew/jquery.multiselect.js"></script>
+    <link href="~/Content/jquery.multiselect.css" rel="stylesheet" />*@
+@section Styles {
+    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
+}
+<script>
+    $(document).ready(function () {
+
+        var category = "realestate";
+        if (category == "cars") {
+            $("#cars").show();
+        }
+        else if (category == "realestate") {
+            $("#realestate").show();
+        }
+
+        $("#clearfilter").click(function () {
+            $('select').prop('selectedIndex', 0);
+        });
+
+    });
+
+</script>
+
+@*<script type="text/javascript">
+        $(function () {
+            $('.multiselect-ui').multiselect({
+                includeSelectAllOption: true
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('.langOpt').multiselect({
+            columns: 1,
+            placeholder: 'Bed Rooms',
+            search: true,
+            selectAll: true
+        });
+    </script>*@
+
+
 
 
