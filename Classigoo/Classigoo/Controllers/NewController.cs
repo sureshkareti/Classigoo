@@ -138,7 +138,7 @@ namespace Classigoo.Controllers
                                        join add in db.Adds on car.AddId equals add.AddId
                                        where
             (model != "Model" ? car.Model == model : true) &&
-              (price != "Price from" ? car.Price == price : true)
+              (price != "Price From" ? car.Price == price : true)
                                        orderby car.AddId
                                        select new CustomAdd
                                        {
