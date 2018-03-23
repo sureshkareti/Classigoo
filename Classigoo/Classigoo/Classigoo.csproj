@@ -348,6 +348,7 @@
     </Content>
     <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
+    <Content Include="images\Deletion_icon.svg.png" />
     <Content Include="images\icons-bg.PNG" />
     <Content Include="images\icons\bike\bike-bike.png" />
     <Content Include="images\icons\bike\bike-cycle.png" />
