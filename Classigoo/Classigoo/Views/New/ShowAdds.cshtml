@@ -343,6 +343,31 @@
         });
         function filterAdds(selectedValue) {
 
+            $.ajax({
+                url: '@Url.Action("ApplyFilter")',
+                type: 'GET',
+                dataType: "html",
+                data: { "filterOptions": JSON.stringify(selectedValue), "category": "Cars" },
+                success: function (data) {
+                    $("#content").html(data);
+                    $(".bloglisting").css("display", "block");
+
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
+                    //$("#requestOverlay").hide();/*Remove overlay*/
+                }
+
+            });
+        }
+    });
+        
+        
 </script>
 
 @*<script type="text/javascript">
