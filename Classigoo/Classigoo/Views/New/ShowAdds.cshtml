@@ -13,7 +13,8 @@
     <link href="~/Content/CssNew/demo.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/CssNew/font-awesome.min.css" rel="stylesheet" />
-
+    <link href="~/Content/Custome/easy-autocomplete.min.css" rel="stylesheet" />
+    <link href="~/Content/Custome/easy-autocomplete.themes.min.css" rel="stylesheet" />
     <style>
         .divbgc {
             background-color: #eae8e8;
@@ -38,6 +39,7 @@
                     </a>
                     <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Food, Drink">
                 </div>
+                @*<input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Food, Drink">*@
                 <div class="form-group outer-select-field">
                     <a class="input-dropedown-btn location-btn" href="javascript:void(0)">
                         <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
@@ -379,6 +381,7 @@
 
 <script src="~/Scripts/custom.js"></script>
 <script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
+<script src="~/Scripts/Custome/jquery.easy-autocomplete.min.js" type="text/javascript"></script>
 @*<script src="~/Scripts/ScriptsNew/jquery.multiselect.js"></script>
     <link href="~/Content/jquery.multiselect.css" rel="stylesheet" />*@
 @section Styles {
@@ -394,6 +397,9 @@
 </style>
 <script>
     $(document).ready(function () {
+
+        FillCategories();
+        FillLocations();
 
         var category = "cars";
         if (category == "cars") {
@@ -438,6 +444,93 @@
 
             });
         }
+
+        function FillCategories() {
+            $.ajax({
+                url: '@Url.Action("GetCategories","Search")',
+                type: 'GET',
+                datatype:'json',
+
+                success: function (data) {
+
+                    var categoryColl = new Array();
+                    $.each(data, function (i, field) {
+                        
+                        categoryColl.push(field.CategoryName);
+                    });
+                    var options = {
+                        data: categoryColl,
+                        list: {
+                            match: {
+                                enabled: true
+                            },
+                            onSelectItemEvent: function () {
+                               // $("#locations").attr("value", $("#locations").getSelectedItemData());
+                                //var a = '<%=Session["TireLn"]%>';
+                            }
+                        }
+
+                    };
+
+                    $("#listing_catagory_list").easyAutocomplete(options);
+
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
+                    //$("#requestOverlay").hide();/*Remove overlay*/
+                }
+
+            });
+        }
+
+        function FillLocations() {
+            $.ajax({
+                url: '@Url.Action("GetLocations", "Search")',
+                type: 'GET',
+                datatype: 'json',
+
+                success: function (data) {
+
+                    var locationColl = new Array();
+                    $.each(data, function (i, field) {
+
+                        locationColl.push(field.LocationName);
+                    });
+                    var options = {
+                        data: locationColl,
+                        list: {
+                            match: {
+                                enabled: true
+                            },
+                            onSelectItemEvent: function () {
+                                // $("#locations").attr("value", $("#locations").getSelectedItemData());
+                                //var a = '<%=Session["TireLn"]%>';
+                            }
+                        }
+
+                    };
+
+                    $("#listing_location_list").easyAutocomplete(options);
+
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
+                    //$("#requestOverlay").hide();/*Remove overlay*/
+                }
+
+            });
+        }
+
     });
 
 </script>

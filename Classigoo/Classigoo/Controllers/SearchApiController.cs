@@ -33,5 +33,31 @@ namespace Classigoo.Controllers
 
 
         }
+        [HttpGet]
+        [ActionName("GetCategories")]
+        public IHttpActionResult GetCategories()
+        {
+            List<Category> categoryColl = new List<Category>();
+            
+            categoryColl= db.Categories.ToList();
+            if (categoryColl.Count > 0)
+                return Ok(categoryColl);
+            else
+                return NotFound();
+        }
+
+        [HttpGet]
+        [ActionName("GetLocations")]
+        public IHttpActionResult GetLocations()
+        {
+            List<Location> locationColl = new List<Location>();
+
+            locationColl = db.Locations.ToList();
+
+            if (locationColl.Count > 0)
+                return Ok(locationColl);
+            else
+                return NotFound();
+        }
     }
 }

@@ -38,6 +38,13 @@
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Electronics">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,6 +61,13 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="100" />
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="RealEstate">
           <Key>
@@ -163,7 +177,9 @@
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Electronics" EntityType="Self.Electronics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -217,6 +233,8 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="RealEstate" EntitySet="RealEstates" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="ClassigooModel.Category" />
+          <EntitySet Name="Locations" EntityType="ClassigooModel.Location" />
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -375,6 +393,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -478,6 +510,22 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ClassigooModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="ClassigooModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

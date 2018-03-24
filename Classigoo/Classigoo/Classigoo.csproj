@@ -213,6 +213,9 @@
     <Compile Include="Car.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classigoo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,6 +247,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -505,6 +511,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\New\DisplayAdds.cshtml" />
     <Content Include="Views\Post\Index1.cshtml" />
+    <Content Include="Views\New\_FillRowData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
