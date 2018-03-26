@@ -1,16 +1,17 @@
-﻿@model IEnumerable<Add> 
+﻿@model IEnumerable<CustomAdd> 
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    WebGrid grid = new WebGrid(source:Model,
+         rowsPerPage: 5);
 }
-@using (Html.BeginForm())
-
+@using (Html.BeginForm("UserDashboard", "User", FormMethod.Post ))
 {
-
 <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
     <div class="col-md-5">
-        <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your OLX Ads</span><br />
-        <span style="font-size:13px;color:#a5a5a5;font-weight:200;">can manage your Active & Inactive Ads here</span>
+        <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your Classigoo Ads</span><br />
+        <span style="font-size:13px;color:#a5a5a5;font-weight:200;">can manage your @*Active & Inactive*@ Ads here</span>
+        <span style="font-size:13px;color:#a5a5a5;font-weight:200;">@ViewBag.status</span>
     </div>
     <div class="col-md-4">
 
@@ -52,7 +53,7 @@
 
                         <div class="clearfix"></div>
                         <div class="row">
-                            <div class="col-md-8">Active (1)</div>
+                            @*<div class="col-md-8">Active (1)</div>
                             <div class="col-md-4">
 
                                 <div id="custom-search-input">
@@ -65,73 +66,29 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
-                        <hr />
-                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                            <table class="table table-bordered" >
-                                <thead>
-                                    <tr>
-                                        <th>Created</th>
-                                        <th>Title</th>
-                                        @*<th>Image</th>*@
-                                        <th>Price</th>
-                                        <th>SquareFeets</th>
-                                        <th>Preview</th>
-                                        <th>Edit</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in @Model)
-                                    {
-
-                                        <tr>
-                                            <td>@item.Created</td>
-                                            @foreach (var add in @item.RealEstates)
-                                            {
-                                                <td>@add.Title</td>
-                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
-                                                <td>@add.Price</td>
-                                                <td>@add.SquareFeets</td>
-                                                <td>
-                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
-                              new { addId = add.AddId }, new { })
-                                            </td>
-                                            <td><a href="">Edit</a></td>
-                                            }
-                                            @foreach (var add in @item.Cars)
-                                            {
-                                                <td>@add.Title</td>
-                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
-                                                <td>@add.Price</td>
-                                                <td>@add.Description</td>
-                                                <td>
-                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
-                                new { addId = add.AddId }, new { })
-                                                </td>
-                                                <td><a href="">Edit</a></td>
-                                            }
-                                            @foreach (var add in @item.Electronics)
-                                            {
-                                                <td>@add.Title</td>
-                                                @*<td><img src="@Url.Content("~/images/logo.jpg")" alt="" /></td>*@
-                                                <td>@add.Price</td>
-                                                <td>@add.Description</td>
-                                                <td>
-                                                    @Html.ActionLink("Preview", "PreviewAdd", "User",
-                               new { addId = add.AddId }, new { })
-                                                </td>
-                                                <td><a href="">Edit</a></td>
-                                            }
-
-
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                            
-
-                            
+                        @*<hr />*@
+                        <div class="row" style="min-height:150px;text-align:center">
+                            @grid.GetHtml(
+                           tableStyle: "table table-bordered",
+                           rowStyle: "tcenter",
+                           columns: grid.Columns(grid.Column("CreatedDate", header: "CreatedDate"),
+     grid.Column("Title", "Title"),
+     grid.Column("Price", "Price"),
+     grid.Column("Image",format: @<img src="~/images/logo.jpg"  class="list_thumbnail fleft" width="50"/>),
+    grid.Column(header: "Preview", format: (add) =>
+    {
+        var link = Html.ActionLink("Preview", "PreviewAdd", "User",
+                                new { addId = add.AddId }, new { });
+        return link;
+    }),
+    grid.Column(header: "Edit", format: (add) =>
+    {
+        var link = Html.ActionLink("Edit", "Edit", new { addId = add.AddId });
+        return link;
+    })
+    ))
                             @*<p>No Messages are </p>*@
                         </div>
 
@@ -272,7 +229,7 @@
                     <div class="tab-pane fade" id="tab4default">
                         <div class="clearfix"></div>
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default accordion-header">
+                            @*<div class="panel panel-default accordion-header">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -295,7 +252,7 @@
                                         <div class="row  form-group">
                                             <div class="col-md-4">
                                                 <span>City</span>
-                                                <select id="SubjectList" name="SubjectList" class="form-control">
+                                                <select id="SubjectList1" name="SubjectList1" class="form-control">
                                                     <option value="1">Choose</option>
                                                     <option value="2">City2</option>
                                                     <option value="3">City3</option>
@@ -315,34 +272,44 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Change phone
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>New Phone Number</span>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">+91</span>
-                                                    <input id="msg" type="text" class="form-control" name="txtMobileNumber">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <input type="button" class="btn btn-primary" value="Save" />
-                                            </div>
-                                        </div>
+                               
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Change phone
+                                            </a>
+                                        </h4>
                                     </div>
-                                </div>
-                            </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                       @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post, new {id= "frmChangePhone"}))
+                       {
+
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New Phone Number</span>
+                                                        @*<label class="control-label" for="inputPhone">New Phone Number</label>*@
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">+91</span>
+<input id="inputPhone" type="text" class="form-control"  name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
+    oninput="setCustomValidity('')" >
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <input type="submit" class="btn btn-primary" value="Change Phone" name="action" />
+                                                    </div>
+                                                </div>
+                        }
+                                            
+                                       </div>
+                                    </div>
+                                 
+                                     </div>
                             <div class="panel panel-default accordion-header">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
@@ -353,7 +320,8 @@
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
-                                        <form id="frmChangePassword">
+                                        @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post, new { id= "frmChangePassword" }))
+                                        {
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>Old Password<span style="color:red">*</span></span>
@@ -374,38 +342,43 @@
                                             </div>
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
-                                                    <input type="button" class="btn btn-primary" value="Change Password" />
+                                                    <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
                                                 </div>
                                             </div>
-                                        </form>
+                                        }
                                     </div>
                                 </div>
                             </div>
                             <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingFour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                            Change email
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                    <div class="panel-body">
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>New email</span>
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <input type="button" class="btn btn-primary" value="Save" />
-                                            </div>
-                                        </div>
+                                
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                                Change email
+                                            </a>
+                                        </h4>
                                     </div>
-                                </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="panel-body">
+                                            @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post))
+                                            { 
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New email</span>
+                                                        <input type="text" class="form-control" name="txtEmail" />
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <input type="submit" class="btn btn-primary" value="Change Email" name="action" />
+                                                    </div>
+                                                </div>
+                                            }
+                                                </div>
+                                    </div>
+                                
                             </div>
-                            <div class="panel panel-default accordion-header">
+                            @*<div class="panel panel-default accordion-header">
                                 <div class="panel-heading" role="tab" id="headingFive">
                                     <h4 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
@@ -424,7 +397,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
 

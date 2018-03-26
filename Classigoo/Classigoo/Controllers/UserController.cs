@@ -207,44 +207,52 @@ namespace Classigoo.Controllers
 
         public ActionResult UserDashboard()
         {
-            List<Add> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            List<CustomAdd> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
             return View("Home", addColl);
         }
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
-         // List<Add> addColl=  GetMyAdds((Guid)Session["UserId"]);
-           
-            // User user = GetUserDetails((Guid)Session["UserId"]);
-            //if(!IsUserExist(coll["txtEmail"],"Gmail"))
-            //{
-            //    user.Email = coll["txtEmail"];
-            //    UpdateUserDetails(user);
-            //}
-            //else
-            //{
-            //    @ViewBag.status = "Email already registered";
-            //}
-            //if (!IsUserExist(coll["txtPhone"], "Custom"))
-            //{
-            //    user.MobileNumber = coll["txtPhone"];
-            //    UpdateUserDetails(user);
-            //}
-            //else
-            //{
-            //    @ViewBag.status = "Mobile Number already registered";
-            //}
-            //if (coll["txtOldPasscode"] == user.Password)
-            //{
-            //    user.Password = coll["txtPasscode"];
-            //    UpdateUserDetails(user);
-            //}
-            //else
-            //{
-            //    @ViewBag.status = "Old Password is incorrect";
-            //}
+            User user = GetUserDetails(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            switch(coll["action"])
+            {
+                case "Change Password":
+                    if (coll["txtOldPasscode"] == user.Password)
+                    {
+                        user.Password = coll["txtPasscode"];
+                        UpdateUserDetails(user);
+                    }
+                    else
+                    {
+                        @ViewBag.status = "Old Password is incorrect";
+                    }
 
-            return View();
+                    break;
+                case "Change Email":
+                    if (!IsUserExist(coll["txtEmail"], "Gmail"))
+                    {
+                        user.Email = coll["txtEmail"];
+                        UpdateUserDetails(user);
+                    }
+                    else
+                    {
+                        @ViewBag.status = "Email already registered";
+                    }
+                    break;
+                case "Change Phone":
+                    if (!IsUserExist(coll["txtPhone"], "Custom"))
+                    {
+                        user.MobileNumber = coll["txtPhone"];
+                        UpdateUserDetails(user);
+                    }
+                    else
+                    {
+                        @ViewBag.status = "Mobile Number already registered";
+                    }
+                    break;
+
+            }
+            return View("Home");
         }
         public void UpdateUserDetails(User user)
         {
@@ -310,9 +318,9 @@ namespace Classigoo.Controllers
             }
             return user;
         }
-        public List<Add> GetMyAdds(Guid id)
+        public List<CustomAdd> GetMyAdds(Guid id)
         {
-            List<Add> addColl = new List<Add>();
+            List<CustomAdd> addColl = new List<CustomAdd>();
             try
             {
                 using (var client = new HttpClient())
@@ -326,7 +334,7 @@ namespace Classigoo.Controllers
                     var result = responseTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
-                        var readTask = result.Content.ReadAsAsync<List<Add>>();
+                        var readTask = result.Content.ReadAsAsync<List<CustomAdd>>();
                         readTask.Wait();
 
                         addColl = readTask.Result;
