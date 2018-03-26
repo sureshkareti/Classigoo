@@ -511,7 +511,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\New\DisplayAdds.cshtml" />
     <Content Include="Views\Post\Index1.cshtml" />
-    <Content Include="Views\New\_FillRowData.cshtml" />
+    <Content Include="Views\Shared\_LoadData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
