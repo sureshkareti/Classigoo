@@ -5,22 +5,28 @@
 
 <form class="form-common filter-form filter-header-form">
     <div class="form-group outer-select-field">
-        <a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
+        <select id="listing_catagory_list" >
+            <option selected >Select Category</option>
+        </select>
+        @*<a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
             <i class="fa fa-bars" aria-hidden="true"></i> Categories
         </a>
-        <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Food, Drink">
+        <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
     </div>    
     <div class="form-group outer-select-field">
-        <a class="input-dropedown-btn location-btn" href="javascript:void(0)">
+        <select id="listing_location_list">
+            <option selected>Select Location</option>
+        </select>
+        @*<a class="input-dropedown-btn location-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
         </a>
-        <input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Food, Drink">
+        <input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
     </div>
     <div class="form-group outer-select-field">
         <a class="input-dropedown-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
         </a>
-        <input type="text" class="outer-select-input-box" id="listing_keword" placeholder="Ex: Food, Drink">
+        <input type="text" class="outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi">
     </div>
     <div class="btn-group">
         <button type="submit" class="danger-btn">
@@ -30,9 +36,6 @@
 
     </div>
 </form>
-
-@*<script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>*@
-
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
@@ -56,26 +59,28 @@
 
                 success: function (data) {
 
-                    var categoryColl = new Array();
+                    //var categoryColl = new Array();
                     $.each(data, function (i, field) {
 
-                        categoryColl.push(field.CategoryName);
+                      //  categoryColl.push(field.CategoryName);
+                        $("#listing_catagory_list").append("<option>" + field.CategoryName + "</option>");
                     });
-                    var options = {
-                        data: categoryColl,
-                        list: {
-                            match: {
-                                enabled: true
-                            },
-                            onSelectItemEvent: function () {
-                             var category = $("#listing_catagory_list").getSelectedItemData();
-                                //var a = '<%=Session["TireLn"]%>';
-                            }
-                        }
+                    //var options = {
+                    //    data: categoryColl,
+                    //    list: {
+                    //        match: {
+                    //            enabled: true
+                    //        },
+                    //        onSelectItemEvent: function () {
+                                
+                    //            $("#listing_catagory_list").attr("value", $("#listing_catagory_list").getSelectedItemData());
+                               
+                    //        }
+                    //    }
 
-                    };
+                    //};
 
-                    $("#listing_catagory_list").easyAutocomplete(options);
+                  //  $("#listing_catagory_list").easyAutocomplete(options);
 
                 },
                 failure: function (response) {
@@ -99,26 +104,26 @@
 
                 success: function (data) {
 
-                    var locationColl = new Array();
+                   // var locationColl = new Array();
                     $.each(data, function (i, field) {
-
-                        locationColl.push(field.LocationName);
+                        $("#listing_location_list").append("<option>" + field.LocationName + "</option>");
+                       // locationColl.push(field.LocationName);
                     });
-                    var options = {
-                        data: locationColl,
-                        list: {
-                            match: {
-                                enabled: true
-                            },
-                            onSelectItemEvent: function () {
-                                // $("#locations").attr("value", $("#locations").getSelectedItemData());
-                                //var a = '<%=Session["TireLn"]%>';
-                            }
-                        }
+                    //var options = {
+                    //    data: locationColl,
+                    //    list: {
+                    //        match: {
+                    //            enabled: true
+                    //        },
+                    //        onSelectItemEvent: function () {
+                    //            // $("#locations").attr("value", $("#locations").getSelectedItemData());
+                                
+                    //        }
+                    //    }
 
-                    };
+                    //};
 
-                    $("#listing_location_list").easyAutocomplete(options);
+                    //$("#listing_location_list").easyAutocomplete(options);
 
                 },
                 failure: function (response) {

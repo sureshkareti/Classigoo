@@ -374,22 +374,16 @@
 </style>
 <script>
     $(document).ready(function () {
-
-        //FillCategories();
-        //FillLocations();
-        // var category = "";
-        // category = "cars";
-        if (category == "cars") {
-            $("#cars").show();
-        }
-        else if (category == "realestate") {
-            $("#realestate").show();
-        }
-
+        var category = "";
+        $("#listing_catagory_list").change(function ()
+        {
+            category = $("#listing_catagory_list").val();
+            ShowCategoryFilter(category);
+        });
         $("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
         });
-        $("select").change(function () {
+        $(".divbgc select").change(function () {
             var car = {};
             car.model = $("#Model").val();
             car.kmdriven = $("#KMDriven").val();
@@ -403,7 +397,7 @@
                 url: '@Url.Action("ApplyFilter")',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "category": "Cars" },
+                data: { "filterOptions": JSON.stringify(selectedValue), "category": category },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
@@ -422,91 +416,15 @@
             });
         }
 
-        @*function FillCategories() {
-            $.ajax({
-                url: '@Url.Action("GetCategories","Search")',
-                type: 'GET',
-                datatype:'json',
-
-                success: function (data) {
-
-                    var categoryColl = new Array();
-                    $.each(data, function (i, field) {
-                        
-                        categoryColl.push(field.CategoryName);
-                    });
-                    var options = {
-                        data: categoryColl,
-                        list: {
-                            match: {
-                                enabled: true
-                            },
-                            onSelectItemEvent: function () {
-                               // $("#locations").attr("value", $("#locations").getSelectedItemData());
-                                //var a = '<%=Session["TireLn"]%>';
-                            }
-                        }
-
-                    };
-
-                    $("#listing_catagory_list").easyAutocomplete(options);
-
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-                    //$("#requestOverlay").hide();/*Remove overlay*/
-                }
-
-            });
+        function ShowCategoryFilter(category)
+        {
+            if (category == "Cars") {
+                $("#cars").show();
+            }
+            else if (category == "RealEstate") {
+                $("#realestate").show();
+            }
         }
-
-        function FillLocations() {
-            $.ajax({
-                url: '@Url.Action("GetLocations", "Search")',
-                type: 'GET',
-                datatype: 'json',
-
-                success: function (data) {
-
-                    var locationColl = new Array();
-                    $.each(data, function (i, field) {
-
-                        locationColl.push(field.LocationName);
-                    });
-                    var options = {
-                        data: locationColl,
-                        list: {
-                            match: {
-                                enabled: true
-                            },
-                            onSelectItemEvent: function () {
-                                // $("#locations").attr("value", $("#locations").getSelectedItemData());
-                                //var a = '<%=Session["TireLn"]%>';
-                            }
-                        }
-
-                    };
-
-                    $("#listing_location_list").easyAutocomplete(options);
-
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-                    //$("#requestOverlay").hide();/*Remove overlay*/
-                }
-
-            });
-        }*@
 
     });
 
