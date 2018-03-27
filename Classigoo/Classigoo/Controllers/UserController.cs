@@ -208,19 +208,25 @@ namespace Classigoo.Controllers
         public ActionResult UserDashboard()
         {
             List<CustomAdd> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            TempData["UserAddColl"] = addColl;
             return View("Home", addColl);
+
         }
         [HttpPost]
         public ActionResult UserDashboard(FormCollection coll)
         {
             User user = GetUserDetails(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
-            switch(coll["action"])
+            List<CustomAdd> addColl = (List<CustomAdd>)TempData["UserAddColl"];
+            TempData.Keep("UserAddColl");
+            switch (coll["action"])
             {
                 case "Change Password":
                     if (coll["txtOldPasscode"] == user.Password)
                     {
                         user.Password = coll["txtPasscode"];
                         UpdateUserDetails(user);
+                        @ViewBag.status = "Password updated successfully";
+
                     }
                     else
                     {
@@ -233,6 +239,7 @@ namespace Classigoo.Controllers
                     {
                         user.Email = coll["txtEmail"];
                         UpdateUserDetails(user);
+                        @ViewBag.status = "Email updated successfully";
                     }
                     else
                     {
@@ -244,15 +251,18 @@ namespace Classigoo.Controllers
                     {
                         user.MobileNumber = coll["txtPhone"];
                         UpdateUserDetails(user);
+                        @ViewBag.status = "Mobile Number updated successfully";
                     }
                     else
                     {
                         @ViewBag.status = "Mobile Number already registered";
                     }
                     break;
+                default:
+                    break;
 
             }
-            return View("Home");
+            return View("Home", addColl);
         }
         public void UpdateUserDetails(User user)
         {
