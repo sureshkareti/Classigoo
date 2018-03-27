@@ -425,7 +425,7 @@ ul.state li:hover i { animation : 0.35s linear 0s alternate none 1 maincategory;
 .bloglisting ul > li .category.color7 { background: #A75E99 }
 .bloglisting ul > li .category.color8 { background: #119717 }
 .bloglisting ul > li .category.color9 { background: #F54F4D }
-.bloglisting ul > li .category.color10 { background: #F25C27 }
+.bloglisting ul > li .category.color10 { background: #ff6c02 }
 .bloglisting ul > li .latest { background: #8FB442 }
 .bloglisting ul > li .btn.comment { padding: 3px 7px; background: #999; color: #fff; font-weight: normal }
 .bloglisting ul > li .readmore { float: left; color: #8FB442; margin-top: 8px; display: block }
