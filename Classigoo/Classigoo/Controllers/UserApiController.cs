@@ -219,9 +219,14 @@ namespace Classigoo.Controllers
         [ActionName("GetMyAdds")]
         public IHttpActionResult GetMyAdds(Guid userId)
         {
-            var adds = db.Adds.Where(a => a.UserId == userId).ToList();
-            if(adds.Count>0)
-            return Ok(adds);
+            List<Add> adds = db.Adds.Where(a => a.UserId == userId).ToList();
+            List<CustomAdd> addColl = new List<CustomAdd>();
+            foreach(Add add in adds)
+            {
+                addColl.Add(CheckCategory(add));
+            }
+            if(addColl.Count>0)
+            return Ok(addColl);
             else
                 return NotFound();
         }
@@ -234,6 +239,48 @@ namespace Classigoo.Controllers
                 return Ok(add);
             else
                 return NotFound();
+        }
+        public CustomAdd CheckCategory(Add add)
+        {
+            CustomAdd customAdd = new CustomAdd();
+            customAdd.CreatedDate = add.Created.ToString();
+            customAdd.AddId = add.AddId;
+            switch (add.Category)
+            {
+                case "RealEstate":
+                    {
+
+                        foreach (var item in add.RealEstates)
+                        {
+                           // customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
+                        }
+                        break;
+                    }
+                case "Cars":
+                    {
+                        foreach (var item in add.Cars)
+                        {
+                          //  customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
+                        }
+                        break;
+                    }
+                case "Electronics":
+                    {
+                        foreach (var item in add.Electronics)
+                        {
+                          //  customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
+                        }
+                        break;
+                    }
+
+            }
+            return customAdd;
         }
     }
 }
