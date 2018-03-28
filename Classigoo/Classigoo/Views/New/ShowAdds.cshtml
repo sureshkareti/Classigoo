@@ -39,9 +39,9 @@
                 @Html.Partial("_LoadData")
 
             </div>
-            <div class="divbgc">
+            <div class="divbgc" style="display:none">
                 <!--Sorting-->
-                <div class="clearfix" id="cars" style="display:none">
+                <div class="clearfix" id="Cars" style="display:none">
                     <div class="col-xs-6 col-sm-3">
                         <div>
                             <span>Brand Name</span><br>
@@ -215,7 +215,7 @@
                 &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;
-                <div class="clearfix" id="realestate" style="display:none">
+                <div class="clearfix" id="RealEstate" style="display:none">
                     <div class="row form-group">
                         <div class="col-xs-6 col-sm-3">
                             <span>Category</span><br>
@@ -360,8 +360,6 @@
 
 <script src="~/Scripts/custom.js"></script>
 <script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
-@*<script src="~/Scripts/ScriptsNew/jquery.multiselect.js"></script>
-    <link href="~/Content/jquery.multiselect.css" rel="stylesheet" />*@
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
@@ -442,14 +440,25 @@
 
         function ShowCategoryFilter(category)
         {
-            if (category == "Cars") {
-                $("#cars").show();
-                $("#realestate").hide();
+            if (category == "Select Category")
+            {
+                $(".divbgc").hide();
             }
-            else if (category == "RealEstate") {
-                $("#realestate").show();
-                $("#cars").hide();
+            else
+            {
+                $(".divbgc").show();
             }
+            $('.divbgc > div').map(function () {
+                if (this.id == category)
+                {
+                    $("#"+this.id).show();
+                }
+                else
+                {
+                    $("#" + this.id).hide();
+                }
+            });
+            
         }
 
     });
