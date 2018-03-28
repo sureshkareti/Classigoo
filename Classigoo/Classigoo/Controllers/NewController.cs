@@ -32,26 +32,26 @@ namespace Classigoo.Controllers
         {
             int maxRows = 5;
             ClassigooEntities db = new ClassigooEntities();
-            
+
             AddsModel addColl = new AddsModel();
             List<CustomAdd> coll = new List<CustomAdd>();
             List<Add> addsByPage = (from add in db.Adds
-                            select add)
+                                    select add)
                         .OrderBy(add => add.Category)
                         .Skip((currentPage - 1) * maxRows)
                         .Take(maxRows).ToList();
-            foreach(var add in addsByPage)
+            foreach (var add in addsByPage)
             {
                 coll.Add(CheckCategory(add));
             }
             addColl.Adds = coll;
             double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
-                addColl.PageCount = (int)Math.Ceiling(pageCount);
+            addColl.PageCount = (int)Math.Ceiling(pageCount);
 
-                addColl.CurrentPageIndex = currentPage;
+            addColl.CurrentPageIndex = currentPage;
 
-                return addColl;
-            
+            return addColl;
+
         }
         public CustomAdd CheckCategory(Add add)
         {
@@ -63,12 +63,12 @@ namespace Classigoo.Controllers
             {
                 case "RealEstate":
                     {
-                        
-                         foreach (var item in add.RealEstates)
+
+                        foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
-                           
+
                         }
                         break;
                     }
@@ -78,7 +78,7 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
-                           
+
                         }
                         break;
                     }
@@ -88,11 +88,11 @@ namespace Classigoo.Controllers
                         {
                             customAdd.Description = item.Description;
                             customAdd.Title = item.Title;
-                            
+
                         }
                         break;
                     }
-                    
+
             }
             return customAdd;
         }
@@ -101,44 +101,64 @@ namespace Classigoo.Controllers
             Dictionary<string, object> filterColl = new Dictionary<string, object>();
             JavaScriptSerializer j = new JavaScriptSerializer();
             object filters = j.Deserialize(filterOptions, typeof(object));
-            filterColl = (Dictionary<string,object>)filters;
+            filterColl = (Dictionary<string, object>)filters;
             AddsModel addColl = new AddsModel();
-            switch(category)
+            switch (category)
             {
                 case "Cars":
-                  addColl=  FilterCars(filterColl);
+                    addColl = FilterCars(filterColl);
                     break;
                 case "Electronics":
                     addColl = FilterCars(filterColl);
                     break;
                 case "RealEstate":
-                    addColl = FilterCars(filterColl);
+                    addColl = FilterRealEstate(filterColl);
                     break;
             }
 
             return PartialView("DisplayAdds", addColl);
         }
-        public AddsModel FilterCars(Dictionary<string,object> filterOptions)
+        public AddsModel FilterCars(Dictionary<string, object> filterOptions)
         {
             int currentPage = 1;
             int maxRows = 5;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
+           // string brandname = filterOptions["brandname"].ToString();
             string model = filterOptions["model"].ToString();
+
             string price = filterOptions["price"].ToString();
+          //  string priceto = filterOptions["priceto"].ToString();
+            string yearfrom = filterOptions["yearfrom"].ToString();
+           // string yearto = filterOptions["yearto"].ToString();
+            string fuel = filterOptions["fuel"].ToString();
+            string kmdriven = filterOptions["kmdriven"].ToString();
+           // string kmdriven1 = filterOptions["kmdriven1"].ToString();
+
             int totalRowCount = db.Cars.Where(car =>
 
-            (model != "Model" ? car.Model == model : true) &&
-             (price != "Price from" ? car.Price == price : true)
+             // (brandname != "BrandName" ? car.Type == brandname : true) &&
+              (model != "Model" ? car.Model == model : true) &&
+              (price != "Price from" ? car.Price == price : true) &&
+             // (priceto != "Price To" ? car.priceto == priceto : true) &&
+              (yearfrom != "Year From" ? car.Year == yearfrom : true) &&
+             // (yearto != "Year To" ? car.Year == brandname : true) &&
+              (fuel != "Fuel" ? car.Fuel == fuel : true) &&
+              (kmdriven != "KM Driven" ? car.KMDriven == kmdriven : true)
+
 
 
             ).Count();
-            
+
             List<CustomAdd> carColl = (from car in db.Cars
                                        join add in db.Adds on car.AddId equals add.AddId
                                        where
-            (model != "Model" ? car.Model == model : true) &&
-              (price != "Price From" ? car.Price == price : true)
+             // (brandname != "BrandName" ? car.Type == brandname : true) &&
+              (model != "Model" ? car.Model == model : true) &&
+              (price != "Price From" ? car.Price == price : true) &&
+              (yearfrom != "Year From" ? car.Year == yearfrom : true) &&
+             // (fuel != "FuelType" ? car.Fuel == fuel : true) &&
+             (kmdriven != "KM Driven" ? car.KMDriven == kmdriven : true)
                                        orderby car.AddId
                                        select new CustomAdd
                                        {
@@ -156,8 +176,59 @@ namespace Classigoo.Controllers
             addColl.CurrentPageIndex = currentPage;
             return addColl;
         }
-        public void FilterRealEstate(Dictionary<string, object> filterOptions)
+        public AddsModel FilterRealEstate(Dictionary<string, object> filterOptions)
         {
+
+            int currentPage = 1;
+            int maxRows = 5;
+            ClassigooEntities db = new ClassigooEntities();
+            AddsModel addColl = new AddsModel();
+          //  string category = filterOptions["category"].ToString();
+          //  string builtuparea = filterOptions["builtuparea"].ToString();
+            string pricefrom = filterOptions["pricefrom"].ToString();
+          //  string priceto = filterOptions["priceto"].ToString();
+            string bedrooms = filterOptions["bedrooms"].ToString();
+          //  string construction = filterOptions["construction"].ToString();
+            string listedby = filterOptions["listedby"].ToString();
+            string furnishing = filterOptions["furnishing"].ToString();
+            
+            int totalRowCount = db.RealEstates.Where(RealEstate =>
+
+           // (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
+           //(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
+           (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true)&&
+            (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true)&&
+            //(construction != "Construction Status" ? RealEstate. == bedrooms : true)&&
+            (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
+             (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true)
+             
+
+
+            ).Count();
+
+            List<CustomAdd> realestateColl = (from RealEstate in db.RealEstates
+                                              join add in db.Adds on RealEstate.AddId equals add.AddId
+                                              where
+                    // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
+                     (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
+                     (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true) &&
+                     (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true)
+                                              orderby RealEstate.AddId
+                                              select new CustomAdd
+                                              {
+                                                  AddId = add.AddId,
+                                                  Location = add.Location,
+                                                  CreatedDate = add.Created.ToString(),
+                                                  Title = RealEstate.Title,
+                                                  Description = RealEstate.Description
+                                              }).Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+            addColl.Adds = realestateColl;
+            double pageCount = (double)((decimal)totalRowCount / Convert.ToDecimal(maxRows));
+            addColl.PageCount = (int)Math.Ceiling(pageCount);
+
+            addColl.CurrentPageIndex = currentPage;
+            return addColl;
 
         }
         public void FilterElectronics(Dictionary<string, object> filterOptions)

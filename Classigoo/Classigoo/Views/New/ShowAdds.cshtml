@@ -15,7 +15,11 @@
     <link href="~/Content/CssNew/font-awesome.min.css" rel="stylesheet" />
     <style>
         .divbgc {
-            background-color: #eae8e8;
+            background: #f9f9f9;
+            padding: 15px 0;
+            margin-bottom: 30px;
+            margin-right: 10px;
+            position: relative;
         }
     </style>
 </head>
@@ -215,7 +219,7 @@
                     <div class="row form-group">
                         <div class="col-xs-6 col-sm-3">
                             <span>Category</span><br>
-                            <select class="form-control">
+                            <select class="form-control" id="Category">
                                 <option>Select Category</option>
                                 <option>All</option>
                                 <option>Apartments</option>
@@ -243,7 +247,7 @@
                         </div>
                         <div class="col-sm-4">
                             <span>Price Range</span><br>
-                            <select class="form-control" style="width:auto" id="PriceFrom1">
+                            <select class="form-control" style="width:auto" id="PriceFrom">
                                 <option selected>Price From</option>
                                 <option>&#8377;10,000</option>
                                 <option>&#8377;50,000</option>
@@ -256,7 +260,7 @@
                                 <option>&#8377;2,00,00,000 </option>
                                 <option>&#8377;5,00,00,000</option>
                             </select>-
-                            <select class="form-control" style="width:auto" id="PriceTo2">
+                            <select class="form-control" style="width:auto" id="PriceTo">
                                 <option selected>Price To</option>
                                 <option>&#8377;10,000</option>
                                 <option>&#8377;50,000</option>
@@ -384,12 +388,32 @@
             $('select').prop('selectedIndex', 0);
         });
         $(".divbgc select").change(function () {
-            var car = {};
-            car.model = $("#Model").val();
-            car.kmdriven = $("#KMDriven").val();
-            car.price = $("#PriceFrom").val();
+            var filterObj = {};
+            if (category == "Cars") {
+               
+                // filterObj.brandname = $("#BrandName").val();                
+                filterObj.model = $("#Model").val();                
+                filterObj.price = $("#PriceFrom").val();
+                filterObj.priceto = $("#PriceTo").val();
+                filterObj.yearfrom = $("#YearFrom").val();
+                filterObj.yearto = $("#YearTo").val();
+                filterObj.fuel = $("#FuelType").val();
+                filterObj.kmdriven = $("#KMDriven").val();
+                filterObj.kmdriven1 = $("#KMDriven1").val();
+            }
+            else if (category == "RealEstate") {
 
-            filterAdds(car);
+                filterObj.category = $("#Category").val();
+                filterObj.builtuparea = $("#BuiltupArea").val();
+                filterObj.pricefrom = $("#PriceFrom").val();
+                filterObj.priceto = $("#PriceTo").val();
+                filterObj.bedrooms = $("#BedRooms").val();
+                filterObj.construction = $("#ConstructionStatus").val();
+                filterObj.listedby = $("#ListedBy").val();
+                filterObj.furnishing = $("#Furnishing").val();
+                
+            }
+            filterAdds(filterObj);
         });
         function filterAdds(selectedValue) {
 
@@ -420,9 +444,11 @@
         {
             if (category == "Cars") {
                 $("#cars").show();
+                $("#realestate").hide();
             }
             else if (category == "RealEstate") {
                 $("#realestate").show();
+                $("#cars").hide();
             }
         }
 
