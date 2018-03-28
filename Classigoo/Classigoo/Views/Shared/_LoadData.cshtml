@@ -2,9 +2,17 @@
 @{
     Layout = null;
 }
+<style>
+    .ui-autocomplete {
+        cursor: pointer;
+        height: 120px;
+        overflow-y: scroll;
+    }
+</style>
 
 <form class="form-common filter-form filter-header-form">
     <div class="form-group outer-select-field">
+       
         <select class="form-control" id="listing_catagory_list" >
             <option selected >Select Category</option>
         </select>
@@ -14,9 +22,10 @@
         <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
     </div>    
     <div class="form-group outer-select-field">
-        <select class="form-control" id="listing_location_list">
+        <input type="text" id="listing_location_list" class="form-control"/>
+        @*<select class="form-control" id="listing_location_list">
             <option selected>Select Location</option>
-        </select>
+        </select>*@
         @*<a class="input-dropedown-btn location-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
         </a>
@@ -36,15 +45,11 @@
 
     </div>
 </form>
-@section Styles {
-    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
+
+    <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
+    <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
-}
-
-<link href="~/Content/Custome/easy-autocomplete.min.css" rel="stylesheet" />
-<link href="~/Content/Custome/easy-autocomplete.themes.min.css" rel="stylesheet" />
-
 <script>
     $(document).ready(function () {
         
@@ -104,11 +109,24 @@
 
                 success: function (data) {
 
-                   // var locationColl = new Array();
+                    var locationColl = new Array();
+                    locationColl.push("All India");
                     $.each(data, function (i, field) {
-                        $("#listing_location_list").append("<option>" + field.LocationName + "</option>");
-                       // locationColl.push(field.LocationName);
+                        //$("#listing_location_list").append("<option>" + field.LocationName + "</option>");
+                        locationColl.push(field.LocationName);
                     });
+                    jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
+                        $('#listing_location_list').autocomplete({
+                            source: locationColl,
+                            minLength: 0,
+                            mustMatch: true,
+                            scroll: true
+                        }).focus(function () {
+                            $(this).autocomplete("search", "");
+                        });
+
+                   });
+                    
                     //var options = {
                     //    data: locationColl,
                     //    list: {
@@ -142,4 +160,3 @@
     });
 
 </script>
-<script src="~/Scripts/Custome/jquery.easy-autocomplete.min.js" type="text/javascript"></script>
