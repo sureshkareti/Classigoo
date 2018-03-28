@@ -5,6 +5,9 @@
     WebGrid grid = new WebGrid(source:Model,
          rowsPerPage: 5);
 }
+@{
+    string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
+}
 @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post ))
 {
 <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
@@ -289,8 +292,8 @@
 
                                                 <div class="row  form-group">
                                                     <div class="col-md-4">
-                                                        <span>New Phone Number</span>
-                                                        @*<label class="control-label" for="inputPhone">New Phone Number</label>*@
+                                                        <span>New Phone Number<span style="color:red">*</span></span>
+                                                        
                                                         <div class="input-group">
                                                             <span class="input-group-addon">+91</span>
 <input id="inputPhone" type="text" class="form-control"  name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
@@ -325,13 +328,13 @@
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>Old Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
                                                 </div>
                                             </div>
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>New Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
                                                 </div>
                                             </div>
                                             <div class="row  form-group">
@@ -354,6 +357,7 @@
                                     <div class="panel-heading" role="tab" id="headingFour">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                                
                                                 Change email
                                             </a>
                                         </h4>
@@ -361,16 +365,18 @@
                                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                         <div class="panel-body">
                                             @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post))
-                                            { 
+                                            {
                                                 <div class="row  form-group">
                                                     <div class="col-md-4">
-                                                        <span>New email</span>
-                                                        <input type="text" class="form-control" name="txtEmail" />
+                                                        <span>New email<span style="color:red">*</span></span>
+                                                       
+  <input type="text" class="form-control" name="txtEmail" required pattern ="@emailPattern" oninvalid="this.setCustomValidity('Please enter a valid Email address.')"
+    oninput="setCustomValidity('')"  />
                                                     </div>
                                                 </div>
                                                 <div class="row  form-group">
                                                     <div class="col-md-4">
-                                                        <input type="submit" class="btn btn-primary" value="Change Email" name="action" />
+                 <input type="submit" class="btn btn-primary" value="Change Email" name="action" />
                                                     </div>
                                                 </div>
                                             }
