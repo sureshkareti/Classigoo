@@ -119,11 +119,28 @@
                         $('#listing_location_list').autocomplete({
                             source: locationColl,
                             minLength: 0,
-                            mustMatch: true,
-                            scroll: true
-                        }).focus(function () {
-                            $(this).autocomplete("search", "");
-                        });
+                            scroll: true,
+                            matchContains:false, 
+                            minChars:1,  
+                            autoFill:false, 
+                            mustMatch:true, 
+                            cacheLength:20, 
+                            max:20 ,
+                            select: function (event, ui) {
+                                console.log(ui.item.value);
+                            },
+                            response: function (event, ui) {
+                                if (ui.content.length === 0) {
+                                    $("#listing_location_list").val("All India");
+                                } 
+                            }
+                           
+                        }).blur(function(){
+                            if ($("#listing_location_list").val()=="")
+                            {
+                                $("#listing_location_list").val("All India");
+                            }
+                        }).val("All India");
 
                    });
                     
