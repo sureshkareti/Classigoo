@@ -18,8 +18,9 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        public ActionResult ShowAdds()
+        public ActionResult ShowAdds(string location)
         {
+            Session["Location"] = location;
             return View(GetAdds(1));
         }
         [HttpPost]
