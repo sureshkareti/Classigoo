@@ -33,6 +33,20 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Rent/Sale</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <select id="ddlBedrooms" class="form-control">
+                                        <option>Select</option>
+                                        <option>Rent</option>
+                                        <option>Sale</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
 
                                 </div>
@@ -70,16 +84,56 @@
                                         <div class="panel-body">
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active sub-category-items" id="tabCategories">
-                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br/>
+                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />                                                
                                                     <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catPro">Properties</a><br />
+
                                                     <a href='javascript:void(0)' id="catCars">Cars</a><br />
                                                     <a href='javascript:void(0)' id="catBikes">Bikes</a><br />
                                                     <a href='javascript:void(0)' id="catME">Mobiles & Electronics</a><br />
                                                     <a href='javascript:void(0)' id="catAll">All Vehicles Hire/Engage/Lease</a><br />
                                                 </div>
+
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
+                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                    <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
+                                                    <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
+                                                    <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                    <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
+                                                    <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                    
+                                                    <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
+                                                    <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
+                                                    <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
+                                                    <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />                                                 
+                                                </div>
+
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
+                                                    <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
+                                                    <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                    <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
+                                                    <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
+                                                    <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans </a><br />
+                                                    <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
+                                                </div>
+
                                                 <div class="tab-pane fade in" id="tabPro">
 
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
@@ -111,33 +165,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)">Backhoe Loader</a><br />
-                                                    <a href="javascript:void(0)">Excavator</a><br />
-                                                    <a href="javascript:void(0)">Wheel Loader</a><br />
-                                                    <a href="javascript:void(0)">Crane</a><br />
-                                                    <a href="javascript:void(0)">Dozer</a><br />
-                                                    <a href="javascript:void(0)">Transit Mixer</a><br />
-                                                    <a href="javascript:void(0)">Soil Compactor</a><br />
-                                                    <a href="javascript:void(0)">Rock Breaker</a><br />
-                                                    <a href="javascript:void(0)">Motor Grader</a><br />
-                                                    <a href="javascript:void(0)">Forklift</a><br />
-                                                    <a href="javascript:void(0)">Dumper</a><br />
-                                                    <a href="javascript:void(0)">Batching Plant</a><br />
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">Default 3</div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)">Combine / Harvestor</a><br />
-                                                    <a href="javascript:void(0)">Rice Transplator</a><br />
-                                                    <a href="javascript:void(0)">Rotary Tiller</a><br />
-                                                    <a href="javascript:void(0)">Sprayer</a><br />
-                                                    <a href="javascript:void(0)">Thrasher</a><br />
-                                                    <a href="javascript:void(0)">Tractors</a><br />
-
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">Default 5</div>
+                                                
+                                                
+                                                
+                                                
                                                 <div class="tab-pane fade in" id="tabCars">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
