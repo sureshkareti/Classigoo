@@ -596,11 +596,21 @@
     $(document).ready(function () {
         $("#divSearch").hide();
         var category = "";
+        var location = "";
+
         $("#listing_catagory_list").change(function ()
         {
             category = $("#listing_catagory_list").val();
-            ShowCategoryFilter(category);
+            location = $("#listing_location_list").val();
+            ShowCategoryFilter();
         });
+
+        $("#listing_location_list").change(function () {
+            category = $("#listing_catagory_list").val();
+            location = $("#listing_location_list").val();
+            ShowCategoryFilter();
+        });
+
         $("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
         });
@@ -645,7 +655,6 @@
                
             }
             else if (category == "CommercialVehicles") {
-
                 
                 filterObj.price = $("#PriceFrom").val();
                 filterObj.priceto = $("#PriceTo").val();
@@ -663,7 +672,7 @@
                 url: '@Url.Action("ApplyFilter")',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "category": category },
+                data: { "filterOptions": JSON.stringify(selectedValue), "category": category, "location": location },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
@@ -682,7 +691,7 @@
             });
         }
 
-        function ShowCategoryFilter(category)
+        function ShowCategoryFilter()
         {
             if (category == "Select Category")
             {
@@ -706,32 +715,9 @@
             
             if(category!="Selected Category")
             {
-                filterAdd();
+                filterAdds("");
             }
-            function filterAdd(selectedValue) {
-
-                $.ajax({
-                    url: '@Url.Action("ApplyFilters")',
-                    type: 'GET',
-                    dataType: "html",
-                    data: { "category": category },
-                    success: function (data) {
-                        $("#content").html(data);
-                        $(".bloglisting").css("display", "block");
-
-                    },
-                    failure: function (response) {
-                        console.log(response.responseText);
-                    },
-                    error: function (response) {
-                        console.log(response.responseText);
-                    },
-                    complete: function (data) {
-                        //$("#requestOverlay").hide();/*Remove overlay*/
-                    }
-
-                });
-            }
+          
         }
 
     });
