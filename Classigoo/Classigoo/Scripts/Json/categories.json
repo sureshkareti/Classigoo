@@ -1,39 +1,105 @@
-﻿{
-  "title": "All",
-  "data": [
-    {
-      "title": "Properties",
-      "data": [
-        {
-          "title": "For Sale",
-          "data": [ "Apartments", "Houses & Villas", "Builder Floors", "Land & Plots", "Shops & Offices", "Farm Houses" ]
-        },
-        {
-          "title": "For Rent",
-          "data": [ "Apartments", "Houses & Villas", "Builder Floors", "Guest Houses", "PG & Roommates", "Land & Plots", "Shops & Offices" ]
-        }
-      ]
-    },
-    {
-      "title": "Cars",
-      "data": [
-        {
-          "title": "Cars",
-          "data": [ "Maruti Suzuki", "Hyundai", "Tata", "Mahindra", "Toyota", "Honda", "Chevrolet", "Ford", "Skoda", "Volkswagen", "Fiat", "Nissan", "Renault", "Mitsubishi", "Mercedes-Benz", "Audi", "Mahindra Renault", "BMW", "Hindustan Motors", "Other Brands" ]
-        },
-        {
-          "title": "Commercial Vehicles"
-        },
-        {
-          "title": "Other Vehicles"
-        },
-        {
-          "title": "Spare Parts"
-        }
+﻿[{
+    "id": 1234,
+    "name": "Agricultural Vehicles",
+    "Vehicle Type": [
+      {
+        "id": "2345",
+        "name": "Borewell Machine",
+        "Vehicle Model": [
 
-      ]
-    }
+        ]
+      },
+      {
+        "id": "2346",
+        "name": "Tractors"
+
+      }
+      
+    ]
+  },
+  {
+    "id": 1235,
+    "name": "Construction Vehicles",
+    "url": "andamannicobar",
+    "subregions": [
+      {
+        "id": "39323583",
+        "name": "Bakultala",
+        "name_long": "Bakultala, Andaman & Nicobar Islands",
+        "url": "bakultala"
+      },
+      {
+        "id": "39333569",
+        "name": "Bambooflat",
+        "name_long": "Bambooflat, Andaman & Nicobar Islands",
+        "url": "bambooflat"
+      },
+      {
+        "id": "393567",
+        "name": "Car Nicobar",
+        "name_long": "Car Nicobar, Andaman & Nicobar Islands",
+        "url": "car-nicobar"
+      },
+      {
+        "id": "296465",
+        "name": "Diglipur",
+        "name_long": "Diglipur, Andaman & Nicobar Islands",
+        "url": "diglipur"
+      },
+      {
+        "id": "393581",
+        "name": "Garacharma",
+        "name_long": "Garacharma, Andaman & Nicobar Islands",
+        "url": "garacharma"
+      },
+      {
+        "id": "393577",
+        "name": "Hut Bay",
+        "name_long": "Hut Bay, Andaman & Nicobar Islands",
+        "url": "hut-bay"
+      },
+      {
+        "id": "393579",
+        "name": "Kamorta",
+        "name_long": "Kamorta, Andaman & Nicobar Islands",
+        "url": "kamorta"
+      },
+      {
+        "id": "393563",
+        "name": "Malacca",
+        "name_long": "Malacca, Andaman & Nicobar Islands",
+        "url": "malacca"
+      },
+      {
+        "id": "393565",
+        "name": "Mayabunder",
+        "name_long": "Mayabunder, Andaman & Nicobar Islands",
+        "url": "mayabunder"
+      },
+      {
+        "id": "157273",
+        "name": "Port Blair",
+        "name_long": "Port Blair, Andaman & Nicobar Islands",
+        "url": "portblair"
+      },
+      {
+        "id": "393571",
+        "name": "Prothrapur",
+        "name_long": "Prothrapur, Andaman & Nicobar Islands",
+        "url": "prothrapur"
+      },
+      {
+        "id": "393575",
+        "name": "Rangat",
+        "name_long": "Rangat, Andaman & Nicobar Islands",
+        "url": "rangat"
+      },
+      {
+        "id": "393573",
+        "name": "Tarasa Island",
+        "name_long": "Tarasa Island, Andaman & Nicobar Islands",
+        "url": "tarasa-island"
+      }
+    ]
+  }
   ]
-
-
-}

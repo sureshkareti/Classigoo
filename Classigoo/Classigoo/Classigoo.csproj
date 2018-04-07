@@ -462,6 +462,7 @@
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
     <Content Include="Views\New\Detail.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Scripts\Json\categories.json" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
@@ -504,7 +505,7 @@
     <Content Include="Views\User\UserDashboard.cshtml" />
     <Content Include="Views\User\PreviewAdd.cshtml" />
     <Content Include="Views\Search\DisplayAdds.cshtml" />
-    <Content Include="Scripts\Json\categories.json" />
+    <Content Include="Scripts\Json\categories1.json" />
     <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\User\ShowAdd.cshtml" />
     <Content Include="Views\New\ShowAdds.cshtml" />
