@@ -1075,5 +1075,30 @@
 }
 
 <script type="text/javascript">
+    $.get('../Scripts/Json/categories.json', function (data) {
+        var filtered = new Array();
+        $.each(data, function (i, field) {
+            var j;
+            for (j in field.VehicleType) {
+                filtered.push(field.VehicleType[j]);
 
+            }
+
+        });
+        var options = {
+            data: filtered,
+            list: {
+                match: {
+                    enabled: true
+                },
+                onSelectItemEvent: function () {
+                    $("#categories").attr("value", $("#categories").getSelectedItemData());
+                    var a = '<%=Session["TireLn"]%>';
+                }
+            }
+
+        };
+
+        //$("#locations").easyAutocomplete(options);
+    });
 </script>
