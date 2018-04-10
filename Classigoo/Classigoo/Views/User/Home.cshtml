@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Messages
+@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,310 +7,510 @@
 
 {
 
-<div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
-    <div class="col-md-5">
-        <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your OLX Ads</span><br />
-        <span style="font-size:13px;color:#a5a5a5;font-weight:200;">can manage your Active & Inactive Ads here</span>
-    </div>
-    <div class="col-md-4">
 
-    </div>
-    <div class="col-md-3 account-balance">
-        <div style="height:60px;width:100%;border:1px solid #dedede;border-radius:5px;">
-            <span style="font-size:13px;color:#a5a5a5;font-weight:200;padding-left:15px;"> Account balance</span>
-            <ul>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="font-size:24px;padding-left:15px"> <span class="fa fa-rupee" style="font-size:20px"></span>&nbsp; 0  <b class="caret"></b></a>
-                    <ul class="dropdown-menu" style="padding:0;">
-                        <li><a href="#" style="color:#a5a5a5;">Credits: <span class="fa fa-rupee"></span> 0</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" style="color:#a5a5a5;">Bonus Credits: 0 pts</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
 
+        .Shadow {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+        }
+
+        .MessageHover {
+            /*padding: 5px 7px;*/
+            padding: 5px;
+        }
+
+            .MessageHover:hover {
+                /*padding: 5px;*/
+            }
+
+                .MessageHover:hover table.Shadow {
+                    box-shadow: 0 3px 25px rgba(0, 0, 0, .2);
+                }
+
+                .MessageHover:hover span.ion.icon {
+                    color: blueviolet;
+                }
+
+        .input-group {
+            width: 100%;
+        }
+
+        .button__badge {
+            background-color: #fa3e3e;
+            border-radius: 9px;
+            color: white;
+            padding: 4px 8px;
+            padding-right: 4px;
+            padding-left: 4px;
+            padding-top: 6px;
+            font-size: 13px;
+        }
+    </style>
+
+    <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
+        <div class="col-md-5">
+            <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your OLX Ads</span><br />
+            <span style="font-size:13px;color:#a5a5a5;font-weight:200;">can manage your Active & Inactive Ads here</span>
+        </div>
+        <div class="col-md-4">
 
         </div>
-    </div>
-</div>
-<div class="row" style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
-
-    <div class="col-md-12">
-        <div class="panel with-nav-tabs panel-default">
-            <div class="panel-heading">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab1default" data-toggle="tab">Ads</a></li>
-                    <li><a href="#tab2default" data-toggle="tab">Messages</a></li>
-                    <li><a href="#tab3default" data-toggle="tab">Payments</a></li>
-                    <li><a href="#tab4default" data-toggle="tab">Settings</a></li>
-
+        <div class="col-md-3 account-balance">
+            <div style="height:60px;width:100%;border:1px solid #dedede;border-radius:5px;">
+                <span style="font-size:13px;color:#a5a5a5;font-weight:200;padding-left:15px;"> Account balance</span>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="font-size:24px;padding-left:15px"> <span class="fa fa-rupee" style="font-size:20px"></span>&nbsp; 0  <b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="padding:0;">
+                            <li><a href="#" style="color:#a5a5a5;">Credits: <span class="fa fa-rupee"></span> 0</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" style="color:#a5a5a5;">Bonus Credits: 0 pts</a></li>
+                        </ul>
+                    </li>
                 </ul>
+
+
             </div>
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab1default">
+        </div>
+    </div>
+    <div class="row" style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
+        @{
+            int TotalNotificationCount = 0;
+        }
+        <div class="col-md-12">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1default" data-toggle="tab">Ads</a></li>
+                        <li>
+                            <a href="#tab2default" data-toggle="tab">
+                                Messages @if (Model.TotalMsgNotification > 0)
+                                {<span class="button__badge">@Model.TotalMsgNotification</span> }
+                            </a>
+                        </li>
+                        <li><a href="#tab3default" data-toggle="tab">Payments</a></li>
+                        <li><a href="#tab4default" data-toggle="tab">Settings</a></li>
 
-                        <div class="clearfix"></div>
-                        <div class="row">
-                            <div class="col-md-8">Active (1)</div>
-                            <div class="col-md-4">
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1default">
 
-                                <div id="custom-search-input">
-                                    <div class="input-group col-md-12">
-                                        <input type="text" class="form-control " placeholder="Buscar" />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-info " type="button">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </button>
-                                        </span>
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md-8">Active (1)</div>
+                                <div class="col-md-4">
+
+                                    <div id="custom-search-input">
+                                        <div class="input-group col-md-12">
+                                            <input type="text" class="form-control " placeholder="Buscar" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info " type="button">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <hr />
+                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                <p>No Messages are found</p>
+                            </div>
+
                         </div>
-                        <hr />
-                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                           
-                            
+                        <div class="tab-pane fade" id="tab2default">
+                            <div class="clearfix"></div>
 
-                            
-                            <p>No Messages are </p>
+                            <!-- BEGIN Portlet PORTLET-->
+                            <div class="portlet">
+                                <div class="col-md-8">
+                                    <div class="portlet-title">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active">
+                                                <a href="#portlet_Inbox" data-toggle="tab" style="background-color:white">
+                                                    <span>Inbox </span>
+                                                    @if (Model != null)
+                                                    {
+                                                        <span>(@Model.InboxCount) </span>
+                                                    }
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#portlet_Sent" data-toggle="tab" style="background-color:white">
+                                                    <span>Sent </span>
+                                                    @if (Model != null)
+                                                    {
+                                                        <span>(@Model.SentCount) </span>
+                                                    }
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
+                                                    <span>Archive </span>
+                                                    @if (Model != null)
+                                                    {
+                                                        <span>(@Model.ArchiveCount)</span>
+                                                    }
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="custom-search-input">
+                                        <div class="input-group col-md-12">
+                                            <input type="text" class="form-control " placeholder="Buscar" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-info " type="button">
+                                                    <i class="glyphicon glyphicon-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="portlet-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="portlet_Inbox">
+                                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                <input type="button" id="delete"
+                                                       value="Move to Archive" />
+                                                <br /><br />
+
+
+                                                @if (Model != null && Model.Inbox != null && Model.Inbox.Count > 0)
+                                                {
+                                                    <div align="left">
+                                                        <table style="width:100%;border:0px solid #b3b3b3;">
+                                                            <tr>
+                                                                <th style="padding: 10px; width: 25px; vertical-align: top;"><input type="checkbox" id="checkAll" /></th>
+                                                                <th style="width:290px">User</th>
+                                                                <th style="width:470px">Message</th>
+                                                                <th>Date</th>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    foreach (GroupedMessageDetail GroupMessage in Model.Inbox)
+                                                    {
+                                                        @*<div>
+                                                                @GroupMessage.User   (@GroupMessage.GroupedMessages.Count)
+                                                            </div>*@
+                                                        //foreach (MessageDetail Message in GroupMessage.GroupedMessages)
+                                                        for (int cnt = 0; cnt < GroupMessage.GroupedMessages.Count; cnt++)
+                                                        {
+                                                            MessageDetail Message = new MessageDetail();
+
+                                                            if (cnt == 0)
+                                                            {
+                                                                Message = GroupMessage.GroupedMessages[0];
+                                                            }
+                                                            <div align="left">
+                                                                <table style="width:100%;border:1px solid #b3b3b3;" class="Shadow   Divinbox">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+
+                                                                                <input type="checkbox" class="checkBox" value="@Message.MsgId" />
+                                                                            </td>
+
+                                                                            @* <td style="width:25px;vertical-align:top;padding:5px;" align="left"><input type="checkbox" class="details"  id="chkSelectMsg_@Message.MsgId" value="@Message.MsgId" /></td>*@
+                                                                            <td style="vertical-align:top;" align="left">
+                                                                                <table style="width:100%;">
+                                                                                    <tbody>
+
+                                                                                        <tr class="select" data-Values='@(Message.MsgId.ToString()+"_"+Message.AdId.ToString()+"_"+Message.FromUserId.ToString()+"_"+Message.ToUserId.ToString()+"_"+Message.IsRed)'>
+                                                                                            <td style="vertical-align:top;">
+                                                                                                <input type="image" src="xxxx/btn_login.jpg" value="logon" /><input type="image" src="xxxx/btn_login.jpg" value="logon"/>
+                                                                                            </td>
+
+                                                                                            <td style="width:300px;vertical-align:top;padding:4px;" align="left">
+                                                                                                @Message.FromUser @if (GroupMessage.Notification > 0)
+                                                                                                { <span class="button__badge">@GroupMessage.Notification</span>}
+                                                                                            </td>
+                                                                                            <td align="left" style="vertical-align:top;">
+                                                                                                <table style="width:100%;" cellpadding="2" cellspacing="2">
+                                                                                                    <tr>
+
+                                                                                                        <td style="padding:5px;">@Message.AdTitle</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="padding:5px;">
+                                                                                                            @Message.Message
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td align="right" style="vertical-align:top;padding:5px;">@Convert.ToDateTime(Message.CreatedOn).ToString("dd-MMM-yyyy mm:ss")</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            break;
+
+                                                        }
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <p>No Messages.</p>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="portlet_Sent">
+                                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                @if (Model != null && Model.Sent != null && Model.Sent.Count > 0)
+                                                {
+                                                    <div>
+                                                        <table style="width:100%;border:1px solid #b3b3b3;">
+                                                            <tr></tr>
+                                                        </table>
+                                                    </div>
+
+
+
+
+                                                    foreach (GroupedMessageDetail GroupMessage in Model.Sent)
+                                                    {
+                                                        for (int cnt = 0; cnt < GroupMessage.GroupedMessages.Count; cnt++)
+                                                        {
+
+                                                            MessageDetail Message = new MessageDetail();
+                                                            if (cnt == 0)
+                                                            {
+                                                                Message = GroupMessage.GroupedMessages[0];
+                                                            }
+
+                                                            <div align="left" class="MessageHover">
+                                                                <table class="Shadow" style="width:100%;border:1px solid #b3b3b3;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:25px;vertical-align:top;padding:5px;" align="left"><input type="checkbox" id="chkSelectMsg_@Message.MsgId" value="@Message.MsgId" /></td>
+                                                                            <td style="vertical-align:top;" align="left">
+                                                                                <table style="width:100%;">
+                                                                                    <tbody>
+                                                                                        <tr class="select" data-Values='@(Message.MsgId.ToString()+"_"+Message.AdId.ToString()+"_"+Message.FromUserId.ToString()+"_"+Message.ToUserId.ToString()+"_"+Message.IsRed)'>
+                                                                                            <td style="width:200px;vertical-align:top;padding:4px;" align="left">
+                                                                                                @Message.FromUser @if (GroupMessage.Notification > 0)
+                                                                                                { <span class="button__badge">@GroupMessage.Notification</span>}
+                                                                                            </td>
+                                                                                            <td align="left" style="vertical-align:top;">
+                                                                                                <table style="width:100%;" cellpadding="2" cellspacing="2">
+                                                                                                    <tr>
+                                                                                                        <td style="padding:5px;">@Message.AdTitle</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="padding:5px;">
+                                                                                                            @Message.Message
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td align="right" style="vertical-align:top;padding:5px;">@Convert.ToDateTime(Message.CreatedOn).ToString("dd-MMM-yyyy mm:ss")</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            break;
+                                                        }
+
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <p>No Messages.</p>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="portlet_archive">
+                                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                @if (Model != null && Model.Archive != null && Model.Archive.Count > 0)
+                                                {
+                                                    foreach (GroupedMessageDetail GroupMessage in Model.Archive)
+                                                    {
+
+                                                        for (int cnt = 0; cnt < GroupMessage.GroupedMessages.Count; cnt++)
+                                                        {
+                                                            MessageDetail Message = new MessageDetail();
+
+                                                            if (cnt == 0)
+                                                            {
+
+                                                                Message = GroupMessage.GroupedMessages[0];
+
+                                                            }
+
+                                                            <div align="left" class="MessageHover">
+                                                                <table class="Shadow" style="width:100%;border:1px solid #b3b3b3;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="width:25px;vertical-align:top;padding:5px;" align="left"><input class="checkbox" type="checkbox" id="chkSelectMsg_@Message.MsgId" value="@Message.MsgId" /></td>
+                                                                            <td style="vertical-align:top;" align="left">
+                                                                                <table style="width:100%;">
+                                                                                    <tbody>
+                                                                                        <tr data-Values='@(Message.MsgId.ToString()+"_"+Message.AdId.ToString()+"_"+Message.FromUserId.ToString()+"_"+Message.ToUserId.ToString()+"_"+Message.IsRed)'>
+                                                                                            <td style="width:200px;vertical-align:top;padding:4px;" align="left">
+                                                                                                @Message.FromUser @if (GroupMessage.Notification > 0)
+                                                                                                { <span class="button__badge">@GroupMessage.Notification</span>}
+                                                                                            </td>
+                                                                                            <td align="left" style="vertical-align:top;">
+                                                                                                <table style="width:100%;" cellpadding="2" cellspacing="2">
+                                                                                                    <tr>
+                                                                                                        <td style="padding:5px;">@Message.AdTitle</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td style="padding:5px;">
+                                                                                                            @Message.Message
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                            <td align="right" style="vertical-align:top;padding:5px;">@Convert.ToDateTime(Message.CreatedOn).ToString("dd-MMM-yyyy mm:ss")</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            break;
+                                                        }
+
+
+                                                    }
+
+
+                                                }
+                                                else
+                                                {
+                                                    <p>No Messages.</p>
+                                                }
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Portlet PORTLET-->
                         </div>
+                        <div class="tab-pane fade" id="tab3default" style="background: #f1f3fa;">
+                            <div class="clearfix"></div>
 
-                    </div>
-                    <div class="tab-pane fade" id="tab2default">
-                        <div class="clearfix"></div>
-
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                            <div class="col-md-8">
+                            <!-- BEGIN Portlet PORTLET-->
+                            <div class="portlet">
                                 <div class="portlet-title">
+                                    @*<div class="caption caption-red">
+                                            <i class="glyphicon glyphicon-pushpin"></i>
+                                            <span class="caption-subject bold font-yellow-crusta uppercase">
+                                                Tabs
+                                            </span>
+                                            <span class="caption-helper">more samples...</span>
+                                        </div>*@
                                     <ul class="nav nav-tabs">
                                         <li class="active">
-                                            <a href="#portlet_Inbox" data-toggle="tab" style="background-color:white">
-                                                Inbox
+                                            <a href="#portlet_History" data-toggle="tab" style="background-color:white">
+                                                History
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#portlet_Sent" data-toggle="tab" style="background-color:white">
-                                                Sent
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
-                                                Archive
+                                            <a href="#portlet_invoices" data-toggle="tab" style="background-color:white">
+                                                E-invoices
                                             </a>
                                         </li>
 
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="custom-search-input">
-                                    <div class="input-group col-md-12">
-                                        <input type="text" class="form-control " placeholder="Buscar" />
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-info " type="button">
-                                                <i class="glyphicon glyphicon-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                                <div class="portlet-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="portlet_History">
+                                            <div class="row">
+                                                <div class="col-md-8"></div>
+                                                <div class="col-md-4">
 
-
-                            <div class="portlet-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_Inbox">
-
-                                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                            <p>No Messages.</p>
-                                            
-                                        </div>
-
-                                    </div>
-                                    <div class="tab-pane" id="portlet_Sent">
-
-                                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                            <p>No Messages.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="portlet_archive">
-
-                                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                            <p>No Messages.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END Portlet PORTLET-->
-                    </div>
-                    <div class="tab-pane fade" id="tab3default" style="background: #f1f3fa;">
-                        <div class="clearfix"></div>
-
-                        <!-- BEGIN Portlet PORTLET-->
-                        <div class="portlet">
-                            <div class="portlet-title">
-                                @*<div class="caption caption-red">
-                                        <i class="glyphicon glyphicon-pushpin"></i>
-                                        <span class="caption-subject bold font-yellow-crusta uppercase">
-                                            Tabs
-                                        </span>
-                                        <span class="caption-helper">more samples...</span>
-                                    </div>*@
-                                <ul class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#portlet_History" data-toggle="tab" style="background-color:white">
-                                            History
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#portlet_invoices" data-toggle="tab" style="background-color:white">
-                                            E-invoices
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="portlet-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="portlet_History">
-                                        <div class="row">
-                                            <div class="col-md-8"></div>
-                                            <div class="col-md-4">
-
-                                                <div id="custom-search-input">
-                                                    <div class="input-group col-md-12">
-                                                        <input type="text" class="form-control " placeholder="Buscar" />
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-info " type="button">
-                                                                <i class="glyphicon glyphicon-search"></i>
-                                                            </button>
-                                                        </span>
+                                                    <div id="custom-search-input">
+                                                        <div class="input-group col-md-12">
+                                                            <input type="text" class="form-control " placeholder="Buscar" />
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-info " type="button">
+                                                                    <i class="glyphicon glyphicon-search"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                            <p>Empty payment history.</p>
+                                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                <p>Empty payment history.</p>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane" id="portlet_invoices">
+
+                                            <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                <p>No e-invoice/receipt available</p>
+                                            </div>
                                         </div>
 
                                     </div>
-                                    <div class="tab-pane" id="portlet_invoices">
-
-                                        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                            <p>No e-invoice/receipt available</p>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
+                            <!-- END Portlet PORTLET-->
                         </div>
-                        <!-- END Portlet PORTLET-->
-                    </div>
-                    <div class="tab-pane fade" id="tab4default">
-                        <div class="clearfix"></div>
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            Change contact details
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>State</span>
-                                                <select id="SubjectList" name="SubjectList" class="form-control">
-                                                    <option value="1">Choose</option>
-                                                    <option value="2">City2</option>
-                                                    <option value="3">City3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>City</span>
-                                                <select id="SubjectList" name="SubjectList" class="form-control">
-                                                    <option value="1">Choose</option>
-                                                    <option value="2">City2</option>
-                                                    <option value="3">City3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>Name<span style="color:red">*</span></span>
-                                                <input type="password" class="form-control" name="txtName" required="required" data-error="This field is required." />
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <input type="button" class="btn btn-primary" value="Change Password" />
-                                            </div>
-                                        </div>
+                        <div class="tab-pane fade" id="tab4default">
+                            <div class="clearfix"></div>
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default accordion-header">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Change contact details
+                                            </a>
+                                        </h4>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Change phone
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>New Phone Number</span>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">+91</span>
-                                                    <input id="msg" type="text" class="form-control" name="txtMobileNumber">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <input type="button" class="btn btn-primary" value="Save" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Change password
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <form id="frmChangePassword">
+                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
-                                                    <span>Old Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    <span>State</span>
+                                                    <select id="SubjectList" name="SubjectList" class="form-control">
+                                                        <option value="1">Choose</option>
+                                                        <option value="2">City2</option>
+                                                        <option value="3">City3</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
-                                                    <span>New Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    <span>City</span>
+                                                    <select id="SubjectList" name="SubjectList" class="form-control">
+                                                        <option value="1">Choose</option>
+                                                        <option value="2">City2</option>
+                                                        <option value="3">City3</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
-                                                    <span>Repeat new password<span style="color:red">*</span></span>
-                                                    <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                                    <span>Name<span style="color:red">*</span></span>
+                                                    <input type="password" class="form-control" name="txtName" required="required" data-error="This field is required." />
                                                 </div>
                                             </div>
                                             <div class="row  form-group">
@@ -317,71 +518,239 @@
                                                     <input type="button" class="btn btn-primary" value="Change Password" />
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingFour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                            Change email
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                    <div class="panel-body">
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <span>New email</span>
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="row  form-group">
-                                            <div class="col-md-4">
-                                                <input type="button" class="btn btn-primary" value="Save" />
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="panel panel-default accordion-header">
-                                <div class="panel-heading" role="tab" id="headingFive">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                                            Delete account
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                                    <div class="panel-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12" style="text-align:center;">
-                                                <input type="button" class="btn btn-danger" value="delete" />
+                                <div class="panel panel-default accordion-header">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Change phone
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <div class="row  form-group">
+                                                <div class="col-md-4">
+                                                    <span>New Phone Number</span>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">+91</span>
+                                                        <input id="msg" type="text" class="form-control" name="txtMobileNumber">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row  form-group">
+                                                <div class="col-md-4">
+                                                    <input type="button" class="btn btn-primary" value="Save" />
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default accordion-header">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Change password
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <form id="frmChangePassword">
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>Old Password<span style="color:red">*</span></span>
+                                                        <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New Password<span style="color:red">*</span></span>
+                                                        <input type="password" name="txtPasscode" class="form-control" required="required" minlength="4" data-error="This field is required." />
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>Repeat new password<span style="color:red">*</span></span>
+                                                        <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <input type="button" class="btn btn-primary" value="Change Password" />
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default accordion-header">
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                                Change email
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="panel-body">
+                                            <div class="row  form-group">
+                                                <div class="col-md-4">
+                                                    <span>New email</span>
+                                                    <input type="text" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row  form-group">
+                                                <div class="col-md-4">
+                                                    <input type="button" class="btn btn-primary" value="Save" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default accordion-header">
+                                    <div class="panel-heading" role="tab" id="headingFive">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                                Delete account
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                        <div class="panel-body">
 
+                                            <div class="row">
+                                                <div class="col-md-12" style="text-align:center;">
+                                                    <input type="button" class="btn btn-danger" value="delete" />
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
+
+        @*https://codepen.io/Sp00ky/pen/zBZZvq*@
+
+        <div id='myModal' class='modal fade' role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id='myModalContent'></div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    @*https://codepen.io/Sp00ky/pen/zBZZvq*@
 
-</div>
+            }
+<script type="text/javascript">
+    $("body").on("click", ".select", function () {
+        var ClickedRowValues = $(this).data().values;
+        var TeamDetailPostBackURL = '/User/ViewChatModal';
+        $.ajax({
+            type: "GET",
+            url: TeamDetailPostBackURL,
+            contentType: "application/json; charset=utf-8",
+            data: { ValuesArray: ClickedRowValues },
 
 
-}
+            processdata: true,
+            traditional: true,
+            datatype: "json",
+            success: function (data) {
+                $('#myModalContent').html(data);
+                // $('#myModal').modal(options);
+                $('#myModal').modal('show');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+        $('.body').hover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+    });
 
+    $("#checkAll").click(function () {
+        debugger;
+        $(".checkBox").prop('',
+            $(this).prop('checked'));
+    });
+    $('.checkbox').change(function () { //".checkbox" change
+        debugger;
+        if (this.checked == false) { 
+            $("#checkAll")[0].checked = false; 
+        }
+    });
+
+    $("#delete").click(function () {
+        debugger;
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+        //select all checkboxes
+        
+
+        if (selectedIDs.length != 0) {
+
+
+        }
+        var options = {};
+        options.url = "/User/ArchiveChat";
+        options.type = "POST";
+        options.data = JSON.stringify(selectedIDs);
+        options.contentType = "application/json";
+        options.dataType = "json";
+        options.success = function (msg) {
+
+            alert(msg);
+        };
+        options.error = function () {
+
+            alert("Error while Archive the records!");
+        };
+        $.ajax(options);
+
+    });
+
+
+    //select all checkboxes
+   
+
+
+    //$.ajax({
+    //    url: "/User/ViewChat",
+    //    data: selectedID,
+    //    type: 'POST',
+    //    contentType: "application/json",
+    //    dataType:"json",
+    //    success: function (data) {
+    //        debugger;
+    //        alert(data);
+    //    },
+    //    failure: function (data) {
+    //        debugger;
+    //        alert(data);
+    //    }
+    //});
+
+
+</script>
 @section Styles {
-    <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content(" ~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
 }
 

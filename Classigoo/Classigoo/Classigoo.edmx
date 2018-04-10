@@ -85,6 +85,20 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tbl_Messages">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ToUserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Archive" Type="bit" Nullable="false" />
+          <Property Name="IsRed" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -166,6 +180,7 @@
           <EntitySet Name="Electronics" EntityType="Self.Electronics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Messages" EntityType="Self.tbl_Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
             <End Role="Users" EntitySet="Users" />
@@ -217,6 +232,7 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="RealEstate" EntitySet="RealEstates" />
           </AssociationSet>
+          <EntitySet Name="tbl_Messages" EntityType="ClassigooModel.tbl_Messages" />
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -375,6 +391,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_Messages">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ToUserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Archive" Type="Boolean" Nullable="false" />
+          <Property Name="IsRed" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -478,6 +508,21 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Messages">
+            <EntityTypeMapping TypeName="ClassigooModel.tbl_Messages">
+              <MappingFragment StoreEntitySet="tbl_Messages">
+                <ScalarProperty Name="IsRed" ColumnName="IsRed" />
+                <ScalarProperty Name="Archive" ColumnName="Archive" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

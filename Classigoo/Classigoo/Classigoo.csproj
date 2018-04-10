@@ -258,6 +258,9 @@
     <Compile Include="tbl_Adds.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_Messages.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
@@ -502,6 +505,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\New\DisplayAdds.cshtml" />
     <Content Include="Views\Post\Index1.cshtml" />
+    <Content Include="Views\User\ViewChatModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
