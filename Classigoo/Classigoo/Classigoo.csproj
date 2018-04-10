@@ -58,6 +58,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -212,6 +213,9 @@
     <Compile Include="Car.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classigoo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,6 +248,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomModels.cs" />
@@ -256,9 +263,6 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="tbl_Adds.cs">
-      <DependentUpon>Classigoo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_Messages.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -346,9 +350,11 @@
     </EntityDeploy>
     <Content Include="Classigoo.edmx.diagram">
       <DependentUpon>Classigoo.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
+    <Content Include="images\Deletion_icon.svg.png" />
     <Content Include="images\icons-bg.PNG" />
     <Content Include="images\icons\bike\bike-bike.png" />
     <Content Include="images\icons\bike\bike-cycle.png" />
@@ -456,6 +462,7 @@
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
     <Content Include="Views\New\Detail.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Scripts\Json\categories.json" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
@@ -498,14 +505,14 @@
     <Content Include="Views\User\UserDashboard.cshtml" />
     <Content Include="Views\User\PreviewAdd.cshtml" />
     <Content Include="Views\Search\DisplayAdds.cshtml" />
-    <Content Include="Scripts\Json\categories.json" />
+    <Content Include="Scripts\Json\categories1.json" />
     <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\User\ShowAdd.cshtml" />
     <Content Include="Views\New\ShowAdds.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\New\DisplayAdds.cshtml" />
     <Content Include="Views\Post\Index1.cshtml" />
-    <Content Include="Views\User\ViewChatModal.cshtml" />
+    <Content Include="Views\Shared\_LoadData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

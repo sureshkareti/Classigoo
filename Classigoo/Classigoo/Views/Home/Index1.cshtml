@@ -4,73 +4,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- <!-- main nav section -->
+<!-- main nav section -->
 <div class="main-header-section" style="width:100%">
     <div class="container">
         <div class="header-content-block">
             <div class="header-title-block">
                 <h2>Explore Your City</h2>
                 <p>
-                @*Discover what makes you feel better to sale or buy.*@
+                    @*Discover what makes you feel better to sale or buy.*@
                     Search from over 15,00,000 classifieds & Post unlimited classifieds free!
                 </p>
             </div>
-            <form class="form-common filter-form filter-header-form">
-
-                <div class="form-group outer-select-field">
-                    <a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
-                        <i class="fa fa-bars" aria-hidden="true"></i> Categories
-                    </a>
-                    <input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Food, Drink">
-                </div>
-                <div class="form-group outer-select-field">
-                    <a class="input-dropedown-btn location-btn" href="javascript:void(0)">
-                        <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
-                    </a>
-                    <input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Food, Drink">
-                </div>
-                <div class="form-group outer-select-field">
-                    <a class="input-dropedown-btn" href="javascript:void(0)">
-                        <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
-                    </a>
-                    <input type="text" class="outer-select-input-box" id="listing_keword" placeholder="Ex: Food, Drink">
-                </div>
-                <div class="btn-group">
-                    <button type="submit" class="danger-btn">
-                        <i class="ti-search" aria-hidden="true"></i>
-                        Search
-                    </button>
-                </div>
-            </form>
-            
-           
+            <div>
+                
+                    @Html.Partial("_LoadData")
+                    
+</div>
         </div>
         <!-- header-content-block -->
     </div>
     <div class="overlay"></div>
 </div>
 <!-- main-header section -->
-
-
 <!--Categories start-->
 <div class="popular-cities-section" style="max-width:970px !important;margin:auto;">
-    <div class="container-fluid" >
-        <div class="section-title" >
+    <div class="container-fluid">
+        <div class="section-title">
             <h2>Categories</h2>
             <p>Find out & explore new businesses near your area and see what's happening !!!</p>
         </div>
-       
+
         <div class="row categories-service">
             <div class="col-md-4 col-sm-6">
                 <div class="categorybox">
                     <div class="icon"><i class="fa fa-home" aria-hidden="true"></i></div>
                     <h4><a href="#">Properties</a></h4>
-                  
+
                     <div class="categories">
-                        <a href="#" >For Rent ( 20 )</a>
+                        <a href="#">For Rent ( 20 )</a>
                     </div>
                     <div class="categories">
-                        <a href="#" >For Sale ( 20 )</a>
+                        <a href="#">For Sale ( 20 )</a>
                     </div>
                 </div>
             </div>
@@ -148,7 +122,7 @@
                     <div class="icon"><i class="fa fa-motorcycle" aria-hidden="true"></i></div>
                     <h4><a href="#">Bikes</a></h4>
 
-                   
+
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -156,7 +130,7 @@
                     <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
                     <h4><a href="#">Mobiles & Electronics</a></h4>
 
-                  
+
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -164,7 +138,7 @@
                     <div class="icon"><i class="fa fa-gear" aria-hidden="true"></i></div>
                     <h4><a href="#">All Vehicles Hire/Engage / Lease </a></h4>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -176,6 +150,6 @@
 
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
-<link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }

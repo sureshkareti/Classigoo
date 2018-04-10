@@ -17,7 +17,7 @@
             </div>
 
             <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
-                <h4>Submit a Free Classified Ad</h4>
+                <h4>Submit a Free Classified Add</h4>
                 <div class="row">
                     <div class="col-md-12">
 
@@ -29,6 +29,20 @@
                                 </div>
                                 <div class="col-md-7">
                                     <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" placeholder="enter title here">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Rent/Sale</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <select id="ddlBedrooms" class="form-control">
+                                        <option>Select</option>
+                                        <option>Rent</option>
+                                        <option>Sale</option>
+                                        
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -70,16 +84,56 @@
                                         <div class="panel-body">
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active sub-category-items" id="tabCategories">
-                                                    <a href='javascript:void(0)' id="catPro">Properties</a><br />
-                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br/>
+                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />                                                
                                                     <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catPro">Properties</a><br />
+
                                                     <a href='javascript:void(0)' id="catCars">Cars</a><br />
                                                     <a href='javascript:void(0)' id="catBikes">Bikes</a><br />
                                                     <a href='javascript:void(0)' id="catME">Mobiles & Electronics</a><br />
                                                     <a href='javascript:void(0)' id="catAll">All Vehicles Hire/Engage/Lease</a><br />
                                                 </div>
+
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
+                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                    <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
+                                                    <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
+                                                    <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                    <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
+                                                    <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                    
+                                                    <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
+                                                    <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
+                                                    <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
+                                                    <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
+                                                    <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />                                                 
+                                                </div>
+
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
+                                                    <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
+                                                    <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                    <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                                </div>
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
+                                                    <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
+                                                    <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans </a><br />
+                                                    <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
+                                                </div>
+
                                                 <div class="tab-pane fade in" id="tabPro">
 
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
@@ -111,39 +165,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)">Backhoe Loader</a><br />
-                                                    <a href="javascript:void(0)">Excavator</a><br />
-                                                    <a href="javascript:void(0)">Wheel Loader</a><br />
-                                                    <a href="javascript:void(0)">Crane</a><br />
-                                                    <a href="javascript:void(0)">Dozer</a><br />
-                                                    <a href="javascript:void(0)">Transit Mixer</a><br />
-                                                    <a href="javascript:void(0)">Soil Compactor</a><br />
-                                                    <a href="javascript:void(0)">Rock Breaker</a><br />
-                                                    <a href="javascript:void(0)">Motor Grader</a><br />
-                                                    <a href="javascript:void(0)">Forklift</a><br />
-                                                    <a href="javascript:void(0)">Dumper</a><br />
-                                                    <a href="javascript:void(0)">Batching Plant</a><br />
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">Default 3</div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)">Combine / Harvestor</a><br />
-                                                    <a href="javascript:void(0)">Rice Transplator</a><br />
-                                                    <a href="javascript:void(0)">Rotary Tiller</a><br />
-                                                    <a href="javascript:void(0)">Sprayer</a><br />
-                                                    <a href="javascript:void(0)">Thrasher</a><br />
-                                                    <a href="javascript:void(0)">Tractors</a><br />
-
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">Default 5</div>
+                                                
+                                                
+                                                
+                                                
                                                 <div class="tab-pane fade in" id="tabCars">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
                                                         <div class="panel-heading">
                                                             <ul class="nav nav-tabs">
-                                                                <li class="active"><a href="#tabCarsModel" data-toggle="tab">Model</a></li>
+                                                                <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="panel-body">
@@ -255,7 +286,7 @@
                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
                                         </div>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control col-md-7" value="">
+                                            <input type="text" id="txtPro_Price" class="form-control col-md-7" value="">
                                             <small class="text-muted">Please enter price in repease</small>
                                         </div>
                                     </div>
@@ -422,10 +453,8 @@
                             <div class="form-group row">
                                 <div class="col-md-3" style="text-align:right">
                                     <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
-
                                 </div>
                                 <div class="col-md-9">
-
                                     <div class="col-md-3">
                                         <div class="w3-card fileuploading">
                                             <img src="~/images/cg.jpg" alt="Person" id="imgFucFirst" style="width:100%;height:100px">
@@ -440,9 +469,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3" >
+                                    <div class="col-md-3">
                                         <div class="w3-card fileuploading">
                                             <img src="~/images/cg.jpg" alt="Person" id="imgFucSecond" style="width:100%;height:100px">
+
                                             <div class="w3-container">
                                                 <div style="text-align:center">
                                                     <input type="file" style="display:none" id="fucSecond" />
@@ -454,7 +484,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3" >
+                                    <div class="col-md-3">
                                         <div class="w3-card fileuploading">
                                             <img src="~/images/cg.jpg" alt="Person" id="imgFucThird" style="width:100%;height:100px">
                                             <div class="w3-container">
@@ -470,7 +500,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="w3-card fileuploading">
-                                            <img src="~/images/cg.jpg" alt="Person"  id="imgFucFour" style="width:100%;height:100px">                                            
+                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucFour" style="width:100%;height:100px">
                                             <div class="w3-container">
                                                 <div style="text-align:center">
                                                     <input type="file" style="display:none" id="fucFour" />
@@ -478,16 +508,14 @@
                                                 </div>
                                                 <div style="display:none;">
                                                     <button type="button" id="btnFucFourDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
-                                                </div>                                           
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                   
                                 </div>
                             </div>
                             <div class="form-group row">
-                               <hr />
+                                <hr />
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-3" style="text-align:right">
@@ -495,7 +523,7 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control col-md-7" id="txtName" >
+                                    <input type="text" class="form-control col-md-7" id="txtName">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -528,27 +556,24 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                              <hr />
+                                <hr />
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-9" style="text-align:right">
-                                    
-
                                 </div>
                                 <div class="col-md-3">
-                                   <input type="button" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                    <input type="button" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
                                 </div>
                             </div>
-
                         </form>
-
                     </div>
-
                 </div>
             </div>
 
-
             <div>
+
+
+
                 <!-- businessinfo-listing -->
                 <!-- add-listing-tost-block -->
                 @*<form id="add_listing_form" class="form-common add-listing-form" action="#" novalidate="novalidate">
@@ -1044,543 +1069,36 @@
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }
 
+
+@section scripts{
+    <script src="~/Scripts/Custome/post.js"></script>
+}
+
 <script type="text/javascript">
+    $.get('../Scripts/Json/categories.json', function (data) {
+        var filtered = new Array();
+        $.each(data, function (i, field) {
+            var j;
+            for (j in field.VehicleType) {
+                filtered.push(field.VehicleType[j]);
 
-
-    $(".fileuploading").find(".btnFucEdit").click(function () {
-       $(this).parent().find('input:file').click();
-        //$("#fucThird").click();
-    });
-
-    $("#fucFirst").change(function () {
-        //readURL(this);
-        var fileuploaded = $("#fucFirst").get(0).files;
-
-        alert(fileuploaded[0].name);
-
-        if (fileuploaded[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgFucFirst').attr('src', e.target.result);
             }
-            reader.readAsDataURL(fileuploaded[0]);
-        }
 
-        $("#btnFucFirstEdit").parent().css('display', 'none');
-        $("#btnFucFirstDelete").parent().css('display', 'block');
-        $("#btnFucFirstDelete").parent().css('text-align', 'center');
-
-    });
-    $("#fucSecond").change(function () {
-        //readURL(this);
-        alert("2");
-
-        var fileuploaded = $("#fucSecond").get(0).files;
-        alert(fileuploaded[0].name);
-        if (fileuploaded[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgFucSecond').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fileuploaded[0]);
-        }
-
-        $("#btnFucSecondEdit").parent().css('display', 'none');
-        $("#btnFucSecondDelete").parent().css('display', 'block');
-        $("#btnFucSecondDelete").parent().css('text-align', 'center');
-
-    });
-   
-    $("#fucThird").change(function () {
-        //readURL(this);
-        var fileuploaded = $("#fucThird").get(0).files;
-        if (fileuploaded[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgFucThird').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fileuploaded[0]);
-        }
-
-        $("#btnFucThirdEdit").parent().css('display', 'none');
-        $("#btnFucThirdDelete").parent().css('display', 'block');
-        $("#btnFucThirdDelete").parent().css('text-align', 'center');
-
-    });
-
-    $("#fucFour").change(function () {
-        alert('four');
-        //readURL(this);
-        var fileuploaded = $("#fucFour").get(0).files;
-        if (fileuploaded[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgFucFour').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fileuploaded[0]);
-        }
-
-        $("#btnFucFourEdit").parent().css('display', 'none');
-        $("#btnFucFourDelete").parent().css('display', 'block');
-        $("#btnFucFourDelete").parent().css('text-align', 'center');
-
-    });
-
-    $("#btnFucFirstDelete").click(function () {
-        
-        $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-        $('#imgFucFirst').attr('src', '/images/cg.jpg');
-
-        $("#btnFucFirstEdit").parent().css('display', 'block');
-        $("#btnFucFirstEdit").parent().css('text-align', 'center');      
-           
-        $("#btnFucFirstDelete").parent().css('display', 'none');
-        
-    });
-
-    $("#btnFucThirdDelete").click(function () {
-
-        $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
-        $('#imgFucThird').attr('src', '/images/cg.jpg');
-
-        $("#btnFucThirdEdit").parent().css('display', 'block');
-        $("#btnFucThirdEdit").parent().css('text-align', 'center');
-
-        $("#btnFucThirdDelete").parent().css('display', 'none');
-
-    });
-
-    $("#btnFucSecondDelete").click(function () {
-
-        $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
-        $('#imgFucSecond').attr('src', '/images/cg.jpg');
-
-        $("#btnFucSecondEdit").parent().css('display', 'block');
-        $("#btnFucSecondEdit").parent().css('text-align', 'center');
-
-        $("#btnFucSecondDelete").parent().css('display', 'none');
-
-    });
-    $("#btnFucFourDelete").click(function () {
-
-        $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
-        $('#imgFucFour').attr('src', '/images/cg.jpg');
-
-        $("#btnFucFourEdit").parent().css('display', 'block');
-        $("#btnFucFourEdit").parent().css('text-align', 'center');
-
-        $("#btnFucFourDelete").parent().css('display', 'none');
-
-    });
-
-    //function readURL(input) {
-
-    //    alert("he");
-
-    //    if (input.files && input.files[0]) {
-    //        var reader = new FileReader();
-
-    //        reader.onload = function (e) {
-    //            $('#imgFucThird').attr('src', e.target.result);
-    //        }
-
-    //        reader.readAsDataURL(input.files[0]);
-    //    }
-    //}
-
-    
-
-    $("#categoryUL li").click(function (e, args) {
-        var selectedCate = $(this).text();
-        $("#categories").val("test" + ">");
-
-    });
-
-    $("#tabCategories a").click(function () {
-        var selectedCate = $(this).text();
-        if (selectedCate == "Properties") {
-
-            //$("#cat-nav-l1 span").text("Properties");
-            //$("#cat-nav-l1").css("display", "inline");
-
-
-            //$("#idtabCategories").removeClass("active");
-            //$("#idtabCategories").css("display", "none");
-            //$("#tabCategories").removeClass("active");
-
-            PathSetFirstLevel("Properties");
-
-            $("#idtabPro").css("display", "block");
-            $("#idtabPro").addClass("active");
-            $("#tabPro").addClass("active");
-
-        }
-        else if (selectedCate == "Construction Vehicles") {
-
-            PathSetFirstLevel("Construction Vehicles");
-
-            //$("#cat-nav-l1 a").text("Construction Vehicles");
-            //$("#cat-nav-l1").css("display", "inline");
-
-            //$(".idtabCategoriesul li").removeClass("active");
-            //$(".idtabCategoriesul li").css("display", "none");
-            //$('.idtabCategoriesul li').each(function (i) {
-            //    $($(this).find('a').attr('href')).removeClass("active");
-            //});
-
-
-            $("#idtabCV").css("display", "block");
-            $("#idtabCV").addClass("active");
-            $("#tabCV").addClass("active");
-
-        }
-        else if (selectedCate == "Transportation Vehicles") {
-
-            //$("#cat-nav-l1 a").text("Transportation Vehicles");
-            //$("#cat-nav-l1").css("display", "inline");
-
-
-            //$(".idtabCategoriesul li").removeClass("active");
-            //$(".idtabCategoriesul li").css("display", "none");
-            //$('.idtabCategoriesul li').each(function (i) {
-            //    $($(this).find('a').attr('href')).removeClass("active");
-            //});
-
-            PathSetFirstLevel("Transportation Vehicles");
-
-            $("#idtabTV").css("display", "block");
-            $("#idtabTV").addClass("active");
-            $("#tabTV").addClass("active");
-        }
-        else if (selectedCate == "Agricultural Vehicles") {
-
-            PathSetFirstLevel("Agricultural Vehicles");
-
-            $("#idtabAV").css("display", "block");
-            $("#idtabAV").addClass("active");
-            $("#tabAV").addClass("active");
-
-        }
-        else if (selectedCate == "Passenger Vehicles") {
-
-        }
-        else if (selectedCate == "Cars") {
-
-            PathSetFirstLevel("Cars");
-
-            $("#idtabCars").css("display", "block");
-            $("#idtabCars").addClass("active");
-            $("#tabCars").addClass("active");
-
-        }
-        else if (selectedCate == "Bikes") {
-            PathSetFirstLevel("Bikes");
-
-            $("#idtabBikes").css("display", "block");
-            $("#idtabBikes").addClass("active");
-            $("#tabBikes").addClass("active");
-        }
-        else if (selectedCate == "Mobiles & Electronics") {
-            PathSetFirstLevel("Mobiles & Electronics");
-
-            $("#idtabME").css("display", "block");
-            $("#idtabME").addClass("active");
-            $("#tabME").addClass("active");
-        }
-        else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
-
-            PathSetFirstLevel("All Vehicles Hire/Engage/Lease");
-
-            $("#cat-nav-l4").css("display", "inline");
-
-            $("#divCategories").css('display', 'none');
-        }
-    });
-
-    //properties childs
-    $(".tabProChilds a").click(function () {
-
-        var secondLevl = $(this).parent().attr('id');
-
-        var thirdLevel = $(this).text();
-
-        if (secondLevl == "tabProForSale") {
-            $("#cat-nav-l2 span").text("ForSale");
-            $("#hdnCateSecondLevel").val("ForSale");
-
-        }
-        else {
-            $("#cat-nav-l2 span").text("ForRent");
-            $("#hdnCateSecondLevel").val("ForRent");
-
-        }
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l3 span").text(thirdLevel);
-        $("#hdnCateThirdLevel").val(thirdLevel);
-
-        $("#cat-nav-l3").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-
-        DisplayRespectiveFields("Properties");
-
-    });
-
-    //cars childs
-    $("#tabCarsModel a").click(function () {
-        var thirdLevel = $(this).text();
-
-        $("#cat-nav-l2 span").text("Model");
-        $("#hdnCateSecondLevel").val("Model");
-
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l3 span").text(thirdLevel);
-        $("#hdnCateThirdLevel").val(thirdLevel);
-        $("#cat-nav-l3").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-
-        DisplayRespectiveFields("Cars");
-
-    });
-
-    //Construction vehicles childs
-    $("#tabCV a").click(function () {
-        var secondLevel = $(this).text();
-
-        $("#cat-nav-l2 span").text(secondLevel);
-        $("#hdnCateSecondLevel").val(secondLevel);
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-
-        DisplayRespectiveFields("Construction Vehicles");
-    });
-
-    //Agricultural Vehicles childs
-    $("#tabAV a").click(function () {
-        var secondLevel = $(this).text();
-
-        $("#cat-nav-l2 span").text(secondLevel);
-        $("#hdnCateSecondLevel").val(secondLevel);
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-        DisplayRespectiveFields("Agricultural Vehicles");
-    });
-
-    //Bikes childs
-    $(".tabBikesChilds a").click(function () {
-
-        var secondLevl = $(this).parent().attr('id');
-
-        var thirdLevel = $(this).text();
-
-        if (secondLevl == "tabBikesMotorcycles") {
-            $("#cat-nav-l2 span").text("Motorcycles");
-            $("#hdnCateSecondLevel").val("Motorcycles");
-        }
-        else if (secondLevl == "tabBikesScooters") {
-            $("#cat-nav-l2 span").text("Scooters");
-            $("#hdnCateSecondLevel").val("Scooters");
-        }
-        else if (secondLevl == "tabBikesBicycles") {
-            $("#cat-nav-l2 span").text("Bicycles");
-            $("#hdnCateSecondLevel").val("Bicycles");
-        }
-        else if (secondLevl == "tabBikesSpareParts") {
-            $("#cat-nav-l2 span").text("SpareParts");
-            $("#hdnCateSecondLevel").val("SpareParts");
-        }
-
-
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l3 span").text(thirdLevel);
-        $("#hdnCateThirdLevel").val(thirdLevel);
-        $("#cat-nav-l3").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-
-        DisplayRespectiveFields("Bikes");
-
-    });
-
-    //Mobile & Electronics
-    $("#tabME a").click(function () {
-
-        var secondLevel = $(this).text();
-
-        $("#cat-nav-l2 span").text(secondLevel);
-        $("#hdnCateSecondLevel").val(secondLevel);
-        $("#cat-nav-l2").css("display", "inline");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-        DisplayRespectiveFields("Mobiles & Electronics");
-
-    });
-
-    //home buttion on categories navigation
-    $("#cat-nav-l0 a").click(function () {
-        $("#cat-nav-l4").css("display", "none");
-        RefreshCategories();
-    });
-
-    //edit buttion on categories navigation
-    $("#cat-nav-l4 a").click(function () {
-        $("#cat-nav-l4").css("display", "none");
-        RefreshCategories();
-    });
-
-    //back button categories list
-    $(".backHome").click(function () {
-
-        RefreshCategories();
-    });
-
-    function RefreshCategories() {
-        $("#divCategories").css('display', 'block');
-
-        $("#hdnCateFristLevel").val("");
-        $("#hdnCateSecondLevel").val("");
-        $("#hdnCateThirdLevel").val("");
-
-        $("#cat-nav-l1").css("display", "none");
-        $("#cat-nav-l2").css("display", "none");
-        $("#cat-nav-l3").css("display", "none");
-
-        $(".idtabCategoriesul li").removeClass("active");
-        $(".idtabCategoriesul li").css("display", "none");
-
-        $('.idtabCategoriesul li').each(function (i) {
-            $($(this).find('a').attr('href')).removeClass("active");
         });
+        var options = {
+            data: filtered,
+            list: {
+                match: {
+                    enabled: true
+                },
+                onSelectItemEvent: function () {
+                    $("#categories").attr("value", $("#categories").getSelectedItemData());
+                    var a = '<%=Session["TireLn"]%>';
+                }
+            }
 
-        $("#idtabCategories").css("display", "block");
-        $("#idtabCategories").addClass("active");
-        $("#tabCategories").addClass("active");
-    }
+        };
 
-    function PathSetFirstLevel(firstlevel) {
-
-        $("#hdnCateFristLevel").val(firstlevel);
-
-        $("#cat-nav-l1 span").text(firstlevel);
-
-        $("#cat-nav-l1").css("display", "inline");
-
-        $(".idtabCategoriesul li").removeClass("active");
-        $(".idtabCategoriesul li").css("display", "none");
-        $('.idtabCategoriesul li').each(function (i) {
-            $($(this).find('a').attr('href')).removeClass("active");
-        });
-    }
-
-    $("#tstButton").click(function () {
-        alert($("#hdnCateFristLevel").val());
-        alert($("#hdnCateSecondLevel").val());
-        alert($("#hdnCateThirdLevel").val());
+        //$("#locations").easyAutocomplete(options);
     });
-
-    function DisplayRespectiveFields(selectedcategory) {
-
-        $(".forallcollapse").css('display', 'none');
-
-        var selectedCate = selectedcategory;
-        if (selectedCate == "Properties") {
-
-            var selectedPrtoperty = $("#hdnCateThirdLevel").val().trim();
-
-            $("#forProperties").css('display', 'block');
-
-
-            if (selectedPrtoperty == "Agricultural Land") {
-                $("#pro-availability").css('display', 'block');
-                $("#pro-acres").css('display', 'block');
-
-                $("#pro-sqarefeets").css('display', 'none');
-                $("#pro-furnishing").css('display', 'none');
-                $("#pro-bedrooms").css('display', 'none');
-                $("#pro-squareyards").css('display', 'none');
-            }
-
-            if (selectedPrtoperty == "Plots/Land") {
-                $("#pro-availability").css('display', 'block');
-                $("#pro-squareyards").css('display', 'block');
-
-                $("#pro-sqarefeets").css('display', 'none');
-                $("#pro-furnishing").css('display', 'none');
-                $("#pro-bedrooms").css('display', 'none');
-                $("#pro-acres").css('display', 'none');
-            }
-
-
-
-            if (selectedPrtoperty == "Shops & Offices") {
-                $("#pro-availability").css('display', 'block');
-                $("#pro-sqarefeets").css('display', 'block');
-                $("#pro-furnishing").css('display', 'block');
-
-                $("#pro-bedrooms").css('display', 'none');
-                $("#pro-acres").css('display', 'none');
-                $("#pro-squareyards").css('display', 'none');
-            }
-
-            if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
-                $("#pro-availability").css('display', 'block');
-                $("#pro-sqarefeets").css('display', 'block');
-                $("#pro-furnishing").css('display', 'block');
-                $("#pro-bedrooms").css('display', 'block');
-
-                $("#pro-acres").css('display', 'none');
-                $("#pro-squareyards").css('display', 'none');
-            }
-
-
-        }
-        else if (selectedCate == "Construction Vehicles") {
-            $("#forCV").css('display', 'block');
-        }
-        else if (selectedCate == "Transportation Vehicles") {
-            $("#forTV").css('display', 'block');
-        }
-        else if (selectedCate == "Agricultural Vehicles") {
-            $("#forAV").css('display', 'block');
-        }
-        else if (selectedCate == "Passenger Vehicles") {
-            $("#forPV").css('display', 'block');
-        }
-        else if (selectedCate == "Cars") {
-            $("#forCars").css('display', 'block');
-        }
-        else if (selectedCate == "Bikes") {
-            $("#forBikes").css('display', 'block');
-        }
-        else if (selectedCate == "Mobiles & Electronics") {
-            $("#forME").css('display', 'block');
-        }
-        else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
-            $("#forAll").css('display', 'block');
-        }
-    }
-
-
 </script>

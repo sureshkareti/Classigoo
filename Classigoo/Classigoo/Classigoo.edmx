@@ -38,6 +38,13 @@
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Electronics">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,6 +61,13 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="100" />
           <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="RealEstate">
           <Key>
@@ -84,20 +98,6 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbl_Messages">
-          <Key>
-            <PropertyRef Name="MsgId" />
-          </Key>
-          <Property Name="MsgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FromUserId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ToUserId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AdId" Type="int" Nullable="false" />
-          <Property Name="Message" Type="nvarchar(max)" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedOn" Type="datetime" />
-          <Property Name="Archive" Type="bit" Nullable="false" />
-          <Property Name="IsRed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -177,10 +177,11 @@
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Electronics" EntityType="Self.Electronics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_Messages" EntityType="Self.tbl_Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
             <End Role="Users" EntitySet="Users" />
@@ -232,7 +233,8 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="RealEstate" EntitySet="RealEstates" />
           </AssociationSet>
-          <EntitySet Name="tbl_Messages" EntityType="ClassigooModel.tbl_Messages" />
+          <EntitySet Name="Categories" EntityType="ClassigooModel.Category" />
+          <EntitySet Name="Locations" EntityType="ClassigooModel.Location" />
         </EntityContainer>
         <EntityType Name="tbl_Adds">
           <Key>
@@ -391,19 +393,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbl_Messages">
+        <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="MsgId" />
+            <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="MsgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FromUserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ToUserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AdId" Type="Int32" Nullable="false" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="Archive" Type="Boolean" Nullable="false" />
-          <Property Name="IsRed" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -511,18 +513,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Messages">
-            <EntityTypeMapping TypeName="ClassigooModel.tbl_Messages">
-              <MappingFragment StoreEntitySet="tbl_Messages">
-                <ScalarProperty Name="IsRed" ColumnName="IsRed" />
-                <ScalarProperty Name="Archive" ColumnName="Archive" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="AdId" ColumnName="AdId" />
-                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
-                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
-                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ClassigooModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="ClassigooModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
