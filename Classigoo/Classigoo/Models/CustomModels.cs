@@ -26,7 +26,7 @@ namespace Classigoo
         public RealEstate RealEstate { set; get; }
         public Car Cars { set; get; }
         public Electronic Electronics { set; get; }
-        public List<tbl_Messages> tbl_Messages { get; set; }
+        //public List<tbl_Messages> tbl_Messages { get; set; }
     }
 
     public class MessageDetail
