@@ -1,105 +1,1035 @@
-﻿[{
+﻿[
+  
+  {
     "id": 1234,
     "name": "Agricultural Vehicles",
-    "Vehicle Type": [
+    "Vehicle-Type": [
       {
         "id": "2345",
         "name": "Borewell Machine",
-        "Vehicle Model": [
+        "VehicleModel": [
 
         ]
       },
       {
         "id": "2346",
-        "name": "Tractors"
+        "name": "Tractors",
+        "VehicleModel": [
+          {
+            "id": "3456",
+            "name": "Mahindra"
+          },
+          {
+            "id": "3457",
+            "name": "TAFE"
+          },
+          {
+            "id": "3458",
+            "name": "John Deere"
+          },
+          {
+            "id": "3459",
+            "name": "Swaraj"
+          },
+          {
+            "id": "3460",
+            "name": "Sonalika"
+          },
+          {
+            "id": "3461",
+            "name": "Escorts"
+          },
+          {
+            "id": "3462",
+            "name": "New Holland"
+          },
+          {
+            "id": "3463",
+            "name": "Eicher"
+          },
+          {
+            "id": "3464",
+            "name": "Force"
+          },
+          {
+            "id": "3465",
+            "name": "HMT"
+          },
+          {
+            "id": "3466",
+            "name": "Captain"
+          },
+          {
+            "id": "3467",
+            "name": "Mitsubish"
+          },
+          {
+            "id": "3468",
+            "name": "Standard"
+          },
+          {
+            "id": "3469",
+            "name": "Hind Agro"
+          }
+        ]
+      },
+      {
+        "id": "2347",
+        "name": "Dozer",
+        "VehicleModel": [
+          {
+            "id": "4567",
+            "name": "Mahindra"
+          },
+          {
+            "id": "4568",
+            "name": "TAFE"
+          },
+          {
+            "id": "4569",
+            "name": "John Deere"
+          },
+          {
+            "id": "4570",
+            "name": "Swaraj"
+          },
+          {
+            "id": "4571",
+            "name": "Sonalika"
+          },
+          {
+            "id": "4572",
+            "name": "Escorts"
+          },
+          {
+            "id": "4573",
+            "name": "New Holland"
+          },
+          {
+            "id": "4574",
+            "name": "Eicher"
+          },
+          {
+            "id": "4575",
+            "name": "Force"
+          },
+          {
+            "id": "4576",
+            "name": "HMT"
+          },
+          {
+            "id": "4577",
+            "name": "Captain"
+          },
+          {
+            "id": "4578",
+            "name": "Mitsubish"
+          },
+          {
+            "id": "4579",
+            "name": "Standard"
+          },
+          {
+            "id": "4580",
+            "name": "Hind Agro"
+          }
+        ]
+      },
+      {
+        "id": "2348",
+        "name": "Combine Harvester ",
+        "VehicleModel": [
+          {
+            "id": "5678",
+            "name": "Mahindra"
+          },
+          {
+            "id": "5679",
+            "name": "TAFE"
+          },
+          {
+            "id": "5680",
+            "name": "John Deere"
+          },
+          {
+            "id": "5681",
+            "name": "Swaraj"
+          },
+          {
+            "id": "5682",
+            "name": "Sonalika"
+          },
+          {
+            "id": "5683",
+            "name": "Escorts"
+          },
+          {
+            "id": "5684",
+            "name": "New Holland"
+          },
+          {
+            "id": "5685",
+            "name": "Eicher"
+          },
+          {
+            "id": "5686",
+            "name": "Force"
+          },
+          {
+            "id": "5687",
+            "name": "HMT"
+          },
+          {
+            "id": "5688",
+            "name": "Captain"
+          },
+          {
+            "id": "5689",
+            "name": "Mitsubish"
+          },
+          {
+            "id": "5690",
+            "name": "Standard"
+          },
+          {
+            "id": "5691",
+            "name": "Hind Agro"
+          }
+        ]
+      },
+      {
+        "id": "2349",
+        "name": "Backhoe Loader",
+        "VehicleModel": [
+          {
+            "id": "6789",
+            "name": "JCB"
+          },
+          {
+            "id": "6790",
+            "name": "Tata Hitachi"
+          },
+          {
+            "id": "6791",
+            "name": "CASE"
+          },
+          {
+            "id": "6792",
+            "name": "Terex"
+          },
+          {
+            "id": "6793",
+            "name": "CAT"
+          },
+          {
+            "id": "6794",
+            "name": "Mahindra"
+          },
+          {
+            "id": "6795",
+            "name": "ACE"
+          },
+          {
+            "id": "6796",
+            "name": "BEML"
+          },
+          {
+            "id": "6797",
+            "name": "John Deere"
+          },
+          {
+            "id": "6798",
+            "name": "Bobcat"
+          }
+        ]
+      },
+      {
+        "id": "2330",
+        "name": "Excavators",
+        "VehicleModel": [
+          {
+            "id": "7890",
+            "name": "JCB"
+          },
+          {
+            "id": "7891",
+            "name": "Hitachi"
+          },
+          {
+            "id": "7892",
+            "name": "Volvo"
+          },
+          {
+            "id": "7893",
+            "name": "CAT"
+          },
+          {
+            "id": "7894",
+            "name": "L&T"
+          },
+          {
+            "id": "7895",
+            "name": "TATA"
+          },
+          {
+            "id": "7896",
+            "name": "Hyundai"
+          },
+          {
+            "id": "7897",
+            "name": "Komatsu"
+          },
+          {
+            "id": "7898",
+            "name": "Bobcat"
+          },
+          {
+            "id": "7899",
+            "name": "BEML"
+          },
+          {
+            "id": "7900",
+            "name": "SANY"
+          },
+          {
+            "id": "7901",
+            "name": "Poclain"
+          }
+        ]
 
       }
-      
+
     ]
   },
   {
     "id": 1235,
     "name": "Construction Vehicles",
-    "url": "andamannicobar",
-    "subregions": [
+    "VehicleType": [
       {
-        "id": "39323583",
-        "name": "Bakultala",
-        "name_long": "Bakultala, Andaman & Nicobar Islands",
-        "url": "bakultala"
+        "id": "1100",
+        "name": "Tractors",
+        "VehicleModel": [
+          {
+            "id": "2201",
+            "name": "Mahindra"
+          },
+          {
+            "id": "2202",
+            "name": "TAFE"
+          },
+          {
+            "id": "2203",
+            "name": "John Deere"
+          },
+          {
+            "id": "2204",
+            "name": "Swaraj"
+          },
+          {
+            "id": "2205",
+            "name": "Sonalika"
+          },
+          {
+            "id": "2206",
+            "name": "Escorts"
+          },
+          {
+            "id": "2207",
+            "name": "New Holland"
+          },
+          {
+            "id": "2208",
+            "name": "Eicher"
+          },
+          {
+            "id": "2209",
+            "name": "Force"
+          },
+          {
+            "id": "2210",
+            "name": "HMT"
+          },
+          {
+            "id": "2211",
+            "name": "Captain"
+          },
+          {
+            "id": "2212",
+            "name": "Mitsubish"
+          },
+          {
+            "id": "2213",
+            "name": "Standard"
+          },
+          {
+            "id": "2214",
+            "name": "Hind Agro"
+          }
+        ]
       },
       {
-        "id": "39333569",
-        "name": "Bambooflat",
-        "name_long": "Bambooflat, Andaman & Nicobar Islands",
-        "url": "bambooflat"
+        "id": "1101",
+        "name": "Dozers",
+        "VehicleModel": [
+          {
+            "id": "3301",
+            "name": "Mahindra"
+          },
+          {
+            "id": "3302",
+            "name": "TAFE"
+          },
+          {
+            "id": "3303",
+            "name": "John Deere"
+          },
+          {
+            "id": "3304",
+            "name": "Swaraj"
+          },
+          {
+            "id": "3305",
+            "name": "Sonalika"
+          },
+          {
+            "id": "3306",
+            "name": "Escorts"
+          },
+          {
+            "id": "3307",
+            "name": "New Holland"
+          },
+          {
+            "id": "3308",
+            "name": "Eicher"
+          },
+          {
+            "id": "3309",
+            "name": "Force"
+          },
+          {
+            "id": "3310",
+            "name": "HMT"
+          },
+          {
+            "id": "3311",
+            "name": "Captain"
+          },
+          {
+            "id": "3312",
+            "name": "Mitsubish"
+          },
+          {
+            "id": "3313",
+            "name": "Standard"
+          },
+          {
+            "id": "3314",
+            "name": "Hind Agro"
+          }
+        ]
       },
       {
-        "id": "393567",
-        "name": "Car Nicobar",
-        "name_long": "Car Nicobar, Andaman & Nicobar Islands",
-        "url": "car-nicobar"
+        "id": "1102",
+        "name": "Backhoe Loader",
+        "VehicleModel": [
+          {
+            "id": "4400",
+            "name": "JCB"
+          },
+          {
+            "id": "4401",
+            "name": "Tata Hitachi"
+          },
+          {
+            "id": "4402",
+            "name": "CASE"
+          },
+          {
+            "id": "4403",
+            "name": "Terex"
+          },
+          {
+            "id": "4404",
+            "name": "CAT"
+          },
+          {
+            "id": "4405",
+            "name": "Mahindra"
+          },
+          {
+            "id": "4406",
+            "name": "ACE"
+          },
+          {
+            "id": "4407",
+            "name": "BEML"
+          },
+          {
+            "id": "4408",
+            "name": "John Deere"
+          },
+          {
+            "id": "4409",
+            "name": "Bobcat"
+          }
+        ]
       },
       {
-        "id": "296465",
-        "name": "Diglipur",
-        "name_long": "Diglipur, Andaman & Nicobar Islands",
-        "url": "diglipur"
+        "id": "1103",
+        "name": "Excavators",
+        "VehicleModel": [
+          {
+            "id": "5500",
+            "name": "JCB"
+          },
+          {
+            "id": "5501",
+            "name": "Hitachi"
+          },
+          {
+            "id": "5502",
+            "name": "Volvo"
+          },
+          {
+            "id": "5503",
+            "name": "CAT"
+          },
+          {
+            "id": "5504",
+            "name": "L&T"
+          },
+          {
+            "id": "5505",
+            "name": "TATA"
+          },
+          {
+            "id": "5506",
+            "name": "Hyundai"
+          },
+          {
+            "id": "5507",
+            "name": "Komatsu"
+          },
+          {
+            "id": "5508",
+            "name": "Bobcat"
+          },
+          {
+            "id": "5509",
+            "name": "BEML"
+          },
+          {
+            "id": "5510",
+            "name": "SANY"
+          },
+          {
+            "id": "5511",
+            "name": "Poclain"
+          }
+        ]
       },
       {
-        "id": "393581",
-        "name": "Garacharma",
-        "name_long": "Garacharma, Andaman & Nicobar Islands",
-        "url": "garacharma"
+        "id": "1104",
+        "name": "Wheel Loader",
+        "VehicleModel": [
+          {
+            "id": "6600",
+            "name": "JCB"
+          },
+          {
+            "id": "6601",
+            "name": "Hitachi"
+          },
+          {
+            "id": "6602",
+            "name": "Volvo"
+          },
+          {
+            "id": "6603",
+            "name": "CAT"
+          },
+          {
+            "id": "6604",
+            "name": "L&T"
+          },
+          {
+            "id": "6605",
+            "name": "TATA"
+          },
+          {
+            "id": "6606",
+            "name": "Hyundai"
+          },
+          {
+            "id": "6607",
+            "name": "Komatsu"
+          },
+          {
+            "id": "6608",
+            "name": "Liugong"
+          },
+          {
+            "id": "6609",
+            "name": "Mahindra"
+          },
+          {
+            "id": "6610",
+            "name": "TATA Hitachi "
+          }
+        ]
       },
       {
-        "id": "393577",
-        "name": "Hut Bay",
-        "name_long": "Hut Bay, Andaman & Nicobar Islands",
-        "url": "hut-bay"
+        "id": "1105",
+        "name": "Crane",
+        "VehicleModel": [
+          {
+            "id": "7700",
+            "name": "JCB"
+          },
+          {
+            "id": "7701",
+            "name": "ACE"
+          },
+          {
+            "id": "7702",
+            "name": "Escort"
+          },
+          {
+            "id": "7703",
+            "name": "Indo Farm"
+          },
+          {
+            "id": "7704",
+            "name": "Terex"
+          },
+          {
+            "id": "7705",
+            "name": "Zoomlion"
+          },
+          {
+            "id": "7706",
+            "name": "XCMG"
+          }
+        ]
       },
       {
-        "id": "393579",
-        "name": "Kamorta",
-        "name_long": "Kamorta, Andaman & Nicobar Islands",
-        "url": "kamorta"
+        "id": "1106",
+        "name": "Transit Mixer",
+        "VehicleModel": [
+          {
+            "id": "8800",
+            "name": "TATA"
+          },
+          {
+            "id": "8801",
+            "name": "Ashok Leyland"
+          },
+          {
+            "id": "8802",
+            "name": "AMW"
+          },
+          {
+            "id": "8803",
+            "name": "Eicher"
+          }
+        ]
       },
       {
-        "id": "393563",
-        "name": "Malacca",
-        "name_long": "Malacca, Andaman & Nicobar Islands",
-        "url": "malacca"
+        "id": "1107",
+        "name": "Soil Compactor",
+        "VehicleModel": [
+          {
+            "id": "9900",
+            "name": "Escort"
+          },
+          {
+            "id": "9901",
+            "name": "CACE"
+          },
+          {
+            "id": "9902",
+            "name": "CAT"
+          },
+          {
+            "id": "9903",
+            "name": "L&T"
+          },
+          {
+            "id": "9904",
+            "name": "Volvo"
+          }
+        ]
       },
       {
-        "id": "393565",
-        "name": "Mayabunder",
-        "name_long": "Mayabunder, Andaman & Nicobar Islands",
-        "url": "mayabunder"
+        "id": "1108",
+        "name": "Tippers ",
+        "VehicleModel": [
+          {
+            "id": "0011",
+            "name": "TATA"
+          },
+          {
+            "id": "0012",
+            "name": "Ashok Leyland"
+          },
+          {
+            "id": "0013",
+            "name": "AMW"
+          },
+          {
+            "id": "0014",
+            "name": "Eicher"
+          },
+          {
+            "id": "0015",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "0016",
+            "name": "MAN"
+          },
+          {
+            "id": "0017",
+            "name": "Volvo"
+          },
+          {
+            "id": "0018",
+            "name": "Mahindra"
+          },
+          {
+            "id": "0019",
+            "name": "Scania"
+          },
+          {
+            "id": "0020",
+            "name": "SML Isuzu"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "id": 1236,
+    "name": "Transportation Vehicles",
+    "VehicleType": [
+      {
+        "id": "1110",
+        "name": "Autos - 3 wheeler",
+        "VehicleModel": [
+          {
+            "id": "2220",
+            "name": "Ashok-Leyland"
+          },
+          {
+            "id": "2221",
+            "name": "Force"
+          },
+          {
+            "id": "2222",
+            "name": "Mahindra"
+          },
+          {
+            "id": "2223",
+            "name": "Piaggio"
+          },
+          {
+            "id": "2224",
+            "name": "TATA"
+          },
+          {
+            "id": "2225",
+            "name": "BAJAJ"
+          },
+          {
+            "id": "2226",
+            "name": "Swaraj"
+          },
+          {
+            "id": "2227",
+            "name": "Eicher"
+          },
+          {
+            "id": "2228",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "2229",
+            "name": "TATA ACE"
+          },
+          {
+            "id": "2230",
+            "name": "Atul Auto"
+          },
+          {
+            "id": "2231",
+            "name": "TVS"
+          },
+          {
+            "id": "2232",
+            "name": "Ford"
+          },
+          {
+            "id": "2233",
+            "name": "SML ISUZU"
+          }
+        ]
       },
       {
-        "id": "157273",
-        "name": "Port Blair",
-        "name_long": "Port Blair, Andaman & Nicobar Islands",
-        "url": "portblair"
+        "id": "1111",
+        "name": "Mini Trucks - 4 wheeler",
+        "VehicleModel": [
+          {
+            "id": "3330",
+            "name": "Ashok-Leyland"
+          },
+          {
+            "id": "3331",
+            "name": "Force"
+          },
+          {
+            "id": "3332",
+            "name": "Mahindra"
+          },
+          {
+            "id": "3333",
+            "name": "Piaggio"
+          },
+          {
+            "id": "3334",
+            "name": "TATA"
+          },
+          {
+            "id": "3335",
+            "name": "BAJAJ"
+          },
+          {
+            "id": "3336",
+            "name": "Swaraj"
+          },
+          {
+            "id": "3337",
+            "name": "Eicher"
+          },
+          {
+            "id": "3338",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "3339",
+            "name": "TATA ACE"
+          },
+          {
+            "id": "3340",
+            "name": "Atul Auto"
+          },
+          {
+            "id": "3341",
+            "name": "TVS"
+          },
+          {
+            "id": "3342",
+            "name": "Ford"
+          },
+          {
+            "id": "3343",
+            "name": "SML ISUZU"
+          }
+        ]
       },
       {
-        "id": "393571",
-        "name": "Prothrapur",
-        "name_long": "Prothrapur, Andaman & Nicobar Islands",
-        "url": "prothrapur"
+        "id": "1112",
+        "name": "Lorry Trucks",
+        "VehicleModel": [
+          {
+            "id": "4440",
+            "name": "Ashok-Leyland"
+          },
+          {
+            "id": "4441",
+            "name": "TATA"
+          },
+          {
+            "id": "4442",
+            "name": "VOLVO "
+          },
+          {
+            "id": "4443",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "4444",
+            "name": "SML ISUZU"
+          },
+          {
+            "id": "4445",
+            "name": "EICHER "
+          },
+          {
+            "id": "4446",
+            "name": "MAN"
+          },
+          {
+            "id": "4447",
+            "name": "FORCE"
+          },
+          {
+            "id": "4448",
+            "name": "ASIA MOTOR"
+          }
+        ]
       },
       {
-        "id": "393575",
-        "name": "Rangat",
-        "name_long": "Rangat, Andaman & Nicobar Islands",
-        "url": "rangat"
+        "id": "1113",
+        "name": "DCM Trucks",
+        "VehicleModel": [
+          {
+            "id": "5550",
+            "name": "Ashok-Leyland"
+          },
+          {
+            "id": "5551",
+            "name": "TATA"
+          },
+          {
+            "id": "5552",
+            "name": "EICHER"
+          },
+          {
+            "id": "5553",
+            "name": "VOLVO"
+          },
+          {
+            "id": "5554",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "5555",
+            "name": "SML ISUZU"
+          },
+          {
+            "id": "5556",
+            "name": "MAN "
+          },
+          {
+            "id": "5557",
+            "name": "FORCE"
+          }
+        ]
+      }
+    ]
+  },
+      {
+    "id": 1236,
+    "name": "Passenger Vehicles",
+    "VehicleType": [      
+      {
+        "id": "1000",
+        "name": "Autos",
+        "VehicleModel": [
+          {
+            "id": "2000",
+            "name": "Ashok-Leyland"
+          },
+          {
+            "id": "2001",
+            "name": "Force"
+          },
+          {
+            "id": "2002",
+            "name": "Mahindra"
+          },
+          {
+            "id": "2003",
+            "name": "Piaggio"
+          },
+          {
+            "id": "2004",
+            "name": "TATA"
+          },
+          {
+            "id": "2005",
+            "name": "BAJAJ"
+          },
+          {
+            "id": "2006",
+            "name": "Swaraj"
+          },
+          {
+            "id": "2007",
+            "name": "Eicher"
+          },
+          {
+            "id": "2008",
+            "name": "Bharat Benz"
+          },
+          {
+            "id": "2009",
+            "name": "TATA ACE"
+          },
+                    {
+            "id": "2010",
+            "name": "Atul Auto"
+          },
+          {
+            "id": "2011",
+            "name": "TVS"
+          },
+          {
+            "id": "2012",
+            "name": "Ford"
+          },
+          {
+            "id": "2013",
+            "name": "SML ISUZU"
+          }
+        ]
       },
       {
-        "id": "393573",
-        "name": "Tarasa Island",
-        "name_long": "Tarasa Island, Andaman & Nicobar Islands",
-        "url": "tarasa-island"
+        "id": "1001",
+        "name": "CARS",
+        "VehicleModel": [
+
+        ]
+      },
+      {
+        "id": "1002",
+        "name": "Travel Vans",
+        "VehicleModel": [
+          {
+            "id": "3000",
+            "name": "TATA"
+          },
+          {
+            "id": "3001",
+            "name": "FORCE"
+          },
+          {
+            "id": "3002",
+            "name": "Maruti"
+          },
+          {
+            "id": "3003",
+            "name": "Piaggio"
+          },
+          {
+            "id": "3004",
+            "name": "Winger"
+          },
+          {
+            "id": "3005",
+            "name": "Mahindra"
+          }
+        ]
+      },
+      {
+        "id": "1003",
+        "name": "BIKES",
+        "VehicleModel": [
+
+        ]
       }
     ]
   }
-  ]
+]
