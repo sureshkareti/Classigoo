@@ -1,6 +1,8 @@
 ﻿@model CustomAdd
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
 <head>
@@ -9,20 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responisve, Bootstrap, Html5, Css3, Blog, Classified, Ads, Simple, Clean ">
     <!-- CSS -->
-    @*<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">*@
-    @*<link href="~/Content/CssNew/bootstrap.min.css" rel="stylesheet" />*@
+    @*
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">*@
+    @*
+        <link href="~/Content/CssNew/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/Content/Custome/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Google Webfont -->
     <link href='http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans:400,300,400italic,600,700,800,800italic' rel='stylesheet' type='text/css'>
     <!-- Main Css -->
     <link href="~/Content/CssNew/color1.css" rel="stylesheet" media="screen" id="color">
-    @*<link href="~/Content/CssNew/color1.css" rel="stylesheet" />*@
-    @*<link href="css/demo.css" rel="stylesheet">*@
+    @*
+        <link href="~/Content/CssNew/color1.css" rel="stylesheet" />*@
+    @*
+        <link href="css/demo.css" rel="stylesheet">*@
     <link href="~/Content/CssNew/demo.css" rel="stylesheet" />
     <!-- Font Icon -->
-    @*<link href="css/font-awesome.min.css" rel="stylesheet" media="screen">*@
+    @*
+        <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">*@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -30,107 +38,109 @@
           <script src="js/respond.min.js"></script>
          <![endif]-->
 </head>
-    <!-- Header Start -->
-    @*<header id="header">
-            <div class="headerdetails">
-                <div class="container">
-                    <a class="logo pull-left" href="index.html"><img title="Classifieds" alt="Classifieds" src="img/logo.png"></a>
-                    <div id="mainmenu" class=" pull-right">
-                        <!-- Navigation -->
-                        <nav class="subnav">
-                            <div class="menurelative">
-                                <a class="btn btn-orange mainmenumobile">Menu</a>
-                                <ul class="nav-pills mainmenucontain">
-                                    <li>
-                                        <a class="active home submenu2">Home</a>
-                                        <div class="submenu">
+<!-- Header Start -->
+@*<header id="header">
+        <div class="headerdetails">
+            <div class="container">
+                <a class="logo pull-left" href="index.html"><img title="Classifieds" alt="Classifieds" src="img/logo.png"></a>
+                <div id="mainmenu" class=" pull-right">
+                    <!-- Navigation -->
+                    <nav class="subnav">
+                        <div class="menurelative">
+                            <a class="btn btn-orange mainmenumobile">Menu</a>
+                            <ul class="nav-pills mainmenucontain">
+                                <li>
+                                    <a class="active home submenu2">Home</a>
+                                    <div class="submenu">
+                                        <ul>
+                                            <li> <a class="" href="index.html">Home With Map</a> </li>
+                                            <li> <a class="" href="index1.html">Home With Image </a> </li>
+                                            <li> <a class="" href="index2.html">Home - 2 Column</a> </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="submenu2">Listing</a>
+                                    <div class="submenu">
+                                        <ul class="pull-left">
+                                            <li> <a class="" href="listing.html">Listing List View</a> </li>
+                                            <li> <a class="" href="listing-grid.html">Listing Grid View</a> </li>
+                                            <li><a class="" href="#"><img title="" alt="" src="img/ad1.jpg" width="200"></a></li>
+                                        </ul>
+                                        <div id="topdeal">
+                                            <h3>Top Deal</h3>
                                             <ul>
-                                                <li> <a class="" href="index.html">Home With Map</a> </li>
-                                                <li> <a class="" href="index1.html">Home With Image </a> </li>
-                                                <li> <a class="" href="index2.html">Home - 2 Column</a> </li>
+                                                <li>
+                                                    <img width="100" src="img/blog1.jpg" alt="blog" title="blog" class="pull-left">
+                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
+
+                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
+                                                </li>
+                                                <li>
+                                                    <img width="100" src="img/blog2.jpg" alt="blog" title="blog" class="pull-left">
+                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
+
+                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
+                                                </li>
+
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <a class="submenu2">Listing</a>
-                                        <div class="submenu">
-                                            <ul class="pull-left">
-                                                <li> <a class="" href="listing.html">Listing List View</a> </li>
-                                                <li> <a class="" href="listing-grid.html">Listing Grid View</a> </li>
-                                                <li><a class="" href="#"><img title="" alt="" src="img/ad1.jpg" width="200"></a></li>
-                                            </ul>
-                                            <div id="topdeal">
-                                                <h3>Top Deal</h3>
-                                                <ul>
-                                                    <li>
-                                                        <img width="100" src="img/blog1.jpg" alt="blog" title="blog" class="pull-left">
-                                                        <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
-
-                                                        <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                    </li>
-                                                    <li>
-                                                        <img width="100" src="img/blog2.jpg" alt="blog" title="blog" class="pull-left">
-                                                        <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
-
-                                                        <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li> <a class="" href="detail.html">Detail Page</a> </li>
-                                    <li>
-                                        <a class="submenu2">Blog</a>
-                                        <div class="submenu">
-                                            <ul>
-                                                <li> <a class="" href="blog.html">Blog Detail</a> </li>
-                                                <li> <a class="" href="bloggrid.html">Blog Grid</a> </li>
-                                                <li> <a class="" href="bloglist.html">Blog List</a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="submenu2">My Account</a>
-                                        <div class="submenu">
-                                            <ul>
-                                                <li> <a class="" href="login.html">Login</a> </li>
-                                                <li> <a class="" href="register.html">Register</a> </li>
-                                                <li> <a class="" href="account.html">Dashboard</a> </li>
-                                                <li> <a class="" href="profile.html">Edit Profile</a> </li>
-                                                <li> <a class="" href="post-ad.html">Post An Ad</a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li> <a class="" href="contact.html">Contact</a> </li>
-                                    <li> <a class="" href="features.html">Features</a> </li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <div class="mt10 pull-right">
-                            <!--Social -->
-                            <div class="socialtop pull-right">
-                                <ul class="pull-right">
-                                    <li><a class="tooltip-test" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                                    <li><a class="tooltip-test" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                                </ul>
-                            </div>
-                            <!--Top Search -->
-
-                            <div class="email"> <i class="fa fa-envelope-o"></i> Email : <a href="maito:test@pxcreate.com" class="black">test@pxcreate.com </a></div>
-                            <div class="call"><i class="fa fa-phone"></i> Call Us : <span class="black">+ 99 123 456 7890 </span></div>
+                                    </div>
+                                </li>
+                                <li> <a class="" href="detail.html">Detail Page</a> </li>
+                                <li>
+                                    <a class="submenu2">Blog</a>
+                                    <div class="submenu">
+                                        <ul>
+                                            <li> <a class="" href="blog.html">Blog Detail</a> </li>
+                                            <li> <a class="" href="bloggrid.html">Blog Grid</a> </li>
+                                            <li> <a class="" href="bloglist.html">Blog List</a> </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="submenu2">My Account</a>
+                                    <div class="submenu">
+                                        <ul>
+                                            <li> <a class="" href="login.html">Login</a> </li>
+                                            <li> <a class="" href="register.html">Register</a> </li>
+                                            <li> <a class="" href="account.html">Dashboard</a> </li>
+                                            <li> <a class="" href="profile.html">Edit Profile</a> </li>
+                                            <li> <a class="" href="post-ad.html">Post An Ad</a> </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li> <a class="" href="contact.html">Contact</a> </li>
+                                <li> <a class="" href="features.html">Features</a> </li>
+                            </ul>
                         </div>
+                    </nav>
+                    <div class="mt10 pull-right">
+                        <!--Social -->
+                        <div class="socialtop pull-right">
+                            <ul class="pull-right">
+                                <li><a class="tooltip-test" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--Top Search -->
+
+                        <div class="email"> <i class="fa fa-envelope-o"></i> Email : <a href="maito:test@pxcreate.com" class="black">test@pxcreate.com </a></div>
+                        <div class="call"><i class="fa fa-phone"></i> Call Us : <span class="black">+ 99 123 456 7890 </span></div>
                     </div>
                 </div>
             </div>
-        </header>*@
-    <!-- Header End -->
+        </div>
+    </header>*@
+<!-- Header End -->
+@using (Html.BeginForm("PreviewAdd", "User", FormMethod.Post, new { id = "PreviewAdd" }))
+{
     <div id="maincontainer">
         <!-- Search Start-->
         @*<section id="searchinner">
@@ -211,63 +221,65 @@
                             </div>
                             <div class="tab-pane " id="cars-specification">
                                 <ul class="productinfo">
-                                    @if(@Model.Cars!=null)
+                                    @if (@Model.Cars != null)
                                     {
-                                    <li> <span class="productinfoleft"> Model:</span> @Model.Cars.Model </li>
-                                    <li> <span class="productinfoleft"> Year:</span> @Model.Cars.Year</li>
-                                    <li> <span class="productinfoleft"> Fuel: </span> @Model.Cars.Fuel </li>
-                                    <li> <span class="productinfoleft"> KMDriven: </span> @Model.Cars.KMDriven </li>
+                                        <li> <span class="productinfoleft"> Model:</span> @Model.Cars.Model </li>
+                                        <li> <span class="productinfoleft"> Year:</span> @Model.Cars.Year</li>
+                                        <li> <span class="productinfoleft"> Fuel: </span> @Model.Cars.Fuel </li>
+                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.Cars.KMDriven </li>
                                     }
-                                    
-                                  </ul>
-                                
+
+                                </ul>
+
                             </div>
                             <div class="tab-pane " id="electronics-specification">
                                 <ul class="productinfo">
-                                    @if(@Model.Electronics!=null)
-                                   {
-                                    <li> <span class="productinfoleft"> Brand:</span>Electronics  </li>
-                                    <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
-                                    <li> <span class="productinfoleft"> SIM Type: </span> Dual SIM, GSM + GSM </li>
-                                    <li> <span class="productinfoleft"> Old Price: </span> $500.00 </li>
-                                    <li> <span class="productinfoleft"> Touch Screen: </span> Yes, Capacitive</li>
-                                    <li> <span class="productinfoleft"> Ex Tax: </span> $500.00 </li>
-                                    <li> <span class="productinfoleft"> Call Features:</span> Loudspeaker </li>
-                                    <li> <span class="productinfoleft"> Handset Color:</span> Pure White </li>
+                                    @if (@Model.Electronics != null)
+                                    {
+                                        <li> <span class="productinfoleft"> Brand:</span>Electronics  </li>
+                                        <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
+                                        <li> <span class="productinfoleft"> SIM Type: </span> Dual SIM, GSM + GSM </li>
+                                        <li> <span class="productinfoleft"> Old Price: </span> $500.00 </li>
+                                        <li> <span class="productinfoleft"> Touch Screen: </span> Yes, Capacitive</li>
+                                        <li> <span class="productinfoleft"> Ex Tax: </span> $500.00 </li>
+                                        <li> <span class="productinfoleft"> Call Features:</span> Loudspeaker </li>
+                                        <li> <span class="productinfoleft"> Handset Color:</span> Pure White </li>
                                     }
                                 </ul>
 
                             </div>
                             <div class="tab-pane " id="realestate-specification">
                                 <ul class="productinfo">
-                                    @if(@Model.RealEstate!=null)
+                                    @if (@Model.RealEstate != null)
                                     {
-                                    <li> <span class="productinfoleft"> Availability:</span> @Model.RealEstate.Bedrooms </li>
-                                    <li> <span class="productinfoleft"> ListedBy:</span> @Model.RealEstate.ListedBy</li>
-                                    <li> <span class="productinfoleft"> Furnishing: </span> @Model.RealEstate.Furnishing </li>
-                                    <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RealEstate.Bedrooms </li>
-                                    <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RealEstate.SquareFeets</li>
-                                    <li> <span class="productinfoleft"> Squareyards: </span> @Model.RealEstate.SquareFeets </li>
+                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RealEstate.Bedrooms </li>
+                                        <li> <span class="productinfoleft"> ListedBy:</span> @Model.RealEstate.ListedBy</li>
+                                        <li> <span class="productinfoleft"> Furnishing: </span> @Model.RealEstate.Furnishing </li>
+                                        <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RealEstate.Bedrooms </li>
+                                        <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RealEstate.SquareFeets</li>
+                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RealEstate.SquareFeets </li>
                                     }
                                 </ul>
                             </div>
                             <div class="tab-pane" id="contact">
                                 <form class="form-vertical">
                                     <fieldset>
-                                        <div class="control-group">
-                                            <label class="control-label">Your Name</label>
-                                            <div class="controls">
-                                                <input type="text" class="span3">
-                                            </div>
-                                        </div>
+                                        @*<div class="control-group">
+                                                <label class="control-label">Your Name</label>
+                                                <div class="controls">
+
+                                                    <input type="text" class="span3">
+                                                </div>
+                                            </div>*@
                                         <div class="control-group">
                                             <label class="control-label">Message</label>
                                             <div class="controls">
-                                                <textarea rows="3" class="span3"></textarea>
+                                                <textarea rows="3" name="user-message" class="span3"></textarea>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <input type="submit" class="btn btn-orange" value="continue">
+                                    @Html.HiddenFor(m => m.AddId)
                                 </form>
                             </div>
                         </div>
@@ -355,36 +367,36 @@
         <div class="container">
             @*<h2 class="heading3">Social</h2>*@
             @*<div class="mt40" id="social">
-                                <ul class="row clearfix">
-                                    <li class="col-md-3 col-sm-6">
-                                        <h5 class="heading5">Twitter</h5>
-                                        <div id="twitter"> </div>
-                                    </li>
-                                    <li class="col-md-3 col-sm-6 mt40column">
-                                        <h5 class="heading5">Flickr</h5>
-                                        <div class="social-feed flickr-feed"> </div>
-                                    </li>
-                                    <li class="col-md-3 col-sm-6 mt40column">
-                                        <h5 class="heading5">Youtube</h5>
-                                        <div class="social-feed youtube-feed"> </div>
-                                    </li>
-                                    <li class="col-md-3 col-sm-6 mt40column">
-                                        <h5 class="heading5">Facebook</h5>
-                                        <div class="">
-                                            <div id="fb-root"></div>
-                                            <script>
-                (function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = "../../../connect.facebook.net/en_US/all.js#xfbml=1";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
-                                            <div class="fb-like-box" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240"></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>*@
+                    <ul class="row clearfix">
+                        <li class="col-md-3 col-sm-6">
+                            <h5 class="heading5">Twitter</h5>
+                            <div id="twitter"> </div>
+                        </li>
+                        <li class="col-md-3 col-sm-6 mt40column">
+                            <h5 class="heading5">Flickr</h5>
+                            <div class="social-feed flickr-feed"> </div>
+                        </li>
+                        <li class="col-md-3 col-sm-6 mt40column">
+                            <h5 class="heading5">Youtube</h5>
+                            <div class="social-feed youtube-feed"> </div>
+                        </li>
+                        <li class="col-md-3 col-sm-6 mt40column">
+                            <h5 class="heading5">Facebook</h5>
+                            <div class="">
+                                <div id="fb-root"></div>
+                                <script>
+                                (function(d, s, id) {
+                                  var js, fjs = d.getElementsByTagName(s)[0];
+                                  if (d.getElementById(id)) return;
+                                  js = d.createElement(s); js.id = id;
+                                  js.src = "../../../connect.facebook.net/en_US/all.js#xfbml=1";
+                                  fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));</script>
+                                <div class="fb-like-box" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>*@
         </div>
         <!-- Newsletter-->
         <section class="mt40 newsletter" id="newslettersignup">
@@ -428,18 +440,18 @@
                     </div>
                 </section>*@
             @*<section class="copyrightbottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="pull-left"> Copyright © 2014. Classic. All rights reserved </div>
-                        <div class="pull-right"> Developed by pxcreate</div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="pull-left"> Copyright © 2014. Classic. All rights reserved </div>
+                            <div class="pull-right"> Developed by pxcreate</div>
+                        </div>
                     </div>
-                </div>
-            </section>*@
+                </section>*@
         </footer>
         <!-- Got to top -->
         <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
     </div>
-
+}
     @*<div id="styleswitch">
             <h3>Style Color switcher <i class="fa fa-cogs"></i> </h3>
             <a href="javascript: void(0)" title="switch styling" id="color1">color1</a> <a href="javascript: void(0)" title="switch styling" id="color2">color2</a> <a href="javascript: void(0)" title="switch styling" id="color3">color3</a> <a href="javascript: void(0)" title="switch styling" id="color4">color4</a> <a href="javascript: void(0)" title="switch styling" id="color5">color5</a> <a href="javascript: void(0)" title="switch styling" id="color6">color6</a> <a href="javascript: void(0)" title="switch styling" id="color7">color7</a> <a href="javascript: void(0)" title="switch styling" id="color8">color8</a> <a href="javascript: void(0)" title="switch styling" id="color9">color9</a> <a href="javascript: void(0)" title="switch styling" id="color10">color10</a> <a href="javascript: void(0)" title="switch styling" id="color11">color11</a> <a href="javascript: void(0)" title="switch styling" id="color12">color12</a> <a href="javascript: void(0)" title="switch styling" id="color13">color13</a> <a href="javascript: void(0)" title="switch styling" id="color14">color14</a> <a href="javascript: void(0)" title="switch styling" id="color15">color15</a> <a href="javascript: void(0)" title="switch styling" id="color16">color16</a> <a href="javascript: void(0)" title="switch styling" id="color17">color17</a> <a href="javascript: void(0)" title="switch styling" id="color18">color18</a> <a href="javascript: void(0)" title="switch styling" id="color19">color19</a> <a href="javascript: void(0)" title="switch styling" id="color20">color20</a>
@@ -449,48 +461,12 @@
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     @*<script src="js/jquery.js"></script>*@
     <script src="~/Scripts/ScriptsNew/jquery.js"></script>
-    @*<script src="js/jquery-migrate-1.2.1.js"></script>*@
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    @*<script src="js/bootstrap.min.js"></script>*@
     <script src="~/Scripts/bootstrap.min.js"></script>
-
-    <!-- include jQuery + carouFredSel plugin -->
-    @*<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>*@
-    @*<script src="~/Scripts/ScriptsNew/jquery.carouFredSel-6.2.1-packed.js"></script>*@
-
-    <!-- Flex slider Blog-->
-    @*<script src="js/jquery.flexslider.js"></script>*@
-    <script src="~/Scripts/ScriptsNew/jquery.flexslider.js"></script>
 
     <!-- Jquery zoom on detail page-->
     @*<script src="js/zoomsl-3.0.min.js"></script>*@
     <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
-    <!-- Jquery Validation-->
-    @*<script type="text/javascript" src="js/jquery.validate.js"></script>*@
-    <!-- Jquery Latest Tweet-->
-    @*<script type="text/javascript" src="js/jquery.tweet.js"></script>*@
-    <!-- Jquery Countdown-->
-    @*<script type="text/javascript" src="js/jquery.countdown.js"></script>*@
-    <!-- Social -->
-    @*<script type="text/javascript" src="js/socialstream.jquery.js"></script>*@
-    <!-- Jquery Map -->
-    @*<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="js/jquery.gmap.js"></script>*@
-    <!-- Sparkline -->
-    @*<script type="text/javascript" src="js/jquery.sparkline.min.js"></script>*@
-
-    <!-- Cloud -->
-    @*<script type="text/javascript" src="js/jqcloud-1.0.4.js"></script>*@
-    <!-- Ratina View -->
-    @*<script type="text/javascript" src="js/retina-1.1.0.min.js"></script>*@
-    @*<script src="~/Scripts/ScriptsNew/retina-1.1.0.min.js"></script>*@
-    <script src="~/Scripts/ScriptsNew/all.js"></script>
-    @*<script src="~/Scripts/ScriptsNew/jquery.sparkline.min.js"></script>*@
-    <!-- Custom -->
-    @*<script src="js/custom.js"></script>*@
     <script src="~/Scripts/custom.js"></script>
-
-    @*<script type="text/javascript" src="js/jquery.style-switcher.js"></script>*@
     <script type="text/javascript">
 $(document).ready(function() {
     $('#myTab a').click(function (e) {
@@ -531,12 +507,6 @@ $(document).ready(function() {
         }
     })
    $('#myTab a:first').tab('show') // Select first tab
-    //Tab Why Us
-    //$('.myTabclass a').click(function (e) {
-    //    e.preventDefault()
-    //    $(this).tab('show');
-    //})
-    //$('.myTabclass a:first').tab('show') // Select first tab
     function ClearTabs()
     {
         $(".tab-content > .tab-pane").removeClass("active");
@@ -547,5 +517,3 @@ $(document).ready(function() {
     }
 });
     </script>
-
-
