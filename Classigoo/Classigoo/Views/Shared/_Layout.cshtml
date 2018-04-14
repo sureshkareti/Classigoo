@@ -158,32 +158,32 @@
                 slidesToShow: 3,
                 slidesToScroll: 3
             });
-            $.get('../Scripts/Json/locations.json', function (data) {
-                var filtered = new Array();
-                $.each(data, function (i, field) {
-                    var j;
-                    for (j in field.subregions) {
-                        filtered.push(field.subregions[j].name_long);
+            //$.get('../Scripts/Json/locations.json', function (data) {
+            //    var filtered = new Array();
+            //    $.each(data, function (i, field) {
+            //        var j;
+            //        for (j in field.subregions) {
+            //            filtered.push(field.subregions[j].name_long);
 
-                    }
+            //        }
 
-                });
-                     var options = {
-                         data: filtered,
-                         list: {
-                             match: {
-                                 enabled: true
-                             },
-                             onSelectItemEvent: function () {
-                                 $("#locations").attr("value", $("#locations").getSelectedItemData());
-                                 var a = '<%=Session["TireLn"]%>';
-                             }
-                         }
+            //    });
+            //         var options = {
+            //             data: filtered,
+            //             list: {
+            //                 match: {
+            //                     enabled: true
+            //                 },
+            //                 onSelectItemEvent: function () {
+            //                     $("#locations").attr("value", $("#locations").getSelectedItemData());
+            //                     var a = '<%=Session["TireLn"]%>';
+            //                 }
+            //             }
 
-                    };
+            //        };
 
-                    //$("#locations").easyAutocomplete(options);
-            });
+            //        //$("#locations").easyAutocomplete(options);
+            //});
         });
         $(function () {
             $('.next-step').click(function () {

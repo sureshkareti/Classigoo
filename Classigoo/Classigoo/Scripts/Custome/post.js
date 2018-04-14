@@ -511,16 +511,16 @@ function DisplayRespectiveFields(selectedcategory) {
 
     }
     else if (selectedCate == "Construction Vehicles") {
-        $("#forCV").css('display', 'block');
+      //  $("#forCV").css('display', 'block');
     }
     else if (selectedCate == "Transportation Vehicles") {
-        $("#forTV").css('display', 'block');
+      //  $("#forTV").css('display', 'block');
     }
     else if (selectedCate == "Agricultural Vehicles") {
-        $("#forAV").css('display', 'block');
+      //  $("#forAV").css('display', 'block');
     }
     else if (selectedCate == "Passenger Vehicles") {
-        $("#forPV").css('display', 'block');
+      //  $("#forPV").css('display', 'block');
     }
     else if (selectedCate == "Cars") {
         $("#forCars").css('display', 'block');

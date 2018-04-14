@@ -1,9 +1,9 @@
 ﻿[
   
   {
-    "id": 1234,
-    "name": "Agricultural Vehicles",
-    "Vehicle-Type": [
+    "id": "1234",
+     "name": "Agricultural Vehicles",
+     "VehicleType": [
       {
         "id": "2345",
         "name": "Borewell Machine",
@@ -137,7 +137,7 @@
       },
       {
         "id": "2348",
-        "name": "Combine Harvester ",
+        "name": "Combine Harvester",
         "VehicleModel": [
           {
             "id": "5678",
@@ -302,7 +302,7 @@
     ]
   },
   {
-    "id": 1235,
+    "id": "1235",
     "name": "Construction Vehicles",
     "VehicleType": [
       {
@@ -431,7 +431,7 @@
       },
       {
         "id": "1102",
-        "name": "Backhoe Loader",
+        "name": "Backhoe_Loader",
         "VehicleModel": [
           {
             "id": "4400",
@@ -663,7 +663,7 @@
       },
       {
         "id": "1108",
-        "name": "Tippers ",
+        "name": "Tippers",
         "VehicleModel": [
           {
             "id": "0011",
@@ -711,7 +711,7 @@
     ]
   },
   {
-    "id": 1236,
+    "id": "1236",
     "name": "Transportation Vehicles",
     "VehicleType": [
       {
@@ -920,8 +920,8 @@
       }
     ]
   },
-      {
-    "id": 1236,
+  {
+    "id": "1236",
     "name": "Passenger Vehicles",
     "VehicleType": [      
       {
@@ -988,7 +988,7 @@
       },
       {
         "id": "1001",
-        "name": "CARS",
+        "name": "Cars",
         "VehicleModel": [
 
         ]
@@ -1025,7 +1025,7 @@
       },
       {
         "id": "1003",
-        "name": "BIKES",
+        "name": "Bikes",
         "VehicleModel": [
 
         ]

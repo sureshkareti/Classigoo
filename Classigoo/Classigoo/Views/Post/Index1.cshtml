@@ -41,7 +41,7 @@
                                         <option>Select</option>
                                         <option>Rent</option>
                                         <option>Sale</option>
-                                        
+
                                     </select>
                                 </div>
                             </div>
@@ -85,8 +85,8 @@
                                             <div class="tab-content">
                                                 <div class="tab-pane fade in active sub-category-items" id="tabCategories">
                                                     <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br/>
-                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />                                                
+                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
+                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catPro">Properties</a><br />
 
@@ -111,14 +111,13 @@
                                                     <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
                                                     <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
                                                     <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                    
+
                                                     <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
                                                     <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
                                                     <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
                                                     <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
-                                                    <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />                                                 
+                                                    <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
                                                 </div>
-
                                                 <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
@@ -130,14 +129,11 @@
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
                                                     <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
-                                                    <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans </a><br />
+                                                    <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
                                                     <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
                                                 </div>
-
                                                 <div class="tab-pane fade in" id="tabPro">
-
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-
                                                     <div class="panel with-nav-tabs panel-default">
                                                         <div class="panel-heading">
                                                             <ul class="nav nav-tabs ">
@@ -165,10 +161,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                
-                                                
-                                                
+
+
+
+
                                                 <div class="tab-pane fade in" id="tabCars">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
@@ -279,7 +275,18 @@
                                 </div>
 
                             </div>
-                            <div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="catagory_list">
+                                        <option selected>Select Category</option>
+                                    </select>
+                                </div>
+                            </div>
+                            @*<div>
                                 <div class="forallcollapse" id="forProperties" style="display:none">
                                     <div class="form-group row">
                                         <div class="col-md-3" style="text-align:right">
@@ -384,12 +391,15 @@
 
                                 </div>
 
-                                <div class="form-group row forallcollapse" id="forCV" style="display:none">
+                                <div class="form-group row forallcollapse" id="categories">
+                                    
                                     <div class="col-md-3" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
                                     </div>
                                     <div class="col-md-7">
-                                        this is for construction vehicles
+                                        <select class="form-control outer-select-input-box" id="catagory_list">
+                                            <option selected>Select Category</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row forallcollapse" id="forTV" style="display:none">
@@ -448,7 +458,7 @@
                                         for all
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="form-group row">
                                 <div class="col-md-3" style="text-align:right">
@@ -1075,30 +1085,34 @@
 }
 
 <script type="text/javascript">
-    $.get('../Scripts/Json/categories.json', function (data) {
-        var filtered = new Array();
-        $.each(data, function (i, field) {
-            var j;
-            for (j in field.VehicleType) {
-                filtered.push(field.VehicleType[j]);
-
-            }
+    $(document).ready(function () {
+        var VehiclesColl = new Array();
+        var selectedType = "";
+   
+        $('#tabCategories a').click(function () {
+            selectedType = $(this).text();
+        });
+        // $("#catagory_list").prop('selectedIndex', 0);
+        $('.max-length-subcategory a').click(function () {
+            
+            $("#catagory_list").find('option').remove();
+            $("#catagory_list").append('<option value="0">Select Category</option>')
+            var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedType);
+            var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).text());
+            $.each(selectedModel[0].VehicleModel,function(i,field){
+            {
+                $("#catagory_list").append("<option>" + field.name + "</option>");
+            }           
+            });
 
         });
-        var options = {
-            data: filtered,
-            list: {
-                match: {
-                    enabled: true
-                },
-                onSelectItemEvent: function () {
-                    $("#categories").attr("value", $("#categories").getSelectedItemData());
-                    var a = '<%=Session["TireLn"]%>';
-                }
-            }
 
-        };
-
-        //$("#locations").easyAutocomplete(options);
+        $.get('../Scripts/Json/categories.json', function (data) {
+            $.each(data, function (i, field) {
+                VehiclesColl.push(field);
+            });
+            
+        });
+        
     });
 </script>
