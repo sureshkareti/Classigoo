@@ -110,6 +110,9 @@ namespace Classigoo.Controllers
             AddsModel addColl = new AddsModel();
             switch (category)
             {
+                case "Select Category":
+                    addColl = FilterCategoryNotSelect(location);
+                    break;
                 case "Cars":
                     addColl = FilterCar(filterColl, location);
                     break;
@@ -123,6 +126,33 @@ namespace Classigoo.Controllers
 
             return PartialView("DisplayAdds", addColl);
         }
+        public AddsModel FilterCategoryNotSelect(string location)
+        {
+            int currentPage = 1;
+            int maxRows = 5;
+            ClassigooEntities db = new ClassigooEntities();
+
+            AddsModel addColl = new AddsModel();
+            List<CustomAdd> coll = new List<CustomAdd>();
+            List<Add> addsByPage = (from add in db.Adds
+                                    where
+                           (location != "All India" ? add.Location == location : true)
+                                    orderby add.AddId
+                                    select add)
+                        .OrderBy(add => add.Category)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+            foreach (var add in addsByPage)
+            {
+                coll.Add(CheckCategory(add));
+            }
+            double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
+            addColl.PageCount = (int)Math.Ceiling(pageCount);
+            addColl.Adds = coll;
+            addColl.CurrentPageIndex = currentPage;
+            return addColl;
+        }
+
         public AddsModel FilterCar(Dictionary<string, object> filterOptions, string location)
         {
             int currentPage = 1;

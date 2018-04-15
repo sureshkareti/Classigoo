@@ -411,5 +411,41 @@ namespace Classigoo.Controllers
             
             return View();
         }
+        
+        public void AddLog(Exception Exception)
+        {
+            Log log = new Log();
+            log.ExceptionMsg = Exception.Message.ToString();
+            log.ExceptionSource = Exception.StackTrace.ToString();
+            log.ExceptionType = Exception.GetType().ToString();
+            log.ExceptionURL = Request.Url.ToString();
+            log.UserId = "";
+            log.CreatedDate = DateTime.Now;
+            using (var client = new HttpClient())
+                {
+               
+                    string url = "http://localhost:51797/api/UserApi/AddLog/?log=" + log;
+                    client.BaseAddress = new Uri(url);
+                    var postTask = client.PostAsJsonAsync<Log>(url, log);
+                    try
+                    {
+                        postTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                       
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                    }
+
+                }
+        }
     }
     }

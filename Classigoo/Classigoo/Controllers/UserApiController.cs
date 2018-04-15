@@ -108,7 +108,31 @@ namespace Classigoo.Controllers
             return Ok(user);
         }
 
+        // POST: api/UsersApi
+
+        [HttpPost]
+        [ActionName("AddLog")]
+        public IHttpActionResult AddLog(Log log)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                db.Logs.Add(log);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+               
+            }
+
+            return Ok(log);
+        }
+
         // DELETE: api/UsersApi/5
+
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(Guid id)
         {

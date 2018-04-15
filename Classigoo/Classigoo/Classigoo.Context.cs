@@ -35,6 +35,7 @@ namespace Classigoo
         public virtual DbSet<RealEstate> RealEstates { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Log> Logs { get; set; }
     
         public virtual int FillAds(string categoryId, string locationId, Nullable<System.Guid> userId, ObjectParameter addId)
         {
