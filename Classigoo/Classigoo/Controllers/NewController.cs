@@ -93,6 +93,46 @@ namespace Classigoo.Controllers
                         }
                         break;
                     }
+                case "Agricultural Vehicles":
+                    {
+                        foreach (var item in add.Electronics)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+
+                        }
+                        break;
+                    }
+                case "Construction Vehicles":
+                    {
+                        foreach (var item in add.Electronics)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+
+                        }
+                        break;
+                    }
+                case "Transportation Vehicles":
+                    {
+                        foreach (var item in add.Electronics)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+
+                        }
+                        break;
+                    }
+                case "Passenger Vehicles":
+                    {
+                        foreach (var item in add.Electronics)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.Title = item.Title;
+
+                        }
+                        break;
+                    }
 
             }
             return customAdd;
@@ -121,6 +161,21 @@ namespace Classigoo.Controllers
                     break;
                 case "RealEstate":
                     addColl = FilterRealEstate(filterColl, location);
+                    break;
+                case "Agricultural Vehicles":
+                    addColl = FilterRealEstate(filterColl, location);
+                    break;
+                case "Construction Vehicles":
+                    addColl = FilterRealEstate(filterColl, location);
+                    break;
+                case "Transportation Vehicles":
+                    addColl = FilterRealEstate(filterColl, location);
+                    break;
+                case "Passenger Vehicles":
+                    addColl = FilterRealEstate(filterColl, location);
+                    break;
+                default:
+                    addColl = FilterCategoryNotSelect(location);
                     break;
             }
 

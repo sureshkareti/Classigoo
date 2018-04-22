@@ -37,11 +37,9 @@
 
                                 </div>
                                 <div class="col-md-4">
-                                    <select id="ddlBedrooms" class="form-control">
-                                        <option>Select</option>
+                                    <select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;">
                                         <option>Rent</option>
                                         <option>Sale</option>
-
                                     </select>
                                 </div>
                             </div>
@@ -69,16 +67,11 @@
                                         <div class="panel-heading">
                                             <ul class="nav nav-tabs idtabCategoriesul">
                                                 <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                <li style="display:none" id="idtabPro"><a href="#tabPro" data-toggle="tab">Properties</a></li>
+                                                <li style="display:none" id="idtabPro"><a href="#tabPro" data-toggle="tab">Real Estate</a></li>
                                                 <li style="display:none" id="idtabCV"><a href="#tabCV" data-toggle="tab">Construction Vehicles</a></li>
                                                 <li style="display:none" id="idtabTV"><a href="#tabTV" data-toggle="tab">Transportation Vehicles</a></li>
                                                 <li style="display:none" id="idtabAV"><a href="#tabAV" data-toggle="tab">Agricultural Vehicles</a></li>
                                                 <li style="display:none" id="idtabPV"><a href="#tabPV" data-toggle="tab">Passenger Vehicles</a></li>
-                                                <li style="display:none" id="idtabCars"><a href="#tabCars" data-toggle="tab">Cars</a></li>
-                                                <li style="display:none" id="idtabBikes"><a href="#tabBikes" data-toggle="tab">Bikes</a></li>
-                                                <li style="display:none" id="idtabME"><a href="#tabME" data-toggle="tab">Mobiles & Electronics </a></li>
-                                                <li style="display:none" id="idtabAll"><a href="#tabAll" data-toggle="tab">All Vehicles Hire/Engage / Lease</a></li>
-
                                             </ul>
                                         </div>
                                         <div class="panel-body">
@@ -88,12 +81,7 @@
                                                     <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
                                                     <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catPro">Properties</a><br />
-
-                                                    <a href='javascript:void(0)' id="catCars">Cars</a><br />
-                                                    <a href='javascript:void(0)' id="catBikes">Bikes</a><br />
-                                                    <a href='javascript:void(0)' id="catME">Mobiles & Electronics</a><br />
-                                                    <a href='javascript:void(0)' id="catAll">All Vehicles Hire/Engage/Lease</a><br />
+                                                    <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
                                                 </div>
 
                                                 <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
@@ -111,7 +99,6 @@
                                                     <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
                                                     <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
                                                     <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-
                                                     <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
                                                     <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
                                                     <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
@@ -132,7 +119,19 @@
                                                     <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
                                                     <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
                                                 </div>
-                                                <div class="tab-pane fade in" id="tabPro">
+
+                                                <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
+                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                    <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
+                                                    <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
+                                                    <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
+                                                    <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
+                                                    <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
+                                                    <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
+                                                </div>
+
+
+                                                <div class="tab-pane fade in" id="tabProSale">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
                                                         <div class="panel-heading">
@@ -161,10 +160,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-
-
                                                 <div class="tab-pane fade in" id="tabCars">
                                                     <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
                                                     <div class="panel with-nav-tabs panel-default">
@@ -286,180 +281,181 @@
                                     </select>
                                 </div>
                             </div>
-                            @*<div>
-                                <div class="forallcollapse" id="forProperties" style="display:none">
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" id="txtPro_Price" class="form-control col-md-7" value="">
-                                            <small class="text-muted">Please enter price in repease</small>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="pro-bedrooms" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select id="ddlBedrooms" class="form-control">
-                                                <option>Select</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>4+</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="pro-furnishing" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select id="ddlBedrooms" class="form-control">
-                                                <option>Select</option>
-                                                <option>Furnished</option>
-                                                <option>Unfurnished</option>
-                                                <option>Semi-Furnished</option>
 
-                                            </select>
+                            <div>
+                                <div>
+                                    <div class="forallcollapse" id="forProperties" style="display:none">
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtPro_Price" class="form-control col-md-7" value="" required>
+                                                <small class="text-muted">Please enter price in repease</small>
+                                            </div>
                                         </div>
+                                        <div class="form-group row" id="pro-bedrooms" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="ddlBedrooms" class="form-control" required>
+                                                    <option>Select</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>4+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="pro-furnishing" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
+                                            </div>
+                                            <div class="col-md-4" >
+                                                <select id="ddlBedrooms" class="form-control" required>
+                                                    <option>Select</option>
+                                                    <option>Furnished</option>
+                                                    <option>Unfurnished</option>
+                                                    <option>Semi-Furnished</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="pro-availability" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="ddlAvailability" class="form-control">
+                                                    <option>Select</option>
+                                                    <option>Under Construction</option>
+                                                    <option>Ready to Move</option>
+                                                    <option>New Launch</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select id="ddlPostedBy" class="form-control">
+                                                    <option>Select</option>
+                                                    <option>Owner</option>
+                                                    <option>Dealer</option>
+                                                    <option>Builder</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="pro-sqarefeets" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtSquareFeet" class="form-control col-md-7">
+                                                <small class="text-muted">please enter in square feets</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="pro-squareyards" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtSquareYards" class="form-control col-md-7">
+                                                <small class="text-muted">please enter in square yards</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="pro-acres" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" id="txtAcres" class="form-control col-md-7">
+                                                <small class="text-muted">please enter in acres</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="form-group row" id="pro-availability" style="display:none">
+                                    <div class="form-group row forallcollapse" id="categories">
+
                                         <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select id="ddlAvailability" class="form-control">
-                                                <option>Select</option>
-                                                <option>Under Construction</option>
-                                                <option>Ready to Move</option>
-                                                <option>New Launch</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <select id="ddlPostedBy" class="form-control">
-                                                <option>Select</option>
-                                                <option>Owner</option>
-                                                <option>Dealer</option>
-                                                <option>Builder</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="pro-sqarefeets" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" id="txtSquareFeet" class="form-control col-md-7">
-                                            <small class="text-muted">please enter in square feets</small>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="pro-squareyards" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" id="txtSquareYards" class="form-control col-md-7">
-                                            <small class="text-muted">please enter in square yards</small>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row" id="pro-acres" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <input type="text" id="txtAcres" class="form-control col-md-7">
-                                            <small class="text-muted">please enter in acres</small>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
                                         </div>
                                         <div class="col-md-7">
-
-                                            <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
+                                            <select class="form-control outer-select-input-box" id="catagory_list">
+                                                <option selected>Select Category</option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <div class="form-group row forallcollapse" id="categories">
-                                    
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    <div class="form-group row forallcollapse" id="forTV" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            this is for transportation vehicles
+                                        </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        <select class="form-control outer-select-input-box" id="catagory_list">
-                                            <option selected>Select Category</option>
-                                        </select>
+                                    <div class="form-group row forallcollapse" id="forAV" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            this is for agriculture vehicles
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forTV" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    <div class="form-group row forallcollapse" id="forPV" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            this is for passangervehicles
+                                        </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        this is for transportation vehicles
+                                    <div class="form-group row forallcollapse" id="forCars" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            for cars
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forAV" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    <div class="form-group row forallcollapse" id="forBikes" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            for bikes
+                                        </div>
                                     </div>
-                                    <div class="col-md-7">
-                                        this is for agriculture vehicles
+                                    <div class="form-group row forallcollapse" id="forME" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            for ME
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forPV" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        this is for passangervehicles
-                                    </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forCars" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        for cars
-                                    </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forBikes" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        for bikes
-                                    </div>
-                                </div>
-                                <div class="form-group row forallcollapse" id="forME" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        for ME
+                                    <div class="form-group row forallcollapse" id="forAll" style="display:none">
+                                        <div class="col-md-3" style="text-align:right">
+                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            for all
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row forallcollapse" id="forAll" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                    </div>
-                                    <div class="col-md-7">
-                                        for all
-                                    </div>
-                                </div>
-                            </div>*@
-
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-3" style="text-align:right">
                                     <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
@@ -1082,27 +1078,30 @@
 
 @section scripts{
     <script src="~/Scripts/Custome/post.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
 }
 
 <script type="text/javascript">
     $(document).ready(function () {
         var VehiclesColl = new Array();
         var selectedType = "";
-   
+
         $('#tabCategories a').click(function () {
             selectedType = $(this).text();
         });
+
         // $("#catagory_list").prop('selectedIndex', 0);
         $('.max-length-subcategory a').click(function () {
-            
+
             $("#catagory_list").find('option').remove();
             $("#catagory_list").append('<option value="0">Select Category</option>')
             var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedType);
             var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).text());
-            $.each(selectedModel[0].VehicleModel,function(i,field){
-            {
-                $("#catagory_list").append("<option>" + field.name + "</option>");
-            }           
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    $("#catagory_list").append("<option>" + field.name + "</option>");
+                }
             });
 
         });
@@ -1111,8 +1110,8 @@
             $.each(data, function (i, field) {
                 VehiclesColl.push(field);
             });
-            
+
         });
-        
+
     });
 </script>
