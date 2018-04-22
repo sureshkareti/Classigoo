@@ -8,6 +8,11 @@
         height: 120px;
         overflow-y: scroll;
     }
+    option{
+        min-height:100px !important;
+        width:50px !important;
+        padding: 50px 0px !important;
+    }
 </style>
 
 <div class="filter-form filter-header-form">
@@ -16,10 +21,10 @@
         @*<a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
             <i class="fa fa-bars" aria-hidden="true"></i> Categories
         </a>*@
-        <select class="form-control" id="listing_catagory_list">
+        <select class="form-controls outer-select-input-box" id="listing_catagory_list">
             <option selected>Select Category</option>
         </select>
-        @*<input type="text" class="outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
+        @*<input type="text" class="form-control outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
     </div>    
     <div class="form-group outer-select-field">
        
@@ -30,13 +35,13 @@
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
         </a>*@
         @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
-        <input type="text" id="listing_location_list" class="form-control" />
+        <input type="text" id="listing_location_list" class="form-control outer-select-input-box" />
     </div>
     <div class="form-group outer-select-field">
         @*<a class="input-dropedown-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
         </a>*@
-        <input type="text" class="form-control" id="listing_keword" placeholder="Ex: Honda, Maruthi">
+        <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi">
     </div>
     <div class="btn-group" id="divSearch">
         <button type="button" class="danger-btn" id="btnSearch">
@@ -50,6 +55,7 @@
     <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
+
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 <script>
     $(document).ready(function () {

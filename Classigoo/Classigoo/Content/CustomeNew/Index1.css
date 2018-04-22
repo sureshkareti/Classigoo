@@ -1213,7 +1213,7 @@
     margin-left: -8px; }
   .write-review-section .form-common .form-group {
     margin-bottom: 23px; }
-    .write-review-section .form-common .form-group input.form-control:focus {
+    .write-review-section .form-common .form-group input.form-control:focus input.form-controls:focus {
       border-color: #fd880a; }
   .write-review-section .form-common textarea {
     resize: none; }
@@ -1327,7 +1327,7 @@
 
 .contact-form-wdiget .form-common {
   margin-bottom: 0; }
-  .contact-form-wdiget .form-common .form-group input.form-control {
+  .contact-form-wdiget .form-common .form-group input.form-control input.form-controls {
     padding-left: 20px; }
   .contact-form-wdiget .form-common textarea {
     resize: none; }
@@ -1533,10 +1533,12 @@ blockquote {
 .user-form-block {
   padding: 100px 0; }
 
-.form-control:focus {
+.form-control:focus .form-controls:focus{
   border-color: #e7e7e7; }
 
 select.form-control:not([size]):not([multiple]) {
+  height: auto; }
+select.form-controls:not([size]):not([multiple]) {
   height: auto; }
 
 textarea {
@@ -1554,10 +1556,20 @@ textarea {
     .form-common .form-group .form-control {
       height: auto;
       font-size: 12px;
+
       padding: 13px 0 13px 30px;
       border-radius: 3px;
       border: 1px solid #e7e7e7;
       background: transparent; }
+      .form-controls {
+      height: 250px;
+      font-size: 14px;
+      line-height: 250%;
+      padding: 13px 0 13px 30px;
+      border-radius: 3px;
+      border: 1px solid #e7e7e7;
+       }
+      .opt
   .form-common .custom-control-indicator {
     border-radius: 0;
     background: transparent;
@@ -1727,7 +1739,7 @@ textarea {
   position: relative; }
 
 .outer-select-input-box {
-  padding-left: 105px;
+  padding-left: 15px;
   height: 45px;
   width: 210px; }
 
@@ -1776,11 +1788,11 @@ textarea {
       display: inline-block; }
     .filter-form .inner-row .range-input-block {
       width: 41%; }
-    .filter-form .inner-row .form-control {
+    .filter-form .inner-row .form-control .form-controls{
       width: 22%;
       margin: 0 8px;
       display: inline-block; }
-    .filter-form .inner-row .form-control.last-item {
+    .filter-form .inner-row .form-control.last-item .form-controls {
       margin-right: 0; }
 
 .range-input-block {
