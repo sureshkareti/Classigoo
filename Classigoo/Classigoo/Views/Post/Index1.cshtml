@@ -4,1072 +4,1142 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <div class="breadcrumb-block">
+@using (Html.BeginForm("Index1", "Post", FormMethod.Post, new { data_toggle = "validator" }))
+{
 
-    </div>
-    <div class="add-listing-wrap">
-        <div class="container">
-            <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
-                <p>
-                    <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
-                </p>
-            </div>
+    <div>
+        <div class="breadcrumb-block">
 
-            <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
-                <h4>Submit a Free Classified Add</h4>
-                <div class="row">
-                    <div class="col-md-12">
+        </div>
+        <div class="add-listing-wrap">
+            <div class="container">
+                <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
+                    <p>
+                        <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                    </p>
+                </div>
+                <div>
+                    <input type="text" id="validationTemp" style="display:none" required/>
+                </div>
+                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
+                    <h4>Submit a Free Classified Add</h4>
+                    <div class="row">
+                        <div class="col-md-12">
 
-                        <form>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Title</label>
+                            <form>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Title<span style="color:#C91414">*</span></label>
 
-                                </div>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control col-md-7 input-lg" id="staticEmail" placeholder="enter title here">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Rent/Sale</label>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;">
-                                        <option>Rent</option>
-                                        <option>Sale</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-
-                                </div>
-                                <div class="col-md-7">
-
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item" id="cat-nav-l0"><a href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
-                                        <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
-                                    </ol>
-                                    <div>
-                                        <input type="hidden" id="hdnCateFristLevel" />
-                                        <input type="hidden" id="hdnCateSecondLevel" />
-                                        <input type="hidden" id="hdnCateThirdLevel" />
                                     </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div id="scrolltoCat"></div>
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Rent / Sale<span style="color:#C91414">*</span></label>
 
-                                    <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
-                                        <div class="panel-heading">
-                                            <ul class="nav nav-tabs idtabCategoriesul">
-                                                <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                <li style="display:none" id="idtabPro"><a href="#tabPro" data-toggle="tab">Real Estate</a></li>
-                                                <li style="display:none" id="idtabCV"><a href="#tabCV" data-toggle="tab">Construction Vehicles</a></li>
-                                                <li style="display:none" id="idtabTV"><a href="#tabTV" data-toggle="tab">Transportation Vehicles</a></li>
-                                                <li style="display:none" id="idtabAV"><a href="#tabAV" data-toggle="tab">Agricultural Vehicles</a></li>
-                                                <li style="display:none" id="idtabPV"><a href="#tabPV" data-toggle="tab">Passenger Vehicles</a></li>
-                                            </ul>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                        <select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
+                                            <option>Rent</option>
+                                            <option>Sale</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
+
+                                    </div>
+                                    <div class="col-md-7 col-sm-12 col-xs-12">
+
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item" id="cat-nav-l0"><a href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
+                                        </ol>
+                                        <div>
+                                            <input type="hidden" id="hdnCateFristLevel" />
+                                            <input type="hidden" id="hdnCateSecondLevel" />
+                                            <input type="hidden" id="hdnCateThirdLevel" />
                                         </div>
-                                        <div class="panel-body">
-                                            <div class="tab-content">
-                                                <div class="tab-pane fade in active sub-category-items" id="tabCategories">
-                                                    <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
-                                                    <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
-                                                </div>
+                                        
+                                        <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
+                                            <div class="panel-heading">
+                                                <ul class="nav nav-tabs idtabCategoriesul">
+                                                    <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
+                                                    <li style="display:none" id="idtabPro"><a href="#tabPro" data-toggle="tab">Real Estate</a></li>
+                                                    <li style="display:none" id="idtabCV"><a href="#tabCV" data-toggle="tab">Construction Vehicles</a></li>
+                                                    <li style="display:none" id="idtabTV"><a href="#tabTV" data-toggle="tab">Transportation Vehicles</a></li>
+                                                    <li style="display:none" id="idtabAV"><a href="#tabAV" data-toggle="tab">Agricultural Vehicles</a></li>
+                                                    <li style="display:none" id="idtabPV"><a href="#tabPV" data-toggle="tab">Passenger Vehicles</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade in active sub-category-items" id="tabCategories">
+                                                        <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                        <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
+                                                        <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
+                                                        <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                        <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
+                                                    </div>
 
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
-                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                    <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
-                                                    <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
-                                                    <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
-                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                    <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
-                                                    <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
-                                                    <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                    <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
-                                                    <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
-                                                    <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
-                                                    <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
-                                                    <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
-                                                    <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
-                                                    <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
-                                                    <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
-                                                    <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
-                                                    <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
-                                                    <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
-                                                </div>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
+                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                        <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
+                                                        <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
+                                                        <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
+                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                    </div>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                        <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
+                                                        <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
+                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                        <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
+                                                        <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
+                                                        <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
+                                                        <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
+                                                        <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
+                                                    </div>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
+                                                        <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
+                                                        <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                        <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                                    </div>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
+                                                        <div><a href="javascript:void(0)" class="backHome" id="idPvback"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
+                                                        <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
+                                                        <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
+                                                        <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
+                                                    </div>
 
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
-                                                    <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
-                                                    <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
-                                                    <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
-                                                    <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
-                                                    <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
-                                                </div>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
+                                                        <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
+                                                        <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
+                                                        <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
+                                                        <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
+                                                        <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
+                                                    </div>
 
 
-                                                <div class="tab-pane fade in" id="tabProSale">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <div class="panel with-nav-tabs panel-default">
-                                                        <div class="panel-heading">
-                                                            <ul class="nav nav-tabs ">
-                                                                <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <div class="tab-content tabProChilds">
-                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
-                                                                    <a href="javascript:void(0)">Plots/Land</a><br />
-                                                                    <a href="javascript:void(0)">Agricultural Land</a><br />
-                                                                    <a href="javascript:void(0)">Shops & Offices</a><br />
-                                                                    <a href="javascript:void(0)">Apartments</a><br />
-                                                                    <a href="javascript:void(0)">Independent Houses & Villas</a>
+                                                    <div class="tab-pane fade in" id="tabProSale">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <div class="panel with-nav-tabs panel-default">
+                                                            <div class="panel-heading">
+                                                                <ul class="nav nav-tabs ">
+                                                                    <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
+                                                                    <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="tab-content tabProChilds">
+                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
+                                                                        <a href="javascript:void(0)">Plots/Land</a><br />
+                                                                        <a href="javascript:void(0)">Agricultural Land</a><br />
+                                                                        <a href="javascript:void(0)">Shops & Offices</a><br />
+                                                                        <a href="javascript:void(0)">Apartments</a><br />
+                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a>
+                                                                    </div>
+                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
+                                                                        <a href="javascript:void(0)">Apartments</a><br />
+                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a><br />
+                                                                        <a href="javascript:void(0)">Hostels & PG</a><br />
+                                                                        <a href="javascript:void(0)">Shops & Offices</a>
+                                                                    </div>
+
                                                                 </div>
-                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
-                                                                    <a href="javascript:void(0)">Apartments</a><br />
-                                                                    <a href="javascript:void(0)">Independent Houses & Villas</a><br />
-                                                                    <a href="javascript:void(0)">Hostels & PG</a><br />
-                                                                    <a href="javascript:void(0)">Shops & Offices</a>
-                                                                </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade in" id="tabCars">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <div class="panel with-nav-tabs panel-default">
-                                                        <div class="panel-heading">
-                                                            <ul class="nav nav-tabs">
-                                                                <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
-                                                                    <a href='javascript:void(0)'>Maruti Suzuki</a><br />
-                                                                    <a href='javascript:void(0)'>Hyundai</a><br />
-                                                                    <a href='javascript:void(0)'>Tata</a><br />
-                                                                    <a href='javascript:void(0)'>Mahindra</a><br />
-                                                                    <a href='javascript:void(0)'>Toyoto</a><br />
-                                                                    <a href='javascript:void(0)'>Honda</a><br />
-                                                                    <a href='javascript:void(0)'>Chevrolet</a><br />
-                                                                    <a href='javascript:void(0)'>Ford</a><br />
-                                                                    <a href='javascript:void(0)'>Skoda</a><br />
-                                                                    <a href='javascript:void(0)'>Volkswagen</a><br />
-                                                                    <a href='javascript:void(0)'>Fiat</a><br />
-                                                                    <a href='javascript:void(0)'>Nissan</a><br />
-                                                                    <a href='javascript:void(0)'>Renault</a><br />
-                                                                    <a href='javascript:void(0)'>Mitsubishi</a><br />
-                                                                    <a href='javascript:void(0)'>Mercedes-Benz</a><br />
-                                                                    <a href='javascript:void(0)'>Audi</a><br />
-                                                                    <a href='javascript:void(0)'>Mahindra Renault</a><br />
-                                                                    <a href='javascript:void(0)'>BMW</a><br />
-                                                                    <a href='javascript:void(0)'>Hindustan Motors</a>
-                                                                </div>
+                                                    <div class="tab-pane fade in" id="tabCars">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <div class="panel with-nav-tabs panel-default">
+                                                            <div class="panel-heading">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
+                                                                        <a href='javascript:void(0)'>Maruti Suzuki</a><br />
+                                                                        <a href='javascript:void(0)'>Hyundai</a><br />
+                                                                        <a href='javascript:void(0)'>Tata</a><br />
+                                                                        <a href='javascript:void(0)'>Mahindra</a><br />
+                                                                        <a href='javascript:void(0)'>Toyoto</a><br />
+                                                                        <a href='javascript:void(0)'>Honda</a><br />
+                                                                        <a href='javascript:void(0)'>Chevrolet</a><br />
+                                                                        <a href='javascript:void(0)'>Ford</a><br />
+                                                                        <a href='javascript:void(0)'>Skoda</a><br />
+                                                                        <a href='javascript:void(0)'>Volkswagen</a><br />
+                                                                        <a href='javascript:void(0)'>Fiat</a><br />
+                                                                        <a href='javascript:void(0)'>Nissan</a><br />
+                                                                        <a href='javascript:void(0)'>Renault</a><br />
+                                                                        <a href='javascript:void(0)'>Mitsubishi</a><br />
+                                                                        <a href='javascript:void(0)'>Mercedes-Benz</a><br />
+                                                                        <a href='javascript:void(0)'>Audi</a><br />
+                                                                        <a href='javascript:void(0)'>Mahindra Renault</a><br />
+                                                                        <a href='javascript:void(0)'>BMW</a><br />
+                                                                        <a href='javascript:void(0)'>Hindustan Motors</a>
+                                                                    </div>
 
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade in" id="tabBikes">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <div class="panel with-nav-tabs panel-default">
-                                                        <div class="panel-heading">
-                                                            <ul class="nav nav-tabs">
-                                                                <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
-                                                                <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
-                                                                <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
-                                                                <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <div class="tab-content tabBikesChilds">
-                                                                <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
-                                                                    <a href="javascript:void(0)">Bajaj</a><br />
-                                                                    <a href="javascript:void(0)">Hero Honda</a><br />
-                                                                    <a href="javascript:void(0)">Yamaha</a><br />
-                                                                    <a href="javascript:void(0)">Royal Enfield</a><br />
-                                                                    <a href="javascript:void(0)">Honda</a><br />
-                                                                    <a href="javascript:void(0)">Hero</a><br />
-                                                                    <a href="javascript:void(0)">TVS</a><br />
-                                                                    <a href="javascript:void(0)">Suzuki</a><br />
-                                                                    <a href="javascript:void(0)">KTM</a><br />
-                                                                    <a href="javascript:void(0)">Other Brands</a><br />
+                                                    <div class="tab-pane fade in" id="tabBikes">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <div class="panel with-nav-tabs panel-default">
+                                                            <div class="panel-heading">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
+                                                                    <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
+                                                                    <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
+                                                                    <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="tab-content tabBikesChilds">
+                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
+                                                                        <a href="javascript:void(0)">Bajaj</a><br />
+                                                                        <a href="javascript:void(0)">Hero Honda</a><br />
+                                                                        <a href="javascript:void(0)">Yamaha</a><br />
+                                                                        <a href="javascript:void(0)">Royal Enfield</a><br />
+                                                                        <a href="javascript:void(0)">Honda</a><br />
+                                                                        <a href="javascript:void(0)">Hero</a><br />
+                                                                        <a href="javascript:void(0)">TVS</a><br />
+                                                                        <a href="javascript:void(0)">Suzuki</a><br />
+                                                                        <a href="javascript:void(0)">KTM</a><br />
+                                                                        <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                    </div>
+                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
+                                                                        <a href="javascript:void(0)">Honda</a><br />
+                                                                        <a href="javascript:void(0)">TVS</a><br />
+                                                                        <a href="javascript:void(0)">Hero</a><br />
+                                                                        <a href="javascript:void(0)">Suzuki</a><br />
+                                                                        <a href="javascript:void(0)">Bajaj</a><br />
+                                                                        <a href="javascript:void(0)">Mahindra</a><br />
+                                                                        <a href="javascript:void(0)">Other Brands</a>
+
+                                                                    </div>
+                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
+                                                                        <a href="javascript:void(0)">Hero</a><br />
+                                                                        <a href="javascript:void(0)">Hercules</a><br />
+                                                                        <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                    </div>
+                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
+                                                                        <a href="javascript:void(0)">Spare Parts</a><br />
+
+                                                                    </div>
 
                                                                 </div>
-                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
-                                                                    <a href="javascript:void(0)">Honda</a><br />
-                                                                    <a href="javascript:void(0)">TVS</a><br />
-                                                                    <a href="javascript:void(0)">Hero</a><br />
-                                                                    <a href="javascript:void(0)">Suzuki</a><br />
-                                                                    <a href="javascript:void(0)">Bajaj</a><br />
-                                                                    <a href="javascript:void(0)">Mahindra</a><br />
-                                                                    <a href="javascript:void(0)">Other Brands</a>
-
-                                                                </div>
-                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
-                                                                    <a href="javascript:void(0)">Hero</a><br />
-                                                                    <a href="javascript:void(0)">Hercules</a><br />
-                                                                    <a href="javascript:void(0)">Other Brands</a><br />
-
-                                                                </div>
-                                                                <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
-                                                                    <a href="javascript:void(0)">Spare Parts</a><br />
-
-                                                                </div>
-
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
-                                                    <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                    <a href="javascript:void(0)">Computers & Laptops</a><br />
-                                                    <a href="javascript:void(0)">TVs, Video - Audio</a><br />
-                                                    <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
-                                                    <a href="javascript:void(0)">ACs</a><br />
-                                                    <a href="javascript:void(0)">Washing Machines</a><br />
-                                                    <a href="javascript:void(0)">Fridges</a><br />
-                                                    <a href="javascript:void(0)">Computer Accessories</a><br />
-                                                    <a href="javascript:void(0)">Cameras & Lenses</a><br />
-                                                    <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
-                                                    <a href="javascript:void(0)">Games & Entertainment</a>
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
+                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        <a href="javascript:void(0)">Computers & Laptops</a><br />
+                                                        <a href="javascript:void(0)">TVs, Video - Audio</a><br />
+                                                        <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
+                                                        <a href="javascript:void(0)">ACs</a><br />
+                                                        <a href="javascript:void(0)">Washing Machines</a><br />
+                                                        <a href="javascript:void(0)">Fridges</a><br />
+                                                        <a href="javascript:void(0)">Computer Accessories</a><br />
+                                                        <a href="javascript:void(0)">Cameras & Lenses</a><br />
+                                                        <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
+                                                        <a href="javascript:void(0)">Games & Entertainment</a>
 
+                                                    </div>
+                                                    
                                                 </div>
-                                                <div class="tab-pane fade" id="tabAll">Default 5</div>
                                             </div>
                                         </div>
+                                        <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which your submitted add</div>
+                                        @*<input type="button" id="tstButton" value="test me" />*@
                                     </div>
 
-                                    @*<input type="button" id="tstButton" value="test me" />*@
                                 </div>
 
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" id="catagory_list">
-                                        <option selected>Select Category</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div>
                                 <div>
-                                    <div class="forallcollapse" id="forProperties" style="display:none">
-                                        <div class="form-group row">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" id="txtPro_Price" class="form-control col-md-7" value="" required>
-                                                <small class="text-muted">Please enter price in repease</small>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row" id="pro-bedrooms" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select id="ddlBedrooms" class="form-control" required>
-                                                    <option>Select</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>4+</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row" id="pro-furnishing" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
-                                            </div>
-                                            <div class="col-md-4" >
-                                                <select id="ddlBedrooms" class="form-control" required>
-                                                    <option>Select</option>
-                                                    <option>Furnished</option>
-                                                    <option>Unfurnished</option>
-                                                    <option>Semi-Furnished</option>
+                                    <div>
 
-                                                </select>
+                                        <div class="form-group row forallcollapse" id="forAV" style="display:none">
+                                            <div class="form-group row">
+                                                <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                                    <select class="form-control" id="AVCompany_list" required>
+                                                        <option selected>Select Category</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtAV_Price" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter price in repease</small>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row" id="pro-availability" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select id="ddlAvailability" class="form-control">
-                                                    <option>Select</option>
-                                                    <option>Under Construction</option>
-                                                    <option>Ready to Move</option>
-                                                    <option>New Launch</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select id="ddlPostedBy" class="form-control">
-                                                    <option>Select</option>
-                                                    <option>Owner</option>
-                                                    <option>Dealer</option>
-                                                    <option>Builder</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row" id="pro-sqarefeets" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" id="txtSquareFeet" class="form-control col-md-7">
-                                                <small class="text-muted">please enter in square feets</small>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row" id="pro-squareyards" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" id="txtSquareYards" class="form-control col-md-7">
-                                                <small class="text-muted">please enter in square yards</small>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row" id="pro-acres" style="display:none">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <input type="text" id="txtAcres" class="form-control col-md-7">
-                                                <small class="text-muted">please enter in acres</small>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Ad Details</label>
-                                            </div>
-                                            <div class="col-md-7">
 
-                                                <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
+                                        <div class="form-group row forallcollapse" id="forCV" style="display:none">
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" id="CVCompany_list">
+                                                        <option selected>Select Category</option>
+                                                    </select>
+                                                </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtCV_Price" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter price in repease</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row forallcollapse" id="forTV" style="display:none">
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" id="TVCompany_list">
+                                                        <option selected>Select Category</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtTV_Price" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter price in repease</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row forallcollapse" id="forPV" style="display:none">
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <select class="form-control" id="PVCompany_list">
+                                                        <option selected>Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtPV_price" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter price in repease</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pv-model" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Model</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="PVModel_list" class="form-control" required>
+                                                        <option>Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pv-year" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Year</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="PVYear_list" class="form-control" required>
+                                                        <option>Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pv-fueltype" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="PVfueltype_list" class="form-control" required>
+                                                        <option>Select</option>
+                                                        <option>Petrol</option>
+                                                        <option>Diesel</option>
+                                                        <option>LPG</option>
+                                                        <option>CNG & Hybrids</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row" id="pv-kmdriven" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter distance travelled in Km</small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="forallcollapse" id="forProperties" style="display:none">
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtPro_Price" class="form-control col-md-7" value="" required>
+                                                    <small class="text-muted">Please enter price in repease</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-bedrooms" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="ddlBedrooms" class="form-control" required>
+                                                        <option>Select</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>4+</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-furnishing" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="ddlBedrooms" class="form-control" required>
+                                                        <option>Select</option>
+                                                        <option>Furnished</option>
+                                                        <option>Unfurnished</option>
+                                                        <option>Semi-Furnished</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-availability" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="ddlAvailability" class="form-control">
+                                                        <option>Select</option>
+                                                        <option>Under Construction</option>
+                                                        <option>Ready to Move</option>
+                                                        <option>New Launch</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select id="ddlPostedBy" class="form-control">
+                                                        <option>Select</option>
+                                                        <option>Owner</option>
+                                                        <option>Dealer</option>
+                                                        <option>Builder</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-sqarefeets" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtSquareFeet" class="form-control col-md-7">
+                                                    <small class="text-muted">please enter in square feets</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-squareyards" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7">
+                                                    <small class="text-muted">please enter in square yards</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pro-acres" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" id="txtAcres" class="form-control col-md-7">
+                                                    <small class="text-muted">please enter in acres</small>
+                                                </div>
+                                            </div>
+
+
                                         </div>
 
                                     </div>
-                                    <div class="form-group row forallcollapse" id="categories">
+                                </div>
 
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Add Details<span style="color:#C91414">*</span></label>
+                                    </div>
+                                    <div class="col-md-7">
+
+                                        <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="col-md-3">
+                                            <div class="w3-card fileuploading">
+                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucFirst" style="width:100%;height:100px">
+                                                <div class="w3-container">
+                                                    <div style="text-align:center">
+                                                        <input type="file" style="display:none" id="fucFirst" />
+                                                        <button type="button" id="btnFucFirstEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                    </div>
+                                                    <div style="display:none;">
+                                                        <button type="button" id="btnFucFirstDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-7">
-                                            <select class="form-control outer-select-input-box" id="catagory_list">
-                                                <option selected>Select Category</option>
+                                        <div class="col-md-3">
+                                            <div class="w3-card fileuploading">
+                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucSecond" style="width:100%;height:100px">
+
+                                                <div class="w3-container">
+                                                    <div style="text-align:center">
+                                                        <input type="file" style="display:none" id="fucSecond" />
+                                                        <button type="button" id="btnFucSecondEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                    </div>
+                                                    <div style="display:none;">
+                                                        <button type="button" id="btnFucSecondDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="w3-card fileuploading">
+                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucThird" style="width:100%;height:100px">
+                                                <div class="w3-container">
+                                                    <div style="text-align:center">
+                                                        <input type="file" style="display:none" id="fucThird" />
+                                                        <button type="button" id="btnFucThirdEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                    </div>
+                                                    <div style="display:none;">
+                                                        <button type="button" id="btnFucThirdDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="w3-card fileuploading">
+                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucFour" style="width:100%;height:100px">
+                                                <div class="w3-container">
+                                                    <div style="text-align:center">
+                                                        <input type="file" style="display:none" id="fucFour" />
+                                                        <button type="button" id="btnFucFourEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                    </div>
+                                                    <div style="display:none;">
+                                                        <button type="button" id="btnFucFourDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <hr />
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Name</label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control col-md-7" id="txtName">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Phone number</label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control col-md-7" id="txtPhonenumber">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control col-md-7" id="txtCity">
+                                        <small class="text-muted">Type your city name and select the matching city</small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control col-md-7" id="txtLocalcity">
+                                        <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <hr />
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-9" style="text-align:right">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+
+
+
+                    <!-- businessinfo-listing -->
+                    <!-- add-listing-tost-block -->
+                    @*<form id="add_listing_form" class="form-common add-listing-form" action="#" novalidate="novalidate">
+                            <div class="listing-block businessinfo-listing">
+                                <h4>Business Information</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="businessinfo-left-block">
+                                            <div class="form-group">
+                                                <label for="listing_name">Listing Name</label>
+                                                <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
+                                                <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="listing_email">Contact Email</label>
+                                                <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="listing_phone_no">Contact Phone</label>
+                                                <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="listing_website">Website</label>
+                                                <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <div class="businessinfo-right-block">
+                                            <div id="add_listing_map" class="add-listing-map"></div>
+                                            <div class="form-group">
+                                                <label for="listing_address">Location (Full Address)</label>
+                                                <input id="listing_address" type="text" class="form-control" placeholder="Find your place in gogle map" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="listing_region">Listing Region</label>
+                                                <input id="listing_region" type="text" class="form-control" placeholder="Select your listing region" aria-required="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- businessinfo-listing -->
+                            <div class="listing-block Others-Information-listing">
+                                <h4>Others Information</h4>
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label for="listing_category">Category</label>
+                                            <select id="listing_category" class="form-control">
+                                                <option>Default select</option>
+                                                <option>First select</option>
+                                                <option>Second select</option>
+                                                <option>Third select</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row forallcollapse" id="forTV" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            this is for transportation vehicles
-                                        </div>
-                                    </div>
-                                    <div class="form-group row forallcollapse" id="forAV" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            this is for agriculture vehicles
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="listing_price">Price</label>
+                                            <select id="listing_price" class="form-control">
+                                                <option>Default select</option>
+                                                <option>Price One</option>
+                                                <option>Price Two</option>
+                                                <option>Price Three</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row forallcollapse" id="forPV" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            this is for passangervehicles
+                                    <div class="col-lg-2">
+                                        <div class="form-group listing-price">
+                                            <input id="listing_price_from" type="text" class="form-control" placeholder="Price From" aria-required="true">
                                         </div>
                                     </div>
-                                    <div class="form-group row forallcollapse" id="forCars" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            for cars
+                                    <div class="col-lg-2">
+                                        <div class="form-group listing-price">
+                                            <input id="listing_price_to" type="text" class="form-control" placeholder="Price To" aria-required="true">
                                         </div>
                                     </div>
-                                    <div class="form-group row forallcollapse" id="forBikes" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    <div class="col-lg-12">
+                                        <div class="listing-features-block">
+                                            <h5>Select listing features</h5>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <!-- block-checkbox block -->
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <!-- block-checkbox block -->
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <!-- block-checkbox block -->
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <label class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input">
+                                                                        <span class="custom-control-indicator"></span>
+                                                                        <span class="custom-control-description">Air Conditioned</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <!-- block-checkbox block -->
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="col-md-7">
-                                            for bikes
+                                        <!-- listing-features-block -->
+                                        <div class="listing-additionalinfo-block">
+                                            <h5>Aditional info</h5>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group additionalinfo-toggle-switch">
+                                                                <input type="checkbox" checked id="aditionalInfo1">
+                                                                <label for="aditionalInfo1">Pet Friendly</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group additionalinfo-toggle-switch">
+                                                                <input type="checkbox" checked id="aditionalInfo2">
+                                                                <label for="aditionalInfo2">Wheel Accessible</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group additionalinfo-toggle-switch">
+                                                                <input type="checkbox" id="aditionalInfo3">
+                                                                <label for="aditionalInfo3">Child Friendly</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group additionalinfo-toggle-switch">
+                                                                <input type="checkbox" checked id="aditionalInfo4">
+                                                                <label for="aditionalInfo4">First Aid Service</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group additionalinfo-toggle-switch">
+                                                                <input type="checkbox" checked id="aditionalInfo5">
+                                                                <label for="aditionalInfo5">Fire Safety</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <!-- listing-additionalinfo-block -->
                                     </div>
-                                    <div class="form-group row forallcollapse" id="forME" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <input id="listing_others" type="text" class="form-control" placeholder="Others" aria-required="true">
                                         </div>
-                                        <div class="col-md-7">
-                                            for ME
-                                        </div>
-                                    </div>
-                                    <div class="form-group row forallcollapse" id="forAll" style="display:none">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Category</label>
-                                        </div>
-                                        <div class="col-md-7">
-                                            for all
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="col-md-3">
-                                        <div class="w3-card fileuploading">
-                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucFirst" style="width:100%;height:100px">
-                                            <div class="w3-container">
-                                                <div style="text-align:center">
-                                                    <input type="file" style="display:none" id="fucFirst" />
-                                                    <button type="button" id="btnFucFirstEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <div class="listing-businesshour-block">
+                                            <h5>Business Hours</h5>
+                                            <div class="form-check">
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Monday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
                                                 </div>
-                                                <div style="display:none;">
-                                                    <button type="button" id="btnFucFirstDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Tuesday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
+                                                </div>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Wednesday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
+                                                </div>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Thursday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
+                                                </div>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Frinday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
+                                                </div>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Saturday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
+                                                </div>
+                                                <div class="multiple-label-checkbox-block">
+                                                    <p><strong>Sunday [+]</strong> 08:00 <b>-</b> 10:00</p>
+                                                    <label class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input">
+                                                        <span class="custom-control-indicator"></span>
+                                                        <span class="custom-control-description">Closed</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="w3-card fileuploading">
-                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucSecond" style="width:100%;height:100px">
-
-                                            <div class="w3-container">
-                                                <div style="text-align:center">
-                                                    <input type="file" style="display:none" id="fucSecond" />
-                                                    <button type="button" id="btnFucSecondEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                                <div style="display:none;">
-                                                    <button type="button" id="btnFucSecondDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="w3-card fileuploading">
-                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucThird" style="width:100%;height:100px">
-                                            <div class="w3-container">
-                                                <div style="text-align:center">
-                                                    <input type="file" style="display:none" id="fucThird" />
-                                                    <button type="button" id="btnFucThirdEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                                <div style="display:none;">
-                                                    <button type="button" id="btnFucThirdDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="w3-card fileuploading">
-                                            <img src="~/images/cg.jpg" alt="Person" id="imgFucFour" style="width:100%;height:100px">
-                                            <div class="w3-container">
-                                                <div style="text-align:center">
-                                                    <input type="file" style="display:none" id="fucFour" />
-                                                    <button type="button" id="btnFucFourEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                                <div style="display:none;">
-                                                    <button type="button" id="btnFucFourDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
-                                                </div>
-                                            </div>
+                                        <!-- listing-businesshour-block -->
+                                        <div class="form-group time-zone-block">
+                                            <label for="listing_timezone">Time Zone</label>
+                                            <select id="listing_timezone" class="form-control">
+                                                <option>Select your business time zone.. Ex: UTC +0</option>
+                                                <option>Select your business time zone.. Ex: UTC +10</option>
+                                                <option>Select your business time zone.. Ex: UTC +20</option>
+                                                <option>Select your business time zone.. Ex: UTC +30</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <hr />
+                            <!-- Others-Information-listing -->
+                            <div class="listing-block details-listing">
+                                <h4>Listing Details</h4>
+                                <div class="form-group listing-compose-block">
+                                    <label for="listing_descreption">Description</label>
+                                    <textarea rows="5" cols="50" id="listing_descreption" class="form-control compose-box" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group textarea-form-group">
+                                            <label for="listing_kewords">Keywords</label>
+                                            <textarea rows="5" cols="50" id="listing_kewords" class="form-control" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
+                                        </div>
+                                        <div class="promotional-video-block form-group">
+                                            <label for="listing_youtube_video_1">Promotional Video</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input id="listing_youtube_video_1" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_youtube_video_2" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input id="listing_youtube_video_3" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_youtube_video_4" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="listing_faq">FAQ</label>
+                                            <input id="listing_faq" type="text" class="form-control" placeholder="Question" aria-required="true">
+                                        </div>
+                                        <div class="form-group textarea-form-group">
+                                            <textarea rows="5" cols="50" id="listing_answer" class="form-control" placeholder="Answer"></textarea>
+                                        </div>
+                                        <button type="button" class="listing-btn-large">+ Add New</button>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="social-profile-block form-group">
+                                            <label for="listing_facebook_url">Social Profile</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input id="listing_facebook_url" type="text" class="form-control" placeholder="Facebook URL" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_twitter_url" type="text" class="form-control" placeholder="Twitter URL" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_instagram_url" type="text" class="form-control" placeholder="Instagram URL" aria-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <input id="listing_googleplus_url" type="text" class="form-control" placeholder="Google Plus URL" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_youtube_url" type="text" class="form-control" placeholder="YouTube URL" aria-required="true">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="listing_linkedin_url" type="text" class="form-control" placeholder="Linkedin URL" aria-required="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uload-images-block">
+                                            <h5>Upload Images</h5>
+                                            <div class="form-group form-group-file-type">
+                                                <label for="listing_company_logo">Company Logo</label>
+                                                <input type="file" class="form-control-file" id="listing_company_logo">
+                                                <span>Maximum file size: 20 MB.</span>
+                                            </div>
+                                            <div class="form-group form-group-file-type">
+                                                <label for="listing_company_cover_photo">Cover Image</label>
+                                                <input type="file" class="form-control-file" id="listing_company_cover_photo">
+                                                <span>Maximum file size: 20 MB.</span>
+                                            </div>
+                                            <div class="form-group form-group-file-type">
+                                                <label for="listing_company_slide_photo">Slide Show Images</label>
+                                                <input type="file" class="form-control-file" id="listing_company_slide_photo">
+                                                <span>Maximum file size: 90 MB.</span>
+                                            </div>
+                                            <div class="form-group form-group-file-type">
+                                                <label for="listing_company_gallary_photo">Gallery Images (optional)</label>
+                                                <input type="file" class="form-control-file" id="listing_company_gallary_photo">
+                                                <span>Maximum file size: 90 MB.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Name</label>
-
+                            <!-- details-listing -->
+                            <div class="listing-block attach-document-listing">
+                                <h4>Attach Documents</h4>
+                                <div class="form-group form-group-file-type">
+                                    <label for="listing_company_profile">Company Profile</label>
+                                    <input type="file" class="form-control-file" id="listing_company_profile">
+                                    <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
                                 </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control col-md-7" id="txtName">
+                                <div class="form-group form-group-file-type">
+                                    <label for="listing_company_brochure">Company Brochure</label>
+                                    <input type="file" class="form-control-file" id="listing_company_brochure">
+                                    <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Phone number</label>
-
+                                <div class="form-group form-group-file-type">
+                                    <label for="listing_company_resturant">Food Menu (Restaurant)</label>
+                                    <input type="file" class="form-control-file" id="listing_company_resturant">
+                                    <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
                                 </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control col-md-7" id="txtPhonenumber">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control col-md-7" id="txtCity">
-                                    <small class="text-muted">Type your city name and select the matching city</small>
+                                <div class="form-group form-group-file-type">
+                                    <label for="listing_company_document">Others Document</label>
+                                    <input type="file" class="form-control-file" id="listing_company_document">
+                                    <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-3" style="text-align:right">
-                                    <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
-
+                            <!-- attach-document-listing -->
+                            <div class="listing-block prview-listing">
+                                <h4>Enter your information to Sign up & get approval notification</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="listing_user_name">Your Name</label>
+                                            <input id="listing_user_name" type="text" class="form-control" placeholder="Enter your full name here" aria-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="listing_user_email">Email</label>
+                                            <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control col-md-7" id="txtLocalcity">
-                                    <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
-                                </div>
+                                <h4 class="text-center">To Review your listing click the button below</h4>
+                                <button type="submit" class="listing-btn-large">Save & Preview</button>
                             </div>
-                            <div class="form-group row">
-                                <hr />
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-9" style="text-align:right">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="button" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                            <!-- prview-listing -->
+                        </form>*@
                 </div>
-            </div>
-
-            <div>
-
-
-
-                <!-- businessinfo-listing -->
-                <!-- add-listing-tost-block -->
-                @*<form id="add_listing_form" class="form-common add-listing-form" action="#" novalidate="novalidate">
-                        <div class="listing-block businessinfo-listing">
-                            <h4>Business Information</h4>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="businessinfo-left-block">
-                                        <div class="form-group">
-                                            <label for="listing_name">Listing Name</label>
-                                            <input id="listing_name" type="text" class="form-control form-single-element" placeholder="Ex: Anderson Hotel" aria-required="true">
-                                            <input id="listing_tagline" type="text" class="form-control" placeholder="Business Tagline goes here" aria-required="true">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="listing_email">Contact Email</label>
-                                            <input id="listing_email" type="email" class="form-control" placeholder="Ex: info@example.com" aria-required="true">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="listing_phone_no">Contact Phone</label>
-                                            <input id="listing_phone_no" type="text" class="form-control" placeholder="Ex: +1-0000-000-000" aria-required="true">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="listing_website">Website</label>
-                                            <input id="listing_website" type="text" class="form-control" placeholder="Ex: www.example.com" aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- col-lg-6 -->
-                                <div class="col-lg-6">
-                                    <div class="businessinfo-right-block">
-                                        <div id="add_listing_map" class="add-listing-map"></div>
-                                        <div class="form-group">
-                                            <label for="listing_address">Location (Full Address)</label>
-                                            <input id="listing_address" type="text" class="form-control" placeholder="Find your place in gogle map" aria-required="true">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="listing_region">Listing Region</label>
-                                            <input id="listing_region" type="text" class="form-control" placeholder="Select your listing region" aria-required="true">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- businessinfo-listing -->
-                        <div class="listing-block Others-Information-listing">
-                            <h4>Others Information</h4>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="form-group">
-                                        <label for="listing_category">Category</label>
-                                        <select id="listing_category" class="form-control">
-                                            <option>Default select</option>
-                                            <option>First select</option>
-                                            <option>Second select</option>
-                                            <option>Third select</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label for="listing_price">Price</label>
-                                        <select id="listing_price" class="form-control">
-                                            <option>Default select</option>
-                                            <option>Price One</option>
-                                            <option>Price Two</option>
-                                            <option>Price Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="form-group listing-price">
-                                        <input id="listing_price_from" type="text" class="form-control" placeholder="Price From" aria-required="true">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="form-group listing-price">
-                                        <input id="listing_price_to" type="text" class="form-control" placeholder="Price To" aria-required="true">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="listing-features-block">
-                                        <h5>Select listing features</h5>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <!-- block-checkbox block -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <!-- block-checkbox block -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <!-- block-checkbox block -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input">
-                                                                    <span class="custom-control-indicator"></span>
-                                                                    <span class="custom-control-description">Air Conditioned</span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <!-- block-checkbox block -->
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- listing-features-block -->
-                                    <div class="listing-additionalinfo-block">
-                                        <h5>Aditional info</h5>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group additionalinfo-toggle-switch">
-                                                            <input type="checkbox" checked id="aditionalInfo1">
-                                                            <label for="aditionalInfo1">Pet Friendly</label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group additionalinfo-toggle-switch">
-                                                            <input type="checkbox" checked id="aditionalInfo2">
-                                                            <label for="aditionalInfo2">Wheel Accessible</label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group additionalinfo-toggle-switch">
-                                                            <input type="checkbox" id="aditionalInfo3">
-                                                            <label for="aditionalInfo3">Child Friendly</label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group additionalinfo-toggle-switch">
-                                                            <input type="checkbox" checked id="aditionalInfo4">
-                                                            <label for="aditionalInfo4">First Aid Service</label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group additionalinfo-toggle-switch">
-                                                            <input type="checkbox" checked id="aditionalInfo5">
-                                                            <label for="aditionalInfo5">Fire Safety</label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- listing-additionalinfo-block -->
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input id="listing_others" type="text" class="form-control" placeholder="Others" aria-required="true">
-                                    </div>
-                                    <div class="listing-businesshour-block">
-                                        <h5>Business Hours</h5>
-                                        <div class="form-check">
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Monday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Tuesday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Wednesday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Thursday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Frinday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Saturday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                            <div class="multiple-label-checkbox-block">
-                                                <p><strong>Sunday [+]</strong> 08:00 <b>-</b> 10:00</p>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">Closed</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- listing-businesshour-block -->
-                                    <div class="form-group time-zone-block">
-                                        <label for="listing_timezone">Time Zone</label>
-                                        <select id="listing_timezone" class="form-control">
-                                            <option>Select your business time zone.. Ex: UTC +0</option>
-                                            <option>Select your business time zone.. Ex: UTC +10</option>
-                                            <option>Select your business time zone.. Ex: UTC +20</option>
-                                            <option>Select your business time zone.. Ex: UTC +30</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Others-Information-listing -->
-                        <div class="listing-block details-listing">
-                            <h4>Listing Details</h4>
-                            <div class="form-group listing-compose-block">
-                                <label for="listing_descreption">Description</label>
-                                <textarea rows="5" cols="50" id="listing_descreption" class="form-control compose-box" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group textarea-form-group">
-                                        <label for="listing_kewords">Keywords</label>
-                                        <textarea rows="5" cols="50" id="listing_kewords" class="form-control" placeholder="Comma Seperated Ex:  Real Estate, Construction"></textarea>
-                                    </div>
-                                    <div class="promotional-video-block form-group">
-                                        <label for="listing_youtube_video_1">Promotional Video</label>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <input id="listing_youtube_video_1" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_youtube_video_2" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <input id="listing_youtube_video_3" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_youtube_video_4" type="text" class="form-control" placeholder="YouTube Video URL Here" aria-required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="listing_faq">FAQ</label>
-                                        <input id="listing_faq" type="text" class="form-control" placeholder="Question" aria-required="true">
-                                    </div>
-                                    <div class="form-group textarea-form-group">
-                                        <textarea rows="5" cols="50" id="listing_answer" class="form-control" placeholder="Answer"></textarea>
-                                    </div>
-                                    <button type="button" class="listing-btn-large">+ Add New</button>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="social-profile-block form-group">
-                                        <label for="listing_facebook_url">Social Profile</label>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <input id="listing_facebook_url" type="text" class="form-control" placeholder="Facebook URL" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_twitter_url" type="text" class="form-control" placeholder="Twitter URL" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_instagram_url" type="text" class="form-control" placeholder="Instagram URL" aria-required="true">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-group">
-                                                    <input id="listing_googleplus_url" type="text" class="form-control" placeholder="Google Plus URL" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_youtube_url" type="text" class="form-control" placeholder="YouTube URL" aria-required="true">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="listing_linkedin_url" type="text" class="form-control" placeholder="Linkedin URL" aria-required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uload-images-block">
-                                        <h5>Upload Images</h5>
-                                        <div class="form-group form-group-file-type">
-                                            <label for="listing_company_logo">Company Logo</label>
-                                            <input type="file" class="form-control-file" id="listing_company_logo">
-                                            <span>Maximum file size: 20 MB.</span>
-                                        </div>
-                                        <div class="form-group form-group-file-type">
-                                            <label for="listing_company_cover_photo">Cover Image</label>
-                                            <input type="file" class="form-control-file" id="listing_company_cover_photo">
-                                            <span>Maximum file size: 20 MB.</span>
-                                        </div>
-                                        <div class="form-group form-group-file-type">
-                                            <label for="listing_company_slide_photo">Slide Show Images</label>
-                                            <input type="file" class="form-control-file" id="listing_company_slide_photo">
-                                            <span>Maximum file size: 90 MB.</span>
-                                        </div>
-                                        <div class="form-group form-group-file-type">
-                                            <label for="listing_company_gallary_photo">Gallery Images (optional)</label>
-                                            <input type="file" class="form-control-file" id="listing_company_gallary_photo">
-                                            <span>Maximum file size: 90 MB.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- details-listing -->
-                        <div class="listing-block attach-document-listing">
-                            <h4>Attach Documents</h4>
-                            <div class="form-group form-group-file-type">
-                                <label for="listing_company_profile">Company Profile</label>
-                                <input type="file" class="form-control-file" id="listing_company_profile">
-                                <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                            </div>
-                            <div class="form-group form-group-file-type">
-                                <label for="listing_company_brochure">Company Brochure</label>
-                                <input type="file" class="form-control-file" id="listing_company_brochure">
-                                <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                            </div>
-                            <div class="form-group form-group-file-type">
-                                <label for="listing_company_resturant">Food Menu (Restaurant)</label>
-                                <input type="file" class="form-control-file" id="listing_company_resturant">
-                                <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                            </div>
-                            <div class="form-group form-group-file-type">
-                                <label for="listing_company_document">Others Document</label>
-                                <input type="file" class="form-control-file" id="listing_company_document">
-                                <span>File Format .pdf, .doc, .docx, .ppt, .pptx, .jpeg, .png</span>
-                            </div>
-                        </div>
-                        <!-- attach-document-listing -->
-                        <div class="listing-block prview-listing">
-                            <h4>Enter your information to Sign up & get approval notification</h4>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="listing_user_name">Your Name</label>
-                                        <input id="listing_user_name" type="text" class="form-control" placeholder="Enter your full name here" aria-required="true">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="listing_user_email">Email</label>
-                                        <input id="listing_user_email" type="email" class="form-control" placeholder="Enter your email here" aria-required="true">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="text-center">To Review your listing click the button below</h4>
-                            <button type="submit" class="listing-btn-large">Save & Preview</button>
-                        </div>
-                        <!-- prview-listing -->
-                    </form>*@
             </div>
         </div>
     </div>
-</div>
 
+}
 @section Styles {
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
@@ -1082,36 +1152,42 @@
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
 }
 
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Custome/account.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>*@
+
+
 <script type="text/javascript">
     $(document).ready(function () {
-        var VehiclesColl = new Array();
-        var selectedType = "";
+        //var VehiclesColl = new Array();
+        //var selectedType = "";
 
-        $('#tabCategories a').click(function () {
-            selectedType = $(this).text();
-        });
+        //$('#tabCategories a').click(function () {
+        //    selectedType = $(this).text();
+        //});
 
-        // $("#catagory_list").prop('selectedIndex', 0);
-        $('.max-length-subcategory a').click(function () {
+        //// $("#catagory_list").prop('selectedIndex', 0);
+        //$('.max-length-subcategory a').click(function () {
 
-            $("#catagory_list").find('option').remove();
-            $("#catagory_list").append('<option value="0">Select Category</option>')
-            var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedType);
-            var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).text());
-            $.each(selectedModel[0].VehicleModel, function (i, field) {
-                {
-                    $("#catagory_list").append("<option>" + field.name + "</option>");
-                }
-            });
+        //    $("#catagory_list").find('option').remove();
+        //    $("#catagory_list").append('<option value="0">Select Category</option>')
+        //    var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedType);
+        //    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).text());
+        //    $.each(selectedModel[0].VehicleModel, function (i, field) {
+        //        {
+        //            $("#catagory_list").append("<option>" + field.name + "</option>");
+        //        }
+        //    });
 
-        });
+        //});
 
-        $.get('../Scripts/Json/categories.json', function (data) {
-            $.each(data, function (i, field) {
-                VehiclesColl.push(field);
-            });
+        //$.get('../Scripts/Json/categories.json', function (data) {
+        //    $.each(data, function (i, field) {
+        //        VehiclesColl.push(field);
+        //    });
 
-        });
+        //});
 
     });
 </script>

@@ -317,6 +317,7 @@ $("#tabTV a").click(function () {
 
 //Transportation Vehicles
 $("#tabPV a").click(function () {
+ 
     var secondLevel = $(this).text();
 
     $("#cat-nav-l2 span").text(secondLevel);
@@ -344,9 +345,18 @@ $("#cat-nav-l4 a").click(function () {
 
 //back button categories list
 $(".backHome").click(function () {
+    alert("helo tes111t");
+    //$("#cat-nav-l4").css("display", "none");
+    //RefreshCategories();
+});
 
+$("#idPvback").click(function () {
+    alert("helo ");
+    $("#cat-nav-l4").css("display", "none");
     RefreshCategories();
 });
+
+
 
 function RefreshCategories() {
     $("#divCategories").css('display', 'block');
@@ -369,6 +379,13 @@ function RefreshCategories() {
     $("#idtabCategories").css("display", "block");
     $("#idtabCategories").addClass("active");
     $("#tabCategories").addClass("active");
+
+
+   
+    $("#divCategories").css("border", "1px solid #a94442");
+    $("#divCategories").css("box-shadow", "0 1px 1px rgba(0,0,0,.075)");
+
+    $("#categoryValidationid").css("display", "block");
 }
 
 function PathSetFirstLevel(firstlevel) {
@@ -394,6 +411,7 @@ $("#tstButton").click(function () {
 
 function DisplayRespectiveFields(selectedcategory) {
 
+   
     $(".forallcollapse").css('display', 'none');
 
     var selectedCate = selectedcategory;
@@ -449,26 +467,146 @@ function DisplayRespectiveFields(selectedcategory) {
 
     }
     else if (selectedCate == "Construction Vehicles") {
-      //  $("#forCV").css('display', 'block');
+        $("#forCV").css('display', 'block');
+        fillFromJson("CV");
+
     }
     else if (selectedCate == "Transportation Vehicles") {
       //  $("#forTV").css('display', 'block');
     }
     else if (selectedCate == "Agricultural Vehicles") {
-      //  $("#forAV").css('display', 'block');
+        $("#forAV").css('display', 'block');
+        fillFromJson("AV");
     }
-    else if (selectedCate == "Passenger Vehicles") {
-      //  $("#forPV").css('display', 'block');
+    else if (selectedCate == "Passenger Vehicles") {        
+        $("#forPV").css('display', 'block');
+        fillFromJson("PV");
     }
 
     
+    $("#divCategories").css("border", "none");
+   
+    $("#categoryValidationid").css("display", "none");
+    
 }
+
+//--------------------binding json data ---------------------------------------//
+
+function fillFromJson(selectedType) {
+
+    var selectedCategory = $("#hdnCateFristLevel").val();
+    var selectedSubCategory = $("#hdnCateSecondLevel").val();
+   
+       
+    $("#AVCompany_list").find('option').remove();
+    $("#AVCompany_list").append('<option value="">Select</option>');
+
+    $("#CVCompany_list").find('option').remove();
+    $("#CVCompany_list").append('<option value="">Select</option>');
+
+    $("#TVCompany_list").find('option').remove();
+    $("#TVCompany_list").append('<option value="">Select</option>');
+
+    $("#PVCompany_list").find('option').remove();
+    $("#PVCompany_list").append('<option value="">Select</option>');
+
+    var VehiclesColl = new Array();
+
+   
+    $.ajax({
+        url: '/Scripts/Json/categories.json',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            $.each(data, function (i, field) {
+                VehiclesColl.push(field);                
+            });
+        }
+    });
+
+    //$.get('/Scripts/Json/categories.json', function (data) {
+    //    $.each(data, function (i, field) {
+    //        VehiclesColl.push(field);
+    //        console.log(field.name);
+    //    });
+
+    //});
+
+   
+    var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedCategory);
+    
+    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);
+    
+
+    $.each(selectedModel[0].VehicleModel, function (i, field) {
+        {
+            if (selectedType == "AV") {
+
+                $("#AVCompany_list").append("<option>" + field.name + "</option>");
+            }
+            else if (selectedType == "CV") {
+
+                $("#CVCompany_list").append("<option>" + field.name + "</option>");
+            }
+            else if (selectedType == "TV") {
+
+                $("#TVCompany_list").append("<option>" + field.name + "</option>");
+            }
+            else if (selectedType == "PV") {
+
+                $("#PVCompany_list").append("<option>" + field.name + "</option>");
+            }
+            
+        }
+    });
+}
+
+//---------------------binding json data---------------------------------------//
+
+
 
 
 //-------------------------- for properties validation -------------------------------
 
 $("#btnSubmit").click(function () {
 
-    alert($('#forProperties').css('display') == 'none');
+    var hiddenElements = $(':hidden');
+
+    hiddenElements.each(function () {
+        $(this).prop('required', false);
+
+    })
+
+
+
+    var selectedCategory = $("#hdnCateFristLevel").val();
+    var selectedSubCategory = $("#hdnCateSecondLevel").val();
+
+   
+    if ($("#txtTitle").val() != "") {
+        if (selectedCategory == "" || selectedSubCategory == "") {
+
+            $("#divCategories").css("border", "1px solid #a94442");
+            $("#divCategories").css("box-shadow", "0 1px 1px rgba(0,0,0,.075)");
+            $("#divCategories").focusin();
+
+            $("#categoryValidationid").css("display", "block");
+            $("#categoryValidationid").css("color", "#a94442");
+
+            //$('html, body').animate({
+            //    scrollTop: $("#divCategories").offset().top
+            //}, 2000);
+
+            $(window).scrollTop($('#scrolltoCat').offset().top);
+            return false;
+        }
+    }
+   
+    
+
+
+    //alert($('#forProperties').css('display') == 'none');
 });
+
+
 
