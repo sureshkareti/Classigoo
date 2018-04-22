@@ -28,7 +28,7 @@
 <!-- main-header section -->
 <!--Categories start-->
 <div class="popular-cities-section" style="max-width:970px !important;margin:auto;">
-    <div class="container-fluid">
+    <div class="container-fluid" id="getValue">
         <div class="section-title">
             <h2>Categories</h2>
             <p>Find out & explore new businesses near your area and see what's happening !!!</p>
@@ -82,10 +82,10 @@
                     <h4><a href="#">Agricultural Vehicles</a></h4>
 
                     <div class="categories">
-                        <a href="#">For Rent ( 20 )</a>
+                        <a href="">For Rent ( 20 )</a>
                     </div>
                     <div class="categories">
-                        <a href="#">For Sale ( 20 )</a>
+                        <a href="">For Sale ( 20 )</a>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
             <div class="col-md-4 col-sm-6">
                 <div class="categorybox">
                     <div class="icon"><i class="fa fa-car" aria-hidden="true"></i></div>
-                    <h4><a href="#">Cars</a></h4>
+                    <h4><a href="#" id="Carscategory">Cars</a></h4>
 
                     <div class="categories">
                         <a href="#">For Rent ( 20 )</a>
@@ -142,7 +142,9 @@
                 </div>
             </div>
         </div>
+        <a href="#" class="danger-btn" id="vehicles">Vehicles</a>
     </div>
+
 </div>
 <!--Categories end-->
 
@@ -153,3 +155,23 @@
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }
+<script>
+    $(document).ready(function () {
+
+       
+
+        $("#getValue a").click(function () {
+            // window.location.href = "/New/ShowAdds?category=car";
+            
+            // window.location.href = "/New/ShowAdds?location=" + $("#listing_location_list").val();
+            var selectedCategory = $(this).text();
+            window.location.href = "/New/ShowAdds?category=" + selectedCategory;
+        })
+    
+         
+        
+        //$("#vehicles").click(function () {
+        //    window.location.href = "/New/ShowAdds?category=cars";
+        //})
+    });
+</script>
