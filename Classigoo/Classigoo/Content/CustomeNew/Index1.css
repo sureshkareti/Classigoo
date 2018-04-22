@@ -1557,7 +1557,8 @@ textarea {
       padding: 13px 0 13px 30px;
       border-radius: 3px;
       border: 1px solid #e7e7e7;
-      background: transparent; }
+      background:transparent;
+     }
   .form-common .custom-control-indicator {
     border-radius: 0;
     background: transparent;

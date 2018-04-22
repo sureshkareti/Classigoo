@@ -35,8 +35,8 @@ namespace Classigoo.Controllers
                         var readTask = result.Content.ReadAsAsync<Guid>();
                         readTask.Wait();
 
-                         UserId = readTask.Result;
-                        
+                        UserId = readTask.Result;
+
                     }
                     else //web api sent error response 
                     {
@@ -50,9 +50,10 @@ namespace Classigoo.Controllers
             {
 
             }
-            if(UserId!=Guid.Empty)
+            if (UserId != Guid.Empty)
             {
                 Session["UserId"] = UserId;
+              
                 return   RedirectToAction("Home", "User");
             }
             else
@@ -157,18 +158,6 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        public ActionResult Home()
-        {
-           
-            return View();
-           
-        }
-        [HttpPost]
-        public ActionResult Home(FormCollection coll)
-        {
-            
-            return View();
-        }
         public ActionResult PostAdd()
         {
             return View();
@@ -205,15 +194,16 @@ namespace Classigoo.Controllers
             return View(Add);
         }
 
-        public ActionResult UserDashboard()
+        public ActionResult Home()
         {
+            Session["UserId"] = new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f");
             List<CustomAdd> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
             TempData["UserAddColl"] = addColl;
-            return View("Home", addColl);
+            return View(addColl);
 
         }
         [HttpPost]
-        public ActionResult UserDashboard(FormCollection coll)
+        public ActionResult Home(FormCollection coll)
         {
             User user = GetUserDetails(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
             List<CustomAdd> addColl = (List<CustomAdd>)TempData["UserAddColl"];
@@ -262,7 +252,7 @@ namespace Classigoo.Controllers
                     break;
 
             }
-            return View("Home", addColl);
+            return View(addColl);
         }
         public void UpdateUserDetails(User user)
         {
@@ -446,6 +436,11 @@ namespace Classigoo.Controllers
                     }
 
                 }
+        }
+        public ActionResult SignOut()
+        {
+            Session.Remove("UserId");
+            return RedirectToAction("Login","User");
         }
     }
     }
