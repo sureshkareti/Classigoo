@@ -1561,6 +1561,14 @@ textarea {
       border-radius: 3px;
       border: 1px solid #e7e7e7;
       background: transparent; }
+    .form-controls {
+      height: 250px;
+      font-size: 14px;
+
+      padding: 13px 0 13px 30px;
+      border-radius: 3px;
+      border: 1px solid #e7e7e7;
+       }
   .form-common .custom-control-indicator {
     border-radius: 0;
     background: transparent;
