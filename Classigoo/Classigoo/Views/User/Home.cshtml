@@ -8,7 +8,7 @@
 @{
     string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
 }
-@using (Html.BeginForm("UserDashboard", "User", FormMethod.Post ))
+@using (Html.BeginForm("Home", "User", FormMethod.Post ))
 {
 <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
     <div class="col-md-5">
@@ -287,7 +287,7 @@
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                         <div class="panel-body">
-                       @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post, new {id= "frmChangePhone"}))
+                       @using (Html.BeginForm("Home", "User", FormMethod.Post, new {id= "frmChangePhone"}))
                        {
 
                                                 <div class="row  form-group">
@@ -323,7 +323,7 @@
                                 </div>
                                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body">
-                                        @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post, new { id= "frmChangePassword" }))
+                                        @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id= "frmChangePassword" }))
                                         {
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
@@ -364,7 +364,7 @@
                                     </div>
                                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                         <div class="panel-body">
-                                            @using (Html.BeginForm("UserDashboard", "User", FormMethod.Post))
+                                            @using (Html.BeginForm("Home", "User", FormMethod.Post))
                                             {
                                                 <div class="row  form-group">
                                                     <div class="col-md-4">
