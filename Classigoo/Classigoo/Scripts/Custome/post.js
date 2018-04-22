@@ -155,54 +155,29 @@ $("#categoryUL li").click(function (e, args) {
 });
 
 $("#tabCategories a").click(function () {
-    var selectedCate = $(this).text();
-    if (selectedCate == "Properties") {
 
-        //$("#cat-nav-l1 span").text("Properties");
-        //$("#cat-nav-l1").css("display", "inline");
+    //var selectedCate = $(this).text();
+    var selectedCate = $(this).attr("id");
 
+    if (selectedCate == "catPro") {
 
-        //$("#idtabCategories").removeClass("active");
-        //$("#idtabCategories").css("display", "none");
-        //$("#tabCategories").removeClass("active");
-
-        PathSetFirstLevel("Properties");
-
+        PathSetFirstLevel("Real Estate");
+      
         $("#idtabPro").css("display", "block");
         $("#idtabPro").addClass("active");
         $("#tabPro").addClass("active");
 
     }
-    else if (selectedCate == "Construction Vehicles") {
+    else if (selectedCate == "catCV") {
 
-        PathSetFirstLevel("Construction Vehicles");
-
-        //$("#cat-nav-l1 a").text("Construction Vehicles");
-        //$("#cat-nav-l1").css("display", "inline");
-
-        //$(".idtabCategoriesul li").removeClass("active");
-        //$(".idtabCategoriesul li").css("display", "none");
-        //$('.idtabCategoriesul li').each(function (i) {
-        //    $($(this).find('a').attr('href')).removeClass("active");
-        //});
-
+        PathSetFirstLevel("Construction Vehicles");    
 
         $("#idtabCV").css("display", "block");
         $("#idtabCV").addClass("active");
         $("#tabCV").addClass("active");
 
     }
-    else if (selectedCate == "Transportation Vehicles") {
-
-        //$("#cat-nav-l1 a").text("Transportation Vehicles");
-        //$("#cat-nav-l1").css("display", "inline");
-
-
-        //$(".idtabCategoriesul li").removeClass("active");
-        //$(".idtabCategoriesul li").css("display", "none");
-        //$('.idtabCategoriesul li').each(function (i) {
-        //    $($(this).find('a').attr('href')).removeClass("active");
-        //});
+    else if (selectedCate == "catTV") {
 
         PathSetFirstLevel("Transportation Vehicles");
 
@@ -210,7 +185,7 @@ $("#tabCategories a").click(function () {
         $("#idtabTV").addClass("active");
         $("#tabTV").addClass("active");
     }
-    else if (selectedCate == "Agricultural Vehicles") {
+    else if (selectedCate == "catAV") {
 
         PathSetFirstLevel("Agricultural Vehicles");
 
@@ -219,65 +194,54 @@ $("#tabCategories a").click(function () {
         $("#tabAV").addClass("active");
 
     }
-    else if (selectedCate == "Passenger Vehicles") {
+    else if (selectedCate == "catPV") {
 
+        PathSetFirstLevel("Passenger Vehicles");
+
+        $("#idtabPV").css("display", "block");
+        $("#idtabPV").addClass("active");
+        $("#tabPV").addClass("active");
     }
-    else if (selectedCate == "Cars") {
-
-        PathSetFirstLevel("Cars");
-
-        $("#idtabCars").css("display", "block");
-        $("#idtabCars").addClass("active");
-        $("#tabCars").addClass("active");
-
-    }
-    else if (selectedCate == "Bikes") {
-        PathSetFirstLevel("Bikes");
-
-        $("#idtabBikes").css("display", "block");
-        $("#idtabBikes").addClass("active");
-        $("#tabBikes").addClass("active");
-    }
-    else if (selectedCate == "Mobiles & Electronics") {
-        PathSetFirstLevel("Mobiles & Electronics");
-
-        $("#idtabME").css("display", "block");
-        $("#idtabME").addClass("active");
-        $("#tabME").addClass("active");
-    }
-    else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
-
-        PathSetFirstLevel("All Vehicles Hire/Engage/Lease");
-
-        $("#cat-nav-l4").css("display", "inline");
-
-        $("#divCategories").css('display', 'none');
-    }
+    
 });
 
 //properties childs
 $(".tabProChilds a").click(function () {
 
-    var secondLevl = $(this).parent().attr('id');
+    //var secondLevl = $(this).parent().attr('id');
 
-    var thirdLevel = $(this).text();
+    //var thirdLevel = $(this).text();
 
-    if (secondLevl == "tabProForSale") {
-        $("#cat-nav-l2 span").text("ForSale");
-        $("#hdnCateSecondLevel").val("ForSale");
+    //if (secondLevl == "tabProForSale") {
+    //    $("#cat-nav-l2 span").text("ForSale");
+    //    $("#hdnCateSecondLevel").val("ForSale");
 
-    }
-    else {
-        $("#cat-nav-l2 span").text("ForRent");
-        $("#hdnCateSecondLevel").val("ForRent");
+    //}
+    //else {
+    //    $("#cat-nav-l2 span").text("ForRent");
+    //    $("#hdnCateSecondLevel").val("ForRent");
 
-    }
+    //}
+    //$("#cat-nav-l2").css("display", "inline");
+
+    //$("#cat-nav-l3 span").text(thirdLevel);
+    //$("#hdnCateThirdLevel").val(thirdLevel);
+
+    //$("#cat-nav-l3").css("display", "inline");
+
+    //$("#cat-nav-l4").css("display", "inline");
+
+    //$("#divCategories").css('display', 'none');
+
+    
+
+
+
+    var secondLevel = $(this).text();
+
+    $("#cat-nav-l2 span").text(secondLevel);
+    $("#hdnCateSecondLevel").val(secondLevel);
     $("#cat-nav-l2").css("display", "inline");
-
-    $("#cat-nav-l3 span").text(thirdLevel);
-    $("#hdnCateThirdLevel").val(thirdLevel);
-
-    $("#cat-nav-l3").css("display", "inline");
 
     $("#cat-nav-l4").css("display", "inline");
 
@@ -337,48 +301,8 @@ $("#tabAV a").click(function () {
     DisplayRespectiveFields("Agricultural Vehicles");
 });
 
-//Bikes childs
-$(".tabBikesChilds a").click(function () {
-
-    var secondLevl = $(this).parent().attr('id');
-
-    var thirdLevel = $(this).text();
-
-    if (secondLevl == "tabBikesMotorcycles") {
-        $("#cat-nav-l2 span").text("Motorcycles");
-        $("#hdnCateSecondLevel").val("Motorcycles");
-    }
-    else if (secondLevl == "tabBikesScooters") {
-        $("#cat-nav-l2 span").text("Scooters");
-        $("#hdnCateSecondLevel").val("Scooters");
-    }
-    else if (secondLevl == "tabBikesBicycles") {
-        $("#cat-nav-l2 span").text("Bicycles");
-        $("#hdnCateSecondLevel").val("Bicycles");
-    }
-    else if (secondLevl == "tabBikesSpareParts") {
-        $("#cat-nav-l2 span").text("SpareParts");
-        $("#hdnCateSecondLevel").val("SpareParts");
-    }
-
-
-    $("#cat-nav-l2").css("display", "inline");
-
-    $("#cat-nav-l3 span").text(thirdLevel);
-    $("#hdnCateThirdLevel").val(thirdLevel);
-    $("#cat-nav-l3").css("display", "inline");
-
-    $("#cat-nav-l4").css("display", "inline");
-
-    $("#divCategories").css('display', 'none');
-
-    DisplayRespectiveFields("Bikes");
-
-});
-
-//Mobile & Electronics
-$("#tabME a").click(function () {
-
+//Transportation Vehicles
+$("#tabTV a").click(function () {
     var secondLevel = $(this).text();
 
     $("#cat-nav-l2 span").text(secondLevel);
@@ -388,9 +312,23 @@ $("#tabME a").click(function () {
     $("#cat-nav-l4").css("display", "inline");
 
     $("#divCategories").css('display', 'none');
-    DisplayRespectiveFields("Mobiles & Electronics");
-
+    DisplayRespectiveFields("Transportation Vehicles");
 });
+
+//Transportation Vehicles
+$("#tabPV a").click(function () {
+    var secondLevel = $(this).text();
+
+    $("#cat-nav-l2 span").text(secondLevel);
+    $("#hdnCateSecondLevel").val(secondLevel);
+    $("#cat-nav-l2").css("display", "inline");
+
+    $("#cat-nav-l4").css("display", "inline");
+
+    $("#divCategories").css('display', 'none');
+    DisplayRespectiveFields("Passenger Vehicles");
+});
+
 
 //home buttion on categories navigation
 $("#cat-nav-l0 a").click(function () {
@@ -522,18 +460,8 @@ function DisplayRespectiveFields(selectedcategory) {
     else if (selectedCate == "Passenger Vehicles") {
       //  $("#forPV").css('display', 'block');
     }
-    else if (selectedCate == "Cars") {
-        $("#forCars").css('display', 'block');
-    }
-    else if (selectedCate == "Bikes") {
-        $("#forBikes").css('display', 'block');
-    }
-    else if (selectedCate == "Mobiles & Electronics") {
-        $("#forME").css('display', 'block');
-    }
-    else if (selectedCate == "All Vehicles Hire/Engage/Lease") {
-        $("#forAll").css('display', 'block');
-    }
+
+    
 }
 
 
