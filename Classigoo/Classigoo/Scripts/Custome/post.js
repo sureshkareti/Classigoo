@@ -346,15 +346,10 @@ $("#cat-nav-l4 a").click(function () {
 //back button categories list
 $(".backHome").click(function () {
     alert("helo tes111t");
-    //$("#cat-nav-l4").css("display", "none");
-    //RefreshCategories();
-});
-
-$("#idPvback").click(function () {
-    alert("helo ");
     $("#cat-nav-l4").css("display", "none");
     RefreshCategories();
 });
+
 
 
 
