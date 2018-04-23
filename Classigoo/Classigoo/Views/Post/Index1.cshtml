@@ -87,13 +87,15 @@
                                                     <div class="tab-pane fade in active sub-category-items" id="tabCategories">
                                                         <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
                                                         <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
                                                         <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                        <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
+                                                        
                                                         <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
                                                     </div>
 
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
                                                         <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
                                                         <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
                                                         <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
@@ -102,7 +104,8 @@
                                                         <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
                                                     </div>
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
                                                         <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
                                                         <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
                                                         <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
@@ -113,23 +116,29 @@
                                                         <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
                                                         <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
                                                     </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
-                                                        <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
-                                                        <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
-                                                        <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
-                                                    </div>
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
+                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
                                                         <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
                                                         <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
                                                         <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
                                                         <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
                                                     </div>
+                                                   
+
+                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                        <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
+                                                        <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
+                                                        <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                        <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                                    </div>
+                                                    
 
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
                                                         <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
                                                         <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
                                                         <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
@@ -273,7 +282,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which your submitted add</div>
+                                        <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which you want to submiting add</div>
                                         @*<input type="button" id="tstButton" value="test me" />*@
                                     </div>
 
@@ -283,14 +292,15 @@
                                     <div>
 
                                         <div class="form-group row forallcollapse" id="forAV" style="display:none">
-                                            <div class="form-group row">
+                                            <div class="form-group row" id="divAVPrice">
                                                 <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 col-xs-12">
-                                                    <select class="form-control" id="AVCompany_list" required>
+                                                    <select class="form-control" id="AVCompany_list" data-error="please select company name" required>
                                                         <option selected>Select Category</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -298,8 +308,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtAV_Price" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter price in repease</small>
+                                                    <input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -307,21 +317,23 @@
                                         <div class="form-group row forallcollapse" id="forCV" style="display:none">
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
-                                                <div class="col-md-7">
-                                                    <select class="form-control" id="CVCompany_list">
+                                                <div class="col-md-4">
+                                                    <select class="form-control" id="CVCompany_list" data-error="please select company name" required>
                                                         <option selected>Select Category</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtCV_Price" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter price in repease</small>
+                                                    <input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    @*<small class="text-muted">Please enter price in repease</small>*@
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,21 +341,22 @@
                                         <div class="form-group row forallcollapse" id="forTV" style="display:none">
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
-                                                <div class="col-md-7">
-                                                    <select class="form-control" id="TVCompany_list">
+                                                <div class="col-md-4">
+                                                    <select class="form-control" id="TVCompany_list" data-error="please select company name" required>
                                                         <option selected>Select Category</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtTV_Price" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter price in repease</small>
+                                                    <input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -351,65 +364,67 @@
                                         <div class="form-group row forallcollapse" id="forPV" style="display:none">
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
-                                                <div class="col-md-7">
-                                                    <select class="form-control" id="PVCompany_list">
-                                                        <option selected>Select</option>
+                                                <div class="col-md-4">
+                                                    <select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
+                                                        <option selected>Select Category</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_price" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter price in repease</small>
+                                                    <input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pv-model" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Model</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="PVModel_list" class="form-control" required>
+                                                    <select id="PVModel_list" class="form-control" data-error="please select model" required>
                                                         <option>Select</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pv-year" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Year</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Year<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="PVYear_list" class="form-control" required>
-                                                        <option>Select</option>
-                                                    </select>
+                                                    <input type="text" id="txtPV_Year" class="form-control col-md-7" data-error="please fill the year" placeholder="year of model" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pv-fueltype" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="PVfueltype_list" class="form-control" required>
-                                                        <option>Select</option>
-                                                        <option>Petrol</option>
-                                                        <option>Diesel</option>
-                                                        <option>LPG</option>
-                                                        <option>CNG & Hybrids</option>
+                                                    <select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Petrol">Petrol</option>
+                                                        <option value="Diesel">Diesel</option>
+                                                        <option value="LPG">LPG</option>
+                                                        <option value="CNG">CNG & Hybrids</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row" id="pv-kmdriven" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter distance travelled in Km</small>
+                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7"  data-error="please fill with travelled distance" placeholder="KM" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
@@ -418,93 +433,97 @@
                                         <div class="forallcollapse" id="forProperties" style="display:none">
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPro_Price" class="form-control col-md-7" value="" required>
-                                                    <small class="text-muted">Please enter price in repease</small>
+                                                    <input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-bedrooms" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlBedrooms" class="form-control" required>
-                                                        <option>Select</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                        <option>4+</option>
+                                                    <select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
+                                                        <option value="">Select</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">4+</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-furnishing" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlBedrooms" class="form-control" required>
-                                                        <option>Select</option>
-                                                        <option>Furnished</option>
-                                                        <option>Unfurnished</option>
-                                                        <option>Semi-Furnished</option>
+                                                    <select id="ddlBedrooms" class="form-control" data-error="please slect is furnished" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Furnished">Furnished</option>
+                                                        <option value="Unfurnished">Unfurnished</option>
+                                                        <option value="Semi-Furnished">Semi-Furnished</option>
 
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-availability" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Availability</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Availability<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlAvailability" class="form-control">
-                                                        <option>Select</option>
-                                                        <option>Under Construction</option>
-                                                        <option>Ready to Move</option>
-                                                        <option>New Launch</option>
+                                                    <select id="ddlAvailability" class="form-control" data-error="please slect status" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Construction">Under Construction</option>
+                                                        <option value="Ready">Ready to Move</option>
+                                                        <option value="New-Launch">New Launch</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Posted By</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Posted By<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlPostedBy" class="form-control">
-                                                        <option>Select</option>
-                                                        <option>Owner</option>
-                                                        <option>Dealer</option>
-                                                        <option>Builder</option>
+                                                    <select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
+                                                        <option value="">Select</option>
+                                                        <option value="Owner">Owner</option>
+                                                        <option value="Dealer">Dealer</option>
+                                                        <option value="Builder">Builder</option>
                                                     </select>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-sqarefeets" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square feet</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square feet<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareFeet" class="form-control col-md-7">
-                                                    <small class="text-muted">please enter in square feets</small>
+                                                    <input type="text" id="txtSquareFeet" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square feets" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-squareyards" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7">
-                                                    <small class="text-muted">please enter in square yards</small>
+                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square yards" value="" required> 
+                                                  <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-acres" style="display:none">
                                                 <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Acres</label>
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Acres<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtAcres" class="form-control col-md-7">
-                                                    <small class="text-muted">please enter in acres</small>
+                                                    <input type="text" id="txtAcres" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square acres" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
 
@@ -520,7 +539,8 @@
                                     </div>
                                     <div class="col-md-7">
 
-                                        <textarea id="txtAddDetails" rows="7" class="form-control col-md-7"></textarea>
+                                        <textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>
+                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
@@ -1147,9 +1167,12 @@
 
 
 @section scripts{
-    <script src="~/Scripts/Custome/post.js"></script>
+
+   
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
+<script src="~/Scripts/Custome/post.js"></script>
 }
 
 @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -1160,7 +1183,13 @@
 
 <script type="text/javascript">
 
-   
+    //$(".backHome").click(function () {
+    //    alert("helo tes111t");
+
+    //    $("#cat-nav-l4").css("display", "none");
+
+        
+    //});
 
     $(document).ready(function () {
         //var VehiclesColl = new Array();

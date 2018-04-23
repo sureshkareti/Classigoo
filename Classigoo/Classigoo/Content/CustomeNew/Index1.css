@@ -3136,6 +3136,10 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 .w3-container:after,.w3-container:before{content:"";display:table;clear:both}
 .w3-container{padding-top:2px;padding-bottom:5px;text-align:center}
 
+.backHome{
+
+}
+
 
 @media only screen and (max-width: 700px) {
     .businessinfo-listing label{
