@@ -19,7 +19,7 @@
                     </p>
                 </div>
                 <div>
-                    <input type="text" id="validationTemp" style="display:none" required/>
+                    <input type="text" id="validationTemp" style="display:none" required />
                 </div>
                 <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
                     <h4>Submit a Free Classified Add</h4>
@@ -50,7 +50,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
@@ -70,7 +70,7 @@
                                             <input type="hidden" id="hdnCateSecondLevel" />
                                             <input type="hidden" id="hdnCateThirdLevel" />
                                         </div>
-                                        
+
                                         <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
                                             <div class="panel-heading">
                                                 <ul class="nav nav-tabs idtabCategoriesul">
@@ -89,7 +89,7 @@
                                                         <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
                                                         <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
                                                         <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
-                                                        
+
                                                         <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
                                                     </div>
 
@@ -124,7 +124,7 @@
                                                         <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
                                                         <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
                                                     </div>
-                                                   
+
 
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
                                                         @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
@@ -134,7 +134,7 @@
                                                         <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
                                                         <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
                                                     </div>
-                                                    
+
 
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
                                                         @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
@@ -278,7 +278,7 @@
                                                         <a href="javascript:void(0)">Games & Entertainment</a>
 
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -423,7 +423,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7"  data-error="please fill with travelled distance" placeholder="KM" value="" required>
+                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7" data-error="please fill with travelled distance" placeholder="KM" value="" required>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -513,8 +513,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square yards" value="" required> 
-                                                  <div class="help-block with-errors"></div>
+                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square yards" value="" required>
+                                                    <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="pro-acres" style="display:none">
@@ -1160,6 +1160,7 @@
 }
 @section Styles {
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
@@ -1168,17 +1169,20 @@
 
 @section scripts{
 
-   
-<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
-<script src="~/Scripts/Custome/post.js"></script>
+    <script src="~/Scripts/Custome/post.js"></script>
+    <script src="~/Scripts/Json/regions.js"></script>
+
 }
 
 @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Custome/account.css" rel="stylesheet" />
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>*@
+    <link href="~/Content/Custome/account.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>*@
 
 
 <script type="text/javascript">
@@ -1188,7 +1192,7 @@
 
     //    $("#cat-nav-l4").css("display", "none");
 
-        
+
     //});
 
     $(document).ready(function () {
