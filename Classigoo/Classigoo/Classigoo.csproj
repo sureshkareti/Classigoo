@@ -462,6 +462,7 @@
     <Content Include="images\icons\services\ser-taxi.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\testLogo.png" />
+    <Content Include="images\upimglogo1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrapValidator.min.js" />

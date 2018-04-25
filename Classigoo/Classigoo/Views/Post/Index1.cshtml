@@ -1,4 +1,6 @@
-﻿
+﻿@model Classigoo.PostAdd
+
+
 @{
     ViewBag.Title = "Index1";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -33,7 +35,8 @@
 
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>
+                                        @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
+                                        @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -44,10 +47,13 @@
 
                                     </div>
                                     <div class="col-md-4 col-sm-12 col-xs-12">
-                                        <select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
-                                            <option>Rent</option>
-                                            <option>Sale</option>
-                                        </select>
+                                        @Html.DropDownListFor(model => model.ddlRentOrSale, new List<SelectListItem> {
+                                            new SelectListItem { Text = "Rent", Value = "Rent"},
+                                            new SelectListItem { Text = "Sale", Value = "Sale"}}, new { style = "width:100px;height:40px;", @class = "form-control", required = "required" })
+                                        @*<select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
+                                                <option>Rent</option>
+                                                <option>Sale</option>
+                                            </select>*@
                                     </div>
                                 </div>
 
@@ -66,8 +72,11 @@
                                             <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
                                         </ol>
                                         <div>
-                                            <input type="hidden" id="hdnCateFristLevel" />
-                                            <input type="hidden" id="hdnCateSecondLevel" />
+                                            @Html.HiddenFor(model => model.hdnCateFristLevel)
+                                            @Html.HiddenFor(model => model.hdnCateSecondLevel)
+
+                                            @*<input type="hidden" id="hdnCateFristLevel" />
+                                            <input type="hidden" id="hdnCateSecondLevel" />*@
                                             <input type="hidden" id="hdnCateThirdLevel" />
                                         </div>
 
@@ -297,9 +306,11 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 col-xs-12">
-                                                    <select class="form-control" id="AVCompany_list" data-error="please select company name" required>
+
+                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category",new {  @class = "form-control", required = "required" })
+                                                    @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
                                                         <option selected>Select Category</option>
-                                                    </select>
+                                                    </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -308,7 +319,9 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -513,7 +526,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square yards" value="" required>
+                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="Please enter area in square yards" placeholder="square yards" value="" required>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -522,12 +535,10 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Acres<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtAcres" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square acres" value="" required>
+                                                    <input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
-
-
                                         </div>
 
                                     </div>
@@ -545,63 +556,66 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
+                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
                                     </div>
-                                    <div class="col-md-9">
-                                        <div class="col-md-3">
+                                    <div class="col-md-9 col-sm-12 col-xs-12">
+                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
-                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucFirst" style="width:100%;height:100px">
+
+                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
                                                         <input type="file" style="display:none" id="fucFirst" />
-                                                        <button type="button" id="btnFucFirstEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+
+                                                        <button type="button" id="btnFucFirstEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
                                                     <div style="display:none;">
-                                                        <button type="button" id="btnFucFirstDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <button type="button" id="btnFucFirstDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+
+                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
-                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucSecond" style="width:100%;height:100px">
+                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucSecond" style="width:100%;height:80px">
 
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
                                                         <input type="file" style="display:none" id="fucSecond" />
-                                                        <button type="button" id="btnFucSecondEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                        <button type="button" id="btnFucSecondEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
                                                     <div style="display:none;">
-                                                        <button type="button" id="btnFucSecondDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <button type="button" id="btnFucSecondDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
-                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucThird" style="width:100%;height:100px">
+                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucThird" style="width:100%;height:80px">
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
                                                         <input type="file" style="display:none" id="fucThird" />
-                                                        <button type="button" id="btnFucThirdEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                        <button type="button" id="btnFucThirdEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
                                                     <div style="display:none;">
-                                                        <button type="button" id="btnFucThirdDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <button type="button" id="btnFucThirdDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
-                                                <img src="~/images/cg.jpg" alt="Person" id="imgFucFour" style="width:100%;height:100px">
+                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFour" style="width:100%;height:80px">
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
                                                         <input type="file" style="display:none" id="fucFour" />
-                                                        <button type="button" id="btnFucFourEdit" style="border:1px solid white;border-radius:100%" class="btnFucEdit btn btn-primary btn-small"><span class="glyphicon glyphicon-plus"></span></button>
+                                                        <button type="button" id="btnFucFourEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
                                                     <div style="display:none;">
-                                                        <button type="button" id="btnFucFourDelete" style="border:1px solid white;border-radius:100%" class="btn btn-primary btn-small"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <button type="button" id="btnFucFourDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
                                             </div>

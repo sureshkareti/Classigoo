@@ -3152,6 +3152,10 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
         float:left;
         padding-left:0;
     }
+
+    .fileuploading{
+        margin-top:20px;
+    }
 }
 
 /*.icon.add2 {

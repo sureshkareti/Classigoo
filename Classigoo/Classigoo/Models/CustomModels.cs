@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -69,5 +70,50 @@ namespace Classigoo
         public int TotalMsgNotification { get { return (Inbox.Sum(item => item.Notification) + Sent.Sum(item => item.Notification) + Archive.Sum(item => item.Notification)); } }
     }
 
+    public class PostAdd
+    {
+        [Required]
+        public string txtTitle { set; get; }
+        public string ddlRentOrSale { set; get; }
+        public string hdnCateFristLevel { set; get; }
+        public string hdnCateSecondLevel { set; get; }
+        public string AVCompany_list { set; get; }
+        public string txtAV_Price { set; get; }
+        public string CVCompany { set; get; }
+        public string CVPrice { set; get; }
+        public string TVCompany { set; get; }
+        public string TVPrice { set; get; }
+        public string OtherCompany { set; get; }
+        public string PVCompany { set; get; }
+        public string PVPrice { set; get; }       
+        public string PVModel { set; get; }
+        public string PVYear { set; get; }
+        public string PVFuelType { set; get; }
+        public string PVKMDriven { set; get; }
 
+
+        public string PPrice { set; get; }
+        public string PBedrooms { set; get; }
+        public string PFurnishing { set; get; }
+        public string PPostedBy { set; get; }
+        public string PAvailability { set; get; }
+        public string PSquarefeet { set; get; }
+        public string PSquareYards { set; get; }
+        public string PAcres  { set; get; }
+
+
+        public string AddDiscription { set; get; }
+        public string Img1 { set; get; }
+        public string Img2 { set; get; }
+        public string Img3 { set; get; }
+        public string Img4 { set; get; }
+        public string Img5 { set; get; }
+        public string Img6 { set; get; }
+        public string Img7 { set; get; }
+        public string Img8 { set; get; }
+
+        public string Name { set; get; }
+        public string PhoneNumber { set; get; }
+
+    }
 }

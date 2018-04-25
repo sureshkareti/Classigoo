@@ -10,7 +10,7 @@ $("#fucFirst").change(function () {
     //readURL(this);
     var fileuploaded = $("#fucFirst").get(0).files;
 
-    alert(fileuploaded[0].name);
+    //alert(fileuploaded[0].name);
 
     if (fileuploaded[0]) {
         var reader = new FileReader();
@@ -28,10 +28,10 @@ $("#fucFirst").change(function () {
 });
 $("#fucSecond").change(function () {
     //readURL(this);
-    alert("2");
+   
 
     var fileuploaded = $("#fucSecond").get(0).files;
-    alert(fileuploaded[0].name);
+   
     if (fileuploaded[0]) {
         var reader = new FileReader();
 
@@ -66,7 +66,7 @@ $("#fucThird").change(function () {
 });
 
 $("#fucFour").change(function () {
-    alert('four');
+   
     //readURL(this);
     var fileuploaded = $("#fucFour").get(0).files;
     if (fileuploaded[0]) {
@@ -87,7 +87,7 @@ $("#fucFour").change(function () {
 $("#btnFucFirstDelete").click(function () {
 
     $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-    $('#imgFucFirst').attr('src', '/images/cg.jpg');
+    $('#imgFucFirst').attr('src', '/images/upimglogo1.jpg');
 
     $("#btnFucFirstEdit").parent().css('display', 'block');
     $("#btnFucFirstEdit").parent().css('text-align', 'center');
@@ -99,7 +99,7 @@ $("#btnFucFirstDelete").click(function () {
 $("#btnFucThirdDelete").click(function () {
 
     $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
-    $('#imgFucThird').attr('src', '/images/cg.jpg');
+    $('#imgFucThird').attr('src', '/images/upimglogo1.jpg');
 
     $("#btnFucThirdEdit").parent().css('display', 'block');
     $("#btnFucThirdEdit").parent().css('text-align', 'center');
@@ -111,7 +111,7 @@ $("#btnFucThirdDelete").click(function () {
 $("#btnFucSecondDelete").click(function () {
 
     $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
-    $('#imgFucSecond').attr('src', '/images/cg.jpg');
+    $('#imgFucSecond').attr('src', '/images/upimglogo1.jpg');
 
     $("#btnFucSecondEdit").parent().css('display', 'block');
     $("#btnFucSecondEdit").parent().css('text-align', 'center');
@@ -122,7 +122,7 @@ $("#btnFucSecondDelete").click(function () {
 $("#btnFucFourDelete").click(function () {
 
     $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
-    $('#imgFucFour').attr('src', '/images/cg.jpg');
+    $('#imgFucFour').attr('src', '/images/upimglogo1.jpg');
 
     $("#btnFucFourEdit").parent().css('display', 'block');
     $("#btnFucFourEdit").parent().css('text-align', 'center');
@@ -412,7 +412,7 @@ function DisplayRespectiveFields(selectedcategory) {
     var selectedCate = selectedcategory;
     if (selectedCate == "Properties") {
 
-        var selectedPrtoperty = $("#hdnCateThirdLevel").val().trim();
+        var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
 
         $("#forProperties").css('display', 'block');
 
