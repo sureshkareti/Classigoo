@@ -76,7 +76,7 @@
                                             @Html.HiddenFor(model => model.hdnCateSecondLevel)
 
                                             @*<input type="hidden" id="hdnCateFristLevel" />
-                                            <input type="hidden" id="hdnCateSecondLevel" />*@
+                                                <input type="hidden" id="hdnCateSecondLevel" />*@
                                             <input type="hidden" id="hdnCateThirdLevel" />
                                         </div>
 
@@ -84,11 +84,11 @@
                                             <div class="panel-heading">
                                                 <ul class="nav nav-tabs idtabCategoriesul">
                                                     <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                    <li style="display:none" id="idtabPro"><a href="#tabPro" data-toggle="tab">Real Estate</a></li>
-                                                    <li style="display:none" id="idtabCV"><a href="#tabCV" data-toggle="tab">Construction Vehicles</a></li>
-                                                    <li style="display:none" id="idtabTV"><a href="#tabTV" data-toggle="tab">Transportation Vehicles</a></li>
-                                                    <li style="display:none" id="idtabAV"><a href="#tabAV" data-toggle="tab">Agricultural Vehicles</a></li>
-                                                    <li style="display:none" id="idtabPV"><a href="#tabPV" data-toggle="tab">Passenger Vehicles</a></li>
+                                                    <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
+                                                    <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
+                                                    <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
+                                                    <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
+                                                    <li style="display:none" id="idtabPV"><a href="#tabPV" data-id="Passenger Vehicles" data-toggle="tab">Passenger Vehicles</a></li>
                                                 </ul>
                                             </div>
                                             <div class="panel-body">
@@ -307,10 +307,21 @@
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 col-xs-12">
 
-                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category",new {  @class = "form-control", required = "required" })
+                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange= "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                     @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
-                                                        <option selected>Select Category</option>
-                                                    </select>*@
+                                                            <option selected>Select Category</option>
+                                                        </select>*@
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="av-othercompany" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.TextBoxFor(model => model.AVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -333,9 +344,21 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select class="form-control" id="CVCompany_list" data-error="please select company name" required>
-                                                        <option selected>Select Category</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.CVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                    @*<select class="form-control" id="CVCompany_list" data-error="please select company name" required>
+                                                            <option selected>Select Category</option>
+                                                        </select>*@
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="cv-othercompany" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.TextBoxFor(model => model.CVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -344,8 +367,10 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
-                                                    @*<small class="text-muted">Please enter price in repease</small>*@
+                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
+
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -357,9 +382,21 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select class="form-control" id="TVCompany_list" data-error="please select company name" required>
-                                                        <option selected>Select Category</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.TVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                    @*<select class="form-control" id="TVCompany_list" data-error="please select company name" required>
+                                                            <option selected>Select Category</option>
+                                                        </select>*@
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="tv-othercompany" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.TextBoxFor(model => model.TVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -368,7 +405,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -380,9 +418,21 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
-                                                        <option selected>Select Category</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control",  data_error = "please select company name", required = "required" })
+                                                    @*<select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
+                                                            <option selected>Select Category</option>
+                                                        </select>*@
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" id="pv-othercompany" style="display:none">
+                                                <div class="col-md-3" style="text-align:right">
+                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    @Html.TextBoxFor(model => model.PVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -391,7 +441,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -400,9 +451,11 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="PVModel_list" class="form-control" data-error="please select model" required>
-                                                        <option>Select</option>
-                                                    </select>
+
+                                                    @Html.DropDownListFor(model => model.PVModel_list, new List<SelectListItem> { }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
+                                                    @*<select id="PVModel_list" class="form-control" data-error="please select model" required>
+                                                            <option>Select</option>
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -411,7 +464,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Year<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_Year" class="form-control col-md-7" data-error="please fill the year" placeholder="year of model" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtPV_Year, new { data_error = "please fill the year", placeholder = "year of model", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtPV_Year" class="form-control col-md-7" data-error="please fill the year" placeholder="year of model" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -420,13 +474,21 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
-                                                        <option value="">Select</option>
-                                                        <option value="Petrol">Petrol</option>
-                                                        <option value="Diesel">Diesel</option>
-                                                        <option value="LPG">LPG</option>
-                                                        <option value="CNG">CNG & Hybrids</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.PVfueltype_list, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Petrol", Text = "Petrol" },
+                                                    new SelectListItem() { Value = "Diesel", Text = "Diesel" },
+                                                     new SelectListItem() { Value = "LPG", Text = "LPG" },
+                                                       new SelectListItem() { Value = "CNG & Hybrids", Text = "CNG & Hybrids" }
+
+                                                        }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
+
+                                                    @*<select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
+                                                            <option value="">Select</option>
+                                                            <option value="Petrol">Petrol</option>
+                                                            <option value="Diesel">Diesel</option>
+                                                            <option value="LPG">LPG</option>
+                                                            <option value="CNG">CNG & Hybrids</option>
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -436,7 +498,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPV_kmdriven" class="form-control col-md-7" data-error="please fill with travelled distance" placeholder="KM" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtPV_kmdriven, new { data_error = "please fill with travelled distance", placeholder = "KM", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtPV_kmdriven" class="form-control col-md-7" data-error="please fill with travelled distance" placeholder="KM" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -449,7 +512,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill the with price", placeholder = "Please enter price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -458,14 +522,21 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
-                                                        <option value="">Select</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">4+</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.ddlBedrooms, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "1", Text = "1" },
+                                                    new SelectListItem() { Value = "2", Text = "2" },
+                                                     new SelectListItem() { Value = "3", Text = "3" },
+                                                       new SelectListItem() { Value = "4", Text = "4" },
+                                                       new SelectListItem() { Value = "5", Text = "4+"}
+                                               }, "Select Category", new { @class = "form-control", data_error = "please select number of bedrooms", required = "required" })
+                                                    @*<select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
+                                                            <option value="">Select</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">4+</option>
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -474,13 +545,19 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlBedrooms" class="form-control" data-error="please slect is furnished" required>
-                                                        <option value="">Select</option>
-                                                        <option value="Furnished">Furnished</option>
-                                                        <option value="Unfurnished">Unfurnished</option>
-                                                        <option value="Semi-Furnished">Semi-Furnished</option>
+                                                    @Html.DropDownListFor(model => model.ddlFurnishing, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Furnished", Text = "Furnished" },
+                                                    new SelectListItem() { Value = "Unfurnished", Text = "Unfurnished" },
+                                                     new SelectListItem() { Value = "Semi-Furnished", Text = "Semi-Furnished" }
+                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect is furnished", required = "required" })
 
-                                                    </select>
+                                                    @*<select id="ddlFurnishing" class="form-control" data-error="please slect is furnished" required>
+                                                            <option value="">Select</option>
+                                                            <option value="Furnished">Furnished</option>
+                                                            <option value="Unfurnished">Unfurnished</option>
+                                                            <option value="Semi-Furnished">Semi-Furnished</option>
+
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -489,12 +566,18 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Availability<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlAvailability" class="form-control" data-error="please slect status" required>
-                                                        <option value="">Select</option>
-                                                        <option value="Construction">Under Construction</option>
-                                                        <option value="Ready">Ready to Move</option>
-                                                        <option value="New-Launch">New Launch</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.ddlAvailability, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Under Construction", Text = "Under Construction" },
+                                                    new SelectListItem() { Value = "Ready to Move", Text = "Ready to Move" },
+                                                     new SelectListItem() { Value = "New Launch", Text = "New Launch" }
+                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect status", required = "required" })
+
+                                                    @*<select id="ddlAvailability" class="form-control" data-error="please slect status" required>
+                                                            <option value="">Select</option>
+                                                            <option value="Construction">Under Construction</option>
+                                                            <option value="Ready">Ready to Move</option>
+                                                            <option value="New-Launch">New Launch</option>
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -503,12 +586,20 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Posted By<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
-                                                        <option value="">Select</option>
-                                                        <option value="Owner">Owner</option>
-                                                        <option value="Dealer">Dealer</option>
-                                                        <option value="Builder">Builder</option>
-                                                    </select>
+                                                    @Html.DropDownListFor(model => model.ddlPostedBy, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Owner", Text = "Owner" },
+                                                    new SelectListItem() { Value = "Dealer", Text = "Dealer" },
+                                                     new SelectListItem() { Value = "Builder", Text = "Builder" }
+                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect user type", required = "required" })
+
+
+
+                                                    @*<select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
+                                                            <option value="">Select</option>
+                                                            <option value="Owner">Owner</option>
+                                                            <option value="Dealer">Dealer</option>
+                                                            <option value="Builder">Builder</option>
+                                                        </select>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -517,7 +608,9 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Square feet<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareFeet" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter area in square feets" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtSquareFeet, new { data_error = "Please enter area in square feets", placeholder = "square feets", @class = "form-control col-md-7", required = "required" })
+
+                                                    @*<input type="text" id="txtSquareFeet" class="form-control col-md-7" data-error="Please enter area in square feets" placeholder="square feets" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -526,7 +619,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="Please enter area in square yards" placeholder="square yards" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtSquareYards, new { data_error = "Please enter area in square yards", placeholder = "square yards", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="Please enter area in square yards" placeholder="square yards" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -535,7 +629,8 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Acres<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>
+                                                    @Html.TextBoxFor(model => model.txtAcres, new { data_error = "Please enter area in acres", placeholder = "acres", @class = "form-control col-md-7", required = "required" })
+                                                    @*<input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
                                             </div>
@@ -550,7 +645,9 @@
                                     </div>
                                     <div class="col-md-7">
 
-                                        <textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>
+                                        @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
+
+                                        @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -627,23 +724,84 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Name</label>
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Name<span style="color:#C91414">*</span></label>
 
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control col-md-7" id="txtName">
+                                        @Html.TextBoxFor(model => model.Name, new { data_error = "Please enter user name", rows = "7", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+                                        @*<input type="text" class="form-control col-md-7" id="txtName">*@
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Phone number</label>
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Phone number<span style="color:#C91414">*</span></label>
 
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control col-md-7" id="txtPhonenumber">
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", rows = "7", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+                                        @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.DropDownListFor(model => model.State, new List<SelectListItem> {
+                                       new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
+                                                     new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" id="user-district" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.DropDownListFor(model => model.District, new List<SelectListItem> {
+                                                   new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
+                                                   new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
+                                                     new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" id="user-mandal" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
+                                                    new SelectListItem() { Value = "", Text = "Select" },
+                                                   new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
+                                                   new SelectListItem() { Value = "Bela", Text = "Bela" },
+                                                   new SelectListItem() { Value = "Kothagudem", Text = "Kothagudem" },
+                                                   new SelectListItem() { Value = "Palwancha", Text = "Palwancha" },
+                                                   new SelectListItem() { Value = "Tekulapalli", Text = "Tekulapalli" },
+                                                   new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
+                                                   new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
+                                                   new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
+                                                     new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group row" id="user-localarea" style="display:none">
+                                    <div class="col-md-3" style="text-align:right">
+                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter Nearest Area</label>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.LocalArea, new { placeholder = "nearest area", @class = "form-control col-md-7" })
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" style="display:none">
                                     <div class="col-md-3" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
 
@@ -653,7 +811,7 @@
                                         <small class="text-muted">Type your city name and select the matching city</small>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" style="display:none">
                                     <div class="col-md-3" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
 
@@ -1193,51 +1351,31 @@
 
 }
 
-@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/Custome/account.css" rel="stylesheet" />
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>*@
+@if (Model != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            BindEdit();
+            var avCompnayList = @Html.Raw(Json.Encode(Model.AVCompany_list));
+            $("#AVCompany_list").val(avCompnayList);
+
+            var tvCompnayList = @Html.Raw(Json.Encode(Model.TVCompany_list));
+            $("#TVCompany_list").val(tvCompnayList);
 
 
-<script type="text/javascript">
+            var cvCompnayList = @Html.Raw(Json.Encode(Model.CVCompany_list));
+            $("#CVCompany_list").val(cvCompnayList);
 
-    //$(".backHome").click(function () {
-    //    alert("helo tes111t");
+            var pvCompnayList = @Html.Raw(Json.Encode(Model.PVCompany_list));
+            $("#PVCompany_list").val(pvCompnayList);
 
-    //    $("#cat-nav-l4").css("display", "none");
+            
+            var pvModel_list = @Html.Raw(Json.Encode(Model.PVModel_list));
+            $("#PVModel_list").val(pvModel_list);
+
+        });
+    </script>
+}
 
 
-    //});
-
-    $(document).ready(function () {
-        //var VehiclesColl = new Array();
-        //var selectedType = "";
-
-        //$('#tabCategories a').click(function () {
-        //    selectedType = $(this).text();
-        //});
-
-        //// $("#catagory_list").prop('selectedIndex', 0);
-        //$('.max-length-subcategory a').click(function () {
-
-        //    $("#catagory_list").find('option').remove();
-        //    $("#catagory_list").append('<option value="0">Select Category</option>')
-        //    var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedType);
-        //    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).text());
-        //    $.each(selectedModel[0].VehicleModel, function (i, field) {
-        //        {
-        //            $("#catagory_list").append("<option>" + field.name + "</option>");
-        //        }
-        //    });
-
-        //});
-
-        //$.get('../Scripts/Json/categories.json', function (data) {
-        //    $.each(data, function (i, field) {
-        //        VehiclesColl.push(field);
-        //    });
-
-        //});
-
-    });
-</script>

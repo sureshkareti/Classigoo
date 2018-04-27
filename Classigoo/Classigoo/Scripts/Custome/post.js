@@ -247,7 +247,8 @@ $(".tabProChilds a").click(function () {
 
     $("#divCategories").css('display', 'none');
 
-    DisplayRespectiveFields("Properties");
+    //DisplayRespectiveFields("Properties");
+    DisplayRespectiveFields();
 
 });
 
@@ -284,7 +285,8 @@ $("#tabCV a").click(function () {
 
     $("#divCategories").css('display', 'none');
 
-    DisplayRespectiveFields("Construction Vehicles");
+    //DisplayRespectiveFields("Construction Vehicles");
+    DisplayRespectiveFields();
 });
 
 //Agricultural Vehicles childs
@@ -298,7 +300,8 @@ $("#tabAV a").click(function () {
     $("#cat-nav-l4").css("display", "inline");
 
     $("#divCategories").css('display', 'none');
-    DisplayRespectiveFields("Agricultural Vehicles");
+    //DisplayRespectiveFields("Agricultural Vehicles");
+    DisplayRespectiveFields();
 });
 
 //Transportation Vehicles
@@ -312,7 +315,8 @@ $("#tabTV a").click(function () {
     $("#cat-nav-l4").css("display", "inline");
 
     $("#divCategories").css('display', 'none');
-    DisplayRespectiveFields("Transportation Vehicles");
+    //DisplayRespectiveFields("Transportation Vehicles");
+    DisplayRespectiveFields();
 });
 
 //Transportation Vehicles
@@ -328,7 +332,8 @@ $("#tabPV a").click(function () {
     $("#cat-nav-l4").css("display", "inline");
 
     $("#divCategories").css('display', 'none');
-    DisplayRespectiveFields("Passenger Vehicles");
+    //DisplayRespectiveFields("Passenger Vehicles");
+    DisplayRespectiveFields();
 });
 
 
@@ -404,12 +409,15 @@ $("#tstButton").click(function () {
     alert($("#hdnCateThirdLevel").val());
 });
 
-function DisplayRespectiveFields(selectedcategory) {
+//function DisplayRespectiveFields(selectedcategory) 
+function DisplayRespectiveFields() {
 
-
+   
     $(".forallcollapse").css('display', 'none');
 
-    var selectedCate = selectedcategory;
+    //var selectedCate = selectedcategory;
+    var selectedCate = $("#hdnCateFristLevel").val().trim();
+
     if (selectedCate == "Properties") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
@@ -512,6 +520,45 @@ function DisplayRespectiveFields(selectedcategory) {
     $("#divCategories").css("border", "none");
 
     $("#categoryValidationid").css("display", "none");
+
+}
+
+function showothercompany() {
+
+    var avSelectedCompnay = $("#AVCompany_list").val();
+    if (avSelectedCompnay == "Other") {
+        $("#av-othercompany").css("display", "block");
+    }
+    else {
+        $("#av-othercompany").css("display", "none");
+    }
+
+    var tvSelectedCompnay = $("#TVCompany_list").val();
+    if (tvSelectedCompnay == "Other") {
+        $("#tv-othercompany").css("display", "block");
+    }
+    else {
+        $("#tv-othercompany").css("display", "none");
+    }
+
+
+    var cvSelectedCompnay = $("#CVCompany_list").val();
+    if (cvSelectedCompnay == "Other") {
+        $("#cv-othercompany").css("display", "block");
+    }
+    else {
+        $("#cv-othercompany").css("display", "none");
+    }
+
+
+    var pvSelectedCompnay = $("#PVCompany_list").val();
+    if (pvSelectedCompnay == "Other") {
+        $("#pv-othercompany").css("display", "block");
+    }
+    else {
+        $("#pv-othercompany").css("display", "none");
+    }
+
 
 }
 
@@ -635,17 +682,185 @@ function fillModels() {
     });
 }
 
-
-
-
-
 //---------------------binding json data---------------------------------------//
 
 
+//---------------------Binding edit options---------------------------------------//
+window.BindEdit = function() {
+  
+    $(".forallcollapse").css('display', 'none');
+
+   
+    var selectedCate = $("#hdnCateFristLevel").val().trim();
+    var secondCategory = $("#hdnCateSecondLevel").val().trim();
+
+    $("#cat-nav-l1 span").text(selectedCate);
+
+    $("#cat-nav-l1").css("display", "inline");
+
+    $("#cat-nav-l2 span").text(secondCategory);  
+    $("#cat-nav-l2").css("display", "inline");
+
+    $("#cat-nav-l4").css("display", "inline");
+
+    $("#divCategories").css('display', 'none');
 
 
-//-------------------------- for properties validation -------------------------------
 
+    if (selectedCate == "Properties") {
+
+        var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
+
+        $("#forProperties").css('display', 'block');
+
+
+        if (selectedPrtoperty == "Agricultural Land") {
+            $("#pro-availability").css('display', 'block');
+            $("#pro-acres").css('display', 'block');
+
+            $("#pro-sqarefeets").css('display', 'none');
+            $("#pro-furnishing").css('display', 'none');
+            $("#pro-bedrooms").css('display', 'none');
+            $("#pro-squareyards").css('display', 'none');
+        }
+
+        if (selectedPrtoperty == "Plots/Land") {
+            $("#pro-availability").css('display', 'block');
+            $("#pro-squareyards").css('display', 'block');
+
+            $("#pro-sqarefeets").css('display', 'none');
+            $("#pro-furnishing").css('display', 'none');
+            $("#pro-bedrooms").css('display', 'none');
+            $("#pro-acres").css('display', 'none');
+        }
+
+
+
+        if (selectedPrtoperty == "Shops & Offices") {
+            $("#pro-availability").css('display', 'block');
+            $("#pro-sqarefeets").css('display', 'block');
+            $("#pro-furnishing").css('display', 'block');
+
+            $("#pro-bedrooms").css('display', 'none');
+            $("#pro-acres").css('display', 'none');
+            $("#pro-squareyards").css('display', 'none');
+        }
+
+        if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
+            $("#pro-availability").css('display', 'block');
+            $("#pro-sqarefeets").css('display', 'block');
+            $("#pro-furnishing").css('display', 'block');
+            $("#pro-bedrooms").css('display', 'block');
+
+            $("#pro-acres").css('display', 'none');
+            $("#pro-squareyards").css('display', 'none');
+        }
+
+
+    }
+    else if (selectedCate == "Construction Vehicles") {
+        $("#forCV").css('display', 'block');
+        fillFromJson("CV");
+
+    }
+    else if (selectedCate == "Transportation Vehicles") {
+        $("#forTV").css('display', 'block');
+        fillFromJson("TV");
+    }
+    else if (selectedCate == "Agricultural Vehicles") {
+        $("#forAV").css('display', 'block');
+        fillFromJson("AV");
+
+        var selectedSubCategory = $("#hdnCateSecondLevel").val();
+        if (selectedSubCategory == "Borewell Machine") {
+            $("#divAVPrice").css('display', 'none');
+        }
+        else {
+            $("#divAVPrice").css('display', 'block');
+        }
+
+    }
+    else if (selectedCate == "Passenger Vehicles") {
+        $("#forPV").css('display', 'block');
+        fillFromJson("PV");
+
+        var selectedSubCategory = $("#hdnCateSecondLevel").val();
+        if (selectedSubCategory == "Cars") {
+            $("#pv-model").css('display', 'block');
+            $("#pv-year").css('display', 'block');
+            $("#pv-fueltype").css('display', 'block');
+            $("#pv-kmdriven").css('display', 'block');
+        }
+        else if (selectedSubCategory == "Bikes") {
+            $("#pv-model").css('display', 'block');
+            $("#pv-year").css('display', 'block');
+            $("#pv-fueltype").css('display', 'none');
+            $("#pv-kmdriven").css('display', 'block');
+        }
+        else {
+            $("#pv-model").css('display', 'none');
+            $("#pv-year").css('display', 'none');
+            $("#pv-fueltype").css('display', 'none');
+            $("#pv-kmdriven").css('display', 'none');
+        }
+    }
+
+
+    $("#divCategories").css("border", "none");
+
+    $("#categoryValidationid").css("display", "none");
+
+    showothercompany();
+
+}
+//---------------------Binding edit options---------------------------------------//
+
+
+//---------------------States districts and mandals binding---------------------------------------//
+function getDistricts() {
+ 
+    var selectedState = $("#State").val();
+    if (selectedState != "") {
+        $("#user-district").css("display", "block");
+    }
+    else {
+     
+        $("#user-district").css("display", "none");
+        $("#user-mandal").css("display", "none");
+        $("#user-localarea").css("display", "none");
+        $("#LocalArea").val("");
+    }
+}
+
+function getMandal() {
+
+    var selectedState = $("#District").val();
+    if (selectedState != "") {
+        $("#user-mandal").css("display", "block");
+    }
+    else {
+
+        $("#user-mandal").css("display", "none");
+        $("#user-localarea").css("display", "none");
+        $("#LocalArea").val("");
+    }
+}
+
+function getLocal() {
+
+    var selectedState = $("#Mandal").val();
+    if (selectedState != "") {
+        $("#user-localarea").css("display", "block");
+    }
+    else {
+        $("#LocalArea").val("");
+        $("#user-localarea").css("display", "none");
+    }
+}
+//---------------------States districts and mandals binding---------------------------------------//
+
+
+//-------------------------- for properties validation -------------------------------//
 $("#btnSubmit").click(function () {
 
     var hiddenElements = $(':hidden');
@@ -685,6 +900,4 @@ $("#btnSubmit").click(function () {
 
     //alert($('#forProperties').css('display') == 'none');
 });
-
-
-
+//-------------------------- for properties validation -------------------------------//

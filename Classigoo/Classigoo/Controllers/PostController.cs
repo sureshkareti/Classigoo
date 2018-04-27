@@ -100,6 +100,29 @@ namespace Classigoo.Controllers
 
         public ActionResult Index1()
         {
+            bool isEdit = true;
+            if (isEdit)
+            {
+                PostAdd objPostAdd = new PostAdd();
+                objPostAdd.txtTitle = "TestTitle";
+                objPostAdd.ddlRentOrSale = "Sale";
+
+                objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
+                objPostAdd.hdnCateSecondLevel = "Tractors";
+
+                objPostAdd.txtAV_Price = "123";
+                objPostAdd.AVCompany_list = "Other";
+
+                objPostAdd.txtAddDetails = "this is test description";
+                return View(objPostAdd);
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index1(PostAdd postAdd)
+        {
+
             return View();
         }
     }

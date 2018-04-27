@@ -78,31 +78,39 @@ namespace Classigoo
         public string hdnCateFristLevel { set; get; }
         public string hdnCateSecondLevel { set; get; }
         public string AVCompany_list { set; get; }
+        public string AVOtherCompany { set; get; }
         public string txtAV_Price { set; get; }
-        public string CVCompany { set; get; }
-        public string CVPrice { set; get; }
-        public string TVCompany { set; get; }
-        public string TVPrice { set; get; }
+
+        public string CVCompany_list { set; get; }
+        public string CVOtherCompany { set; get; }
+        public string txtCV_Price { set; get; }
+
+        public string TVCompany_list { set; get; }
+        public string TVOtherCompany { set; get; }
+        public string txtTV_Price { set; get; }
+
         public string OtherCompany { set; get; }
-        public string PVCompany { set; get; }
-        public string PVPrice { set; get; }       
-        public string PVModel { set; get; }
-        public string PVYear { set; get; }
-        public string PVFuelType { set; get; }
-        public string PVKMDriven { set; get; }
+
+        public string PVCompany_list { set; get; }
+        public string PVOtherCompany { set; get; }
+        public string txtPV_price { set; get; }       
+        public string PVModel_list { set; get; }
+        public string txtPV_Year { set; get; }
+        public string PVfueltype_list { set; get; }
+        public string txtPV_kmdriven { set; get; }
 
 
-        public string PPrice { set; get; }
-        public string PBedrooms { set; get; }
-        public string PFurnishing { set; get; }
-        public string PPostedBy { set; get; }
-        public string PAvailability { set; get; }
-        public string PSquarefeet { set; get; }
-        public string PSquareYards { set; get; }
-        public string PAcres  { set; get; }
+        public string txtPro_Price { set; get; }
+        public string ddlBedrooms { set; get; }
+        public string ddlFurnishing { set; get; }
+        public string ddlPostedBy { set; get; }
+        public string ddlAvailability { set; get; }
+        public string txtSquareFeet { set; get; }
+        public string txtSquareYards { set; get; }
+        public string txtAcres { set; get; }
 
 
-        public string AddDiscription { set; get; }
+        public string txtAddDetails { set; get; }
         public string Img1 { set; get; }
         public string Img2 { set; get; }
         public string Img3 { set; get; }
@@ -115,5 +123,9 @@ namespace Classigoo
         public string Name { set; get; }
         public string PhoneNumber { set; get; }
 
+        public string State { set; get; }
+        public string District { set; get; }
+        public string Mandal { set; get; }
+        public string LocalArea { set; get; }
     }
 }
