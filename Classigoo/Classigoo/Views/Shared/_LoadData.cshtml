@@ -14,14 +14,15 @@
         padding: 50px 0px !important;
     }
 </style>
-
+@using (Html.BeginForm("ShowAdds", "New", FormMethod.Post))
+{
 <div class="filter-form filter-header-form">
     <div class="form-group outer-select-field">
      
         @*<a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
             <i class="fa fa-bars" aria-hidden="true"></i> Categories
         </a>*@
-        <select class="form-controls outer-select-input-box" id="listing_catagory_list">
+        <select class="form-controls outer-select-input-box" id="listing_catagory_list" name="category">
             <option selected>Select Category</option>
         </select>
         @*<input type="text" class="form-control outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
@@ -35,23 +36,41 @@
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
         </a>*@
         @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
-        <input type="text" id="listing_location_list" class="form-control outer-select-input-box" />
+        @*<input type="text" id="listing_location_list" class="form-control outer-select-input-box" name="location" />*@
+        <select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
+            <option selected>Select Location</option>
+        </select>
     </div>
     <div class="form-group outer-select-field">
         @*<a class="input-dropedown-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
         </a>*@
-        <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi">
+        <input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />
+        @*<input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">*@
     </div>
     <div class="btn-group" id="divSearch">
-        <button type="button" class="danger-btn" id="btnSearch">
+        <button type="submit" class="danger-btn" id="btnSearch">
             <i class="ti-search" aria-hidden="true"></i>
             Search
         </button>
 
     </div>
 </div>
+}
 
+@if (@ViewBag.FilterValues != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+           // FillCategories();
+            //FillLocations();
+            var filterValues = @ViewBag.FilterValues;
+
+            $("#listing_location_list").attr("value", filterValues.location);
+            $("#listing_catagory_list").attr("value", filterValues.category);
+        });
+    </script>
+}
     <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
@@ -59,9 +78,13 @@
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 <script>
     $(document).ready(function () {
+        var categoryColl = new Array();
+        var locationColl = new Array();
+        var searchSource=new Array();
         FillCategories();
         FillLocations();
-        var location = '@Session["Location"]';
+        FillSearchBox();
+        @*var location = '@Session["Location"]';
         if (location) {
             $("#listing_location_list").attr("value", location);
         }
@@ -70,20 +93,71 @@
             $("#listing_location_list").attr("value", "All India");
         }
         $("#btnSearch").click(function () {
-            window.location.href = "/New/ShowAdds?location=" + $("#listing_location_list").val();
-        });
-       
-        function FillCategories() {
+           // window.location.href = "/New/ShowAdds?location=" + $("#listing_location_list").val();
+           // window.location.href = "/New/ShowAdds";
+        });*@
+        function FillSearchBox()
+        {
+            jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
+                $('#listing_location_list1').autocomplete({
+                    source: searchSource,
+                    minLength: 0,
+                    scroll: true,
+                    matchContains: false,
+                    minChars: 1,
+                    autoFill: true,
+                    mustMatch: false,
+                    cacheLength: 20,
+                    max: 20
+                });
+                });
+           
+        }
+        function FillCategories()
+        {
+            $.ajax({
+                url: '/Scripts/Json/categories.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+                        categoryColl.push(field);
+                    });
+                }
+            });
+            $.each(categoryColl, function (i, field) {
+                $("#listing_catagory_list").append("<option>" + field.name + "</option>");
+                searchSource.push(field.name);
+            });
+        }
+        function FillLocations()
+        {
+            $.ajax({
+                url: '/Scripts/Json/location1.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+                        locationColl.push(field);
+                    });
+                }
+            });
+            $.each(locationColl, function (i, field) {
+                $("#listing_location_list").append("<option>" + field.name + "</option>");
+                searchSource.push(field.name);
+            });
+        }
+        function FillCategories1() {
             $.ajax({
                 url: '@Url.Action("GetCategories","Search")',
                 type: 'GET',
-                datatype:'json',
+                datatype: 'json',
                 success: function (data) {
 
                     $.each(data, function (i, field) {
                         $("#listing_catagory_list").append("<option>" + field.CategoryName + "</option>");
                     });
-                  
+
                 },
                 failure: function (response) {
                     console.log(response.responseText);
@@ -98,7 +172,7 @@
             });
         }
 
-        function FillLocations() {
+        function FillLocations1() {
             $.ajax({
                 url: '@Url.Action("GetLocations", "Search")',
                 type: 'GET',
@@ -116,30 +190,29 @@
                             source: locationColl,
                             minLength: 0,
                             scroll: true,
-                            matchContains:false, 
-                            minChars:1,  
-                            autoFill:false, 
-                            mustMatch:true, 
-                            cacheLength:20, 
-                            max:20 ,
+                            matchContains: false,
+                            minChars: 1,
+                            autoFill: false,
+                            mustMatch: true,
+                            cacheLength: 20,
+                            max: 20,
                             select: function (event, ui) {
                                 console.log(ui.item.value);
                             },
                             response: function (event, ui) {
                                 if (ui.content.length === 0) {
                                     $("#listing_location_list").val("All India");
-                                } 
+                                }
                             }
-                           
-                        }).blur(function(){
-                            if ($("#listing_location_list").val()=="")
-                            {
+
+                        }).blur(function () {
+                            if ($("#listing_location_list").val() == "") {
                                 $("#listing_location_list").val("All India");
                             }
                         })
 
-                   });
-                 
+                    });
+
                 },
                 failure: function (response) {
                     console.log(response.responseText);

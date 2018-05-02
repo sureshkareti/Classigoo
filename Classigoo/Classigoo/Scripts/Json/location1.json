@@ -1,0 +1,1602 @@
+﻿[
+  {
+    "name": "Telangana",
+    "District": [
+      {
+        "name": "Adilabad",
+        "Mondal": [
+          {
+            "name": "Bheempur"
+          },
+          {
+            "name": "Jainath"
+          },
+          {
+            "name": "Bela"
+          },
+          {
+            "name": "Gadiguda"
+          },
+          {
+            "name": "Narnoor"
+          },
+          {
+            "name": "Inderavelly"
+          },
+          {
+            "name": "Gudihathnur"
+          },
+          {
+            "name": "Adilabad Rural"
+          },
+          {
+            "name": "Adilabad Urban"
+          },
+          {
+            "name": "Mavala"
+          },
+          {
+            "name": "Tamsi"
+          },
+          {
+            "name": "Talamadugu"
+          },
+          {
+            "name": "Bazarhathnoor"
+          },
+          {
+            "name": "Boath"
+          },
+          {
+            "name": "Neradigonda"
+          },
+          {
+            "name": "Ichoda"
+          },
+          {
+            "name": "Sirikonda"
+          },
+          {
+            "name": "Utnur"
+          }
+
+        ]
+      },
+      {
+        "name": "Bhadradri Kothagudem",
+        "Mondal": [
+          {
+            "name": "Kothagudem"
+          },
+          {
+            "name": "Palwancha"
+          },
+          {
+            "name": "Tekulapalli"
+          },
+          {
+            "name": "Yellandu"
+          },
+          {
+            "name": "Chandrugonda"
+          },
+          {
+            "name": "Aswaraopeta"
+          },
+          {
+            "name": "Mulakalapalli"
+          },
+          {
+            "name": "Dammapeta"
+          },
+          {
+            "name": "Gundala"
+          },
+          {
+            "name": "Julurpadu"
+          },
+          {
+            "name": "Sujathanagar"
+          },
+          {
+            "name": "Chunchupalle"
+          },
+          {
+            "name": "Laxmidevipalli"
+          },
+          {
+            "name": "Allapalli"
+          },
+          {
+            "name": "Annapureddypally"
+          },
+          {
+            "name": "Bhadrachalam"
+          },
+          {
+            "name": "Dummugudem"
+          },
+          {
+            "name": "Cherla"
+          },
+          {
+            "name": "Burgampahad"
+          },
+          {
+            "name": "Aswapuram"
+          },
+          {
+            "name": "Manuguru"
+          },
+          {
+            "name": "Pinapaka"
+          },
+          {
+            "name": "Karakagudem"
+          }
+
+
+
+        ]
+      },
+      {
+        "name": "Hyderabad",
+        "Mondal": [
+          {
+            "name": "Nampally"
+          },
+          {
+            "name": "Shaikpet"
+          },
+          {
+            "name": "Khairatabad "
+          },
+          {
+            "name": " Asifnagar   "
+          },
+          {
+            "name": "Saidhabad"
+          },
+          {
+            "name": "Bahadurpura"
+          },
+          {
+            "name": "Bandlaguda"
+          },
+          {
+            "name": "Secunderabad"
+          },
+          {
+            "name": " Musheerabad "
+          },
+          {
+            "name": "Charminar"
+          },
+          {
+            "name": "Golconda"
+          }
+
+        ]
+      },
+      {
+        "name": "Jagtial",
+        "Mondal": [
+          {
+            "name": "Dharmapuri"
+          },
+          {
+            "name": "Buggaram"
+          },
+          {
+            "name": "Pegadapalli"
+          },
+          {
+            "name": "Gollapalli "
+          },
+          {
+            "name": "Mallial"
+          },
+          {
+            "name": "Kodimial"
+          },
+          {
+            "name": "Velgatur"
+          },
+          {
+            "name": "Korutla"
+          },
+          {
+            "name": "Metpalli"
+          },
+          {
+            "name": "Mallapur"
+          },
+          {
+            "name": "Ibrahimpatnam"
+          },
+          {
+            "name": "Medipalli"
+          },
+          {
+            "name": "Kathlapur"
+          }
+        ]
+      },
+      {
+        "name": "Jangaon",
+        "Mondal": [
+          {
+            "name": "Narmetta"
+          },
+          {
+            "name": "Raghunathapalle"
+          },
+          {
+            "name": "Tarigoppula"
+          },
+          {
+            "name": "Chilpur "
+          },
+          {
+            "name": "Zaffergadh"
+          },
+          {
+            "name": "Kodakandla"
+          },
+          {
+            "name": "Palakurthi"
+          },
+          {
+            "name": "Station Ghanpur"
+          },
+          {
+            "name": "Bachannapeta"
+          },
+          {
+            "name": "Devaruppala"
+          },
+          {
+            "name": "Gundala"
+          },
+          {
+            "name": "Jangaon"
+          },
+          {
+            "name": "Lingalaghanpur"
+          }
+        ]
+      },
+      {
+        "name": "Jayashankar Bhupalpally",
+        "Mondal": [
+          {
+            "name": "Bhupalpally"
+          },
+          {
+            "name": "Ghanpur (Mulug)"
+          },
+          {
+            "name": "Regonda"
+          },
+          {
+            "name": "Mogullapally "
+          },
+          {
+            "name": "Chityal"
+          },
+          {
+            "name": "Tekumatla (New)"
+          },
+          {
+            "name": "Manthini"
+          },
+          {
+            "name": "Malhalrao"
+          },
+          {
+            "name": "Kataram "
+          },
+          {
+            "name": "Mahadevpur"
+          },
+          {
+            "name": "Palimela (New)"
+          },
+          {
+            "name": "Mahamutharam"
+          },
+          {
+            "name": "Mulug"
+          },
+          {
+            "name": "Venkatapur"
+          },
+          {
+            "name": "Govindaraopet"
+          },
+          {
+            "name": "Tadvai"
+          },
+          {
+            "name": "Eturunagaram"
+          },
+          {
+            "name": "Kannaigudem (New)"
+          },
+          {
+            "name": "Mangapet"
+          },
+          {
+            "name": "Venkatapuram"
+          },
+          {
+            "name": "Wajedu"
+          }
+
+        ]
+      },
+      {
+        "name": "Jogulamba Gadwal",
+        "Mondal": [
+          {
+            "name": "Kaloor_Timmanadoddi"
+          },
+          {
+            "name": "Dharur"
+          },
+          {
+            "name": "Gadwal"
+          },
+          {
+            "name": "Itikyal "
+          },
+          {
+            "name": "Maldakal"
+          },
+          {
+            "name": "Ghattu"
+          },
+          {
+            "name": "Aiza"
+          },
+          {
+            "name": "Rajoli"
+          },
+          {
+            "name": "Waddepalle "
+          },
+          {
+            "name": "Manopad"
+          },
+          {
+            "name": "Undavelli"
+          },
+          {
+            "name": "Alampur"
+          }
+        ]
+      },
+      {
+        "name": "Kamareddy",
+        "Mondal": [
+          {
+            "name": "Nizamsagar"
+          },
+          {
+            "name": "Kotgir"
+          },
+          {
+            "name": "Yedpally"
+          },
+          {
+            "name": "Makloor "
+          },
+          {
+            "name": "Jakran pally"
+          },
+          {
+            "name": "Banswada"
+          },
+          {
+            "name": "Dichpally"
+          },
+          {
+            "name": "Balkonda"
+          },
+          {
+            "name": "Varni "
+          },
+          {
+            "name": "Nizamabad"
+          },
+          {
+            "name": "Penjal"
+          },
+          {
+            "name": "Velpoor"
+          },
+          {
+            "name": "Birkoor"
+          },
+          {
+            "name": "Bodhan"
+          },
+          {
+            "name": "Nandipet"
+          }
+        ]
+      },
+      {
+
+        "name": "Karimnagar",
+        "Mondal": [
+          {
+            "name": "Banswada"
+          },
+          {
+            "name": "Birkoor"
+          },
+          {
+            "name": "Bichkunda"
+          },
+          {
+            "name": "Jukkal"
+          },
+          {
+            "name": "Madnoor"
+          },
+          {
+            "name": "Nizamsagar"
+          },
+          {
+            "name": "Pitlam"
+          },
+          {
+            "name": "Bhiknoor"
+          },
+          {
+            "name": "Rajampet"
+          },
+          {
+            "name": "Kamareddy"
+          },
+          {
+            "name": "Domakonda"
+          },
+          {
+            "name": "Machareddy"
+          },
+          {
+            "name": "Ramareddy"
+          },
+          {
+            "name": "Tadwai"
+          },
+          {
+            "name": "Gandhari"
+          },
+          {
+            "name": "Lingampet"
+          },
+          {
+            "name": "Sadasivanagar"
+          },
+          {
+            "name": "Yellareddy"
+          },
+          {
+            "name": "Nagareddipet"
+          }
+        ]
+      },
+      {
+        "name": "Khammama",
+        "Mondal": [
+          {
+            "name": "Bonakal"
+          },
+          {
+            "name": "Chinthakani"
+          },
+          {
+            "name": "Raghunathapalem (New)"
+          },
+          {
+            "name": "Khammam (rural)"
+          },
+          {
+            "name": "Khammam"
+          },
+          {
+            "name": "Konijerla"
+          },
+          {
+            "name": "Kusumanchi"
+          },
+          {
+            "name": "Madhira"
+          },
+          {
+            "name": "Mudigonda"
+          },
+          {
+            "name": "Nelakondapalli"
+          },
+          {
+            "name": "Kamepalli"
+          },
+          {
+            "name": "Singareni"
+          },
+          {
+            "name": "Thirumalayapalem"
+          },
+          {
+            "name": "Wyra"
+          },
+          {
+            "name": "Yerrupalem"
+          },
+          {
+            "name": "Kalluru"
+          },
+          {
+            "name": "Thallada"
+          },
+          {
+            "name": "Enkuru"
+          },
+          {
+            "name": "Penuballi"
+          },
+          {
+            "name": "Sathupally"
+          },
+          {
+            "name": "Vemsoor"
+          },
+          {
+            "name": "Pinapaka"
+          }
+        ]
+      },
+      {
+
+        "name": "Kumuram Bheem",
+        "Mondal": [
+          {
+            "name": "Sirpur (U)"
+          },
+          {
+            "name": "Lingapur"
+          },
+          {
+            "name": "Jainoor"
+          },
+          {
+            "name": "Tiryani"
+          },
+          {
+            "name": "Asifabad"
+          },
+          {
+            "name": "Asifabad"
+          },
+          {
+            "name": "Kerameri"
+          },
+          {
+            "name": "Wankidi"
+          },
+          {
+            "name": "Rebbena"
+          },
+          {
+            "name": "Bejjur"
+          },
+          {
+            "name": "Penchicalpet"
+          },
+          {
+            "name": "Kagaznagar"
+          },
+          {
+            "name": "Chintalamanepally"
+          },
+          {
+            "name": "Koutala"
+          },
+          {
+            "name": "Dahegoan"
+          },
+          {
+            "name": "Sirpur-T"
+          }
+        ]
+      },
+      {
+
+        "name": "Mahabubabad",
+        "Mondal": [
+          {
+            "name": "Mahabubabad"
+          },
+          {
+            "name": "Kuravi"
+          },
+          {
+            "name": "Kesamudram"
+          },
+          {
+            "name": "Dornakal"
+          },
+          {
+            "name": "Gudur"
+          },
+          {
+            "name": "Kothaguda"
+          },
+          {
+            "name": "Gangaram"
+          },
+          {
+            "name": "Bayyaram"
+          },
+          {
+            "name": "Garla"
+          },
+          {
+            "name": "Chinnagudur"
+          },
+          {
+            "name": "Danthalapalle"
+          },
+          {
+            "name": "Thorrur"
+          },
+          {
+            "name": "Nellikudur"
+          },
+          {
+            "name": "Maripeda"
+          },
+          {
+            "name": "Narsimhulapet"
+          },
+          {
+            "name": "Peddavangara"
+          }
+        ]
+      },
+      {
+        "name": "Mahabubnagar",
+        "Mondal": [
+          {
+            "name": "Addakal"
+          },
+          {
+            "name": "Balanagar"
+          },
+          {
+            "name": "Bhoothpur"
+          },
+          {
+            "name": "Chinna Chinta Kunta"
+          },
+          {
+            "name": "Devarakadra"
+          },
+          {
+            "name": "Gandeed"
+          },
+          {
+            "name": "Hanwada"
+          },
+          {
+            "name": "Jadcherla"
+          },
+          {
+            "name": "Koilkonda"
+          },
+          {
+            "name": "Mahabubnagar(R) (NEW)"
+          },
+          {
+            "name": "Mahabubnagar(U)"
+          },
+          {
+            "name": "Midjil"
+          },
+          {
+            "name": "Moosapet   (NEW)"
+          },
+          {
+            "name": "Nawabpet"
+          },
+          {
+            "name": "Rajapur  (NEW)"
+          },
+          {
+            "name": "Damargidda"
+          },
+          {
+            "name": "Dhanwada"
+          },
+          {
+            "name": "Kosgi"
+          },
+          {
+            "name": "Krishna  (NEW)"
+          },
+          {
+            "name": "Maddur"
+          },
+          {
+            "name": "Maganoor"
+          },
+          {
+            "name": "Makthal"
+          },
+          {
+            "name": "Marikal  (NEW)"
+          },
+          {
+            "name": "Narayanpet"
+          },
+          {
+            "name": "Narwa"
+          },
+          {
+            "name": "Utkoor"
+          }
+
+        ]
+      },
+      {
+        "name": "Mancherial",
+        "Mondal": [
+          {
+            "name": "Hajipur (new)"
+          },
+          {
+            "name": "Mandamarri"
+          },
+          {
+            "name": "Dandepally"
+          },
+          {
+            "name": "Jannaram"
+          },
+          {
+            "name": "Kasipet"
+          },
+          {
+            "name": "Bellampally"
+          },
+          {
+            "name": "Vemanpally"
+          },
+          {
+            "name": "Nennel"
+          },
+          {
+            "name": "Tandur"
+          },
+          {
+            "name": "Bheemini"
+          },
+          {
+            "name": "Kannepally (new)"
+          }
+
+        ]
+      },
+      {
+        "name": "Medak",
+        "Mondal": [
+          {
+            "name": "Narsapur"
+          },
+          {
+            "name": "Sivampeta"
+          },
+          {
+            "name": "Koudipalli"
+          },
+          {
+            "name": "Kulcharam"
+          },
+          {
+            "name": "Chilpched"
+          },
+          {
+            "name": "Anantasagar"
+          },
+          {
+            "name": "Ramayampeta"
+          },
+          {
+            "name": "Nizampeta"
+          },
+          {
+            "name": "Yeldurthi"
+          },
+          {
+            "name": "Chegunta"
+          },
+          {
+            "name": "Narsingi"
+          },
+          {
+            "name": "Tupran"
+          },
+          {
+            "name": "Manoharabad"
+          }
+
+        ]
+      },
+      {
+        "name": "Medchal",
+        "Mondal": [
+          {
+            "name": "Ghatkesar"
+          },
+          {
+            "name": "Kapra"
+          },
+          {
+            "name": "Keesara"
+          },
+          {
+            "name": "Medchal"
+          },
+          {
+            "name": "Medipally"
+          },
+          {
+            "name": "Shamirpet"
+          },
+          {
+            "name": "Uppal"
+          }
+        ]
+      },
+      {
+        "name": "Nagarkurnool",
+        "Mondal": [
+          {
+            "name": "Charakonda"
+          },
+          {
+            "name": "Vangoor"
+          },
+          {
+            "name": "Veldanda"
+          },
+          {
+            "name": "Achampet"
+          },
+          {
+            "name": "Padara"
+          },
+          {
+            "name": "Amrabad"
+          }
+        ]
+      },
+      {
+        "name": "Nalgonda",
+        "Mondal": [
+          {
+            "name": "Thipparthy"
+          },
+          {
+            "name": "Kanagal"
+          },
+          {
+            "name": "Chandur"
+          },
+          {
+            "name": "Munugode"
+          },
+          {
+            "name": "Miryalaguda"
+          },
+          {
+            "name": "Vemulapalli"
+          },
+          {
+            "name": "Damaracherla"
+          },
+          {
+            "name": "Advidevulapally (New)"
+          },
+          {
+            "name": "Madugulapally (new)"
+          },
+          {
+            "name": "Nidmanoor"
+          },
+          {
+            "name": "Tripuraram"
+          },
+          {
+            "name": "Anumula (Halia)"
+          },
+          {
+            "name": "Tirumalagiri(Sagar)"
+          },
+          {
+            "name": "Peddavoora"
+          },
+          {
+            "name": "Devarakonda"
+          },
+          {
+            "name": "Kondamallepally (New)"
+          },
+          {
+            "name": "P.A.Palli"
+          },
+          {
+            "name": "Gundlapalli (Dindi)"
+          },
+          {
+            "name": "Chandampet"
+          },
+          {
+            "name": "Neredugommu (New)"
+          },
+          {
+            "name": "Nampalli"
+          },
+          {
+            "name": "Marriguda"
+          },
+          {
+            "name": "Chinthapalli"
+          },
+          {
+            "name": "Gurrampode"
+          }
+
+        ]
+      },
+      {
+        "name": "Nirmal",
+        "Mondal": [
+          {
+            "name": "Kubeer"
+          },
+          {
+            "name": "Kuntala"
+          },
+          {
+            "name": "Bhainsa"
+          },
+          {
+            "name": "Mudhole"
+          },
+          {
+            "name": "Basar*"
+          },
+          {
+            "name": "Lokeshwaram"
+          },
+          {
+            "name": "Tanoor"
+          }
+        ]
+      },
+      {
+
+        "name": "Nizamabad",
+        "Mondal": [
+          {
+            "name": "Armoor"
+          },
+          {
+            "name": "Balkonda"
+          },
+          {
+            "name": "Mupkal"
+          },
+          {
+            "name": "Mendora"
+          },
+          {
+            "name": "Kammar palle"
+          },
+          {
+            "name": "Velpur"
+          },
+          {
+            "name": "Morthad"
+          },
+          {
+            "name": "Bheemgal"
+          },
+          {
+            "name": "Jakranpally"
+          },
+          {
+            "name": "Nandipet"
+          },
+          {
+            "name": "Yergatla"
+          },
+          {
+            "name": "Bodhan"
+          },
+          {
+            "name": "Yedapally"
+          },
+          {
+            "name": "Renjal"
+          },
+          {
+            "name": "Kotagiri"
+          },
+          {
+            "name": "Varni"
+          },
+          {
+            "name": "Rudrur"
+          },
+          {
+            "name": "Nizamabad (South)"
+          },
+          {
+            "name": "Nizamabad (North)"
+          },
+          {
+            "name": "Nizamabad Rural"
+          },
+          {
+            "name": "Mugpal"
+          },
+          {
+            "name": "Dichpally"
+          },
+          {
+            "name": "Dharpally"
+          },
+          {
+            "name": "Indalwai"
+          },
+          {
+            "name": "Makloor"
+          },
+          {
+            "name": "Sirikonda"
+          },
+          {
+            "name": "Navipet"
+          }
+
+        ]
+      },
+      {
+        "name": "Peddapalli",
+        "Mondal": [
+          {
+            "name": "Peddapalli"
+          },
+          {
+            "name": "Odela"
+          },
+          {
+            "name": "Sulthanabad"
+          },
+          {
+            "name": "Julapalli"
+          },
+          {
+            "name": "Eligaid"
+          },
+          {
+            "name": "Dharmaram"
+          },
+          {
+            "name": "Ramagundam"
+          },
+          {
+            "name": "Anthergaon"
+          },
+          {
+            "name": "Palakurthy"
+          },
+          {
+            "name": "Srirampur"
+          },
+          {
+            "name": "Kamanpur"
+          },
+          {
+            "name": "Ramagiri"
+          },
+          {
+            "name": "Manthani"
+          },
+          {
+            "name": "Mutharam (MNT)"
+          }
+
+        ]
+      },
+      {
+
+        "name": "Rajanna Sircilla",
+        "Mondal": [
+          {
+            "name": "Sircilla"
+          },
+          {
+            "name": "Thangallapalli"
+          },
+          {
+            "name": "Gambhiraopet"
+          },
+          {
+            "name": "Vemulawada"
+          },
+          {
+            "name": "Vemulawada Rural"
+          },
+          {
+            "name": "Chandurthi"
+          },
+          {
+            "name": "Rudrangi"
+          },
+          {
+            "name": "Boinpalli"
+          },
+          {
+            "name": "Yellareddipet"
+          },
+          {
+            "name": "Veernapalli"
+          },
+          {
+            "name": "Mustabad"
+          },
+          {
+            "name": "Illanthakunta"
+          },
+          {
+            "name": "Konaraopet"
+          }
+
+        ]
+      },
+      {
+
+        "name": "Rangareddy",
+        "Mondal": [
+          {
+            "name": "Marpally"
+          },
+          {
+            "name": "Mominpet"
+          },
+          {
+            "name": "Nawabpet"
+          },
+          {
+            "name": "Shankarpally"
+          },
+          {
+            "name": "Quthbullapur"
+          },
+          {
+            "name": "Medchal"
+          },
+          {
+            "name": "Shamirpet"
+          },
+          {
+            "name": "Keesara"
+          },
+          {
+            "name": "Ghatkesar"
+          },
+          {
+            "name": "Hayathnagar"
+          },
+          {
+            "name": "Saroornagar"
+          },
+          {
+            "name": "Rajendranagar"
+          },
+          {
+            "name": "Moinabad"
+          },
+          {
+            "name": "Chevella"
+          },
+          {
+            "name": "Vikarabad"
+          },
+          {
+            "name": "Darur"
+          },
+          {
+            "name": "Bantwaram"
+          },
+          {
+            "name": "Peddemul"
+          },
+          {
+            "name": "Tandur"
+          },
+          {
+            "name": "Basheerabad"
+          },
+          {
+            "name": "Yalal"
+          },
+          {
+            "name": "Doma"
+          },
+          {
+            "name": "Gandeed"
+          },
+          {
+            "name": "Kulkacharla"
+          },
+          {
+            "name": "pargi"
+          },
+          {
+            "name": "Pudur"
+          },
+          {
+            "name": "Shabad"
+          },
+          {
+            "name": "Shamshabad"
+          },
+          {
+            "name": "Maheswaram"
+          },
+          {
+            "name": "Ibrahimpatnam"
+          },
+          {
+            "name": "Manchal"
+          },
+          {
+            "name": "Yacharam"
+          },
+          {
+            "name": "Kandukur"
+          },
+          {
+            "name": "Serilingampally- Urban"
+          },
+          {
+            "name": "Malkajgiri- Urban"
+          },
+          {
+            "name": "Rajendranagar - Urban"
+          },
+          {
+            "name": "Kukatpally - Urban"
+          },
+          {
+            "name": "LB Nagar - Urban"
+          },
+          {
+            "name": "Uppal- Urban"
+          },
+          {
+            "name": "Kapra- Urban"
+          },
+          {
+            "name": "Quthbullapur - Urban"
+          },
+          {
+            "name": "Alwal - Urban"
+          },
+          {
+            "name": "Vikarabad - Urban"
+          },
+          {
+            "name": "Tadur - Urban"
+          },
+          {
+            "name": "Gaddiyannaram - Urban"
+          },
+          {
+            "name": "Balanagar"
+          },
+          {
+            "name": "Serilingampally"
+          },
+          {
+            "name": "Malkajgiri"
+          },
+          {
+            "name": "Uppal Y"
+          }
+
+
+
+        ]
+      },
+      {
+        "name": "Sangareddy",
+        "Mondal": [
+          {
+            "name": "Kalher"
+          },
+          {
+            "name": "Kangti"
+          },
+          {
+            "name": "Manoor"
+          },
+          {
+            "name": "Nagilgidda"
+          },
+          {
+            "name": "Narayankhed"
+          },
+          {
+            "name": "Sirgapoor"
+          },
+          {
+            "name": "Ameenpur"
+          },
+          {
+            "name": "Andole"
+          },
+          {
+            "name": "Gummadidala"
+          },
+          {
+            "name": "Hathnoora"
+          },
+          {
+            "name": "Jinnaram"
+          },
+          {
+            "name": "Kandi"
+          },
+          {
+            "name": "Kondapur"
+          },
+          {
+            "name": "Munipally"
+          },
+          {
+            "name": "Patancheru"
+          },
+          {
+            "name": "Pulkal"
+          },
+          {
+            "name": "Ramchandrapuram"
+          },
+          {
+            "name": "Sadasivpet"
+          },
+          {
+            "name": "Sangareddy"
+          },
+          {
+            "name": "Vatpally"
+          },
+          {
+            "name": "Jharasangam"
+          },
+          {
+            "name": "Kohir"
+          },
+          {
+            "name": "Mogudampally"
+          },
+          {
+            "name": "Nyalkal"
+          },
+          {
+            "name": "Raikode"
+          },
+          {
+            "name": "Zahirabad"
+          }
+        ]
+      },
+      {
+        "name": "Siddipet",
+        "Mondal": [
+          {
+            "name": "Raipole"
+          },
+          {
+            "name": "Cherial"
+          },
+          {
+            "name": "Komuravelli"
+          },
+          {
+            "name": "Husnabad"
+          },
+          {
+            "name": "Akkannapet"
+          },
+          {
+            "name": "Koheda"
+          },
+          {
+            "name": "Bejjanki"
+          },
+          {
+            "name": "Maddur"
+          }
+        ]
+      },
+      {
+        "name": "Suryapet",
+        "Mondal": [
+          {
+            "name": "Nereducherla"
+          },
+          {
+            "name": "Nagaram"
+          },
+          {
+            "name": "Maddirala"
+          },
+          {
+            "name": "Palakeedu"
+          },
+          {
+            "name": "Chilkur"
+          },
+          {
+            "name": "Huzurnagar"
+          },
+          {
+            "name": "Kodad"
+          },
+          {
+            "name": "Mattampally"
+          },
+          {
+            "name": "Mellachervu"
+          },
+          {
+            "name": "Munagala"
+          },
+          {
+            "name": "Nadigudem"
+          },
+          {
+            "name": "Ananthagiri"
+          },
+          {
+            "name": "Mallareddygudem"
+          }
+        ]
+      },
+      {
+        "name": "Vikarabad",
+        "Mondal": [
+          {
+            "name": "Kulkacherla"
+          },
+          {
+            "name": "Kotepally"
+          },
+          {
+            "name": "Marpalle"
+          },
+          {
+            "name": "Mominpet"
+          },
+          {
+            "name": "Nawabpet"
+          },
+          {
+            "name": "Pudur"
+          },
+          {
+            "name": "Parigi"
+          },
+          {
+            "name": "Vikarabad"
+          }
+        ]
+      },
+      {
+        "name": "Wanaparthy",
+        "Mondal": [
+          {
+            "name": "Revally"
+          },
+          {
+            "name": "Srirangapur"
+          },
+          {
+            "name": "Veepanagandla"
+          },
+          {
+            "name": "Wanaparthy"
+          }
+        ]
+      },
+      {
+        "name": "Warangal (Rural)",
+        "Mondal": [
+          {
+            "name": "Duggondi"
+          },
+          {
+            "name": "Khanapur"
+          },
+          {
+            "name": "Narsampet"
+          },
+          {
+            "name": "Nallabelly"
+          },
+          {
+            "name": "Nekkonda"
+          }
+        ]
+      },
+      {
+        "name": "Warangal (Urban)",
+        "Mondal": [
+          {
+            "name": "Warangal"
+          }
+        ]
+      },
+      {
+        "name": "Yadadri Bhuvanagiri",
+        "Mondal": [
+          {
+            "name": "Yadagirigutta"
+          },
+          {
+            "name": "B.Pochampally"
+          },
+          {
+            "name": "Choutuppal"
+          },
+          {
+            "name": "Narayanpur"
+          },
+          {
+            "name": "Ramannapet"
+          },
+          {
+            "name": "Valigonda"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Andhra Pradesh",
+    "District": [
+      {
+        "name": "Anantapur",
+        "Mondal": [
+          {
+            "name": ""
+          }
+        ]
+      },
+      {
+
+      }
+    ]
+  }
+    ]
+  

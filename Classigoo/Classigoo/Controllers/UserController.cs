@@ -151,9 +151,6 @@ namespace Classigoo.Controllers
         return IsUserExist;
 
     }
-
-
-
         public ActionResult UnableToLogin()
         {
             return View();
@@ -441,6 +438,71 @@ namespace Classigoo.Controllers
         {
             Session.Remove("UserId");
             return RedirectToAction("Login","User");
+        }
+        public ActionResult Admin()
+        {
+            List<Add> addColl = new List<Add>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string url = "http://localhost:51797/api/UserApi/Admin";
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Add>>();
+                        readTask.Wait();
+
+                        addColl = readTask.Result;
+
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(addColl);   
+        }
+        public ActionResult UpdateAddStatus(int addId,string status)
+        {
+            using (var client = new HttpClient())
+            {
+              
+                string url = "http://localhost:51797/api/UserApi/UpdateAddStatus/?addId=" + addId + "&status=" + status;
+                client.BaseAddress = new Uri(url);
+                var postTask = client.PutAsJsonAsync(url, addId);
+                try
+                {
+                    postTask.Wait();
+                }
+                catch (Exception ex)
+                {
+
+                }
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                  return RedirectToAction("Admin", "User");
+                }
+                else
+                {
+                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                    return RedirectToAction("","");
+                }
+
+            }
         }
     }
     }

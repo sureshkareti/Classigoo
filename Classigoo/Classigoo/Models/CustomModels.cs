@@ -29,7 +29,12 @@ namespace Classigoo
         public Electronic Electronics { set; get; }
         //public List<tbl_Messages> tbl_Messages { get; set; }
     }
-
+    public class FiterOptions
+    {
+        public string category { set; get; }
+        public string location { set; get; }
+        public string searchKeyword { set; get; }
+    }
     public class MessageDetail
     {
         public int MsgId { get; set; }

@@ -306,5 +306,48 @@ namespace Classigoo.Controllers
             }
             return customAdd;
         }
+        [HttpGet]
+        [ActionName("Admin")]
+        public  IHttpActionResult Admin()
+        {
+            List<Add> coll = new List<Add>();
+            coll = db.Adds.ToList();
+            if (coll.Count > 0)
+            {
+                return Ok(coll);
+            }
+            else
+                return NotFound();
+        }
+        [HttpPut]
+        [ActionName("UpdateAddStatus")]
+        public IHttpActionResult UpdateAddStatus(int addId,string status)
+        {
+            try
+            {
+                Add add = db.Adds.Find(addId);
+                add.Status = status;
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                db.Entry(add).State = EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
     }
 }

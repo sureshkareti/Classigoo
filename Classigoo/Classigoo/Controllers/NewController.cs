@@ -18,9 +18,14 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        public ActionResult ShowAdds(string location)
+        [HttpPost]
+        public ActionResult ShowAdds(FormCollection coll)
         {
-            Session["Location"] = location;
+            FiterOptions filterOptions = new FiterOptions();
+            filterOptions.category  = coll["category"];
+            filterOptions.location = coll["location"];
+            filterOptions.searchKeyword = coll["searchKeyword"];
+            ViewBag.FilterValues = filterOptions;
             return View(GetAdds(1));
         }
         [HttpPost]

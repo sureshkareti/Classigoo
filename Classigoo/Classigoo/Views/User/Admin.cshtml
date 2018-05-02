@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Add>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> statusCollection = new List<SelectListItem>();
+
+    statusCollection.Add(new SelectListItem { Text = "Active", Value = "Active" });
+    statusCollection.Add(new SelectListItem { Text = "In Review", Value = "In Review" });
+    statusCollection.Add(new SelectListItem { Text = "In Active", Value = "In Active" });
+    statusCollection.Add(new SelectListItem { Text = "Reject", Value = "Reject" });
+    WebGrid grid = new WebGrid(source: Model,
+    rowsPerPage: 5);
+}<div class="row" style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
+
+    <div class="row" style="min-height:150px;text-align:center">
+        @grid.GetHtml(
+                        tableStyle: "table table-bordered",
+                        rowStyle: "tcenter",
+                        columns: grid.Columns(
+grid.Column("AddId", "AddId", format: @<text> <span> <label id="addId">@item.AddId</label> </span></text>),
+ grid.Column("Created", header: "CreatedDate"),
+ grid.Column("Category", "Category"),
+ grid.Column("Location", "Location"),
+ grid.Column("Status", "Status", format: @<text> <span class="display-mode"> <label id="lblSurName">@item.Status</label> </span> 
+  @Html.DropDownList("ddlStatus", statusCollection, new {@class="edit-mode"})</text>, style: "col2Width"),
+    grid.Column(header: "Preview", format: (add) =>
+    {
+        var link = Html.ActionLink("Preview", "PreviewAdd", "User",
+                                new { addId = add.AddId }, new { });
+        return link;
+    }),
+     grid.Column("Action", format: @<text>
+        <button class="edit-user display-mode">Edit</button>
+        <button class="save-user edit-mode">Save</button>
+        <button class="cancel-user edit-mode">Cancel</button>
+    </text>, style: "col3Width", canSort: false)
+    //grid.Column(header: "UpdateAddStatus", format: (add) =>
+    //{
+    //    var link = Html.ActionLink("UpdateAddStatus", "UpdateAddStatus", new { addId = add.AddId, status = "Active" });
+    //    return link;
+    //})
+    ))
+        @*<p>No Messages are </p>*@
+    </div>
+    </div>
+    @section Styles {
+        <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+        <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
+    }
+<script>
+    $(document).ready(function ()
+    {
+    $('.edit-mode').hide();
+        $('.edit-user, .cancel-user').on('click', function () {
+            var tr = $(this).parents('tr:first');
+            tr.find('.edit-mode, .display-mode').toggle();
+        });
+        $('.save-user').on('click', function () {
+            var tr = $(this).parents('tr:first');
+            var status = tr.find("#ddlStatus").val();
+            var addId = tr.find("#addId").text();
+            $.ajax({
+                url: '/User/UpdateAddStatus/',
+                data: { addId: addId, status: status },
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    window.location.href = "/User/Admin";
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        });
+    });
+</script>
+    
