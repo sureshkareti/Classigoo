@@ -25,6 +25,9 @@ $("#fucFirst").change(function () {
     $("#btnFucFirstDelete").parent().css('display', 'block');
     $("#btnFucFirstDelete").parent().css('text-align', 'center');
 
+    //validation
+    removeerrorImg1();
+
 });
 $("#fucSecond").change(function () {
     //readURL(this);
@@ -87,19 +90,25 @@ $("#fucFour").change(function () {
 $("#btnFucFirstDelete").click(function () {
 
     $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-    $('#imgFucFirst').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucFirstEdit").parent().css('display', 'block');
     $("#btnFucFirstEdit").parent().css('text-align', 'center');
 
     $("#btnFucFirstDelete").parent().css('display', 'none');
 
+    $("#divimgFucFirst").css("border", "none");
+    $("#divimgFucFirstError").css("display", "none");
+
+    //validation
+    showerrorImg1();
+
 });
 
 $("#btnFucThirdDelete").click(function () {
 
     $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
-    $('#imgFucThird').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucThird').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucThirdEdit").parent().css('display', 'block');
     $("#btnFucThirdEdit").parent().css('text-align', 'center');
@@ -111,7 +120,7 @@ $("#btnFucThirdDelete").click(function () {
 $("#btnFucSecondDelete").click(function () {
 
     $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
-    $('#imgFucSecond').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucSecondEdit").parent().css('display', 'block');
     $("#btnFucSecondEdit").parent().css('text-align', 'center');
@@ -122,7 +131,7 @@ $("#btnFucSecondDelete").click(function () {
 $("#btnFucFourDelete").click(function () {
 
     $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
-    $('#imgFucFour').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucFour').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucFourEdit").parent().css('display', 'block');
     $("#btnFucFourEdit").parent().css('text-align', 'center');
@@ -895,9 +904,38 @@ $("#btnSubmit").click(function () {
         }
     }
 
+   
+    if ($("#txtAddDetails").val() != "") {
+
+        var firstImgvalue = $("#imgFucFirst").attr('src');
+
+        if (firstImgvalue == "/images/upimglogo1.png") {
+
+            showerrorImg1();
+           
+            return false;
+        }
+    }
+
+  
 
 
 
     //alert($('#forProperties').css('display') == 'none');
 });
+
+function showerrorImg1() {
+    $("#divimgFucFirst").css("border", "1px solid #a94442");
+    $("#divimgFucFirst").css("box-shadow", "0 1px 1px rgba(0,0,0,.075)");
+    $("#divimgFucFirst").focusin();
+
+    $("#divimgFucFirstError").css("display", "block");
+}
+
+function removeerrorImg1() {
+
+    $("#divimgFucFirst").css("border", "none");
+    $("#divimgFucFirstError").css("display", "none");
+}
+
 //-------------------------- for properties validation -------------------------------//

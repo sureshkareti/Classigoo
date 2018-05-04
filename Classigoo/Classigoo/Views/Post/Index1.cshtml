@@ -657,8 +657,14 @@
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
                                     </div>
                                     <div class="col-md-9 col-sm-12 col-xs-12">
+                                        <div  style="padding:0px;margin:0">
+                                            <p style="line-height: 26px;font-size: 14px;font-family:'Poppins', sans-serif;">
+                                               Please upload atlest <strong>one</strong> image and <strong><span style="color:#fd880a">first</span></strong> image will be your main photo.
+                                            </p>
+                                        </div>
                                         <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
-                                            <div class="w3-card fileuploading">
+                                           
+                                            <div class="w3-card fileuploading" id="divimgFucFirst">
 
                                                 <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
                                                 <div class="w3-container">
@@ -671,6 +677,9 @@
                                                         <button type="button" id="btnFucFirstDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div style="text-align:center;padding-top:5px;display:none" id="divimgFucFirstError" >
+                                                <span style="color:#a94442;cursor:pointer;font-size:20px;" title="please upload image"><i class="fa fa-exclamation-triangle"></i></span>
                                             </div>
                                         </div>
 
