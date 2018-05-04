@@ -828,7 +828,7 @@ window.BindEdit = function () {
 //---------------------States districts and mandals binding---------------------------------------//
 
 window.loadStates = function () {
-
+   
     var locations = new Array();
     var states = new Array();
     $.ajax({

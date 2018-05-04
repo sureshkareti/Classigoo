@@ -1381,8 +1381,8 @@
 @if (Model != null)
 {
     <script type="text/javascript">
-        $(document).ready(function() {
-
+        $(document).ready(function() {          
+                    
             BindEdit();
             var avCompnayList = @Html.Raw(Json.Encode(Model.AVCompany_list));
             $("#AVCompany_list").val(avCompnayList);
@@ -1401,7 +1401,16 @@
             var pvModel_list = @Html.Raw(Json.Encode(Model.PVModel_list));
             $("#PVModel_list").val(pvModel_list);
 
-            loadStates();
+            //loadStates();
+           
+        });
+    </script>
+}
+else
+{
+    <script type="text/javascript">
+        $(document).ready(function() {         
+            loadStates();          
         });
     </script>
 }

@@ -76,8 +76,7 @@ namespace Classigoo
     }
 
     public class PostAdd
-    {
-        [Required]
+    {      
         public string txtTitle { set; get; }
         public string ddlRentOrSale { set; get; }
         public string hdnCateFristLevel { set; get; }

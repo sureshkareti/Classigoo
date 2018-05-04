@@ -100,28 +100,53 @@ namespace Classigoo.Controllers
 
         public ActionResult Index1()
         {
-            bool isEdit = true;
-            if (isEdit)
-            {
-                PostAdd objPostAdd = new PostAdd();
-                objPostAdd.txtTitle = "TestTitle";
-                objPostAdd.ddlRentOrSale = "Sale";
+            //bool isEdit = true;
+            //if (isEdit)
+            //{
+            //    PostAdd objPostAdd = new PostAdd();
+            //    objPostAdd.txtTitle = "TestTitle";
+            //    objPostAdd.ddlRentOrSale = "Sale";
 
-                objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
-                objPostAdd.hdnCateSecondLevel = "Tractors";
+            //    objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
+            //    objPostAdd.hdnCateSecondLevel = "Tractors";
 
-                objPostAdd.txtAV_Price = "123";
-                objPostAdd.AVCompany_list = "Other";
+            //    objPostAdd.txtAV_Price = "123";
+            //    objPostAdd.AVCompany_list = "Other";
 
-                objPostAdd.txtAddDetails = "this is test description";
-                return View(objPostAdd);
-            }
+            //    objPostAdd.txtAddDetails = "this is test description";
+            //    return View(objPostAdd);
+            //}
 
             return View();
         }
         [HttpPost]
         public ActionResult Index1(PostAdd postAdd)
         {
+            string img1 = "http://dataquotum.somee.com/Photos/pv.jpg";
+            string img2 = "http://dataquotum.somee.com/Photos/tv.jpg";
+            string img3 = "http://dataquotum.somee.com/Photos/cv.jpg";
+            string img4 = "http://dataquotum.somee.com/Photos/av.jpg";
+
+            if (postAdd.hdnCateFristLevel == "Real Estate")
+            {
+
+            }
+            else if (postAdd.hdnCateFristLevel == "Construction Vehicles")
+            {
+
+            }
+            else if (postAdd.hdnCateFristLevel == "Transportation Vehicles")
+            {
+
+            }
+            else if (postAdd.hdnCateFristLevel == "Agricultural Vehicles")
+            {
+
+            }
+            else if (postAdd.hdnCateFristLevel == "Passenger Vehicles")
+            {
+
+            }
 
             return View();
         }
