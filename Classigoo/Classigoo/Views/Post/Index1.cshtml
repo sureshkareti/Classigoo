@@ -307,7 +307,7 @@
                                                 </div>
                                                 <div class="col-md-4 col-sm-12 col-xs-12">
 
-                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange= "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                     @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
                                                             <option selected>Select Category</option>
                                                         </select>*@
@@ -418,7 +418,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control",  data_error = "please select company name", required = "required" })
+                                                    @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                     @*<select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
                                                             <option selected>Select Category</option>
                                                         </select>*@
@@ -649,6 +649,7 @@
 
                                         @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
                                         <div class="help-block with-errors"></div>
+
                                     </div>
                                 </div>
 
@@ -657,13 +658,13 @@
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
                                     </div>
                                     <div class="col-md-9 col-sm-12 col-xs-12">
-                                        <div  style="padding:0px;margin:0">
+                                        <div style="padding:0px;margin:0">
                                             <p style="line-height: 26px;font-size: 14px;font-family:'Poppins', sans-serif;">
-                                               Please upload atlest <strong>one</strong> image and <strong><span style="color:#fd880a">first</span></strong> image will be your main photo.
+                                                Please upload atlest <strong>one</strong> image and <strong><span style="color:#fd880a">first</span></strong> image will be your main photo.
                                             </p>
                                         </div>
                                         <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
-                                           
+
                                             <div class="w3-card fileuploading" id="divimgFucFirst">
 
                                                 <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
@@ -678,7 +679,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="text-align:center;padding-top:5px;display:none" id="divimgFucFirstError" >
+                                            <div style="text-align:center;padding-top:5px;display:none" id="divimgFucFirstError">
                                                 <span style="color:#a94442;cursor:pointer;font-size:20px;" title="please upload image"><i class="fa fa-exclamation-triangle"></i></span>
                                             </div>
                                         </div>
@@ -758,10 +759,14 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.DropDownListFor(model => model.State, new List<SelectListItem> {
-                                       new SelectListItem() { Value = "", Text = "Select" },
-                                                   new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
-                                                     new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })
+                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+
+                                        @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
+                                            new SelectListItem() { Value = "", Text = "Select" },
+                                                        new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
+                                                          new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })*@
+
+
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -771,11 +776,16 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.DropDownListFor(model => model.District, new List<SelectListItem> {
-                                                   new SelectListItem() { Value = "", Text = "Select" },
-                                                   new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
-                                                   new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
-                                                     new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })
+
+                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+
+                                        @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
+                                            new SelectListItem() { Value = "", Text = "Select" },
+                                            new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
+                                            new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
+                                              new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })*@
+
+
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -785,7 +795,13 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
+
+                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+
+
+
+
+                                        @*@Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
                                                     new SelectListItem() { Value = "", Text = "Select" },
                                                    new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
                                                    new SelectListItem() { Value = "Bela", Text = "Bela" },
@@ -795,7 +811,9 @@
                                                    new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
                                                    new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
                                                    new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
-                                                     new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })
+                                                     new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })*@
+                                        
+                                        
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -1379,10 +1397,11 @@
             var pvCompnayList = @Html.Raw(Json.Encode(Model.PVCompany_list));
             $("#PVCompany_list").val(pvCompnayList);
 
-            
+
             var pvModel_list = @Html.Raw(Json.Encode(Model.PVModel_list));
             $("#PVModel_list").val(pvModel_list);
 
+            loadStates();
         });
     </script>
 }
