@@ -25,13 +25,16 @@ $("#fucFirst").change(function () {
     $("#btnFucFirstDelete").parent().css('display', 'block');
     $("#btnFucFirstDelete").parent().css('text-align', 'center');
 
+    //validation
+    removeerrorImg1();
+
 });
 $("#fucSecond").change(function () {
     //readURL(this);
-   
+
 
     var fileuploaded = $("#fucSecond").get(0).files;
-   
+
     if (fileuploaded[0]) {
         var reader = new FileReader();
 
@@ -66,7 +69,7 @@ $("#fucThird").change(function () {
 });
 
 $("#fucFour").change(function () {
-   
+
     //readURL(this);
     var fileuploaded = $("#fucFour").get(0).files;
     if (fileuploaded[0]) {
@@ -87,19 +90,25 @@ $("#fucFour").change(function () {
 $("#btnFucFirstDelete").click(function () {
 
     $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-    $('#imgFucFirst').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucFirstEdit").parent().css('display', 'block');
     $("#btnFucFirstEdit").parent().css('text-align', 'center');
 
     $("#btnFucFirstDelete").parent().css('display', 'none');
 
+    $("#divimgFucFirst").css("border", "none");
+    $("#divimgFucFirstError").css("display", "none");
+
+    //validation
+    showerrorImg1();
+
 });
 
 $("#btnFucThirdDelete").click(function () {
 
     $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
-    $('#imgFucThird').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucThird').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucThirdEdit").parent().css('display', 'block');
     $("#btnFucThirdEdit").parent().css('text-align', 'center');
@@ -111,7 +120,7 @@ $("#btnFucThirdDelete").click(function () {
 $("#btnFucSecondDelete").click(function () {
 
     $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
-    $('#imgFucSecond').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucSecondEdit").parent().css('display', 'block');
     $("#btnFucSecondEdit").parent().css('text-align', 'center');
@@ -122,7 +131,7 @@ $("#btnFucSecondDelete").click(function () {
 $("#btnFucFourDelete").click(function () {
 
     $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
-    $('#imgFucFour').attr('src', '/images/upimglogo1.jpg');
+    $('#imgFucFour').attr('src', '/images/upimglogo1.png');
 
     $("#btnFucFourEdit").parent().css('display', 'block');
     $("#btnFucFourEdit").parent().css('text-align', 'center');
@@ -412,7 +421,7 @@ $("#tstButton").click(function () {
 //function DisplayRespectiveFields(selectedcategory) 
 function DisplayRespectiveFields() {
 
-   
+
     $(".forallcollapse").css('display', 'none');
 
     //var selectedCate = selectedcategory;
@@ -502,7 +511,7 @@ function DisplayRespectiveFields() {
             $("#pv-fueltype").css('display', 'block');
             $("#pv-kmdriven").css('display', 'block');
         }
-        else if(selectedSubCategory == "Bikes"){
+        else if (selectedSubCategory == "Bikes") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
@@ -647,9 +656,9 @@ function fillModels() {
         selectedCategory = "Bikes Models";
     }
 
-    
+
     var selectedSubCategory = $("#PVCompany_list").val();
-   
+
     $("#PVModel_list").find('option').remove();
     $("#PVModel_list").append('<option value="">Select</option>');
 
@@ -686,11 +695,11 @@ function fillModels() {
 
 
 //---------------------Binding edit options---------------------------------------//
-window.BindEdit = function() {
-  
+window.BindEdit = function () {
+
     $(".forallcollapse").css('display', 'none');
 
-   
+
     var selectedCate = $("#hdnCateFristLevel").val().trim();
     var secondCategory = $("#hdnCateSecondLevel").val().trim();
 
@@ -698,7 +707,7 @@ window.BindEdit = function() {
 
     $("#cat-nav-l1").css("display", "inline");
 
-    $("#cat-nav-l2 span").text(secondCategory);  
+    $("#cat-nav-l2 span").text(secondCategory);
     $("#cat-nav-l2").css("display", "inline");
 
     $("#cat-nav-l4").css("display", "inline");
@@ -817,37 +826,188 @@ window.BindEdit = function() {
 
 
 //---------------------States districts and mandals binding---------------------------------------//
+
+window.loadStates = function () {
+   
+    var locations = new Array();
+    var states = new Array();
+    $.ajax({
+        url: '/Scripts/Json/location1.json',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            $.each(data, function (i, field) {
+                locations.push(field);
+            });
+        }
+    });
+
+    $.each(locations, function (i1, field1) {
+        states.push(field1.name);
+    });
+
+    $("#State").autocomplete({
+        source: function (request, response) {
+            var filteredArray = $.map(states, function (item) {
+                if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+                    return item;
+                }
+                else {
+                    return null;
+                }
+            });
+            response(filteredArray);
+        },
+        minLength: 1
+    });
+}
+
 function getDistricts() {
- 
+
     var selectedState = $("#State").val();
+    $("#District").val("");
     if (selectedState != "") {
+
+
+        //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
+
+        var locations = new Array();
+        var districs = new Array();
+        $.ajax({
+            url: '/Scripts/Json/location1.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i, field) {
+                    locations.push(field);
+                });
+            }
+        });
+
+        var selectedVehicle = locations.filter(a=>a.name == selectedState);
+
+        $.each(selectedVehicle[0].District, function (i1, field1) {
+
+            districs.push(field1.name);
+        });
+
+        $("#District").autocomplete({
+            source: function (request, response) {
+                var filteredArray = $.map(districs, function (item) {
+                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+                        return item;
+                    }
+                    else {
+                        return null;
+                    }
+                });
+                response(filteredArray);
+            },
+            minLength: 1
+        });
+
         $("#user-district").css("display", "block");
+
     }
     else {
-     
         $("#user-district").css("display", "none");
+        $("#District").val("");
         $("#user-mandal").css("display", "none");
+        $("#Mandal").val("");
         $("#user-localarea").css("display", "none");
         $("#LocalArea").val("");
     }
+    //var selectedState = $("#State").val();
+    //if (selectedState != "") {
+    //    $("#user-district").css("display", "block");
+    //}
+    //else {
+
+    //    $("#user-district").css("display", "none");
+    //    $("#user-mandal").css("display", "none");
+    //    $("#user-localarea").css("display", "none");
+    //    $("#LocalArea").val("");
+    //}
 }
 
 function getMandal() {
 
-    var selectedState = $("#District").val();
-    if (selectedState != "") {
+
+    var selectedDistric = $("#District").val();
+    $("#Mandal").val("");
+    if (selectedDistric != "") {
+
+
+        //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
+
+        var locations = new Array();
+        var mandals = new Array();
+        $.ajax({
+            url: '/Scripts/Json/location1.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i, field) {
+                    $.each(field.District, function (i1, field1) {
+                        locations.push(field1);
+                        console.log(field1.name)
+
+                    });
+
+                });
+            }
+        });
+
+        var selectedStae = locations.filter(a=>a.name == selectedDistric);
+
+        //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
+        console.log(selectedStae);
+
+        $.each(selectedStae[0].Mondal, function (i1, field1) {
+            console.log(field1.name);
+
+            mandals.push(field1.name);
+        });
+
+        $("#Mandal").autocomplete({
+            source: function (request, response) {
+                var filteredArray = $.map(mandals, function (item) {
+                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+                        return item;
+                    }
+                    else {
+                        return null;
+                    }
+                });
+                response(filteredArray);
+            },
+            minLength: 1
+        });
+
         $("#user-mandal").css("display", "block");
+
     }
     else {
-
         $("#user-mandal").css("display", "none");
+        $("#Mandal").val("");
         $("#user-localarea").css("display", "none");
         $("#LocalArea").val("");
     }
+
+    //var selectedState = $("#District").val();
+    //if (selectedState != "") {
+    //    $("#user-mandal").css("display", "block");
+    //}
+    //else {
+
+    //    $("#user-mandal").css("display", "none");
+    //    $("#user-localarea").css("display", "none");
+    //    $("#LocalArea").val("");
+    //}
 }
 
 function getLocal() {
-
+    $("#LocalArea").val("");
     var selectedState = $("#Mandal").val();
     if (selectedState != "") {
         $("#user-localarea").css("display", "block");
@@ -896,8 +1056,37 @@ $("#btnSubmit").click(function () {
     }
 
 
+    if ($("#txtAddDetails").val() != "") {
+
+        var firstImgvalue = $("#imgFucFirst").attr('src');
+
+        if (firstImgvalue == "/images/upimglogo1.png") {
+
+            showerrorImg1();
+
+            return false;
+        }
+    }
+
+
+
 
 
     //alert($('#forProperties').css('display') == 'none');
 });
+
+function showerrorImg1() {
+    $("#divimgFucFirst").css("border", "1px solid #a94442");
+    $("#divimgFucFirst").css("box-shadow", "0 1px 1px rgba(0,0,0,.075)");
+    $("#divimgFucFirst").focusin();
+
+    $("#divimgFucFirstError").css("display", "block");
+}
+
+function removeerrorImg1() {
+
+    $("#divimgFucFirst").css("border", "none");
+    $("#divimgFucFirstError").css("display", "none");
+}
+
 //-------------------------- for properties validation -------------------------------//
