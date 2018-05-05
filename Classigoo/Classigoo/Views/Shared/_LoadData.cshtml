@@ -36,17 +36,17 @@
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
         </a>*@
         @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
-        @*<input type="text" id="listing_location_list" class="form-control outer-select-input-box" name="location" />*@
-        <select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
+        <input type="text" id="listing_location_list" class="form-control outer-select-input-box" placeholder="Ex: Warangal, Hyderabad" name="location" />
+        @*<select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
             <option selected>Select Location</option>
-        </select>
+        </select>*@
     </div>
     <div class="form-group outer-select-field">
         @*<a class="input-dropedown-btn" href="javascript:void(0)">
             <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
         </a>*@
-        <input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />
-        @*<input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">*@
+        @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
+       <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
     </div>
     <div class="btn-group" id="divSearch">
         <button type="submit" class="danger-btn" id="btnSearch">
@@ -98,8 +98,9 @@
         });*@
         function FillSearchBox()
         {
+             
             jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-                $('#listing_location_list1').autocomplete({
+                $('#listing_keword').autocomplete({
                     source: searchSource,
                     minLength: 0,
                     scroll: true,
@@ -128,6 +129,16 @@
             $.each(categoryColl, function (i, field) {
                 $("#listing_catagory_list").append("<option>" + field.name + "</option>");
                 searchSource.push(field.name);
+                var VehicleTypeColl=field.VehicleType;
+                $.each(VehicleTypeColl,function(j,vehicleType)
+                {
+                    searchSource.push(vehicleType.name);
+                    var vehicleModelColl=vehicleType.VehicleModel;
+                    $.each(vehicleModelColl,function(k,vehicleModel)
+                    {
+                        searchSource.push(vehicleModel.name);
+                    });
+                });
             });
         }
         function FillLocations()
@@ -143,9 +154,34 @@
                 }
             });
             $.each(locationColl, function (i, field) {
-                $("#listing_location_list").append("<option>" + field.name + "</option>");
-                searchSource.push(field.name);
+                   searchSource.push(field.name);
+                   locationColl.push(field.name);
+                    var districtColl=field.District;
+                    $.each(districtColl,function(j,district)
+                    {
+                        searchSource.push(district.name);
+                        locationColl.push(district.name);
+                        var mondalColl=district.Mondal;
+                        $.each(mondalColl,function(k,mondal)
+                        {
+                            searchSource.push(mondal.name);
+                            locationColl.push(mondal.name);
+                        });
+                    });
             });
+            jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
+                $('#listing_location_list').autocomplete({
+                    source: locationColl,
+                    minLength: 0,
+                    scroll: true,
+                    matchContains: true,
+                    minChars: 2,
+                    autoFill: true,
+                    mustMatch: false,
+                    cacheLength: 20,
+                    max: 20
+                });
+                });
         }
         function FillCategories1() {
             $.ajax({
