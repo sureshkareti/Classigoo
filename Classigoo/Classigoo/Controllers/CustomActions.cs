@@ -10,7 +10,7 @@ namespace Classigoo.Controllers
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();
-            customAdd.Location = add.Location;
+           // customAdd.Location = add.Location;
             customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
             customAdd.Price = "500Rs";
@@ -21,7 +21,7 @@ namespace Classigoo.Controllers
                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
+                            //customAdd.Title = item.Title;
                             customAdd.Category = "RealEstate";
                             customAdd.RealEstate = item;
                         }
@@ -29,25 +29,25 @@ namespace Classigoo.Controllers
                     }
                 case "Cars":
                     {
-                        foreach (var item in add.Cars)
-                        {
-                            customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
-                            customAdd.Category = "Cars";
-                            customAdd.Cars = item;
+                        //foreach (var item in add.Cars)
+                        //{
+                        //    customAdd.Description = item.Description;
+                        //    customAdd.Title = item.Title;
+                        //    customAdd.Category = "Cars";
+                        //    customAdd.Cars = item;
 
-                        }
+                        //}
                         break;
                     }
                 case "Electronics":
                     {
-                        foreach (var item in add.Electronics)
-                        {
-                            customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
-                            customAdd.Category = "Electronics";
-                            customAdd.Electronics = item;
-                        }
+                        //foreach (var item in add.Electronics)
+                        //{
+                        //    customAdd.Description = item.Description;
+                        //    customAdd.Title = item.Title;
+                        //    customAdd.Category = "Electronics";
+                        //    customAdd.Electronics = item;
+                        //}
                         break;
                     }
 

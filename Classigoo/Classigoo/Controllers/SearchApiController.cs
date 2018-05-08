@@ -23,7 +23,7 @@ namespace Classigoo.Controllers
             }
             else
             {
-                 adds = db.Adds.Where(a=>a.Category==category).Where(a=>a.Location==location).ToList();
+                 //adds = db.Adds.Where(a=>a.Category==category).Where(a=>a.Location==location).ToList();
             }
             
             if (adds.Count > 0)
@@ -33,31 +33,31 @@ namespace Classigoo.Controllers
 
 
         }
-        [HttpGet]
-        [ActionName("GetCategories")]
-        public IHttpActionResult GetCategories()
-        {
-            List<Category> categoryColl = new List<Category>();
+        //[HttpGet]
+        //[ActionName("GetCategories")]
+        //public IHttpActionResult GetCategories()
+        //{
+        //    List<Category> categoryColl = new List<Category>();
             
-            categoryColl= db.Categories.ToList();
-            if (categoryColl.Count > 0)
-                return Ok(categoryColl);
-            else
-                return NotFound();
-        }
+        //    categoryColl= db.Categories.ToList();
+        //    if (categoryColl.Count > 0)
+        //        return Ok(categoryColl);
+        //    else
+        //        return NotFound();
+        //}
 
-        [HttpGet]
-        [ActionName("GetLocations")]
-        public IHttpActionResult GetLocations()
-        {
-            List<Location> locationColl = new List<Location>();
+        //[HttpGet]
+        //[ActionName("GetLocations")]
+        //public IHttpActionResult GetLocations()
+        //{
+        //    List<Location> locationColl = new List<Location>();
 
-            locationColl = db.Locations.ToList();
+        //    locationColl = db.Locations.ToList();
 
-            if (locationColl.Count > 0)
-                return Ok(locationColl);
-            else
-                return NotFound();
-        }
+        //    if (locationColl.Count > 0)
+        //        return Ok(locationColl);
+        //    else
+        //        return NotFound();
+        //}
     }
 }

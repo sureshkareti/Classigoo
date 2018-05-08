@@ -277,29 +277,29 @@ namespace Classigoo.Controllers
                         foreach (var item in add.RealEstates)
                         {
                            // customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
+                           // customAdd.Title = item.Title;
                             customAdd.Price = item.Price;
                         }
                         break;
                     }
                 case "Cars":
                     {
-                        foreach (var item in add.Cars)
-                        {
-                          //  customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
-                            customAdd.Price = item.Price;
-                        }
+                        //foreach (var item in add.Cars)
+                        //{
+                        //  //  customAdd.Description = item.Description;
+                        //    customAdd.Title = item.Title;
+                        //    customAdd.Price = item.Price;
+                        //}
                         break;
                     }
                 case "Electronics":
                     {
-                        foreach (var item in add.Electronics)
-                        {
-                          //  customAdd.Description = item.Description;
-                            customAdd.Title = item.Title;
-                            customAdd.Price = item.Price;
-                        }
+                        //foreach (var item in add.Electronics)
+                        //{
+                        //  //  customAdd.Description = item.Description;
+                        //    customAdd.Title = item.Title;
+                        //    customAdd.Price = item.Price;
+                        //}
                         break;
                     }
 
