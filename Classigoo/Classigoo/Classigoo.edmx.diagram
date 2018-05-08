@@ -5,27 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d8bdf6c8e6a44c46aea92f435f5a9d72" Name="Diagram1" ZoomLevel="82" >
-        <EntityTypeShape EntityType="ClassigooModel.tbl_Adds" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="ClassigooModel.User" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="ClassigooModel.Car" Width="1.5" PointX="7.875" PointY="11.5" />
-        <EntityTypeShape EntityType="ClassigooModel.Electronic" Width="1.5" PointX="7.875" PointY="16.625" />
-        <EntityTypeShape EntityType="ClassigooModel.RealEstate" Width="1.5" PointX="7.875" PointY="3.25" />
-        <EntityTypeShape EntityType="ClassigooModel.Category" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ClassigooModel.Location" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="ClassigooModel.Log" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="ClassigooModel.Add" Width="1.5" PointX="5.625" PointY="6.25" />
-        <AssociationConnector Association="ClassigooModel.FK_Adds_Users" />
-        <AssociationConnector Association="ClassigooModel.FK_Cars_Adds" />
-        <AssociationConnector Association="ClassigooModel.FK_Electronics_Adds" />
-        <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
-        <EntityTypeShape EntityType="ClassigooModel.AgriculturalVehicle" Width="1.5" PointX="7.875" PointY="0.75" />
-        <AssociationConnector Association="ClassigooModel.FK_AgriculturalVehicle_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.AgriculturalVehicle" Width="1.5" PointX="9.875" PointY="0.5" />
         <EntityTypeShape EntityType="ClassigooModel.ConstructionVehicle" Width="1.5" PointX="7.875" PointY="30.75" />
         <EntityTypeShape EntityType="ClassigooModel.PassengerVehicle" Width="1.5" PointX="7.875" PointY="25.875" />
         <EntityTypeShape EntityType="ClassigooModel.TransportationVehicle" Width="1.5" PointX="7.875" PointY="21.875" />
+        <EntityTypeShape EntityType="ClassigooModel.Add" Width="1.5" PointX="5.625" PointY="7.375" />
+        <AssociationConnector Association="ClassigooModel.FK_Adds_Users" />
+        <AssociationConnector Association="ClassigooModel.FK_AgriculturalVehicle_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_ConstructionVehicle_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_PassengerVehicle_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_TransportationVehicle_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.RealEstate" Width="1.5" PointX="7.875" PointY="7.625" />
+        <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

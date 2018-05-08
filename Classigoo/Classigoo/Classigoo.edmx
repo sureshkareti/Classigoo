@@ -10,11 +10,8 @@
             <PropertyRef Name="AddId" />
           </Key>
           <Property Name="AddId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryId" Type="varchar" MaxLength="10" />
-          <Property Name="LocationId" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
           <Property Name="UserId" Type="uniqueidentifier" />
-          <Property Name="Location" Type="varchar" MaxLength="250" />
           <Property Name="Category" Type="varchar" MaxLength="250" />
           <Property Name="Status" Type="varchar" MaxLength="100" />
           <Property Name="State" Type="varchar" MaxLength="500" />
@@ -41,34 +38,6 @@
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
         </EntityType>
-        <EntityType Name="Cars">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="300" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
-          <Property Name="Model" Type="varchar" MaxLength="100" />
-          <Property Name="Year" Type="varchar" MaxLength="100" />
-          <Property Name="Fuel" Type="varchar" MaxLength="100" />
-          <Property Name="KMDriven" Type="varchar" MaxLength="10" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="ImgUrlPrimary" Type="varchar(max)" />
-          <Property Name="ImgUrlSeconday" Type="varchar(max)" />
-          <Property Name="ImgUrlThird" Type="varchar(max)" />
-          <Property Name="ImgUrlFourth" Type="varchar(max)" />
-          <Property Name="Type" Type="varchar" MaxLength="50" />
-          <Property Name="SubCategory" Type="varchar" MaxLength="50" />
-          <Property Name="Created" Type="datetime" />
-          <Property Name="AddId" Type="int" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="250" Nullable="false" />
-        </EntityType>
         <EntityType Name="ConstructionVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -84,30 +53,6 @@
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
-        </EntityType>
-        <EntityType Name="Electronics">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="300" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="ImgUrlPrimary" Type="varchar(max)" />
-          <Property Name="ImgUrlSeconday" Type="varchar(max)" />
-          <Property Name="ImgUrlThird" Type="varchar(max)" />
-          <Property Name="ImgUrlFourth" Type="varchar(max)" />
-          <Property Name="Type" Type="varchar" MaxLength="50" />
-          <Property Name="SubCategory" Type="varchar" MaxLength="100" />
-          <Property Name="Created" Type="datetime" />
-          <Property Name="AddId" Type="int" />
-        </EntityType>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="LocationId" />
-          </Key>
-          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LocationName" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -146,7 +91,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="300" />
           <Property Name="Price" Type="varchar" MaxLength="20" />
           <Property Name="Availability" Type="varchar" MaxLength="100" />
           <Property Name="ListedBy" Type="varchar" MaxLength="100" />
@@ -155,22 +99,12 @@
           <Property Name="SquareFeets" Type="varchar" MaxLength="15" />
           <Property Name="Squareyards" Type="varchar" MaxLength="15" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="TypeId" Type="varchar" MaxLength="10" />
-          <Property Name="SubCategoryId" Type="varchar" MaxLength="10" />
-          <Property Name="Created" Type="datetime" />
           <Property Name="AddId" Type="int" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
-        </EntityType>
-        <EntityType Name="tbl_Adds">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TransportationVehicle">
           <Key>
@@ -229,20 +163,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cars_Adds">
-          <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Adds">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="Cars">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ConstructionVehicle_Adds">
           <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -253,20 +173,6 @@
               <PropertyRef Name="AddId" />
             </Principal>
             <Dependent Role="ConstructionVehicle">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Electronics_Adds">
-          <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Electronics" Type="Self.Electronics" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Adds">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="Electronics">
               <PropertyRef Name="AddId" />
             </Dependent>
           </ReferentialConstraint>
@@ -329,15 +235,10 @@
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgriculturalVehicle" EntityType="Self.AgriculturalVehicle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConstructionVehicle" EntityType="Self.ConstructionVehicle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Electronics" EntityType="Self.Electronics" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassengerVehicle" EntityType="Self.PassengerVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_Adds" EntityType="Self.tbl_Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportationVehicle" EntityType="Self.TransportationVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
@@ -348,17 +249,9 @@
             <End Role="Adds" EntitySet="Adds" />
             <End Role="AgriculturalVehicle" EntitySet="AgriculturalVehicle" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cars_Adds" Association="Self.FK_Cars_Adds">
-            <End Role="Adds" EntitySet="Adds" />
-            <End Role="Cars" EntitySet="Cars" />
-          </AssociationSet>
           <AssociationSet Name="FK_ConstructionVehicle_Adds" Association="Self.FK_ConstructionVehicle_Adds">
             <End Role="Adds" EntitySet="Adds" />
             <End Role="ConstructionVehicle" EntitySet="ConstructionVehicle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Electronics_Adds" Association="Self.FK_Electronics_Adds">
-            <End Role="Adds" EntitySet="Adds" />
-            <End Role="Electronics" EntitySet="Electronics" />
           </AssociationSet>
           <AssociationSet Name="FK_PassengerVehicle_Adds" Association="Self.FK_PassengerVehicle_Adds">
             <End Role="Adds" EntitySet="Adds" />
@@ -378,7 +271,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="ClassigooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ClassigooEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="tbl_Adds" EntityType="ClassigooModel.tbl_Adds" />
           <EntitySet Name="Users" EntityType="ClassigooModel.User" />
           <FunctionImport Name="FillAds">
             <Parameter Name="Category" Mode="In" Type="String" />
@@ -393,37 +285,20 @@
             <Parameter Name="UserId" Mode="In" Type="Guid" />
             <Parameter Name="AddId" Mode="InOut" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Cars" EntityType="ClassigooModel.Car" />
-          <EntitySet Name="Electronics" EntityType="ClassigooModel.Electronic" />
-          <EntitySet Name="RealEstates" EntityType="ClassigooModel.RealEstate" />
-          <EntitySet Name="Categories" EntityType="ClassigooModel.Category" />
-          <EntitySet Name="Locations" EntityType="ClassigooModel.Location" />
           <EntitySet Name="Logs" EntityType="ClassigooModel.Log" />
+          <EntitySet Name="AgriculturalVehicles" EntityType="ClassigooModel.AgriculturalVehicle" />
+          <EntitySet Name="ConstructionVehicles" EntityType="ClassigooModel.ConstructionVehicle" />
+          <EntitySet Name="PassengerVehicles" EntityType="ClassigooModel.PassengerVehicle" />
+          <EntitySet Name="TransportationVehicles" EntityType="ClassigooModel.TransportationVehicle" />
           <EntitySet Name="Adds" EntityType="ClassigooModel.Add" />
           <AssociationSet Name="FK_Adds_Users" Association="ClassigooModel.FK_Adds_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Add" EntitySet="Adds" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cars_Adds" Association="ClassigooModel.FK_Cars_Adds">
-            <End Role="Add" EntitySet="Adds" />
-            <End Role="Car" EntitySet="Cars" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Electronics_Adds" Association="ClassigooModel.FK_Electronics_Adds">
-            <End Role="Add" EntitySet="Adds" />
-            <End Role="Electronic" EntitySet="Electronics" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RealEstate_Adds" Association="ClassigooModel.FK_RealEstate_Adds">
-            <End Role="Add" EntitySet="Adds" />
-            <End Role="RealEstate" EntitySet="RealEstates" />
-          </AssociationSet>
-          <EntitySet Name="AgriculturalVehicles" EntityType="ClassigooModel.AgriculturalVehicle" />
           <AssociationSet Name="FK_AgriculturalVehicle_Adds" Association="ClassigooModel.FK_AgriculturalVehicle_Adds">
             <End Role="Add" EntitySet="Adds" />
             <End Role="AgriculturalVehicle" EntitySet="AgriculturalVehicles" />
           </AssociationSet>
-          <EntitySet Name="ConstructionVehicles" EntityType="ClassigooModel.ConstructionVehicle" />
-          <EntitySet Name="PassengerVehicles" EntityType="ClassigooModel.PassengerVehicle" />
-          <EntitySet Name="TransportationVehicles" EntityType="ClassigooModel.TransportationVehicle" />
           <AssociationSet Name="FK_ConstructionVehicle_Adds" Association="ClassigooModel.FK_ConstructionVehicle_Adds">
             <End Role="Add" EntitySet="Adds" />
             <End Role="ConstructionVehicle" EntitySet="ConstructionVehicles" />
@@ -436,14 +311,12 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="TransportationVehicle" EntitySet="TransportationVehicles" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="tbl_Adds">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
+          <EntitySet Name="RealEstates" EntityType="ClassigooModel.RealEstate" />
+          <AssociationSet Name="FK_RealEstate_Adds" Association="ClassigooModel.FK_RealEstate_Adds">
+            <End Role="Add" EntitySet="Adds" />
+            <End Role="RealEstate" EntitySet="RealEstates" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
@@ -458,85 +331,6 @@
           <Property Name="Created" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Adds" Relationship="ClassigooModel.FK_Adds_Users" FromRole="User" ToRole="Add" />
         </EntityType>
-        <EntityType Name="Car">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Year" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Fuel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="KMDriven" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Cars_Adds" FromRole="Car" ToRole="Add" />
-        </EntityType>
-        <EntityType Name="Electronic">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Electronics_Adds" FromRole="Electronic" ToRole="Add" />
-        </EntityType>
-        <EntityType Name="RealEstate">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Availability" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ListedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Furnishing" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bedrooms" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="SquareFeets" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Squareyards" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TypeId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="SubCategoryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="AddId" Type="Int32" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="RealEstate" ToRole="Add" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="LocationId" />
-          </Key>
-          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocationName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="Id" />
@@ -549,90 +343,6 @@
           <Property Name="UserId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="Add">
-          <Key>
-            <PropertyRef Name="AddId" />
-          </Key>
-          <Property Name="AddId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="LocationId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Created" Type="DateTime" Precision="3" />
-          <Property Name="UserId" Type="Guid" />
-          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Category" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="ClassigooModel.FK_Adds_Users" FromRole="Add" ToRole="User" />
-          <NavigationProperty Name="Cars" Relationship="ClassigooModel.FK_Cars_Adds" FromRole="Add" ToRole="Car" />
-          <NavigationProperty Name="Electronics" Relationship="ClassigooModel.FK_Electronics_Adds" FromRole="Add" ToRole="Electronic" />
-          <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
-          <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Mandal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AgriculturalVehicles" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="Add" ToRole="AgriculturalVehicle" />
-          <Property Name="NearestArea" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ConstructionVehicles" Relationship="ClassigooModel.FK_ConstructionVehicle_Adds" FromRole="Add" ToRole="ConstructionVehicle" />
-          <NavigationProperty Name="PassengerVehicles" Relationship="ClassigooModel.FK_PassengerVehicle_Adds" FromRole="Add" ToRole="PassengerVehicle" />
-          <NavigationProperty Name="TransportationVehicles" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="Add" ToRole="TransportationVehicle" />
-        </EntityType>
-        <Association Name="FK_Adds_Users">
-          <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Add">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cars_Adds">
-          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ClassigooModel.Car" Role="Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Add">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="Car">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Electronics_Adds">
-          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ClassigooModel.Electronic" Role="Electronic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Add">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="Electronic">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RealEstate_Adds">
-          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ClassigooModel.RealEstate" Role="RealEstate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Add">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="RealEstate">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AgriculturalVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -650,20 +360,6 @@
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="AgriculturalVehicle" ToRole="Add" />
         </EntityType>
-        <Association Name="FK_AgriculturalVehicle_Adds">
-          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ClassigooModel.AgriculturalVehicle" Role="AgriculturalVehicle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Add">
-              <PropertyRef Name="AddId" />
-            </Principal>
-            <Dependent Role="AgriculturalVehicle">
-              <PropertyRef Name="AddId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ConstructionVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -719,6 +415,57 @@
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="TransportationVehicle" ToRole="Add" />
         </EntityType>
+        <EntityType Name="Add">
+          <Key>
+            <PropertyRef Name="AddId" />
+          </Key>
+          <Property Name="AddId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Category" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Mandal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NearestArea" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="ClassigooModel.FK_Adds_Users" FromRole="Add" ToRole="User" />
+          <NavigationProperty Name="AgriculturalVehicles" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="Add" ToRole="AgriculturalVehicle" />
+          <NavigationProperty Name="ConstructionVehicles" Relationship="ClassigooModel.FK_ConstructionVehicle_Adds" FromRole="Add" ToRole="ConstructionVehicle" />
+          <NavigationProperty Name="PassengerVehicles" Relationship="ClassigooModel.FK_PassengerVehicle_Adds" FromRole="Add" ToRole="PassengerVehicle" />
+          <NavigationProperty Name="TransportationVehicles" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="Add" ToRole="TransportationVehicle" />
+          <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
+        </EntityType>
+        <Association Name="FK_Adds_Users">
+          <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Add">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgriculturalVehicle_Adds">
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ClassigooModel.AgriculturalVehicle" Role="AgriculturalVehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Add">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="AgriculturalVehicle">
+              <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConstructionVehicle_Adds">
           <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -761,20 +508,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="RealEstate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Availability" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ListedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Furnishing" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bedrooms" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFeets" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Squareyards" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddId" Type="Int32" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="RealEstate" ToRole="Add" />
+        </EntityType>
+        <Association Name="FK_RealEstate_Adds">
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ClassigooModel.RealEstate" Role="RealEstate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Add">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="RealEstate">
+              <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ClassigooModelStoreContainer" CdmEntityContainer="ClassigooEntities" >
-          <EntitySetMapping Name="tbl_Adds">
-            <EntityTypeMapping TypeName="ClassigooModel.tbl_Adds">
-              <MappingFragment StoreEntitySet="tbl_Adds">
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ClassigooModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -790,87 +564,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="FillAds" FunctionName="ClassigooModel.Store.FillAds" />
-          <EntitySetMapping Name="Cars">
-            <EntityTypeMapping TypeName="ClassigooModel.Car">
-              <MappingFragment StoreEntitySet="Cars">
-                <ScalarProperty Name="AddId" ColumnName="AddId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
-                <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
-                <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
-                <ScalarProperty Name="ImgUrlPrimary" ColumnName="ImgUrlPrimary" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="KMDriven" ColumnName="KMDriven" />
-                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Electronics">
-            <EntityTypeMapping TypeName="ClassigooModel.Electronic">
-              <MappingFragment StoreEntitySet="Electronics">
-                <ScalarProperty Name="AddId" ColumnName="AddId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
-                <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
-                <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
-                <ScalarProperty Name="ImgUrlPrimary" ColumnName="ImgUrlPrimary" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RealEstates">
-            <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
-              <MappingFragment StoreEntitySet="RealEstate">
-                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-                <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
-                <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
-                <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
-                <ScalarProperty Name="ImgUrlPrimary" ColumnName="ImgUrlPrimary" />
-                <ScalarProperty Name="AddId" ColumnName="AddId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Squareyards" ColumnName="Squareyards" />
-                <ScalarProperty Name="SquareFeets" ColumnName="SquareFeets" />
-                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
-                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
-                <ScalarProperty Name="ListedBy" ColumnName="ListedBy" />
-                <ScalarProperty Name="Availability" ColumnName="Availability" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="ClassigooModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Locations">
-            <EntityTypeMapping TypeName="ClassigooModel.Location">
-              <MappingFragment StoreEntitySet="Location">
-                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Logs">
             <EntityTypeMapping TypeName="ClassigooModel.Log">
               <MappingFragment StoreEntitySet="Log">
@@ -881,27 +574,6 @@
                 <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
                 <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Adds">
-            <EntityTypeMapping TypeName="ClassigooModel.Add">
-              <MappingFragment StoreEntitySet="Adds">
-                <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />
-                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Mandal" ColumnName="Mandal" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="AddId" ColumnName="AddId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -973,6 +645,45 @@
                 <ScalarProperty Name="OtherCompany" ColumnName="OtherCompany" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adds">
+            <EntityTypeMapping TypeName="ClassigooModel.Add">
+              <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Mandal" ColumnName="Mandal" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RealEstates">
+            <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
+              <MappingFragment StoreEntitySet="RealEstate">
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
+                <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
+                <ScalarProperty Name="ImgUrlSeconday" ColumnName="ImgUrlSeconday" />
+                <ScalarProperty Name="ImgUrlPrimary" ColumnName="ImgUrlPrimary" />
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Squareyards" ColumnName="Squareyards" />
+                <ScalarProperty Name="SquareFeets" ColumnName="SquareFeets" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="ListedBy" ColumnName="ListedBy" />
+                <ScalarProperty Name="Availability" ColumnName="Availability" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

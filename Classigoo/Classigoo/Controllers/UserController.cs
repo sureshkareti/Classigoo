@@ -159,37 +159,37 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult PostAdd(tbl_Adds Add)
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:51797/api/");
+        //[HttpPost]
+        //public ActionResult PostAdd(tbl_Adds Add)
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://localhost:51797/api/");
 
-                //HTTP POST
-                var postTask = client.PostAsJsonAsync<tbl_Adds>("Adds", Add);
-                try
-                {
+        //        //HTTP POST
+        //        var postTask = client.PostAsJsonAsync<tbl_Adds>("Adds", Add);
+        //        try
+        //        {
 
-                    postTask.Wait();
-                }
-                catch (Exception ex)
-                {
+        //            postTask.Wait();
+        //        }
+        //        catch (Exception ex)
+        //        {
 
-                }
+        //        }
 
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Home");
-                }
+        //        var result = postTask.Result;
+        //        if (result.IsSuccessStatusCode)
+        //        {
+        //            return RedirectToAction("Home");
+        //        }
 
-            }
+        //    }
 
-            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+        //    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
-            return View(Add);
-        }
+        //    return View(Add);
+        //}
 
         public ActionResult Home()
         {

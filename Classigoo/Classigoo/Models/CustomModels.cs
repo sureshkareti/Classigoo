@@ -25,8 +25,7 @@ namespace Classigoo
         public string Price { set; get; }
         public string Category { set; get; }
         public RealEstate RealEstate { set; get; }
-        public Car Cars { set; get; }
-        public Electronic Electronics { set; get; }
+      
         //public List<tbl_Messages> tbl_Messages { get; set; }
     }
     public class FiterOptions
@@ -144,13 +143,9 @@ namespace Classigoo
 
         public const string PostAddUrl = "http://localhost:51797/api/PostApi/PostAdd";
         public const string PostAgricutureVehicleUrl = "http://localhost:51797/api/PostApi/AgriculturalVehicle";
-
         public const string PostConstructionVehicleUrl = "http://localhost:51797/api/PostApi/ConstructionVehicle";
-
         public const string PostTransportationVehicleUrl = "http://localhost:51797/api/PostApi/TransportationVehicle";
-
         public const string PostPassengerVehicleUrl = "http://localhost:51797/api/PostApi/PassengerVehicle";
-
         public const string PostRealEstateUrl = "http://localhost:51797/api/PostApi/RealEstate";
 
 
