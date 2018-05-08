@@ -36,22 +36,54 @@ namespace Classigoo
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Add> Adds { get; set; }
+        public virtual DbSet<AgriculturalVehicle> AgriculturalVehicles { get; set; }
+        public virtual DbSet<ConstructionVehicle> ConstructionVehicles { get; set; }
+        public virtual DbSet<PassengerVehicle> PassengerVehicles { get; set; }
+        public virtual DbSet<TransportationVehicle> TransportationVehicles { get; set; }
     
-        public virtual int FillAds(string categoryId, string locationId, Nullable<System.Guid> userId, ObjectParameter addId)
+        public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, ObjectParameter addId)
         {
-            var categoryIdParameter = categoryId != null ?
-                new ObjectParameter("CategoryId", categoryId) :
-                new ObjectParameter("CategoryId", typeof(string));
+            var categoryParameter = category != null ?
+                new ObjectParameter("Category", category) :
+                new ObjectParameter("Category", typeof(string));
     
-            var locationIdParameter = locationId != null ?
-                new ObjectParameter("LocationId", locationId) :
-                new ObjectParameter("LocationId", typeof(string));
+            var subCategoryParameter = subCategory != null ?
+                new ObjectParameter("SubCategory", subCategory) :
+                new ObjectParameter("SubCategory", typeof(string));
+    
+            var stateParameter = state != null ?
+                new ObjectParameter("State", state) :
+                new ObjectParameter("State", typeof(string));
+    
+            var districtParameter = district != null ?
+                new ObjectParameter("District", district) :
+                new ObjectParameter("District", typeof(string));
+    
+            var mandalParameter = mandal != null ?
+                new ObjectParameter("Mandal", mandal) :
+                new ObjectParameter("Mandal", typeof(string));
+    
+            var nearestAreaParameter = nearestArea != null ?
+                new ObjectParameter("NearestArea", nearestArea) :
+                new ObjectParameter("NearestArea", typeof(string));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
     
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("UserId", userId) :
                 new ObjectParameter("UserId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryIdParameter, locationIdParameter, userIdParameter, addId);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryParameter, subCategoryParameter, stateParameter, districtParameter, mandalParameter, nearestAreaParameter, titleParameter, typeParameter, statusParameter, userIdParameter, addId);
         }
     }
 }

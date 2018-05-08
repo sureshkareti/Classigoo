@@ -427,7 +427,8 @@ function DisplayRespectiveFields() {
     //var selectedCate = selectedcategory;
     var selectedCate = $("#hdnCateFristLevel").val().trim();
 
-    if (selectedCate == "Properties") {
+   
+    if (selectedCate == "Real Estate") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
 

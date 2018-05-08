@@ -12,27 +12,23 @@ namespace Classigoo
     using System;
     using System.Collections.Generic;
     
-    public partial class RealEstate
+    public partial class PassengerVehicle
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string SubCategory { get; set; }
+        public string Company { get; set; }
+        public string OtherCompany { get; set; }
         public string Price { get; set; }
-        public string Availability { get; set; }
-        public string ListedBy { get; set; }
-        public string Furnishing { get; set; }
-        public string Bedrooms { get; set; }
-        public string SquareFeets { get; set; }
-        public string Squareyards { get; set; }
+        public string Model { get; set; }
+        public string Year { get; set; }
+        public string FuelType { get; set; }
+        public string KMDriven { get; set; }
         public string Description { get; set; }
-        public string TypeId { get; set; }
-        public string SubCategoryId { get; set; }
-        public Nullable<System.DateTime> Created { get; set; }
-        public Nullable<int> AddId { get; set; }
         public string ImgUrlPrimary { get; set; }
         public string ImgUrlSeconday { get; set; }
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
-        public string SubCategory { get; set; }
+        public Nullable<int> AddId { get; set; }
     
         public virtual Add Add { get; set; }
     }

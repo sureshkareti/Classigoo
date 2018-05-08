@@ -18,6 +18,14 @@
         <AssociationConnector Association="ClassigooModel.FK_Cars_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_Electronics_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.AgriculturalVehicle" Width="1.5" PointX="7.875" PointY="0.75" />
+        <AssociationConnector Association="ClassigooModel.FK_AgriculturalVehicle_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.ConstructionVehicle" Width="1.5" PointX="7.875" PointY="30.75" />
+        <EntityTypeShape EntityType="ClassigooModel.PassengerVehicle" Width="1.5" PointX="7.875" PointY="25.875" />
+        <EntityTypeShape EntityType="ClassigooModel.TransportationVehicle" Width="1.5" PointX="7.875" PointY="21.875" />
+        <AssociationConnector Association="ClassigooModel.FK_ConstructionVehicle_Adds" />
+        <AssociationConnector Association="ClassigooModel.FK_PassengerVehicle_Adds" />
+        <AssociationConnector Association="ClassigooModel.FK_TransportationVehicle_Adds" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -176,6 +176,9 @@
     <Compile Include="Add.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
+    <Compile Include="AgriculturalVehicle.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -231,6 +234,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Classigoo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ConstructionVehicle.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomActions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,6 +264,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="PassengerVehicle.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="RealEstate.cs">
@@ -266,6 +275,9 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="tbl_Adds.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransportationVehicle.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

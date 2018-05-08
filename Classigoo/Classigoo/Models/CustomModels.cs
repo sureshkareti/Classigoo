@@ -132,4 +132,27 @@ namespace Classigoo
         public string Mandal { set; get; }
         public string LocalArea { set; get; }
     }
+
+    public class Constants
+    {
+        public const string PendingSatus = "Pending";
+        public const string ReviewSatus = "In Review";
+        public const string ActiveSatus = "Active";
+        public const string DeactiveSatus = "Deactive";
+        public const string RejectSatus = "Rejected";
+
+
+        public const string PostAddUrl = "http://localhost:51797/api/PostApi/PostAdd";
+        public const string PostAgricutureVehicleUrl = "http://localhost:51797/api/PostApi/AgriculturalVehicle";
+
+        public const string PostConstructionVehicleUrl = "http://localhost:51797/api/PostApi/ConstructionVehicle";
+
+        public const string PostTransportationVehicleUrl = "http://localhost:51797/api/PostApi/TransportationVehicle";
+
+        public const string PostPassengerVehicleUrl = "http://localhost:51797/api/PostApi/PassengerVehicle";
+
+        public const string PostRealEstateUrl = "http://localhost:51797/api/PostApi/RealEstate";
+
+
+    }
 }

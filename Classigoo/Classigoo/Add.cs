@@ -20,6 +20,10 @@ namespace Classigoo
             this.Cars = new HashSet<Car>();
             this.Electronics = new HashSet<Electronic>();
             this.RealEstates = new HashSet<RealEstate>();
+            this.AgriculturalVehicles = new HashSet<AgriculturalVehicle>();
+            this.ConstructionVehicles = new HashSet<ConstructionVehicle>();
+            this.PassengerVehicles = new HashSet<PassengerVehicle>();
+            this.TransportationVehicles = new HashSet<TransportationVehicle>();
         }
     
         public int AddId { get; set; }
@@ -30,6 +34,13 @@ namespace Classigoo
         public string Location { get; set; }
         public string Category { get; set; }
         public string Status { get; set; }
+        public string State { get; set; }
+        public string District { get; set; }
+        public string Mandal { get; set; }
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public string SubCategory { get; set; }
+        public string NearestArea { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,5 +49,13 @@ namespace Classigoo
         public virtual ICollection<Electronic> Electronics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RealEstate> RealEstates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgriculturalVehicle> AgriculturalVehicles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ConstructionVehicle> ConstructionVehicles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PassengerVehicle> PassengerVehicles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TransportationVehicle> TransportationVehicles { get; set; }
     }
 }
