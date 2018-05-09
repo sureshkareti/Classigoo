@@ -14,7 +14,6 @@ namespace Classigoo
 
         public int PageCount { get; set; }
     }
-
     public class CustomAdd
     {
         public int AddId { get; set; }
@@ -24,9 +23,15 @@ namespace Classigoo
         public string Location { set; get; }
         public string Price { set; get; }
         public string Category { set; get; }
-        public RealEstate RealEstate { set; get; }
-      
-        //public List<tbl_Messages> tbl_Messages { get; set; }
+        public string ImgUrlPrimary { get; set; }
+        public string ImgUrlSeconday { get; set; }
+        public string ImgUrlThird { get; set; }
+        public string ImgUrlFourth { get; set; }
+        public RealEstate RE { set; get; }
+        public AgriculturalVehicle AV { set; get; }
+        public ConstructionVehicle CV { set; get; }
+        public PassengerVehicle PV { set; get; }
+        public TransportationVehicle TV { set; get; }
     }
     public class FiterOptions
     {

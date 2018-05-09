@@ -1,9 +1,28 @@
 ﻿@model CustomAdd
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    //var ImgUrl1 = "";
+    //switch(Model.Category)
+    //{
 
+    //    case "Real Estate":
+    //        ImgUrl1 = Model.RE.ImgUrlPrimary;
+    //        break;
+    //    case "Transportation Vehicles":
+    //        ImgUrl1 = Model.TV.ImgUrlPrimary;
+    //        break;
+    //    case "Construction Vehicles":
+    //        ImgUrl1 = Model.CV.ImgUrlPrimary;
+    //        break;
+    //    case "Agricultural Vehicles":
+    //        ImgUrl1 = Model.AV.ImgUrlPrimary;
+    //        break;
+    //    case "Passenger Vehicles":
+    //        ImgUrl1 = Model.PV.ImgUrlPrimary;
+    //        break;
+    //}
 
-}
+        }
 
 <head>
     <title>Classic - A Bootstrap Classified Ads Template</title>
@@ -183,13 +202,13 @@
 
 
                     <ul class="thumbnails mainimage clearfix">
-                        <li> <img class="my-foto-container" src="../Content/img/product1big.jpg" data-large="../Content/img/product1big.jpg" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
+                        <li> <img class="my-foto-container" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
                     </ul>
                     <ul class="thumbnails mainimage clearfix mt10">
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="../Content/img/product1big.jpg" data-large="../Content/img/product1big.jpg" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="../Content/img/product2big.jpg" data-large="../Content/img/product2big.jpg" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="../Content/img/product1big.jpg" data-large="../Content/img/product1big.jpg" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="../Content/img/product2big.jpg" data-large="../Content/img/product2big.jpg" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary"data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlThird"data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
                     </ul>
                     <div class="mt10">* Mouse move on Image to zoom</div>
                 </div>
@@ -208,7 +227,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="description">
-                                <h2 class="m0">@Model.Description</h2>
+                                <h3 class="m0">@Model.Description</h3>
                                 <br />
                                 <ul class="listoption3">
                                     <li> Android v4.2 (Jelly Bean) OS</li>
@@ -221,12 +240,12 @@
                             </div>
                             <div class="tab-pane " id="cars-specification">
                                 <ul class="productinfo">
-                                    @if (@Model.Cars != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Model:</span> @Model.Cars.Model </li>
-                                        <li> <span class="productinfoleft"> Year:</span> @Model.Cars.Year</li>
-                                        <li> <span class="productinfoleft"> Fuel: </span> @Model.Cars.Fuel </li>
-                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.Cars.KMDriven </li>
+                                    @if (@Model.CV != null)
+    {
+                                        <li> <span class="productinfoleft"> Model:</span> @Model.CV.Price </li>
+                                        <li> <span class="productinfoleft"> Year:</span> @Model.CV.OtherCompany</li>
+                                        <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
+                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.CV.Id </li>
                                     }
 
                                 </ul>
@@ -234,7 +253,7 @@
                             </div>
                             <div class="tab-pane " id="electronics-specification">
                                 <ul class="productinfo">
-                                    @if (@Model.Electronics != null)
+                                    @if (@Model.TV != null)
                                     {
                                         <li> <span class="productinfoleft"> Brand:</span>Electronics  </li>
                                         <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
@@ -250,14 +269,14 @@
                             </div>
                             <div class="tab-pane " id="realestate-specification">
                                 <ul class="productinfo">
-                                    @if (@Model.RealEstate != null)
+                                    @if (@Model.RE != null)
                                     {
-                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RealEstate.Bedrooms </li>
-                                        <li> <span class="productinfoleft"> ListedBy:</span> @Model.RealEstate.ListedBy</li>
-                                        <li> <span class="productinfoleft"> Furnishing: </span> @Model.RealEstate.Furnishing </li>
-                                        <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RealEstate.Bedrooms </li>
-                                        <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RealEstate.SquareFeets</li>
-                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RealEstate.SquareFeets </li>
+                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Bedrooms </li>
+                                        <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
+                                        <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
+                                        <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
+                                        <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
+                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.SquareFeets </li>
                                     }
                                 </ul>
                             </div>
@@ -472,21 +491,21 @@ $(document).ready(function() {
     $('#myTab a').click(function (e) {
         e.preventDefault()
         var selectedTab = $(this).context.innerText;
-        var selectedCategory = '@Model.Category.ToString()';
+        var selectedCategory = '@Model.Category';
         ClearTabs();
         if (selectedTab == "Specification") {
             $("#tabspec").addClass("active");
-            if(selectedCategory=="RealEstate")
+            if (selectedCategory == "Real Estate")
             {
                 $("#realestate-specification").css("display", "block");
             
                 }
-            else if(selectedCategory=="Cars")
+            else if (selectedCategory == "Construction Vehicles")
             {
                 $("#cars-specification").css("display", "block");
                
             }
-            else if(selectedCategory=="Electronics")
+            else if (selectedCategory == "Transportation Vehicles")
             {
                 $("#electronics-specification").css("display", "block");
                

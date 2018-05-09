@@ -16,38 +16,80 @@ namespace Classigoo.Controllers
             customAdd.Price = "500Rs";
             switch (add.Category)
             {
-                case "RealEstate":
+                case "Real Estate":
                     {
                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
                             //customAdd.Title = item.Title;
-                            customAdd.Category = "RealEstate";
-                            customAdd.RealEstate = item;
+                            customAdd.Category = "Real Estate";
+                            customAdd.RE = item;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                            customAdd.ImgUrlThird = item.ImgUrlThird;
+                            customAdd.ImgUrlFourth = item.ImgUrlFourth;
                         }
                         break;
                     }
-                case "Cars":
+                case "Transportation Vehicles":
                     {
-                        //foreach (var item in add.Cars)
-                        //{
-                        //    customAdd.Description = item.Description;
-                        //    customAdd.Title = item.Title;
-                        //    customAdd.Category = "Cars";
-                        //    customAdd.Cars = item;
+                        foreach (var item in add.TransportationVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                           // customAdd.Title = item.Title;
+                            customAdd.Category = "Transportation Vehicles";
+                            customAdd.TV = item;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                            customAdd.ImgUrlThird = item.ImgUrlThird;
+                            customAdd.ImgUrlFourth = item.ImgUrlFourth;
 
-                        //}
+                        }
                         break;
                     }
-                case "Electronics":
+                case "Construction Vehicles":
                     {
-                        //foreach (var item in add.Electronics)
-                        //{
-                        //    customAdd.Description = item.Description;
-                        //    customAdd.Title = item.Title;
-                        //    customAdd.Category = "Electronics";
-                        //    customAdd.Electronics = item;
-                        //}
+                        foreach (var item in add.ConstructionVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            //customAdd.Title = item.Title;
+                            customAdd.Category = "Construction Vehicles";
+                            customAdd.CV = item;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                            customAdd.ImgUrlThird = item.ImgUrlThird;
+                            customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        }
+                        break;
+                    }
+                case "Agricultural Vehicles":
+                    {
+                        foreach (var item in add.AgriculturalVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            //customAdd.Title = item.Title;
+                            customAdd.Category = "Agricultural Vehicles";
+                            customAdd.AV = item;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                            customAdd.ImgUrlThird = item.ImgUrlThird;
+                            customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        }
+                        break;
+                    }
+                case "Passenger Vehicles":
+                    {
+                        foreach (var item in add.PassengerVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            //customAdd.Title = item.Title;Passenger Vehicles	
+                            customAdd.Category = "Passenger Vehicles";
+                            customAdd.PV = item;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                            customAdd.ImgUrlThird = item.ImgUrlThird;
+                            customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        }
                         break;
                     }
 
