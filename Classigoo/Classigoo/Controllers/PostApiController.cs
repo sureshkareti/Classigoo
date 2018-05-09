@@ -177,8 +177,6 @@ namespace Classigoo.Controllers
             try
             {
 
-
-
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
                     //classigooEntities.RealEstates.Add(realEstate);

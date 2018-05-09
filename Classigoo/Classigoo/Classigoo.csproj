@@ -235,6 +235,7 @@
     <Compile Include="Controllers\CustomActions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AddsController.cs" />
+    <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -317,6 +318,7 @@
     <Content Include="Content\img\product1big.jpg" />
     <Content Include="Content\img\product2.jpg" />
     <Content Include="Content\img\product2big.jpg" />
+    <Content Include="Content\List\color1.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -498,6 +500,9 @@
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\Json\regions.js" />
+    <Content Include="Scripts\List\custom.js" />
+    <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
+    <Content Include="Scripts\List\zoomsl-3.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -514,6 +519,7 @@
     <Content Include="Scripts\Json\categories.json" />
     <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
+    <Content Include="Views\List\Index.cshtml" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
