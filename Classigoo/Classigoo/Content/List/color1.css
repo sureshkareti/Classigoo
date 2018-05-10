@@ -71,7 +71,7 @@ input[type="file"] { height: auto!important; }
 .btn-group > .dropdown-toggle:not(:first-child) { box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; color: #333 }
 .btn-small, .btn-mini { font-size: 13px }
 .btn-group > .btn, .btn-group-vertical > .btn { float: none }
-.btn-orange { color: #ffffff; text-shadow: none; background: #8FB442; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none }
+.btn-orange { color: #ffffff; text-shadow: none; background: #f70; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none }
 .btn-orange:hover, .btn-orange:active, .btn-orange.active, .btn-orange.disabled, .btn-orange[disabled] { color: #ffffff; background-color: #d8420e; *background-color: #d8420e;
 }
 .nav-tabs > li > a:hover { background: none }
@@ -405,7 +405,7 @@ ul.state li:hover i { animation : 0.35s linear 0s alternate none 1 maincategory;
 .bloglisting > ul > li h3 { padding: 0px; margin: 0px }
 .bloglisting > ul > li .icondetail { margin: 10px 0 }
 .bloglisting > ul > li .icondetail li { padding: 3px 0; display: inline-block; margin-right: 20px; width: 40% }
-.bloglisting > ul > li .icondetail li i { margin-right: 5px; border-radius: 25px; color: #FFFFFF; height: 25px; line-height: 25px; text-align: center; width: 25px; background: #8FB442 }
+.bloglisting > ul > li .icondetail li i { margin-right: 5px; border-radius: 25px; color: #FFFFFF; height: 25px; line-height: 25px; text-align: center; width: 25px; background: #337ab7 }
 .bloglisting > ul > li .icondetail li a { color: #8FB442 }
 .bloglisting > ul > li .title { color: #333 }
 .bloglisting > ul > li .title:hover { color: #8FB442 }
@@ -663,7 +663,11 @@ transform: scale(1 1);
     width:100%;white-space: nowrap; overflow:hidden !important;text-overflow: ellipsis;
 }
 
-
+/*
+    white : #FFFFFF
+    orange : #F70
+    blue : #337ab7
+*/
 
 
 .loader-wrap {

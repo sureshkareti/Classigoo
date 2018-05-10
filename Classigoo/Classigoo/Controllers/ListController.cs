@@ -13,7 +13,13 @@ namespace Classigoo.Controllers
         {
             return View(GetAdds(1));
         }
+        [HttpPost]
+        public ActionResult DisplayAdds(int currentPageIndex)
+        {
+            //return View("Index",GetAdds(currentPageIndex));
+            return Json(GetAdds(currentPageIndex));
 
+        }
         private AddsModel GetAdds(int currentPage)
         {
             int maxRows = 5;
@@ -30,7 +36,30 @@ namespace Classigoo.Controllers
             {
                 coll.Add(CheckCategory(add));
             }
+
             addColl.Adds = coll;
+
+
+            //for girdListView
+            List<List<CustomAdd>> gridList = new List<List<CustomAdd>>();
+            List<CustomAdd> tempAddColl = new List<CustomAdd>();
+            int count = 0;
+         
+            foreach (CustomAdd customAdd in coll)
+            {
+                if(count==3)
+                {              
+                    gridList.Add(tempAddColl);
+                    tempAddColl = new List<CustomAdd>();
+                    count = 0;
+                }
+                tempAddColl.Add(customAdd);
+                count++;
+            }
+            gridList.Add(tempAddColl);
+
+            addColl.AddsGrid = gridList;
+
             double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
             addColl.PageCount = (int)Math.Ceiling(pageCount);
 
@@ -44,9 +73,13 @@ namespace Classigoo.Controllers
         {
             CustomAdd customAdd = new CustomAdd();
             customAdd.Location = add.Mandal+","+add.State;
-            customAdd.CreatedDate = add.Created.Value.ToLongDateString();
+
+            DateTime dtTemp = add.Created.Value;
+
+            customAdd.CreatedDate = dtTemp.ToString("MMMM") + ", " + dtTemp.Day + ", " + dtTemp.Year; // .mon.ToLongDateString();
             customAdd.AddId = add.AddId;
             customAdd.Title = add.Title;
+            customAdd.Category = add.Category;
             switch (add.Category)
             {
                 case "Real Estate":

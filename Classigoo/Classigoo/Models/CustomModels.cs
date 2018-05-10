@@ -10,6 +10,8 @@ namespace Classigoo
     {
         public List<CustomAdd> Adds { get; set; }
 
+        public List< List<CustomAdd>> AddsGrid { get; set; }
+
         public int CurrentPageIndex { get; set; }
 
         public int PageCount { get; set; }
@@ -144,6 +146,13 @@ namespace Classigoo
         public const string ActiveSatus = "Active";
         public const string DeactiveSatus = "Deactive";
         public const string RejectSatus = "Rejected";
+
+
+        public const string RealEstate = "Real Estate";
+        public const string ConstructionVehicle = "Construction Vehicles";
+        public const string TransportationVehicle = "Transportation Vehicles";
+        public const string AgriculturalVehicle = "Agricultural Vehicles";
+        public const string PassengerVehicle = "Passenger Vehicles";
 
 
         public const string PostAddUrl = "http://localhost:51797/api/PostApi/PostAdd";
