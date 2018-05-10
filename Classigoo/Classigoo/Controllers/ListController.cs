@@ -16,8 +16,8 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult DisplayAdds(int currentPageIndex)
         {
-            //return View("Index",GetAdds(currentPageIndex));
-            return Json(GetAdds(currentPageIndex));
+           // return View("Index",GetAdds(currentPageIndex));
+           return PartialView("_FillSearchResults", GetAdds(currentPageIndex));
 
         }
         private AddsModel GetAdds(int currentPage)
@@ -41,24 +41,24 @@ namespace Classigoo.Controllers
 
 
             //for girdListView
-            List<List<CustomAdd>> gridList = new List<List<CustomAdd>>();
-            List<CustomAdd> tempAddColl = new List<CustomAdd>();
-            int count = 0;
-         
-            foreach (CustomAdd customAdd in coll)
-            {
-                if(count==3)
-                {              
-                    gridList.Add(tempAddColl);
-                    tempAddColl = new List<CustomAdd>();
-                    count = 0;
-                }
-                tempAddColl.Add(customAdd);
-                count++;
-            }
-            gridList.Add(tempAddColl);
+            //List<List<CustomAdd>> gridList = new List<List<CustomAdd>>();
+            //List<CustomAdd> tempAddColl = new List<CustomAdd>();
+            //int count = 0;
 
-            addColl.AddsGrid = gridList;
+            //foreach (CustomAdd customAdd in coll)
+            //{
+            //    if(count==3)
+            //    {              
+            //        gridList.Add(tempAddColl);
+            //        tempAddColl = new List<CustomAdd>();
+            //        count = 0;
+            //    }
+            //    tempAddColl.Add(customAdd);
+            //    count++;
+            //}
+            //gridList.Add(tempAddColl);
+
+           // addColl.AddsGrid = coll;
 
             double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
             addColl.PageCount = (int)Math.Ceiling(pageCount);

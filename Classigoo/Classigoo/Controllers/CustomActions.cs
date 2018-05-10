@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Classigoo;
 
 namespace Classigoo.Controllers
 {
@@ -16,13 +17,13 @@ namespace Classigoo.Controllers
             customAdd.Price = "500Rs";
             switch (add.Category)
             {
-                case "Real Estate":
+                case Constants.RealEstate:
                     {
                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
                             //customAdd.Title = item.Title;
-                            customAdd.Category = "Real Estate";
+                            customAdd.Category = Constants.RealEstate;
                             customAdd.RE = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
@@ -31,13 +32,13 @@ namespace Classigoo.Controllers
                         }
                         break;
                     }
-                case "Transportation Vehicles":
+                case Constants.TransportationVehicle:
                     {
                         foreach (var item in add.TransportationVehicles)
                         {
                             customAdd.Description = item.Description;
                            // customAdd.Title = item.Title;
-                            customAdd.Category = "Transportation Vehicles";
+                            customAdd.Category = Constants.TransportationVehicle;
                             customAdd.TV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
@@ -47,13 +48,13 @@ namespace Classigoo.Controllers
                         }
                         break;
                     }
-                case "Construction Vehicles":
+                case Constants.ConstructionVehicle:
                     {
                         foreach (var item in add.ConstructionVehicles)
                         {
                             customAdd.Description = item.Description;
                             //customAdd.Title = item.Title;
-                            customAdd.Category = "Construction Vehicles";
+                            customAdd.Category = Constants.ConstructionVehicle;
                             customAdd.CV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.ImgUrlSeconday = item.ImgUrlSeconday;

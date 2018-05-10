@@ -54,173 +54,27 @@
                             </div>
                             <!-- Listing-->
                             <div class="mt40" id="bloglist">
-                                <div class="bloglisting grid" id="gridTest">
-
-                                    @{
-                                        foreach (var add in Model.AddsGrid)
-                                        {
-                                            <ul class="mt30 clearfix row">
-                                                @foreach (var innerAdds in add)
-                                                {
-                                                    <li class="col-sm-4">
-                                                        <div class="searchgrid" style="width:100%;float:left">
-                                                            <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="~/Content/img/product2.jpg" alt=""></a>
-                                                            @if (innerAdds.Category == Constants.RealEstate)
-                                                            {
-                                                                <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                                            }
-                                                            else if (innerAdds.Category == Constants.ConstructionVehicle)
-                                                            {
-                                                                <div class="category color2"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                                            }
-                                                            else if (innerAdds.Category == Constants.TransportationVehicle)
-                                                            {
-                                                                <div class="category color3"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                                            }
-                                                            else if (innerAdds.Category == Constants.PassengerVehicle)
-                                                            {
-                                                                <div class="category color4"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                                            }
-                                                            else if (innerAdds.Category == Constants.AgriculturalVehicle)
-                                                            {
-                                                                <div class="category color5"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                                            }
-
-                                                            <div>
-                                                                <h4><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">@innerAdds.Title </a></h4>
-                                                                <ul class="icondetail">
-                                                                    <li><i class="fa fa-rupee"></i>Price : 1200000</li>
-                                                                    <li><i class="fa fa-map-marker"></i> Location : @innerAdds.Location</li>
-                                                                    <li><i class="fa fa-calendar"></i> Posted On : @innerAdds.CreatedDate  </li>
-                                                                </ul>
-
-                                                                <h6 style="float:right"><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
-
-
-                                                                @*<div style="width:100%">
-                                                                        <div style="width:60%;float:left;height:30px;">
-
-                                                                        </div>
-                                                                        <div style="border:1px solid gray;width:39%;float:right;height:30px;">
-                                                                            <h6><a class="title titlecollapse" style="float:right" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
-                                                                        </div>
-                                                                    </div>*@
-
-                                                            </div>
-                                                            @*<div>
-                                                                    <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                                                    <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                                                </div>*@
-                                                        </div>
-                                                    </li>
-                                                }
-                                            </ul>
-                                        }
-                                    }
-
-                                    <!-- Paging-->
-                                    @*<div class="mt30 clearfix">
-                                            <ul class="pagination pull-right">
-                                                <li><a>Prev</a> </li>
-                                                <li class="active"> <a>1</a> </li>
-                                                <li><a>2</a> </li>
-                                                <li><a>3</a> </li>
-                                                <li><a>4</a> </li>
-                                                <li><a>Next</a> </li>
-                                            </ul>
-                                        </div>*@
-
-                                    <div class="mt30 clearfix" id="divpage-number">
-
-                                        <div id="page-selection" class="pagination pull-right"></div>
-
+                                <div class="bloglisting list" id="content">
+                                    @Html.Partial("_FillSearchResults", Model)
                                     </div>
                                 </div>
-                                <div class="bloglisting list" id="gridTest1">
-                                    <ul>
-                                        @foreach (var add in Model.Adds)
-                                        {
-                                            <li class="clearfix">
-                                                <div class="col-sm-3">
-                                                    <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })"><img src="~/Content/img/product2.jpg" alt=""></a>
-
-                                                    @if (add.Category == Constants.RealEstate)
-                                                    {
-                                                        <div class="personal category color1"> <i class="fa fa-user"></i> @add.Category</div>
-                                                    }
-                                                    else if (add.Category == Constants.ConstructionVehicle)
-                                                    {
-                                                        <div class="personal category color2"> <i class="fa fa-user"></i> @add.Category</div>
-                                                    }
-                                                    else if (add.Category == Constants.TransportationVehicle)
-                                                    {
-                                                        <div class="personal category color3"> <i class="fa fa-user"></i> @add.Category</div>
-                                                    }
-                                                    else if (add.Category == Constants.PassengerVehicle)
-                                                    {
-                                                        <div class="personal category color4"> <i class="fa fa-user"></i> @add.Category</div>
-                                                    }
-                                                    else if (add.Category == Constants.AgriculturalVehicle)
-                                                    {
-                                                        <div class="personal category color5"> <i class="fa fa-user"></i> @add.Category</div>
-                                                    }
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <h4><a class="title" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })">@add.Title </a></h4>
-                                                    <ul class="icondetail">
-                                                        <li><i class="fa fa-rupee"></i>1200000</li>
-                                                        <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
-                                                        <li><i class="fa fa-calendar"></i> Posted On : @add.CreatedDate  </li>
-
-
-                                                    </ul>
-                                                    <div class="tag"></div>
-                                                    <div class="discrption">
-                                                        <div style="white-space: nowrap; overflow:hidden !important;text-overflow: ellipsis;width:100%;float:left">@add.Description</div>
-                                                        <div>
-                                                            <h6 style="float:right"><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })">...Read more</a></h6>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @*<div class="col-sm-2">
-                                                        <div class="share">
-                                                            Share On : <br>
-                                                            <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                                        </div>
-                                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 10 Comments</a>
-                                                    </div>*@
-                                            </li>
-
-                                        }
-                                    </ul>
-                                    <div id="paginglocation">
-
-                                    </div>
-                                    <!-- Paging-->
-                                    @*<div class="mt30 clearfix">
-                                            <ul class="pagination pull-right">
-                                                <li><a>Prev</a> </li>
-                                                <li class="active"> <a>1</a> </li>
-                                                <li><a>2</a> </li>
-                                                <li><a>3</a> </li>
-                                                <li><a>4</a> </li>
-                                                <li><a>Next</a> </li>
-                                            </ul>
-                                        </div>*@
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
-
+                
 
             </div>
         </div>
     </div>
+}
     <br />
     <br />
+<div class="mt30 clearfix" id="divpage-number">
 
+    <div id="page-selection" class="pagination pull-right"></div>
+
+</div>
 
     <div class="loader-wrap" style="display:none">
         <div class="loader">
@@ -229,7 +83,7 @@
         </div>
     </div>
 
-                                        }
+                                        
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/List/color1.css" rel="stylesheet" />
@@ -282,11 +136,12 @@
             success: function (data) {
 
                 console.log(@Model.CurrentPageIndex);
-
-                $("#gridTest").html('');
-
+               
+               /// $("#gridTest").html('');
+                $("#content").html(data);
+                //$(".bloglisting").css("display", "block");
                 var gridHtml = "";
-                data
+                @*data
                 @foreach (var add in Model.AddsGrid)
                 {
                   <text>
@@ -327,17 +182,17 @@
 
 
                      </text>
-                 }
+                 }*@
 
 
-                gridHtml = gridHtml + "</ul>";
-                </text>
+                //gridHtml = gridHtml + "</ul>";
+                //</text>
 
 
 
 
-                }
-                $("#gridTest").html(gridHtml);
+                //}
+                //$("#gridTest").html(gridHtml);
                 //$(".bloglisting").css("display", "block");
 
             },
