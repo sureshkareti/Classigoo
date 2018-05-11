@@ -22,7 +22,7 @@ namespace Classigoo.Controllers
         }
         private AddsModel GetAdds(int currentPage)
         {
-            int maxRows = 5;
+            int maxRows = 10;
             ClassigooEntities db = new ClassigooEntities();
 
             AddsModel addColl = new AddsModel();
@@ -41,24 +41,24 @@ namespace Classigoo.Controllers
 
 
             //for girdListView
-            //List<List<CustomAdd>> gridList = new List<List<CustomAdd>>();
-            //List<CustomAdd> tempAddColl = new List<CustomAdd>();
-            //int count = 0;
+            List<List<CustomAdd>> gridList = new List<List<CustomAdd>>();
+            List<CustomAdd> tempAddColl = new List<CustomAdd>();
+            int count = 0;
 
-            //foreach (CustomAdd customAdd in coll)
-            //{
-            //    if(count==3)
-            //    {              
-            //        gridList.Add(tempAddColl);
-            //        tempAddColl = new List<CustomAdd>();
-            //        count = 0;
-            //    }
-            //    tempAddColl.Add(customAdd);
-            //    count++;
-            //}
-            //gridList.Add(tempAddColl);
+            foreach (CustomAdd customAdd in coll)
+            {
+                if (count == 3)
+                {
+                    gridList.Add(tempAddColl);
+                    tempAddColl = new List<CustomAdd>();
+                    count = 0;
+                }
+                tempAddColl.Add(customAdd);
+                count++;
+            }
+            gridList.Add(tempAddColl);
 
-           // addColl.AddsGrid = coll;
+            addColl.AddsGrid = gridList;
 
             double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
             addColl.PageCount = (int)Math.Ceiling(pageCount);

@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+ 
+
+
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+   
+
+    <style type="text/css">
+        body {
+            padding-top: 50px;
+        }
+
+        .dropdown.dropdown-lg .dropdown-menu {
+            margin-top: -1px;
+            padding: 6px 20px;
+        }
+
+        .input-group-btn .btn-group {
+            display: flex !important;
+        }
+
+        .btn-group .btn {
+            border-radius: 0;
+            margin-left: -1px;
+        }
+
+            .btn-group .btn:last-child {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+        .btn-group .form-horizontal .btn[type="submit"] {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .form-group .form-control:last-child {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        @media screen and (min-width: 768px) {
+            #adv-search {
+                width: 500px;
+                margin: 0 auto;
+            }
+
+            .dropdown.dropdown-lg {
+                position: static !important;
+            }
+
+                .dropdown.dropdown-lg .dropdown-menu {
+                    min-width: 500px;
+                }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" id="adv-search">
+                    <input type="text" class="form-control" placeholder="Search for snippets" />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <div class="dropdown dropdown-lg">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="filter">Category</label>
+                                            <select class="form-control" id="listing_catagory_list" name="category" onchange="LoadSubcategory();">
+                                                <option selected>Select Category</option>
+                                            </select>
+                                             <!--<select class="form-control">
+                                                <option value="0" selected>All Snippets</option>
+                                                <option value="1">Featured</option>
+                                                <option value="2">Most popular</option>
+                                                <option value="3">Top rated</option>
+                                                <option value="4">Most commented</option>
+                                            </select>-->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contain">Sub Category</label>
+                                            <select class="form-control" id="listing_subcatagory_list" name="category" onchange="LoadSubcategory();">
+                                                <option selected>Select Category</option>
+                                            </select>
+                                        </div>
+                                        <!--<div class="form-group">
+                                            <label for="contain">Contains the words</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                                    </form>
+                                </div>
+                            </div>
+                            <!--<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+    var categoryColl = new Array();
+    $(document).ready(function () {
+        
+        var subCategories = new Array();
+       
+        FillCategories();
+        
+        
+        function FillCategories()
+        {
+            $.ajax({
+                url: '/Scripts/Json/categories.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+
+                        $("#listing_catagory_list").append("<option>" + field.name + "</option>");
+                        categoryColl.push(field);
+                    });
+                }
+            });
+
+
+
+
+
+            //$.each(categoryColl, function (i, field) {
+            //    $("#listing_catagory_list").append("<option>" + field.name + "</option>");
+
+
+            //    searchSource.push(field.name);
+            //    var VehicleTypeColl=field.VehicleType;
+            //    $.each(VehicleTypeColl,function(j,vehicleType)
+            //    {
+            //        searchSource.push(vehicleType.name);
+            //        var vehicleModelColl=vehicleType.VehicleModel;
+            //        $.each(vehicleModelColl,function(k,vehicleModel)
+            //        {
+            //            searchSource.push(vehicleModel.name);
+            //        });
+            //    });
+            //});
+        }
+       
+        
+    });
+
+    function LoadSubcategory() {
+        var selectedVal = $("#listing_catagory_list").val();
+        
+        $("#listing_subcatagory_list").empty();
+
+        $.each(categoryColl, function (i, field) {
+            if (selectedVal == field.name) {
+                $.each(field.VehicleType, function (j, vehicleType) {                
+                    $("#listing_subcatagory_list").append("<option>" + vehicleType.name + "</option>");                    
+                });
+            }          
+        });
+
+    }
+
+
+    </script>
+</body>
+</html>

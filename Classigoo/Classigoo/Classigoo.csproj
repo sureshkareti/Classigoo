@@ -395,6 +395,7 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="HtmlPage2.html" />
     <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Deletion_icon.svg.png" />

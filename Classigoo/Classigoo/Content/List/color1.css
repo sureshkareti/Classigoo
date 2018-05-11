@@ -357,7 +357,7 @@ ul.categories li ul li ul li, ul.categories li li ul ul li a { display: block; }
 .pagination > li > a, .pagination > li > span { color: #333 }
 .pagination a:hover, .pagination .active a { background-color: #fff; color: #8FB442; }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus { border-color: #8FB442 }
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus { background-color: #8FB442; border-color: #8FB442; color: #fff }
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus { background-color: #337ab7; border-color: #337ab7; color: #fff }
 /* Detail page*/
 h1.headinglefttitle { color: #5E626B; font-size: 36px; font-weight: 700; margin-bottom: 10px; text-align: left; }
 .nav-tabs { margin: 0px }
@@ -667,6 +667,7 @@ transform: scale(1 1);
     white : #FFFFFF
     orange : #F70
     blue : #337ab7
+    COMMENT COLOR :#8FB442
 */
 
 
