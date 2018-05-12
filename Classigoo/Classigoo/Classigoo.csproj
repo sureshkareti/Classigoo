@@ -311,6 +311,8 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="Content\Home\custom-select.css" />
+    <Content Include="Content\Home\selectron.css" />
     <Content Include="Content\img\bx_loader.gif" />
     <Content Include="Content\img\controls.png" />
     <Content Include="Content\img\loading.gif" />
@@ -396,6 +398,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="HtmlPage2.html" />
+    <Content Include="HtmlPage3.html" />
+    <Content Include="HtmlPage4.html" />
     <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Deletion_icon.svg.png" />
@@ -484,6 +488,8 @@
     <Content Include="Content\fonts\fontawesome-webfont93e3.woff2" />
     <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\Home\custom-select.min.js" />
+    <Content Include="Scripts\Home\selectron.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />

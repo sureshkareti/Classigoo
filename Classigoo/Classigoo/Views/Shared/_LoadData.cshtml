@@ -8,90 +8,68 @@
         height: 120px;
         overflow-y: scroll;
     }
-    option{
-        min-height:100px !important;
-        width:50px !important;
+
+    option {
+        min-height: 100px !important;
+        width: 50px !important;
         padding: 50px 0px !important;
     }
 </style>
 @using (Html.BeginForm("ShowAdds", "New", FormMethod.Post))
 {
-<div class="filter-form filter-header-form">
-    <div class="form-group outer-select-field">
+    <div class="filter-form filter-header-form">
+        <div class="form-group outer-select-field">
 
-        @*<a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
-                <i class="fa fa-bars" aria-hidden="true"></i> Categories
-            </a>*@
-        <select class="form-controls outer-select-input-box" id="listing_catagory_list" name="category">
-            <option selected>Select Category</option>
-        </select>
+            @*<a class="input-dropedown-btn catagory-btn" href="javascript:void(0)">
+                    <i class="fa fa-bars" aria-hidden="true"></i> Categories
+                </a>*@
+            @*<select class="form-controls outer-select-input-box" id="listing_catagory_list" name="category">
+                <option selected>Select Category</option>
+            </select>*@
 
+            <select  id="listing_catagory_list" name="category">
+                <option selected>Select Category</option>
+            </select>
+          
 
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                Tutorials
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="#">HTML</a></li>
-                <li><a tabindex="-1" href="#">CSS</a></li>
-                <li class="dropdown-submenu">
-                    <a class="test" tabindex="-1" href="#">New dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-                        <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-                        <li class="dropdown-submenu">
-                            <a class="test" href="#">Another dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">3rd level dropdown</a></li>
-                                <li><a href="#">3rd level dropdown</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            @*<input type="text" class="form-control outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
         </div>
-    
+        <div class="form-group outer-select-field">
 
+            @*<select class="form-control" id="listing_location_list">
+                    <option selected>Select Location</option>
+                </select>*@
+            @*<a class="input-dropedown-btn location-btn" href="javascript:void(0)">
+                    <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
+                </a>*@
+            @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
+            <input type="text" id="listing_location_list" class="form-control outer-select-input-box" placeholder="Ex: Warangal, Hyderabad" name="location" />
+            @*<select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
+                    <option selected>Select Location</option>
+                </select>*@
+        </div>
+        <div class="form-group outer-select-field">
+            @*<a class="input-dropedown-btn" href="javascript:void(0)">
+                    <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
+                </a>*@
+            @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
+            <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
+        </div>
+        <div class="btn-group" id="divSearch">
+            <button type="submit" class="danger-btn" id="btnSearch">
+                <i class="ti-search" aria-hidden="true"></i>
+                Search
+            </button>
 
-        @*<input type="text" class="form-control outer-select-input-box" id="listing_catagory_list" placeholder="Ex: Car, Mobile">*@
-    </div>    
-    <div class="form-group outer-select-field">
-       
-        @*<select class="form-control" id="listing_location_list">
-            <option selected>Select Location</option>
-        </select>*@
-        @*<a class="input-dropedown-btn location-btn" href="javascript:void(0)">
-            <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
-        </a>*@
-        @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
-        <input type="text" id="listing_location_list" class="form-control outer-select-input-box" placeholder="Ex: Warangal, Hyderabad" name="location" />
-        @*<select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
-            <option selected>Select Location</option>
-        </select>*@
+        </div>
     </div>
-    <div class="form-group outer-select-field">
-        @*<a class="input-dropedown-btn" href="javascript:void(0)">
-            <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
-        </a>*@
-        @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
-       <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
-    </div>
-    <div class="btn-group" id="divSearch">
-        <button type="submit" class="danger-btn" id="btnSearch">
-            <i class="ti-search" aria-hidden="true"></i>
-            Search
-        </button>
-
-    </div>
-</div>
 }
 
 @if (@ViewBag.FilterValues != null)
 {
     <script type="text/javascript">
         $(document).ready(function () {
-           // FillCategories();
+            // FillCategories();
             //FillLocations();
             var filterValues = @ViewBag.FilterValues;
 
@@ -100,12 +78,20 @@
         });
     </script>
 }
-    <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
-    <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
 
-    @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
+<link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
+<link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/Home/selectron.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/Home/selectron.js"></script>
+
+
+@*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 <script>
+
+    
+
     $(document).ready(function () {
         var categoryColl = new Array();
         var locationColl = new Array();
@@ -127,7 +113,7 @@
         });*@
         function FillSearchBox()
         {
-             
+
             jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
                 $('#listing_keword').autocomplete({
                     source: searchSource,
@@ -140,8 +126,8 @@
                     cacheLength: 20,
                     max: 20
                 });
-                });
-           
+            });
+
         }
         function FillCategories()
         {
@@ -169,6 +155,9 @@
                     });
                 });
             });
+
+
+            $("#listing_catagory_list").selectron();
         }
         function FillLocations()
         {
@@ -183,20 +172,20 @@
                 }
             });
             $.each(locationColl, function (i, field) {
-                   searchSource.push(field.name);
-                   locationColl.push(field.name);
-                    var districtColl=field.District;
-                    $.each(districtColl,function(j,district)
+                searchSource.push(field.name);
+                locationColl.push(field.name);
+                var districtColl=field.District;
+                $.each(districtColl,function(j,district)
+                {
+                    searchSource.push(district.name);
+                    locationColl.push(district.name);
+                    var mondalColl=district.Mondal;
+                    $.each(mondalColl,function(k,mondal)
                     {
-                        searchSource.push(district.name);
-                        locationColl.push(district.name);
-                        var mondalColl=district.Mondal;
-                        $.each(mondalColl,function(k,mondal)
-                        {
-                            searchSource.push(mondal.name);
-                            locationColl.push(mondal.name);
-                        });
+                        searchSource.push(mondal.name);
+                        locationColl.push(mondal.name);
                     });
+                });
             });
             jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
                 $('#listing_location_list').autocomplete({
@@ -210,7 +199,7 @@
                     cacheLength: 20,
                     max: 20
                 });
-                });
+            });
         }
         function FillCategories1() {
             $.ajax({
