@@ -1,61 +1,9 @@
 ﻿@model CustomAdd
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //var ImgUrl1 = "";
-    //switch(Model.Category)
-    //{
-
-    //    case "Real Estate":
-    //        ImgUrl1 = Model.RE.ImgUrlPrimary;
-    //        break;
-    //    case "Transportation Vehicles":
-    //        ImgUrl1 = Model.TV.ImgUrlPrimary;
-    //        break;
-    //    case "Construction Vehicles":
-    //        ImgUrl1 = Model.CV.ImgUrlPrimary;
-    //        break;
-    //    case "Agricultural Vehicles":
-    //        ImgUrl1 = Model.AV.ImgUrlPrimary;
-    //        break;
-    //    case "Passenger Vehicles":
-    //        ImgUrl1 = Model.PV.ImgUrlPrimary;
-    //        break;
-    //}
-
-        }
-
+ }
 <head>
-    <title>Classic - A Bootstrap Classified Ads Template</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Responisve, Bootstrap, Html5, Css3, Blog, Classified, Ads, Simple, Clean ">
-    <!-- CSS -->
-    @*
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">*@
-    @*
-        <link href="~/Content/CssNew/bootstrap.min.css" rel="stylesheet" />*@
-    <link href="~/Content/Custome/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Google Webfont -->
-    <link href='http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans:400,300,400italic,600,700,800,800italic' rel='stylesheet' type='text/css'>
-    <!-- Main Css -->
-    <link href="~/Content/CssNew/color1.css" rel="stylesheet" media="screen" id="color">
-    @*
-        <link href="~/Content/CssNew/color1.css" rel="stylesheet" />*@
-    @*
-        <link href="css/demo.css" rel="stylesheet">*@
-    <link href="~/Content/CssNew/demo.css" rel="stylesheet" />
-    <!-- Font Icon -->
-    @*
-        <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">*@
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="js/html5shiv.js"></script>
-          <script src="js/respond.min.js"></script>
-         <![endif]-->
+    <link href="@Url.Content("~/Content/CssNew/color1.css")" rel="stylesheet" media="screen" id="color">
 </head>
 <!-- Header Start -->
 @*<header id="header">
@@ -183,27 +131,28 @@
                 </div>
                 <a class="postad" href="post-ad.html"><span> <i class="fa fa-pencil"></i> Post An Ad</span></a>
             </section>*@
-        <div class="container">
+        <div class="container listing-block" style="max-width:970px !important;margin:auto;">
             <!--  breadcrumb -->
-            <ul class="breadcrumb">
+            @*<ul class="breadcrumb">
                 <li> <a>All Categories</a> </li>
                 <li> <a>Mobiles & Tablets</a> </li>
                 <li class="active"> Samsung Galaxy S Duos 2 S7582</li>
-            </ul>
+            </ul>*@
 
             <!-- Title-->
 
-            <h2 class="heading3 mt40"> @Model.Title </h2>
+            <h2 style="text-align: center;"> @Model.Title </h2>
 
             <!-- Product Details-->
             <div class="row mt40">
                 <!-- Left Image-->
                 <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
-
+                    <a href="@Model.ImgUrlPrimary"><span class="block icon"></span></a>
 
                     <ul class="thumbnails mainimage clearfix">
                         <li> <img class="my-foto-container" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
-                    </ul>
+                       
+                      </ul>
                     <ul class="thumbnails mainimage clearfix mt10">
                         <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary"data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
                         <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
@@ -215,7 +164,7 @@
                 <!-- Right Details-->
                 <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 mt40column">
                     <div class="clearfix">
-                        <div class="price pull-left"> <i class="fa fa-tags"></i> @Model.Price</div>
+                        <div class="price pull-left"> <i class="fa fa-rupee"></i> @Model.Price</div>
                         <a class="pull-right btn btn-orange btn-lg">Contact</a>
                     </div>
                     <!-- Product Description tab & comments-->
@@ -229,54 +178,64 @@
                             <div class="tab-pane active" id="description">
                                 <h3 class="m0">@Model.Description</h3>
                                 <br />
-                                <ul class="listoption3">
+                                @*<ul class="listoption3">
                                     <li> Android v4.2 (Jelly Bean) OS</li>
                                     <li>5 MP Primary Camera</li>
                                     <li>0.3 MP Secondary Camera</li>
                                     <li>Dual SIM (GSM + GSM)</li>
                                     <li>Wi-Fi Enabled
                                     <li> Expandable Storage Capacity of 64 GB</li>
-                                </ul>
+                                </ul>*@
                             </div>
-                            <div class="tab-pane " id="cars-specification">
+                            <div class="tab-pane " id="cv-specification">
                                 <ul class="productinfo">
                                     @if (@Model.CV != null)
-    {
-                                        <li> <span class="productinfoleft"> Model:</span> @Model.CV.Price </li>
-                                        <li> <span class="productinfoleft"> Year:</span> @Model.CV.OtherCompany</li>
+                                    {
                                         <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
-                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.CV.Id </li>
                                     }
 
                                 </ul>
 
                             </div>
-                            <div class="tab-pane " id="electronics-specification">
+                            <div class="tab-pane " id="tv-specification">
                                 <ul class="productinfo">
                                     @if (@Model.TV != null)
                                     {
-                                        <li> <span class="productinfoleft"> Brand:</span>Electronics  </li>
-                                        <li> <span class="productinfoleft"> Model Name:</span> Galaxy S Duos 2 </li>
-                                        <li> <span class="productinfoleft"> SIM Type: </span> Dual SIM, GSM + GSM </li>
-                                        <li> <span class="productinfoleft"> Old Price: </span> $500.00 </li>
-                                        <li> <span class="productinfoleft"> Touch Screen: </span> Yes, Capacitive</li>
-                                        <li> <span class="productinfoleft"> Ex Tax: </span> $500.00 </li>
-                                        <li> <span class="productinfoleft"> Call Features:</span> Loudspeaker </li>
-                                        <li> <span class="productinfoleft"> Handset Color:</span> Pure White </li>
+                                        <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
                                     }
                                 </ul>
 
                             </div>
-                            <div class="tab-pane " id="realestate-specification">
+                            <div class="tab-pane " id="av-specification">
+                                <ul class="productinfo">
+                                    @if (@Model.AV != null)
+                                    {
+                                        <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tab-pane " id="re-specification">
                                 <ul class="productinfo">
                                     @if (@Model.RE != null)
                                     {
-                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Bedrooms </li>
+                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
                                         <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
                                         <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
                                         <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
                                         <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
-                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.SquareFeets </li>
+                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tab-pane " id="pv-specification">
+                                <ul class="productinfo">
+                                    @if (@Model.PV != null)
+                                    {
+                                        <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
+                                        <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
+                                        <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
+                                        <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
+                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
                                     }
                                 </ul>
                             </div>
@@ -475,17 +434,14 @@
             <h3>Style Color switcher <i class="fa fa-cogs"></i> </h3>
             <a href="javascript: void(0)" title="switch styling" id="color1">color1</a> <a href="javascript: void(0)" title="switch styling" id="color2">color2</a> <a href="javascript: void(0)" title="switch styling" id="color3">color3</a> <a href="javascript: void(0)" title="switch styling" id="color4">color4</a> <a href="javascript: void(0)" title="switch styling" id="color5">color5</a> <a href="javascript: void(0)" title="switch styling" id="color6">color6</a> <a href="javascript: void(0)" title="switch styling" id="color7">color7</a> <a href="javascript: void(0)" title="switch styling" id="color8">color8</a> <a href="javascript: void(0)" title="switch styling" id="color9">color9</a> <a href="javascript: void(0)" title="switch styling" id="color10">color10</a> <a href="javascript: void(0)" title="switch styling" id="color11">color11</a> <a href="javascript: void(0)" title="switch styling" id="color12">color12</a> <a href="javascript: void(0)" title="switch styling" id="color13">color13</a> <a href="javascript: void(0)" title="switch styling" id="color14">color14</a> <a href="javascript: void(0)" title="switch styling" id="color15">color15</a> <a href="javascript: void(0)" title="switch styling" id="color16">color16</a> <a href="javascript: void(0)" title="switch styling" id="color17">color17</a> <a href="javascript: void(0)" title="switch styling" id="color18">color18</a> <a href="javascript: void(0)" title="switch styling" id="color19">color19</a> <a href="javascript: void(0)" title="switch styling" id="color20">color20</a>
         </div>*@
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    @*<script src="js/jquery.js"></script>*@
-    <script src="~/Scripts/ScriptsNew/jquery.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+@section scripts{
+   
+   <script src="~/Scripts/ScriptsNew/jquery.js"></script>
+   <script src="~/Scripts/bootstrap.min.js"></script>*
+   <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
+   <script src="~/Scripts/custom.js"></script>
 
-    <!-- Jquery zoom on detail page-->
-    @*<script src="js/zoomsl-3.0.min.js"></script>*@
-    <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
-    <script src="~/Scripts/custom.js"></script>
+}
     <script type="text/javascript">
 $(document).ready(function() {
     $('#myTab a').click(function (e) {
@@ -495,20 +451,23 @@ $(document).ready(function() {
         ClearTabs();
         if (selectedTab == "Specification") {
             $("#tabspec").addClass("active");
-            if (selectedCategory == "Real Estate")
+            switch (selectedCategory)
             {
-                $("#realestate-specification").css("display", "block");
-            
-                }
-            else if (selectedCategory == "Construction Vehicles")
-            {
-                $("#cars-specification").css("display", "block");
-               
-            }
-            else if (selectedCategory == "Transportation Vehicles")
-            {
-                $("#electronics-specification").css("display", "block");
-               
+                case "Real Estate":
+                    $("#re-specification").css("display", "block");
+                    break;
+                case "Construction Vehicles":
+                    $("#cv-specification").css("display", "block");
+                    break;
+                case "Transportation Vehicles":
+                    $("#tv-specification").css("display", "block");
+                    break;
+                case "Agricultural Vehicles":
+                    $("#av-specification").css("display", "block");
+                    break;
+                case "Passenger Vehicles":
+                    $("#pv-specification").css("display", "block");
+                    break;
             }
         }
         else if (selectedTab == "Description")

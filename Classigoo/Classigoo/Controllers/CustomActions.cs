@@ -14,7 +14,7 @@ namespace Classigoo.Controllers
            // customAdd.Location = add.Location;
             customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
-            customAdd.Price = "500Rs";
+            customAdd.Title = add.Title;
             switch (add.Category)
             {
                 case Constants.RealEstate:
@@ -22,7 +22,7 @@ namespace Classigoo.Controllers
                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
-                            //customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
                             customAdd.Category = Constants.RealEstate;
                             customAdd.RE = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
@@ -37,7 +37,7 @@ namespace Classigoo.Controllers
                         foreach (var item in add.TransportationVehicles)
                         {
                             customAdd.Description = item.Description;
-                           // customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
                             customAdd.Category = Constants.TransportationVehicle;
                             customAdd.TV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
@@ -53,7 +53,7 @@ namespace Classigoo.Controllers
                         foreach (var item in add.ConstructionVehicles)
                         {
                             customAdd.Description = item.Description;
-                            //customAdd.Title = item.Title;
+                            customAdd.Price = item.Price;
                             customAdd.Category = Constants.ConstructionVehicle;
                             customAdd.CV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
@@ -68,8 +68,8 @@ namespace Classigoo.Controllers
                         foreach (var item in add.AgriculturalVehicles)
                         {
                             customAdd.Description = item.Description;
-                            //customAdd.Title = item.Title;
-                            customAdd.Category = "Agricultural Vehicles";
+                            customAdd.Price = item.Price;
+                            customAdd.Category = Constants.AgriculturalVehicle;
                             customAdd.AV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
@@ -83,8 +83,8 @@ namespace Classigoo.Controllers
                         foreach (var item in add.PassengerVehicles)
                         {
                             customAdd.Description = item.Description;
-                            //customAdd.Title = item.Title;Passenger Vehicles	
-                            customAdd.Category = "Passenger Vehicles";
+                            customAdd.Price = item.Price;
+                            customAdd.Category = Constants.PassengerVehicle;
                             customAdd.PV = item;
                             customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
