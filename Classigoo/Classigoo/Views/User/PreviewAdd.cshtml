@@ -140,20 +140,25 @@
             </ul>*@
 
             <!-- Title-->
+            <div class="clearfix">
+                @*<h2 style="text-align: center;"> @Model.Title </h2>*@
 
-            <h2 style="text-align: center;"> @Model.Title </h2>
-
+                <h4 class="pull-left"> <i class="fa fa-map-marker"></i> @Model.Location</h4>
+                 <h4 style="text-align: center;"> @Model.Title</h4>
+                @*<h4 class="pull-right"><i class="fa fa-rupee"></i>@Model.Price</h4>*@
+            </div>
+           
             <!-- Product Details-->
             <div class="row mt40">
                 <!-- Left Image-->
                 <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
-                    <a href="@Model.ImgUrlPrimary"><span class="block icon"></span></a>
-
-                    <ul class="thumbnails mainimage clearfix">
-                        <li> <img class="my-foto-container" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
-                       
+                    
+                    
+                    <ul class="thumbnails mainimage clearfix" style="width: 615px !important; height:350px !important;">
+                        <li> <img class="my-foto-container" style="width: 615px !important; height:350px !important;" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
+                        
                       </ul>
-                    <ul class="thumbnails mainimage clearfix mt10">
+                    <ul class="thumbnails mainimage clearfix mt10" >
                         <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary"data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
                         <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
                         <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlThird"data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
@@ -162,6 +167,9 @@
                     <div class="mt10">* Mouse move on Image to zoom</div>
                 </div>
                 <!-- Right Details-->
+                
+            </div>
+            <div class="mt40" id="serchlist">
                 <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 mt40column">
                     <div class="clearfix">
                         <div class="price pull-left"> <i class="fa fa-rupee"></i> @Model.Price</div>
@@ -179,13 +187,13 @@
                                 <h3 class="m0">@Model.Description</h3>
                                 <br />
                                 @*<ul class="listoption3">
-                                    <li> Android v4.2 (Jelly Bean) OS</li>
-                                    <li>5 MP Primary Camera</li>
-                                    <li>0.3 MP Secondary Camera</li>
-                                    <li>Dual SIM (GSM + GSM)</li>
-                                    <li>Wi-Fi Enabled
-                                    <li> Expandable Storage Capacity of 64 GB</li>
-                                </ul>*@
+                            <li> Android v4.2 (Jelly Bean) OS</li>
+                            <li>5 MP Primary Camera</li>
+                            <li>0.3 MP Secondary Camera</li>
+                            <li>Dual SIM (GSM + GSM)</li>
+                            <li>Wi-Fi Enabled
+                            <li> Expandable Storage Capacity of 64 GB</li>
+                        </ul>*@
                             </div>
                             <div class="tab-pane " id="cv-specification">
                                 <ul class="productinfo">
@@ -243,12 +251,12 @@
                                 <form class="form-vertical">
                                     <fieldset>
                                         @*<div class="control-group">
-                                                <label class="control-label">Your Name</label>
-                                                <div class="controls">
+                                    <label class="control-label">Your Name</label>
+                                    <div class="controls">
 
-                                                    <input type="text" class="span3">
-                                                </div>
-                                            </div>*@
+                                        <input type="text" class="span3">
+                                    </div>
+                                </div>*@
                                         <div class="control-group">
                                             <label class="control-label">Message</label>
                                             <div class="controls">
@@ -263,8 +271,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt40" id="serchlist">
                 @*<h2 class="heading3">Recommended Combos for Samsung Galaxy S Duos</h2>*@
                 @*<div class="searchresult list mt40">
                         <ul>
