@@ -1,0 +1,108 @@
+﻿@model AddsModel
+@{
+    Layout = null;
+}
+
+<style>
+    .request-overlay {
+        z-index: 9999;
+        position: fixed; /*Important to cover the screen in case of scolling content*/
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        text-align: center;
+        background: url('../Content/img/loading.gif') no-repeat center; /*.gif file or just div with message etc. however you like*/
+    }
+</style>
+<div class="mt30 clearfix" id="divpage-number">
+
+    <div id="page-selection" class="pagination pull-right"></div>
+
+</div>
+
+
+<div class="bloglisting list" id="content">
+
+    @foreach (var add in Model.Adds)
+    {
+
+        <ul>
+            <li class="clearfix">
+                <h3 align="center"><a class="title" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })">@add.Title </a></h3>
+                <div class="col-sm-2">
+                    <a class="thumbnail" style="float:left" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })"><img src="../Content/img/product2.jpg" alt="" height="200" width="200"></a>
+                    <div class="personal category color1"> <i class="fa fa-user"></i> Category</div>
+                </div>
+                <div class="col-sm-8">
+
+                    <ul class="icondetail">
+                        <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
+                        <li><i class="fa fa-map-marker"></i> Location : @add.Location</li>
+                        <li><i class="fa fa-calendar"></i> Posted On :@add.CreatedDate </li>
+                        <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
+                    </ul>
+                    <div class="tag"></div>
+                    <div class="discrption">
+                        <span style="max-width:2px">@add.Description</span><a target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = add.AddId })">....</a> <br>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    }
+
+</div>
+
+<script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        // init bootpag
+        $('#page-selection').bootpag({
+            total: @Model.PageCount,
+            page:@Model.CurrentPageIndex,
+            maxVisible: 10,
+            leaps: true,
+            firstLastUse: true,
+            first: 'First',
+            last: 'Last'
+        }).on('page', function(event, num){
+
+            $('body').append('<div id="requestOverlay" class="request-overlay"></div>'); /*Create overlay on demand*/
+            $("#requestOverlay").show();/*Show overlay*/
+            getAddsbyPage(num);
+        })// or some ajax content loading...
+    });
+    function getAddsbyPage(pageNum)
+    {
+        var page = parseInt(pageNum);
+
+        $.ajax({
+            url: '@Url.Action("DisplayAdds")',
+            type: 'POST',
+            dataType: "html",
+            data: { "currentPageIndex": page },
+            success: function (data) {
+                //var htmlData = $.parseHTML(data);
+                $("#content").html(data);
+                $(".bloglisting").css("display", "block");
+
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            },
+            complete: function (data) {
+                $("#requestOverlay").hide();/*Remove overlay*/
+            }
+        });
+
+    }
+
+</script>
+
+

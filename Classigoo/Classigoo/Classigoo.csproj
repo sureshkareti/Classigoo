@@ -509,6 +509,7 @@
     <Content Include="Scripts\Json\regions.js" />
     <Content Include="Scripts\List\custom.js" />
     <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
+    <Content Include="Scripts\List\search.js" />
     <Content Include="Scripts\List\zoomsl-3.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -579,6 +580,8 @@
     <Content Include="Views\Post\Index1.cshtml" />
     <Content Include="Views\Shared\_LoadData.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
+    <Content Include="Views\Shared\_DisplayAdds.cshtml" />
+    <Content Include="Views\Shared\_FillSearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

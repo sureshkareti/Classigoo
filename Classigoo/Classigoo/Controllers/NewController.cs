@@ -184,7 +184,7 @@ namespace Classigoo.Controllers
                     break;
             }
 
-            return PartialView("DisplayAdds", addColl);
+            return PartialView("_DisplayAdds", addColl);
         }
         //public AddsModel FilterCategoryNotSelect(string location)
         //{

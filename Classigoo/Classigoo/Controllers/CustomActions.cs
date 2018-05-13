@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Classigoo;
+using System.Globalization;
 
 namespace Classigoo.Controllers
 {
@@ -14,7 +15,7 @@ namespace Classigoo.Controllers
             customAdd.Location = add.Mandal + "," + add.State;
             customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
-            customAdd.Title = add.Title;
+            customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
             switch (add.Category)
             {
                 case Constants.RealEstate:
@@ -63,7 +64,7 @@ namespace Classigoo.Controllers
                         }
                         break;
                     }
-                case "Agricultural Vehicles":
+                case Constants.AgriculturalVehicle:
                     {
                         foreach (var item in add.AgriculturalVehicles)
                         {
@@ -78,7 +79,7 @@ namespace Classigoo.Controllers
                         }
                         break;
                     }
-                case "Passenger Vehicles":
+                case Constants.PassengerVehicle:
                     {
                         foreach (var item in add.PassengerVehicles)
                         {

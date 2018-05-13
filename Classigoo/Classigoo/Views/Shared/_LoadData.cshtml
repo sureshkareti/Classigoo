@@ -15,7 +15,7 @@
         padding: 50px 0px !important;
     }
 </style>
-@using (Html.BeginForm("ShowAdds", "New", FormMethod.Post))
+@using (Html.BeginForm("Index", "List", FormMethod.Post))
 {
     <div class="filter-form filter-header-form">
         <div class="form-group outer-select-field">
@@ -53,7 +53,7 @@
                     <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
                 </a>*@
             @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
-            <input type="text" class="form-control outer-select-input-box" style="border:none;border-radius:0px" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
+            <input type="text" class="form-control outer-select-input-box" style="border:none;border-radius:0px" id="listing_keword" placeholder="Ex: Honda,Maruthi"  name="searchKeyword">
         </div>
         <div class="form-group outer-select-field">
             @*<a class="input-dropedown-btn" href="javascript:void(0)">
@@ -81,233 +81,10 @@
         </div>
     </div>
 }
-
-@if (@ViewBag.FilterValues != null)
-{
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // FillCategories();
-            //FillLocations();
-            var filterValues = @ViewBag.FilterValues;
-
-            $("#listing_location_list").attr("value", filterValues.location);
-            $("#listing_catagory_list").attr("value", filterValues.category);
-        });
-    </script>
-}
-
 <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/CssNew/responsive.css" rel="stylesheet" />
 <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
 <link href="~/Content/Home/selectron.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/Home/selectron.js"></script>
-
-
-@*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
-<script>
-
-    
-
-    $(document).ready(function () {
-        var categoryColl = new Array();
-        var locationColl = new Array();
-        var searchSource=new Array();
-        FillCategories();
-        FillLocations();
-        FillSearchBox();
-        @*var location = '@Session["Location"]';
-        if (location) {
-            $("#listing_location_list").attr("value", location);
-        }
-        else
-        {
-            $("#listing_location_list").attr("value", "All India");
-        }
-        $("#btnSearch").click(function () {
-           // window.location.href = "/New/ShowAdds?location=" + $("#listing_location_list").val();
-           // window.location.href = "/New/ShowAdds";
-        });*@
-        function FillSearchBox()
-        {
-
-            jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-                $('#listing_keword').autocomplete({
-                    source: searchSource,
-                    minLength: 0,
-                    scroll: true,
-                    matchContains: true,
-                    minChars: 2,
-                    autoFill: true,
-                    mustMatch: false,
-                    cacheLength: 20,
-                    max: 20
-                });
-            });
-
-        }
-        function FillCategories()
-        {
-            $.ajax({
-                url: '/Scripts/Json/categories.json',
-                dataType: 'json',
-                async: false,
-                success: function (data) {
-                    $.each(data, function (i, field) {
-                        categoryColl.push(field);
-                    });
-                }
-            });
-            $.each(categoryColl, function (i, field) {
-                $("#listing_catagory_list").append("<option>" + field.name + "</option>");
-                searchSource.push(field.name);
-                var VehicleTypeColl=field.VehicleType;
-                $.each(VehicleTypeColl,function(j,vehicleType)
-                {
-                    searchSource.push(vehicleType.name);
-                    var vehicleModelColl=vehicleType.VehicleModel;
-                    $.each(vehicleModelColl,function(k,vehicleModel)
-                    {
-                        searchSource.push(vehicleModel.name);
-                    });
-                });
-            });
-
-
-            $("#listing_catagory_list").selectron();
-
-            $("#listing_rent_list").selectron();
-        }
-        function FillLocations()
-        {
-            $.ajax({
-                url: '/Scripts/Json/location1.json',
-                dataType: 'json',
-                async: false,
-                success: function (data) {
-                    $.each(data, function (i, field) {
-                        locationColl.push(field);
-                    });
-                }
-            });
-            $.each(locationColl, function (i, field) {
-                searchSource.push(field.name);
-                locationColl.push(field.name);
-                var districtColl=field.District;
-                $.each(districtColl,function(j,district)
-                {
-                    searchSource.push(district.name);
-                    locationColl.push(district.name);
-                    var mondalColl=district.Mondal;
-                    $.each(mondalColl,function(k,mondal)
-                    {
-                        searchSource.push(mondal.name);
-                        locationColl.push(mondal.name);
-                    });
-                });
-            });
-
-            jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-                $('#listing_location_list').autocomplete({
-                    source: locationColl,
-                    minLength: 0,
-                    scroll: true,
-                    matchContains: true,
-                    minChars: 2,
-                    autoFill: true,
-                    mustMatch: false,
-                    cacheLength: 20,
-                    max: 20
-                }).focus(function(){            
-                   // The following works only once.
-                    // $(this).trigger('keydown.autocomplete');
-                    // As suggested by digitalPBK, works multiple times
-                    // $(this).data("autocomplete").search($(this).val());
-                    // As noted by Jonny in his answer, with newer versions use uiAutocomplete
-                    $(this).data("uiAutocomplete").search('te');
-                });;
-            });
-        }
-        function FillCategories1() {
-            $.ajax({
-                url: '@Url.Action("GetCategories","Search")',
-                type: 'GET',
-                datatype: 'json',
-                success: function (data) {
-
-                    $.each(data, function (i, field) {
-                        $("#listing_catagory_list").append("<option>" + field.CategoryName + "</option>");
-                    });
-
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-                    //$("#requestOverlay").hide();/*Remove overlay*/
-                }
-
-            });
-        }
-
-        function FillLocations1() {
-            $.ajax({
-                url: '@Url.Action("GetLocations", "Search")',
-                type: 'GET',
-                datatype: 'json',
-
-                success: function (data) {
-
-                    var locationColl = new Array();
-                    locationColl.push("All India");
-                    $.each(data, function (i, field) {
-                        locationColl.push(field.LocationName);
-                    });
-                    jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-                        $('#listing_location_list').autocomplete({
-                            source: locationColl,
-                            minLength: 0,
-                            scroll: true,
-                            matchContains: false,
-                            minChars: 1,
-                            autoFill: false,
-                            mustMatch: true,
-                            cacheLength: 20,
-                            max: 20,
-                            select: function (event, ui) {
-                                console.log(ui.item.value);
-                            },
-                            response: function (event, ui) {
-                                if (ui.content.length === 0) {
-                                    $("#listing_location_list").val("All India");
-                                }
-                            }
-
-                        }).blur(function () {
-                            if ($("#listing_location_list").val() == "") {
-                                $("#listing_location_list").val("All India");
-                            }
-                        })
-
-                    });
-
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-                    //$("#requestOverlay").hide();/*Remove overlay*/
-                }
-
-            });
-        }
-
-    });
-
-</script>
+<script src="~/Scripts/List/search.js"></script>

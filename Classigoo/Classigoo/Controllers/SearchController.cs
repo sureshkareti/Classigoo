@@ -42,7 +42,7 @@ namespace Classigoo.Controllers
 
 
 
-            return View("DisplayAdds", addColl);
+            return View("_DisplayAdds", addColl);
         }
         //public JsonResult GetCategories()
         //{

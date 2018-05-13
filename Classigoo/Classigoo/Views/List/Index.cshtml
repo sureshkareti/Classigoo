@@ -20,18 +20,639 @@
                     </p>
                 </div>
                 <div>
+                   
                     <input type="text" id="validationTemp" style="display:none" required />
                 </div>
                 <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
                    
                     <div class="row">
                         <div class="col-sm-12">
-                            <div style="width:100%;height:100px;background-color:#f5f5f5;border:1px solid #f5f5f5;border-radius:5px;">
+                            @Html.Partial("_LoadData")
+                            
+                                <div class="divbgc"  style="display:none;width:100%;background-color:#f5f5f5;border:1px solid #f5f5f5;border-radius:5px;">
+                                    <!--Sorting-->
 
+                                    <div class="clearfix" id="Real Estate" style="display:none">
+                                        <div class="row form-group">
+                                            <div class="col-xs-6 col-sm-3">
+                                                <span>Category</span><br>
+                                                <select class="form-control" id="Category">
+                                                    <option>Select Category</option>
+                                                    <option>All</option>
+                                                    <option>Apartments</option>
+                                                    <option>Houses & Villas</option>
+                                                    <option>Builder Folders</option>
+                                                    <option>Land & Plots</option>
+                                                    <option>Shops & Offices</option>
+                                                    <option>Farm Houses</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <span>Super Builtup Area</span><br>
+                                                <select class="form-control" id="BuitupArea">
+                                                    <option selected>Builtup Area</option>
+                                                    <option>300 ft²</option>
+                                                    <option>600 ft²</option>
+                                                    <option>900 ft² </option>
+                                                    <option>1,250 ft²</option>
+                                                    <option>1,500 ft²</option>
+                                                    <option>1,750 ft²</option>
+                                                    <option>2,250 ft²</option>
+                                                    <option>2,500 ft²</option>
+                                                    <option>5,000 ft²</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <span>Price Range</span><br>
+                                                <select class="form-control" style="width:auto" id="PriceFrom">
+                                                    <option selected>Price From</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>-
+                                                <select class="form-control" style="width:auto" id="PriceTo">
+                                                    <option selected>Price To</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>
+                                            </div>
+                                            &nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;
+                                            <div class="col-xs-6 col-sm-3">
+                                                <span>Bed Rooms</span><br>
+                                                <select class="form-control" name="langOpt[]" id="BedRooms">
+                                                    <option selected>Bed Rooms</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">4+</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div>
+                                                    <span>Construction Status</span><br>
+                                                    <select class="form-control" id="ConsructionStatus">
+                                                        <option selected>Construction Status</option>
+                                                        <option>All</option>
+                                                        <option>Under Construction</option>
+                                                        <option>Ready to Move</option>
+                                                        <option>New Launch</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div>
+                                                    <span>Listed By</span><br>
+                                                    <select class="form-control" id="ListedBy">
+                                                        <option selected>Listed By</option>
+                                                        <option>All</option>
+                                                        <option>Owner</option>
+                                                        <option>Dealer</option>
+                                                        <option>Builder</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-3">
+                                                <div>
+                                                    <span>Furnishing</span><br>
+                                                    <select class="form-control" id="Furnishing">
+                                                        <option selected>Furnishing</option>
+                                                        <option>All</option>
+                                                        <option>Furnished</option>
+                                                        <option>Unfurnished</option>
+                                                        <option>Semi-Furnished</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    <div class="clearfix" id="Agricultural Vehicles" style="display:none">
+
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Price Range</span><br>
+                                                <select class="form-control" style="width:auto" id="PriceFrom">
+                                                    <option selected>Price From</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>-
+                                                <select class="form-control" style="width:auto" id="PriceTo">
+                                                    <option selected>Price To</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Year</span><br>
+                                                <select class="form-control" style="width:auto" id="YearFrom">
+                                                    <option selected>Year From</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>-<select class="form-control" style="width:auto" id="YearTo">
+                                                    <option selected>Year To</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Mileage</span><br>
+                                                <select class="form-control" style="width:auto" id="KMDriven">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>-<select class="form-control" style="width:auto" id="KMDriven1">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+
+                                    <div class="clearfix" id="Construction Vehicles" style="display:none">
+
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Price Range</span><br>
+                                                <select class="form-control" style="width:auto" id="PriceFrom">
+                                                    <option selected>Price From</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>-
+                                                <select class="form-control" style="width:auto" id="PriceTo">
+                                                    <option selected>Price To</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Year</span><br>
+                                                <select class="form-control" style="width:auto" id="YearFrom">
+                                                    <option selected>Year From</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>-<select class="form-control" style="width:auto" id="YearTo">
+                                                    <option selected>Year To</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Mileage</span><br>
+                                                <select class="form-control" style="width:auto" id="KMDriven">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>-<select class="form-control" style="width:auto" id="KMDriven1">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+
+                                    <div class="clearfix" id="Transportation Vehicles" style="display:none">
+
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Price Range</span><br>
+                                                <select class="form-control" style="width:auto" id="PriceFrom">
+                                                    <option selected>Price From</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>-
+                                                <select class="form-control" style="width:auto" id="PriceTo">
+                                                    <option selected>Price To</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Year</span><br>
+                                                <select class="form-control" style="width:auto" id="YearFrom">
+                                                    <option selected>Year From</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>-<select class="form-control" style="width:auto" id="YearTo">
+                                                    <option selected>Year To</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Mileage</span><br>
+                                                <select class="form-control" style="width:auto" id="KMDriven">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>-<select class="form-control" style="width:auto" id="KMDriven1">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+
+                                    <div class="clearfix" id="Passenger Vehicles" style="display:none">
+
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Price Range</span><br>
+                                                <select class="form-control" style="width:auto" id="PriceFrom">
+                                                    <option selected>Price From</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>-
+                                                <select class="form-control" style="width:auto" id="PriceTo">
+                                                    <option selected>Price To</option>
+                                                    <option>&#8377;10,000</option>
+                                                    <option>&#8377;50,000</option>
+                                                    <option>&#8377;1,00,000 </option>
+                                                    <option>&#8377;5,00,000</option>
+                                                    <option>&#8377;10,00,000</option>
+                                                    <option>&#8377;20,00,000 </option>
+                                                    <option>&#8377;50,00,000</option>
+                                                    <option>&#8377;1,00,00,000</option>
+                                                    <option>&#8377;2,00,00,000 </option>
+                                                    <option>&#8377;5,00,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Year</span><br>
+                                                <select class="form-control" style="width:auto" id="YearFrom">
+                                                    <option selected>Year From</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>-<select class="form-control" style="width:auto" id="YearTo">
+                                                    <option selected>Year To</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div>
+                                                <span>Mileage</span><br>
+                                                <select class="form-control" style="width:auto" id="KMDriven">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>-<select class="form-control" style="width:auto" id="KMDriven1">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000</option>
+                                                    <option>10,000</option>
+                                                    <option>20,000 </option>
+                                                    <option>30,000</option>
+                                                    <option>50,000</option>
+                                                    <option>80,000</option>
+                                                    <option>1,00,000</option>
+                                                    <option>1,50,000</option>
+                                                    <option>2,00,000</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;
+
+                                </div>
+                            <div class="clearfix" style="float:right;display:none" id="clearfilter">
+                                <a class="ex1" id="clearfilter" style="color:dodgerblue" href="#">&times;&nbsp;&nbsp;&nbsp;Clear filters</a>
                             </div>
                         </div>
                     </div>
                     <br />
+                    
                     <div class="row">
                         <!--  Container -->
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt40column">
@@ -89,15 +710,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
-        //var win = $(window);
-        //win.scroll(function () {
-
-        //    if ($(window).scrollTop() + $(window).height() > $(document).height() - ($(".footer-wrap").height() + 200)) {
-
-        //    }
-        //});
-
+        $("#btnSearch").css("display","none");
         $('#page-selection').bootpag({
             total: @Model.PageCount,
             page:@Model.CurrentPageIndex,
@@ -124,67 +737,8 @@
             dataType: "html",
             data: { "currentPageIndex": page },
             success: function (data) {
-
-                console.log(@Model.CurrentPageIndex);
-
-                /// $("#gridTest").html('');
                 $("#content").html(data);
-                //$(".bloglisting").css("display", "block");
-                var gridHtml = "";
-                @*data
-                @foreach (var add in Model.AddsGrid)
-                {
-                  <text>
-
-                gridHtml = gridHtml + '<ul class="mt30 clearfix row">';
-
-
-                @foreach (var innerAdds in add)
-                 {
-                     <text>
-                gridHtml = gridHtml + '<li class="col-sm-4">';
-                gridHtml = gridHtml + '<div class="searchgrid" style="width:100%;float:left">';
-                gridHtml = gridHtml + '<a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="~/Content/img/product2.jpg" alt=""></a>';
-                @if (innerAdds.Category == Constants.RealEstate)
-                {
-                    <text>
-                gridHtml = gridHtml + ' <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>';
-
-                    </text>
-                }
-                @if (innerAdds.Category == Constants.ConstructionVehicle)
-                {
-                    <text>
-                gridHtml = gridHtml + ' <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>';
-
-                    </text>
-                }
-                gridHtml = gridHtml + '<div>';
-                gridHtml = gridHtml + '<h4><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">@innerAdds.Title </a></h4>';
-                gridHtml = gridHtml + '<ul class="icondetail">';
-                gridHtml = gridHtml + '<li><i class="fa fa-rupee"></i>Price : 1200000</li>';
-                gridHtml = gridHtml + '<li><i class="fa fa-map-marker"></i> Location : @innerAdds.Location</li>';
-                gridHtml = gridHtml + '<li><i class="fa fa-calendar"></i> Posted On : @innerAdds.CreatedDate  </li>';
-                gridHtml = gridHtml + ' </ul>';
-                gridHtml = gridHtml + '<h6 style="float:right"><a class="title titlecollapse"  target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>';
-                gridHtml = gridHtml + '</div>';
-                gridHtml = gridHtml + '</div></li>';
-
-
-                     </text>
-                 }*@
-
-
-                //gridHtml = gridHtml + "</ul>";
-                //</text>
-
-
-
-
-                //}
-                //$("#gridTest").html(gridHtml);
-                //$(".bloglisting").css("display", "block");
-
+                
             },
             failure: function (response) {
                 console.log(response.responseText);
@@ -197,5 +751,126 @@
             }
         });
     }
+
+</script>
+<script>
+    $(document).ready(function () {
+        var category = "";
+        var location = "";
+
+        $("#listing_catagory_list").change(function () {
+            category = $("#listing_catagory_list").val();
+            location = $("#listing_location_list").val();
+            ShowCategoryFilter();
+        });
+
+        $("#listing_location_list").change(function () {
+            category = $("#listing_catagory_list").val();
+            location = $("#listing_location_list").val();
+            ShowCategoryFilter();
+        });
+
+        $("#clearfilter").click(function () {
+            $('select').prop('selectedIndex', 0);
+        });
+        $(".divbgc select").change(function () {
+            var filterObj = {};
+            filterObj.category=category;
+            switch (category)
+            {
+                case "Real Estate":
+                   // filterObj.category = $("#Category").val();
+                   // filterObj.builtuparea = $("#BuiltupArea").val();
+                    //filterObj.pricefrom = $("#PriceFrom").val();
+                    //filterObj.priceto = $("#PriceTo").val();
+                    //filterObj.bedrooms = $("#BedRooms").val();
+                    //filterObj.construction = $("#ConstructionStatus").val();
+                    //filterObj.listedby = $("#ListedBy").val();
+                    //filterObj.furnishing = $("#Furnishing").val();
+                    break;
+                case "Construction Vehicles":
+                  //  $("#cv-specification").css("display", "block");
+                    break;
+                case "Transportation Vehicles":
+                   // $("#tv-specification").css("display", "block");
+                    break;
+                case "Agricultural Vehicles":
+                  //  $("#av-specification").css("display", "block");
+                    break;
+                case "Passenger Vehicles":
+                  //  $("#pv-specification").css("display", "block");
+                    break;
+            }
+           // filterAdds(filterObj);
+        });
+        function filterAdds(selectedValue) {
+
+            $.ajax({
+                url: '@Url.Action("ApplyFilter")',
+                type: 'GET',
+                dataType: "html",
+                data: { "filterOptions": JSON.stringify(selectedValue), "category": category, "location": location },
+                success: function (data) {
+                    $("#content").html(data);
+                    $(".bloglisting").css("display", "block");
+
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
+                    //$("#requestOverlay").hide();/*Remove overlay*/
+                }
+
+            });
+        }
+
+        function ShowCategoryFilter() {
+            if (category == "Select Category") {
+                $(".divbgc").hide();
+                $("#clearfilter").hide();
+                // filterAdds("");
+            }
+            else {
+                $(".divbgc").show();
+                $("#clearfilter").show();
+                $('.divbgc > div').map(function () {
+                    if (this.id == category) {
+                     
+                        $("[id='"+this.id+"']").css("display", "block");
+                    }
+                    else {
+                         $("[id='"+this.id+"']").css("display", "none");
+                    }
+                });
+                
+            }
+            if (category != "Select Category") {
+              //filterAdds("");
+            }
+
+        }
+
+        var name = GetParameterValues('category');
+        // var id = GetParameterValues('ID');
+        if (name) {
+            $("#listing_catagory_list").val(name).change();
+
+        }
+
+
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('?');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+    });
 
 </script>
