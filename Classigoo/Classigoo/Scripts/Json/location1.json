@@ -1732,7 +1732,7 @@
           {
             "name": "Raptadu"
           },
-          
+
           {
             "name": "Rayadurg"
           },
@@ -1763,7 +1763,7 @@
           {
             "name": "Uravakonda"
           },
-            {
+          {
             "name": "Vajrakarur"
           },
           {
@@ -1774,6 +1774,1903 @@
           },
           {
             "name": "Yellanur"
+          }
+
+        ]
+      },
+      {
+        "name": "Chittoor",
+        "Mondal": [
+          {
+            "name": "Kothakota"
+          },
+          {
+            "name": "Baireddipalle"
+          },
+          {
+            "name": "Bangarupalem"
+          },
+          {
+            "name": "Buchinaidu khandriga"
+          },
+          {
+            "name": "Chandragiri"
+          },
+          {
+            "name": "Chinnagottigallu"
+          },
+          {
+            "name": "Chittoor"
+          },
+          {
+            "name": "Chowdepalle"
+          },
+          {
+            "name": "Gangadhara nellore"
+          },
+          {
+            "name": "Gangavaram"
+          },
+          {
+            "name": "Gudipala"
+          },
+          {
+            "name": "Gudupalle"
+          },
+          {
+            "name": "Gurramkonda"
+          },
+          {
+            "name": "Irala"
+          },
+          {
+            "name": "K.V.B. Puram"
+          },
+          {
+            "name": "Kalakada"
+          },
+          {
+            "name": "Kalikiri"
+          },
+          {
+            "name": "Kambhamvaripalle"
+          },
+          {
+            "name": "Karvetinagar"
+          },
+          {
+            "name": "Kuppam"
+          },
+          {
+            "name": "Kurabalakota"
+          },
+          {
+            "name": "Madanapalle"
+          },
+          {
+            "name": "Mulakalacheruvu"
+          },
+          {
+            "name": "Nagalapuram"
+          },
+          {
+            "name": "Nagari"
+          },
+          {
+            "name": "Narayanavanam"
+          },
+          {
+            "name": "Nimmanapalle"
+          },
+          {
+            "name": "Nindra"
+          },
+          {
+            "name": "Pakala"
+          },
+          {
+            "name": "Palamaner"
+          },
+          {
+            "name": "Palasamudram"
+          },
+          {
+            "name": "Peddamandyam"
+          },
+          {
+            "name": "Peddapanjani"
+          },
+          {
+            "name": "Peddathippasamudram"
+          },
+          {
+            "name": "Penumuru"
+          },
+          {
+            "name": "Pileru"
+          },
+          {
+            "name": "Pitchatur"
+          },
+          {
+            "name": "Pulicherla"
+          },
+          {
+            "name": "Punganur"
+          },
+          {
+            "name": "Puthalapattu"
+          },
+          {
+            "name": "Puttur"
+          },
+          {
+            "name": "Rama Chandrapuram"
+          },
+          {
+            "name": "Ramakuppam"
+          },
+          {
+            "name": "Ramasamudram"
+          },
+          {
+            "name": "Renigunta"
+          },
+          {
+            "name": "Rompicherla"
+          },
+          {
+            "name": "Santhipuram"
+          },
+          {
+            "name": "Satyavedu"
+          },
+
+          {
+            "name": "Sodam"
+          },
+          {
+            "name": "Somala"
+          },
+          {
+            "name": "Srikalahasti"
+          },
+          {
+            "name": "Srirangarajapuram"
+          },
+          {
+            "name": "Thamballapalle"
+          },
+          {
+            "name": "Thavanampalle"
+          },
+          {
+            "name": "Thottambedu"
+          },
+          {
+            "name": "Tirupati (rural)"
+          },
+          {
+            "name": "Tirupati (urban)"
+          },
+          {
+            "name": "Vadamalapeta"
+          },
+          {
+            "name": "Varadaiahpalem"
+          },
+          {
+            "name": "Vayalpadu"
+          },
+          {
+            "name": "Vedurukuppam"
+          },
+          {
+            "name": "Venkatagirikota"
+          },
+          {
+            "name": "Vijayapuram"
+          },
+          {
+            "name": "Yadamari"
+          },
+          {
+            "name": "Yerpedu"
+          },
+          {
+            "name": "Yerravaripalem"
+          }
+
+        ]
+      },
+      {
+        "name": "East Godavari",
+        "Mondal": [
+          {
+            "name": "Amalapuram"
+          },
+          {
+            "name": "Addateegala"
+          },
+          {
+            "name": "Ainavilli"
+          },
+          {
+            "name": "Alamuru"
+          },
+          {
+            "name": "Allavaram"
+          },
+          {
+            "name": "Ambajipeta"
+          },
+          {
+            "name": "Anaparti"
+          },
+          {
+            "name": "Atreyapuram"
+          },
+          {
+            "name": "Biccavolu"
+          },
+          {
+            "name": "Chinturu"
+          },
+          {
+            "name": "Devipatnam"
+          },
+          {
+            "name": "Gandepalle"
+          },
+          {
+            "name": "Gangavaram"
+          },
+          {
+            "name": "Gokavaram"
+          },
+          {
+            "name": "Gollaprolu"
+          },
+          {
+            "name": "I.Polavaram"
+          },
+          {
+            "name": "Jaggampeta"
+          },
+          {
+            "name": "Kadiam"
+          },
+          {
+            "name": "Kajuluru"
+          },
+          {
+            "name": "Kakinada (rural)"
+          },
+          {
+            "name": "Kakinada (urban)"
+          },
+          {
+            "name": "Kapileswarapuram"
+          },
+          {
+            "name": "Karapa"
+          },
+          {
+            "name": "Katrenikona"
+          },
+          {
+            "name": "Kirlampudi"
+          },
+          {
+            "name": "Korukonda"
+          },
+          {
+            "name": "Kotananduru"
+          },
+          {
+            "name": "Kothapalle"
+          },
+          {
+            "name": "Kothapeta"
+          },
+          {
+            "name": "Kunavaram"
+          },
+          {
+            "name": "Malikipuram"
+          },
+          {
+            "name": "Mandapeta"
+          },
+          {
+            "name": "Maredumilli"
+          },
+          {
+            "name": "Mummidivaram"
+          },
+          {
+            "name": "Mamidikuduru"
+          },
+          {
+            "name": "Nellipaka"
+          },
+          {
+            "name": "P.Gannavaram"
+          },
+          {
+            "name": "Pamarru"
+          },
+          {
+            "name": "Pedapudi"
+          },
+          {
+            "name": "Peddapuram"
+          },
+          {
+            "name": "Pithapuram"
+          },
+          {
+            "name": "Prathipadu"
+          },
+          {
+            "name": "Rajahmundry (rural)"
+          },
+          {
+            "name": "Rajahmundry (urban))"
+          },
+          {
+            "name": "Rajanagaram"
+          },
+          {
+            "name": "Rajavommangi"
+          },
+          {
+            "name": "Ramachandrapuram"
+          },
+          {
+            "name": "Rampachodavaram"
+          },
+
+          {
+            "name": "Rangampeta"
+          },
+          {
+            "name": "Ravulapalem"
+          },
+          {
+            "name": "Razole"
+          },
+          {
+            "name": "Rayavaram"
+          },
+          {
+            "name": "Routhulapudi"
+          },
+          {
+            "name": "Sakhinetipalli"
+          },
+          {
+            "name": "Sankhavaram"
+          },
+          {
+            "name": "Seethanagaram"
+          },
+          {
+            "name": "Thallarevu"
+          },
+          {
+            "name": "Thondangi"
+          },
+          {
+            "name": "Tuni"
+          },
+          {
+            "name": "Uppalaguptam"
+          },
+          {
+            "name": "Vararamachandrapuram"
+          },
+          {
+            "name": "Y.Ramavaram"
+          },
+          {
+            "name": "Yeleswaram"
+          }
+
+        ]
+      },
+      {
+
+        "name": "Kadapa",
+        "Mondal": [
+          {
+            "name": "Atlur"
+          },
+          {
+            "name": "B.Kodur"
+          },
+          {
+            "name": "Badvel"
+          },
+          {
+            "name": "Brahmamgarimatham"
+          },
+          {
+            "name": "Chakrayapet"
+          },
+          {
+            "name": "Chapadu"
+          },
+          {
+            "name": "Chennur"
+          },
+          {
+            "name": "Chinnamandem"
+          },
+          {
+            "name": "Chinthakomma Dinne"
+          },
+          {
+            "name": "Chitvel"
+          },
+          {
+            "name": "Duvvur"
+          },
+          {
+            "name": "Galiveedu"
+          },
+          {
+            "name": "Gopavaram"
+          },
+          {
+            "name": "Jammalamadugu"
+          },
+          {
+            "name": "Kadapa"
+          },
+          {
+            "name": "Kalasapadu"
+          },
+          {
+            "name": "Kamalapuram"
+          },
+          {
+            "name": "Khajipet"
+          },
+          {
+            "name": "Koduru"
+          },
+          {
+            "name": "Kondapuram"
+          },
+          {
+            "name": "Lakkireddipalle"
+          },
+          {
+            "name": "Lingala"
+          },
+          {
+            "name": "Muddanur"
+          },
+          {
+            "name": "Mydukur"
+          },
+          {
+            "name": "Mylavaram"
+          },
+          {
+            "name": "Nandalur"
+          },
+          {
+            "name": "Obulavaripalle"
+          },
+          {
+            "name": "Peddamudium"
+          },
+          {
+            "name": "Penagalur"
+          },
+          {
+            "name": "Pendlimarri"
+          },
+          {
+            "name": "Porumamilla"
+          },
+          {
+            "name": "Proddatur"
+          },
+          {
+            "name": "Pulivendula"
+          },
+          {
+            "name": "Pullampeta"
+          },
+          {
+            "name": "Rajampet"
+          },
+          {
+            "name": "Rajupalem, Kadapa"
+          },
+          {
+            "name": "Ramapuram"
+          },
+          {
+            "name": "Rayachoti"
+          },
+          {
+            "name": "Rayachoti"
+          },
+          {
+            "name": "Sidhout"
+          },
+          {
+            "name": "Simhadripuram"
+          },
+          {
+            "name": "Sri Avadhuth Kasinayana"
+          },
+          {
+            "name": "Sundupalle"
+          },
+          {
+            "name": "Thondur"
+          },
+          {
+            "name": "Vallur"
+          },
+          {
+            "name": "Veeraballi"
+          },
+          {
+            "name": "Veerapanayani Palle"
+          },
+          {
+            "name": "Vempalle"
+          },
+
+          {
+            "name": "Vemula"
+          },
+          {
+            "name": "Vontimitta"
+          },
+          {
+            "name": "Yerraguntla"
+          }
+        ]
+      },
+      {
+        "name": "Guntur",
+        "Mondal": [
+          {
+            "name": "Amaravati"
+          },
+          {
+            "name": "Amruthalur"
+          },
+          {
+            "name": "Achampet"
+          },
+          {
+            "name": "Bapatla"
+          },
+          {
+            "name": "Bhattiprolu"
+          },
+          {
+            "name": "Bellamkonda"
+          },
+          {
+            "name": "Bollapalle"
+          },
+          {
+            "name": "Chebrole"
+          },
+          {
+            "name": "Cherukupalle"
+          },
+          {
+            "name": "Chilakaluripet"
+          },
+          {
+            "name": "Duggirala"
+          },
+          {
+            "name": "Dachepalle"
+          },
+          {
+            "name": "Durgi"
+          },
+          {
+            "name": "Edlapadu"
+          },
+          {
+            "name": "Ipur"
+          },
+          {
+            "name": "Guntur"
+          },
+          {
+            "name": "Gurazala"
+          },
+          {
+            "name": "karlapalem"
+          },
+          {
+            "name": "Kakumanu"
+          },
+          {
+            "name": "karempudi"
+          },
+          {
+            "name": "Kollipara"
+          },
+          {
+            "name": "Kolluru"
+          },
+          {
+            "name": "Krosuru"
+          },
+          {
+            "name": "Machavaram"
+          },
+          {
+            "name": "Macherla"
+          },
+          {
+            "name": "Mangalagiri"
+          },
+          {
+            "name": "Medikonduru"
+          },
+          {
+            "name": "Muppalla"
+          },
+          {
+            "name": "Nadendla"
+          },
+          {
+            "name": "Nagaram"
+          },
+          {
+            "name": "Nekarikallu"
+          },
+          {
+            "name": "Narasaraopet"
+          },
+          {
+            "name": "Nizampatnam"
+          },
+          {
+            "name": "Nuzendla"
+          },
+          {
+            "name": "Pedakakani"
+          },
+          {
+            "name": "Pedakurapadu"
+          },
+          {
+            "name": "pedanandipadu"
+          },
+          {
+            "name": "Phirangipuram"
+          },
+          {
+            "name": "Piduguralla"
+          },
+          {
+            "name": "Pittalavanipalem"
+          },
+          {
+            "name": "Ponnur"
+          },
+          {
+            "name": "Prathipadu"
+          },
+          {
+            "name": "Rajupalem"
+          },
+          {
+            "name": "Rentachintala"
+          },
+          {
+            "name": "Repalle"
+          },
+          {
+            "name": "Rompicherla"
+          },
+          {
+            "name": "Sattenapalli"
+          },
+          {
+            "name": "Savalyapuram"
+          },
+
+          {
+            "name": "Tadikonda"
+          },
+          {
+            "name": "Tenali"
+          },
+          {
+            "name": "Tadepalle, Guntur"
+          },
+          {
+            "name": "Thulluru"
+          },
+          {
+            "name": "Tsunduru"
+          },
+          {
+            "name": "Vatticherukuru"
+          },
+          {
+            "name": "Veldurthi"
+          },
+          {
+            "name": "Vemuru"
+          },
+          {
+            "name": "Vinukonda"
+          }
+
+        ]
+      },
+      {
+        "name": "Krishna",
+        "Mondal": [
+          {
+            "name": "A.Konduru"
+          },
+          {
+            "name": "Agiripalli"
+          },
+          {
+            "name": "Avanigadda"
+          },
+          {
+            "name": "Bantumilli"
+          },
+          {
+            "name": "Bapulapadu"
+          },
+          {
+            "name": "Challapalli"
+          },
+          {
+            "name": "Chandarlapadu"
+          },
+          {
+            "name": "Chatrai"
+          },
+          {
+            "name": "G.Konduru"
+          },
+          {
+            "name": "Gampalagudem"
+          },
+          {
+            "name": "Gannavaram"
+          },
+          {
+            "name": "Ghantasala"
+          },
+          {
+            "name": "Gudivada"
+          },
+          {
+            "name": "Gudlavalleru"
+          },
+          {
+            "name": "Guduru"
+          },
+          {
+            "name": "Ibrahimpatnam"
+          },
+          {
+            "name": "Jaggayyapeta"
+          },
+          {
+            "name": "Kaikaluru"
+          },
+          {
+            "name": "Kalidindi"
+          },
+          {
+            "name": "Kanchikacherla"
+          },
+          {
+            "name": "Kankipadu"
+          },
+          {
+            "name": "Kolluru"
+          },
+          {
+            "name": "Kruthivennu"
+          },
+          {
+            "name": "Machilipatnam"
+          },
+          {
+            "name": "Mandavalli"
+          },
+          {
+            "name": "Mopidevi"
+          },
+          {
+            "name": "Movva"
+          },
+          {
+            "name": "Mudinepalli"
+          },
+          {
+            "name": "Musunuru"
+          },
+          {
+            "name": "Mylavaram"
+          },
+          {
+            "name": "Nagayalanka"
+          },
+          {
+            "name": "Nandigama"
+          },
+          {
+            "name": "Nandivada"
+          },
+          {
+            "name": "Nuzvid"
+          },
+          {
+            "name": "Pamarru"
+          },
+          {
+            "name": "Pamidimukkala"
+          },
+          {
+            "name": "Pedana"
+          },
+          {
+            "name": "Pedaparupudi"
+          },
+          {
+            "name": "Penamaluru"
+          },
+          {
+            "name": "Penamaluru"
+          },
+          {
+            "name": "Reddigudem"
+          },
+          {
+            "name": "Thotlavalluru"
+          },
+          {
+            "name": "Tiruvuru"
+          },
+          {
+            "name": "Unguturu"
+          },
+          {
+            "name": "Vatsavai"
+          },
+          {
+            "name": "Veerullapadu"
+          },
+          {
+            "name": "Vijayawada (Rural)"
+          },
+          {
+            "name": "Vijayawada (Urban)"
+          },
+
+          {
+            "name": "Vissannapeta"
+          },
+          {
+            "name": "Vuyyuru"
+          }
+
+        ]
+      },
+      {
+        "name": "Kurnool",
+        "Mondal": [
+          {
+            "name": "Adoni"
+          },
+          {
+            "name": "Allagadda"
+          },
+          {
+            "name": "Alur"
+          },
+          {
+            "name": "Aspari"
+          },
+          {
+            "name": "Atmakur"
+          },
+          {
+            "name": "Banaganapalle"
+          },
+          {
+            "name": "Bandi Atmakur"
+          },
+          {
+            "name": "Bethamcherla"
+          },
+          {
+            "name": "C.Belagal"
+          },
+          {
+            "name": "Chagalamarri"
+          },
+          {
+            "name": "Chippagiri"
+          },
+          {
+            "name": "Devanakonda"
+          },
+          {
+            "name": "Dhone alias Dronachalam"
+          },
+          {
+            "name": "Dornipadu"
+          },
+          {
+            "name": "Gadivemula"
+          },
+          {
+            "name": "Gonegandla"
+          },
+          {
+            "name": "Gospadu"
+          },
+          {
+            "name": "Gudur"
+          },
+          {
+            "name": "Halaharvi"
+          },
+          {
+            "name": "Holagunda"
+          },
+          {
+            "name": "Jupadu Bungalow"
+          },
+          {
+            "name": "Kallur"
+          },
+          {
+            "name": "Kodumuru"
+          },
+          {
+            "name": "Koilkuntla"
+          },
+          {
+            "name": "Kolimigundla"
+          },
+          {
+            "name": "Kosigi"
+          },
+          {
+            "name": "Kothapalle"
+          },
+          {
+            "name": "Kowthalam"
+          },
+          {
+            "name": "Krishnagiri"
+          },
+          {
+            "name": "Kurnool"
+          },
+          {
+            "name": "Maddikera (East)"
+          },
+          {
+            "name": "Mahanandi"
+          },
+          {
+            "name": "Mantralayam"
+          },
+          {
+            "name": "Miduthur"
+          },
+          {
+            "name": "Nandavaram"
+          },
+          {
+            "name": "Nandavaram"
+          },
+          {
+            "name": "Nandyal"
+          },
+          {
+            "name": "Orvakal"
+          },
+          {
+            "name": "Owk"
+          },
+          {
+            "name": "Pagidyala"
+          },
+          {
+            "name": "Pamulapadu"
+          },
+          {
+            "name": "Panyam"
+          },
+          {
+            "name": "Pattikonda"
+          },
+          {
+            "name": "Peapally"
+          },
+          {
+            "name": "Pedda Kadubur"
+          },
+          {
+            "name": "Rudravaram"
+          },
+          {
+            "name": "Sanjamala"
+          },
+          {
+            "name": "Sirvel"
+          },
+
+          {
+            "name": "Srisailam"
+          },
+          {
+            "name": "Tuggali"
+          },
+          {
+            "name": "Uyyalawada"
+          },
+          {
+            "name": "Veldurthi"
+          },
+          {
+            "name": "Velgodu"
+          },
+          {
+            "name": "Yemmiganur."
+          }
+
+        ]
+      },
+      {
+        "name": "Nellore",
+        "Mondal": [
+          {
+            "name": "Allur"
+          },
+          {
+            "name": "Ananthasagaram"
+          },
+          {
+            "name": "Anumasamudrampeta"
+          },
+          {
+            "name": "Atmakur"
+          },
+          {
+            "name": "Balayapalle"
+          },
+          {
+            "name": "Bhogolu"
+          },
+          {
+            "name": "Buchireddipalem"
+          },
+          {
+            "name": "Chejerla"
+          },
+          {
+            "name": "Chillakur"
+          },
+          {
+            "name": "Chittamur"
+          },
+          {
+            "name": "Dagadarthi"
+          },
+          {
+            "name": "Dakkili"
+          },
+          {
+            "name": "Doravarisatram"
+          },
+          {
+            "name": "Duttalur"
+          },
+          {
+            "name": "Gudur"
+          },
+          {
+            "name": "Indukurpet"
+          },
+          {
+            "name": "Jaladanki"
+          },
+          {
+            "name": "Kaligiri"
+          },
+          {
+            "name": "Kaluvoya"
+          },
+          {
+            "name": "Kavali"
+          },
+          {
+            "name": "Kodavalur"
+          },
+          {
+            "name": "Kondapuram"
+          },
+          {
+            "name": "Kota"
+          },
+          {
+            "name": "Kovur"
+          },
+          {
+            "name": "Manubolu"
+          },
+          {
+            "name": "Marripadu"
+          },
+          {
+            "name": "Muthukur"
+          },
+          {
+            "name": "Naidupeta"
+          },
+          {
+            "name": "Nellore"
+          },
+          {
+            "name": "Ozili"
+          },
+          {
+            "name": "Pellakur"
+          },
+          {
+            "name": "Podlakur"
+          },
+          {
+            "name": "Rapur"
+          },
+          {
+            "name": "Seetharamapuram"
+          },
+          {
+            "name": "Sangam"
+          },
+          {
+            "name": "Sullurpeta"
+          },
+          {
+            "name": "Sydapuram"
+          },
+          {
+            "name": "Tada"
+          },
+          {
+            "name": "Thotapalligudur"
+          },
+          {
+            "name": "Udayagiri"
+          },
+          {
+            "name": "Vakadu"
+          },
+          {
+            "name": "Varikuntapadu"
+          },
+          {
+            "name": "Venkatachalam"
+          },
+          {
+            "name": "Vinjamur"
+          },
+          {
+            "name": "Venkatagiri"
+          },
+          {
+            "name": "Vidavalur"
+          }
+
+        ]
+      },
+      {
+
+        "name": "Prakasam",
+        "Mondal": [
+          {
+            "name": "Lingasamudram"
+          },
+          {
+            "name": "Maddipadu"
+          },
+          {
+            "name": "Markapur"
+          },
+          {
+            "name": "Marripudi"
+          },
+          {
+            "name": "Martur"
+          },
+          {
+            "name": "Mundlamuru"
+          },
+          {
+            "name": "Naguluppalapadu"
+          },
+          {
+            "name": "Ongole"
+          },
+          {
+            "name": "Pamur"
+          },
+          {
+            "name": "Parchur"
+          },
+          {
+            "name": "Pedaaraveedu"
+          },
+          {
+            "name": "Pedacherlopalle"
+          },
+          {
+            "name": "Podili"
+          },
+          {
+            "name": "Ponnaluru"
+          },
+          {
+            "name": "Pullalacheruvu"
+          },
+          {
+            "name": "Santhamaguluru"
+          },
+          {
+            "name": "Santhanuthlapadu"
+          },
+          {
+            "name": "Singarayakonda"
+          },
+          {
+            "name": "Racherla"
+          },
+          {
+            "name": "Tangutur"
+          },
+          {
+            "name": "Tarlupadu"
+          },
+          {
+            "name": "Thallur"
+          },
+          {
+            "name": "Tripuranthakam"
+          },
+          {
+            "name": "Ulavapadu"
+          },
+          {
+            "name": "Veligandla"
+          },
+          {
+            "name": "Vetapalem"
+          },
+          {
+            "name": "Voletivaripalem"
+          },
+          {
+            "name": "Yeddanapudi"
+          },
+          {
+            "name": "Yerragondapalem"
+          },
+          {
+            "name": "Zarugumilli"
+          },
+          {
+            "name": "Addanki"
+          },
+          {
+            "name": "Ardhaveedu"
+          },
+          {
+            "name": "Ballikuruva"
+          },
+          {
+            "name": "Bestavaripeta"
+          },
+          {
+            "name": "Chinaganjam"
+          },
+          {
+            "name": "Chandrasekharapuram"
+          },
+          {
+            "name": "Chimakurthi"
+          },
+          {
+            "name": "Chirala"
+          },
+          {
+            "name": "Cumbum"
+          },
+          {
+            "name": "Darsi"
+          },
+          {
+            "name": "Donakonda"
+          },
+          {
+            "name": "Dornala"
+          },
+          {
+            "name": "Giddaluru"
+          },
+          {
+            "name": "Gudluru"
+          },
+          {
+            "name": "Hanumanthunipadu"
+          },
+          {
+            "name": "Inkollu"
+          },
+          {
+            "name": "Janakavaram Panguluru"
+          },
+          {
+            "name": "Kandukur"
+          },
+
+          {
+            "name": "Karamchedu"
+          },
+          {
+            "name": "Komarolu"
+          },
+          {
+            "name": "Kanigiri"
+          },
+          {
+            "name": "Konakanamitla"
+          },
+          {
+            "name": "Kondapi"
+          },
+          {
+            "name": "Korisapadu"
+          },
+          {
+            "name": "Kothapatnam"
+          },
+          {
+            "name": "Kurichedu"
+          }
+
+        ]
+      },
+      {
+        "name": "Srikakulam",
+        "Mondal": [
+          {
+            "name": "Amadalavalasa"
+          },
+          {
+            "name": "Bhamini"
+          },
+          {
+            "name": "Burja"
+          },
+          {
+            "name": "Etcherla"
+          },
+          {
+            "name": "Gara"
+          },
+          {
+            "name": "Ganguvari Sigadam"
+          },
+          {
+            "name": "Hiramandalam"
+          },
+          {
+            "name": "Ichchapuram"
+          },
+          {
+            "name": "Jalumuru"
+          },
+          {
+            "name": "Kanchili"
+          },
+          {
+            "name": "Kaviti"
+          },
+          {
+            "name": "Kotabommali"
+          },
+          {
+            "name": "Kothuru(Srikakulam)"
+          },
+          {
+            "name": "Lakshminarasupeta"
+          },
+          {
+            "name": "Laveru"
+          },
+          {
+            "name": "Mandasa"
+          },
+          {
+            "name": "Meliaputti"
+          },
+          {
+            "name": "Nandigam"
+          },
+          {
+            "name": "Narasannapeta"
+          },
+          {
+            "name": "Palakonda"
+          },
+          {
+            "name": "Palasa"
+          },
+          {
+            "name": "Pathapatnam"
+          },
+          {
+            "name": "Polaki"
+          },
+          {
+            "name": "Ponduru"
+          },
+          {
+            "name": "Rajam"
+          },
+          {
+            "name": "Ranastalam"
+          },
+          {
+            "name": "Regidi Amadalavalasa"
+          },
+          {
+            "name": "Santhabommali"
+          },
+          {
+            "name": "Santhakavati"
+          },
+          {
+            "name": "Saravakota"
+          },
+          {
+            "name": "Sarubujjili"
+          },
+          {
+            "name": "Seethampeta"
+          },
+          {
+            "name": "Sompeta"
+          },
+          {
+            "name": "Srikakulam"
+          },
+          {
+            "name": "Tekkali"
+          },
+          {
+            "name": "Vajrapu Kotturu"
+          },
+          {
+            "name": "Vangara"
+          },
+          {
+            "name": "Veeraghattam"
+          }
+
+
+        ]
+      },
+      {
+        "name": "Visakhapatnam",
+        "Mondal": [
+          {
+            "name": "Anakapalli"
+          },
+          {
+            "name": "Anandapuram"
+          },
+          {
+            "name": "BurjaAnanthagiri"
+          },
+          {
+            "name": "Araku Valley"
+          },
+          {
+            "name": "Atchutapuram"
+          },
+          {
+            "name": "Bheemunipatnam"
+          },
+          {
+            "name": "Butchayyapeta"
+          },
+          {
+            "name": "Cheedikada"
+          },
+          {
+            "name": "Chintapalle"
+          },
+          {
+            "name": "Chodavaram"
+          },
+          {
+            "name": "Devarapalle"
+          },
+          {
+            "name": "Dumbriguda"
+          },
+          {
+            "name": "G.Madugula"
+          },
+          {
+            "name": "Gajuwaka (Urban)"
+          },
+          {
+            "name": "Golugonda"
+          },
+          {
+            "name": "Gudem Kotha Veedhi"
+          },
+          {
+            "name": "Hukumpeta"
+          },
+          {
+            "name": "K.Kotapadu"
+          },
+          {
+            "name": "Kasimkota"
+          },
+          {
+            "name": "Kotauratla"
+          },
+          {
+            "name": "Koyyuru"
+          },
+          {
+            "name": "Madugula"
+          },
+          {
+            "name": "Makavarapalem"
+          },
+          {
+            "name": "Munagapaka"
+          },
+          {
+            "name": "Munchingiputtu"
+          },
+          {
+            "name": "Nakkapalli"
+          },
+          {
+            "name": "Narsipatnam"
+          },
+          {
+            "name": "Nathavaram"
+          },
+          {
+            "name": "Paderu"
+          },
+          {
+            "name": "Padmanabham"
+          },
+          {
+            "name": "Paravada"
+          },
+          {
+            "name": "Payakaraopeta"
+          },
+          {
+            "name": "Pedabayalu"
+          },
+          {
+            "name": "Pedagantyada"
+          },
+          {
+            "name": "Pendurthi"
+          },
+          {
+            "name": "Rambilli"
+          },
+          {
+            "name": "Ravikamatham"
+          },
+          {
+            "name": "Rolugunta"
+          },
+          {
+            "name": "S.Rayavaram"
+          },
+          {
+            "name": "Sabbavaram"
+          },
+          {
+            "name": "Visakhapatnam (Rural)"
+          },
+          {
+            "name": "Visakhapatnam(Urban)"
+          },
+          {
+            "name": "Yelamanchili"
+          }
+
+
+        ]
+      },
+      {
+        "name": "Vizianagaram",
+        "Mondal": [
+          {
+            "name": "Bhogapuram"
+          },
+          {
+            "name": "Badangi"
+          },
+          {
+            "name": "Bondapalli"
+          },
+          {
+            "name": "Balijipeta"
+          },
+          {
+            "name": "Bobbili"
+          },
+          {
+            "name": "Cheepurupalli"
+          },
+          {
+            "name": "Dattirajeru"
+          },
+          {
+            "name": "Denkada"
+          },
+          {
+            "name": "Gajapathinagaram"
+          },
+          {
+            "name": "Gantyada"
+          },
+          {
+            "name": "Garividi"
+          },
+          {
+            "name": "Gurla"
+          },
+          {
+            "name": "Garugubilli"
+          },
+          {
+            "name": "Gummalaxmipuram"
+          },
+          {
+            "name": "Jami"
+          },
+          {
+            "name": "Jiyyammavalasa"
+          },
+          {
+            "name": "Komarada"
+          },
+          {
+            "name": "Kothavalasa"
+          },
+          {
+            "name": "Kurupam"
+          },
+          {
+            "name": "Lakkavarapukota"
+          },
+          {
+            "name": "Makkuva"
+          },
+          {
+            "name": "Mentada"
+          },
+          {
+            "name": "Merakamudidam"
+          },
+          {
+            "name": "Nellimarla"
+          },
+          {
+            "name": "Pachipenta"
+          },
+          {
+            "name": "Parvathipuram"
+          },
+          {
+            "name": "Pusapatirega"
+          },
+          {
+            "name": "Ramabhadrapuram"
+          },
+          {
+            "name": "Salur"
+          },
+          {
+            "name": "Seethanagaram"
+          },
+          {
+            "name": "Srungavarapukota"
+          },
+          {
+            "name": "Therlam"
+          },
+          {
+            "name": "Vepada"
+          },
+          {
+            "name": "Vizianagaram"
+          }
+
+        ]
+      },
+      {
+         "name": "West Godavari",
+        "Mondal": [
+          {
+            "name": "Jeelugumilli"
+          },
+          {
+            "name": "Jangareddigudem"
+          },
+          {
+            "name": "Kamavarapukota"
+          },
+          {
+            "name": "Kovvur"
+          },
+          {
+            "name": "Kukkunoor"
+          },
+          {
+            "name": "Kalla"
+          },
+          {
+            "name": "Koyyalagudem"
+          },
+          {
+            "name": "Lingapalem"
+          },
+          {
+            "name": "Mogalthur"
+          },
+          {
+            "name": "Narasapuram"
+          },
+          {
+            "name": "Nallajarla"
+          },
+          {
+            "name": "Nidadavole"
+          },
+          {
+            "name": "Nidamarru"
+          },
+          {
+            "name": "Polavaram"
+          },
+          {
+            "name": "Pedavegi"
+          },
+          {
+            "name": "Pedapadu"
+          },
+          {
+            "name": "Pentapadu"
+          },
+          {
+            "name": "Peravali"
+          },
+          {
+            "name": "Poduru"
+          },
+          {
+            "name": "Penumantra"
+          },
+          {
+            "name": "Penugonda"
+          },
+          {
+            "name": "Palakol"
+          },
+          {
+            "name": "Thallapudi"
+          },
+          {
+            "name": "T.Narasapuram"
+          },
+          {
+            "name": "Tadepalligudem"
+          },
+          {
+            "name": "Tanuku"
+          },
+          {
+            "name": "Undrajavaram"
+          },
+          {
+            "name": "Unguturu"
+          },
+          {
+            "name": "Undi"
+          },
+          {
+            "name": "Veeravasaram"
+          },
+          {
+            "name": "Yelamanchili"
+          },
+          {
+            "name": "Velerupadu"
+          },
+          {
+            "name": "Attili"
+          },
+          {
+            "name": "Akiveedu"
+          },
+          {
+            "name": "Achanta"
+          },
+          {
+            "name": "Buttayagudem"
+          },
+          {
+            "name": "Bhimavaram"
+          },
+          {
+            "name": "Bhimadole"
+          },
+          {
+            "name": "Chagallu"
+          },
+          {
+            "name": "Chintalapudi"
+          },
+          {
+            "name": "Devarapalle"
+          },
+          {
+            "name": "Denduluru"
+          },
+          {
+            "name": "Dwarakatirumala"
+          },
+          {
+            "name": "Eluru"
+          },
+          {
+            "name": "Gopalapuram"
+          },
+          {
+            "name": "Ganapavaram"
+          },
+          {
+            "name": "Iragavaram"
           }
 
         ]

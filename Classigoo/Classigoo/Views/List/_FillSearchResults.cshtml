@@ -26,7 +26,7 @@
                     {
                         <li class="col-sm-4">
                             <div class="searchgrid" style="width:100%;float:left">
-                                <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="~/Content/img/product2.jpg" alt=""></a>
+                                <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="@innerAdds.ImgUrlPrimary" alt=""></a>
                                 @if (innerAdds.Category == Constants.RealEstate)
                                 {
                                     <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>
@@ -51,7 +51,7 @@
                                 <div>
                                     <h4><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">@innerAdds.Title </a></h4>
                                     <ul class="icondetail">
-                                        <li><i class="fa fa-rupee"></i>Price : 1200000</li>
+                                        <li><i class="fa fa-rupee"></i>Price : @innerAdds.Price</li>
                                         <li><i class="fa fa-map-marker"></i> Location : @innerAdds.Location</li>
                                         <li><i class="fa fa-calendar"></i> Posted On : @innerAdds.CreatedDate  </li>
                                     </ul>

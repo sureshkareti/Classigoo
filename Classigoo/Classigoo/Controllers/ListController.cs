@@ -82,48 +82,53 @@ namespace Classigoo.Controllers
             customAdd.Category = add.Category;
             switch (add.Category)
             {
-                case "Real Estate":
+                case Constants.RealEstate:
                     {
                         foreach (var item in add.RealEstates)
                         {
                             customAdd.Description = item.Description;
-                           
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
                         }
                         break;
                     }               
-                case "Transportation Vehicles":
+                case Constants.TransportationVehicle:
                     {
                         foreach (var item in add.TransportationVehicles)
                         {
                             customAdd.Description = item.Description;
-
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
                         }
                         break;
                     }
-                case "Construction Vehicles":
+                case Constants.ConstructionVehicle:
                     {
                         foreach (var item in add.ConstructionVehicles)
                         {
                             customAdd.Description = item.Description;
-
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
                         }
                         break;
                     }
-                case "Agricultural Vehicles":
+                case Constants.AgriculturalVehicle:
                     {
                         foreach (var item in add.AgriculturalVehicles)
                         {
                             customAdd.Description = item.Description;
-
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
                         }
                         break;
                     }
-                case "Passenger Vehicles":
+                case Constants.PassengerVehicle:
                     {
                         foreach (var item in add.PassengerVehicles)
                         {
                             customAdd.Description = item.Description;
-
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
                         }
                         break;
                     }
