@@ -1,503 +1,236 @@
 ﻿@model CustomAdd
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
- }
-<head>
-    <link href="@Url.Content("~/Content/CssNew/color1.css")" rel="stylesheet" media="screen" id="color">
-</head>
-<!-- Header Start -->
-@*<header id="header">
-        <div class="headerdetails">
-            <div class="container">
-                <a class="logo pull-left" href="index.html"><img title="Classifieds" alt="Classifieds" src="img/logo.png"></a>
-                <div id="mainmenu" class=" pull-right">
-                    <!-- Navigation -->
-                    <nav class="subnav">
-                        <div class="menurelative">
-                            <a class="btn btn-orange mainmenumobile">Menu</a>
-                            <ul class="nav-pills mainmenucontain">
-                                <li>
-                                    <a class="active home submenu2">Home</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="index.html">Home With Map</a> </li>
-                                            <li> <a class="" href="index1.html">Home With Image </a> </li>
-                                            <li> <a class="" href="index2.html">Home - 2 Column</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">Listing</a>
-                                    <div class="submenu">
-                                        <ul class="pull-left">
-                                            <li> <a class="" href="listing.html">Listing List View</a> </li>
-                                            <li> <a class="" href="listing-grid.html">Listing Grid View</a> </li>
-                                            <li><a class="" href="#"><img title="" alt="" src="img/ad1.jpg" width="200"></a></li>
-                                        </ul>
-                                        <div id="topdeal">
-                                            <h3>Top Deal</h3>
-                                            <ul>
-                                                <li>
-                                                    <img width="100" src="img/blog1.jpg" alt="blog" title="blog" class="pull-left">
-                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
+}
 
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                </li>
-                                                <li>
-                                                    <img width="100" src="img/blog2.jpg" alt="blog" title="blog" class="pull-left">
-                                                    <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
-
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> September 5, 2013 </span> </div>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li> <a class="" href="detail.html">Detail Page</a> </li>
-                                <li>
-                                    <a class="submenu2">Blog</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="blog.html">Blog Detail</a> </li>
-                                            <li> <a class="" href="bloggrid.html">Blog Grid</a> </li>
-                                            <li> <a class="" href="bloglist.html">Blog List</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">My Account</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" href="login.html">Login</a> </li>
-                                            <li> <a class="" href="register.html">Register</a> </li>
-                                            <li> <a class="" href="account.html">Dashboard</a> </li>
-                                            <li> <a class="" href="profile.html">Edit Profile</a> </li>
-                                            <li> <a class="" href="post-ad.html">Post An Ad</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li> <a class="" href="contact.html">Contact</a> </li>
-                                <li> <a class="" href="features.html">Features</a> </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <div class="mt10 pull-right">
-                        <!--Social -->
-                        <div class="socialtop pull-right">
-                            <ul class="pull-right">
-                                <li><a class="tooltip-test" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--Top Search -->
-
-                        <div class="email"> <i class="fa fa-envelope-o"></i> Email : <a href="maito:test@pxcreate.com" class="black">test@pxcreate.com </a></div>
-                        <div class="call"><i class="fa fa-phone"></i> Call Us : <span class="black">+ 99 123 456 7890 </span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>*@
-<!-- Header End -->
 @using (Html.BeginForm("PreviewAdd", "User", FormMethod.Post, new { id = "PreviewAdd" }))
 {
-    <div id="maincontainer">
-        <!-- Search Start-->
-        @*<section id="searchinner">
-                <div class="container">
-                    <div class="searchcontianer">
-                        <form class="form-inline">
-                            <div class="btn-group">
-                                <input type="search" placeholder="Search Here" class="form-control mainserarch">
-                                <button data-toggle="dropdown" class="btn  dropdown-toggle category" type="button"> Select Categories <span class="caret"></span> </button>
-                                <ul class="dropdown-menu categorydropdown">
-                                    <li><a href="#">Real Estate</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Item For Sale</a></li>
-                                    <li><a href="#">Jobs</a></li>
-                                    <li><a href="#">Personal</a></li>
-                                </ul>
-                                <input type="submit" value="Search" class="btn btn-orange tooltip-test mainserarchsubmit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <a class="postad" href="post-ad.html"><span> <i class="fa fa-pencil"></i> Post An Ad</span></a>
-            </section>*@
-        <div class="container listing-block" style="max-width:970px !important;margin:auto;">
-            <!--  breadcrumb -->
-            @*<ul class="breadcrumb">
-                <li> <a>All Categories</a> </li>
-                <li> <a>Mobiles & Tablets</a> </li>
-                <li class="active"> Samsung Galaxy S Duos 2 S7582</li>
-            </ul>*@
 
-            <!-- Title-->
-            <div class="clearfix">
-                @*<h2 style="text-align: center;"> @Model.Title </h2>*@
+    <div>
+        <div class="breadcrumb-block">
 
-                <h4 class="pull-left"> <i class="fa fa-map-marker"></i> @Model.Location</h4>
-                 <h4 style="text-align: center;"> @Model.Title</h4>
-                @*<h4 class="pull-right"><i class="fa fa-rupee"></i>@Model.Price</h4>*@
-            </div>
-           
-            <!-- Product Details-->
-            <div class="row mt40">
-                <!-- Left Image-->
-                <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12">
-                    
-                    
-                    <ul class="thumbnails mainimage clearfix" style="width: 615px !important; height:350px !important;">
-                        <li> <img class="my-foto-container" style="width: 615px !important; height:350px !important;" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
-                        
-                      </ul>
-                    <ul class="thumbnails mainimage clearfix mt10" >
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary"data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlThird"data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                        <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                    </ul>
-                    <div class="mt10">* Mouse move on Image to zoom</div>
-                </div>
-                <!-- Right Details-->
-                
-            </div>
-            <div class="mt40" id="serchlist">
-                <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 mt40column">
-                    <div class="clearfix">
-                        <div class="price pull-left"> <i class="fa fa-rupee"></i> @Model.Price</div>
-                        <a class="pull-right btn btn-orange btn-lg">Contact</a>
-                    </div>
-                    <!-- Product Description tab & comments-->
-                    <div class="productdesc">
-                        <ul class="nav nav-tabs" id="myTab">
-                            <li id="tabdesc"><a href="#description">Description</a> </li>
-                            <li id="tabspec"><a href="#specification">Specification</a> </li>
-                            <li id="tabcontact"><a href="#contact">Send Message</a> </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="description">
-                                <h3 class="m0">@Model.Description</h3>
-                                <br />
-                                @*<ul class="listoption3">
-                            <li> Android v4.2 (Jelly Bean) OS</li>
-                            <li>5 MP Primary Camera</li>
-                            <li>0.3 MP Secondary Camera</li>
-                            <li>Dual SIM (GSM + GSM)</li>
-                            <li>Wi-Fi Enabled
-                            <li> Expandable Storage Capacity of 64 GB</li>
-                        </ul>*@
-                            </div>
-                            <div class="tab-pane " id="cv-specification">
-                                <ul class="productinfo">
-                                    @if (@Model.CV != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
-                                    }
-
-                                </ul>
-
-                            </div>
-                            <div class="tab-pane " id="tv-specification">
-                                <ul class="productinfo">
-                                    @if (@Model.TV != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
-                                    }
-                                </ul>
-
-                            </div>
-                            <div class="tab-pane " id="av-specification">
-                                <ul class="productinfo">
-                                    @if (@Model.AV != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
-                                    }
-                                </ul>
-                            </div>
-                            <div class="tab-pane " id="re-specification">
-                                <ul class="productinfo">
-                                    @if (@Model.RE != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
-                                        <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
-                                        <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
-                                        <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
-                                        <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
-                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
-                                    }
-                                </ul>
-                            </div>
-                            <div class="tab-pane " id="pv-specification">
-                                <ul class="productinfo">
-                                    @if (@Model.PV != null)
-                                    {
-                                        <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
-                                        <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
-                                        <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
-                                        <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
-                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
-                                    }
-                                </ul>
-                            </div>
-                            <div class="tab-pane" id="contact">
-                                <form class="form-vertical">
-                                    <fieldset>
-                                        @*<div class="control-group">
-                                    <label class="control-label">Your Name</label>
-                                    <div class="controls">
-
-                                        <input type="text" class="span3">
-                                    </div>
-                                </div>*@
-                                        <div class="control-group">
-                                            <label class="control-label">Message</label>
-                                            <div class="controls">
-                                                <textarea rows="3" name="user-message" class="span3"></textarea>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                    <input type="submit" class="btn btn-orange" value="continue">
-                                    @Html.HiddenFor(m => m.AddId)
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @*<h2 class="heading3">Recommended Combos for Samsung Galaxy S Duos</h2>*@
-                @*<div class="searchresult list mt40">
-                        <ul>
-                            <li class="clearfix">
-                                <div class="col-sm-2"> <a class="thumbnail" href="detail.html"><img src="img/product1.jpg" alt=""></a> </div>
-                                <div class="col-sm-8">
-                                    <h3><a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a></h3>
-                                    <ul class="icondetail">
-                                        <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                                        <li><i class="fa fa-map-marker"></i> Location : <a href="#">California, U.S.</a></li>
-                                        <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                        <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                    </ul>
-                                    <div class="discrption">
-                                        White, 8 GB, 2G, 3G, Wi-Fi, Bluetooth Headset - > Samsung Galaxy Tab 3 T211 Tablet <br>
-                                        Dual SIM (GSM + GSM), 5 MP Primary Camera, 0.3 MP Secondary Camera,   Android v4.2 OS
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="share">
-                                        Share On : <br>
-                                        <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                    <a class="btn  contact"><i class="fa fa-envelope-o"></i> Contact</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col-sm-2"> <a class="thumbnail" href="detail.html"><img src="img/product2.jpg" alt=""></a> </div>
-                                <div class="col-sm-8">
-                                    <h3><a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a></h3>
-                                    <ul class="icondetail">
-                                        <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                                        <li><i class="fa fa-map-marker"></i> Location : <a href="#">California, U.S.</a></li>
-                                        <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                        <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                    </ul>
-                                    <div class="discrption">
-                                        White, 8 GB, 2G, 3G, Wi-Fi, Bluetooth Headset - > Samsung Galaxy Tab 3 T211 Tablet <br>
-                                        Dual SIM (GSM + GSM), 5 MP Primary Camera, 0.3 MP Secondary Camera,   Android v4.2 OS
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="share">
-                                        Share On : <br>
-                                        <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                    <a class="btn  contact"><i class="fa fa-envelope-o"></i> Contact</a>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col-sm-2"> <a class="thumbnail" href="detail.html"><img src="img/product3.jpg" alt=""></a> </div>
-                                <div class="col-sm-8">
-                                    <h3><a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a></h3>
-                                    <ul class="icondetail">
-                                        <li><i class="fa fa-th-list"></i> Category : <a href="#">Mobile</a></li>
-                                        <li><i class="fa fa-map-marker"></i> Location : <a href="#">California, U.S.</a></li>
-                                        <li><i class="fa fa-calendar"></i> Posted On : Mach 22, 2014 </li>
-                                        <li><i class="fa fa-user"></i> Posted by : <a href="#">pxcreate</a></li>
-                                    </ul>
-                                    <div class="discrption">
-                                        White, 8 GB, 2G, 3G, Wi-Fi, Bluetooth Headset - > Samsung Galaxy Tab 3 T211 Tablet <br>
-                                        Dual SIM (GSM + GSM), 5 MP Primary Camera, 0.3 MP Secondary Camera,   Android v4.2 OS
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="share">
-                                        Share On : <br>
-                                        <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a>
-                                    </div>
-                                    <a class="btn  contact"><i class="fa fa-envelope-o"></i> Contact</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>*@
-            </div>
         </div>
-        <!-- Social-->
-        <div class="container">
-            @*<h2 class="heading3">Social</h2>*@
-            @*<div class="mt40" id="social">
-                    <ul class="row clearfix">
-                        <li class="col-md-3 col-sm-6">
-                            <h5 class="heading5">Twitter</h5>
-                            <div id="twitter"> </div>
-                        </li>
-                        <li class="col-md-3 col-sm-6 mt40column">
-                            <h5 class="heading5">Flickr</h5>
-                            <div class="social-feed flickr-feed"> </div>
-                        </li>
-                        <li class="col-md-3 col-sm-6 mt40column">
-                            <h5 class="heading5">Youtube</h5>
-                            <div class="social-feed youtube-feed"> </div>
-                        </li>
-                        <li class="col-md-3 col-sm-6 mt40column">
-                            <h5 class="heading5">Facebook</h5>
-                            <div class="">
-                                <div id="fb-root"></div>
-                                <script>
-                                (function(d, s, id) {
-                                  var js, fjs = d.getElementsByTagName(s)[0];
-                                  if (d.getElementById(id)) return;
-                                  js = d.createElement(s); js.id = id;
-                                  js.src = "../../../connect.facebook.net/en_US/all.js#xfbml=1";
-                                  fjs.parentNode.insertBefore(js, fjs);
-                                }(document, 'script', 'facebook-jssdk'));</script>
-                                <div class="fb-like-box" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>*@
-        </div>
-        <!-- Newsletter-->
-        <section class="mt40 newsletter" id="newslettersignup">
-            @*<div class="container">
+        <div class="add-listing-wrap">
+            <div class="container">
+                <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
+                    <p>
+                        <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                    </p>
+                </div>
+                <div>
+                    <input type="text" id="validationTemp" style="display:none" required />
+                </div>
+                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
+
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="pull-left ">
-                                <h5 class="heading5 borderbottm"> Newsletters Signup</h5>
-                                Sign up to Our Newsletter &amp; get attractive Offers by subscribing to our newsletters.
-                            </div>
+                        <div class="col-md-8 col-sm-6">
+                            <h2 style="text-align:left;"> test title for agricultural vebiclaes for the location andhra pradesh</h2>
+                            <div>
+                                <i class="fa fa-map-marker"></i> Ameerpet , Hyderabad  | Posted on: 26 April
+                            </div>                          
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="pull-right mt20 surbscribeform">
-                                <form class="form-inline">
-                                    <div class="input-prepend">
-                                        <input type="text" class="subscribeinput" id="inputIcon" placeholder="Subscribe to Newsletter">
-                                        <input type="submit" class="btn btn-orange" value="Subscribe">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;12000</div>
+                            @*<a class="pull-right btn btn-orange btn-lg">Contact</a>*@
+                        </div>                         
                     </div>
-                </div>*@
-        </section>
-        <!-- Footer -->
-        <footer id="footer">
-            @*<section id="quicklink">
-                    <div class="container">
-                        <div class="row">
-                            <ul class="quicklinks">
-                                <li> <a class="active home" href="index.html">Home</a> </li>
-                                <li> <a class="" href="listing.html">Listing</a> </li>
-                                <li> <a class="" href="detail.html">Detail Page</a> </li>
-                                <li> <a class="" href="login.html">Login</a> </li>
-                                <li> <a class="" href="register.html">Register</a> </li>
-                                <li> <a class="" href="account.html">My Account</a> </li>
-                                <li> <a class="" href="contact.html">Contact</a> </li>
-                                <li> <a class="" href="features.html">Features</a> </li>
+                   
+                    <!-- Product Details-->
+                    <div class="row mt40">
+                        <div class="col-md-2">
+
+                        </div>
+                        <!-- Left Image-->
+                        <div class="col-md-8 col-xs-12 col-sm-12">
+                            <ul class="thumbnails mainimage clearfix image-frame">
+                                <li> <img class="my-foto-container image-frame"   src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
                             </ul>
+                            <ul class="thumbnails mainimage clearfix mt10">
+                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto"  src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
+                            </ul>
+                            <div class="mt10">* Mouse move on Image to zoom</div>
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                        <!-- Right Details-->
+
+                    </div>
+                    <div class="mt40" id="serchlist">
+                        <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 mt40column">
+                            <div class="clearfix">
+                                <div class="price pull-left"> <i class="fa fa-rupee"></i> @Model.Price</div>
+                                <a class="pull-right btn btn-orange btn-lg">Contact</a>
+                            </div>
+                            <!-- Product Description tab & comments-->
+                            <div class="productdesc">
+                                <ul class="nav nav-tabs" id="myTab">
+                                    <li id="tabdesc"><a href="#description">Description</a> </li>
+                                    <li id="tabspec"><a href="#specification">Specification</a> </li>
+                                    <li id="tabcontact"><a href="#contact">Send Message</a> </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="description">
+                                        <h3 class="m0">@Model.Description</h3>
+                                        <br />
+
+                                    </div>
+                                    <div class="tab-pane " id="cv-specification">
+                                        <ul class="productinfo">
+                                            @if (@Model.CV != null)
+                                            {
+                                                <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
+                                            }
+
+                                        </ul>
+
+                                    </div>
+                                    <div class="tab-pane " id="tv-specification">
+                                        <ul class="productinfo">
+                                            @if (@Model.TV != null)
+                                            {
+                                                <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
+                                            }
+                                        </ul>
+
+                                    </div>
+                                    <div class="tab-pane " id="av-specification">
+                                        <ul class="productinfo">
+                                            @if (@Model.AV != null)
+                                            {
+                                                <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane " id="re-specification">
+                                        <ul class="productinfo">
+                                            @if (@Model.RE != null)
+                                            {
+                                                <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
+                                                <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
+                                                <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
+                                                <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
+                                                <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
+                                                <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane " id="pv-specification">
+                                        <ul class="productinfo">
+                                            @if (@Model.PV != null)
+                                            {
+                                                <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
+                                                <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
+                                                <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
+                                                <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
+                                                <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="tab-pane" id="contact">
+                                        <form class="form-vertical">
+                                            <fieldset>
+                                                @*<div class="control-group">
+                                                        <label class="control-label">Your Name</label>
+                                                        <div class="controls">
+
+                                                            <input type="text" class="span3">
+                                                        </div>
+                                                    </div>*@
+                                                <div class="control-group">
+                                                    <label class="control-label">Message</label>
+                                                    <div class="controls">
+                                                        <textarea rows="3" name="user-message" class="span3"></textarea>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <input type="submit" class="btn btn-orange" value="continue">
+                                            @Html.HiddenFor(m => m.AddId)
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </section>*@
-            @*<section class="copyrightbottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="pull-left"> Copyright © 2014. Classic. All rights reserved </div>
-                            <div class="pull-right"> Developed by pxcreate</div>
-                        </div>
-                    </div>
-                </section>*@
-        </footer>
-        <!-- Got to top -->
-        <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="maincontainer">
+
+        <div class="container listing-block" style="max-width:970px !important;margin:auto;">
+
+        </div>
+
     </div>
 }
-    @*<div id="styleswitch">
-            <h3>Style Color switcher <i class="fa fa-cogs"></i> </h3>
-            <a href="javascript: void(0)" title="switch styling" id="color1">color1</a> <a href="javascript: void(0)" title="switch styling" id="color2">color2</a> <a href="javascript: void(0)" title="switch styling" id="color3">color3</a> <a href="javascript: void(0)" title="switch styling" id="color4">color4</a> <a href="javascript: void(0)" title="switch styling" id="color5">color5</a> <a href="javascript: void(0)" title="switch styling" id="color6">color6</a> <a href="javascript: void(0)" title="switch styling" id="color7">color7</a> <a href="javascript: void(0)" title="switch styling" id="color8">color8</a> <a href="javascript: void(0)" title="switch styling" id="color9">color9</a> <a href="javascript: void(0)" title="switch styling" id="color10">color10</a> <a href="javascript: void(0)" title="switch styling" id="color11">color11</a> <a href="javascript: void(0)" title="switch styling" id="color12">color12</a> <a href="javascript: void(0)" title="switch styling" id="color13">color13</a> <a href="javascript: void(0)" title="switch styling" id="color14">color14</a> <a href="javascript: void(0)" title="switch styling" id="color15">color15</a> <a href="javascript: void(0)" title="switch styling" id="color16">color16</a> <a href="javascript: void(0)" title="switch styling" id="color17">color17</a> <a href="javascript: void(0)" title="switch styling" id="color18">color18</a> <a href="javascript: void(0)" title="switch styling" id="color19">color19</a> <a href="javascript: void(0)" title="switch styling" id="color20">color20</a>
-        </div>*@
-@section scripts{
-   
-   <script src="~/Scripts/ScriptsNew/jquery.js"></script>
-   <script src="~/Scripts/bootstrap.min.js"></script>*
-   <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
-   <script src="~/Scripts/custom.js"></script>
+
+@section Styles {
+    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/List/color1.css" rel="stylesheet" />
 
 }
-    <script type="text/javascript">
-$(document).ready(function() {
-    $('#myTab a').click(function (e) {
-        e.preventDefault()
-        var selectedTab = $(this).context.innerText;
-        var selectedCategory = '@Model.Category';
-        ClearTabs();
-        if (selectedTab == "Specification") {
-            $("#tabspec").addClass("active");
-            switch (selectedCategory)
-            {
-                case "Real Estate":
-                    $("#re-specification").css("display", "block");
-                    break;
-                case "Construction Vehicles":
-                    $("#cv-specification").css("display", "block");
-                    break;
-                case "Transportation Vehicles":
-                    $("#tv-specification").css("display", "block");
-                    break;
-                case "Agricultural Vehicles":
-                    $("#av-specification").css("display", "block");
-                    break;
-                case "Passenger Vehicles":
-                    $("#pv-specification").css("display", "block");
-                    break;
+
+@section scripts{
+
+    <script src="~/Scripts/ScriptsNew/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*
+    <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#myTab a').click(function (e) {
+            e.preventDefault()
+            var selectedTab = $(this).context.innerText;
+            var selectedCategory = '@Model.Category';
+            ClearTabs();
+            if (selectedTab == "Specification") {
+                $("#tabspec").addClass("active");
+                switch (selectedCategory) {
+                    case "Real Estate":
+                        $("#re-specification").css("display", "block");
+                        break;
+                    case "Construction Vehicles":
+                        $("#cv-specification").css("display", "block");
+                        break;
+                    case "Transportation Vehicles":
+                        $("#tv-specification").css("display", "block");
+                        break;
+                    case "Agricultural Vehicles":
+                        $("#av-specification").css("display", "block");
+                        break;
+                    case "Passenger Vehicles":
+                        $("#pv-specification").css("display", "block");
+                        break;
+                }
             }
+            else if (selectedTab == "Description") {
+                $("#description").css("display", "block");
+
+                $("#tabdesc").addClass("active");
+
+            }
+            else if (selectedTab == "Send Message") {
+                $("#contact").css("display", "block");
+
+                $("#tabcontact").addClass("active");
+            }
+        })
+        $('#myTab a:first').tab('show') // Select first tab
+        function ClearTabs() {
+            $(".tab-content > .tab-pane").removeClass("active");
+            $(".tab-content > .tab-pane").css("display", "none");
+            $('#myTab li').removeClass("active");
+
+
         }
-        else if (selectedTab == "Description")
-        {
-            $("#description").css("display", "block");
-           
-            $("#tabdesc").addClass("active");
-            
-        }
-        else if (selectedTab == "Send Message")
-        {
-            $("#contact").css("display", "block");
-           
-            $("#tabcontact").addClass("active");
-        }
-    })
-   $('#myTab a:first').tab('show') // Select first tab
-    function ClearTabs()
-    {
-        $(".tab-content > .tab-pane").removeClass("active");
-        $(".tab-content > .tab-pane").css("display", "none");
-        $('#myTab li').removeClass("active");
-           
-        
-    }
-});
-    </script>
+    });
+</script>

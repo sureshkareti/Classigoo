@@ -670,6 +670,21 @@ transform: scale(1 1);
     COMMENT COLOR :#8FB442
 */
 
+/*------------------preview add styles ----------------------*/
+
+.image-frame{
+    height:350px !important;
+    width: 615px !important;
+}
+
+@media screen and (max-width: 736px) {
+
+    .image-frame {
+        height: 150px !important;
+        width: 100% !important;
+    }
+}
+
 
 .loader-wrap {
   position: fixed;

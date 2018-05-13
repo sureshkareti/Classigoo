@@ -553,6 +553,12 @@
   }
 }
 @media screen and (max-width: 736px) {
+
+    .image-frame{
+         height:100px !important;
+    width: 255px !important;
+    }
+
   .listing-promote-steps {
     background: none;
   }
