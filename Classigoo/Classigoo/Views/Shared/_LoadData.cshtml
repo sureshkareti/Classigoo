@@ -43,7 +43,7 @@
                     <i class="fa fa-crosshairs" aria-hidden="true"></i> Location
                 </a>*@
             @*<input type="text" class="outer-select-input-box" id="listing_location_list" placeholder="Ex: Hyderabad, Warangal">*@
-            <input type="text" id="listing_location_list" class="form-control outer-select-input-box" placeholder="Ex: Warangal, Hyderabad" name="location" />
+            <input type="text" id="listing_location_list" style="border:none;border-radius:0px" class="form-control outer-select-input-box" placeholder="Ex: Warangal, Hyderabad" name="location" />
             @*<select class="form-controls outer-select-input-box" id="listing_location_list" name="location">
                     <option selected>Select Location</option>
                 </select>*@
@@ -53,7 +53,7 @@
                     <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
                 </a>*@
             @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
-            <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
+            <input type="text" class="form-control outer-select-input-box" style="border:none;border-radius:0px" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
         </div>
         <div class="form-group outer-select-field">
             @*<a class="input-dropedown-btn" href="javascript:void(0)">
@@ -65,7 +65,7 @@
                 <option selected>Sale</option>
             </select>*@
 
-            <select id="listing_rent_list" name="category">
+            <select id="listing_rent_list" name="Rent" class="outer-select-rent-box">
                 <option selected>Rent</option>
                 <option>Sale</option>
             </select>
@@ -206,6 +206,7 @@
                     });
                 });
             });
+
             jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
                 $('#listing_location_list').autocomplete({
                     source: locationColl,
@@ -217,7 +218,14 @@
                     mustMatch: false,
                     cacheLength: 20,
                     max: 20
-                });
+                }).focus(function(){            
+                   // The following works only once.
+                    // $(this).trigger('keydown.autocomplete');
+                    // As suggested by digitalPBK, works multiple times
+                    // $(this).data("autocomplete").search($(this).val());
+                    // As noted by Jonny in his answer, with newer versions use uiAutocomplete
+                    $(this).data("uiAutocomplete").search('te');
+                });;
             });
         }
         function FillCategories1() {

@@ -42,6 +42,12 @@
     width: 100%;
   }
 
+  .filter-form.filter-header-form .outer-select-rent-box{
+      width:100%;
+  }
+ 
+
+
   .filter-form.filter-header-form button {
     width: 200px;
   }
