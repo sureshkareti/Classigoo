@@ -38,6 +38,10 @@
     padding: 25px 15px 30px 15px;
   }
 
+  .filter-form.filter-header-form .selectron__trigger  {
+    width: 100%;
+  }
+
   .filter-form.filter-header-form button {
     width: 200px;
   }

@@ -110,10 +110,20 @@
     margin-bottom: 20px; }
 
 .filter-form.filter-header-form .form-group {
-  width: 275px; }
+  width: 240px; }
 
 .filter-form.filter-header-form .outer-select-input-box {
-  width: 255px; }
+  width: 240px; }
+
+.filter-form.filter-header-form .outer-select-rent-box {
+  width: 120px; }
+
+
+.filter-form.filter-header-form .selectron__trigger  {
+  width: 100%;
+  border-radius: 0;
+  cursor: pointer; }
+
 
 .filter-form.filter-header-form button {
   width: 270px;
