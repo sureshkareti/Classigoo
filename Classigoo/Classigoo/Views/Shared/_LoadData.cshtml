@@ -27,7 +27,7 @@
                 <option selected>Select Category</option>
             </select>*@
 
-            <select  id="listing_catagory_list" name="category">
+            <select   id="listing_catagory_list" name="category">
                 <option selected>Select Category</option>
             </select>
           
@@ -55,6 +55,23 @@
             @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
             <input type="text" class="form-control outer-select-input-box" id="listing_keword" placeholder="Ex: Honda, Maruthi" name="searchKeyword">
         </div>
+        <div class="form-group outer-select-field">
+            @*<a class="input-dropedown-btn" href="javascript:void(0)">
+                <i class="fa fa-crosshairs" aria-hidden="true"></i> Keword
+            </a>*@
+            @*<input type="text" id="listing_location_list1" class="form-control outer-select-input-box" name="location1" />*@
+            @*<select class="form-controls outer-select-rent-box" id="listing_catagory_list" name="category">
+                <option selected>Rent</option>
+                <option selected>Sale</option>
+            </select>*@
+
+            <select id="listing_rent_list" name="category">
+                <option selected>Rent</option>
+                <option>Sale</option>
+            </select>
+
+        </div>
+
         <div class="btn-group" id="divSearch">
             <button type="submit" class="danger-btn" id="btnSearch">
                 <i class="ti-search" aria-hidden="true"></i>
@@ -158,6 +175,8 @@
 
 
             $("#listing_catagory_list").selectron();
+
+            $("#listing_rent_list").selectron();
         }
         function FillLocations()
         {
