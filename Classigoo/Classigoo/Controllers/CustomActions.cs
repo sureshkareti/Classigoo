@@ -11,7 +11,7 @@ namespace Classigoo.Controllers
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();
-           // customAdd.Location = add.Location;
+            customAdd.Location = add.Mandal + "," + add.State;
             customAdd.CreatedDate = add.Created.ToString();
             customAdd.AddId = add.AddId;
             customAdd.Title = add.Title;
