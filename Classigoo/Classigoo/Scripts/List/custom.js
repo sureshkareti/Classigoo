@@ -80,21 +80,22 @@ $(document).ready(function () {
         loopspeedanimate: 5,
         // magnifiereffectanimate: "slideIn"	
     });
-    $(".zoom").click(function () {
-        var That = this;
-        $(".my-foto-container").fadeOut(100, function () {
-            $(this).attr("src", $(That).attr("src"))
-            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
-            .attr("data-title", $(That).attr("data-title"))
-            .attr("data-help", $(That).attr("data-help"))
 
-        });
-    });
+   
+    
+
+
+
+
+
+
+
+
 
     // List & Grid View
     $('#serchlist .searchresult:first').show();
     $('#bloglist .bloglisting').hide();
-   
+
     $('#bloglist .bloglisting:first').show();
 
     $('#list').click(function () {
@@ -212,7 +213,7 @@ $(document).ready(function () {
 
     // Coming Soon
     //cowntdown function. Set the date by modifying the date in next line (January 01, 2013 00:00:00):
-   // var austDay = new Date("December 31, 2013 00:00:00");
+    // var austDay = new Date("December 31, 2013 00:00:00");
 
     //$('#comingsoon').countdown({ until: austDay, layout: '<div class="box"><div>{dn}</div> <span> {dl} </span></div> <div class="box"><div>{hn}</div> <span> {hl} </span></div> <div class="box"><div>{mn}</div> <span> {ml} </span></div> <div class="box"><div>{sn}</div> <span> {sl} </span></div>' });
     //$('#year').text(austDay.getFullYear());

@@ -19,6 +19,7 @@
 /// <reference path="json/regions.js" />
 /// <reference path="list/custom.js" />
 /// <reference path="list/jquery.caroufredsel-6.2.1-packed.js" />
+/// <reference path="list/jquery.flexslider.js" />
 /// <reference path="list/search.js" />
 /// <reference path="list/zoomsl-3.0.min.js" />
 /// <reference path="modernizr-2.6.2.js" />

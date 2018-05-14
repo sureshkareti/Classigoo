@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
                     <p>
-                        <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                        @*<strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.*@
                     </p>
                 </div>
                 <div>
@@ -24,137 +24,193 @@
 
                     <div class="row">
                         <div class="col-md-8 col-sm-6">
-                            <h2 style="text-align:left;"> test title for agricultural vebiclaes for the location andhra pradesh</h2>
+                            <h2 style="text-align:left;"> @Model.Title @*test title for agricultural vebiclaes for the location andhra pradesh*@</h2>
                             <div>
-                                <i class="fa fa-map-marker"></i> Ameerpet , Hyderabad  | Posted on: 26 April
-                            </div>                          
+                                <i class="fa fa-map-marker"></i> @Model.Location  | Posted on: @Model.CreatedDate
+                            </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;12000</div>
+                            <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;@Model.Price</div>
                             @*<a class="pull-right btn btn-orange btn-lg">Contact</a>*@
-                        </div>                         
+                        </div>
                     </div>
-                   
+
                     <!-- Product Details-->
                     <div class="row mt40">
-                        <div class="col-md-2">
+                        <div class="col-md-1">
 
                         </div>
                         <!-- Left Image-->
-                        <div class="col-md-8 col-xs-12 col-sm-12">
-                            <ul class="thumbnails mainimage clearfix image-frame">
-                                <li> <img class="my-foto-container image-frame"   src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name" /> </li>
-                            </ul>
-                            <ul class="thumbnails mainimage clearfix mt10">
-                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto"  src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                                <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3"> <img class="zoom" style="width:100% !important;height:auto" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" title="Your Product Name"></li>
-                            </ul>
-                            <div class="mt10">* Mouse move on Image to zoom</div>
+                        <div class="col-md-10 col-xs-12 col-sm-12">
+
+                            <div class="col-md-1 col-xs-1 col-sm-1 image-frame-arrow">
+                                <div>
+                                    <img id="imgLeft" style="cursor:pointer;float:right" src="~/images/leftx30.png" />
+
+                                </div>
+
+                                @*<div class="image-frame-arrow">
+                                        <img id="imgLeft" style="cursor:pointer;text-align:center" src="~/images/left.png" />
+                                    </div>*@
+
+                            </div>
+                            <div class="col-md-10 col-xs-10 col-sm-10">
+
+                                <ul class="thumbnails mainimage clearfix image-frame">
+                                    <li> <img class="my-foto-container image-frame" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name" /> </li>
+                                </ul>
+                                <ul class="thumbnails mainimage clearfix mt10">
+                                    <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3" style="position:relative">
+                                        <img class="zoom image-grid image-grid1" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name">
+                                        <div class="image-hover"></div>
+                                    </li>
+                                    <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                                        <img class="zoom image-grid image-grid2" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="2" title="Your Product Name">
+                                        <div class="image-hover"></div>
+                                    </li>
+                                    <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                                        <img class="zoom image-grid image-grid3" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="3" title="Your Product Name">
+                                        <div class="image-hover"></div>
+                                    </li>
+                                    <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
+                                        <img class="zoom image-grid image-grid4" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="4" title="Your Product Name">
+                                        <div class="image-hover"></div>
+                                    </li>
+                                </ul>
+                                <div class="mt10">* Mouse move on Image to zoom</div>
+                            </div>
+                            <div class="col-md-1 col-xs-1 col-sm-1 image-frame-arrow">
+                                @*<img style="cursor:pointer;text-align:center" src="~/images/expand.png" />*@
+                                <div>
+                                    <img id="imgRigth" style="cursor:pointer;float:left" src="~/images/rightx30.png" />
+
+                                </div>
+
+                                @*<div class="image-frame-arrow">
+                                        <img id="imgRigth" style="cursor:pointer;text-align:center" src="~/images/right.png" />
+                                    </div>*@
+                                <div class="image-maximize">
+                                    <img style="cursor:pointer;text-align:center" src="~/images/expandx30.png" title="open image only" />
+                                </div>
+
+                            </div>
+
+
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
 
                         </div>
                         <!-- Right Details-->
 
                     </div>
-                    <div class="mt40" id="serchlist">
-                        <div class="col-lg-7 col-md-7 col-xs-12 col-sm-12 mt40column">
-                            <div class="clearfix">
-                                <div class="price pull-left"> <i class="fa fa-rupee"></i> @Model.Price</div>
-                                <a class="pull-right btn btn-orange btn-lg">Contact</a>
-                            </div>
-                            <!-- Product Description tab & comments-->
-                            <div class="productdesc">
-                                <ul class="nav nav-tabs" id="myTab">
-                                    <li id="tabdesc"><a href="#description">Description</a> </li>
-                                    <li id="tabspec"><a href="#specification">Specification</a> </li>
-                                    <li id="tabcontact"><a href="#contact">Send Message</a> </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="description">
-                                        <h3 class="m0">@Model.Description</h3>
-                                        <br />
 
-                                    </div>
-                                    <div class="tab-pane " id="cv-specification">
-                                        <ul class="productinfo">
-                                            @if (@Model.CV != null)
-                                            {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
-                                            }
+                    <div class="row mt40">
 
+                        <!-- Left Image-->
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <div class="mt40" id="serchlist">
+                                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt40column">
+                                    <div class="clearfix">
+                                        <div class="price pull-left"> @*<i class="fa fa-rupee"></i> @Model.Price*@</div>
+                                        <a class="pull-right btn btn-orange btn-lg">Contact</a>
+                                    </div>
+                                    <!-- Product Description tab & comments-->
+                                    <div class="productdesc">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li id="tabdesc"><a href="#description"><b>Description</b></a> </li>
+                                            <li id="tabspec"><a href="#specification"><b>Specification</b></a> </li>
+                                            <li id="tabcontact"><a href="#contact"><b>Send Message</b></a> </li>
                                         </ul>
+                                        <div class="tab-content" style="min-height:150px;">
+                                            <div class="tab-pane active" id="description">
+                                                <p class="m0">@Model.Description</p>
+                                                <br />
 
-                                    </div>
-                                    <div class="tab-pane " id="tv-specification">
-                                        <ul class="productinfo">
-                                            @if (@Model.TV != null)
-                                            {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
-                                            }
-                                        </ul>
+                                            </div>
+                                            <div class="tab-pane " id="cv-specification">
+                                                <ul class="productinfo">
+                                                    @if (@Model.CV != null)
+                                                    {
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
+                                                    }
 
-                                    </div>
-                                    <div class="tab-pane " id="av-specification">
-                                        <ul class="productinfo">
-                                            @if (@Model.AV != null)
-                                            {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane " id="re-specification">
-                                        <ul class="productinfo">
-                                            @if (@Model.RE != null)
-                                            {
-                                                <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
-                                                <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
-                                                <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
-                                                <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
-                                                <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
-                                                <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane " id="pv-specification">
-                                        <ul class="productinfo">
-                                            @if (@Model.PV != null)
-                                            {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
-                                                <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
-                                                <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
-                                                <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
-                                                <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane" id="contact">
-                                        <form class="form-vertical">
-                                            <fieldset>
-                                                @*<div class="control-group">
-                                                        <label class="control-label">Your Name</label>
-                                                        <div class="controls">
+                                                </ul>
 
-                                                            <input type="text" class="span3">
+                                            </div>
+                                            <div class="tab-pane " id="tv-specification">
+                                                <ul class="productinfo">
+                                                    @if (@Model.TV != null)
+                                                    {
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
+                                                    }
+                                                </ul>
+
+                                            </div>
+                                            <div class="tab-pane " id="av-specification">
+                                                <ul class="productinfo">
+                                                    @if (@Model.AV != null)
+                                                    {
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="tab-pane " id="re-specification">
+                                                <ul class="productinfo">
+                                                    @if (@Model.RE != null)
+                                                    {
+                                                        <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
+                                                        <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
+                                                        <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
+                                                        <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
+                                                        <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
+                                                        <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="tab-pane " id="pv-specification">
+                                                <ul class="productinfo">
+                                                    @if (@Model.PV != null)
+                                                    {
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
+                                                        <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
+                                                        <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
+                                                        <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
+                                                        <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="tab-pane" id="contact">
+                                                <form class="form-vertical">
+                                                    <fieldset>
+                                                        @*<div class="control-group">
+                                                                <label class="control-label">Your Name</label>
+                                                                <div class="controls">
+
+                                                                    <input type="text" class="span3">
+                                                                </div>
+                                                            </div>*@
+                                                        <div class="control-group">
+                                                            <label class="control-label">Message</label>
+                                                            <div class="controls">
+                                                                <textarea rows="3" style="width:100%" name="user-message" class="span3"></textarea>
+                                                            </div>
                                                         </div>
-                                                    </div>*@
-                                                <div class="control-group">
-                                                    <label class="control-label">Message</label>
-                                                    <div class="controls">
-                                                        <textarea rows="3" name="user-message" class="span3"></textarea>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                            <input type="submit" class="btn btn-orange" value="continue">
-                                            @Html.HiddenFor(m => m.AddId)
-                                        </form>
+                                                    </fieldset>
+                                                    <input type="submit" class="btn btn-orange" value="continue">
+                                                    @Html.HiddenFor(m => m.AddId)
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -187,6 +243,18 @@
 }
 <script type="text/javascript">
     $(document).ready(function () {
+
+
+        //$(".my-foto-container").fadeOut(100, function () {
+        //    $(this).attr("src", $(That).attr("src"))
+        //    .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+        //    .attr("data-title", $(That).attr("data-title"))
+        //    .attr("data-help", $(That).attr("data-help"))
+        //    .attr("data-id", $(That).attr("data-id"))
+        //});
+
+
+
         $('#myTab a').click(function (e) {
             e.preventDefault()
             var selectedTab = $(this).context.innerText;
@@ -224,7 +292,9 @@
                 $("#tabcontact").addClass("active");
             }
         })
+
         $('#myTab a:first').tab('show') // Select first tab
+
         function ClearTabs() {
             $(".tab-content > .tab-pane").removeClass("active");
             $(".tab-content > .tab-pane").css("display", "none");
@@ -232,5 +302,180 @@
 
 
         }
+
+
+        ShowunhoverImage();
+
     });
+
+
+    $("#imgLeft").click(function () {
+
+        var dataId = $(".my-foto-container").attr("data-id");
+
+        $(".image-hover").css('display', 'block');
+
+        var That;
+        if (dataId == "1") {
+
+            That = $(".image-grid4");
+            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+
+        }
+        else if (dataId == "2") {
+
+            That = $(".image-grid1");
+            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "3") {
+
+            That = $(".image-grid2");
+            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "4") {
+
+            That = $(".image-grid3");
+            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+        }
+
+        $(".my-foto-container").fadeOut(100, function () {
+            $(this).attr("src", $(That).attr("src"))
+            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+            .attr("data-title", $(That).attr("data-title"))
+            .attr("data-help", $(That).attr("data-help"))
+            .attr("data-id", $(That).attr("data-id"))
+        });
+
+        //ShowunhoverImage();
+    });
+
+    $("#imgRigth").click(function () {
+        var dataId = $(".my-foto-container").attr("data-id");
+
+        $(".image-hover").css('display', 'block');
+
+        var That;
+        if (dataId == "1") {
+
+            That = $(".image-grid2");
+            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "2") {
+
+            That = $(".image-grid3");
+            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "3") {
+
+            That = $(".image-grid4");
+            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "4") {
+
+            That = $(".image-grid1");
+            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+        }
+
+        $(".my-foto-container").fadeOut(100, function () {
+            $(this).attr("src", $(That).attr("src"))
+            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+            .attr("data-title", $(That).attr("data-title"))
+            .attr("data-help", $(That).attr("data-help"))
+            .attr("data-id", $(That).attr("data-id"))
+        });
+
+        //ShowunhoverImage();
+    });
+
+
+
+    //$(".image-hover").hover(
+
+    //    function () {
+
+    //        //$(".image-hover").css('display', 'block');
+
+    //        $(this).parent().find(".image-hover").css('display', 'none');
+
+    //    }, function () {
+
+    //        $(this).parent().find(".image-hover").css('display', 'block');
+    //        //ShowunhoverImage();
+    //    }
+
+
+    //);
+
+    $(".image-hover").mouseout(function () {
+
+    }).mouseover(function () {
+
+        $(this).parent().find(".image-hover").css('display', 'none');
+
+    });
+
+    $(".zoom").mouseout(function () {
+        var dataId = $(".my-foto-container").attr("data-id");
+        //alert(dataId + $(this).attr('data-id'));
+        if (dataId != $(this).attr('data-id')) {
+            $(this).parent().find(".image-hover").css('display', 'block');
+
+        }
+
+
+    }).mouseover(function () {
+
+    });
+
+    $(".image-maximize img").click(function () {
+
+        var href = $(".my-foto-container").attr('src');
+
+        window.open(href, '_blank');
+        //window.location.href = href; //causes the browser to refresh and load the requested url
+    });
+
+    function ShowunhoverImage() {
+
+        $(".image-hover").css('display', 'block');
+
+        var dataId = $(".my-foto-container").attr("data-id");
+
+        if (dataId == "1") {
+            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "2") {
+            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "3") {
+            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+        }
+        else if (dataId == "4") {
+            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+        }
+
+
+    }
+
+    $(".zoom").click(function () {
+
+
+        var That = this;
+        $(".my-foto-container").fadeOut(100, function () {
+            $(this).attr("src", $(That).attr("src"))
+            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+            .attr("data-title", $(That).attr("data-title"))
+            .attr("data-help", $(That).attr("data-help"))
+            .attr("data-id", $(That).attr("data-id"))
+        });
+
+
+        $(".image-hover").css('display', 'block');
+        $(this).parent().find(".image-hover").css('display', 'none');
+
+
+    });
+
+
+
 </script>
