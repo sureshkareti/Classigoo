@@ -535,7 +535,6 @@
     <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
     <Content Include="Views\List\Index.cshtml" />
-    <Content Include="Views\List\_FillSearchResults.cshtml" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
