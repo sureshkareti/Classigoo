@@ -16,11 +16,9 @@
                 </p>
             </div>
             <div>
-                
-                   @Html.Partial("_LoadData")
-               
-                    
-</div>
+
+                @Html.Partial("_LoadData")
+            </div>
         </div>
         <!-- header-content-block -->
     </div>
@@ -158,18 +156,18 @@
 <script>
     $(document).ready(function () {
 
-       
+
 
         $("#getValue a").click(function () {
             // window.location.href = "/New/ShowAdds?category=car";
-            
+
             // window.location.href = "/New/ShowAdds?location=" + $("#listing_location_list").val();
             var selectedCategory = $(this).text();
             window.location.href = "/New/ShowAdds?category=" + selectedCategory;
         })
-    
-         
-        
+
+
+
         //$("#vehicles").click(function () {
         //    window.location.href = "/New/ShowAdds?category=cars";
         //})
