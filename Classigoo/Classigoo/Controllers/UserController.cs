@@ -23,7 +23,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-              string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
+                    string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -46,15 +46,15 @@ namespace Classigoo.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
             if (UserId != Guid.Empty)
             {
                 Session["UserId"] = UserId;
-              
-                return   RedirectToAction("Home", "User");
+
+                return RedirectToAction("Home", "User");
             }
             else
             {
@@ -64,7 +64,7 @@ namespace Classigoo.Controllers
             return View();
 
 
-            
+
         }
 
         public ActionResult Index()
@@ -82,7 +82,7 @@ namespace Classigoo.Controllers
             user.MobileNumber = coll["inputPhone"];
             user.Name = coll["inputName"];
             user.Password = coll["inputPassword"];
-            if (!IsUserExist(user.MobileNumber,"Custom"))
+            if (!IsUserExist(user.MobileNumber, "Custom"))
             {
                 using (var client = new HttpClient())
                 {
@@ -102,7 +102,7 @@ namespace Classigoo.Controllers
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Home","User");
+                        return RedirectToAction("Home", "User");
                     }
                     else
                     {
@@ -111,46 +111,46 @@ namespace Classigoo.Controllers
 
                 }
 
-           
+
             }
             else
             {
-                @ViewBag.status = " Phone Number "+ user.MobileNumber+ " already Registered";
+                @ViewBag.status = " Phone Number " + user.MobileNumber + " already Registered";
             }
 
             return View();
-           
+
         }
-       public bool IsUserExist(string id,string type)
-       {
-        bool IsUserExist = false;
-        using (var client = new HttpClient())
+        public bool IsUserExist(string id, string type)
         {
-            string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type="+type;
-            client.BaseAddress = new Uri(url);
-            //HTTP GET
-            var responseTask = client.GetAsync(url);
-            responseTask.Wait();
-
-            var result = responseTask.Result;
-            if (result.IsSuccessStatusCode)
+            bool IsUserExist = false;
+            using (var client = new HttpClient())
             {
-                var readTask = result.Content.ReadAsAsync<bool>();
-                readTask.Wait();
+                string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
+                client.BaseAddress = new Uri(url);
+                //HTTP GET
+                var responseTask = client.GetAsync(url);
+                responseTask.Wait();
 
-                IsUserExist = readTask.Result;
-            }
-            else //web api sent error response 
-            {
-                //log response status here..
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<bool>();
+                    readTask.Wait();
 
-                ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    IsUserExist = readTask.Result;
+                }
+                else //web api sent error response 
+                {
+                    //log response status here..
+
+                    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                }
             }
+
+            return IsUserExist;
+
         }
-        
-        return IsUserExist;
-
-    }
         public ActionResult UnableToLogin()
         {
             return View();
@@ -255,7 +255,7 @@ namespace Classigoo.Controllers
         {
             using (var client = new HttpClient())
             {
-               
+
                 string url = "http://localhost:51797/api/UserApi/UpdateUserDetails/?user=" + user;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync<User>(url, user);
@@ -298,7 +298,7 @@ namespace Classigoo.Controllers
                         var readTask = result.Content.ReadAsAsync<User>();
                         readTask.Wait();
 
-                        user= readTask.Result;
+                        user = readTask.Result;
 
                     }
                     else //web api sent error response 
@@ -351,11 +351,11 @@ namespace Classigoo.Controllers
             }
             return addColl;
         }
-        
+
         public ActionResult PreviewAdd(int addId)
         {
 
-            Add add=new Add();
+            Add add = new Add();
             CustomAdd customAdd = new CustomAdd();
             try
             {
@@ -375,8 +375,8 @@ namespace Classigoo.Controllers
 
                         add = readTask.Result;
                         CustomActions obj = new CustomActions();
-                        customAdd= obj.CheckCategory(add);
-                        
+                        customAdd = obj.CheckCategory(add);
+
 
                     }
                     else //web api sent error response 
@@ -395,10 +395,10 @@ namespace Classigoo.Controllers
         }
         public ActionResult ShowAdd()
         {
-            
+
             return View();
         }
-        
+
         public void AddLog(Exception Exception)
         {
             Log log = new Log();
@@ -409,35 +409,35 @@ namespace Classigoo.Controllers
             log.UserId = "";
             log.CreatedDate = DateTime.Now;
             using (var client = new HttpClient())
-                {
-               
-                    string url = "http://localhost:51797/api/UserApi/AddLog/?log=" + log;
-                    client.BaseAddress = new Uri(url);
-                    var postTask = client.PostAsJsonAsync<Log>(url, log);
-                    try
-                    {
-                        postTask.Wait();
-                    }
-                    catch (Exception ex)
-                    {
+            {
 
-                    }
-                    var result = postTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                       
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                    }
+                string url = "http://localhost:51797/api/UserApi/AddLog/?log=" + log;
+                client.BaseAddress = new Uri(url);
+                var postTask = client.PostAsJsonAsync<Log>(url, log);
+                try
+                {
+                    postTask.Wait();
+                }
+                catch (Exception ex)
+                {
 
                 }
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                }
+
+            }
         }
         public ActionResult SignOut()
         {
             Session.Remove("UserId");
-            return RedirectToAction("Login","User");
+            return RedirectToAction("Login", "User");
         }
         public ActionResult Admin()
         {
@@ -473,13 +473,13 @@ namespace Classigoo.Controllers
             {
 
             }
-            return View(addColl);   
+            return View(addColl);
         }
-        public ActionResult UpdateAddStatus(int addId,string status)
+        public ActionResult UpdateAddStatus(int addId, string status)
         {
             using (var client = new HttpClient())
             {
-              
+
                 string url = "http://localhost:51797/api/UserApi/UpdateAddStatus/?addId=" + addId + "&status=" + status;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync(url, addId);
@@ -494,15 +494,15 @@ namespace Classigoo.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                  return RedirectToAction("Admin", "User");
+                    return RedirectToAction("Admin", "User");
                 }
                 else
                 {
-                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                    return RedirectToAction("","");
+                    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                    return RedirectToAction("", "");
                 }
 
             }
         }
     }
-    }
+}
