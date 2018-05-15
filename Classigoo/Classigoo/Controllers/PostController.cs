@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -121,15 +122,20 @@ namespace Classigoo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index1(PostAdd postAdd)
+        public ActionResult Index1(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
         {
-            string img1 = "http://dataquotum.somee.com/Photos/pv.jpg";
-            string img2 = "http://dataquotum.somee.com/Photos/tv.jpg";
-            string img3 = "http://dataquotum.somee.com/Photos/cv.jpg";
-            string img4 = "http://dataquotum.somee.com/Photos/av.jpg";
-
-
-
+           
+            CreateFolder("~/images/" +postAdd.State);
+            CreateFolder("~/images/" + postAdd.State +"/"+ postAdd.District);
+            CreateFolder("~/images/" + postAdd.State + "/" + postAdd.District+"/" + postAdd.Mandal);
+            string img1 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName);
+            string img2 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName);
+            string img3 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName);
+            string img4 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName);
+            Image1.SaveAs(Server.MapPath(img1));
+            Image2.SaveAs(Server.MapPath(img2));
+            Image3.SaveAs(Server.MapPath(img3));
+            Image4.SaveAs(Server.MapPath(img4));
 
             int postId = 0;
 
@@ -398,6 +404,15 @@ namespace Classigoo.Controllers
             }
 
             return View();
+        }
+        
+        public void CreateFolder(string path)
+        {
+            string dirPath = Server.MapPath(path);
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
         }
     }
 }
