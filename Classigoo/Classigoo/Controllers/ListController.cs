@@ -14,6 +14,16 @@ namespace Classigoo.Controllers
         {
             return View(GetAdds(1));
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult DisplayAdds(int currentPageIndex)
         {

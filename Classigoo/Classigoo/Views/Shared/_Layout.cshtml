@@ -11,10 +11,11 @@
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/font-awesome.css" rel="stylesheet" />*@
+    <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" />
     @RenderSection("Styles", false)
     
     <link href="~/Content/CustomeNew/Style.css" rel="stylesheet" />
-
+   
     @Scripts.Render("~/scripts/jquery-3.2.1.js")
    
 </head>
@@ -69,7 +70,7 @@
                                     </div>
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons">
 
-                                        @*<div class="post-btn"><a href="ad-post.html">Post your Ad!</a></div>*@
+                                       
                                         <div><a href="~/Post/Index1" class="Button-postadd">Post your Ad!</a></div>
                                     </div>
                                 </div>
@@ -81,8 +82,9 @@
                     </div>
                 </div>
             </div>
-            
+           
         </header>
+    
         <section class="body-wrapper">
             @RenderBody()
         </section>
@@ -103,25 +105,21 @@
                         <div class="col-md-2 col-sm-6">
                             <h3>Quick  LInks</h3>
                             <ul class="footer-links">
-                                <li><a href="#.">Home</a></li>
-                                <li><a href="#.">About Us</a></li>
-                                <li><a href="#.">Post Free Add</a></li>
-                                
+                                <li><a href="~/Home/Index1">Home</a></li>
+                                <li><a href="~/List/About">About Us</a></li>
+                                <li><a href="~/Post/Index1">Post Free Add</a></li>
+                                <li><a href="~/List/Contact">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <h3>MAIN CATEGORIES</h3>
-                            <ul class="footer-category">
-                                <li><a href="#.">Properties</a></li>
-                                <li><a href="#.">Construction Vehicles</a></li>
-                                <li><a href="#.">Transportation Vehicles</a></li>
-                                <li><a href="#.">Agricultural Vehicles</a></li>
-                                <li><a href="#.">Passenger Vehicles</a></li>
-                                <li><a href="#.">Cars </a></li>
-                                <li><a href="#.">Bikes</a></li>
-                                <li><a href="#.">Mobiles & Electronics</a></li>
-                                @*<li><a href="#.">All Vehicles Hire/Engage / Lease</a></li>*@
-
+                            <ul class="footer-links">
+                                <li><a href="~/List/List">Agricultural Vehicles</a></li>
+                                <li><a href="~/List/List">Construction Vehicles</a></li>
+                                <li><a href="~/List/List">Transportation Vehicles</a></li>
+                                <li><a href="~/List/List">Passenger Vehicles</a></li>
+                                <li><a href="~/List/List">Real Estate</a></li>
+                               
                             </ul>
                             <div class="clearfix"></div>
                         </div>
