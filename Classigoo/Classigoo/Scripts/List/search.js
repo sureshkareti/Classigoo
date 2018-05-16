@@ -44,6 +44,7 @@
             });
             $.each(categoryColl, function (i, field) {
                 $("#listing_catagory_list").append("<option>" + field.name + "</option>");
+                $("#listing_catagory").append("<option>" + field.name + "</option>");
                // searchSource.push(field.name);
                 var VehicleTypeColl=field.VehicleType;
                 $.each(VehicleTypeColl,function(j,vehicleType)
@@ -59,6 +60,7 @@
 
 
             $("#listing_catagory_list").selectron();
+           
 
             $("#listing_rent_list").selectron();
         }
