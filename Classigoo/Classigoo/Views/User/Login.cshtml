@@ -31,14 +31,14 @@
                                 <form class="form-common">
                                     <div class="form-group">
                                         <label for="userName">Phone Number *</label>
-                                        <input type="text" class="form-control"  id="inputEmailPhone" name="email-phone" placeholder="Enter your PhoneNumber" data-error="Please enter a valid  PhoneNumber." required onblur="CheckLoginType()" style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;"  >
+                                        <input type="text" class="form-control"  id="inputEmailPhone1" name="email-phone" placeholder="Enter your PhoneNumber" data-error="Please enter a valid  PhoneNumber." required onblur="CheckLoginType()" style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;"  >
                                         <div class="help-block with-errors"></div>
                                     
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password *</label>
                                         
-                                        <input type="password" class="form-control" id="inputPassword" name="pwd" data-error="Please enter a Password." placeholder="Password" required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">                                        
+                                        <input type="password" class="form-control" id="inputPassword1" name="pwd" data-error="Please enter a Password." placeholder="Password" required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">                                        
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="form-group form-check-row">
@@ -80,14 +80,19 @@
                                     or
                                     <p>Login with your social media network</p>
                                     <div class="social-icon-btn-group-detail">
-                                        <a href="javascript:void(0)" class="icon-btn-fb">
+
+                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="icon-btn-fb" >
                                             <i class="fa fa-facebook"></i> Facebook
-                                        </a>
-                                    
-                                        <a href="javascript:void(0)" class="icon-btn-gplus">
-                                            <i class="fa fa-google-plus"></i> Google +
-                                        </a>
-                                    </div>
+                                        </fb:login-button>
+                                        @*<a href="javascript:void(0)" class="icon-btn-fb" onlogin="checkLoginState();" scope="public_profile,email">
+                                            <i class="fa fa-facebook"></i> Facebook
+                                        </a>*@
+                                        <div class="g-signin2 btn btn-success" data-onsuccess="onSignIn" style="background-color:#dd4b39;color:#fff;border:1px double #dd4b39"></div>
+
+                                            @*<a href="javascript:void(0)" class="icon-btn-gplus" data-onsuccess="onSignIn">
+                                                <i class="fa fa-google-plus"></i> Google +
+                                            </a>*@
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -262,8 +267,6 @@
 }
 
 <meta name="google-signin-client_id" content="443252547392-5hvtt0c60miftkn14hudh9p7q43ctvl2.apps.googleusercontent.com">
-
-
 @section Styles {
 
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
