@@ -147,7 +147,7 @@ namespace Classigoo.Controllers
             return gridList;
         }
 
-        public ActionResult ApplyFilter(string filterOptions, string category, string location)
+        public ActionResult ApplyFilter(string filterOptions, string category, string location,string keyword,string type)
         {
             Dictionary<string, object> filterColl = new Dictionary<string, object>();
             JavaScriptSerializer j = new JavaScriptSerializer();
@@ -196,44 +196,47 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-                string pricefrom = filterOptions["pricefrom"].ToString();
-                string bedrooms = filterOptions["bedrooms"].ToString();
-                //  string construction = filterOptions["construction"].ToString();
-                string listedby = filterOptions["listedby"].ToString();
+                string subCategory = filterOptions["subCategory"].ToString();
                 string furnishing = filterOptions["furnishing"].ToString();
+                string availability = filterOptions["constructionStatus"].ToString();
+                string listedBy = filterOptions["listedBy"].ToString();
+                string squareFeets = filterOptions["builtupArea"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
+                string bedRooms = filterOptions["bedRooms"].ToString();
 
-                totalRowCount = db.RealEstates.Where(RealEstate =>
+                totalRowCount = db.RealEstates.Where(RE =>
 
-               // (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
-               //(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
-               (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-                (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-                //(construction != "Construction Status" ? RealEstate. == bedrooms : true)&&
-                (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-                 (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true)
+               (subCategory != "All" ? RE.SubCategory == subCategory : true)&&
+               (furnishing != "Bed Rooms" ? RE.Furnishing == furnishing : true)&&
+                (availability != "Bed Rooms" ? RE.Availability == availability : true) &&
+               (listedBy != "Price From" ? RE.ListedBy == listedBy : true) &&
+                (squareFeets != "Bed Rooms" ? RE.SquareFeets == squareFeets : true) &&
+                (priceFrom != "Construction Status" ? RE.Price == priceFrom : true)&&
+                (priceTo != "Listed By" ? RE.Price == priceTo : true) &&
+                 (bedRooms != "Furnishing" ? RE.Bedrooms == bedRooms : true)).Count();
 
-
-
-                ).Count();
-
-                realestateColl = (from RealEstate in db.RealEstates
-                                  join add in db.Adds on RealEstate.AddId equals add.AddId
+                realestateColl = (from RE in db.RealEstates
+                                  join add in db.Adds on RE.AddId equals add.AddId
                                   where
-                                    // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-                                    (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-                                    (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true) &&
-                                    (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-                                    (location != "All India" ? add.Mandal == location : true)
-                                  orderby RealEstate.AddId
+                                    (subCategory != "All" ? RE.SubCategory == subCategory : true) &&
+               (furnishing != "Bed Rooms" ? RE.Furnishing == furnishing : true) &&
+                (availability != "Bed Rooms" ? RE.Availability == availability : true) &&
+               (listedBy != "Price From" ? RE.ListedBy == listedBy : true) &&
+                (squareFeets != "Bed Rooms" ? RE.SquareFeets == squareFeets : true) &&
+                (priceFrom != "Construction Status" ? RE.Price == priceFrom : true) &&
+                (priceTo != "Listed By" ? RE.Price == priceTo : true) &&
+                 (bedRooms != "Furnishing" ? RE.Bedrooms == bedRooms : true)
+                                  orderby RE.AddId
                                   select new CustomAdd
                                   {
                                       AddId = add.AddId,
                                       Location = add.Mandal + "," + add.State,
                                       CreatedDate = add.Created.ToString(),
                                       Title = add.Title,
-                                      Description = RealEstate.Description,
-                                      ImgUrlPrimary=RealEstate.ImgUrlPrimary,
-                                      Price=RealEstate.Price,
+                                      Description = RE.Description,
+                                      ImgUrlPrimary= RE.ImgUrlPrimary,
+                                      Price= RE.Price,
                                       Category=Constants.RealEstate
                                   }).Skip((currentPage - 1) * maxRows)
                             .Take(maxRows).ToList();

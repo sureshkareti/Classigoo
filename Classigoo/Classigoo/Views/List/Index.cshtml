@@ -26,7 +26,7 @@
                                         <div class="form-group">
 
 
-                                            <select class="form-control" id="listing_catagory_listGeneral" name="category">
+                                            <select class="form-control" id="listing_catagory" name="category">
                                                 <option selected>Select Category</option>
                                             </select>
                                         </div>
@@ -58,16 +58,16 @@
             </div>
             <br />
             <div class="container">
-                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
+                <div class="listing-block businessinfo-listing" id="divFilter" style="max-width:970px !important;margin:auto;display:none">
                     <div class="row form-group">
                         <div class="col-sm-12" style="background-color:#F0FFFF;padding-top:15px">
-                            <div class="clearfix" id="Real Estate" style="display:block">
+                            <div class="clearfix" id="re" style="display:none">
                                 <div class="row form-group">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Sub Category</span><br>
-                                            <select class="form-control" id="Category">
+                                            <select class="form-control" id="subCategory">
                                                 <option>Select Category</option>
                                                 <option>All</option>
                                                 <option>Apartments</option>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
-                                            <span>Furnishing</span><br>
+                                            <span>furnishing</span><br>
                                             <select class="form-control" id="Furnishing">
                                                 <option selected>Furnishing</option>
                                                 <option>All</option>
@@ -94,7 +94,7 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Construction Status</span><br>
-                                            <select class="form-control" id="ConsructionStatus">
+                                            <select class="form-control" id="consructionStatus">
                                                 <option selected>Construction Status</option>
                                                 <option>All</option>
                                                 <option>Under Construction</option>
@@ -106,7 +106,7 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Listed By</span><br>
-                                            <select class="form-control" id="ListedBy">
+                                            <select class="form-control" id="listedBy">
                                                 <option selected>Listed By</option>
                                                 <option>All</option>
                                                 <option>Owner</option>
@@ -120,7 +120,7 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Super Builtup Area ft²</span><br>
-                                            <select class="form-control" id="BuitupArea">
+                                            <select class="form-control" id="buitupArea">
                                                 <option selected>Builtup Area</option>
                                                 <option>300</option>
                                                 <option>600</option>
@@ -159,7 +159,7 @@
                                         <div class="form-group">
                                             <span>Price Range</span><br>
 
-                                            <select class="form-control" id="PriceFrom">
+                                            <select class="form-control" id="priceFrom">
                                                 <option selected>Price From</option>
                                                 <option>&#8377;10,000</option>
                                                 <option>&#8377;50,000</option>
@@ -182,7 +182,7 @@
                                     <div class="col-md-2 col-xs-4 col-sm-4">
                                         <div class="form-group">
                                             <br />
-                                            <select class="form-control" id="PriceTo">
+                                            <select class="form-control" id="priceTo">
                                                 <option selected>Price To</option>
                                                 <option>&#8377;10,000</option>
                                                 <option>&#8377;50,000</option>
@@ -203,7 +203,7 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Bed Rooms</span><br>
-                                            <select class="form-control" name="langOpt[]" id="BedRooms">
+                                            <select class="form-control" name="langOpt[]" id="bedRooms">
                                                 <option selected>Bed Rooms</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -218,7 +218,7 @@
                                 </div>
                             </div>
 
-                            <div class="clearfix" id="passengerV" style="display:block">
+                            <div class="clearfix" id="pv" style="display:none">
                                 <div class="row form-group">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
@@ -417,7 +417,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix" id="allV" style="display:block">
+                            <div class="clearfix" id="allv" style="display:none">
                                 <div class="row form-group">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
@@ -1082,8 +1082,6 @@
     <link href="~/Content/List/color1.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
-
-
 }
 
 
@@ -1092,7 +1090,7 @@
     <script src="~/Scripts/List/zoomsl-3.0.min.js"></script>
     <script src="~/Scripts/List/custom.js"></script>
     <script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
-
+    <script src="~/Scripts/Home/selectron.js"></script>
     <script src="~/Scripts/List/search.js"></script>
 }
 
@@ -1147,37 +1145,34 @@
 <script>
     $(document).ready(function () {
         var category = "";
-        var location = "";
 
-        $("#listing_catagory_list").change(function () {
-            category = $("#listing_catagory_list").val();
-            location = $("#listing_location_list").val();
+        $("#listing_catagory").change(function () {
+            category = $("#listing_catagory").val();
             ShowCategoryFilter();
         });
 
         $("#listing_location_list").change(function () {
-            category = $("#listing_catagory_list").val();
-            location = $("#listing_location_list").val();
+            category = $("#listing_catagory").val();
             ShowCategoryFilter();
         });
 
         $("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
         });
-        $(".divbgc select").change(function () {
+        $("#divFilter select").change(function () {
             var filterObj = {};
-            filterObj.category=category;
             switch (category)
             {
                 case "Real Estate":
-                    // filterObj.category = $("#Category").val();
-                    // filterObj.builtuparea = $("#BuiltupArea").val();
-                    //filterObj.pricefrom = $("#PriceFrom").val();
-                    //filterObj.priceto = $("#PriceTo").val();
-                    //filterObj.bedrooms = $("#BedRooms").val();
-                    //filterObj.construction = $("#ConstructionStatus").val();
-                    //filterObj.listedby = $("#ListedBy").val();
-                    //filterObj.furnishing = $("#Furnishing").val();
+                    filterObj.subCategory=$("#subCategory").val();
+                    filterObj.furnishing = $("#furnishing").val();
+                    filterObj.availability = $("#constructionStatus").val();
+                    filterObj.listedBy = $("#listedBy").val();
+                    filterObj.squareFeets = $("#builtupArea").val();
+                    filterObj.priceFrom = $("#priceFrom").val();
+                    filterObj.priceTo = $("#priceTo").val();
+                    filterObj.bedRooms = $("#bedRooms").val();
+                   
                     break;
                 case "Construction Vehicles":
                     //  $("#cv-specification").css("display", "block");
@@ -1192,7 +1187,7 @@
                     //  $("#pv-specification").css("display", "block");
                     break;
             }
-            // filterAdds(filterObj);
+             filterAdds(filterObj);
         });
         function filterAdds(selectedValue) {
 
@@ -1200,7 +1195,7 @@
                 url: '@Url.Action("ApplyFilter")',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "category": category, "location": location },
+                data: { "filterOptions": JSON.stringify(selectedValue), "category": category, "location": $("#listing_location_list").val(),"keyword":$("#listing_keword").val(),"type":$("#listing_rent_listGeneral").val() },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
@@ -1221,47 +1216,38 @@
 
         function ShowCategoryFilter() {
             if (category == "Select Category") {
-                $(".divbgc").hide();
+                $("#divFilter").hide();
                 $("#clearfilter").hide();
-                // filterAdds("");
+               
             }
             else {
-                $(".divbgc").show();
+                HideDivs();
+                $("#divFilter").show();
                 $("#clearfilter").show();
-                $('.divbgc > div').map(function () {
-                    if (this.id == category) {
-
-                        $("[id='"+this.id+"']").css("display", "block");
-                    }
-                    else {
-                        $("[id='"+this.id+"']").css("display", "none");
-                    }
-                });
-
-            }
-            if (category != "Select Category") {
-                //filterAdds("");
-            }
-
-        }
-
-        var name = GetParameterValues('category');
-        // var id = GetParameterValues('ID');
-        if (name) {
-            $("#listing_catagory_list").val(name).change();
-
-        }
-
-
-        function GetParameterValues(param) {
-            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('?');
-            for (var i = 0; i < url.length; i++) {
-                var urlparam = url[i].split('=');
-                if (urlparam[0] == param) {
-                    return urlparam[1];
+                if(category=="Real Estate")
+                {
+                    $("#re").show();
                 }
+                else if(category=="Passenger Vehicles")
+                {
+                    $("#pv").show();
+                }
+                else 
+                {
+                    $("#allv").show();
+                }
+
             }
+            filterAdds("");
+            }
+        function HideDivs()
+        {
+            $("#re").hide();
+            $("#pv").hide();
+            $("#allv").hide();
         }
+
+        
     });
 
 </script>
