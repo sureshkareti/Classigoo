@@ -592,6 +592,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\Telangana\" />
+    <Folder Include="ImgColl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
