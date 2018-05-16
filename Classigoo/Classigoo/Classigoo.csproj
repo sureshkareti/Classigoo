@@ -400,6 +400,8 @@
     <Content Include="HtmlPage2.html" />
     <Content Include="HtmlPage3.html" />
     <Content Include="HtmlPage4.html" />
+    <Content Include="images\22222.jpg" />
+    <Content Include="images\4.jpg" />
     <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Deletion_icon.svg.png" />
@@ -437,8 +439,13 @@
     <Content Include="images\icons\fur\f-kf.png" />
     <Content Include="images\icons\fur\f-oh.png" />
     <Content Include="images\icons\fur\f-sd.png" />
+    <Content Include="images\icons\home\carx70.png" />
+    <Content Include="images\icons\home\cranex70.png" />
     <Content Include="images\icons\home\hm-rent.png" />
     <Content Include="images\icons\home\hm-sale.png" />
+    <Content Include="images\icons\home\homex70.png" />
+    <Content Include="images\icons\home\itractorx70.png" />
+    <Content Include="images\icons\home\transportationx70.png" />
     <Content Include="images\icons\jobs\jobs-accnt.png" />
     <Content Include="images\icons\jobs\jobs-assnt.png" />
     <Content Include="images\icons\jobs\jobs-bpo.png" />
@@ -535,6 +542,8 @@
     <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
     <Content Include="Views\List\Index.cshtml" />
+    <Content Include="Views\List\Contact.cshtml" />
+    <Content Include="Views\List\About.cshtml" />
     <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
@@ -591,6 +600,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\icons\NewFolder1\" />
     <Folder Include="images\Telangana\" />
   </ItemGroup>
   <ItemGroup>
