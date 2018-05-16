@@ -73,12 +73,6 @@
 
 
 
-
-
-
-
-
-
 /*
 |----------------------------------------------------------------------------
 | 3. Main Banner Style
@@ -2997,7 +2991,11 @@ ul.social {
 .categories-service>li{margin:50px 0;}
 .categories{list-style:none; margin-bottom: 10px;}
 .categorybox:hover{border:1px solid #ff7800;}
-.categorybox:hover .icon{background:#ff7800;}
+.categorybox:hover .icon{
+
+    /*background:#ff7800;*/
+    border:1px solid #ff7800;
+}
 .categorybox:hover h4 a{color:#ff7800;}
 .categories {margin:0 auto; }
 .categories  a{font-size:14px; color:#888888; text-decoration:none;}
@@ -3009,8 +3007,11 @@ ul.social {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     border-radius: 100px;
-    background-color: #1274c0;
-    background: url(../../images/icons-bg.PNG) center center no-repeat;
+    /*background-color: #1274c0;*/
+    background-color:white;
+    border:1px solid gray;
+
+    /*background: url(../../images/icons-bg.PNG) center center no-repeat;*/
     
     text-align: center;
     display: inline-block;

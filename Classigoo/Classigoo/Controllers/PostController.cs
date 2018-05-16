@@ -125,13 +125,13 @@ namespace Classigoo.Controllers
         public ActionResult Index1(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
         {
            
-            CreateFolder("~/images/" +postAdd.State);
-            CreateFolder("~/images/" + postAdd.State +"/"+ postAdd.District);
-            CreateFolder("~/images/" + postAdd.State + "/" + postAdd.District+"/" + postAdd.Mandal);
-            string img1 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName);
-            string img2 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName);
-            string img3 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName);
-            string img4 = "~/images/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName);
+            CreateFolder("/ImgColl/" + postAdd.State);
+            CreateFolder("/ImgColl/" + postAdd.State +"/"+ postAdd.District);
+            CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District+"/" + postAdd.Mandal);
+            string img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName);
+            string img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName);
+            string img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName);
+            string img4 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName);
             Image1.SaveAs(Server.MapPath(img1));
             Image2.SaveAs(Server.MapPath(img2));
             Image3.SaveAs(Server.MapPath(img3));

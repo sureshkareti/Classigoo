@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Contact", "List", FormMethod.Post, new { data_toggle = "validator" }))
+{
+
+    <div>
+        <div class="breadcrumb-block">
+
+        </div>
+
+        <div class="about-widget-section">
+
+            <div class="container" style="max-width:970px !important;margin:auto;">
+                <div style="background-color:#f5f5f5;border-radius: 4px;">
+                    <div style="width:50%;float:left">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="~/Home/Index1">Home</a></li>
+                            <li class="breadcrumb-item active">Contact us</li>
+                        </ol>
+                    </div>
+
+                    <div class="breadcrumb-call-to-action" style="padding: 8px 15px;list-style: none;background-color: #f5f5f5;border-radius: 4px;">
+                        <p>Call Us : <i style="color:#F70" class="fa fa-phone" aria-hidden="true"></i> +91-90144-547-30</p>
+                        @*<a href="javascript:void(0)" class="contact-btn">
+                            Call Us
+                        </a>*@
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="container" style="max-width:970px !important;margin:auto;">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="about-widget-block">
+                            <span class="ti-cup"><i class="fa fa-trophy" aria-hidden="true"></i></span>
+                            <h4>Award Wining Listing Site</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="about-widget-block">
+                            <span class="ti-user"><i class="fa fa-user" aria-hidden="true"></i></span>
+
+                            <h4>Dedicated Team</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="about-widget-block">
+                            <span class="ti-headphone-alt"><i class="fa fa-headphones" aria-hidden="true"></i></span>
+
+                            <h4>24/7 Support</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- about-widget section -->
+        <div class="contact-section">
+            <div class="container" style="max-width:970px !important;margin:auto;">
+                <div class="section-title">
+                    <h2>Get in Touch</h2>
+                    <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contactinfo-block">
+                            <h4>Contact us</h4>
+                            <div class="contact-widget">
+                                @*class="address"*@
+                                <p>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>256 Christchurch Road, <br> California, CA785853</span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                                        +91-90144-547-30
+                                        <br>
+                                        +91-90144-547-30
+                                    </span>
+                                </p>
+                                <p class="last-type">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <span>
+                                        info@classigoo.com
+                                        <br>
+                                        sales@classigoo.com
+                                    </span>
+                                </p>
+                                <div class="social-with-label">
+                                    <span>Social Media: </span>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-vimeo" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contactform-block">
+                            <form id="contactForm" class="form-common">
+                                <div class="form-group">
+                                    <input id="name" type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input id="email" type="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input id="phone" type="text" class="form-control" placeholder="Phone">
+                                </div>
+                                <div class="form-group textarea-form-group">
+                                    <textarea id="message" rows="5" cols="5" class="form-control" placeholder="Message"></textarea>
+                                </div>
+                                <button type="submit" class="form-btn">Submit</button>
+                                <p class="input-success">Your message has sent. Thanks for contacting.</p>
+                                <p class="input-error">Sorry, message couldn't sent for some error</p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+}
+<br />
+<br />
+
+
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
+        <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        <span class="loader-item"></span><span class="loader-item"></span>
+    </div>
+</div>
+
+
+@section Styles {
+    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+}
+
+
+@section scripts{
+
+}
