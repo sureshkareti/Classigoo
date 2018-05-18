@@ -44,6 +44,7 @@
                                     <div class="col-md-3 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <select id="listing_rent_listGeneral" name="Rent" class="form-control">
+                                                
                                                 <option selected>Rent</option>
                                                 <option>Sale</option>
                                             </select>
@@ -1094,67 +1095,45 @@
     <script src="~/Scripts/List/search.js"></script>
 }
 
-<script type="text/javascript">
+<script>
     $(document).ready(function () {
-
-
+        
         $("#btnSearch").css({"background-color": "white", "border": "1px solid #337ab7", "color": "#337ab7","padding": "1px 6px"});
-
+       
+        var category = "";
         $('#page-selection').bootpag({
             total: @Model.PageCount,
             page:@Model.CurrentPageIndex,
-            maxVisible: 10,
             leaps: true,
             firstLastUse: true,
             first: 'First',
             last: 'Last'
         }).on('page', function(event, num){
-
-            //$('body').append('<div id="requestOverlay" class="request-overlay"></div>');
-            /*Create overlay on demand*/
-            /*Show overlay*/
-            getAddsbyPage(num);
+            
+            filterAdds("",num);
         })
-    });
-
-    function getAddsbyPage(pageNum){
-        var page = parseInt(pageNum);
-
-        $.ajax({
-            url: '@Url.Action("DisplayAdds")',
-            type: 'POST',
-            dataType: "html",
-            data: { "currentPageIndex": page },
-            success: function (data) {
-                $("#content").html(data);
-
-            },
-            failure: function (response) {
-                console.log(response.responseText);
-            },
-            error: function (response) {
-                console.log(response.responseText);
-            },
-            complete: function (data) {
-                $("#requestOverlay").hide();/*Remove overlay*/
-            }
-        });
-    }
-
-</script>
-<script>
-    $(document).ready(function () {
-        var category = "";
-
         $("#listing_catagory").change(function () {
             category = $("#listing_catagory").val();
-            ShowCategoryFilter();
+            filterAdds("",1);
+           // ShowCategoryFilter();
         });
 
         $("#listing_location_list").change(function () {
             category = $("#listing_catagory").val();
-            ShowCategoryFilter();
+            // ShowCategoryFilter();
+            filterAdds("",1);
         });
+        $("#listing_keword").change(function () {
+            category = $("#listing_catagory").val();
+            // ShowCategoryFilter();
+            filterAdds("",1);
+        });
+        $("#listing_rent_listGeneral").change(function () {
+            category = $("#listing_catagory").val();
+            // ShowCategoryFilter();
+            filterAdds("",1);
+        });
+
 
         $("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
@@ -1189,17 +1168,17 @@
             }
              filterAdds(filterObj);
         });
-        function filterAdds(selectedValue) {
+        function filterAdds(selectedValue,pageNum) {
 
             $.ajax({
                 url: '@Url.Action("ApplyFilter")',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "category": category, "location": $("#listing_location_list").val(),"keyword":$("#listing_keword").val(),"type":$("#listing_rent_listGeneral").val() },
+                data: { "filterOptions": JSON.stringify(selectedValue),"pageNum":pageNum, "category": category, "location": $("#listing_location_list").val(),"keyword":$("#listing_keword").val(),"type":$("#listing_rent_listGeneral").val() },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
-
+                    
                 },
                 failure: function (response) {
                     console.log(response.responseText);
