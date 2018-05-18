@@ -183,6 +183,14 @@
             $('#bloglist .bloglisting:first').show();
 
         }
+        $('#page-selection').bootpag({
+            total: @Model.PageCount,
+            page:@Model.CurrentPageIndex,
+            leaps: true,
+            firstLastUse: true,
+            first: 'First',
+            last: 'Last'
+        });
 
     });
 

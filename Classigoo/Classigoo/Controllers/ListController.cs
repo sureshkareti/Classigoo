@@ -243,14 +243,16 @@ namespace Classigoo.Controllers
             }
             else
             {
-            
+                    
 
                 realestateColl = (from RealEstate in db.RealEstates
                                   join add in db.Adds on RealEstate.AddId equals add.AddId
                                   where
-                                 (location != "" ? add.State == location : true) &&
-                                 //(location != "" ? add.District == location : true) &&
-                                 //(location != "" ? add.Mandal == location : true) &&
+                                 ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true))
+                                 
+                                 &&
                                  (add.Type == type) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                                   orderby add.Created
@@ -667,6 +669,9 @@ namespace Classigoo.Controllers
             return addColl;
         }
 
+        public void GetTotalCount()
+        {
 
+        }
     }
 }
