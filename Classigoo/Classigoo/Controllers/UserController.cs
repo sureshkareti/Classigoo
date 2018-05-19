@@ -53,8 +53,14 @@ namespace Classigoo.Controllers
             if (UserId != Guid.Empty)
             {
                 Session["UserId"] = UserId;
-
-                return RedirectToAction("Home", "User");
+                if (coll["email-phone"] =="1111111111" && coll["pwd"] == "admin")
+                {
+                   return RedirectToAction("Admin", "User");
+                }
+                else
+                {
+                    return RedirectToAction("Home", "User");
+                }
             }
             else
             {
