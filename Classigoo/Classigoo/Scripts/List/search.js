@@ -48,6 +48,7 @@
                 async: false,
                 success: function (data) {
                     $.each(data, function (i, field) {
+                        if (field.name !== "Cars Models" && field.name !== "Bikes Models")
                         categoryColl.push(field);
                     });
                 }

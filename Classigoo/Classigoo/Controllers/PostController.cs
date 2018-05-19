@@ -138,8 +138,8 @@ namespace Classigoo.Controllers
             Image4.SaveAs(Server.MapPath(img4));
 
             int postId = 0;
-
-            Guid userId = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
+            Guid userId = (Guid)Session["UserId"];
+          //  Guid userId = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
 
             Add add = new Add()
             {

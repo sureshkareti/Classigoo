@@ -310,11 +310,30 @@ namespace Classigoo.Controllers
         [ActionName("Admin")]
         public  IHttpActionResult Admin()
         {
-            List<Add> coll = new List<Add>();
-            coll = db.Adds.ToList();
-            if (coll.Count > 0)
+            var addColl = (from add in db.Adds 
+                            select new
+                            {
+                                AddId = add.AddId,
+                                Created = add.Created,
+                                Category = add.Category,
+                                State = add.State,
+                                District = add.District,
+                                Mandal = add.Mandal,
+                                Status = add.Status
+                            }).ToList()
+                            .Select(add=> new Add()
+                            {
+                           AddId = add.AddId,
+                           Created = add.Created,
+                           Category = add.Category,
+                           State = add.State,
+                           District = add.District,
+                           Mandal = add.Mandal,
+                          Status = add.Status
+                          });
+            if (addColl.Count() > 0)
             {
-                return Ok(coll);
+                return Ok(addColl);
             }
             else
                 return NotFound();

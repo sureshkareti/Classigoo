@@ -22,9 +22,9 @@ namespace Classigoo.Controllers
         public ActionResult ShowAdds(FormCollection coll)
         {
             FiterOptions filterOptions = new FiterOptions();
-            filterOptions.category  = coll["category"];
-            filterOptions.location = coll["location"];
-            filterOptions.searchKeyword = coll["searchKeyword"];
+            filterOptions.Category  = coll["category"];
+            filterOptions.Location = coll["location"];
+            filterOptions.SearchKeyword = coll["searchKeyword"];
             ViewBag.FilterValues = filterOptions;
             return View(GetAdds(1));
         }
