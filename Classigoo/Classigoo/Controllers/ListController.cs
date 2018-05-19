@@ -10,6 +10,10 @@ namespace Classigoo.Controllers
     public class ListController : Controller
     {
         // GET: List
+        public ActionResult Home()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View(GetAdds(1));

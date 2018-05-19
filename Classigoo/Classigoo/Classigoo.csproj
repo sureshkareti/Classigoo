@@ -185,34 +185,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
-    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
-    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
-    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
-    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
-    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
-    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
-    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
-    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Classigoo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,14 +205,9 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomActions.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\AddsController.cs" />
     <Compile Include="Controllers\ListController.cs" />
-    <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\SearchApiController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -271,7 +238,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Classigoo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Classigoo.edmx</DependentUpon>
@@ -370,25 +336,6 @@
     <Content Include="Content\fonts\Simple-Line-Iconsb26c.svg" />
     <Content Include="Content\fonts\themify9f24.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\HelpPage\Views\Web.config" />
-    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <EntityDeploy Include="Classigoo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Classigoo.Designer.cs</LastGenOutput>
@@ -397,88 +344,23 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="HtmlPage2.html" />
-    <Content Include="HtmlPage3.html" />
-    <Content Include="HtmlPage4.html" />
     <Content Include="images\22222.jpg" />
     <Content Include="images\4.jpg" />
-    <Content Include="images\background.png" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Deletion_icon.svg.png" />
     <Content Include="images\expand.png" />
     <Content Include="images\expandx30.png" />
     <Content Include="images\icons-bg.PNG" />
-    <Content Include="images\icons\bike\bike-bike.png" />
-    <Content Include="images\icons\bike\bike-cycle.png" />
-    <Content Include="images\icons\bike\bike-scoter.png" />
-    <Content Include="images\icons\bike\bike-spare.png" />
-    <Content Include="images\icons\book\book-books.png" />
-    <Content Include="images\icons\book\book-gym.png" />
-    <Content Include="images\icons\book\book-hobby.png" />
-    <Content Include="images\icons\book\book-music.png" />
-    <Content Include="images\icons\book\book-sport.png" />
-    <Content Include="images\icons\cars\cars-cmv.png" />
-    <Content Include="images\icons\cars\cars-ov.png" />
-    <Content Include="images\icons\cars\cars-sp.png" />
-    <Content Include="images\icons\cars\cars.png" />
-    <Content Include="images\icons\ea\ea-ac.png" />
-    <Content Include="images\icons\ea\ea-ca.png" />
-    <Content Include="images\icons\ea\ea-camera.png" />
-    <Content Include="images\icons\ea\ea-games.png" />
-    <Content Include="images\icons\ea\ea-hd.png" />
-    <Content Include="images\icons\ea\ea-kitchen.png" />
-    <Content Include="images\icons\ea\ea-laptop.png" />
-    <Content Include="images\icons\ea\ea-p.png" />
-    <Content Include="images\icons\ea\ea-tv.png" />
-    <Content Include="images\icons\ea\ea-wm.png" />
-    <Content Include="images\icons\fashion\fashion-kid.png" />
-    <Content Include="images\icons\fashion\fashion-men.png" />
-    <Content Include="images\icons\fashion\fashion-women.png" />
-    <Content Include="images\icons\fur\f-bw.png" />
-    <Content Include="images\icons\fur\f-hd.png" />
-    <Content Include="images\icons\fur\f-kf.png" />
-    <Content Include="images\icons\fur\f-oh.png" />
-    <Content Include="images\icons\fur\f-sd.png" />
     <Content Include="images\icons\home\carx70.png" />
     <Content Include="images\icons\home\cranex70.png" />
-    <Content Include="images\icons\home\hm-rent.png" />
-    <Content Include="images\icons\home\hm-sale.png" />
     <Content Include="images\icons\home\homex70.png" />
     <Content Include="images\icons\home\itractorx70.png" />
     <Content Include="images\icons\home\transportationx70.png" />
-    <Content Include="images\icons\jobs\jobs-accnt.png" />
-    <Content Include="images\icons\jobs\jobs-assnt.png" />
-    <Content Include="images\icons\jobs\jobs-bpo.png" />
-    <Content Include="images\icons\jobs\jobs-chef.png" />
-    <Content Include="images\icons\jobs\jobs-de.png" />
-    <Content Include="images\icons\jobs\jobs-desg.png" />
-    <Content Include="images\icons\jobs\jobs-driver.png" />
-    <Content Include="images\icons\jobs\jobs-hotel.png" />
-    <Content Include="images\icons\jobs\jobs-it.png" />
-    <Content Include="images\icons\jobs\jobs-other.png" />
-    <Content Include="images\icons\jobs\jobs-recep.png" />
-    <Content Include="images\icons\jobs\jobs-sales.png" />
-    <Content Include="images\icons\jobs\jobs-teacher.png" />
-    <Content Include="images\icons\jobs\jobs-tech.png" />
-    <Content Include="images\icons\jobs\jobs-truck.png" />
-    <Content Include="images\icons\mobile\mobile-acc.png" />
-    <Content Include="images\icons\mobile\mobile-m.png" />
-    <Content Include="images\icons\mobile\mobile-pad.png" />
-    <Content Include="images\icons\pets\pets-access.png" />
-    <Content Include="images\icons\pets\pets-dog.png" />
-    <Content Include="images\icons\pets\pets-fish.png" />
-    <Content Include="images\icons\pets\pets-other.png" />
-    <Content Include="images\icons\services\ser-class.png" />
-    <Content Include="images\icons\services\ser-comp.png" />
-    <Content Include="images\icons\services\ser-medical.png" />
-    <Content Include="images\icons\services\ser-other.png" />
-    <Content Include="images\icons\services\ser-taxi.png" />
     <Content Include="images\left.png" />
     <Content Include="images\leftx30.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\right.png" />
     <Content Include="images\rightx30.png" />
-    <Content Include="images\testLogo.png" />
     <Content Include="images\upimglogo1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -536,15 +418,12 @@
     <Content Include="Scripts\ScriptsNew\jquery.sparkline.min.js" />
     <Content Include="Scripts\ScriptsNew\retina-1.1.0.min.js" />
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
-    <Content Include="Views\New\Detail.cshtml" />
-    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Scripts\Json\categories.json" />
     <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
     <Content Include="Views\List\Index.cshtml" />
     <Content Include="Views\List\Contact.cshtml" />
     <Content Include="Views\List\About.cshtml" />
-    <None Include="Views\New\Home.cshtml" />
     <Content Include="Scripts\ScriptsNew\custom.js" />
     <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
     <Content Include="Scripts\ScriptsNew\jquery-ui.min.js" />
@@ -568,40 +447,26 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UnableToLogin.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
-    <Content Include="Views\User\PostAdd.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\User\UserDashboard.cshtml" />
     <Content Include="Views\User\PreviewAdd.cshtml" />
-    <Content Include="Views\Search\DisplayAdds.cshtml" />
     <Content Include="Scripts\Json\categories1.json" />
     <Content Include="Scripts\Json\locations.json" />
-    <Content Include="Views\User\ShowAdd.cshtml" />
-    <Content Include="Views\New\ShowAdds.cshtml" />
-    <Content Include="Views\Shared\_Layout1.cshtml" />
-    <Content Include="Views\New\DisplayAdds.cshtml" />
-    <Content Include="Views\Post\Index1.cshtml" />
     <Content Include="Views\Shared\_LoadData.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
-    <Content Include="Views\Shared\_DisplayAdds.cshtml" />
     <Content Include="Views\Shared\_FillSearchResults.cshtml" />
+    <Content Include="Views\List\Home.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\icons\NewFolder1\" />
-    <Folder Include="images\Telangana\" />
     <Folder Include="ImgColl\" />
   </ItemGroup>
   <ItemGroup>
