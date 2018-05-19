@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-3 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <input type="text" id="listing_location_list" style="border:1px solid rgb(204, 204, 204);border-radius:0px" class="form-control" placeholder="Ex: Warangal, Hyderabad" name="location" />
+                                            <input type="text" id="listing_location_list" lt="" style="border:1px solid rgb(204, 204, 204);border-radius:0px" class="form-control" placeholder="Ex: Warangal, Hyderabad" name="location" />
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-12 col-xs-12">
@@ -1101,6 +1101,7 @@
         $("#btnSearch").css({"background-color": "white", "border": "1px solid #337ab7", "color": "#337ab7","padding": "1px 6px"});
        
         var category = "";
+        //var lt="";
         $('#page-selection').bootpag({
             total: @Model.PageCount,
             page:@Model.CurrentPageIndex,
@@ -1120,18 +1121,20 @@
 
         $("#listing_location_list").change(function () {
             category = $("#listing_catagory").val();
-            // ShowCategoryFilter();
+          // lt= $("#listing_location_list").attr("lt");
+
+            //ShowCategoryFilter();
             filterAdds("",1);
         });
         $("#listing_keword").change(function () {
             category = $("#listing_catagory").val();
             // ShowCategoryFilter();
-            filterAdds("",1);
+           filterAdds("",1);
         });
         $("#listing_rent_listGeneral").change(function () {
             category = $("#listing_catagory").val();
             // ShowCategoryFilter();
-            filterAdds("",1);
+           filterAdds("",1);
         });
 
 
