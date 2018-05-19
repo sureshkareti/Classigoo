@@ -88,8 +88,9 @@ namespace Classigoo.Controllers
             user.MobileNumber = coll["inputPhone"];
             user.Name = coll["inputName"];
             user.Password = coll["inputPassword"];
-            if (!IsUserExist(user.MobileNumber, "Custom"))
-            {
+            Guid userId = IsUserExist(user.MobileNumber, "Custom");
+             if (userId==Guid.Empty)
+              {
                 using (var client = new HttpClient())
                 {
 
@@ -108,6 +109,12 @@ namespace Classigoo.Controllers
                     var result = postTask.Result;
                     if (result.IsSuccessStatusCode)
                     {
+                        var readTask = result.Content.ReadAsAsync<User>();
+                        readTask.Wait();
+
+                        userId = readTask.Result.UserId;
+
+                        Session["UserId"] = userId;
                         return RedirectToAction("Home", "User");
                     }
                     else
@@ -127,9 +134,10 @@ namespace Classigoo.Controllers
             return View();
 
         }
-        public bool IsUserExist(string id, string type)
+        public Guid IsUserExist(string id, string type)
         {
-            bool IsUserExist = false;
+           
+            Guid userId = Guid.Empty;
             using (var client = new HttpClient())
             {
                 string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
@@ -141,10 +149,10 @@ namespace Classigoo.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<bool>();
+                    var readTask = result.Content.ReadAsAsync<Guid>();
                     readTask.Wait();
 
-                    IsUserExist = readTask.Result;
+                    userId = readTask.Result;
                 }
                 else //web api sent error response 
                 {
@@ -154,7 +162,7 @@ namespace Classigoo.Controllers
                 }
             }
 
-            return IsUserExist;
+            return userId;
 
         }
         public ActionResult UnableToLogin()
@@ -165,42 +173,13 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public ActionResult PostAdd(tbl_Adds Add)
-        //{
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("http://localhost:51797/api/");
-
-        //        //HTTP POST
-        //        var postTask = client.PostAsJsonAsync<tbl_Adds>("Adds", Add);
-        //        try
-        //        {
-
-        //            postTask.Wait();
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //        }
-
-        //        var result = postTask.Result;
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            return RedirectToAction("Home");
-        //        }
-
-        //    }
-
-        //    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-
-        //    return View(Add);
-        //}
+       
 
         public ActionResult Home()
         {
-            Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
-            List<CustomAdd> addColl = GetMyAdds(new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f"));
+            Guid userId = (Guid)Session["UserId"];
+            //Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
+            List<CustomAdd> addColl = GetMyAdds(userId);
             TempData["UserAddColl"] = addColl;
             return View(addColl);
 
@@ -208,8 +187,11 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
-            User user = GetUserDetails(new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f"));
+            Guid userId = (Guid)Session["UserId"];
+            User user = GetUserDetails(userId);
             List<CustomAdd> addColl = (List<CustomAdd>)TempData["UserAddColl"];
+            Guid emailExist = IsUserExist(coll["txtEmail"], "Gmail");
+            Guid phoneExist = IsUserExist(coll["txtPhone"], "Custom");
             TempData.Keep("UserAddColl");
             switch (coll["action"])
             {
@@ -228,7 +210,7 @@ namespace Classigoo.Controllers
 
                     break;
                 case "Change Email":
-                    if (!IsUserExist(coll["txtEmail"], "Gmail"))
+                    if (emailExist == Guid.Empty)
                     {
                         user.Email = coll["txtEmail"];
                         UpdateUserDetails(user);
@@ -240,7 +222,7 @@ namespace Classigoo.Controllers
                     }
                     break;
                 case "Change Phone":
-                    if (!IsUserExist(coll["txtPhone"], "Custom"))
+                    if (phoneExist==Guid.Empty)
                     {
                         user.MobileNumber = coll["txtPhone"];
                         UpdateUserDetails(user);

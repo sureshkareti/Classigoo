@@ -102,6 +102,20 @@ namespace Classigoo.Controllers
 
         public ActionResult Index1()
         {
+            PostAdd objPost = new PostAdd();
+            Guid userId = Guid.Empty;
+            if (Session["UserId"] != null)
+            {
+                userId = (Guid)Session["UserId"];
+            }
+            if(userId!=Guid.Empty)
+            {
+                UserController userContObj = new UserController();
+                User user = userContObj.GetUserDetails(userId);
+                objPost.PhoneNumber = user.MobileNumber;
+                objPost.Name = user.Name;
+
+            }
             //bool isEdit = true;
             //if (isEdit)
             //{
@@ -119,7 +133,7 @@ namespace Classigoo.Controllers
             //    return View(objPostAdd);
             //}
 
-            return View();
+            return View(objPost);
         }
         [HttpPost]
         public ActionResult Index1(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
@@ -138,7 +152,61 @@ namespace Classigoo.Controllers
             Image4.SaveAs(Server.MapPath(img4));
 
             int postId = 0;
-            Guid userId = (Guid)Session["UserId"];
+            Guid userId = Guid.Empty;
+            if (Session["UserId"] != null)
+            {
+                userId = (Guid)Session["UserId"];
+            }
+            else
+            {
+                UserController userContr = new UserController();
+
+               Guid userExist = userContr.IsUserExist(postAdd.PhoneNumber, "Custom");
+                if (userExist == Guid.Empty)
+                {
+                    using (var client = new HttpClient())
+                {
+                    User user = new User();
+                    user.MobileNumber = postAdd.PhoneNumber;
+                    user.Name = postAdd.Name;
+                    //  user.Password = coll["inputPassword"];
+                    user.Type = "Custom";
+                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + user;
+                    client.BaseAddress = new Uri(url);
+                    var postTask = client.PostAsJsonAsync<User>(url, user);
+                    try
+                    {
+                        postTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                          var readTask = result.Content.ReadAsAsync<User>();
+                            readTask.Wait();
+
+                            userId = readTask.Result.UserId;
+                        
+                            Session["UserId"] = userId;
+                        }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                    }
+
+                }
+                    
+            }
+                else
+                {
+
+                    userId=userContr.IsUserExist(postAdd.PhoneNumber, "Custom");
+                    Session["UserId"] = userId;
+                }
+            }
           //  Guid userId = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
 
             Add add = new Add()

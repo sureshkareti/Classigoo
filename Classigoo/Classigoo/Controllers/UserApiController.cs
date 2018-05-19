@@ -165,20 +165,28 @@ namespace Classigoo.Controllers
         [HttpGet]
         public IHttpActionResult CheckUser(string id,string type)
         {
-            bool IsUserExist = false;
+            User user = new User();
             if(type=="Gmail")
             {
-                IsUserExist= db.Users.Count(e => e.Email == id) > 0;
+                user = db.Users.Where(e => e.Email == id).FirstOrDefault();
             }
             else if(type=="Fb")
             {
-                IsUserExist= db.Users.Count(e => e.FbId == id) > 0;
+                user = db.Users.Where(e => e.FbId == id).FirstOrDefault();
             }
             else if(type=="Custom")
             {
-                IsUserExist= db.Users.Count(e => e.MobileNumber == id) > 0;
+                user = db.Users.Where(e => e.MobileNumber == id).FirstOrDefault();
             }
-            return Ok(IsUserExist);
+            if(user!=null)
+            {
+                return Ok(user.UserId);
+            }
+            else
+            {
+                return Ok(Guid.Empty);
+            }
+            
         }
         [HttpGet]
         public IHttpActionResult IsValidUser(string userName, string pwd,string logintype)
