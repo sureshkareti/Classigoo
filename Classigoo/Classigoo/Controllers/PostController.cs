@@ -117,7 +117,7 @@ namespace Classigoo.Controllers
                 else
                 {
 
-                    userId=userContr.IsUserExist(postAdd.PhoneNumber, "Custom");
+                    userId = userExist;
                     Session["UserId"] = userId;
                 }
             }
