@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
                     <p>
-                        <strong>Existing User? Please </strong><a href="login.html">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                        <strong>Existing User? Please </strong><a href="~/User/Login">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
                     </p>
                 </div>
                 <div>
@@ -330,7 +330,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in AV rupees",pattern= @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees",pattern= @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
 
                                                     @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
@@ -367,7 +367,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
 
                                                     @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
 
@@ -405,7 +405,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -441,7 +441,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -512,7 +512,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill the with price", placeholder = "Please enter price in rupees", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill with the price", placeholder = "Please enter price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -545,11 +545,11 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlFurnishing, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                    @Html.DropDownListFor(model => model.ddlFurnishing, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Furnished", Text = "Furnished" },
                                                     new SelectListItem() { Value = "Unfurnished", Text = "Unfurnished" },
                                                      new SelectListItem() { Value = "Semi-Furnished", Text = "Semi-Furnished" }
-                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect is furnished", required = "required" })
+                                                    }, new { @class = "form-control", data_error = "please select is furnished", required = "required" })
 
                                                     @*<select id="ddlFurnishing" class="form-control" data-error="please slect is furnished" required>
                                                             <option value="">Select</option>
@@ -566,11 +566,11 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Availability<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlAvailability, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                    @Html.DropDownListFor(model => model.ddlAvailability, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Under Construction", Text = "Under Construction" },
                                                     new SelectListItem() { Value = "Ready to Move", Text = "Ready to Move" },
                                                      new SelectListItem() { Value = "New Launch", Text = "New Launch" }
-                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect status", required = "required" })
+                                                    }, new { @class = "form-control", data_error = "please select availability", required = "required" })
 
                                                     @*<select id="ddlAvailability" class="form-control" data-error="please slect status" required>
                                                             <option value="">Select</option>
@@ -586,11 +586,11 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Posted By<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlPostedBy, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                    @Html.DropDownListFor(model => model.ddlPostedBy, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Owner", Text = "Owner" },
                                                     new SelectListItem() { Value = "Dealer", Text = "Dealer" },
                                                      new SelectListItem() { Value = "Builder", Text = "Builder" }
-                                                    }, "Select Category", new { @class = "form-control", data_error = "please slect user type", required = "required" })
+                                                    },new { @class = "form-control", data_error = "please select Posted", required = "required" })
 
 
 
@@ -645,7 +645,7 @@
                                     </div>
                                     <div class="col-md-7">
 
-                                        @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", @minlength = "10", @maxlength = "1000", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
 
                                         @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
                                         <div class="help-block with-errors"></div>

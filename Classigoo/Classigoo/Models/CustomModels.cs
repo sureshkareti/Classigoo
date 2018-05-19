@@ -24,6 +24,7 @@ namespace Classigoo
         public string Description { set; get; }
         public string Location { set; get; }
         public string Price { set; get; }
+        public string Status { set; get; }
         public string Category { set; get; }
         public string ImgUrlPrimary { get; set; }
         public string ImgUrlSeconday { get; set; }

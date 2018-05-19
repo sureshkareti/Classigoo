@@ -79,7 +79,15 @@
                            columns: grid.Columns(grid.Column("CreatedDate", header: "CreatedDate"),
      grid.Column("Title", "Title"),
      grid.Column("Price", "Price"),
-     grid.Column("Image",format: @<img src="~/images/logo.jpg"  class="list_thumbnail fleft" width="50"/>),
+     grid.Column("Status", "Status"),
+                    // grid.Column("Image",format: @<img src="~/images/logo.jpg"  class="list_thumbnail fleft" width="50"/>),
+                    grid.Column("Image",
+
+                 format: (item) =>
+                 {
+                     return Html.Raw(string.Format("<text><img src=\"{0}\" alt=\"Image\" width='50'/></text>", Url.Content(@item.ImgUrlPrimary)));
+                 }
+                ),
     grid.Column(header: "Preview", format: (add) =>
     {
         var link = Html.ActionLink("Preview", "PreviewAdd", "User",

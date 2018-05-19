@@ -276,6 +276,7 @@ namespace Classigoo.Controllers
             customAdd.AddId = add.AddId;
             customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
             customAdd.Category = add.Category;
+            customAdd.Status = add.Status;
             switch (add.Category)
             {
                 case Constants.RealEstate:
