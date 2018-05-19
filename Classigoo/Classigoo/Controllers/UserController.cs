@@ -178,7 +178,7 @@ namespace Classigoo.Controllers
         public ActionResult Home()
         {
             Guid userId = (Guid)Session["UserId"];
-            //Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
+            //Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");jdjfajdsf
             List<CustomAdd> addColl = GetMyAdds(userId);
             TempData["UserAddColl"] = addColl;
             return View(addColl);
