@@ -157,13 +157,16 @@ namespace Classigoo
         public const string PassengerVehicle = "Passenger Vehicles";
 
 
-        public const string PostAddUrl = "http://localhost:51797/api/PostApi/PostAdd";
-        public const string PostAgricutureVehicleUrl = "http://localhost:51797/api/PostApi/AgriculturalVehicle";
-        public const string PostConstructionVehicleUrl = "http://localhost:51797/api/PostApi/ConstructionVehicle";
-        public const string PostTransportationVehicleUrl = "http://localhost:51797/api/PostApi/TransportationVehicle";
-        public const string PostPassengerVehicleUrl = "http://localhost:51797/api/PostApi/PassengerVehicle";
-        public const string PostRealEstateUrl = "http://localhost:51797/api/PostApi/RealEstate";
+        public static string PostAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/PostAdd";
+        public static string PostAgricutureVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/AgriculturalVehicle";
+        public static string PostConstructionVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/ConstructionVehicle";
+        public static string PostTransportationVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/TransportationVehicle";
+        public static string PostPassengerVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/PassengerVehicle";
+        public static string PostRealEstateUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/RealEstate";
 
         public const int NoOfAddsPerPage = 6;
+
+        public static string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+
     }
 }

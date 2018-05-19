@@ -23,7 +23,8 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
+                   
+                    string url = Constants.DomainName+"/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -95,7 +96,7 @@ namespace Classigoo.Controllers
                 {
 
                     user.Type = "Custom";
-                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + user;
+                    string url = Constants.DomainName+"/api/UserApi/AddUser/?user=" + user;
                     client.BaseAddress = new Uri(url);
                     var postTask = client.PostAsJsonAsync<User>(url, user);
                     try
@@ -140,7 +141,7 @@ namespace Classigoo.Controllers
             Guid userId = Guid.Empty;
             using (var client = new HttpClient())
             {
-                string url = "http://localhost:51797/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
+                string url = Constants.DomainName+"/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
                 client.BaseAddress = new Uri(url);
                 //HTTP GET
                 var responseTask = client.GetAsync(url);
@@ -244,7 +245,7 @@ namespace Classigoo.Controllers
             using (var client = new HttpClient())
             {
 
-                string url = "http://localhost:51797/api/UserApi/UpdateUserDetails/?user=" + user;
+                string url = Constants.DomainName+"/api/UserApi/UpdateUserDetails/?user=" + user;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync<User>(url, user);
                 try
@@ -274,7 +275,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/GetUser/?id=" + id;
+                    string url = Constants.DomainName+"/api/UserApi/GetUser/?id=" + id;
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -310,7 +311,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/GetMyAdds/?userId=" + id;
+                    string url = Constants.DomainName+"/api/UserApi/GetMyAdds/?userId=" + id;
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -349,7 +350,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/GetAddById/?addId=" + addId;
+                    string url = Constants.DomainName+"/api/UserApi/GetAddById/?addId=" + addId;
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -399,7 +400,7 @@ namespace Classigoo.Controllers
             using (var client = new HttpClient())
             {
 
-                string url = "http://localhost:51797/api/UserApi/AddLog/?log=" + log;
+                string url = Constants.DomainName+"/api/UserApi/AddLog/?log=" + log;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PostAsJsonAsync<Log>(url, log);
                 try
@@ -434,7 +435,7 @@ namespace Classigoo.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    string url = "http://localhost:51797/api/UserApi/Admin";
+                    string url = Constants.DomainName+"/api/UserApi/Admin";
                     client.BaseAddress = new Uri(url);
                     //HTTP GET
                     var responseTask = client.GetAsync(url);
@@ -468,7 +469,7 @@ namespace Classigoo.Controllers
             using (var client = new HttpClient())
             {
 
-                string url = "http://localhost:51797/api/UserApi/UpdateAddStatus/?addId=" + addId + "&status=" + status;
+                string url = Constants.DomainName+"/api/UserApi/UpdateAddStatus/?addId=" + addId + "&status=" + status;
                 client.BaseAddress = new Uri(url);
                 var postTask = client.PutAsJsonAsync(url, addId);
                 try

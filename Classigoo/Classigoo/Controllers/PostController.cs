@@ -85,7 +85,7 @@ namespace Classigoo.Controllers
                     user.Name = postAdd.Name;
                     //  user.Password = coll["inputPassword"];
                     user.Type = "Custom";
-                    string url = "http://localhost:51797/api/UserApi/AddUser/?user=" + user;
+                    string url = Constants.DomainName+"/ api/UserApi/AddUser/?user=" + user;
                     client.BaseAddress = new Uri(url);
                     var postTask = client.PostAsJsonAsync<User>(url, user);
                     try
