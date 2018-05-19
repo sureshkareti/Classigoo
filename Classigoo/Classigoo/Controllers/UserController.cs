@@ -464,8 +464,9 @@ namespace Classigoo.Controllers
             }
             return View(addColl);
         }
-        public ActionResult UpdateAddStatus(int addId, string status)
+        public bool UpdateAddStatus(int addId, string status)
         {
+            bool isSuccess = false;
             using (var client = new HttpClient())
             {
 
@@ -483,12 +484,13 @@ namespace Classigoo.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Admin", "User");
+                    isSuccess = true;
+                    return isSuccess;
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                    return RedirectToAction("", "");
+                    return isSuccess;
                 }
 
             }
