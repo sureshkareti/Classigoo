@@ -330,7 +330,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in AV rupees",pattern= @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
 
                                                     @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
@@ -367,7 +367,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
 
                                                     @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
 
@@ -405,7 +405,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -441,7 +441,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill the with price", placeholder = "price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill the with price", placeholder = "price in rupees", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -512,7 +512,7 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill the with price", placeholder = "Please enter price in repease", @class = "form-control col-md-7", required = "required" })
+                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill the with price", placeholder = "Please enter price in rupees", @class = "form-control col-md-7", required = "required" })
                                                     @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -748,7 +748,7 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", rows = "7", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.PhoneNumber,new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })
                                         @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                     </div>
                                 </div>

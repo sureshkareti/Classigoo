@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web;
 using Classigoo;
+using System.Globalization;
 
 namespace Classigoo.Controllers
 {
@@ -267,39 +268,64 @@ namespace Classigoo.Controllers
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();
-            customAdd.CreatedDate = add.Created.ToString();
+            customAdd.Location = add.Mandal + "," + add.State;
+
+            DateTime dtTemp = add.Created.Value;
+
+            customAdd.CreatedDate = dtTemp.ToString("MMMM") + ", " + dtTemp.Day + ", " + dtTemp.Year; // .mon.ToLongDateString();
             customAdd.AddId = add.AddId;
+            customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
+            customAdd.Category = add.Category;
             switch (add.Category)
             {
-                case "RealEstate":
+                case Constants.RealEstate:
                     {
-
                         foreach (var item in add.RealEstates)
                         {
-                           // customAdd.Description = item.Description;
-                           // customAdd.Title = item.Title;
+                            customAdd.Description = item.Description;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
                             customAdd.Price = item.Price;
                         }
                         break;
                     }
-                case "Cars":
+                case Constants.TransportationVehicle:
                     {
-                        //foreach (var item in add.Cars)
-                        //{
-                        //  //  customAdd.Description = item.Description;
-                        //    customAdd.Title = item.Title;
-                        //    customAdd.Price = item.Price;
-                        //}
+                        foreach (var item in add.TransportationVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
+                        }
                         break;
                     }
-                case "Electronics":
+                case Constants.ConstructionVehicle:
                     {
-                        //foreach (var item in add.Electronics)
-                        //{
-                        //  //  customAdd.Description = item.Description;
-                        //    customAdd.Title = item.Title;
-                        //    customAdd.Price = item.Price;
-                        //}
+                        foreach (var item in add.ConstructionVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
+                        }
+                        break;
+                    }
+                case Constants.AgriculturalVehicle:
+                    {
+                        foreach (var item in add.AgriculturalVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
+                        }
+                        break;
+                    }
+                case Constants.PassengerVehicle:
+                    {
+                        foreach (var item in add.PassengerVehicles)
+                        {
+                            customAdd.Description = item.Description;
+                            customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                            customAdd.Price = item.Price;
+                        }
                         break;
                     }
 

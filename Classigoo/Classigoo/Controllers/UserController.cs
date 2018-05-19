@@ -199,8 +199,8 @@ namespace Classigoo.Controllers
 
         public ActionResult Home()
         {
-            Session["UserId"] = new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f");
-            List<CustomAdd> addColl = GetMyAdds(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
+            List<CustomAdd> addColl = GetMyAdds(new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f"));
             TempData["UserAddColl"] = addColl;
             return View(addColl);
 
@@ -208,7 +208,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
-            User user = GetUserDetails(new Guid("19e2aca5-28a9-41ca-a641-e81c9139e34f"));
+            User user = GetUserDetails(new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f"));
             List<CustomAdd> addColl = (List<CustomAdd>)TempData["UserAddColl"];
             TempData.Keep("UserAddColl");
             switch (coll["action"])
