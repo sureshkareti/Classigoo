@@ -162,6 +162,6 @@ namespace Classigoo
         public const string PostPassengerVehicleUrl = "http://localhost:51797/api/PostApi/PassengerVehicle";
         public const string PostRealEstateUrl = "http://localhost:51797/api/PostApi/RealEstate";
 
-
+        public const int NoOfAddsPerPage = 6;
     }
 }

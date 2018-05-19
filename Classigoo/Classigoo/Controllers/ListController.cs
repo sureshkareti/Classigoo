@@ -33,7 +33,7 @@ namespace Classigoo.Controllers
         }
         private AddsModel GetAdds(int currentPage)
         {
-            int maxRows = 10;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             
             AddsModel addColl = new AddsModel();
@@ -161,10 +161,10 @@ namespace Classigoo.Controllers
             switch (category)
             {
                 case "Select Category":
-                    addColl = FilterCategoryNotSelect(location);
+                    addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
                     break;
                 case Constants.RealEstate:
-                    addColl = FilterRE(filterColl, location,keyword,type,pageNum);
+                    addColl = FilterRE(filterColl,location,keyword,type,pageNum);
                     break;
                 case Constants.AgriculturalVehicle:
                    addColl = FilterAV(filterColl, location, keyword, type, pageNum);
@@ -179,7 +179,7 @@ namespace Classigoo.Controllers
                    addColl = FilterPV(filterColl, location, keyword, type, pageNum);
                     break;
                 default:
-                    addColl = FilterCategoryNotSelect(location);
+                    addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
                     break;
             }
 
@@ -189,7 +189,7 @@ namespace Classigoo.Controllers
         public AddsModel FilterRE(Dictionary<string, object> filterOptions, string location,string keyword,string type,int pageNum)
         {
             int currentPage = pageNum;
-            int maxRows = 5;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> realestateColl = new List<CustomAdd>();
@@ -243,15 +243,14 @@ namespace Classigoo.Controllers
             }
             else
             {
-                    
-
+                totalRowCount = GetAddsCount(location, keyword, type, Constants.RealEstate);
                 realestateColl = (from RealEstate in db.RealEstates
                                   join add in db.Adds on RealEstate.AddId equals add.AddId
                                   where
                                  ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true))
-                                 
+
                                  &&
                                  (add.Type == type) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
@@ -266,10 +265,7 @@ namespace Classigoo.Controllers
                                       ImgUrlPrimary = RealEstate.ImgUrlPrimary,
                                       Price = RealEstate.Price,
                                       Category = Constants.RealEstate
-                                  }).ToList();
-                totalRowCount = realestateColl.Count();
-
-                realestateColl=realestateColl.Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
+                                  }).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
             }
             addColl.Adds = realestateColl;
             addColl.AddsGrid = GetGridAdds(realestateColl);
@@ -284,7 +280,7 @@ namespace Classigoo.Controllers
         {
 
             int currentPage = pageNum;
-            int maxRows = 5;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> avColl = new List<CustomAdd>();
@@ -325,21 +321,16 @@ namespace Classigoo.Controllers
             }
             else
             {
-                totalRowCount = db.Adds.Where(add =>
-                               (location != "" ? add.State == location : true) &&
-                               (location != "" ? add.District == location : true) &&
-                               (location != "" ? add.Mandal == location : true) &&
-                               (add.Type == type) &&
-                               (add.Title.Contains(keyword))).Count();
-
+               
+                totalRowCount = GetAddsCount(location, keyword, type, Constants.AgriculturalVehicle);
                 avColl = (from AV in db.AgriculturalVehicles
                                   join add in db.Adds on AV.AddId equals add.AddId
                           where
-                        (location != "" ? add.State == location : true) &&
-                        (location != "" ? add.District == location : true) &&
-                        (location != "" ? add.Mandal == location : true) &&
-                        (add.Type == type) &&
-                        (add.Title.Contains(keyword))
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
                                   {
@@ -367,7 +358,7 @@ namespace Classigoo.Controllers
         {
 
             int currentPage = pageNum;
-            int maxRows = 5;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> cvColl = new List<CustomAdd>();
@@ -418,21 +409,16 @@ namespace Classigoo.Controllers
             }
             else
             {
-                totalRowCount = db.Adds.Where(add =>
-                               (location != "" ? add.State == location : true) &&
-                               (location != "" ? add.District == location : true) &&
-                               (location != "" ? add.Mandal == location : true) &&
-                               (add.Type == type) &&
-                               (add.Title.Contains(keyword))).Count();
+                totalRowCount = GetAddsCount(location, keyword, type, Constants.ConstructionVehicle);
 
                 cvColl = (from CV in db.ConstructionVehicles
                                   join add in db.Adds on CV.AddId equals add.AddId
                           where
-                        (location != "" ? add.State == location : true) &&
-                        (location != "" ? add.District == location : true) &&
-                        (location != "" ? add.Mandal == location : true) &&
-                        (add.Type == type) &&
-                        (add.Title.Contains(keyword))
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
                                   {
@@ -460,7 +446,7 @@ namespace Classigoo.Controllers
         {
 
             int currentPage = pageNum;
-            int maxRows = 5;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> tvColl = new List<CustomAdd>();
@@ -511,21 +497,16 @@ namespace Classigoo.Controllers
             }
             else
             {
-                totalRowCount = db.Adds.Where(add =>
-                                 (location != "" ? add.State == location : true) &&
-                                 (location != "" ? add.District == location : true) &&
-                                 (location != "" ? add.Mandal == location : true) &&
-                                 (add.Type == type) &&
-                                 (add.Title.Contains(keyword))).Count();
+                totalRowCount = GetAddsCount(location, keyword, type, Constants.TransportationVehicle);
 
                 tvColl = (from TV in db.TransportationVehicles
                                   join add in db.Adds on TV.AddId equals add.AddId
                           where
-                        (location != "" ? add.State == location : true) &&
-                        (location != "" ? add.District == location : true) &&
-                        (location != "" ? add.Mandal == location : true) &&
-                        (add.Type == type) &&
-                        (add.Title.Contains(keyword))
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
                                   {
@@ -553,7 +534,7 @@ namespace Classigoo.Controllers
         {
 
             int currentPage = pageNum;
-            int maxRows = 5;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> pvColl = new List<CustomAdd>();
@@ -604,21 +585,18 @@ namespace Classigoo.Controllers
             }
             else
             {
-                totalRowCount = db.Adds.Where(add =>
-                               (location != "" ? add.State == location : true) &&
-                               (location != "" ? add.District == location : true) &&
-                               (location != "" ? add.Mandal == location : true) &&
-                               (add.Type == type) &&
-                               (add.Title.Contains(keyword))).Count();
+                totalRowCount = GetAddsCount(location, keyword, type, Constants.PassengerVehicle);
 
                 pvColl = (from PV in db.PassengerVehicles
                                   join add in db.Adds on PV.AddId equals add.AddId
                           where
-                        (location != "" ? add.State == location : true) &&
-                        (location != "" ? add.District == location : true) &&
-                        (location != "" ? add.Mandal == location : true) &&
-                        (add.Type == type) &&
-                        (add.Title.Contains(keyword))
+                        
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                          
                           orderby add.Created
                           select new CustomAdd
                                   {
@@ -642,22 +620,23 @@ namespace Classigoo.Controllers
             return addColl;
 
         }
-        public AddsModel FilterCategoryNotSelect(string location)
+        public AddsModel FilterCategoryNotSelect(string location,string keyword, string type, int pageNum)
         {
-            int currentPage = 1;
-            int maxRows = 5;
+            int currentPage = pageNum;
+            int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
 
             AddsModel addColl = new AddsModel();
             List<CustomAdd> coll = new List<CustomAdd>();
-            List<Add> addsByPage = (from add in db.Adds
+            List<Add> addsByPage = (from add in db.Adds 
                                     where
-                           (location != "All India" ? add.Mandal == location : true)
-                                    orderby add.AddId
-                                    select add)
-                        .OrderBy(add => add.Category)
-                        .Skip((currentPage - 1) * maxRows)
-                        .Take(maxRows).ToList();
+
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 //(add.Type == type) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                  orderby add.Created select add).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
             foreach (var add in addsByPage)
             {
                 coll.Add(CheckCategory(add));
@@ -665,13 +644,22 @@ namespace Classigoo.Controllers
             double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
             addColl.PageCount = (int)Math.Ceiling(pageCount);
             addColl.Adds = coll;
+            addColl.AddsGrid = GetGridAdds(coll);
             addColl.CurrentPageIndex = currentPage;
             return addColl;
         }
 
-        public void GetTotalCount()
+        public int GetAddsCount(string location, string keyword, string type,string category)
         {
-
+            ClassigooEntities db = new ClassigooEntities();
+          int count=  db.Adds.Where(add =>
+                                ((location != "" ? add.State == location : true) ||
+                                (location != "" ? add.District == location : true) ||
+                                (location != "" ? add.Mandal == location : true)) &&
+                                (add.Type == type) &&
+                                (keyword != "" ? add.Title.Contains(keyword) : true) &&
+                                (add.Category == category)).Count();
+            return count;
         }
     }
 }
