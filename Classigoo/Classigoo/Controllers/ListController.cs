@@ -14,7 +14,18 @@ namespace Classigoo.Controllers
         {
             return View(GetAdds(1));
         }
-
+        [HttpPost]
+        public ActionResult Index(FormCollection coll)
+        {
+            FiterOptions filterOptions = new FiterOptions();
+            filterOptions.Category = coll["category"];
+            filterOptions.Location = coll["location"];
+            filterOptions.SearchKeyword = coll["searchKeyword"];
+            filterOptions.Type = coll["type"];
+            ViewBag.FilterValues = filterOptions;
+           // ApplyFilter("", 1, coll["category"], coll["location"], coll["searchKeyword"], coll["type"])
+            return View(GetAdds(1));
+        }
         public ActionResult Contact()
         {
             return View();
@@ -39,8 +50,9 @@ namespace Classigoo.Controllers
             AddsModel addColl = new AddsModel();
             List<CustomAdd> coll = new List<CustomAdd>();
             List<Add> addsByPage = (from add in db.Adds
+                                    where add.Status==Constants.ActiveSatus
                                     select add)
-                        .OrderBy(add => add.Category)
+                        .OrderBy(add => add.Created)
                         .Skip((currentPage - 1) * maxRows)
                         .Take(maxRows).ToList();
             foreach (var add in addsByPage)
@@ -152,7 +164,7 @@ namespace Classigoo.Controllers
             Dictionary<string, object> filterColl = new Dictionary<string, object>();
             JavaScriptSerializer j = new JavaScriptSerializer();
             object filters = j.Deserialize(filterOptions, typeof(object));
-            if (filters.ToString() != "")
+            if (filters.ToString()!="")
             {
                 filterColl = (Dictionary<string, object>)filters;
             }
@@ -249,10 +261,9 @@ namespace Classigoo.Controllers
                                   where
                                  ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||
-                                 (location != "" ? add.Mandal == location : true))
-
-                                 &&
+                                 (location != "" ? add.Mandal == location : true))&&
                                  (add.Type == type) &&
+                                 (add.Status == Constants.ActiveSatus)&&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                                   orderby add.Created
                                   select new CustomAdd
@@ -330,6 +341,7 @@ namespace Classigoo.Controllers
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
@@ -418,6 +430,7 @@ namespace Classigoo.Controllers
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
@@ -506,6 +519,7 @@ namespace Classigoo.Controllers
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                           orderby add.Created
                           select new CustomAdd
@@ -595,6 +609,7 @@ namespace Classigoo.Controllers
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                           
                           orderby add.Created
@@ -635,6 +650,7 @@ namespace Classigoo.Controllers
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                                   orderby add.Created select add).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
             foreach (var add in addsByPage)
@@ -660,6 +676,7 @@ namespace Classigoo.Controllers
              (location != "" ? add.District == location : true) ||
              (location != "" ? add.Mandal == location : true)) &&
              (add.Type == type) &&
+              (add.Status == Constants.ActiveSatus) &&
              (keyword != "" ? add.Title.Contains(keyword) : true)).Count();
             }
             else
@@ -669,6 +686,7 @@ namespace Classigoo.Controllers
               (location != "" ? add.District == location : true) ||
               (location != "" ? add.Mandal == location : true)) &&
               (add.Type == type) &&
+               (add.Status == Constants.ActiveSatus) &&
               (keyword != "" ? add.Title.Contains(keyword) : true) &&
               (add.Category == category)).Count();
             }

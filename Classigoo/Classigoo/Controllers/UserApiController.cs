@@ -165,20 +165,28 @@ namespace Classigoo.Controllers
         [HttpGet]
         public IHttpActionResult CheckUser(string id,string type)
         {
-            bool IsUserExist = false;
+            User user = new User();
             if(type=="Gmail")
             {
-                IsUserExist= db.Users.Count(e => e.Email == id) > 0;
+                user = db.Users.Where(e => e.Email == id).FirstOrDefault();
             }
             else if(type=="Fb")
             {
-                IsUserExist= db.Users.Count(e => e.FbId == id) > 0;
+                user = db.Users.Where(e => e.FbId == id).FirstOrDefault();
             }
             else if(type=="Custom")
             {
-                IsUserExist= db.Users.Count(e => e.MobileNumber == id) > 0;
+                user = db.Users.Where(e => e.MobileNumber == id).FirstOrDefault();
             }
-            return Ok(IsUserExist);
+            if(user!=null)
+            {
+                return Ok(user.UserId);
+            }
+            else
+            {
+                return Ok(Guid.Empty);
+            }
+            
         }
         [HttpGet]
         public IHttpActionResult IsValidUser(string userName, string pwd,string logintype)
@@ -337,11 +345,30 @@ namespace Classigoo.Controllers
         [ActionName("Admin")]
         public  IHttpActionResult Admin()
         {
-            List<Add> coll = new List<Add>();
-            coll = db.Adds.ToList();
-            if (coll.Count > 0)
+            var addColl = (from add in db.Adds 
+                            select new
+                            {
+                                AddId = add.AddId,
+                                Created = add.Created,
+                                Category = add.Category,
+                                State = add.State,
+                                District = add.District,
+                                Mandal = add.Mandal,
+                                Status = add.Status
+                            }).ToList()
+                            .Select(add=> new Add()
+                            {
+                           AddId = add.AddId,
+                           Created = add.Created,
+                           Category = add.Category,
+                           State = add.State,
+                           District = add.District,
+                           Mandal = add.Mandal,
+                          Status = add.Status
+                          });
+            if (addColl.Count() > 0)
             {
-                return Ok(coll);
+                return Ok(addColl);
             }
             else
                 return NotFound();

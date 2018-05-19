@@ -38,9 +38,10 @@ namespace Classigoo
     }
     public class FiterOptions
     {
-        public string category { set; get; }
-        public string location { set; get; }
-        public string searchKeyword { set; get; }
+        public string Category { set; get; }
+        public string Location { set; get; }
+        public string SearchKeyword { set; get; }
+        public string Type { set; get; }
     }
     public class MessageDetail
     {
