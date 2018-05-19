@@ -1110,7 +1110,7 @@
             first: 'First',
             last: 'Last'
         }).on('page', function(event, num){
-            
+            $(".loader-wrap").show();
             filterAdds("",num);
         })
         $("#listing_catagory").change(function () {
@@ -1181,7 +1181,7 @@
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");
-                    
+                    $(".loader-wrap").hide();
                 },
                 failure: function (response) {
                     console.log(response.responseText);
@@ -1190,6 +1190,7 @@
                     console.log(response.responseText);
                 },
                 complete: function (data) {
+
                     //$("#requestOverlay").hide();/*Remove overlay*/
                 }
 

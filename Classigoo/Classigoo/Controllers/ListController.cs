@@ -625,7 +625,7 @@ namespace Classigoo.Controllers
             int currentPage = pageNum;
             int maxRows = Constants.NoOfAddsPerPage;
             ClassigooEntities db = new ClassigooEntities();
-
+          int  totalRowCount = GetAddsCount(location, keyword, type, "Select Category");
             AddsModel addColl = new AddsModel();
             List<CustomAdd> coll = new List<CustomAdd>();
             List<Add> addsByPage = (from add in db.Adds 
@@ -634,14 +634,14 @@ namespace Classigoo.Controllers
                                 ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||
                                  (location != "" ? add.Mandal == location : true)) &&
-                                 //(add.Type == type) &&
+                                 (add.Type == type) &&
                                  (keyword != "" ? add.Title.Contains(keyword) : true)
                                   orderby add.Created select add).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
             foreach (var add in addsByPage)
             {
                 coll.Add(CheckCategory(add));
             }
-            double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
+            double pageCount = (double)((decimal)totalRowCount / Convert.ToDecimal(maxRows));
             addColl.PageCount = (int)Math.Ceiling(pageCount);
             addColl.Adds = coll;
             addColl.AddsGrid = GetGridAdds(coll);
@@ -652,13 +652,26 @@ namespace Classigoo.Controllers
         public int GetAddsCount(string location, string keyword, string type,string category)
         {
             ClassigooEntities db = new ClassigooEntities();
-          int count=  db.Adds.Where(add =>
-                                ((location != "" ? add.State == location : true) ||
-                                (location != "" ? add.District == location : true) ||
-                                (location != "" ? add.Mandal == location : true)) &&
-                                (add.Type == type) &&
-                                (keyword != "" ? add.Title.Contains(keyword) : true) &&
-                                (add.Category == category)).Count();
+            int count = 0;
+            if (category == "Select Category")
+            {
+              count = db.Adds.Where(add =>
+             ((location != "" ? add.State == location : true) ||
+             (location != "" ? add.District == location : true) ||
+             (location != "" ? add.Mandal == location : true)) &&
+             (add.Type == type) &&
+             (keyword != "" ? add.Title.Contains(keyword) : true)).Count();
+            }
+            else
+            {
+               count = db.Adds.Where(add =>
+              ((location != "" ? add.State == location : true) ||
+              (location != "" ? add.District == location : true) ||
+              (location != "" ? add.Mandal == location : true)) &&
+              (add.Type == type) &&
+              (keyword != "" ? add.Title.Contains(keyword) : true) &&
+              (add.Category == category)).Count();
+            }
             return count;
         }
     }
