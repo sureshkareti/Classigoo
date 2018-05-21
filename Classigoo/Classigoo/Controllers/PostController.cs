@@ -29,6 +29,8 @@ namespace Classigoo.Controllers
                 objPost.PhoneNumber = user.MobileNumber;
                 objPost.Name = user.Name;
 
+                ViewBag.Name = "Suresh";
+                ViewBag.Number = "9014454730";
             }
             //bool isEdit = true;
             //if (isEdit)
@@ -47,7 +49,12 @@ namespace Classigoo.Controllers
             //    return View(objPostAdd);
             //}
 
-            return View(objPost);
+            //return View(objPost);
+
+          
+
+
+            return View();
         }
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
