@@ -212,50 +212,66 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-               // string subCategory = filterOptions["subCategory"].ToString();
-               // string furnishing = filterOptions["furnishing"].ToString();
-               // string availability = filterOptions["constructionStatus"].ToString();
-               // string listedBy = filterOptions["listedBy"].ToString();
-               // string squareFeets = filterOptions["builtupArea"].ToString();
-               // string priceFrom = filterOptions["priceFrom"].ToString();
-               // string priceTo = filterOptions["priceTo"].ToString();
-               // string bedRooms = filterOptions["bedRooms"].ToString();
+                string subCategory = filterOptions["subCategory"].ToString();
+                string furnishing = filterOptions["furnishing"].ToString();
+                string availability = filterOptions["availability"].ToString();
+                string listedBy = filterOptions["listedBy"].ToString();
+                string squareFeets = filterOptions["squareFeets"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
+                string bedRooms = filterOptions["bedRooms"].ToString();
 
-               // totalRowCount = db.RealEstates.Where(RE =>
+                totalRowCount = (from RE in db.RealEstates
+                                 join add in db.Adds on RE.AddId equals add.AddId
+                                 where
+                   (subCategory != "Select Category" ? RE.SubCategory == subCategory : true) &&
+                (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
+                 (availability != "Construction Status" ? RE.Availability == availability : true) &&
+                (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                 (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(RE.Price)) >= 100: true) &&
+                 (priceTo != "Price To" ? (Convert.ToInt32(RE.Price)) >= 100 : true) &&
+                 (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
 
-               //(subCategory != "All" ? RE.SubCategory == subCategory : true)&&
-               //(furnishing != "Bed Rooms" ? RE.Furnishing == furnishing : true)&&
-               // (availability != "Bed Rooms" ? RE.Availability == availability : true) &&
-               //(listedBy != "Price From" ? RE.ListedBy == listedBy : true) &&
-               // (squareFeets != "Bed Rooms" ? RE.SquareFeets == squareFeets : true) &&
-               // (priceFrom != "Construction Status" ? RE.Price == priceFrom : true)&&
-               // (priceTo != "Listed By" ? RE.Price == priceTo : true) &&
-               //  (bedRooms != "Furnishing" ? RE.Bedrooms == bedRooms : true)).Count();
-
-               // realestateColl = (from RE in db.RealEstates
-               //                   join add in db.Adds on RE.AddId equals add.AddId
-               //                   where
-               //                     (subCategory != "All" ? RE.SubCategory == subCategory : true) &&
-               //(furnishing != "Bed Rooms" ? RE.Furnishing == furnishing : true) &&
-               // (availability != "Bed Rooms" ? RE.Availability == availability : true) &&
-               //(listedBy != "Price From" ? RE.ListedBy == listedBy : true) &&
-               // (squareFeets != "Bed Rooms" ? RE.SquareFeets == squareFeets : true) &&
-               // (priceFrom != "Construction Status" ? RE.Price == priceFrom : true) &&
-               // (priceTo != "Listed By" ? RE.Price == priceTo : true) &&
-               //  (bedRooms != "Furnishing" ? RE.Bedrooms == bedRooms : true)
-               //                   orderby RE.AddId
-               //                   select new CustomAdd
-               //                   {
-               //                       AddId = add.AddId,
-               //                       Location = add.Mandal + "," + add.State,
-               //                       CreatedDate = add.Created.ToString(),
-               //                       Title = add.Title,
-               //                       Description = RE.Description,
-               //                       ImgUrlPrimary= RE.ImgUrlPrimary,
-               //                       Price= RE.Price,
-               //                       Category=Constants.RealEstate
-               //                   }).Skip((currentPage - 1) * maxRows)
-               //             .Take(maxRows).ToList();
+                             ((location != "" ? add.State == location : true) ||
+                                  (location != "" ? add.District == location : true) ||
+                                  (location != "" ? add.Mandal == location : true)) &&
+                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
+                                  (keyword != "" ? add.Title.Contains(keyword) : true)
+                                 select add.AddId).Count();
+                   
+                realestateColl = (from RE in db.RealEstates
+                                  join add in db.Adds on RE.AddId equals add.AddId
+                                  where
+                 (subCategory != "Select Category" ? RE.SubCategory == subCategory : true) &&
+               (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
+                (availability != "Construction Status" ? RE.Availability == availability : true) &&
+               (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
+                (priceFrom != "Price From" ? RE.Price == priceFrom : true) &&
+                (priceTo != "Price To" ? RE.Price == priceTo : true) &&
+                (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true)&&
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (add.Status == Constants.ActiveSatus) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                  orderby add.Created
+                                  select new CustomAdd
+                                  {
+                                      AddId = add.AddId,
+                                      Location = add.Mandal + "," + add.State,
+                                      CreatedDate = add.Created.ToString(),
+                                      Title = add.Title,
+                                      Description = RE.Description,
+                                      ImgUrlPrimary = RE.ImgUrlPrimary,
+                                      Price = RE.Price,
+                                      Category = Constants.RealEstate
+                                  }).Skip((currentPage - 1) * maxRows)
+                            .Take(maxRows).ToList();
+               
             }
             else
             {
@@ -281,6 +297,7 @@ namespace Classigoo.Controllers
                                       Price = RealEstate.Price,
                                       Category = Constants.RealEstate
                                   }).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
+               
             }
             addColl.Adds = realestateColl;
             addColl.AddsGrid = GetGridAdds(realestateColl);
@@ -302,37 +319,53 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-               // string pricefrom = filterOptions["pricefrom"].ToString();
-               // totalRowCount = db.AgriculturalVehicles.Where(AV =>
+                string subCategory = filterOptions["subCategory"].ToString();
+                string company = filterOptions["company"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
 
-               //// (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
-               ////(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
-               //(pricefrom != "Price From" ? AV.Price == pricefrom : true) 
-               
+                totalRowCount = (from AV in db.AgriculturalVehicles
+                                 join add in db.Adds on AV.AddId equals add.AddId
+                                 where
+                   (subCategory != "Select Category" ? AV.SubCategory == subCategory : true) &&
+                (company != "All" ? AV.Company == company : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(AV.Price)) >= 100 : true) &&
+                 (priceTo != "Price To" ? Convert.ToInt32(AV.Price) >= 100 : true) &&
+                             ((location != "" ? add.State == location : true) ||
+                                  (location != "" ? add.District == location : true) ||
+                                  (location != "" ? add.Mandal == location : true)) &&
+                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
+                                  (keyword != "" ? add.Title.Contains(keyword) : true)
+                                 select add.AddId).Count();
 
-
-
-               // ).Count();
-
-               // avColl = (from AV in db.AgriculturalVehicles
-               //                   join add in db.Adds on AV.AddId equals add.AddId
-               //                   //where
-               //                     // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-                                   
-               //                     //(location != "All India" ? add.Mandal == location : true)
-               //                   orderby AV.AddId
-               //                   select new CustomAdd
-               //                   {
-               //                       AddId = add.AddId,
-               //                       Location = add.Mandal + "," + add.State,
-               //                       CreatedDate = add.Created.ToString(),
-               //                       Title = add.Title,
-               //                       Description = AV.Description,
-               //                       ImgUrlPrimary = AV.ImgUrlPrimary,
-               //                       Price = AV.Price,
-               //                       Category = Constants.AgriculturalVehicle
-               //                   }).Skip((currentPage - 1) * maxRows)
-               //             .Take(maxRows).ToList();
+                avColl = (from AV in db.AgriculturalVehicles
+                                  join add in db.Adds on AV.AddId equals add.AddId
+                                  where
+                 (subCategory != "Select Category" ? AV.SubCategory == subCategory : true) &&
+                (company != "All" ? AV.Company == company : true) &&
+                (priceFrom != "Price From" ? AV.Price == priceFrom : true) &&
+                (priceTo != "Price To" ? AV.Price == priceTo : true) &&
+                
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (add.Status == Constants.ActiveSatus) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                  orderby add.Created
+                                  select new CustomAdd
+                                  {
+                                      AddId = add.AddId,
+                                      Location = add.Mandal + "," + add.State,
+                                      CreatedDate = add.Created.ToString(),
+                                      Title = add.Title,
+                                      Description = AV.Description,
+                                      ImgUrlPrimary = AV.ImgUrlPrimary,
+                                      Price = AV.Price,
+                                      Category = Constants.RealEstate
+                                  }).Skip((currentPage - 1) * maxRows)
+                            .Take(maxRows).ToList();
             }
             else
             {
@@ -381,47 +414,53 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-               // string pricefrom = filterOptions["pricefrom"].ToString();
-               // string bedrooms = filterOptions["bedrooms"].ToString();
-               // //  string construction = filterOptions["construction"].ToString();
-               // string listedby = filterOptions["listedby"].ToString();
-               // string furnishing = filterOptions["furnishing"].ToString();
+                string subCategory = filterOptions["subCategory"].ToString();
+                string company = filterOptions["company"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
 
-               // totalRowCount = db.ConstructionVehicles.Where(cv =>
+                totalRowCount = (from CV in db.ConstructionVehicles
+                                 join add in db.Adds on CV.AddId equals add.AddId
+                                 where
+                   (subCategory != "Select Category" ? CV.SubCategory == subCategory : true) &&
+                (company != "All" ? CV.Company == company : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
+                 (priceTo != "Price To" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
+                             ((location != "" ? add.State == location : true) ||
+                                  (location != "" ? add.District == location : true) ||
+                                  (location != "" ? add.Mandal == location : true)) &&
+                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
+                                  (keyword != "" ? add.Title.Contains(keyword) : true)
+                                 select add.AddId).Count();
 
-               //// (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
-               ////(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
-               //(pricefrom != "Price From" ? cv.Price == pricefrom : true) 
-               //// (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-               // //(construction != "Construction Status" ? RealEstate. == bedrooms : true)&&
-               //// (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-               // // (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true)
+                cvColl = (from CV in db.ConstructionVehicles
+                          join add in db.Adds on CV.AddId equals add.AddId
+                          where
+         (subCategory != "Select Category" ? CV.SubCategory == subCategory : true) &&
+        (company != "All" ? CV.Company == company : true) &&
+        (priceFrom != "Price From" ? CV.Price == priceFrom : true) &&
+        (priceTo != "Price To" ? CV.Price == priceTo : true) &&
 
-
-
-               // ).Count();
-
-               // cvColl = (from CV in db.ConstructionVehicles
-               //                   join add in db.Adds on CV.AddId equals add.AddId
-               //                   //where
-               //                   //  // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-               //                   //  (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-               //                   //  (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true) &&
-               //                   //  (bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-               //                   //  (location != "All India" ? add.Mandal == location : true)
-               //                   orderby CV.AddId
-               //                   select new CustomAdd
-               //                   {
-               //                       AddId = add.AddId,
-               //                       Location = add.Mandal + "," + add.State,
-               //                       CreatedDate = add.Created.ToString(),
-               //                       Title = add.Title,
-               //                       Description = CV.Description,
-               //                       ImgUrlPrimary = CV.ImgUrlPrimary,
-               //                       Price = CV.Price,
-               //                       Category=Constants.ConstructionVehicle
-               //                   }).Skip((currentPage - 1) * maxRows)
-               //             .Take(maxRows).ToList();
+                        ((location != "" ? add.State == location : true) ||
+                         (location != "" ? add.District == location : true) ||
+                         (location != "" ? add.Mandal == location : true)) &&
+                         (add.Type == type) &&
+                         (add.Status == Constants.ActiveSatus) &&
+                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                          orderby add.Created
+                          select new CustomAdd
+                          {
+                              AddId = add.AddId,
+                              Location = add.Mandal + "," + add.State,
+                              CreatedDate = add.Created.ToString(),
+                              Title = add.Title,
+                              Description = CV.Description,
+                              ImgUrlPrimary = CV.ImgUrlPrimary,
+                              Price = CV.Price,
+                              Category = Constants.RealEstate
+                          }).Skip((currentPage - 1) * maxRows)
+                            .Take(maxRows).ToList();
             }
             else
             {
@@ -470,47 +509,53 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-               // string pricefrom = filterOptions["pricefrom"].ToString();
-               // string bedrooms = filterOptions["bedrooms"].ToString();
-               // //  string construction = filterOptions["construction"].ToString();
-               // string listedby = filterOptions["listedby"].ToString();
-               // string furnishing = filterOptions["furnishing"].ToString();
+                string subCategory = filterOptions["subCategory"].ToString();
+                string company = filterOptions["company"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
 
-               // totalRowCount = db.TransportationVehicles.Where(cv =>
+                totalRowCount = (from AV in db.TransportationVehicles
+                                 join add in db.Adds on AV.AddId equals add.AddId
+                                 where
+                   (subCategory != "Select Category" ? AV.SubCategory == subCategory : true) &&
+                (company != "All" ? AV.Company == company : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(AV.Price)) >= 100 : true) &&
+                 (priceTo != "Price To" ? (Convert.ToInt32(AV.Price)) >= 100: true) &&
+                             ((location != "" ? add.State == location : true) ||
+                                  (location != "" ? add.District == location : true) ||
+                                  (location != "" ? add.Mandal == location : true)) &&
+                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
+                                  (keyword != "" ? add.Title.Contains(keyword) : true)
+                                 select add.AddId).Count();
 
-               //// (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
-               ////(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
-               //(pricefrom != "Price From" ? cv.Price == pricefrom : true) 
-               // //(bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-               // //(construction != "Construction Status" ? RealEstate. == bedrooms : true)&&
-               // //(listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-               // // (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true)
+                tvColl = (from TV in db.TransportationVehicles
+                          join add in db.Adds on TV.AddId equals add.AddId
+                          where
+         (subCategory != "Select Category" ? TV.SubCategory == subCategory : true) &&
+        (company != "All" ? TV.Company == company : true) &&
+        (priceFrom != "Price From" ? TV.Price == priceFrom : true) &&
+        (priceTo != "Price To" ? TV.Price == priceTo : true) &&
 
-
-
-               // ).Count();
-
-               // tvColl = (from TV in db.TransportationVehicles
-               //                   join add in db.Adds on TV.AddId equals add.AddId
-               //                   //where
-               //                   //  // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-               //                   //  (listedby != "Listed By" ? TV.ListedBy == listedby : true) &&
-               //                   //  (furnishing != "Furnishing" ? TV.Furnishing == furnishing : true) &&
-               //                   //  (bedrooms != "Bed Rooms" ? TV.Bedrooms == bedrooms : true) &&
-               //                   //  (location != "All India" ? add.Mandal == location : true)
-               //                   orderby TV.AddId
-               //                   select new CustomAdd
-               //                   {
-               //                       AddId = add.AddId,
-               //                       Location = add.Mandal + "," + add.State,
-               //                       CreatedDate = add.Created.ToString(),
-               //                       Title = add.Title,
-               //                       Description = TV.Description,
-               //                       ImgUrlPrimary = TV.ImgUrlPrimary,
-               //                       Price = TV.Price,
-               //                       Category=Constants.TransportationVehicle
-               //                   }).Skip((currentPage - 1) * maxRows)
-               //             .Take(maxRows).ToList();
+                        ((location != "" ? add.State == location : true) ||
+                         (location != "" ? add.District == location : true) ||
+                         (location != "" ? add.Mandal == location : true)) &&
+                         (add.Type == type) &&
+                         (add.Status == Constants.ActiveSatus) &&
+                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                          orderby add.Created
+                          select new CustomAdd
+                          {
+                              AddId = add.AddId,
+                              Location = add.Mandal + "," + add.State,
+                              CreatedDate = add.Created.ToString(),
+                              Title = add.Title,
+                              Description = TV.Description,
+                              ImgUrlPrimary = TV.ImgUrlPrimary,
+                              Price = TV.Price,
+                              Category = Constants.RealEstate
+                          }).Skip((currentPage - 1) * maxRows)
+                            .Take(maxRows).ToList();
             }
             else
             {
@@ -559,47 +604,69 @@ namespace Classigoo.Controllers
             int totalRowCount = 0;
             if (filterOptions.Count() > 0)
             {
-               // string pricefrom = filterOptions["pricefrom"].ToString();
-               // string bedrooms = filterOptions["bedrooms"].ToString();
-               // //  string construction = filterOptions["construction"].ToString();
-               // string listedby = filterOptions["listedby"].ToString();
-               // string furnishing = filterOptions["furnishing"].ToString();
+                string subCategory= filterOptions["subCategory"].ToString();
+                string company = filterOptions["company"].ToString();
+                string priceFrom = filterOptions["priceFrom"].ToString();
+                string priceTo = filterOptions["priceTo"].ToString();
+                string yearFrom = filterOptions["yearFrom"].ToString();
+                string yearTo = filterOptions["yearTo"].ToString();
+                string kmFrom = filterOptions["kmFrom"].ToString();
+                string kmTo = filterOptions["kmTo"].ToString();
+                string model = filterOptions["model"].ToString();
 
-               // totalRowCount = db.PassengerVehicles.Where(pv =>
+                totalRowCount = (from PV in db.PassengerVehicles
+                                 join add in db.Adds on PV.AddId equals add.AddId
+                                 where
+                   (subCategory != "Select Category" ? PV.SubCategory == subCategory : true) &&
+                (company != "Furnishing" ? PV.Company == company : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
+                 (priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
+                 (yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearFrom)) : true) &&
+                 (yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearTo)) : true) &&
+                 (kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmFrom)) : true) &&
+                 (kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmTo)) : true) &&
+                 (model != "Bed Rooms" ? PV.Model == model : true) &&
 
-               //// (category != "Bed Rooms" ? RealEstate.SubCategoryId == category : true)
-               ////(builtuparea != "Bed Rooms" ? RealEstate.bu == builtuparea : true)
-               //(pricefrom != "Price From" ? pv.Price == pricefrom : true) 
-               // //(bedrooms != "Bed Rooms" ? RealEstate.Bedrooms == bedrooms : true) &&
-               // //(construction != "Construction Status" ? RealEstate. == bedrooms : true)&&
-               //// (listedby != "Listed By" ? RealEstate.ListedBy == listedby : true) &&
-               // // (furnishing != "Furnishing" ? RealEstate.Furnishing == furnishing : true)
+                             ((location != "" ? add.State == location : true) ||
+                                  (location != "" ? add.District == location : true) ||
+                                  (location != "" ? add.Mandal == location : true)) &&
+                                  (add.Type == type) &&
+                                  (add.Status == Constants.ActiveSatus) &&
+                                  (keyword != "" ? add.Title.Contains(keyword) : true)
+                                 select add.AddId).Count();
 
+                pvColl = (from PV in db.PassengerVehicles
+                                  join add in db.Adds on PV.AddId equals add.AddId
+                                  where
+                 (subCategory != "Select Category" ? PV.SubCategory == subCategory : true) &&
+                (company != "Furnishing" ? PV.Company == company : true) &&
+                 (priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceFrom)) : true) &&
+                 (priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceTo)) : true) &&
+                 (yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearFrom)) : true) &&
+                 (yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearTo)) : true) &&
+                 (kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmFrom)) : true) &&
+                 (kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmTo)) : true) &&
+                 (model != "Bed Rooms" ? PV.Model == model : true) &&
+                                ((location != "" ? add.State == location : true) ||
+                                 (location != "" ? add.District == location : true) ||
+                                 (location != "" ? add.Mandal == location : true)) &&
+                                 (add.Type == type) &&
+                                 (add.Status == Constants.ActiveSatus) &&
+                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                  orderby add.Created
+                                  select new CustomAdd
+                                  {
+                                      AddId = add.AddId,
+                                      Location = add.Mandal + "," + add.State,
+                                      CreatedDate = add.Created.ToString(),
+                                      Title = add.Title,
+                                      Description = PV.Description,
+                                      ImgUrlPrimary = PV.ImgUrlPrimary,
+                                      Price = PV.Price,
+                                      Category = Constants.RealEstate
+                                  }).Skip((currentPage - 1) * maxRows)
+                            .Take(maxRows).ToList();
 
-
-               // ).Count();
-
-               // pvColl = (from PV in db.PassengerVehicles
-               //                   join add in db.Adds on PV.AddId equals add.AddId
-               //                   //where
-               //                   //  // (pricefrom != "Price From" ? RealEstate.Price == pricefrom : true) &&
-               //                   //  (listedby != "Listed By" ? PV.ListedBy == listedby : true) &&
-               //                   //  (furnishing != "Furnishing" ? PV.Furnishing == furnishing : true) &&
-               //                   //  (bedrooms != "Bed Rooms" ? PV.Bedrooms == bedrooms : true) &&
-               //                   //  (location != "All India" ? add.Mandal == location : true)
-               //                   orderby PV.AddId
-               //                   select new CustomAdd
-               //                   {
-               //                       AddId = add.AddId,
-               //                       Location = add.Mandal + "," + add.State,
-               //                       CreatedDate = add.Created.ToString(),
-               //                       Title = add.Title,
-               //                       Description = PV.Description,
-               //                       ImgUrlPrimary = PV.ImgUrlPrimary,
-               //                       Price = PV.Price,
-               //                       Category=Constants.PassengerVehicle
-               //                   }).Skip((currentPage - 1) * maxRows)
-               //             .Take(maxRows).ToList();
             }
             else
             {
