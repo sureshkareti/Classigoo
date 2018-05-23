@@ -229,8 +229,8 @@ namespace Classigoo.Controllers
                  (availability != "Construction Status" ? RE.Availability == availability : true) &&
                 (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
                  (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
-                 (priceFrom != "Price From" ? (Convert.ToInt32(RE.Price)) >= 100: true) &&
-                 (priceTo != "Price To" ? (Convert.ToInt32(RE.Price)) >= 100 : true) &&
+                 //(priceFrom != "Price From" ? (Convert.ToInt32(RE.Price)) >= 100: true) &&
+                 //(priceTo != "Price To" ? (Convert.ToInt32(RE.Price)) >= 100 : true) &&
                  (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
 
                              ((location != "" ? add.State == location : true) ||
@@ -249,8 +249,8 @@ namespace Classigoo.Controllers
                 (availability != "Construction Status" ? RE.Availability == availability : true) &&
                (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
                 (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
-                (priceFrom != "Price From" ? RE.Price == priceFrom : true) &&
-                (priceTo != "Price To" ? RE.Price == priceTo : true) &&
+                //(priceFrom != "Price From" ? RE.Price == priceFrom : true) &&
+                //(priceTo != "Price To" ? RE.Price == priceTo : true) &&
                 (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true)&&
                                 ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||
@@ -424,8 +424,8 @@ namespace Classigoo.Controllers
                                  where
                    (subCategory != "Select Category" ? CV.SubCategory == subCategory : true) &&
                 (company != "All" ? CV.Company == company : true) &&
-                 (priceFrom != "Price From" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
-                 (priceTo != "Price To" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
+                 //(priceFrom != "Price From" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
+                 //(priceTo != "Price To" ? (Convert.ToInt32(CV.Price)) >= 100: true) &&
                              ((location != "" ? add.State == location : true) ||
                                   (location != "" ? add.District == location : true) ||
                                   (location != "" ? add.Mandal == location : true)) &&
@@ -519,8 +519,8 @@ namespace Classigoo.Controllers
                                  where
                    (subCategory != "Select Category" ? AV.SubCategory == subCategory : true) &&
                 (company != "All" ? AV.Company == company : true) &&
-                 (priceFrom != "Price From" ? (Convert.ToInt32(AV.Price)) >= 100 : true) &&
-                 (priceTo != "Price To" ? (Convert.ToInt32(AV.Price)) >= 100: true) &&
+                 //(priceFrom != "Price From" ? (Convert.ToInt32(AV.Price)) >= 100 : true) &&
+                 //(priceTo != "Price To" ? (Convert.ToInt32(AV.Price)) >= 100: true) &&
                              ((location != "" ? add.State == location : true) ||
                                   (location != "" ? add.District == location : true) ||
                                   (location != "" ? add.Mandal == location : true)) &&
@@ -619,12 +619,12 @@ namespace Classigoo.Controllers
                                  where
                    (subCategory != "Select Category" ? PV.SubCategory == subCategory : true) &&
                 (company != "Furnishing" ? PV.Company == company : true) &&
-                 (priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
-                 (priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
-                 (yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearFrom)) : true) &&
-                 (yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearTo)) : true) &&
-                 (kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmFrom)) : true) &&
-                 (kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmTo)) : true) &&
+                 //(priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
+                 //(priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= 100 : true) &&
+                 //(yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= 100 : true) &&
+                 //(yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= 100: true) &&
+                 //(kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= 100 : true) &&
+                 //(kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= 100 : true) &&
                  (model != "Bed Rooms" ? PV.Model == model : true) &&
 
                              ((location != "" ? add.State == location : true) ||
@@ -640,12 +640,12 @@ namespace Classigoo.Controllers
                                   where
                  (subCategory != "Select Category" ? PV.SubCategory == subCategory : true) &&
                 (company != "Furnishing" ? PV.Company == company : true) &&
-                 (priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceFrom)) : true) &&
-                 (priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceTo)) : true) &&
-                 (yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearFrom)) : true) &&
-                 (yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearTo)) : true) &&
-                 (kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmFrom)) : true) &&
-                 (kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmTo)) : true) &&
+                 //(priceFrom != "Price From" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceFrom)) : true) &&
+                 //(priceTo != "Price To" ? (Convert.ToInt32(PV.Price)) >= (Convert.ToInt32(priceTo)) : true) &&
+                 //(yearFrom != "Price From" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearFrom)) : true) &&
+                 //(yearTo != "Price To" ? (Convert.ToInt32(PV.Year)) >= (Convert.ToInt32(yearTo)) : true) &&
+                 //(kmFrom != "Price From" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmFrom)) : true) &&
+                 //(kmTo != "Price To" ? (Convert.ToInt32(PV.KMDriven)) >= (Convert.ToInt32(kmTo)) : true) &&
                  (model != "Bed Rooms" ? PV.Model == model : true) &&
                                 ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||

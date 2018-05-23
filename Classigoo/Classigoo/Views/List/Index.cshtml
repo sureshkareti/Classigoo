@@ -68,15 +68,15 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Sub Category</span><br>
-                                            <select class="form-control" id="subCategory">
+                                            <select class="form-control" id="reSubCategory">
                                                 <option>Select Category</option>
                                                 @*<option>All</option>*@
                                                 <option>Apartments</option>
-                                                <option>Houses & Villas</option>
-                                                <option>Builder Folders</option>
-                                                <option>Land & Plots</option>
+                                                <option>Plots/Land</option>
+                                                <option>Agricultural Land</option>
                                                 <option>Shops & Offices</option>
-                                                <option>Farm Houses</option>
+                                                <option>Independent Houses & Villas</option>
+                                                <option>Hostels & PG</option>
                                             </select>
                                         </div>
                                     </div>
@@ -225,22 +225,22 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Sub Category</span><br>
-                                            <select class="form-control" id="subCategory">
-                                                <option>Select Category</option>
+                                            <select class="form-control" id="pvSubCategory">
+                                                @*<option>Select Category</option>
                                                 <option>All</option>
                                                 <option>Cars</option>
                                                 <option>Autos</option>
                                                 <option>Travel Vans</option>
-                                                <option>Bikes</option>
+                                                <option>Bikes</option>*@
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Company</span><br>
-                                            <select class="form-control" id="company">
-                                                <option selected>Select Company</option>
-                                                <option>All</option>
+                                            <select class="form-control" id="pvCompany">
+                                                @*<option selected>Select Company</option>
+                                                <option>All</option>*@
                                             </select>
                                         </div>
                                     </div>
@@ -424,22 +424,22 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Sub Category</span><br>
-                                            <select class="form-control" id="subCategory">
+                                            <select class="form-control" id="allvSubCategory">
                                                 <option>Select Category</option>
                                                 @*<option>All</option>*@
-                                                <option>Cars</option>
+                                                @*<option>Cars</option>
                                                 <option>Autos</option>
                                                 <option>Travel Vans</option>
-                                                <option>Bikes</option>
+                                                <option>Bikes</option>*@
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Company</span><br>
-                                            <select class="form-control" id="company">
-                                                <option selected>Select Company</option>
-                                                <option>All</option>
+                                            <select class="form-control" id="allvCompany">
+                                                @*<option selected>Select Company</option>
+                                                <option>All</option>*@
                                             </select>
                                         </div>
                                     </div>
@@ -605,10 +605,10 @@
             $(".loader-wrap").show();
             filterAdds("",num);
         })
-        $("#listing_catagory").change(function () {
-            category = $("#listing_catagory").val();
-           ShowCategoryFilter();
-        });
+        //$("#listing_catagory").change(function () {
+        //    category = $("#listing_catagory").val();
+        //   ShowCategoryFilter();
+        //});
 
         $("#listing_location_list").change(function () {
             category = $("#listing_catagory").val();
@@ -629,7 +629,7 @@
         });
 
 
-        $("#clearfilter").click(function () {
+        @*$("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
         });
         $("#divFilter select").change(function () {
@@ -667,7 +667,7 @@
                     filterObj.model = $("#model").val();
                     break;
             }
-             filterAdds(filterObj,1);
+            // filterAdds(filterObj,1);
         });
         function filterAdds(selectedValue,pageNum) {
 
@@ -693,41 +693,41 @@
                 }
 
             });
-        }
+        }*@
 
-        function ShowCategoryFilter() {
+        //function ShowCategoryFilter() {
 
-            if ( category== "Select Category") {
-                $("#divFilter").hide();
-                $("#clearfilter").hide();
+        //    if ( category== "Select Category") {
+        //        $("#divFilter").hide();
+        //        $("#clearfilter").hide();
 
-            }
-            else {
-                HideDivs();
-                $("#divFilter").show();
-                $("#clearfilter").show();
-                if(category=="Real Estate")
-                {
-                    $("#re").show();
-                }
-                else if(category=="Passenger Vehicles")
-                {
-                    $("#pv").show();
-                }
-                else
-                {
-                    $("#allv").show();
-                }
+        //    }
+        //    else {
+        //        HideDivs();
+        //        $("#divFilter").show();
+        //        $("#clearfilter").show();
+        //        if(category=="Real Estate")
+        //        {
+        //            $("#re").show();
+        //        }
+        //        else if(category=="Passenger Vehicles")
+        //        {
+        //            $("#pv").show();
+        //        }
+        //        else
+        //        {
+        //            $("#allv").show();
+        //        }
 
-            }
-            filterAdds("",1);
-            }
-        function HideDivs()
-        {
-            $("#re").hide();
-            $("#pv").hide();
-            $("#allv").hide();
-        }
+        //    }
+        //   // filterAdds("",1);
+        //    }
+        //function HideDivs()
+        //{
+        //    $("#re").hide();
+        //    $("#pv").hide();
+        //    $("#allv").hide();
+        //}
 
 
     });
