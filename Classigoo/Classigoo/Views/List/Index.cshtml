@@ -611,8 +611,14 @@
             last: 'Last'
         }).on('page', function(event, num){
             $(".loader-wrap").show();
-            filterAdds("",num);
+            filterAdds("",num,false);
         })
+        FillFiltersFrmHomePage();
     });
-
+    function FillFiltersFrmHomePage() {
+        $('#listing_catagory').val('@ViewBag.FilterValues.Category').attr("selected", "selected");
+        $("#listing_rent_listGeneral").val('@ViewBag.FilterValues.Type');
+        $('#listing_location_list').val('@ViewBag.FilterValues.Location');
+        $('#listing_keword').val('@ViewBag.FilterValues.SearchKeyword');
+    }
 </script>

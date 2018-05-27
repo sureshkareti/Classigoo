@@ -5,6 +5,8 @@
         FillCategories();
         FillLocations();
         FillSearchBox();
+        //FillFiltersFrmHomePage();
+        
         function FillSearchBox()
         {
             searchSource = jQuery.unique(searchSource);
@@ -181,7 +183,7 @@
 
                 });
             }
-             filterAdds("",1);
+             filterAdds("",1,false);
         }
         function HideDivs() {
             $("#re").hide();
@@ -348,7 +350,7 @@
                     filterObj.fuelType = $("#fuelType").val();
                     break;
             }
-             filterAdds(filterObj,1);
+             filterAdds(filterObj,1,false);
         });
         function filterAdds(selectedValue, pageNum) {
 
@@ -356,7 +358,7 @@
                 url: '/List/ApplyFilter',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": category, "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val() },
+                data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": category, "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val(), "isSearchFrmHomePage": false },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");

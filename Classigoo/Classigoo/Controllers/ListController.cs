@@ -16,7 +16,13 @@ namespace Classigoo.Controllers
         }
         public ActionResult Index()
         {
-            return View(GetAdds(1));
+            FiterOptions filterOptions = new FiterOptions();
+            filterOptions.Category = "Select Category";
+            filterOptions.Location = "";
+            filterOptions.SearchKeyword = "";
+            filterOptions.Type = "Rent";
+            ViewBag.FilterValues = filterOptions;
+            return ApplyFilter("\"\"", 1,"Select Category","","","Rent",true);
         }
         [HttpPost]
         public ActionResult Index(FormCollection coll)
@@ -27,8 +33,7 @@ namespace Classigoo.Controllers
             filterOptions.SearchKeyword = coll["searchKeyword"];
             filterOptions.Type = coll["type"];
             ViewBag.FilterValues = filterOptions;
-           // ApplyFilter("", 1, coll["category"], coll["location"], coll["searchKeyword"], coll["type"])
-            return View(GetAdds(1));
+            return ApplyFilter("\"\"", 1, coll["category"], coll["location"], coll["searchKeyword"], coll["type"],true);
         }
         public ActionResult Contact()
         {
@@ -38,44 +43,6 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult DisplayAdds(int currentPageIndex)
-        {
-           
-           return PartialView("_FillSearchResults", GetAdds(currentPageIndex));
-
-        }
-        private AddsModel GetAdds(int currentPage)
-        {
-            int maxRows = Constants.NoOfAddsPerPage;
-            ClassigooEntities db = new ClassigooEntities();
-            
-            AddsModel addColl = new AddsModel();
-            List<CustomAdd> coll = new List<CustomAdd>();
-            List<Add> addsByPage = (from add in db.Adds
-                                    where add.Status==Constants.ActiveSatus
-                                    select add)
-                        .OrderBy(add => add.Created)
-                        .Skip((currentPage - 1) * maxRows)
-                        .Take(maxRows).ToList();
-            foreach (var add in addsByPage)
-            {
-                coll.Add(CheckCategory(add));
-            }
-
-            addColl.Adds = coll;
-            addColl.AddsGrid = GetGridAdds(coll);
-
-            double pageCount = (double)((decimal)db.Adds.Count() / Convert.ToDecimal(maxRows));
-            addColl.PageCount = (int)Math.Ceiling(pageCount);
-
-            addColl.CurrentPageIndex = currentPage;
-
-            return addColl;
-
-        }
-
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();
@@ -163,7 +130,7 @@ namespace Classigoo.Controllers
             return gridList;
         }
 
-        public ActionResult ApplyFilter(string filterOptions,int pageNum, string category, string location,string keyword,string type)
+        public ActionResult ApplyFilter(string filterOptions,int pageNum, string category, string location,string keyword,string type,bool isSearchFrmHomePage)
         {
             Dictionary<string, object> filterColl = new Dictionary<string, object>();
             JavaScriptSerializer j = new JavaScriptSerializer();
@@ -198,8 +165,14 @@ namespace Classigoo.Controllers
                     addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
                     break;
             }
-
-            return PartialView("_FillSearchResults", addColl);
+            if (isSearchFrmHomePage)
+            {
+                return View("Index", addColl);
+            }
+            else
+            {
+                return PartialView("_FillSearchResults", addColl);
+            }
         }
 
         public AddsModel FilterRE(Dictionary<string, object> filterOptions, string location,string keyword,string type,int pageNum)
