@@ -1,5 +1,4 @@
-﻿    $(document).ready(function () {
-        var categoryColl = new Array();
+﻿        var categoryColl = new Array();
         var locationColl = new Array();
         var searchSource = new Array();
         var category = "";
@@ -193,6 +192,18 @@
             category = $("#listing_catagory").val();
            ShowCategoryFilter(category);
         });
+        $("#listing_location_list").change(function () {
+            category = $("#listing_catagory").val();
+            ShowCategoryFilter(category);
+        });
+        $("#listing_keword").change(function () {
+            category = $("#listing_catagory").val();
+            ShowCategoryFilter(category);
+        });
+        $("#listing_rent_listGeneral").change(function () {
+            category = $("#listing_catagory").val();
+            ShowCategoryFilter(category);
+        });
         $("#allvSubCategory, #pvSubCategory").change(function ()
         {
             var currentSubCategory = $(this)[0].id;
@@ -202,17 +213,18 @@
             $("#pvCompany").empty();
             $("#allvCompany").append("<option>" + "All" + "</option>");
             $("#pvCompany").append("<option>" + "All" + "</option>");
-            $.each(selectedModel[0].VehicleModel, function (i, field) {
-                {
-                    if (currentSubCategory == "allvSubCategory") {
-                        $("#allvCompany").append("<option>" + field.name + "</option>");
-                    }
-                    else if (currentSubCategory == "pvSubCategory")
+            if (selectedModel.length != 0) {
+                $.each(selectedModel[0].VehicleModel, function (i, field) {
                     {
-                        $("#pvCompany").append("<option>" + field.name + "</option>");
-                    }  
-                }
+                        if (currentSubCategory == "allvSubCategory") {
+                            $("#allvCompany").append("<option>" + field.name + "</option>");
+                        }
+                        else if (currentSubCategory == "pvSubCategory") {
+                            $("#pvCompany").append("<option>" + field.name + "</option>");
+                        }
+                    }
                 });
+            }
                 
         });
         $("#clearfilter").click(function () {
@@ -220,8 +232,8 @@
         });
         $("#divFilter select").change(function () {
             var filterObj = {};
-            var priceFrom = $("#priceFrom").val();
-            var priceTo=$("#priceTo").val();
+            var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
+            var priceTo = $('[id="priceTo"]').filter(':visible').val();
             if (priceFrom == "Price From")
             {
                 priceFrom = 0;
@@ -229,6 +241,7 @@
             else
             {
                 priceFrom = priceFrom.substring(1, priceFrom.length);
+                priceFrom=priceFrom.replace(/,/g,'');
             }
             if (priceTo == "Price To")
             {
@@ -237,18 +250,81 @@
             else
             {
                 priceTo = priceTo.substring(1, priceTo.length);
+                priceTo = priceTo.replace(/,/g, '');
             }
-            
+            if (category == "Real Estate")
+            {
+                var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
+                var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
+                if (squareFeetsFrom == "Builtup Area")
+                {
+                    squareFeetsFrom = 0;  
+                }
+                if(squareFeetsTo == "Builtup Area")
+                {
+                    squareFeetsTo = 0;
+                }
+                var bedRooms = $("#bedRooms").val();
+                if (bedRooms=="4+")
+                {
+
+                }
+            }
+            else if (category == "Passenger Vehicles")
+            {
+                //Travel Vans Autos
+                var pvSubCategory = $("#pvSubCategory").val();
+                if (pvSubCategory == "Travel Vans" || pvSubCategory == "Autos")
+                {
+                    $("#pvCbFilters").hide();
+                    yearFrom = 0;
+                    yearTo = 0;
+                    kmFrom = 0;
+                    kmTo = 0;
+                }
+                else
+                {
+                    $("#pvCbFilters").show();
+                    var yearFrom = $("#yearFrom").val();
+                    var yearTo = $("#yearTo").val();
+                    var kmFrom = $("#kmFrom").val();
+                    var kmTo = $("#kmTo").val();
+                    if (yearFrom == "Year From") {
+                        yearFrom = 0;
+                    }
+                    if (yearTo == "Year To") {
+                        yearTo = 0;
+                    }
+                    if (kmFrom == "KM Driven") {
+                        kmFrom = 0;
+                    }
+                    else {
+                        kmFrom = kmFrom.replace(/,/g, '');
+                        kmFrom = kmFrom.replace(" km", '');
+                    }
+                    if (kmTo == "KM Driven") {
+                        kmTo = 0;
+                    }
+                    else {
+                        kmTo = kmTo.replace(/,/g, '');
+                        kmTo = kmTo.replace(" km", '');
+                    }
+                }
+                    
+                
+                
+            }
             switch (category) {
                 case "Real Estate":
                     filterObj.subCategory = $("#reSubCategory").val();
                     filterObj.furnishing = $("#furnishing").val();
                     filterObj.availability = $("#consructionStatus").val();
                     filterObj.listedBy = $("#listedBy").val();
-                    filterObj.squareFeets = $("#builtupArea").val();
+                    filterObj.squareFeetsFrom = squareFeetsFrom;
+                    filterObj.squareFeetsTo = squareFeetsTo;
                     filterObj.priceFrom = priceFrom;
                     filterObj.priceTo = priceTo;
-                    filterObj.bedRooms = $("#bedRooms").val();
+                    filterObj.bedRooms = bedRooms;
 
                     break;
                 case "Construction Vehicles":
@@ -260,15 +336,16 @@
                     filterObj.company = $("#allvCompany").val();
                     break;
                 case "Passenger Vehicles":
-                    filterObj.subCategory = $("#pvSubCategory").val();
+                    filterObj.subCategory = pvSubCategory;
                     filterObj.company = $("#pvCompany").val();
                     filterObj.priceFrom = priceFrom;
-                    filterObj.PriceTo = priceTo;
-                    filterObj.yearFrom = $("#yearFrom").val();
-                    filterObj.yearTo = $("#yearTo").val();
-                    filterObj.kmFrom = $("#kmFrom").val();
-                    filterObj.kmTo = $("#kmTo").val();
+                    filterObj.priceTo = priceTo;
+                    filterObj.yearFrom = yearFrom;
+                    filterObj.yearTo = yearTo;
+                    filterObj.kmFrom = kmFrom;
+                    filterObj.kmTo = kmTo;
                     filterObj.model = $("#model").val();
+                    filterObj.fuelType = $("#fuelType").val();
                     break;
             }
              filterAdds(filterObj,1);
@@ -297,5 +374,3 @@
 
             });
         }
-
-    });

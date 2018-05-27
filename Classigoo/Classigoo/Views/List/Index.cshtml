@@ -121,7 +121,7 @@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group">
                                             <span>Super Builtup Area ft²</span><br>
-                                            <select class="form-control" id="builtupArea">
+                                            <select class="form-control" id="builtupAreaFrom">
                                                 <option selected>Builtup Area</option>
                                                 <option>300</option>
                                                 <option>600</option>
@@ -142,7 +142,7 @@
                                     <div class="col-md-2 col-xs-4 col-sm-4">
                                         <br />
                                         <div class="form-group">
-                                            <select class="form-control" id="BuitupArea1">
+                                            <select class="form-control" id="builtupAreaTo">
                                                 <option selected>Builtup Area</option>
                                                 <option>300</option>
                                                 <option>600</option>
@@ -273,7 +273,7 @@
                                     <div class="col-md-2 col-xs-4 col-sm-4">
                                         <div class="form-group">
                                             <br />
-                                            <select class="form-control" id="PriceTo">
+                                            <select class="form-control" id="priceTo">
                                                 <option selected>Price To</option>
                                                 <option>&#8377;10,000</option>
                                                 <option>&#8377;50,000</option>
@@ -289,131 +289,145 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row form-group">
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
-                                            <span>Year</span><br>
-                                            <select class="form-control" id="yearFrom">
-                                                <option selected>Year From</option>
-                                                <option>1995</option>
-                                                <option>1996</option>
-                                                <option>1997</option>
-                                                <option>1998</option>
-                                                <option>1999</option>
-                                                <option>2000</option>
-                                                <option>2001</option>
-                                                <option>2002</option>
-                                                <option>2003</option>
-                                                <option>2004</option>
-                                                <option>2005</option>
-                                                <option>2006</option>
-                                                <option>2007</option>
-                                                <option>2008</option>
-                                                <option>2009</option>
-                                                <option>2010</option>
-                                                <option>2011</option>
-                                                <option>2012</option>
-                                                <option>2013</option>
-                                                <option>2014</option>
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                            </select>
+                                <div id="pvCbFilters">
+                                    <div class="row form-group">
+                                        <div class="col-md-3 col-xs-6 col-sm-6">
+                                            <div class="form-group">
+                                                <span>Year</span><br>
+                                                <select class="form-control" id="yearFrom">
+                                                    <option selected>Year From</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-1 col-xs-2 col-sm-2">
-                                        <br />
-                                        -
-                                    </div>
-                                    <div class="col-md-2 col-xs-4 col-sm-4">
-                                        <br />
-                                        <div class="form-group">
-                                            <select class="form-control" id="yearTo">
-                                                <option selected>Year To</option>
-                                                <option>1995</option>
-                                                <option>1996</option>
-                                                <option>1997</option>
-                                                <option>1998</option>
-                                                <option>1999</option>
-                                                <option>2000</option>
-                                                <option>2001</option>
-                                                <option>2002</option>
-                                                <option>2003</option>
-                                                <option>2004</option>
-                                                <option>2005</option>
-                                                <option>2006</option>
-                                                <option>2007</option>
-                                                <option>2008</option>
-                                                <option>2009</option>
-                                                <option>2010</option>
-                                                <option>2011</option>
-                                                <option>2012</option>
-                                                <option>2013</option>
-                                                <option>2014</option>
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
-                                            <span>KM Driven</span><br>
-
-                                            <select class="form-control" id="kmFrom">
-                                                <option selected>KM Driven</option>
-                                                <option>1,000 km</option>
-                                                <option>5,000 km</option>
-                                                <option>10,000 km </option>
-                                                <option>15,000 km</option>
-                                                <option>20,000 km</option>
-                                                <option>25,000 km</option>
-                                                <option>50,000 km</option>
-                                                <option>80,000 km</option>
-                                                <option>1,00,000 km</option>
-                                                <option>1,50,000 km</option>
-                                                <option>2,00,000 km</option>
-
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-xs-2 col-sm-2">
-                                        <br />
-                                        -
-                                    </div>
-                                    <div class="col-md-2 col-xs-4 col-sm-4">
-                                        <div class="form-group">
+                                        <div class="col-md-1 col-xs-2 col-sm-2">
                                             <br />
-                                            <select class="form-control" id="kmTo">
-                                                <option selected>KM Driven</option>
-                                                <option>1,000 km</option>
-                                                <option>5,000 km</option>
-                                                <option>10,000 km </option>
-                                                <option>15,000 km</option>
-                                                <option>20,000 km</option>
-                                                <option>25,000 km</option>
-                                                <option>50,000 km</option>
-                                                <option>80,000 km</option>
-                                                <option>1,00,000 km</option>
-                                                <option>1,50,000 km</option>
-                                                <option>2,00,000 km</option>
+                                            -
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 col-sm-4">
+                                            <br />
+                                            <div class="form-group">
+                                                <select class="form-control" id="yearTo">
+                                                    <option selected>Year To</option>
+                                                    <option>1995</option>
+                                                    <option>1996</option>
+                                                    <option>1997</option>
+                                                    <option>1998</option>
+                                                    <option>1999</option>
+                                                    <option>2000</option>
+                                                    <option>2001</option>
+                                                    <option>2002</option>
+                                                    <option>2003</option>
+                                                    <option>2004</option>
+                                                    <option>2005</option>
+                                                    <option>2006</option>
+                                                    <option>2007</option>
+                                                    <option>2008</option>
+                                                    <option>2009</option>
+                                                    <option>2010</option>
+                                                    <option>2011</option>
+                                                    <option>2012</option>
+                                                    <option>2013</option>
+                                                    <option>2014</option>
+                                                    <option>2015</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                                            </select>
+                                        <div class="col-md-3 col-xs-6 col-sm-6">
+                                            <div class="form-group">
+                                                <span>KM Driven</span><br>
+
+                                                <select class="form-control" id="kmFrom">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000 km</option>
+                                                    <option>5,000 km</option>
+                                                    <option>10,000 km </option>
+                                                    <option>15,000 km</option>
+                                                    <option>20,000 km</option>
+                                                    <option>25,000 km</option>
+                                                    <option>50,000 km</option>
+                                                    <option>80,000 km</option>
+                                                    <option>1,00,000 km</option>
+                                                    <option>1,50,000 km</option>
+                                                    <option>2,00,000 km</option>
+
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 col-xs-2 col-sm-2">
+                                            <br />
+                                            -
+                                        </div>
+                                        <div class="col-md-2 col-xs-4 col-sm-4">
+                                            <div class="form-group">
+                                                <br />
+                                                <select class="form-control" id="kmTo">
+                                                    <option selected>KM Driven</option>
+                                                    <option>1,000 km</option>
+                                                    <option>5,000 km</option>
+                                                    <option>10,000 km </option>
+                                                    <option>15,000 km</option>
+                                                    <option>20,000 km</option>
+                                                    <option>25,000 km</option>
+                                                    <option>50,000 km</option>
+                                                    <option>80,000 km</option>
+                                                    <option>1,00,000 km</option>
+                                                    <option>1,50,000 km</option>
+                                                    <option>2,00,000 km</option>
+
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row form-group">                                  
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
-                                            <span>Model</span><br>
-                                            <select class="form-control" id="model">
-                                                <option selected>Select Model</option>
-                                                <option selected>All</option>
-                                            </select>
+                                    <div class="row form-group">
+                                        <div class="col-md-3 col-xs-6 col-sm-6">
+                                            <div class="form-group">
+                                                <span>Model</span><br>
+                                                <select class="form-control" id="model">
+                                                    <option selected>Select Model</option>
+                                                    <option selected>All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6 col-sm-6">
+                                            <div class="form-group">
+                                                <span>Fuel Type</span><br>
+                                                <select class="form-control" id="fuelType">
+                                                    <option selected>All</option>
+                                                    <option>Petrol</option>
+                                                    <option>Diesel</option>
+                                                    <option>LPG</option>
+                                                    <option>CNG & Hybrids</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -588,12 +602,6 @@
 <script>
     $(document).ready(function () {
         $("#btnSearch").css({"background-color": "white", "border": "1px solid #337ab7", "color": "#337ab7","padding": "1px 6px"});
-
-    
-        var category= "";
-        //var location=$("#listing_location_list").val();
-        //var keyword=$("#listing_keword").val();
-        //var type=$("#listing_rent_listGeneral").val();
         $('#page-selection').bootpag({
             total: @Model.PageCount,
             page:@Model.CurrentPageIndex,
@@ -605,131 +613,6 @@
             $(".loader-wrap").show();
             filterAdds("",num);
         })
-        //$("#listing_catagory").change(function () {
-        //    category = $("#listing_catagory").val();
-        //   ShowCategoryFilter();
-        //});
-
-        $("#listing_location_list").change(function () {
-            category = $("#listing_catagory").val();
-          // lt= $("#listing_location_list").attr("lt");
-
-            //ShowCategoryFilter();
-           // filterAdds("",1);
-        });
-        $("#listing_keword").change(function () {
-            category = $("#listing_catagory").val();
-            // ShowCategoryFilter();
-           //filterAdds("",1);
-        });
-        $("#listing_rent_listGeneral").change(function () {
-            category = $("#listing_catagory").val();
-            // ShowCategoryFilter();
-           //filterAdds("",1);
-        });
-
-
-        @*$("#clearfilter").click(function () {
-            $('select').prop('selectedIndex', 0);
-        });
-        $("#divFilter select").change(function () {
-            var filterObj = {};
-            switch (category)
-            {
-                case "Real Estate":
-                    filterObj.subCategory=$("#subCategory").val();
-                    filterObj.furnishing = $("#furnishing").val();
-                    filterObj.availability = $("#consructionStatus").val();
-                    filterObj.listedBy = $("#listedBy").val();
-                    filterObj.squareFeets = $("#builtupArea").val();
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.priceTo = $("#priceTo").val();
-                    filterObj.bedRooms = $("#bedRooms").val();
-
-                    break;
-                case "Construction Vehicles":
-                case "Transportation Vehicles":
-                case "Agricultural Vehicles":
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.priceTo = $("#priceTo").val();
-                    filterObj.subCategory=$("#subCategory").val();
-                    filterObj.company = $("#company").val();
-                    break;
-                case "Passenger Vehicles":
-                    filterObj.subCategory=$("#subCategory").val();
-                    filterObj.company = $("#company").val();
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.PriceTo = $("#PriceTo").val();
-                    filterObj.yearFrom = $("#yearFrom").val();
-                    filterObj.yearTo = $("#yearTo").val();
-                    filterObj.kmFrom = $("#kmFrom").val();
-                    filterObj.kmTo = $("#kmTo").val();
-                    filterObj.model = $("#model").val();
-                    break;
-            }
-            // filterAdds(filterObj,1);
-        });
-        function filterAdds(selectedValue,pageNum) {
-
-            $.ajax({
-                url: '@Url.Action("ApplyFilter")',
-                type: 'GET',
-                dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue),"pageNum":pageNum, "category": category, "location": $("#listing_location_list").val(),"keyword":$("#listing_keword").val(),"type":$("#listing_rent_listGeneral").val() },
-                success: function (data) {
-                    $("#content").html(data);
-                    $(".bloglisting").css("display", "block");
-                    $(".loader-wrap").hide();
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-
-                    //$("#requestOverlay").hide();/*Remove overlay*/
-                }
-
-            });
-        }*@
-
-        //function ShowCategoryFilter() {
-
-        //    if ( category== "Select Category") {
-        //        $("#divFilter").hide();
-        //        $("#clearfilter").hide();
-
-        //    }
-        //    else {
-        //        HideDivs();
-        //        $("#divFilter").show();
-        //        $("#clearfilter").show();
-        //        if(category=="Real Estate")
-        //        {
-        //            $("#re").show();
-        //        }
-        //        else if(category=="Passenger Vehicles")
-        //        {
-        //            $("#pv").show();
-        //        }
-        //        else
-        //        {
-        //            $("#allv").show();
-        //        }
-
-        //    }
-        //   // filterAdds("",1);
-        //    }
-        //function HideDivs()
-        //{
-        //    $("#re").hide();
-        //    $("#pv").hide();
-        //    $("#allv").hide();
-        //}
-
-
     });
 
 </script>
