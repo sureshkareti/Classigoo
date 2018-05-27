@@ -18,11 +18,11 @@ namespace Classigoo
         public string SubCategory { get; set; }
         public string Company { get; set; }
         public string OtherCompany { get; set; }
-        public string Price { get; set; }
+        public Nullable<int> Price { get; set; }
         public string Model { get; set; }
-        public string Year { get; set; }
+        public Nullable<int> Year { get; set; }
         public string FuelType { get; set; }
-        public string KMDriven { get; set; }
+        public Nullable<int> KMDriven { get; set; }
         public string Description { get; set; }
         public string ImgUrlPrimary { get; set; }
         public string ImgUrlSeconday { get; set; }

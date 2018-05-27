@@ -23,7 +23,7 @@ namespace Classigoo
         public string CreatedDate { set; get; }
         public string Description { set; get; }
         public string Location { set; get; }
-        public string Price { set; get; }
+        public int? Price { set; get; }
         public string Status { set; get; }
         public string Category { set; get; }
         public string ImgUrlPrimary { get; set; }
@@ -91,34 +91,34 @@ namespace Classigoo
         public string hdnCateSecondLevel { set; get; }
         public string AVCompany_list { set; get; }
         public string AVOtherCompany { set; get; }
-        public string txtAV_Price { set; get; }
+        public int txtAV_Price { set; get; }
 
         public string CVCompany_list { set; get; }
         public string CVOtherCompany { set; get; }
-        public string txtCV_Price { set; get; }
+        public int txtCV_Price { set; get; }
 
         public string TVCompany_list { set; get; }
         public string TVOtherCompany { set; get; }
-        public string txtTV_Price { set; get; }
+        public int txtTV_Price { set; get; }
 
         public string OtherCompany { set; get; }
 
         public string PVCompany_list { set; get; }
         public string PVOtherCompany { set; get; }
-        public string txtPV_price { set; get; }       
+        public int txtPV_price { set; get; }       
         public string PVModel_list { set; get; }
-        public string txtPV_Year { set; get; }
+        public int txtPV_Year { set; get; }
         public string PVfueltype_list { set; get; }
-        public string txtPV_kmdriven { set; get; }
+        public int txtPV_kmdriven { set; get; }
 
 
-        public string txtPro_Price { set; get; }
+        public int txtPro_Price { set; get; }
         public string ddlBedrooms { set; get; }
         public string ddlFurnishing { set; get; }
         public string ddlPostedBy { set; get; }
         public string ddlAvailability { set; get; }
-        public string txtSquareFeet { set; get; }
-        public string txtSquareYards { set; get; }
+        public int txtSquareFeet { set; get; }
+        public int txtSquareYards { set; get; }
         public string txtAcres { set; get; }
 
 

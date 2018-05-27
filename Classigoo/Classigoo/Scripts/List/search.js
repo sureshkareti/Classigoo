@@ -220,6 +220,25 @@
         });
         $("#divFilter select").change(function () {
             var filterObj = {};
+            var priceFrom = $("#priceFrom").val();
+            var priceTo=$("#priceTo").val();
+            if (priceFrom == "Price From")
+            {
+                priceFrom = 0;
+            }
+            else
+            {
+                priceFrom = priceFrom.substring(1, priceFrom.length);
+            }
+            if (priceTo == "Price To")
+            {
+                priceTo = 0;
+            }
+            else
+            {
+                priceTo = priceTo.substring(1, priceTo.length);
+            }
+            
             switch (category) {
                 case "Real Estate":
                     filterObj.subCategory = $("#reSubCategory").val();
@@ -227,24 +246,24 @@
                     filterObj.availability = $("#consructionStatus").val();
                     filterObj.listedBy = $("#listedBy").val();
                     filterObj.squareFeets = $("#builtupArea").val();
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.priceTo = $("#priceTo").val();
+                    filterObj.priceFrom = priceFrom;
+                    filterObj.priceTo = priceTo;
                     filterObj.bedRooms = $("#bedRooms").val();
 
                     break;
                 case "Construction Vehicles":
                 case "Transportation Vehicles":
                 case "Agricultural Vehicles":
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.priceTo = $("#priceTo").val();
+                    filterObj.priceFrom = priceFrom;
+                    filterObj.priceTo = priceTo;
                     filterObj.subCategory = $("#allvSubCategory").val();
                     filterObj.company = $("#allvCompany").val();
                     break;
                 case "Passenger Vehicles":
                     filterObj.subCategory = $("#pvSubCategory").val();
                     filterObj.company = $("#pvCompany").val();
-                    filterObj.priceFrom = $("#priceFrom").val();
-                    filterObj.PriceTo = $("#PriceTo").val();
+                    filterObj.priceFrom = priceFrom;
+                    filterObj.PriceTo = priceTo;
                     filterObj.yearFrom = $("#yearFrom").val();
                     filterObj.yearTo = $("#yearTo").val();
                     filterObj.kmFrom = $("#kmFrom").val();

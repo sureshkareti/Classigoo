@@ -29,11 +29,11 @@ namespace Classigoo
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<Add> Adds { get; set; }
         public virtual DbSet<AgriculturalVehicle> AgriculturalVehicles { get; set; }
         public virtual DbSet<ConstructionVehicle> ConstructionVehicles { get; set; }
         public virtual DbSet<PassengerVehicle> PassengerVehicles { get; set; }
         public virtual DbSet<TransportationVehicle> TransportationVehicles { get; set; }
-        public virtual DbSet<Add> Adds { get; set; }
         public virtual DbSet<RealEstate> RealEstates { get; set; }
     
         public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, ObjectParameter addId)

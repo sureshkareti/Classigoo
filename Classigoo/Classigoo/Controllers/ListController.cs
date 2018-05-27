@@ -217,8 +217,8 @@ namespace Classigoo.Controllers
                 string availability = filterOptions["availability"].ToString();
                 string listedBy = filterOptions["listedBy"].ToString();
                 string squareFeets = filterOptions["squareFeets"].ToString();
-                string priceFrom = filterOptions["priceFrom"].ToString();
-                string priceTo = filterOptions["priceTo"].ToString();
+                int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
                 string bedRooms = filterOptions["bedRooms"].ToString();
 
                 totalRowCount = (from RE in db.RealEstates
@@ -228,9 +228,9 @@ namespace Classigoo.Controllers
                 (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
                  (availability != "Construction Status" ? RE.Availability == availability : true) &&
                 (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                 (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
-                 //(priceFrom != "Price From" ? (Convert.ToInt32(RE.Price)) >= 100: true) &&
-                 //(priceTo != "Price To" ? (Convert.ToInt32(RE.Price)) >= 100 : true) &&
+                 //(squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
+                 (priceFrom != 0? RE.Price >= priceFrom: true) &&
+                 (priceTo != 0? RE.Price <= priceTo : true) &&
                  (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
 
                              ((location != "" ? add.State == location : true) ||
@@ -248,7 +248,7 @@ namespace Classigoo.Controllers
                (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
                 (availability != "Construction Status" ? RE.Availability == availability : true) &&
                (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                (squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
+                //(squareFeets != "Builtup Area" ? RE.SquareFeets == squareFeets : true) &&
                 //(priceFrom != "Price From" ? RE.Price == priceFrom : true) &&
                 //(priceTo != "Price To" ? RE.Price == priceTo : true) &&
                 (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true)&&
@@ -344,8 +344,8 @@ namespace Classigoo.Controllers
                                   where
                  (subCategory != "Select Category" ? AV.SubCategory == subCategory : true) &&
                 (company != "All" ? AV.Company == company : true) &&
-                (priceFrom != "Price From" ? AV.Price == priceFrom : true) &&
-                (priceTo != "Price To" ? AV.Price == priceTo : true) &&
+                //(priceFrom != "Price From" ? AV.Price == priceFrom : true) &&
+                //(priceTo != "Price To" ? AV.Price == priceTo : true) &&
                 
                                 ((location != "" ? add.State == location : true) ||
                                  (location != "" ? add.District == location : true) ||
@@ -439,8 +439,8 @@ namespace Classigoo.Controllers
                           where
          (subCategory != "Select Category" ? CV.SubCategory == subCategory : true) &&
         (company != "All" ? CV.Company == company : true) &&
-        (priceFrom != "Price From" ? CV.Price == priceFrom : true) &&
-        (priceTo != "Price To" ? CV.Price == priceTo : true) &&
+        //(priceFrom != "Price From" ? CV.Price == priceFrom : true) &&
+        //(priceTo != "Price To" ? CV.Price == priceTo : true) &&
 
                         ((location != "" ? add.State == location : true) ||
                          (location != "" ? add.District == location : true) ||
@@ -534,8 +534,8 @@ namespace Classigoo.Controllers
                           where
          (subCategory != "Select Category" ? TV.SubCategory == subCategory : true) &&
         (company != "All" ? TV.Company == company : true) &&
-        (priceFrom != "Price From" ? TV.Price == priceFrom : true) &&
-        (priceTo != "Price To" ? TV.Price == priceTo : true) &&
+        //(priceFrom != "Price From" ? TV.Price == priceFrom : true) &&
+        //(priceTo != "Price To" ? TV.Price == priceTo : true) &&
 
                         ((location != "" ? add.State == location : true) ||
                          (location != "" ? add.District == location : true) ||
