@@ -269,7 +269,7 @@
                 var bedRooms = $("#bedRooms").val();
                 if (bedRooms=="4+")
                 {
-
+                    bedRooms = 5;
                 }
             }
             else if (category == "Passenger Vehicles")
