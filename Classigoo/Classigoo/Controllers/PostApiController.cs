@@ -170,15 +170,18 @@ namespace Classigoo.Controllers
         }
 
         [HttpPost]
-        [ActionName("RealEstate")]
+        [ActionName("DeleteAdd")]
         public IHttpActionResult DeleteAdd(string tyepe,string id)
         {
            
             try
             {
-
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
+
+                    classigooEntities.Adds.Find(id);
+
+
                     //classigooEntities.RealEstates.Add(realEstate);
                     classigooEntities.SaveChanges();
                 }
@@ -190,6 +193,8 @@ namespace Classigoo.Controllers
 
             return StatusCode(HttpStatusCode.Created);
         }
+
+
 
     }
 }

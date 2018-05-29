@@ -266,6 +266,7 @@
     <Content Include="Content\CssNew\style.css" />
     <Content Include="Content\CssNew\themify-icons.css" />
     <Content Include="Content\CustomeNew\Index1.css" />
+    <Content Include="Content\CustomeNew\loader.css" />
     <Content Include="Content\CustomeNew\Style.css" />
     <Content Include="Content\Custome\account.css" />
     <Content Include="Content\Custome\bootstrap.min.css" />
@@ -382,6 +383,8 @@
     <Content Include="Content\fonts\fontawesome-webfont93e3.woff" />
     <Content Include="Content\fonts\fontawesome-webfont93e3.woff2" />
     <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\fontawesome-webfontba72.ttf" />
+    <Content Include="fonts\fontawesome-webfontba72.woff" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\Home\custom-select.min.js" />
     <Content Include="Scripts\Home\selectron.js" />
