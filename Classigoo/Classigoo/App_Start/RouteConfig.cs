@@ -16,7 +16,7 @@ namespace Classigoo
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "List", action = "Home", id = UrlParameter.Optional }
             );
         }
     }
