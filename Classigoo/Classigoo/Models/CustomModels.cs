@@ -164,9 +164,13 @@ namespace Classigoo
         public static string PostPassengerVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/PassengerVehicle";
         public static string PostRealEstateUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/RealEstate";
 
+        public static string PostDeleteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteAdd";
+
         public const int NoOfAddsPerPage = 6;
 
         public static string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+
+        public static string ErrorLogFileName = "ErrorLog.txt";
 
     }
 }

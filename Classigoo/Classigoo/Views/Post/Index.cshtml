@@ -855,6 +855,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-9" style="text-align:right">
+                                        <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
                                     </div>
                                     <div class="col-md-3">
                                         <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
@@ -873,10 +874,35 @@
 
 <div class="loader-wrap" style="display:none">
     <div class="loader">
+      
+    </div>
+</div>
+
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
         <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
         <span class="loader-item"></span><span class="loader-item"></span>
     </div>
 </div>
+
+<div id="myModal" class="modal fade" >
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE876;</i>
+                </div>
+                <h4 class="modal-title">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Your booking has been confirmed. Check your email for detials.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>  
 
 
 @section Styles {
@@ -884,7 +910,7 @@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
-<link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
 
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }
@@ -915,6 +941,11 @@
             $("#Name").attr("disabled", "disabled");
             $("#PhoneNumber").attr("disabled", "disabled");
         }
+
+        if("@ViewBag.Message" == "error"){
+
+        }
+
 
     });
 </script>
