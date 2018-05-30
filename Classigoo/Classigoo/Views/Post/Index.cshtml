@@ -761,7 +761,7 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onfocus = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
 
                                         @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
                                             new SelectListItem() { Value = "", Text = "Select" },
@@ -779,7 +779,7 @@
                                     </div>
                                     <div class="col-md-4">
 
-                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onfocus = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
 
                                         @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
                                             new SelectListItem() { Value = "", Text = "Select" },
@@ -798,7 +798,7 @@
                                     </div>
                                     <div class="col-md-4">
 
-                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onfocus = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
 
 
 
