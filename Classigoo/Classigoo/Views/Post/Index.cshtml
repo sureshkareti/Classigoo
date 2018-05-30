@@ -761,7 +761,7 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onfocus = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
 
                                         @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
                                             new SelectListItem() { Value = "", Text = "Select" },
@@ -779,7 +779,7 @@
                                     </div>
                                     <div class="col-md-4">
 
-                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onfocus = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
 
                                         @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
                                             new SelectListItem() { Value = "", Text = "Select" },
@@ -798,7 +798,7 @@
                                     </div>
                                     <div class="col-md-4">
 
-                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onfocus = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
 
 
 
@@ -855,6 +855,15 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-9" style="text-align:right">
+                                        <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+
+
+                                        <input type="button" value="launch" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" />
+
+
+                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            Launch demo modal
+                                        </button>*@
                                     </div>
                                     <div class="col-md-3">
                                         <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
@@ -878,13 +887,35 @@
     </div>
 </div>
 
+<div id="myModal" class="modal fade" >
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="fa fa-check"></i>
+                </div>
+                <h4 class="modal-title">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Your booking has been confirmed. Check your email for detials.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<!-- Modal -->
+
+
 
 @section Styles {
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />*@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
-<link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
 
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
 }
@@ -893,8 +924,8 @@
 @section scripts{
 
 
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
     <script src="~/Scripts/Custome/post.js"></script>
@@ -915,6 +946,11 @@
             $("#Name").attr("disabled", "disabled");
             $("#PhoneNumber").attr("disabled", "disabled");
         }
+
+        if("@ViewBag.Message" == "error"){
+
+        }
+
 
     });
 </script>

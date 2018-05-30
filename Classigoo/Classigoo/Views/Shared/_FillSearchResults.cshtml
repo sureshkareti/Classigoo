@@ -11,57 +11,59 @@
                 <ul class="mt30 clearfix row">
                     @foreach (var innerAdds in add)
                     {
-                        <li class="col-sm-4">
-                            <div class="searchgrid" style="width:100%;float:left">
-                                <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="@innerAdds.ImgUrlPrimary" alt=""></a>
-                                @if (innerAdds.Category == Constants.RealEstate)
-                                {
-                                    <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                }
-                                else if (innerAdds.Category == Constants.ConstructionVehicle)
-                                {
-                                    <div class="category color2"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                }
-                                else if (innerAdds.Category == Constants.TransportationVehicle)
-                                {
-                                    <div class="category color3"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                }
-                                else if (innerAdds.Category == Constants.PassengerVehicle)
-                                {
-                                    <div class="category color4"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                }
-                                else if (innerAdds.Category == Constants.AgriculturalVehicle)
-                                {
-                                    <div class="category color5"> <i class="fa fa-home"></i> @innerAdds.Category</div>
-                                }
+                        <li class="col-sm-4 clearfix">
+                            
+                                <div class="searchgrid" style="width:100%;float:left">
+                                    <a class="thumbnail" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })"><img src="@innerAdds.ImgUrlPrimary" alt=""></a>
+                                    @if (innerAdds.Category == Constants.RealEstate)
+                                    {
+                                        <div class="category color1"> <i class="fa fa-home"></i> @innerAdds.Category</div>
+                                    }
+                                    else if (innerAdds.Category == Constants.ConstructionVehicle)
+                                    {
+                                        <div class="category color2"> <i class="fa fa-home"></i> @innerAdds.Category</div>
+                                    }
+                                    else if (innerAdds.Category == Constants.TransportationVehicle)
+                                    {
+                                        <div class="category color3"> <i class="fa fa-home"></i> @innerAdds.Category</div>
+                                    }
+                                    else if (innerAdds.Category == Constants.PassengerVehicle)
+                                    {
+                                        <div class="category color4"> <i class="fa fa-home"></i> @innerAdds.Category</div>
+                                    }
+                                    else if (innerAdds.Category == Constants.AgriculturalVehicle)
+                                    {
+                                        <div class="category color5"> <i class="fa fa-home"></i> @innerAdds.Category</div>
+                                    }
 
-                                <div>
-                                    <h4><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">@innerAdds.Title </a></h4>
-                                    <ul class="icondetail">
-                                        <li><i class="fa fa-rupee"></i>Price : @innerAdds.Price</li>
-                                        <li><i class="fa fa-map-marker"></i> Location : @innerAdds.Location</li>
-                                        <li><i class="fa fa-calendar"></i> Posted On : @innerAdds.CreatedDate  </li>
-                                        
-                                    </ul>
+                                    <div>
+                                        <h4><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">@innerAdds.Title </a></h4>
+                                        <ul class="icondetail">
+                                            <li><i class="fa fa-rupee"></i>Price : @innerAdds.Price</li>
+                                            <li><i class="fa fa-map-marker"></i> Location : @innerAdds.Location</li>
+                                            <li><i class="fa fa-calendar"></i> Posted On : @innerAdds.CreatedDate  </li>
 
-                                    <h6 style="float:right"><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
+                                        </ul>
+
+                                        <h6 style="float:right"><a class="title titlecollapse" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
 
 
-                                    @*<div style="width:100%">
-                                            <div style="width:60%;float:left;height:30px;">
+                                        @*<div style="width:100%">
+                        <div style="width:60%;float:left;height:30px;">
 
-                                            </div>
-                                            <div style="border:1px solid gray;width:39%;float:right;height:30px;">
-                                                <h6><a class="title titlecollapse" style="float:right" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
-                                            </div>
-                                        </div>*@
+                        </div>
+                        <div style="border:1px solid gray;width:39%;float:right;height:30px;">
+                            <h6><a class="title titlecollapse" style="float:right" target="_blank" href="@Url.Action("PreviewAdd","User",new { addId = innerAdds.AddId })">Read more.. </a></h6>
+                        </div>
+                    </div>*@
 
+                                    </div>
+                                    @*<div>
+                    <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
+                    <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
+                </div>*@
                                 </div>
-                                @*<div>
-                                        <div class="share"> Share On : <a data-original-title="Facebook" class="tooltip-test"><i class="fa fa-facebook"></i></a> <a data-original-title="Twitter" class="tooltip-test"><i class="fa fa-twitter"></i></a> <a data-original-title="Google Plus" class="tooltip-test"><i class="fa fa-google-plus"></i></a> </div>
-                                        <a class="btn comment"><i class="fa fa-comment-o"></i> 5 Comments</a>
-                                    </div>*@
-                            </div>
+                           
                         </li>
                     }
                 </ul>

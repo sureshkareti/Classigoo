@@ -220,6 +220,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CustomModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Library.cs" />
     <Compile Include="PassengerVehicle.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>

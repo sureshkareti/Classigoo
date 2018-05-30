@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using Classigoo.Models;
 
 namespace Classigoo.Controllers
 {
@@ -16,20 +17,7 @@ namespace Classigoo.Controllers
 
         public ActionResult Index()
         {
-
-
-
-            using (ClassigooEntities classigooEntities = new ClassigooEntities())
-            {
-
-               Add obj =   classigooEntities.Adds.Find(56);
-
-              TransportationVehicle objTV =  classigooEntities.TransportationVehicles.First(x=>x.AddId == obj.AddId);
-
-
-                //classigooEntities.RealEstates.Add(realEstate);
-                //classigooEntities.SaveChanges();
-            }
+            DeleteAdd("Real Estate", "56");
 
 
             PostAdd objPost = new PostAdd();
@@ -171,8 +159,10 @@ namespace Classigoo.Controllers
                     postTask.Wait();
                 }
                 catch (Exception ex)
-                {
+                {                  
+                    Library.WriteLog("At controller Executing Add addtable record", ex);
 
+                    ViewBag.Message = "error";
                 }
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -193,6 +183,15 @@ namespace Classigoo.Controllers
                         CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District);
                         CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal);
 
+                        string currentDomain = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+
+                        //for production
+                        //img1 = currentDomain + "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName + 1 + "-" + postId);
+                        //img2 = currentDomain + "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName + 2 + "-" + postId);
+                        //img3 = currentDomain + "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName + 3 + "-" + postId);
+                        //img4 = currentDomain + "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName + 4 + "-" + postId);
+
+                        //for test
                         img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName + 1 + "-" + postId);
                         img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName + 2 + "-" + postId);
                         img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName + 3 + "-" + postId);
@@ -205,7 +204,9 @@ namespace Classigoo.Controllers
                     }
                     catch (Exception ex)
                     {
-
+                        Library.WriteLog("At saving images", ex);
+                        DeleteImage(new List<string>() { img1, img2, img3, img4 });
+                        ViewBag.Message = "error";
                     }
 
                     if (postAdd.hdnCateFristLevel == "Real Estate")
@@ -241,19 +242,26 @@ namespace Classigoo.Controllers
                             try
                             {
                                 realEstatepostTask.Wait();
+
+                                if(realEstatepostTask.Result.StatusCode == HttpStatusCode.Created)
+                                {
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else if(realEstatepostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                {
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString( postId));
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
                             }
                             catch (Exception ex)
                             {
-
+                                Library.WriteLog("At create realestate", ex);
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
                             }
-                            var realEstatePostTask = realEstatepostTask.Result;
-                            if (realEstatePostTask.IsSuccessStatusCode)
-                            {
-                                return RedirectToAction("Home", "User");
-                            }
-
-                            
-
+                           
                         }
                         #endregion
                     }
@@ -283,19 +291,27 @@ namespace Classigoo.Controllers
                             try
                             {
                                 constructionVPostTask.Wait();
+
+
+                                if (constructionVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                                {
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else if (constructionVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                {
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
                             }
                             catch (Exception ex)
                             {
-
+                                Library.WriteLog("At create creating construction vehicles", ex);
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
                             }
-                            var constructionVResponse = constructionVPostTask.Result;
-                            if (constructionVResponse.IsSuccessStatusCode)
-                            {
-
-                            }
-
-                            return RedirectToAction("Home", "User");
-
+                            
 
                         }
                         #endregion
@@ -326,20 +342,27 @@ namespace Classigoo.Controllers
                             try
                             {
                                 transportationVPostTask.Wait();
+
+                                if (transportationVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                                {
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else if (transportationVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                {
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
                             }
                             catch (Exception ex)
                             {
+                                Library.WriteLog("At create creating transportation vehicles", ex);
 
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
                             }
-                            var transportationVResponse = transportationVPostTask.Result;
-                            if (transportationVResponse.IsSuccessStatusCode)
-                            {
-
-                            }
-
-                            return RedirectToAction("Home", "User");
-
-
+                           
                         }
                         #endregion
                     }
@@ -370,20 +393,28 @@ namespace Classigoo.Controllers
                             try
                             {
                                 agriculturalVPostTask.Wait();
+
+
+                                if (agriculturalVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                                {
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else if (agriculturalVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                {
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
                             }
                             catch (Exception ex)
                             {
+                                Library.WriteLog("At create creating agricultural vehicles", ex);
 
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
                             }
-                            var agriculturalVResponse = agriculturalVPostTask.Result;
-                            if (agriculturalVResponse.IsSuccessStatusCode)
-                            {
-
-                            }
-
-                            return RedirectToAction("Home", "User");
-
-
+                           
                         }
                         #endregion
                     }
@@ -417,43 +448,33 @@ namespace Classigoo.Controllers
                             try
                             {
                                 passengerVPostTask.Wait();
+
+                                if (passengerVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                                {
+                                    return RedirectToAction("Home", "User");
+                                }
+                                else if (passengerVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                {
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
                             }
                             catch (Exception ex)
                             {
+                                Library.WriteLog("At create creating passenger vehicles", ex);
 
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
                             }
-                            var passengerVResponse = passengerVPostTask.Result;
-
-                            if (passengerVResponse.StatusCode == HttpStatusCode.BadRequest)
-                            {
-
-                            }
-
-                            if (passengerVResponse.IsSuccessStatusCode)
-                            {
-
-                            }
-
-                            return RedirectToAction("Home", "User");
-
-
+                           
                         }
                         #endregion
                     }
-
-
                 }
             }
 
-
-
-
-
-
-
-
-
-            
 
             return View();
         }
@@ -468,6 +489,50 @@ namespace Classigoo.Controllers
         }
 
 
+        public bool DeleteAdd(string type, string id)
+        {
+            using (var clientDeleteAdd = new HttpClient())
+            {
+
+                clientDeleteAdd.BaseAddress = new Uri(Constants.PostDeleteUrl);
+                var deletepostTask = clientDeleteAdd.PostAsJsonAsync<String[]>(Constants.PostDeleteUrl, new string[] { type, id });
+                try
+                {
+                    deletepostTask.Wait();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                if (deletepostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                {
+                    return false;
+                }
+                else if (deletepostTask.Result.StatusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool DeleteImage(List<string> urls)
+        {
+            foreach(string url in urls)
+            {
+                FileInfo file = new FileInfo(url);
+                if (file.Exists)//check file exsit or not
+                {
+                    file.Delete();
+
+                    return true;
+                }
+            }
+                      
+            return false;
+        }
 
     }
 }
