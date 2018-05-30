@@ -856,6 +856,14 @@
                                 <div class="form-group row">
                                     <div class="col-md-9" style="text-align:right">
                                         <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+
+
+                                        <input type="button" value="launch" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" />
+
+
+                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            Launch demo modal
+                                        </button>*@
                                     </div>
                                     <div class="col-md-3">
                                         <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
@@ -874,12 +882,6 @@
 
 <div class="loader-wrap" style="display:none">
     <div class="loader">
-      
-    </div>
-</div>
-
-<div class="loader-wrap" style="display:none">
-    <div class="loader">
         <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
         <span class="loader-item"></span><span class="loader-item"></span>
     </div>
@@ -890,7 +892,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="icon-box">
-                    <i class="material-icons">&#xE876;</i>
+                    <i class="fa fa-check"></i>
                 </div>
                 <h4 class="modal-title">Awesome!</h4>
             </div>
@@ -904,9 +906,12 @@
     </div>
 </div>  
 
+<!-- Modal -->
+
+
 
 @section Styles {
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />*@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
@@ -919,8 +924,8 @@
 @section scripts{
 
 
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
     <script src="~/Scripts/Custome/post.js"></script>
