@@ -5,8 +5,6 @@
         FillCategories();
         FillLocations();
         FillSearchBox();
-        //FillFiltersFrmHomePage();
-        
         function FillSearchBox()
         {
             searchSource = jQuery.unique(searchSource);
@@ -50,14 +48,16 @@
                 async: false,
                 success: function (data) {
                     $.each(data, function (i, field) {
-                        if (field.name !== "Cars Models" && field.name !== "Bikes Models")
+                       // if (field.name !== "Cars Models" && field.name !== "Bikes Models")
                         categoryColl.push(field);
                     });
                 }
             });
             $.each(categoryColl, function (i, field) {
-                $("#listing_catagory_list").append("<option>" + field.name + "</option>");
-                $("#listing_catagory").append("<option>" + field.name + "</option>");
+                if (field.name !== "Cars Models" && field.name !== "Bikes Models") {
+                    $("#listing_catagory_list").append("<option>" + field.name + "</option>");
+                    $("#listing_catagory").append("<option>" + field.name + "</option>");
+                }
                // searchSource.push(field.name);
                 var VehicleTypeColl=field.VehicleType;
                 $.each(VehicleTypeColl,function(j,vehicleType)
@@ -213,6 +213,8 @@
             var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).val());
             $("#allvCompany").empty();
             $("#pvCompany").empty();
+            $("#model").empty();
+            $("#model").append("<option>" + "All" + "</option>");
             $("#allvCompany").append("<option>" + "All" + "</option>");
             $("#pvCompany").append("<option>" + "All" + "</option>");
             if (selectedModel.length != 0) {
@@ -228,6 +230,29 @@
                 });
             }
                 
+        });
+        $("#pvCompany").change(function () {
+            var subCategory = $("#pvSubCategory").val();
+            var selectedVehicle = "";
+            if (subCategory == "Bikes" || subCategory == "Cars") {       
+                if (subCategory == "Bikes") {
+                    selectedVehicle = categoryColl.filter(a=>a.name == "Bikes Models");
+                }
+                else if (subCategory == "Cars") {
+                    selectedVehicle = categoryColl.filter(a=>a.name == "Cars Models");
+                }
+                var selectedVType = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).val());
+                $("#model").empty();
+                $("#model").append("<option>" + "All" + "</option>");
+                if (selectedVType.length != 0) {
+                    $.each(selectedVType[0].VehicleModel, function (i, field) {
+                        {
+                            $("#model").append("<option>" + field.name + "</option>");
+                        }
+                    });
+                }
+            }
+
         });
         $("#clearfilter").click(function () {
             $('select').prop('selectedIndex', 0);
@@ -287,6 +312,14 @@
                 else
                 {
                     $("#pvCbFilters").show();
+                    if (pvSubCategory=="Bikes")
+                    {
+                        $("#divFuelType").hide();
+                    }
+                    else
+                    {
+                        $("#divFuelType").show();
+                    }
                     var yearFrom = $("#yearFrom").val();
                     var yearTo = $("#yearTo").val();
                     var kmFrom = $("#kmFrom").val();
