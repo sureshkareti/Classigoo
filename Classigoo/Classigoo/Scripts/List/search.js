@@ -1,7 +1,9 @@
 ﻿        var categoryColl = new Array();
         var locationColl = new Array();
         var searchSource = new Array();
-        var category = "";
+      var category = "";
+      // var category = $("#listing_catagory").val();
+        //ShowCategoryFilter(category);
         FillCategories();
         FillLocations();
         FillSearchBox();

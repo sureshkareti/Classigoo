@@ -14,15 +14,15 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(string category= "Select Category",string type="Rent")
         {
             FiterOptions filterOptions = new FiterOptions();
-            filterOptions.Category = "Select Category";
+            filterOptions.Category = category;
             filterOptions.Location = "";
             filterOptions.SearchKeyword = "";
-            filterOptions.Type = "Rent";
+            filterOptions.Type = type;
             ViewBag.FilterValues = filterOptions;
-            return ApplyFilter("\"\"", 1,"Select Category","","","Rent",true);
+            return ApplyFilter("\"\"", 1,category,"","",type,true);
         }
         [HttpPost]
         public ActionResult Index(FormCollection coll)
