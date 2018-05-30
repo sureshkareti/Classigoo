@@ -200,8 +200,14 @@ namespace Classigoo.Controllers
                     if (coll["txtOldPasscode"] == user.Password)
                     {
                         user.Password = coll["txtPasscode"];
-                        UpdateUserDetails(user);
-                        @ViewBag.status = "Password updated successfully";
+                        if (UpdateUserDetails(user))
+                        {
+                            @ViewBag.status = "Password updated successfully";
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Eror occured while updating Password";
+                        }
 
                     }
                     else
@@ -214,8 +220,14 @@ namespace Classigoo.Controllers
                     if (emailExist == Guid.Empty)
                     {
                         user.Email = coll["txtEmail"];
-                        UpdateUserDetails(user);
-                        @ViewBag.status = "Email updated successfully";
+                        if (UpdateUserDetails(user))
+                        {
+                            @ViewBag.status = "Email updated successfully";
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Eror occured while updating Email";
+                        }
                     }
                     else
                     {
@@ -226,8 +238,14 @@ namespace Classigoo.Controllers
                     if (phoneExist==Guid.Empty)
                     {
                         user.MobileNumber = coll["txtPhone"];
-                        UpdateUserDetails(user);
-                        @ViewBag.status = "Mobile Number updated successfully";
+                        if (UpdateUserDetails(user))
+                        {
+                            @ViewBag.status = "Mobile Number updated successfully";
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Error occured while updating Mobile Number ";
+                        }
                     }
                     else
                     {
@@ -240,8 +258,9 @@ namespace Classigoo.Controllers
             }
             return View(addColl);
         }
-        public void UpdateUserDetails(User user)
+        public bool UpdateUserDetails(User user)
         {
+            bool isSuccess = false;
             using (var client = new HttpClient())
             {
 
@@ -260,12 +279,13 @@ namespace Classigoo.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     //return RedirectToAction("Home", "User");
+                    isSuccess = true;
                 }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
                 }
-
+                return isSuccess;
             }
         }
         public User GetUserDetails(Guid id)

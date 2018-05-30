@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using Classigoo;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
+using Classigoo.Models;
 
 namespace Classigoo.Controllers
 {
@@ -27,7 +28,7 @@ namespace Classigoo.Controllers
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
                     ObjectParameter Output = new ObjectParameter("AddId", typeof(int));
-                    classigooEntities.FillAds(add.Category, add.SubCategory,add.State,add.District,add.Mandal,add.NearestArea,add.Title,add.Type,add.Status,  add.UserId, Output);
+                    classigooEntities.FillAds(add.Category, add.SubCategory, add.State, add.District, add.Mandal, add.NearestArea, add.Title, add.Type, add.Status, add.UserId, Output);
 
                     int responceCode = classigooEntities.SaveChanges();
                     if (responceCode == 0)
@@ -61,9 +62,10 @@ namespace Classigoo.Controllers
                     classigooEntities.SaveChanges();
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-
+                Library.WriteLog("At Api agricultural vehicles create", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
             return StatusCode(HttpStatusCode.Created);
@@ -86,9 +88,10 @@ namespace Classigoo.Controllers
                     classigooEntities.SaveChanges();
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-
+                Library.WriteLog("At Api construction vehicles create", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
             return StatusCode(HttpStatusCode.Created);
@@ -111,9 +114,10 @@ namespace Classigoo.Controllers
                     classigooEntities.SaveChanges();
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-
+                Library.WriteLog("At Api transportation vehicles create", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
             return StatusCode(HttpStatusCode.Created);
@@ -136,9 +140,10 @@ namespace Classigoo.Controllers
                     classigooEntities.SaveChanges();
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                return StatusCode(HttpStatusCode.BadRequest);
+                Library.WriteLog("At Api passenger vehicles create", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
             return StatusCode(HttpStatusCode.Created);
@@ -161,34 +166,91 @@ namespace Classigoo.Controllers
                     classigooEntities.SaveChanges();
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-
+                Library.WriteLog("At APi Realestate create", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
             return StatusCode(HttpStatusCode.Created);
         }
 
         [HttpPost]
-        [ActionName("RealEstate")]
-        public IHttpActionResult DeleteAdd(string tyepe,string id)
+        [ActionName("DeleteAdd")]
+        public IHttpActionResult DeleteAdd( string[] tempArray)
         {
-           
+            string type = tempArray[0];
+            string id = tempArray[1];
+
             try
             {
-
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                    //classigooEntities.RealEstates.Add(realEstate);
-                    classigooEntities.SaveChanges();
+                    int addId = Convert.ToInt32(id);
+                    Add objAdd = classigooEntities.Adds.Find(addId);
+
+                    if (objAdd != null)
+                    {
+                        if (type == "Real Estate")
+                        {
+                            RealEstate objRealEstate = classigooEntities.RealEstates.First(x => x.AddId == objAdd.AddId);
+                            if (objRealEstate != null)
+                            {
+                                classigooEntities.RealEstates.Remove(objRealEstate);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Construction Vehicles")
+                        {
+                            ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objCV != null)
+                            {
+                                classigooEntities.ConstructionVehicles.Remove(objCV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Transportation Vehicles")
+                        {
+                            TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objTV != null)
+                            {
+                                classigooEntities.TransportationVehicles.Remove(objTV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Agricultural Vehicles")
+                        {
+                            AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objAV != null)
+                            {
+                                classigooEntities.AgriculturalVehicles.Remove(objAV);
+                                classigooEntities.SaveChanges();
+                            }
+
+                        }
+                        else if (type == "Passenger Vehicles")
+                        {
+                            PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objPV != null)
+                            {
+                                classigooEntities.PassengerVehicles.Remove(objPV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+
+
+                        classigooEntities.Adds.Remove(objAdd);
+                        classigooEntities.SaveChanges();
+                    }
                 }
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-
+                Library.WriteLog("At APi Delete Add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
-            return StatusCode(HttpStatusCode.Created);
+            return StatusCode(HttpStatusCode.OK);
         }
 
     }

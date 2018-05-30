@@ -427,7 +427,7 @@ function DisplayRespectiveFields() {
     //var selectedCate = selectedcategory;
     var selectedCate = $("#hdnCateFristLevel").val().trim();
 
-   
+
     if (selectedCate == "Real Estate") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
@@ -829,7 +829,7 @@ window.BindEdit = function () {
 //---------------------States districts and mandals binding---------------------------------------//
 
 window.loadStates = function () {
-   
+
     var locations = new Array();
     var states = new Array();
     $.ajax({
@@ -848,18 +848,34 @@ window.loadStates = function () {
     });
 
     $("#State").autocomplete({
-        source: function (request, response) {
-            var filteredArray = $.map(states, function (item) {
-                if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-                    return item;
-                }
-                else {
-                    return null;
-                }
-            });
-            response(filteredArray);
-        },
-        minLength: 1
+        source: states
+
+        //function (request, response) {
+        //var filteredArray = $.map(states, function (item) {
+        //    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+        //        return item;
+        //    }
+        //    else {
+        //        return null;
+        //    }
+        //});
+        //response(filteredArray);
+
+        //}
+    ,
+        minLength: 1, autoFocus: true,
+        scroll: true,
+        matchContains: true,
+        minChars: 2,
+        autoFill: true,
+        mustMatch: false,
+        cacheLength: 20,
+        max: 20,
+        close: function () {
+            $(this).blur();
+        }
+    }).focus(function () {
+        $(this).data("uiAutocomplete").search('e');
     });
 }
 
@@ -893,18 +909,36 @@ function getDistricts() {
         });
 
         $("#District").autocomplete({
-            source: function (request, response) {
-                var filteredArray = $.map(districs, function (item) {
-                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-                        return item;
-                    }
-                    else {
-                        return null;
-                    }
-                });
-                response(filteredArray);
-            },
-            minLength: 1
+            source: districs
+
+            //    function (request, response) {
+            //    var filteredArray = $.map(districs, function (item) {
+            //        if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+            //            return item;
+            //        }
+            //        else {
+            //            return null;
+            //        }
+            //    });
+            //    response(filteredArray);
+            //}
+
+
+            ,
+            minLength: 1,
+            autoFocus: true,
+            scroll: true,
+            matchContains: true,
+            minChars: 2,
+            autoFill: true,
+            mustMatch: false,
+            cacheLength: 20,
+            max: 20,
+            close: function () {
+                $(this).blur();
+            }
+        }).focus(function () {
+            $(this).data("uiAutocomplete").search('e');
         });
 
         $("#user-district").css("display", "block");
@@ -971,18 +1005,34 @@ function getMandal() {
         });
 
         $("#Mandal").autocomplete({
-            source: function (request, response) {
-                var filteredArray = $.map(mandals, function (item) {
-                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-                        return item;
-                    }
-                    else {
-                        return null;
-                    }
-                });
-                response(filteredArray);
-            },
-            minLength: 1
+            source:mandals
+
+                //function (request, response) {
+                //var filteredArray = $.map(mandals, function (item) {
+                //    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+                //        return item;
+                //    }
+                //    else {
+                //        return null;
+                //    }
+                //});
+                //response(filteredArray);
+                //}
+            ,
+            minLength: 1,
+            autoFocus: true,
+            scroll: true,
+            matchContains: true,
+            minChars: 2,
+            autoFill: true,
+            mustMatch: false,
+            cacheLength: 20,
+            max: 20,
+            close: function () {
+                $(this).blur();
+            }
+        }).focus(function () {
+            $(this).data("uiAutocomplete").search('e');
         });
 
         $("#user-mandal").css("display", "block");
@@ -1071,6 +1121,7 @@ $("#btnSubmit").click(function () {
 
 
 
+    $(".loader-wrap").css("display","block");
 
 
     //alert($('#forProperties').css('display') == 'none');

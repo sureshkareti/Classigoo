@@ -30,7 +30,7 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Company" Type="varchar" MaxLength="500" />
           <Property Name="OtherCompany" Type="varchar" MaxLength="500" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
@@ -46,7 +46,7 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Company" Type="varchar" MaxLength="500" />
           <Property Name="OtherCompany" Type="varchar" MaxLength="500" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
@@ -74,11 +74,11 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Company" Type="varchar" MaxLength="500" />
           <Property Name="OtherCompany" Type="varchar" MaxLength="500" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="int" />
           <Property Name="Model" Type="varchar" MaxLength="250" />
-          <Property Name="Year" Type="varchar" MaxLength="10" />
+          <Property Name="Year" Type="int" />
           <Property Name="FuelType" Type="varchar" MaxLength="50" />
-          <Property Name="KMDriven" Type="varchar" MaxLength="50" />
+          <Property Name="KMDriven" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
@@ -91,13 +91,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="int" />
           <Property Name="Availability" Type="varchar" MaxLength="100" />
           <Property Name="ListedBy" Type="varchar" MaxLength="100" />
           <Property Name="Furnishing" Type="varchar" MaxLength="100" />
           <Property Name="Bedrooms" Type="varchar" MaxLength="2" />
-          <Property Name="SquareFeets" Type="varchar" MaxLength="15" />
-          <Property Name="Squareyards" Type="varchar" MaxLength="15" />
+          <Property Name="SquareFeets" Type="int" />
+          <Property Name="Squareyards" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
@@ -114,7 +114,7 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Company" Type="varchar" MaxLength="500" />
           <Property Name="OtherCompany" Type="varchar" MaxLength="500" />
-          <Property Name="Price" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="ImgUrlPrimary" Type="varchar(max)" />
           <Property Name="ImgUrlSeconday" Type="varchar(max)" />
@@ -286,15 +286,15 @@
             <Parameter Name="AddId" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Logs" EntityType="ClassigooModel.Log" />
-          <EntitySet Name="AgriculturalVehicles" EntityType="ClassigooModel.AgriculturalVehicle" />
-          <EntitySet Name="ConstructionVehicles" EntityType="ClassigooModel.ConstructionVehicle" />
-          <EntitySet Name="PassengerVehicles" EntityType="ClassigooModel.PassengerVehicle" />
-          <EntitySet Name="TransportationVehicles" EntityType="ClassigooModel.TransportationVehicle" />
           <EntitySet Name="Adds" EntityType="ClassigooModel.Add" />
           <AssociationSet Name="FK_Adds_Users" Association="ClassigooModel.FK_Adds_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Add" EntitySet="Adds" />
           </AssociationSet>
+          <EntitySet Name="AgriculturalVehicles" EntityType="ClassigooModel.AgriculturalVehicle" />
+          <EntitySet Name="ConstructionVehicles" EntityType="ClassigooModel.ConstructionVehicle" />
+          <EntitySet Name="PassengerVehicles" EntityType="ClassigooModel.PassengerVehicle" />
+          <EntitySet Name="TransportationVehicles" EntityType="ClassigooModel.TransportationVehicle" />
           <AssociationSet Name="FK_AgriculturalVehicle_Adds" Association="ClassigooModel.FK_AgriculturalVehicle_Adds">
             <End Role="Add" EntitySet="Adds" />
             <End Role="AgriculturalVehicle" EntitySet="AgriculturalVehicles" />
@@ -343,78 +343,6 @@
           <Property Name="UserId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="AgriculturalVehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="AgriculturalVehicle" ToRole="Add" />
-        </EntityType>
-        <EntityType Name="ConstructionVehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_ConstructionVehicle_Adds" FromRole="ConstructionVehicle" ToRole="Add" />
-        </EntityType>
-        <EntityType Name="PassengerVehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Model" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="KMDriven" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_PassengerVehicle_Adds" FromRole="PassengerVehicle" ToRole="Add" />
-        </EntityType>
-        <EntityType Name="TransportationVehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="AddId" Type="Int32" />
-          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="TransportationVehicle" ToRole="Add" />
-        </EntityType>
         <EntityType Name="Add">
           <Key>
             <PropertyRef Name="AddId" />
@@ -452,6 +380,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AgriculturalVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddId" Type="Int32" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="AgriculturalVehicle" ToRole="Add" />
+        </EntityType>
+        <EntityType Name="ConstructionVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddId" Type="Int32" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_ConstructionVehicle_Adds" FromRole="ConstructionVehicle" ToRole="Add" />
+        </EntityType>
+        <EntityType Name="PassengerVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Model" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="FuelType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KMDriven" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddId" Type="Int32" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_PassengerVehicle_Adds" FromRole="PassengerVehicle" ToRole="Add" />
+        </EntityType>
+        <EntityType Name="TransportationVehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OtherCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlSeconday" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlThird" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddId" Type="Int32" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="TransportationVehicle" ToRole="Add" />
+        </EntityType>
         <Association Name="FK_AgriculturalVehicle_Adds">
           <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -513,13 +513,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Price" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
           <Property Name="Availability" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ListedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Furnishing" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Bedrooms" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="SquareFeets" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Squareyards" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFeets" Type="Int32" />
+          <Property Name="Squareyards" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddId" Type="Int32" />
           <Property Name="ImgUrlPrimary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -574,6 +574,24 @@
                 <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
                 <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adds">
+            <EntityTypeMapping TypeName="ClassigooModel.Add">
+              <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Mandal" ColumnName="Mandal" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -646,24 +664,6 @@
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Adds">
-            <EntityTypeMapping TypeName="ClassigooModel.Add">
-              <MappingFragment StoreEntitySet="Adds">
-                <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />
-                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Mandal" ColumnName="Mandal" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="AddId" ColumnName="AddId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

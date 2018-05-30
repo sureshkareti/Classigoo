@@ -15,13 +15,13 @@ namespace Classigoo
     public partial class RealEstate
     {
         public int Id { get; set; }
-        public string Price { get; set; }
+        public Nullable<int> Price { get; set; }
         public string Availability { get; set; }
         public string ListedBy { get; set; }
         public string Furnishing { get; set; }
         public string Bedrooms { get; set; }
-        public string SquareFeets { get; set; }
-        public string Squareyards { get; set; }
+        public Nullable<int> SquareFeets { get; set; }
+        public Nullable<int> Squareyards { get; set; }
         public string Description { get; set; }
         public Nullable<int> AddId { get; set; }
         public string ImgUrlPrimary { get; set; }
