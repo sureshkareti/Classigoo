@@ -30,15 +30,16 @@
                     autoFill: true,
                     mustMatch: false,
                     cacheLength: 20,
-                    max: 20
+                    max: 20,
+                    close: function () {
+                 $(this).blur();
+                 }
                 }).focus(function(){            
-                    // The following works only once.
-                    // $(this).trigger('keydown.autocomplete');
-                    // As suggested by digitalPBK, works multiple times
-                    // $(this).data("autocomplete").search($(this).val());
-                    // As noted by Jonny in his answer, with newer versions use uiAutocomplete
                     $(this).data("uiAutocomplete").search('ma');
-                });;
+                }).focusout(data, function (event) {
+                        category = $("#listing_catagory").val();
+                        ShowCategoryFilter(category);
+                    });
             });
 
         }
@@ -129,18 +130,17 @@
                     },
                     minLength: 1,
                     scroll: true,
-     
-
+                    close: function () {
+                        $(this).blur();
+                    }
                 }).
-
                     focus(function () {
-                    // The following works only once.
-                    // $(this).trigger('keydown.autocomplete');
-                    // As suggested by digitalPBK, works multiple times
-                    // $(this).data("autocomplete").search($(this).val());
-                    // As noted by Jonny in his answer, with newer versions use uiAutocomplete
-                    $(this).data("uiAutocomplete").search('te');
-                })
+                        $(this).data("uiAutocomplete").search('te');
+                        
+                    }).focusout(data, function (event) {
+                        category = $("#listing_catagory").val();
+                        ShowCategoryFilter(category);
+                    });
             });
         }
         function ShowCategoryFilter(category) {
@@ -196,14 +196,14 @@
             category = $("#listing_catagory").val();
            ShowCategoryFilter(category);
         });
-        $("#listing_location_list").change(function () {
-            category = $("#listing_catagory").val();
-            ShowCategoryFilter(category);
-        });
-        $("#listing_keword").change(function () {
-            category = $("#listing_catagory").val();
-            ShowCategoryFilter(category);
-        });
+        //$("#listing_location_list").change(function () {
+        //    category = $("#listing_catagory").val();
+        //    ShowCategoryFilter(category);
+        //});
+        //$("#listing_keword").change(function () {
+        //    category = $("#listing_catagory").val();
+        //    ShowCategoryFilter(category);
+        //});
         $("#listing_rent_listGeneral").change(function () {
             category = $("#listing_catagory").val();
             ShowCategoryFilter(category);
@@ -393,7 +393,7 @@
                 url: '/List/ApplyFilter',
                 type: 'GET',
                 dataType: "html",
-                data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": category, "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val(), "isSearchFrmHomePage": false },
+                data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": $("#listing_catagory").val(), "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val(), "isSearchFrmHomePage": false },
                 success: function (data) {
                     $("#content").html(data);
                     $(".bloglisting").css("display", "block");

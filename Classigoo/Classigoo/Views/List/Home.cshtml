@@ -45,10 +45,10 @@
                     <h4><a href="#" category="Passenger Vehicles" type="Rent">Passenger Vehicles</a></h4>
 
                     <div class="categories">
-                        <a href="#" category="Passenger Vehicles" type="Rent">For Rent ( 20 )</a>
+                        <a href="#" category="Passenger Vehicles" type="Rent">For Rent (<span id="pvRentCount"></span>)</a>
                     </div>
                     <div class="categories">
-                        <a href="#" category="Passenger Vehicles" type="Sale">For Sale ( 20 )</a>
+                        <a href="#" category="Passenger Vehicles" type="Sale">For Sale (<span id="pvSaleCount"></span>)</a>
                     </div>
                 </div>
             </div>
@@ -61,10 +61,10 @@
                     <h4><a href="#" category="Agricultural Vehicles" type="Rent">Agricultural Vehicles</a></h4>
 
                     <div class="categories">
-                        <a href="#" category="Agricultural Vehicles" type="Rent">For Rent ( 20 )</a>
+                        <a href="#" category="Agricultural Vehicles" type="Rent">For Rent (<span id="avRentCount"></span> )</a>
                     </div>
                     <div class="categories">
-                        <a href="#" category="Agricultural Vehicles" type="Sale">For Sale ( 20 )</a>
+                        <a href="#" category="Agricultural Vehicles" type="Sale">For Sale (<span id="avSaleCount"></span> )</a>
                     </div>
                 </div>
             </div>
@@ -87,10 +87,10 @@
                     <h4><a href="#" category="Transportation Vehicles" type="Rent">Transportation Vehicles</a></h4>
 
                     <div class="categories">
-                        <a href="#" category="Transportation Vehicles" type="Rent">For Rent ( 20 )</a>
+                        <a href="#" category="Transportation Vehicles" type="Rent">For Rent (<span id="tvRentCount"></span> )</a>
                     </div>
                     <div class="categories">
-                        <a href="#" category="Transportation Vehicles" type="Sale">For Sale ( 20 )</a>
+                        <a href="#" category="Transportation Vehicles" type="Sale">For Sale (<span id="tvSaleCount"></span> )</a>
                     </div>
                 </div>
             </div>
@@ -101,10 +101,10 @@
                     <h4><a href="#" category="Construction Vehicles" type="Rent">Construction Vehicles</a></h4>
 
                     <div class="categories">
-                        <a href="#" category="Construction Vehicles" type="Rent">For Rent ( 20 )</a>
+                        <a href="#" category="Construction Vehicles" type="Rent">For Rent (<span id="cvRentCount"></span> )</a>
                     </div>
                     <div class="categories">
-                        <a href="#" category="Construction Vehicles" type="Sale">For Sale ( 20 )</a>
+                        <a href="#" category="Construction Vehicles" type="Sale">For Sale (<span id="cvSaleCount"></span> )</a>
                     </div>
                 </div>
             </div>
@@ -127,10 +127,10 @@
                     <h4><a href="#" category="Real Estate" type="Rent">Real Estate</a></h4>
 
                     <div class="categories">
-                        <a href="#" category="Real Estate" type="Rent">For Rent ( 20 )</a>
+                        <a href="#" category="Real Estate" type="Rent">For Rent (<span id="reRentCount"></span> )</a>
                     </div>
                     <div class="categories">
-                        <a href="#" category="Real Estate" type="Sale">For Sale ( 20 )</a>
+                        <a href="#" category="Real Estate" type="Sale">For Sale (<span id="reSaleCount"></span> )</a>
                     </div>
                 </div>
             </div>
@@ -153,11 +153,42 @@
 }
 <script>
     $(document).ready(function () {
+        GetAddsCount();
         $("#divCategory a").click(function () {
             var selectedCategory = $(this).attr("category");
             var type = $(this).attr("type");
+          //  window.target = "_blank";
             window.location.href = "/List/Index?category="+selectedCategory+"&type="+type;
         })
+        function GetAddsCount()
+        {
+            $.ajax({
+                url: '/List/GetCount',
+                type: 'GET',
+                success: function (data) {
+                    $("#pvSaleCount").text(data.pvSaleCount);
+                    $("#pvRentCount").text(data.pvRentCount);
+                    $("#avRentCount").text(data.avRentCount);
+                    $("#avSaleCount").text(data.avSaleCount);
+                    $("#tvRentCount").text(data.tvRentCount);
+                    $("#tvSaleCount").text(data.tvSaleCount);
+                    $("#cvRentCount").text(data.cvRentCount);
+                    $("#cvSaleCount").text(data.cvSaleCount);
+                    $("#reRentCount").text(data.reRentCount);
+                    $("#reSaleCount").text(data.reSaleCount);
+                    
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
 
+                }
+
+            });
+        }
     });
 </script>
