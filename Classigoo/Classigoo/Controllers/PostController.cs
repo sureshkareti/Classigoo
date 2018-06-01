@@ -15,6 +15,7 @@ namespace Classigoo.Controllers
         // GET: Post
 
 
+        [HttpGet]
         public ActionResult Index()
         {
             //DeleteAdd("Real Estate", "56");
@@ -63,6 +64,7 @@ namespace Classigoo.Controllers
 
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
         {

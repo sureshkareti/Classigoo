@@ -330,8 +330,9 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
-
+                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^(\d+.\d{0,2})$", @class = "form-control col-md-7", required = "required" })
+                                                    @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                    @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@                                                  
                                                     @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -670,7 +671,7 @@
                                                 <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
-                                                        <input type="file" style="display:none" id="fucFirst" accept="image/gif, image/jpeg" name="Image1" />
+                                                        <input type="file" style="display:none" id="fucFirst" accept=".png,.jpg,.jpeg,.gif" name="Image1" />
 
                                                         <button type="button" id="btnFucFirstEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
@@ -866,7 +867,7 @@
                                             </button>*@
                                     </div>
                                     <div class="col-md-3">
-                                        <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                        <input type="submit" id="btnSubmit" onclick="return testFunction();" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
                                     </div>
                                 </div>
                             </form>
@@ -964,14 +965,7 @@
 
     });
 
-    $('#defaultForm').bootstrapValidator({
-        live: 'enabled',
-        onSuccess: function (e, data) {
-            //this section before submit
-            alert('Success');
-        }
-    });
-
+    
 
 </script>
 
