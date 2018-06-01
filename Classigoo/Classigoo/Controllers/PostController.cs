@@ -37,8 +37,8 @@ namespace Classigoo.Controllers
                 objPost.PhoneNumber = user.MobileNumber;
                 objPost.Name = user.Name;
 
-                ViewBag.Name = "Suresh";
-                ViewBag.Number = "9014454730";
+                ViewBag.Name = user.Name;
+                ViewBag.Number = user.MobileNumber;
             }
             //bool isEdit = true;
             //if (isEdit)
