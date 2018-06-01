@@ -58,3 +58,5 @@ Classigoo ; Object reference not set to an instance of an object.
 Classigoo ; Object reference not set to an instance of an object.
 6/1/2018 7:35:32 PM : At saving images
 Classigoo ; Object reference not set to an instance of an object.
+6/2/2018 1:14:34 AM : At saving images
+System.Web ; 'http:/localhost:51797/ImgColl/Andhra Pradesh/Nellore/Buchireddipalem/22051039_1553578188035190_7387760531708737901_o.jpg1-1085' is not a valid virtual path.

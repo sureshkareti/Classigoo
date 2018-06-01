@@ -478,9 +478,12 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
 
 .Button-login {
     transition: all 167ms cubic-bezier(.1,.9,.2,1);
-    background-color: transparent;
-    border: 1px solid #f70;
-    color: #f70;
+    /*background-color: transparent;*/
+    background-color: #337ab7;
+
+    border: 1px solid #337ab7;
+    /*color: #f70;*/
+     color:#FFFFFF;
     cursor: pointer;
     /*font-family: "Segoe UI Web Semibold","Segoe UI Semibold WestEuropean","Segoe UI Semibold","Segoe UI",Tahoma,Arial,sans-serif;*/
     font-size: 16px;
