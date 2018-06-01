@@ -15,13 +15,17 @@ namespace Classigoo.Controllers
         // GET: Post
 
 
+        [HttpGet]
         public ActionResult Index()
         {
-            DeleteAdd("Real Estate", "56");
+            //DeleteAdd("Real Estate", "56");
 
 
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
+
+            ViewBag.scripCall = "LoaderLoad();";
+
             if (Session["UserId"] != null)
             {
                 userId = (Guid)Session["UserId"];
@@ -56,15 +60,17 @@ namespace Classigoo.Controllers
             //return View(objPost);
 
 
-
+           
 
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
         {
 
-
+           
+           
 
             int postId = 0;
 

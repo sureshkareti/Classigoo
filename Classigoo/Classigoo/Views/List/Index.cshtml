@@ -412,12 +412,11 @@
                                             <div class="form-group">
                                                 <span>Model</span><br>
                                                 <select class="form-control" id="model">
-                                                    <option selected>Select Model</option>
                                                     <option selected>All</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 col-sm-6">
+                                        <div class="col-md-3 col-xs-6 col-sm-6" id="divFuelType">
                                             <div class="form-group">
                                                 <span>Fuel Type</span><br>
                                                 <select class="form-control" id="fuelType">
@@ -620,5 +619,6 @@
         $("#listing_rent_listGeneral").val('@ViewBag.FilterValues.Type');
         $('#listing_location_list').val('@ViewBag.FilterValues.Location');
         $('#listing_keword').val('@ViewBag.FilterValues.SearchKeyword');
+        ShowCategoryFilter('@ViewBag.FilterValues.Category');
     }
 </script>

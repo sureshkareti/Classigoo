@@ -14,15 +14,15 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-        public ActionResult Index()
+        public ActionResult Index(string category= "Select Category",string type="Rent")
         {
             FiterOptions filterOptions = new FiterOptions();
-            filterOptions.Category = "Select Category";
+            filterOptions.Category = category;
             filterOptions.Location = "";
             filterOptions.SearchKeyword = "";
-            filterOptions.Type = "Rent";
+            filterOptions.Type = type;
             ViewBag.FilterValues = filterOptions;
-            return ApplyFilter("\"\"", 1,"Select Category","","","Rent",true);
+            return ApplyFilter("\"\"", 1,category,"","",type,true);
         }
         [HttpPost]
         public ActionResult Index(FormCollection coll)
@@ -741,6 +741,34 @@ namespace Classigoo.Controllers
               (add.Category == category)).Count();
             }
             return count;
+        }
+
+        public JsonResult GetCount()
+        {
+            Dictionary<string, int> countColl = new Dictionary<string, int>();
+            try
+            {
+                ClassigooEntities db = new ClassigooEntities();
+   int pvRentCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).Where(add => add.Type == "Rent").Count();
+   int pvSaleCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).Where(add => add.Type == "Sale").Count();
+   int avRentCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).Where(add => add.Type == "Rent").Count();
+   int avSaleCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).Where(add => add.Type == "Sale").Count();
+   int tvRentCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).Where(add => add.Type == "Rent").Count();
+   int tvSaleCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).Where(add => add.Type == "Sale").Count();
+   int cvRentCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).Where(add => add.Type == "Rent").Count();
+   int cvSaleCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).Where(add => add.Type == "Sale").Count();
+   int reRentCount = db.Adds.Where(add => add.Category == Constants.RealEstate).Where(add => add.Type == "Rent").Count();
+   int reSaleCount = db.Adds.Where(add => add.Category == Constants.RealEstate).Where(add => add.Type == "Sale").Count();
+                countColl.Add("pvRentCount", pvRentCount); countColl.Add("pvSaleCount", pvSaleCount); countColl.Add("avRentCount", avRentCount);
+                countColl.Add("avSaleCount", avSaleCount); countColl.Add("tvRentCount", tvRentCount); countColl.Add("tvSaleCount", tvSaleCount);
+                countColl.Add("cvRentCount", cvRentCount); countColl.Add("cvSaleCount", cvSaleCount); countColl.Add("reRentCount", reRentCount);
+                countColl.Add("reSaleCount", reSaleCount); 
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return Json(countColl,JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1005,19 +1005,19 @@ function getMandal() {
         });
 
         $("#Mandal").autocomplete({
-            source:mandals
+            source: mandals
 
-                //function (request, response) {
-                //var filteredArray = $.map(mandals, function (item) {
-                //    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-                //        return item;
-                //    }
-                //    else {
-                //        return null;
-                //    }
-                //});
-                //response(filteredArray);
-                //}
+            //function (request, response) {
+            //var filteredArray = $.map(mandals, function (item) {
+            //    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+            //        return item;
+            //    }
+            //    else {
+            //        return null;
+            //    }
+            //});
+            //response(filteredArray);
+            //}
             ,
             minLength: 1,
             autoFocus: true,
@@ -1072,7 +1072,16 @@ function getLocal() {
 
 
 //-------------------------- for properties validation -------------------------------//
-$("#btnSubmit").click(function () {
+//$("#btnSubmit").click(function (e) 
+function testFunction(){
+
+   
+    alert("heloo111");
+    //e.preventDefault();
+
+    
+   
+    var isValid = "true";
 
     var hiddenElements = $(':hidden');
 
@@ -1081,7 +1090,7 @@ $("#btnSubmit").click(function () {
 
     })
 
-
+    
 
     var selectedCategory = $("#hdnCateFristLevel").val();
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
@@ -1101,8 +1110,13 @@ $("#btnSubmit").click(function () {
             //    scrollTop: $("#divCategories").offset().top
             //}, 2000);
 
+            isValid = "false";
+
             $(window).scrollTop($('#scrolltoCat').offset().top);
-            return false;
+
+
+            return ;
+        
         }
     }
 
@@ -1115,17 +1129,49 @@ $("#btnSubmit").click(function () {
 
             showerrorImg1();
 
+            isValid = "false";
+
             return false;
+           
         }
     }
+ 
+    var inputElements = $('input:not(:hidden)');
 
+    inputElements.each(function () {
+        if ($(this).attr("id") != "LocalArea") {
+            if ($(this).val() == "") {
+                isValid = "false";
+            }
+        }
+             
+    });
 
+    var selectElements = $('select:not(:hidden)');
 
-    $(".loader-wrap").css("display","block");
+    selectElements.each(function () {
+            if ($(this).val() == "") {
+                isValid = "false";
+            }
+        
+    });
 
+    if ($("#txtAddDetails").val() == "") {
 
+        isValid = "false";
+    }
+
+    if ( isValid == "true" ) {
+       
+        $(".loader-wrap").css("display", "block");
+    }
+    else {
+        //return false;
+    }
+    
+   
     //alert($('#forProperties').css('display') == 'none');
-});
+};
 
 function showerrorImg1() {
     $("#divimgFucFirst").css("border", "1px solid #a94442");

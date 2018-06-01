@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { data_toggle = "validator", @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { name = "defaultForm", id= "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
 
     <div>
@@ -330,8 +330,9 @@
                                                     <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @class = "form-control col-md-7", required = "required" })
-
+                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^(\d+.\d{0,2})$", @class = "form-control col-md-7", required = "required" })
+                                                    @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                    @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@                                                  
                                                     @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -670,7 +671,7 @@
                                                 <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
                                                 <div class="w3-container">
                                                     <div style="text-align:center">
-                                                        <input type="file" style="display:none" id="fucFirst" accept="image/gif, image/jpeg" name="Image1" />
+                                                        <input type="file" style="display:none" id="fucFirst" accept=".png,.jpg,.jpeg,.gif" name="Image1" />
 
                                                         <button type="button" id="btnFucFirstEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
                                                     </div>
@@ -856,9 +857,17 @@
                                 <div class="form-group row">
                                     <div class="col-md-9" style="text-align:right">
                                         <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>
+
+
+                                        <input type="button" value="launch" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" />
+
+
+                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Launch demo modal
+                                            </button>*@
                                     </div>
                                     <div class="col-md-3">
-                                        <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                        <input type="submit" id="btnSubmit" onclick="return testFunction();" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
                                     </div>
                                 </div>
                             </form>
@@ -874,23 +883,17 @@
 
 <div class="loader-wrap" style="display:none">
     <div class="loader">
-      
-    </div>
-</div>
-
-<div class="loader-wrap" style="display:none">
-    <div class="loader">
         <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
         <span class="loader-item"></span><span class="loader-item"></span>
     </div>
 </div>
 
-<div id="myModal" class="modal fade" >
+<div id="myModal" class="modal fade">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="icon-box">
-                    <i class="material-icons">&#xE876;</i>
+                    <i class="fa fa-check"></i>
                 </div>
                 <h4 class="modal-title">Awesome!</h4>
             </div>
@@ -902,11 +905,14 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
+
+<!-- Modal -->
+
 
 
 @section Styles {
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />*@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
@@ -919,8 +925,8 @@
 @section scripts{
 
 
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
     <script src="~/Scripts/Custome/post.js"></script>
@@ -930,11 +936,18 @@
 
 
 <script type="text/javascript">
+
+    @ViewBag.scripCall
+
+    function LoaderLoad(){
+        alert("helo in load");
+    }
+
     $(document).ready(function() {
 
-     
+
         if("@ViewBag.Name" != ""){
-       
+
             $("#Name").val("@ViewBag.Name");
             $("#PhoneNumber").val("@ViewBag.Number");
 
@@ -947,7 +960,13 @@
         }
 
 
+
+
+
     });
+
+    
+
 </script>
 
 @if (Model != null)
