@@ -24,7 +24,8 @@ namespace Classigoo.Controllers
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
 
-            ViewBag.scripCall = "LoaderLoad();";
+           
+            //ViewBag.scripCall = "LoaderLoad();";
 
             if (Session["UserId"] != null)
             {
