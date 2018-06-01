@@ -3,7 +3,7 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
     WebGrid grid = new WebGrid(source:Model,
-         rowsPerPage: 5);
+         rowsPerPage: 10);
 }
 @{
     string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
