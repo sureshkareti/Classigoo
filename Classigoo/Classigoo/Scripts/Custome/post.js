@@ -1072,9 +1072,16 @@ function getLocal() {
 
 
 //-------------------------- for properties validation -------------------------------//
-$("#btnSubmit").click(function () {
+//$("#btnSubmit").click(function (e) 
+function testFunction(){
 
-    //$('#defaultForm').bootstrapValidator('validate');
+   
+    alert("heloo111");
+    //e.preventDefault();
+
+    
+   
+    var isValid = "true";
 
     var hiddenElements = $(':hidden');
 
@@ -1083,7 +1090,7 @@ $("#btnSubmit").click(function () {
 
     })
 
-
+    
 
     var selectedCategory = $("#hdnCateFristLevel").val();
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
@@ -1103,9 +1110,13 @@ $("#btnSubmit").click(function () {
             //    scrollTop: $("#divCategories").offset().top
             //}, 2000);
 
+            isValid = "false";
+
             $(window).scrollTop($('#scrolltoCat').offset().top);
-            return false;
-            alert("in category");
+
+
+            return ;
+        
         }
     }
 
@@ -1118,22 +1129,49 @@ $("#btnSubmit").click(function () {
 
             showerrorImg1();
 
+            isValid = "false";
+
             return false;
-            alert("in add details");
+           
         }
     }
+ 
+    var inputElements = $('input:not(:hidden)');
 
-    alert("in before loader");
-   
+    inputElements.each(function () {
+        if ($(this).attr("id") != "LocalArea") {
+            if ($(this).val() == "") {
+                isValid = "false";
+            }
+        }
+             
+    });
 
+    var selectElements = $('select:not(:hidden)');
 
+    selectElements.each(function () {
+            if ($(this).val() == "") {
+                isValid = "false";
+            }
+        
+    });
+
+    if ($("#txtAddDetails").val() == "") {
+
+        isValid = "false";
+    }
+
+    if ( isValid == "true" ) {
+       
+        $(".loader-wrap").css("display", "block");
+    }
+    else {
+        //return false;
+    }
     
-    //$(".loader-wrap").css("display", "block");
-
-
-
+   
     //alert($('#forProperties').css('display') == 'none');
-});
+};
 
 function showerrorImg1() {
     $("#divimgFucFirst").css("border", "1px solid #a94442");
