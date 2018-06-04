@@ -21,9 +21,11 @@ namespace Classigoo.Controllers
             //DeleteAdd("Real Estate", "56");
 
 
+
+
+
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
-
 
             //ViewBag.scripCall = "LoaderLoad();";
 
@@ -41,26 +43,360 @@ namespace Classigoo.Controllers
                 ViewBag.Name = user.Name;
                 ViewBag.Number = user.MobileNumber;
             }
-            //bool isEdit = true;
-            //if (isEdit)
-            //{
-            //    PostAdd objPostAdd = new PostAdd();
-            //    objPostAdd.txtTitle = "TestTitle";
-            //    objPostAdd.ddlRentOrSale = "Sale";
 
-            //    objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
-            //    objPostAdd.hdnCateSecondLevel = "Tractors";
+            string addId = Request.QueryString["addId"];
 
-            //    objPostAdd.txtAV_Price = "123";
-            //    objPostAdd.AVCompany_list = "Other";
+            if (addId != null)
+            {
 
-            //    objPostAdd.txtAddDetails = "this is test description";
-            //    return View(objPostAdd);
-            //}
+                PostAdd objPostAdd = new PostAdd();
 
-            //return View(objPost);
+                using (var clientGetAdd = new HttpClient())
+                {
+
+                    clientGetAdd.BaseAddress = new Uri(Constants.GetAdd);
+                    var getAddTask = clientGetAdd.PostAsJsonAsync<String>(Constants.GetAdd, addId);
+                    try
+                    {
+                        getAddTask.Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        Library.WriteLog("At getting add record", ex);
+                        ViewBag.Message = "error";
+                    }
+
+                    if (getAddTask.Result.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        ViewBag.status = "NotFound";
+                        return View();
+                    }
+                    else if (getAddTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                    {
+                        ViewBag.Message = "error";
+                        return View();
+                    }
+                    else if (getAddTask.Result.StatusCode == HttpStatusCode.OK)
+                    {
+                        var readTask = getAddTask.Result.Content.ReadAsAsync<Add>();
+                        readTask.Wait();
+
+                        Add addRecord = readTask.Result;
+
+                        objPostAdd.txtTitle = addRecord.Title;
+                        objPostAdd.hdnCateFristLevel = addRecord.Category;
+                        objPostAdd.hdnCateSecondLevel = addRecord.SubCategory;
+                        objPostAdd.State = addRecord.State;
+                        objPostAdd.District = addRecord.District;
+                        objPostAdd.Mandal = addRecord.Mandal;
+                        objPostAdd.LocalArea = addRecord.NearestArea;
+                        objPostAdd.ddlRentOrSale = addRecord.Type;
+                      
+
+                        if (addRecord.Category == Constants.RealEstate)
+                        {
+                            #region RealEstate
+
+                            using (var clientRealEstate = new HttpClient())
+                            {                             
+                                clientRealEstate.BaseAddress = new Uri(Constants.GetRealestate);
+                                var realEstategetTask = clientRealEstate.PostAsJsonAsync<String>(Constants.GetRealestate, addId);
+                                try
+                                {
+                                    realEstategetTask.Wait();
+
+                                    if (realEstategetTask.Result.StatusCode == HttpStatusCode.NotFound)
+                                    {
+                                        ViewBag.status = "NotFound";
+                                        return View();
+                                    }
+                                    else if (realEstategetTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                    {
+                                        ViewBag.Message = "error";
+                                        return View();
+                                    }
+                                    else if (realEstategetTask.Result.StatusCode == HttpStatusCode.OK)
+                                    {
+                                        var readRealestateTask = realEstategetTask.Result.Content.ReadAsAsync<RealEstate>();
+                                        readTask.Wait();
+
+                                        RealEstate realEstateRecord = readRealestateTask.Result;
+
+                                    //    objPostAdd.txtPro_Price = realEstateRecord.Price;
+                                    //    objPostAdd.hdnCateFristLevel = addRecord.Category;
+                                    //    objPostAdd.hdnCateSecondLevel = addRecord.SubCategory;
+                                    //    objPostAdd.State = addRecord.State;
+                                    //    objPostAdd.District = addRecord.District;
+                                    //    objPostAdd.Mandal = addRecord.Mandal;
+                                    //    objPostAdd.LocalArea = addRecord.NearestArea;
+                                    //    objPostAdd.ddlRentOrSale = addRecord.Type;
+
+                                    //    SubCategory = postAdd.hdnCateSecondLevel,
+
+                                    //Price = postAdd.txtPro_Price,
+                                    //Availability = postAdd.ddlAvailability,
+                                    //ListedBy = postAdd.ddlPostedBy,
+                                    //Furnishing = postAdd.ddlFurnishing,
+                                    //Bedrooms = postAdd.ddlBedrooms,
+                                    //SquareFeets = postAdd.txtSquareFeet,
+                                    //Squareyards = postAdd.txtSquareYards,
+
+                                    //Description = postAdd.txtAddDetails,
+
+                                    //AddId = postId,
+                                    //ImgUrlPrimary = img1,
+                                    //ImgUrlSeconday = img2,
+                                    //ImgUrlThird = img3,
+                                    //ImgUrlFourth = img4
 
 
+                                    }
+                                    
+                                }
+                                catch (Exception ex)
+                                {
+                                    Library.WriteLog("At getting real estate record", ex);                               
+                                    ViewBag.Message = "error";
+                                    return View();
+                                }
+
+
+                                RealEstate objRealEstate = new RealEstate()
+                                {
+                                    
+                                };
+
+                                
+
+                            }
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.ConstructionVehicle)
+                        {
+                            #region CV
+                            //using (var clientCV = new HttpClient())
+                            //{
+                            //    ConstructionVehicle objConstructionVehicle = new ConstructionVehicle()
+                            //    {
+                            //        Company = postAdd.CVCompany_list,
+                            //        OtherCompany = postAdd.CVOtherCompany,
+                            //        SubCategory = postAdd.hdnCateSecondLevel,
+
+                            //        Price = postAdd.txtCV_Price,
+                            //        Description = postAdd.txtAddDetails,
+                            //        AddId = postId,
+                            //        ImgUrlPrimary = img1,
+                            //        ImgUrlSeconday = img2,
+                            //        ImgUrlThird = img3,
+                            //        ImgUrlFourth = img4
+                            //    };
+
+                            //    string ConstructionVPostUrl = Constants.PostConstructionVehicleUrl;
+                            //    clientCV.BaseAddress = new Uri(ConstructionVPostUrl);
+                            //    var constructionVPostTask = clientCV.PostAsJsonAsync<ConstructionVehicle>(ConstructionVPostUrl, objConstructionVehicle);
+                            //    try
+                            //    {
+                            //        constructionVPostTask.Wait();
+
+
+                            //        if (constructionVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                            //        {
+                            //            return RedirectToAction("Home", "User");
+                            //        }
+                            //        else if (constructionVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                            //        {
+                            //            DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //            ViewBag.Message = "error";
+                            //            return View();
+                            //        }
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        Library.WriteLog("At create creating construction vehicles", ex);
+                            //        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //        ViewBag.Message = "error";
+                            //        return View();
+                            //    }
+
+
+                            //}
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.TransportationVehicle)
+                        {
+                            #region TV
+                            //using (var clientTV = new HttpClient())
+                            //{
+                            //    TransportationVehicle objTransportationVehicle = new TransportationVehicle()
+                            //    {
+                            //        Company = postAdd.TVCompany_list,
+                            //        OtherCompany = postAdd.TVOtherCompany,
+                            //        SubCategory = postAdd.hdnCateSecondLevel,
+
+                            //        Price = postAdd.txtTV_Price,
+                            //        Description = postAdd.txtAddDetails,
+                            //        AddId = postId,
+                            //        ImgUrlPrimary = img1,
+                            //        ImgUrlSeconday = img2,
+                            //        ImgUrlThird = img3,
+                            //        ImgUrlFourth = img4
+                            //    };
+
+                            //    string TransportationVPostUrl = Constants.PostTransportationVehicleUrl;
+                            //    clientTV.BaseAddress = new Uri(TransportationVPostUrl);
+                            //    var transportationVPostTask = clientTV.PostAsJsonAsync<TransportationVehicle>(TransportationVPostUrl, objTransportationVehicle);
+                            //    try
+                            //    {
+                            //        transportationVPostTask.Wait();
+
+                            //        if (transportationVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                            //        {
+                            //            return RedirectToAction("Home", "User");
+                            //        }
+                            //        else if (transportationVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                            //        {
+                            //            DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //            ViewBag.Message = "error";
+                            //            return View();
+                            //        }
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        Library.WriteLog("At create creating transportation vehicles", ex);
+
+                            //        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //        ViewBag.Message = "error";
+                            //        return View();
+                            //    }
+
+                            //}
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.AgriculturalVehicle)
+                        {
+
+                            #region AV
+                            //using (var clientAV = new HttpClient())
+                            //{
+                            //    AgriculturalVehicle objAgriculturalVehicle = new AgriculturalVehicle()
+                            //    {
+                            //        Company = postAdd.AVCompany_list,
+                            //        OtherCompany = postAdd.AVOtherCompany,
+                            //        SubCategory = postAdd.hdnCateSecondLevel,
+
+                            //        Price = postAdd.txtAV_Price,
+                            //        Description = postAdd.txtAddDetails,
+                            //        AddId = postId,
+                            //        ImgUrlPrimary = img1,
+                            //        ImgUrlSeconday = img2,
+                            //        ImgUrlThird = img3,
+                            //        ImgUrlFourth = img4
+                            //    };
+
+                            //    string agriculturalVPostUrl = Constants.PostAgricutureVehicleUrl; // "http://localhost:51797/api/PostApi/AgriculturalVehicle";
+                            //    clientAV.BaseAddress = new Uri(agriculturalVPostUrl);
+                            //    var agriculturalVPostTask = clientAV.PostAsJsonAsync<AgriculturalVehicle>(agriculturalVPostUrl, objAgriculturalVehicle);
+                            //    try
+                            //    {
+                            //        agriculturalVPostTask.Wait();
+
+
+                            //        if (agriculturalVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                            //        {
+                            //            return RedirectToAction("Home", "User");
+                            //        }
+                            //        else if (agriculturalVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                            //        {
+                            //            DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //            ViewBag.Message = "error";
+                            //            return View();
+                            //        }
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        Library.WriteLog("At create creating agricultural vehicles", ex);
+
+                            //        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //        ViewBag.Message = "error";
+                            //        return View();
+                            //    }
+
+                            //}
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.PassengerVehicle)
+                        {
+                            #region PV
+                            //using (var clientPV = new HttpClient())
+                            //{
+                            //    PassengerVehicle objPassengerVehicle = new PassengerVehicle()
+                            //    {
+                            //        Company = postAdd.PVCompany_list,
+                            //        OtherCompany = postAdd.PVOtherCompany,
+                            //        SubCategory = postAdd.hdnCateSecondLevel,
+
+                            //        Price = postAdd.txtPV_price,
+                            //        Model = postAdd.PVModel_list,
+                            //        Year = postAdd.txtPV_Year,
+                            //        FuelType = postAdd.PVfueltype_list,
+                            //        KMDriven = postAdd.txtPV_kmdriven,
+                            //        Description = postAdd.txtAddDetails,
+                            //        AddId = postId,
+                            //        ImgUrlPrimary = img1,
+                            //        ImgUrlSeconday = img2,
+                            //        ImgUrlThird = img3,
+                            //        ImgUrlFourth = img4
+                            //    };
+
+                            //    string passengerVPostUrl = Constants.PostPassengerVehicleUrl;
+                            //    clientPV.BaseAddress = new Uri(passengerVPostUrl);
+                            //    var passengerVPostTask = clientPV.PostAsJsonAsync<PassengerVehicle>(passengerVPostUrl, objPassengerVehicle);
+                            //    try
+                            //    {
+                            //        passengerVPostTask.Wait();
+
+                            //        if (passengerVPostTask.Result.StatusCode == HttpStatusCode.Created)
+                            //        {
+                            //            return RedirectToAction("Home", "User");
+                            //        }
+                            //        else if (passengerVPostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                            //        {
+                            //            DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //            ViewBag.Message = "error";
+                            //            return View();
+                            //        }
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        Library.WriteLog("At create creating passenger vehicles", ex);
+
+                            //        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                            //        ViewBag.Message = "error";
+                            //        return View();
+                            //    }
+
+                            //}
+                            #endregion
+                        }
+
+                    }
+                }
+
+
+
+                
+                objPostAdd.txtTitle = "TestTitle";
+                objPostAdd.ddlRentOrSale = "Sale";
+
+                objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
+                objPostAdd.hdnCateSecondLevel = "Tractors";
+
+                objPostAdd.txtAV_Price = 12133;
+                objPostAdd.AVCompany_list = "Other";
+
+                objPostAdd.txtAddDetails = "this is test description";
+                return View(objPostAdd);
+            }
 
 
             return View();

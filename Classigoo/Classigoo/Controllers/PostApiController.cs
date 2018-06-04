@@ -253,5 +253,61 @@ namespace Classigoo.Controllers
             return StatusCode(HttpStatusCode.OK);
         }
 
+
+        [HttpGet]
+        [ActionName("GetAdd")]
+        public IHttpActionResult GetAdd(string addId)
+        {
+           
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);
+                    Add objAdd = classigooEntities.Adds.Find(id);
+
+                    if (objAdd != null)
+                    {
+                        return Ok(objAdd);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get Adds Table add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("GetRealEstate")]
+        public IHttpActionResult GetRealEstate(string addId)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);                    
+                    RealEstate objRealestae = (RealEstate)classigooEntities.RealEstates.Where(a => a.AddId == id).Select(x => x);
+
+                    if (objRealestae != null)
+                    {
+                        return Ok(objRealestae);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get Realestate Table add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
     }
 }
