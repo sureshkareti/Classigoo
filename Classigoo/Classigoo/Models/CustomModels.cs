@@ -166,6 +166,11 @@ namespace Classigoo
 
         public static string PostDeleteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteAdd";
 
+        public static string GetAdd = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetAdd";
+        public static string GetRealestate = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetRealEstate";
+
+        
+
         public const int NoOfAddsPerPage = 6;
 
         public static string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
