@@ -24,7 +24,8 @@ namespace Classigoo.Controllers
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
 
-            ViewBag.scripCall = "LoaderLoad();";
+
+            //ViewBag.scripCall = "LoaderLoad();";
 
             if (Session["UserId"] != null)
             {
@@ -37,8 +38,8 @@ namespace Classigoo.Controllers
                 objPost.PhoneNumber = user.MobileNumber;
                 objPost.Name = user.Name;
 
-                ViewBag.Name = "Suresh";
-                ViewBag.Number = "9014454730";
+                ViewBag.Name = user.Name;
+                ViewBag.Number = user.MobileNumber;
             }
             //bool isEdit = true;
             //if (isEdit)
@@ -60,7 +61,7 @@ namespace Classigoo.Controllers
             //return View(objPost);
 
 
-           
+
 
             return View();
         }
@@ -69,8 +70,8 @@ namespace Classigoo.Controllers
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
         {
 
-           
-           
+
+
 
             int postId = 0;
 
@@ -165,7 +166,7 @@ namespace Classigoo.Controllers
                     postTask.Wait();
                 }
                 catch (Exception ex)
-                {                  
+                {
                     Library.WriteLog("At controller Executing Add addtable record", ex);
 
                     ViewBag.Message = "error";
@@ -198,20 +199,40 @@ namespace Classigoo.Controllers
                         //img4 = currentDomain + "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName + 4 + "-" + postId);
 
                         //for test
-                        img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image1.FileName + 1 + "-" + postId);
-                        img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image2.FileName + 2 + "-" + postId);
-                        img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image3.FileName + 3 + "-" + postId);
-                        img4 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(Image4.FileName + 4 + "-" + postId);
+                        if (Image1 != null)
+                        {
+                            img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
+                            Image1.SaveAs(Server.MapPath(img1));
+                        }
 
-                        Image1.SaveAs(Server.MapPath(img1));
-                        Image2.SaveAs(Server.MapPath(img2));
-                        Image3.SaveAs(Server.MapPath(img3));
-                        Image4.SaveAs(Server.MapPath(img4));
+                        if (Image2 != null)
+                        {
+                            img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
+
+                            Image2.SaveAs(Server.MapPath(img2));
+                        }
+                        if (Image3 != null)
+                        {
+                            img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+
+
+                            Image3.SaveAs(Server.MapPath(img3));
+                        }
+                        if (Image4 != null)
+                        {
+                            img4 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+
+
+                            Image4.SaveAs(Server.MapPath(img4));
+                        }
+
                     }
                     catch (Exception ex)
                     {
                         Library.WriteLog("At saving images", ex);
                         DeleteImage(new List<string>() { img1, img2, img3, img4 });
+                        DeleteAdd("", Convert.ToString(postId));
+
                         ViewBag.Message = "error";
                     }
 
@@ -249,13 +270,13 @@ namespace Classigoo.Controllers
                             {
                                 realEstatepostTask.Wait();
 
-                                if(realEstatepostTask.Result.StatusCode == HttpStatusCode.Created)
+                                if (realEstatepostTask.Result.StatusCode == HttpStatusCode.Created)
                                 {
                                     return RedirectToAction("Home", "User");
                                 }
-                                else if(realEstatepostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                                else if (realEstatepostTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
                                 {
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString( postId));
+                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                     ViewBag.Message = "error";
                                     return View();
                                 }
@@ -267,7 +288,7 @@ namespace Classigoo.Controllers
                                 ViewBag.Message = "error";
                                 return View();
                             }
-                           
+
                         }
                         #endregion
                     }
@@ -317,7 +338,7 @@ namespace Classigoo.Controllers
                                 ViewBag.Message = "error";
                                 return View();
                             }
-                            
+
 
                         }
                         #endregion
@@ -368,7 +389,7 @@ namespace Classigoo.Controllers
                                 ViewBag.Message = "error";
                                 return View();
                             }
-                           
+
                         }
                         #endregion
                     }
@@ -420,7 +441,7 @@ namespace Classigoo.Controllers
                                 ViewBag.Message = "error";
                                 return View();
                             }
-                           
+
                         }
                         #endregion
                     }
@@ -474,7 +495,7 @@ namespace Classigoo.Controllers
                                 ViewBag.Message = "error";
                                 return View();
                             }
-                           
+
                         }
                         #endregion
                     }
@@ -526,7 +547,7 @@ namespace Classigoo.Controllers
 
         public bool DeleteImage(List<string> urls)
         {
-            foreach(string url in urls)
+            foreach (string url in urls)
             {
                 FileInfo file = new FileInfo(url);
                 if (file.Exists)//check file exsit or not
@@ -536,7 +557,7 @@ namespace Classigoo.Controllers
                     return true;
                 }
             }
-                      
+
             return false;
         }
 

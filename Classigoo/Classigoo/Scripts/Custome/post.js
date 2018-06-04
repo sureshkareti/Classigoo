@@ -1075,12 +1075,6 @@ function getLocal() {
 //$("#btnSubmit").click(function (e) 
 function testFunction(){
 
-   
-    alert("heloo111");
-    //e.preventDefault();
-
-    
-   
     var isValid = "true";
 
     var hiddenElements = $(':hidden');
@@ -1166,7 +1160,7 @@ function testFunction(){
         $(".loader-wrap").css("display", "block");
     }
     else {
-        //return false;
+        return false;
     }
     
    

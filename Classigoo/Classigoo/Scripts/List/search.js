@@ -75,10 +75,10 @@
             });
 
 
-            $("#listing_catagory_list").selectron();
+            //$("#listing_catagory_list").selectron();
            
 
-            $("#listing_rent_list").selectron();
+            //$("#listing_rent_list").selectron();
         }
         function FillLocations()
         {

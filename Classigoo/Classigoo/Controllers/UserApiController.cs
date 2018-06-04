@@ -252,7 +252,7 @@ namespace Classigoo.Controllers
         [ActionName("GetMyAdds")]
         public IHttpActionResult GetMyAdds(Guid userId)
         {
-            List<Add> adds = db.Adds.Where(a => a.UserId == userId).ToList();
+            List<Add> adds = db.Adds.Where(a => a.UserId == userId).OrderByDescending(add=>add.Created).ToList();
             List<CustomAdd> addColl = new List<CustomAdd>();
             foreach(Add add in adds)
             {
@@ -355,7 +355,7 @@ namespace Classigoo.Controllers
                                 District = add.District,
                                 Mandal = add.Mandal,
                                 Status = add.Status
-                            }).ToList()
+                            }).OrderByDescending(add=>add.Created).ToList()
                             .Select(add=> new Add()
                             {
                            AddId = add.AddId,

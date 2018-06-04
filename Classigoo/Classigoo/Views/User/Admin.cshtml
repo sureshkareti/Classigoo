@@ -10,8 +10,8 @@
     statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
     WebGrid grid = new WebGrid(source: Model,
-rowsPerPage: 5);
-}<div class="row table-responsive"  style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
+rowsPerPage: 15);
+}<div class="row" style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
 
     <div class="row" style="min-height:150px;text-align:center">
         @grid.GetHtml(
