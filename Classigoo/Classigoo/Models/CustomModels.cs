@@ -59,8 +59,6 @@ namespace Classigoo
 
     }
 
-
-
     public class GroupedMessageDetail
     {
         public string User { get; set; }
@@ -177,5 +175,17 @@ namespace Classigoo
 
         public static string ErrorLogFileName = "ErrorLog.txt";
 
+    }
+
+
+    public class CompleteAdd
+    {
+        //public Add add { set; get; }
+        public User user { set; get; }
+        public RealEstate realEstate { set; get; }
+        //public PassengerVehicle passengerVehicle { set; get; }
+        //public TransportationVehicle transportationVehicle { set; get; }
+        //public ConstructionVehicle constructionVehicle { set; get; }
+        //public AgriculturalVehicle agriculturalVehicle { set; get; }
     }
 }

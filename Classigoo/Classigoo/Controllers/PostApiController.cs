@@ -9,6 +9,7 @@ using Classigoo;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Core.Objects;
 using Classigoo.Models;
+using System.Globalization;
 
 namespace Classigoo.Controllers
 {
@@ -268,6 +269,17 @@ namespace Classigoo.Controllers
 
                     if (objAdd != null)
                     {
+                        
+                        //CompleteAdd objCompleteAdd = new CompleteAdd();
+
+                        ////objCompleteAdd.add = objAdd;
+                        //objCompleteAdd.user = objAdd.User;
+                        ////objCompleteAdd.agriculturalVehicle =(AgriculturalVehicle) objAdd.AgriculturalVehicles;
+                        ////objCompleteAdd.transportationVehicle =(TransportationVehicle) objAdd.TransportationVehicles;
+                        //if (objAdd.RealEstates.Count == 1)
+                        //{
+                        //    objCompleteAdd.realEstate = (RealEstate)objAdd.RealEstates.ToList()[0];
+                        //}                                          
                         return Ok(objAdd);
                     }
 

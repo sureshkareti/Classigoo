@@ -954,7 +954,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function() {
-
+            loadStates();
             BindEdit();
             var avCompnayList = @Html.Raw(Json.Encode(Model.AVCompany_list));
             $("#AVCompany_list").val(avCompnayList);
@@ -974,6 +974,43 @@
             $("#PVModel_list").val(pvModel_list);
 
             //loadStates();
+
+            loadDistrict();
+            loadMandal();
+
+
+            if("@ViewBag.img1" != null){
+                $('#imgFucFirst').attr('src', "@ViewBag.img1");
+
+                $("#btnFucFirstEdit").parent().css('display', 'none');
+                $("#btnFucFirstDelete").parent().css('display', 'block');
+                $("#btnFucFirstDelete").parent().css('text-align', 'center');
+            }
+
+
+            if("@ViewBag.img2" != null){
+                $('#imgFucSecond').attr('src', "@ViewBag.img2");
+
+                $("#btnFucSecondEdit").parent().css('display', 'none');
+                $("#btnFucSecondDelete").parent().css('display', 'block');
+                $("#btnFucSecondDelete").parent().css('text-align', 'center');
+            }
+
+            if("@ViewBag.img3" != null){
+                $('#imgFucThird').attr('src', "@ViewBag.img3");
+
+                $("#btnFucThirdEdit").parent().css('display', 'none');
+                $("#btnFucThirdDelete").parent().css('display', 'block');
+                $("#btnFucThirdDelete").parent().css('text-align', 'center');
+            }
+
+            if("@ViewBag.img4" != null){
+                $('#imgFucFour').attr('src', "@ViewBag.img4");
+
+                $("#btnFucFourEdit").parent().css('display', 'none');
+                $("#btnFucFourDelete").parent().css('display', 'block');
+                $("#btnFucFourDelete").parent().css('text-align', 'center');
+            }
 
         });
     </script>

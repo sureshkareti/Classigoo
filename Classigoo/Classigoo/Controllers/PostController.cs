@@ -54,11 +54,16 @@ namespace Classigoo.Controllers
                 using (var clientGetAdd = new HttpClient())
                 {
 
-                    clientGetAdd.BaseAddress = new Uri(Constants.GetAdd);
-                    var getAddTask = clientGetAdd.PostAsJsonAsync<String>(Constants.GetAdd, addId);
+                    string url = Constants.DomainName + "/api/UserApi/GetAddById/?addId=" + addId;
+                    clientGetAdd.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var getAddTask = clientGetAdd.GetAsync(url);
+                    
+
                     try
                     {
                         getAddTask.Wait();
+
                     }
                     catch (Exception ex)
                     {
@@ -78,9 +83,11 @@ namespace Classigoo.Controllers
                     }
                     else if (getAddTask.Result.StatusCode == HttpStatusCode.OK)
                     {
+                        
                         var readTask = getAddTask.Result.Content.ReadAsAsync<Add>();
                         readTask.Wait();
-
+                
+                      
                         Add addRecord = readTask.Result;
 
                         objPostAdd.txtTitle = addRecord.Title;
@@ -91,84 +98,87 @@ namespace Classigoo.Controllers
                         objPostAdd.Mandal = addRecord.Mandal;
                         objPostAdd.LocalArea = addRecord.NearestArea;
                         objPostAdd.ddlRentOrSale = addRecord.Type;
-                      
 
-                        if (addRecord.Category == Constants.RealEstate)
+
+                        if (addRecord.RealEstates.Count == 1)
                         {
                             #region RealEstate
 
-                            using (var clientRealEstate = new HttpClient())
-                            {                             
-                                clientRealEstate.BaseAddress = new Uri(Constants.GetRealestate);
-                                var realEstategetTask = clientRealEstate.PostAsJsonAsync<String>(Constants.GetRealestate, addId);
-                                try
-                                {
-                                    realEstategetTask.Wait();
-
-                                    if (realEstategetTask.Result.StatusCode == HttpStatusCode.NotFound)
-                                    {
-                                        ViewBag.status = "NotFound";
-                                        return View();
-                                    }
-                                    else if (realEstategetTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
-                                    {
-                                        ViewBag.Message = "error";
-                                        return View();
-                                    }
-                                    else if (realEstategetTask.Result.StatusCode == HttpStatusCode.OK)
-                                    {
-                                        var readRealestateTask = realEstategetTask.Result.Content.ReadAsAsync<RealEstate>();
-                                        readTask.Wait();
-
-                                        RealEstate realEstateRecord = readRealestateTask.Result;
-
-                                    //    objPostAdd.txtPro_Price = realEstateRecord.Price;
-                                    //    objPostAdd.hdnCateFristLevel = addRecord.Category;
-                                    //    objPostAdd.hdnCateSecondLevel = addRecord.SubCategory;
-                                    //    objPostAdd.State = addRecord.State;
-                                    //    objPostAdd.District = addRecord.District;
-                                    //    objPostAdd.Mandal = addRecord.Mandal;
-                                    //    objPostAdd.LocalArea = addRecord.NearestArea;
-                                    //    objPostAdd.ddlRentOrSale = addRecord.Type;
-
-                                    //    SubCategory = postAdd.hdnCateSecondLevel,
-
-                                    //Price = postAdd.txtPro_Price,
-                                    //Availability = postAdd.ddlAvailability,
-                                    //ListedBy = postAdd.ddlPostedBy,
-                                    //Furnishing = postAdd.ddlFurnishing,
-                                    //Bedrooms = postAdd.ddlBedrooms,
-                                    //SquareFeets = postAdd.txtSquareFeet,
-                                    //Squareyards = postAdd.txtSquareYards,
-
-                                    //Description = postAdd.txtAddDetails,
-
-                                    //AddId = postId,
-                                    //ImgUrlPrimary = img1,
-                                    //ImgUrlSeconday = img2,
-                                    //ImgUrlThird = img3,
-                                    //ImgUrlFourth = img4
 
 
-                                    }
-                                    
-                                }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At getting real estate record", ex);                               
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
+                            RealEstate realEstateRecord = addRecord.RealEstates.ToList()[0];
+
+                            objPostAdd.txtPro_Price = realEstateRecord.Price == null ? 0 : Convert.ToInt32(realEstateRecord.Price);
+                            objPostAdd.ddlAvailability = realEstateRecord.Availability;
+                            objPostAdd.ddlFurnishing = realEstateRecord.Furnishing;
+
+                            objPostAdd.txtAcres = realEstateRecord.Acres == null ? "" : Convert.ToString(realEstateRecord.Acres);
+                            objPostAdd.ddlPostedBy = realEstateRecord.ListedBy;
+                            objPostAdd.ddlBedrooms = realEstateRecord.Bedrooms;
+                            objPostAdd.txtSquareFeet = realEstateRecord.SquareFeets == null ? default(int) : Convert.ToInt32(realEstateRecord.SquareFeets);
+                            objPostAdd.txtSquareYards = realEstateRecord.Squareyards == null ? default(int) : Convert.ToInt32(realEstateRecord.Squareyards);
+                            objPostAdd.txtAddDetails = realEstateRecord.Description;
+
+                            ViewBag.img1 = realEstateRecord.ImgUrlPrimary;
+                            ViewBag.img2 = realEstateRecord.ImgUrlSeconday;
+                            ViewBag.img3 = realEstateRecord.ImgUrlThird;
+                            ViewBag.img4 = realEstateRecord.ImgUrlFourth;
+
+                            return View(objPostAdd);
 
 
-                                RealEstate objRealEstate = new RealEstate()
-                                {
-                                    
-                                };
+                            //using (var clientRealEstate = new HttpClient())
+                            //{
+                            //    clientRealEstate.BaseAddress = new Uri(Constants.GetRealestate);
+                            //    var realEstategetTask = clientRealEstate.GetAsync(Constants.GetRealestate + "?addId=" + addId);
+                            //    try
+                            //    {
+                            //        realEstategetTask.Wait();
 
-                                
+                            //        if (realEstategetTask.Result.StatusCode == HttpStatusCode.NotFound)
+                            //        {
+                            //            ViewBag.status = "NotFound";
+                            //            return View();
+                            //        }
+                            //        else if (realEstategetTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                            //        {
+                            //            ViewBag.Message = "error";
+                            //            return View();
+                            //        }
+                            //        else if (realEstategetTask.Result.StatusCode == HttpStatusCode.OK)
+                            //        {
+                            //            var readRealestateTask = realEstategetTask.Result.Content.ReadAsAsync<RealEstate>();
+                            //            readTask.Wait();
 
-                            }
+                            //            RealEstate realEstateRecord = readRealestateTask.Result;
+
+                            //            objPostAdd.txtPro_Price = realEstateRecord.Price == null ? 0 : Convert.ToInt32(realEstateRecord.Price);
+                            //            objPostAdd.ddlAvailability = realEstateRecord.Availability;
+                            //            objPostAdd.ddlFurnishing = realEstateRecord.Furnishing;
+                            //            objPostAdd.ddlPostedBy = realEstateRecord.ListedBy;
+                            //            objPostAdd.ddlBedrooms = realEstateRecord.Bedrooms;
+                            //            objPostAdd.txtSquareFeet = realEstateRecord.SquareFeets == null ? default(int) : Convert.ToInt32(realEstateRecord.SquareFeets);
+                            //            objPostAdd.txtSquareYards = realEstateRecord.Squareyards == null ? default(int) : Convert.ToInt32(realEstateRecord.Squareyards);
+                            //            objPostAdd.txtAddDetails = realEstateRecord.Description;
+
+                            //            ViewBag.img1 = realEstateRecord.ImgUrlPrimary;
+                            //            ViewBag.img1 = realEstateRecord.ImgUrlSeconday;
+                            //            ViewBag.img1 = realEstateRecord.ImgUrlThird;
+                            //            ViewBag.img1 = realEstateRecord.ImgUrlFourth;
+
+                            //            return View(objPostAdd);
+
+                            //        }
+
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        Library.WriteLog("At getting real estate record", ex);
+                            //        ViewBag.Message = "error";
+                            //        return View();
+                            //    }
+
+                            //}
                             #endregion
                         }
                         else if (addRecord.Category == Constants.ConstructionVehicle)
@@ -381,21 +391,6 @@ namespace Classigoo.Controllers
 
                     }
                 }
-
-
-
-                
-                objPostAdd.txtTitle = "TestTitle";
-                objPostAdd.ddlRentOrSale = "Sale";
-
-                objPostAdd.hdnCateFristLevel = "Agricultural Vehicles";
-                objPostAdd.hdnCateSecondLevel = "Tractors";
-
-                objPostAdd.txtAV_Price = 12133;
-                objPostAdd.AVCompany_list = "Other";
-
-                objPostAdd.txtAddDetails = "this is test description";
-                return View(objPostAdd);
             }
 
 
@@ -589,7 +584,7 @@ namespace Classigoo.Controllers
                                 Bedrooms = postAdd.ddlBedrooms,
                                 SquareFeets = postAdd.txtSquareFeet,
                                 Squareyards = postAdd.txtSquareYards,
-
+                                Acres= Convert.ToDecimal( postAdd.txtAcres),
                                 Description = postAdd.txtAddDetails,
 
                                 AddId = postId,

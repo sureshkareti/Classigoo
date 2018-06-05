@@ -717,7 +717,7 @@ window.BindEdit = function () {
 
 
 
-    if (selectedCate == "Properties") {
+    if (selectedCate == "Real Estate") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
 
@@ -821,8 +821,170 @@ window.BindEdit = function () {
     $("#categoryValidationid").css("display", "none");
 
     showothercompany();
-
+    ShowPlaceData();
 }
+
+
+function ShowPlaceData() {
+    $("#user-district").css("display", "block");
+    $("#user-mandal").css("display", "block");
+    $("#user-localarea").css("display", "block");
+}
+
+window.loadDistrict=function(){
+    var selectedState = $("#State").val();
+   
+    if (selectedState != "") {
+
+
+        //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
+
+        var locations = new Array();
+        var districs = new Array();
+        $.ajax({
+            url: '/Scripts/Json/location1.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i, field) {
+                    locations.push(field);
+                });
+            }
+        });
+
+        var selectedVehicle = locations.filter(a=>a.name == selectedState);
+
+        $.each(selectedVehicle[0].District, function (i1, field1) {
+
+            districs.push(field1.name);
+        });
+
+        $("#District").autocomplete({
+            source: districs
+
+            //    function (request, response) {
+            //    var filteredArray = $.map(districs, function (item) {
+            //        if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+            //            return item;
+            //        }
+            //        else {
+            //            return null;
+            //        }
+            //    });
+            //    response(filteredArray);
+            //}
+
+
+            ,
+            minLength: 1,
+            autoFocus: true,
+            scroll: true,
+            matchContains: true,
+            minChars: 2,
+            autoFill: true,
+            mustMatch: false,
+            cacheLength: 20,
+            max: 20,
+            close: function () {
+                $(this).blur();
+            }
+        }).focus(function () {
+            $(this).data("uiAutocomplete").search('e');
+        });
+
+        $("#user-district").css("display", "block");
+
+    }
+    else {
+        $("#user-district").css("display", "none");
+        $("#District").val("");
+        $("#user-mandal").css("display", "none");
+        $("#Mandal").val("");
+        $("#user-localarea").css("display", "none");
+        $("#LocalArea").val("");
+    }
+}
+
+window.loadMandal = function () {
+
+    var selectedDistric = $("#District").val();
+    
+    if (selectedDistric != "") {
+
+
+        //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
+
+        var locations = new Array();
+        var mandals = new Array();
+        $.ajax({
+            url: '/Scripts/Json/location1.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i, field) {
+                    $.each(field.District, function (i1, field1) {
+                        locations.push(field1);
+                        console.log(field1.name)
+
+                    });
+
+                });
+            }
+        });
+
+        var selectedStae = locations.filter(a=>a.name == selectedDistric);
+
+        //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
+        console.log(selectedStae);
+
+        $.each(selectedStae[0].Mondal, function (i1, field1) {
+            console.log(field1.name);
+
+            mandals.push(field1.name);
+        });
+
+        $("#Mandal").autocomplete({
+            source: mandals
+
+            //function (request, response) {
+            //var filteredArray = $.map(mandals, function (item) {
+            //    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+            //        return item;
+            //    }
+            //    else {
+            //        return null;
+            //    }
+            //});
+            //response(filteredArray);
+            //}
+            ,
+            minLength: 1,
+            autoFocus: true,
+            scroll: true,
+            matchContains: true,
+            minChars: 2,
+            autoFill: true,
+            mustMatch: false,
+            cacheLength: 20,
+            max: 20,
+            close: function () {
+                $(this).blur();
+            }
+        }).focus(function () {
+            $(this).data("uiAutocomplete").search('e');
+        });
+
+        $("#user-mandal").css("display", "block");
+
+    }
+    else {
+        $("#user-mandal").css("display", "none");
+        $("#Mandal").val("");
+        $("#user-localarea").css("display", "none");
+        $("#LocalArea").val("");
+    }
+}
+
 //---------------------Binding edit options---------------------------------------//
 
 

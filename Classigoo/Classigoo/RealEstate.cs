@@ -29,6 +29,7 @@ namespace Classigoo
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
         public string SubCategory { get; set; }
+        public Nullable<decimal> Acres { get; set; }
     
         public virtual Add Add { get; set; }
     }

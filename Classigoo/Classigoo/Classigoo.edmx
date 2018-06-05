@@ -105,6 +105,7 @@
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
+          <Property Name="Acres" Type="smallmoney" />
         </EntityType>
         <EntityType Name="TransportationVehicle">
           <Key>
@@ -528,6 +529,7 @@
           <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="RealEstate" ToRole="Add" />
+          <Property Name="Acres" Type="Decimal" Precision="10" Scale="4" />
         </EntityType>
         <Association Name="FK_RealEstate_Adds">
           <End Type="ClassigooModel.Add" Role="Add" Multiplicity="0..1">
@@ -670,6 +672,7 @@
           <EntitySetMapping Name="RealEstates">
             <EntityTypeMapping TypeName="ClassigooModel.RealEstate">
               <MappingFragment StoreEntitySet="RealEstate">
+                <ScalarProperty Name="Acres" ColumnName="Acres" />
                 <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
                 <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
                 <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
