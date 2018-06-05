@@ -289,6 +289,7 @@
     <Content Include="Content\img\product2.jpg" />
     <Content Include="Content\img\product2big.jpg" />
     <Content Include="Content\List\color1.css" />
+    <Content Include="Content\List\footable.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -407,6 +408,8 @@
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\Json\regions.js" />
     <Content Include="Scripts\List\custom.js" />
+    <Content Include="Scripts\List\footable.min.js" />
+    <Content Include="Scripts\List\footable.paginate.js" />
     <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
     <Content Include="Scripts\List\jquery.flexslider.js" />
     <Content Include="Scripts\List\search.js" />

@@ -14,7 +14,66 @@ rowsPerPage: 15);
 }<div class="row table-responsive" style="max-width:970px !important;margin:auto;padding:0 30px 30px 30px;">
 
     <div class="row" style="min-height:150px;text-align:center">
-        @grid.GetHtml(
+        <table id="tblAdds" data-page-navigation=".pagination" data-paging="true" data-page-first-text="first" data-page-previous-text="prev" data-page-next-text="next" data-page-last-text="last">
+            <thead>
+            <th data-class = "expand">AddId</th>
+            <th data-hide = "phone">Created</th>
+            <th data-hide = "phone">Category</th>
+            <th data-hide = "phone">State</th>
+            <th data-hide = "phone">District</th>
+            <th data-hide = "phone">Mandal</th>
+            <th >Preview</th>
+            <th>Status</th>
+            <th>Action</th>
+            </thead>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td id="addId">
+                        @item.AddId
+                    </td>
+                    <td>
+                        @item.Created
+                    </td>
+                    <td>
+                        @item.Category
+                    </td>
+                    <td>
+                        @item.State
+                    </td>
+                    <td>
+                        @item.District
+                    </td>
+                    <td>
+                        @item.Mandal
+                    </td>
+                    <td>
+                     @Html.ActionLink("Preview", "PreviewAdd", "User",new { addId = @item.AddId }, new { target = "_blank" })
+                        
+                    </td>
+                    <td>
+            <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
+      @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                        </td>
+                    <td>
+                        <button class="edit-user display-mode">Edit</button>
+                        <button class="save-user edit-mode">Save</button>
+                        <button class="cancel-user edit-mode">Cancel</button>
+                    </td>
+                    </tr>
+
+            }
+            <tfoot>
+                <tr>
+                    <td colspan="9">
+                        <div class="pagination pagination-centered"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>  
+       
+        @*@grid.GetHtml(
                         tableStyle: "table table-bordered",
                         rowStyle: "tcenter",
                         columns: grid.Columns(
@@ -24,8 +83,10 @@ grid.Column("AddId", "AddId", format: @<text> <span> <label id="addId">@item.Add
  grid.Column("State", "State"),
  grid.Column("District", "District"),
  grid.Column("Mandal", "Mandal"),
- grid.Column("Status", "Status", format: @<text> <span class="display-mode"> <label id="lblSurName">@item.Status</label> </span> 
-  @Html.DropDownList("ddlStatus", statusCollection, new {@class="edit-mode"})</text>, style: "col2Width"),
+ grid.Column("Status", "Status", format: @<text> <span class="display-mode"> 
+            <label id="lblSurName">@item.Status</label> </span> 
+  @Html.DropDownList("ddlStatus", statusCollection, new {@class="edit-mode"})
+            </text>, style: "col2Width"),
     grid.Column(header: "Preview", format: (add) =>
     {
         var link = Html.ActionLink("Preview", "PreviewAdd", "User",
@@ -36,15 +97,17 @@ grid.Column("AddId", "AddId", format: @<text> <span> <label id="addId">@item.Add
         <button class="edit-user display-mode">Edit</button>
         <button class="save-user edit-mode">Save</button>
         <button class="cancel-user edit-mode">Cancel</button>
-    </text>, style: "col3Width", canSort: false)
-    //grid.Column(header: "UpdateAddStatus", format: (add) =>
+    </text>, style: "col3Width", canSort: false)*@
+    @*//grid.Column(header: "UpdateAddStatus", format: (add) =>
     //{
     //    var link = Html.ActionLink("UpdateAddStatus", "UpdateAddStatus", new { addId = add.AddId, status = "Active" });
     //    return link;
     //})
-    ))
+    ))*@
         @*<p>No Messages are </p>*@
+        @*<div class="pagination pagination-centered"></div>*@
     </div>
+     
     </div>
 <div class="loader-wrap" style="display:none">
     <div class="loader">
@@ -53,13 +116,21 @@ grid.Column("AddId", "AddId", format: @<text> <span> <label id="addId">@item.Add
     </div>
 </div>
     @section Styles {
-        <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+        @*<link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
         <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
-<link href="~/Content/List/color1.css" rel="stylesheet" />
+<link href="~/Content/List/color1.css" rel="stylesheet" />*@
+<link href="~/Content/List/footable.min.css" rel="stylesheet" />
+ 
+    }
+@section scripts{
+    
+<script src="~/Scripts/List/footable.min.js"></script>
+<script src="~/Scripts/List/footable.paginate.js"></script>
     }
 <script>
     $(document).ready(function ()
     {
+        $('#tblAdds').footable({});
     $('.edit-mode').hide();
         $('.edit-user, .cancel-user').on('click', function () {
             var tr = $(this).parents('tr:first');
