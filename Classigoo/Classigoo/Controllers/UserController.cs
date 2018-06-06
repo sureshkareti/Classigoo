@@ -89,48 +89,17 @@ namespace Classigoo.Controllers
             user.MobileNumber = coll["inputPhone"];
             user.Name = coll["inputName"];
             user.Password = coll["inputPassword"];
+            user.Type = "Custom";
             Guid userId = IsUserExist(user.MobileNumber, "Custom");
              if (userId==Guid.Empty)
               {
-                using (var client = new HttpClient())
-                {
-
-                    user.Type = "Custom";
-                    string url = Constants.DomainName+"/api/UserApi/AddUser/?user=" + user;
-                    client.BaseAddress = new Uri(url);
-                    var postTask = client.PostAsJsonAsync<User>(url, user);
-                    try
-                    {
-                        postTask.Wait();
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    var result = postTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<User>();
-                        readTask.Wait();
-
-                        userId = readTask.Result.UserId;
-
-                        Session["UserId"] = userId;
-                        return RedirectToAction("Home", "User");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                    }
-
-                }
-
-
-            }
+               if( AddUser(user))
+               return RedirectToAction("Home", "User");
+              }
             else
-            {
+              {
                 @ViewBag.status = " Phone Number " + user.MobileNumber + " already Registered";
-            }
+              }
 
             return View();
 
@@ -154,10 +123,11 @@ namespace Classigoo.Controllers
                     readTask.Wait();
 
                     userId = readTask.Result;
+                    if(userId!=Guid.Empty)
+                    Session["UserId"] = userId;
                 }
                 else //web api sent error response 
                 {
-                    //log response status here..
 
                     ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
                 }
@@ -178,11 +148,18 @@ namespace Classigoo.Controllers
 
         public ActionResult Home()
         {
-            Guid userId = (Guid)Session["UserId"];
-            //Session["UserId"] = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");jdjfajdsf
-            List<CustomAdd> addColl = GetMyAdds(userId);
-            TempData["UserAddColl"] = addColl;
-            return View(addColl);
+            List<CustomAdd> addColl = new List<CustomAdd>();
+            if (Session["UserId"] != null)
+            {
+              Guid userId = (Guid)Session["UserId"];
+              addColl = GetMyAdds(userId);
+              TempData["UserAddColl"] = addColl;
+                return View(addColl);
+            }
+            else
+            {
+                return RedirectToAction("Home", "List");
+            }
 
         }
         [HttpPost]
@@ -513,6 +490,45 @@ namespace Classigoo.Controllers
                     return isSuccess;
                 }
 
+            }
+        }
+
+        public void SetSession(Guid userId)
+        {
+            if(userId!=Guid.Empty)
+            Session["UserId"] = userId;
+        }
+
+        public bool AddUser(User user)
+        {
+            bool isSuccess = true;
+            using (var client = new HttpClient())
+            {
+                string url = Constants.DomainName + "/api/UserApi/AddUser/?user=" + user;
+                client.BaseAddress = new Uri(url);
+                var postTask = client.PostAsJsonAsync<User>(url, user);
+                try
+                {
+                    postTask.Wait();
+                }
+                catch (Exception ex)
+                {
+                    isSuccess = false;
+                }
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<User>();
+                    readTask.Wait();
+                    Session["UserId"] = readTask.Result.UserId;
+                   // return RedirectToAction("Home", "User");
+                }
+                else
+                {
+                    isSuccess = false;
+                    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+                }
+                return isSuccess;
             }
         }
     }
