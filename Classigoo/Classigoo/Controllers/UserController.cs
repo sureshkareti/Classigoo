@@ -423,7 +423,7 @@ namespace Classigoo.Controllers
         public ActionResult SignOut()
         {
             Session.Remove("UserId");
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Home", "List");
         }
         public ActionResult Admin()
         {
@@ -491,12 +491,6 @@ namespace Classigoo.Controllers
                 }
 
             }
-        }
-
-        public void SetSession(Guid userId)
-        {
-            if(userId!=Guid.Empty)
-            Session["UserId"] = userId;
         }
 
         public bool AddUser(User user)
