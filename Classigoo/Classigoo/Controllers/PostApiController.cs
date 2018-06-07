@@ -178,7 +178,7 @@ namespace Classigoo.Controllers
 
         [HttpPost]
         [ActionName("DeleteAdd")]
-        public IHttpActionResult DeleteAdd( string[] tempArray)
+        public IHttpActionResult DeleteAdd(string[] tempArray)
         {
             string type = tempArray[0];
             string id = tempArray[1];
@@ -259,7 +259,7 @@ namespace Classigoo.Controllers
         [ActionName("GetAdd")]
         public IHttpActionResult GetAdd(string addId)
         {
-           
+
             try
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
@@ -269,7 +269,7 @@ namespace Classigoo.Controllers
 
                     if (objAdd != null)
                     {
-                        
+
                         //CompleteAdd objCompleteAdd = new CompleteAdd();
 
                         ////objCompleteAdd.add = objAdd;
@@ -303,7 +303,7 @@ namespace Classigoo.Controllers
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                    int id = Convert.ToInt32(addId);                    
+                    int id = Convert.ToInt32(addId);
                     RealEstate objRealestae = (RealEstate)classigooEntities.RealEstates.Where(a => a.AddId == id).Select(x => x);
 
                     if (objRealestae != null)
@@ -316,6 +316,75 @@ namespace Classigoo.Controllers
             catch (Exception ex)
             {
                 Library.WriteLog("At APi Get Realestate Table add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("DeleteImage")]
+        public IHttpActionResult DeleteImage(string[] addArray)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    #region RealEstate
+
+
+                    if (addArray[0] == Constants.RealEstate)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        RealEstate objRealestae = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+
+                      
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                objRealestae.ImgUrlPrimary = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                objRealestae.ImgUrlSeconday = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                objRealestae.ImgUrlThird = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                return StatusCode(HttpStatusCode.OK);
+                            }
+                            else
+                            {
+                                return StatusCode(HttpStatusCode.ExpectationFailed);
+                            }
+                        }
+                       
+                    }
+
+                    #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi delete image from database", ex);
                 return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 

@@ -89,19 +89,32 @@ $("#fucFour").change(function () {
 
 $("#btnFucFirstDelete").click(function () {
 
-    $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+    alert(isEdit);
 
-    $("#btnFucFirstEdit").parent().css('display', 'block');
-    $("#btnFucFirstEdit").parent().css('text-align', 'center');
+    if (isEdit) {
+        var imgUrl = $('#imgFucFirst').attr('src');
+        console.log(addId);
+        var id = addId;
+        var category = $("#hdnCateFristLevel").val();
+        console.log(imgUrl + id + category);
 
-    $("#btnFucFirstDelete").parent().css('display', 'none');
+        DeleteImage(imgUrl, category,"1",id);
+    }
+    else {
+        $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
+        $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
 
-    $("#divimgFucFirst").css("border", "none");
-    $("#divimgFucFirstError").css("display", "none");
+        $("#btnFucFirstEdit").parent().css('display', 'block');
+        $("#btnFucFirstEdit").parent().css('text-align', 'center');
 
-    //validation
-    showerrorImg1();
+        $("#btnFucFirstDelete").parent().css('display', 'none');
+
+        $("#divimgFucFirst").css("border", "none");
+        $("#divimgFucFirstError").css("display", "none");
+
+        //validation
+        showerrorImg1();
+    }
 
 });
 
@@ -139,6 +152,36 @@ $("#btnFucFourDelete").click(function () {
     $("#btnFucFourDelete").parent().css('display', 'none');
 
 });
+
+function DeleteImage(imageUrl,category,position,id) {
+
+    $.ajax({
+        type: "POST",
+        url: '/Post/DeleteImageEdit',
+        contentType: "application/json; charset=utf-8",
+        processData: false,
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
+        success: function (msg) {
+            if (msg == "sucess") {
+                alert("delete img successfully");
+            }
+            else if (msg = "error") {
+                alert("there is problem with deleting image");
+            }
+            
+        },
+        error: function (xhr, status, p3, p4) {        
+            var err = "Error " + " " + status + " " + p3 + " " + p4;
+            if (xhr.responseText && xhr.responseText[0] == "{")
+                err = JSON.parse(xhr.responseText).Message;
+            console.log(err);
+        }
+    });
+};
+
+/*---------------------------------file uploading functionality---------------------*/
 
 //function readURL(input) {
 
@@ -831,9 +874,9 @@ function ShowPlaceData() {
     $("#user-localarea").css("display", "block");
 }
 
-window.loadDistrict=function(){
+window.loadDistrict = function () {
     var selectedState = $("#State").val();
-   
+
     if (selectedState != "") {
 
 
@@ -908,7 +951,7 @@ window.loadDistrict=function(){
 window.loadMandal = function () {
 
     var selectedDistric = $("#District").val();
-    
+
     if (selectedDistric != "") {
 
 
@@ -924,8 +967,7 @@ window.loadMandal = function () {
                 $.each(data, function (i, field) {
                     $.each(field.District, function (i1, field1) {
                         locations.push(field1);
-                        console.log(field1.name)
-
+                       
                     });
 
                 });
@@ -935,11 +977,9 @@ window.loadMandal = function () {
         var selectedStae = locations.filter(a=>a.name == selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
-        console.log(selectedStae);
-
+       
         $.each(selectedStae[0].Mondal, function (i1, field1) {
-            console.log(field1.name);
-
+          
             mandals.push(field1.name);
         });
 
@@ -1147,8 +1187,7 @@ function getMandal() {
                 $.each(data, function (i, field) {
                     $.each(field.District, function (i1, field1) {
                         locations.push(field1);
-                        console.log(field1.name)
-
+                        
                     });
 
                 });
@@ -1158,11 +1197,9 @@ function getMandal() {
         var selectedStae = locations.filter(a=>a.name == selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
-        console.log(selectedStae);
-
+      
         $.each(selectedStae[0].Mondal, function (i1, field1) {
-            console.log(field1.name);
-
+           
             mandals.push(field1.name);
         });
 
@@ -1235,7 +1272,7 @@ function getLocal() {
 
 //-------------------------- for properties validation -------------------------------//
 //$("#btnSubmit").click(function (e) 
-function testFunction(){
+function testFunction() {
 
     var isValid = "true";
 
@@ -1246,7 +1283,7 @@ function testFunction(){
 
     })
 
-    
+
 
     var selectedCategory = $("#hdnCateFristLevel").val();
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
@@ -1271,8 +1308,8 @@ function testFunction(){
             $(window).scrollTop($('#scrolltoCat').offset().top);
 
 
-            return ;
-        
+            return;
+
         }
     }
 
@@ -1288,10 +1325,10 @@ function testFunction(){
             isValid = "false";
 
             return false;
-           
+
         }
     }
- 
+
     var inputElements = $('input:not(:hidden)');
 
     inputElements.each(function () {
@@ -1300,16 +1337,16 @@ function testFunction(){
                 isValid = "false";
             }
         }
-             
+
     });
 
     var selectElements = $('select:not(:hidden)');
 
     selectElements.each(function () {
-            if ($(this).val() == "") {
-                isValid = "false";
-            }
-        
+        if ($(this).val() == "") {
+            isValid = "false";
+        }
+
     });
 
     if ($("#txtAddDetails").val() == "") {
@@ -1317,15 +1354,15 @@ function testFunction(){
         isValid = "false";
     }
 
-    if ( isValid == "true" ) {
-       
+    if (isValid == "true") {
+
         $(".loader-wrap").css("display", "block");
     }
     else {
         return false;
     }
-    
-   
+
+
     //alert($('#forProperties').css('display') == 'none');
 };
 

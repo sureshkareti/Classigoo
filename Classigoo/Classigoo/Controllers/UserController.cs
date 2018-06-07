@@ -124,7 +124,7 @@ namespace Classigoo.Controllers
 
                     userId = readTask.Result;
                     if(userId!=Guid.Empty)
-                    Session["UserId"] = userId;
+                    System.Web.HttpContext.Current.Session["UserId"] = userId;
                 }
                 else //web api sent error response 
                 {

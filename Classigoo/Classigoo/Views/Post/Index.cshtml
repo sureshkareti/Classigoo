@@ -953,6 +953,10 @@
 @if (Model != null)
 {
     <script type="text/javascript">
+
+        var isEdit = true;
+        var addId = "@ViewBag.addId";
+
         $(document).ready(function() {
             loadStates();
             BindEdit();
@@ -1011,6 +1015,9 @@
                 $("#btnFucFourDelete").parent().css('display', 'block');
                 $("#btnFucFourDelete").parent().css('text-align', 'center');
             }
+
+
+
 
         });
     </script>
