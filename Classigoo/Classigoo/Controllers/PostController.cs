@@ -48,6 +48,7 @@ namespace Classigoo.Controllers
 
             if (addId != null)
             {
+                ViewBag.addId = addId;
 
                 PostAdd objPostAdd = new PostAdd();
 
@@ -58,7 +59,7 @@ namespace Classigoo.Controllers
                     clientGetAdd.BaseAddress = new Uri(url);
                     //HTTP GET
                     var getAddTask = clientGetAdd.GetAsync(url);
-                    
+
 
                     try
                     {
@@ -83,11 +84,11 @@ namespace Classigoo.Controllers
                     }
                     else if (getAddTask.Result.StatusCode == HttpStatusCode.OK)
                     {
-                        
+
                         var readTask = getAddTask.Result.Content.ReadAsAsync<Add>();
                         readTask.Wait();
-                
-                      
+
+
                         Add addRecord = readTask.Result;
 
                         objPostAdd.txtTitle = addRecord.Title;
@@ -391,6 +392,8 @@ namespace Classigoo.Controllers
 
                     }
                 }
+
+                
             }
 
 
@@ -584,7 +587,7 @@ namespace Classigoo.Controllers
                                 Bedrooms = postAdd.ddlBedrooms,
                                 SquareFeets = postAdd.txtSquareFeet,
                                 Squareyards = postAdd.txtSquareYards,
-                                Acres= Convert.ToDecimal( postAdd.txtAcres),
+                                Acres = Convert.ToDecimal(postAdd.txtAcres),
                                 Description = postAdd.txtAddDetails,
 
                                 AddId = postId,
@@ -890,6 +893,43 @@ namespace Classigoo.Controllers
             }
 
             return false;
+        }
+
+        public JsonResult DeleteImageEdit(string imgUrl, string category, string position, string id)
+        {
+            using (var clientDeleteImg = new HttpClient())
+            {
+
+                clientDeleteImg.BaseAddress = new Uri(Constants.PostDeleteImage);
+                var deleteimgTask = clientDeleteImg.PostAsJsonAsync<String[]>(Constants.PostDeleteImage, new string[] { category, id, position });
+                try
+                {
+                    deleteimgTask.Wait();
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At controller Executing Delete Image", ex);
+
+                    return Json("error", JsonRequestBehavior.AllowGet);
+                }
+
+                if (deleteimgTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                {
+                    return Json("error", JsonRequestBehavior.AllowGet);
+                }
+                else if (deleteimgTask.Result.StatusCode == HttpStatusCode.OK)
+                {
+                    bool isImgDeleted = DeleteImage(new List<string>() { imgUrl });
+                    if (!isImgDeleted)
+                    {
+                        Library.WriteLog("At controller Executing deletig physical image");
+                    }
+
+                    return Json("sucess", JsonRequestBehavior.AllowGet);
+                }
+            }
+
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
     }
