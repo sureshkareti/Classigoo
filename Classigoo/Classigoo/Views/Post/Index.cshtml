@@ -953,6 +953,9 @@
 @if (Model != null)
 {
     <script type="text/javascript">
+
+        var isEdit = true;
+
         $(document).ready(function() {
             loadStates();
             BindEdit();
@@ -1011,6 +1014,9 @@
                 $("#btnFucFourDelete").parent().css('display', 'block');
                 $("#btnFucFourDelete").parent().css('text-align', 'center');
             }
+
+           
+
 
         });
     </script>

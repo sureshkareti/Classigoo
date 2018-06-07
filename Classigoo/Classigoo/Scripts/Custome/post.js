@@ -89,19 +89,27 @@ $("#fucFour").change(function () {
 
 $("#btnFucFirstDelete").click(function () {
 
-    $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
-    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+    alert(isEdit);
 
-    $("#btnFucFirstEdit").parent().css('display', 'block');
-    $("#btnFucFirstEdit").parent().css('text-align', 'center');
+    if (isEdit) {
 
-    $("#btnFucFirstDelete").parent().css('display', 'none');
 
-    $("#divimgFucFirst").css("border", "none");
-    $("#divimgFucFirstError").css("display", "none");
+    }
+    else {
+        $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
+        $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
 
-    //validation
-    showerrorImg1();
+        $("#btnFucFirstEdit").parent().css('display', 'block');
+        $("#btnFucFirstEdit").parent().css('text-align', 'center');
+
+        $("#btnFucFirstDelete").parent().css('display', 'none');
+
+        $("#divimgFucFirst").css("border", "none");
+        $("#divimgFucFirstError").css("display", "none");
+
+        //validation
+        showerrorImg1();
+    }
 
 });
 
@@ -831,9 +839,9 @@ function ShowPlaceData() {
     $("#user-localarea").css("display", "block");
 }
 
-window.loadDistrict=function(){
+window.loadDistrict = function () {
     var selectedState = $("#State").val();
-   
+
     if (selectedState != "") {
 
 
@@ -908,7 +916,7 @@ window.loadDistrict=function(){
 window.loadMandal = function () {
 
     var selectedDistric = $("#District").val();
-    
+
     if (selectedDistric != "") {
 
 
@@ -1235,7 +1243,7 @@ function getLocal() {
 
 //-------------------------- for properties validation -------------------------------//
 //$("#btnSubmit").click(function (e) 
-function testFunction(){
+function testFunction() {
 
     var isValid = "true";
 
@@ -1246,7 +1254,7 @@ function testFunction(){
 
     })
 
-    
+
 
     var selectedCategory = $("#hdnCateFristLevel").val();
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
@@ -1271,8 +1279,8 @@ function testFunction(){
             $(window).scrollTop($('#scrolltoCat').offset().top);
 
 
-            return ;
-        
+            return;
+
         }
     }
 
@@ -1288,10 +1296,10 @@ function testFunction(){
             isValid = "false";
 
             return false;
-           
+
         }
     }
- 
+
     var inputElements = $('input:not(:hidden)');
 
     inputElements.each(function () {
@@ -1300,16 +1308,16 @@ function testFunction(){
                 isValid = "false";
             }
         }
-             
+
     });
 
     var selectElements = $('select:not(:hidden)');
 
     selectElements.each(function () {
-            if ($(this).val() == "") {
-                isValid = "false";
-            }
-        
+        if ($(this).val() == "") {
+            isValid = "false";
+        }
+
     });
 
     if ($("#txtAddDetails").val() == "") {
@@ -1317,15 +1325,15 @@ function testFunction(){
         isValid = "false";
     }
 
-    if ( isValid == "true" ) {
-       
+    if (isValid == "true") {
+
         $(".loader-wrap").css("display", "block");
     }
     else {
         return false;
     }
-    
-   
+
+
     //alert($('#forProperties').css('display') == 'none');
 };
 
