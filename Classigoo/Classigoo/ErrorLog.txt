@@ -62,3 +62,5 @@ Classigoo ; Object reference not set to an instance of an object.
 System.Web ; 'http:/localhost:51797/ImgColl/Andhra Pradesh/Nellore/Buchireddipalem/22051039_1553578188035190_7387760531708737901_o.jpg1-1085' is not a valid virtual path.
 6/5/2018 12:53:38 PM : At APi Get Realestate Table add
 Classigoo ; Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[Classigoo.RealEstate]' to type 'Classigoo.RealEstate'.
+6/8/2018 11:10:31 AM : At controller Executing deletig physical image
+
