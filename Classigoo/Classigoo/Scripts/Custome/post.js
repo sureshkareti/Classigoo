@@ -165,6 +165,30 @@ function DeleteImage(imageUrl,category,position,id) {
         data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
             if (msg == "sucess") {
+
+                if (position == "1") {
+                   
+                    $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
+                    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+
+                    $("#btnFucFirstEdit").parent().css('display', 'block');
+                    $("#btnFucFirstEdit").parent().css('text-align', 'center');
+
+                    $("#btnFucFirstDelete").parent().css('display', 'none');
+
+                    $("#divimgFucFirst").css("border", "none");
+                    $("#divimgFucFirstError").css("display", "none");
+                }
+                else if (position == "2") {
+
+                }
+                else if (position == "3") {
+
+                }
+                else if (position == "4") {
+
+                }
+
                 alert("delete img successfully");
             }
             else if (msg = "error") {
@@ -180,6 +204,67 @@ function DeleteImage(imageUrl,category,position,id) {
         }
     });
 };
+
+
+window.SetDefalutImage = function () {
+ 
+    var imgFirstUrl =$('#imgFucFirst').attr('src');
+    var imgSecondUrl =$('#imgFucSecond').attr('src');
+    var imgThirdUrl =$('#imgFucThird').attr('src');
+    var imgFourUrl = $('#imgFucFour').attr('src');
+
+    if (imgSecondUrl != "/images/upimglogo1.png") {
+
+        $("#divSetDefalutSecond").css("display", "block");
+    }
+    if (imgThirdUrl != "/images/upimglogo1.png") {
+
+        $("#divSetDefalutThird").css("display", "block");
+    }
+    if (imgFourUrl != "/images/upimglogo1.png") {
+
+        $("#divSetDefalutFour").css("display", "block");
+    } 
+}
+
+$("#btnSetDefalutSecond").click(function () {
+
+    var id = addId;
+    var category = $("#hdnCateFristLevel").val();
+    ChangeDefaultImage(category,"2",id);
+});
+
+function ChangeDefaultImage(category,position, id) {
+
+    $.ajax({
+        type: "POST",
+        url: '/Post/ChangeDefaultImage',
+        contentType: "application/json; charset=utf-8",
+        processData: false,
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify({ 'category': category, 'position': position, 'id': id }),
+        success: function (msg) {
+            if (msg == "sucess") {
+
+                $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+
+                alert("delete img successfully");
+            }
+            else if (msg = "error") {
+                alert("there is problem with deleting image");
+            }
+
+        },
+        error: function (xhr, status, p3, p4) {
+            var err = "Error " + " " + status + " " + p3 + " " + p4;
+            if (xhr.responseText && xhr.responseText[0] == "{")
+                err = JSON.parse(xhr.responseText).Message;
+            console.log(err);
+        }
+    });
+}
+
 
 /*---------------------------------file uploading functionality---------------------*/
 

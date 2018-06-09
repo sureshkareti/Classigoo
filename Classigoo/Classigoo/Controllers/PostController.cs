@@ -932,5 +932,35 @@ namespace Classigoo.Controllers
             return Json("", JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult ChangeDefaultImage(string category ,string position, string id)
+        {
+            using (var clientchangeDefaultImg = new HttpClient())
+            {
+
+                clientchangeDefaultImg.BaseAddress = new Uri(Constants.ChangeDefaultImage);
+                var changedefaltimgTask = clientchangeDefaultImg.PostAsJsonAsync<String[]>(Constants.ChangeDefaultImage, new string[] { category, id, position });
+                try
+                {
+                    changedefaltimgTask.Wait();
+
+                    if (changedefaltimgTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
+                    {
+                        return Json("error", JsonRequestBehavior.AllowGet);
+                    }
+                    else if (changedefaltimgTask.Result.StatusCode == HttpStatusCode.OK)
+                    {
+                        return Json("sucess", JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At controller Executing Delete Image", ex);
+                    return Json("error", JsonRequestBehavior.AllowGet);
+                }                
+            }
+
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

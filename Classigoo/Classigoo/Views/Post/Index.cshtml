@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { name = "defaultForm", id= "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
 
     <div>
@@ -332,7 +332,7 @@
                                                 <div class="col-md-4">
                                                     @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
                                                     @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
-                                                    @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@                                                  
+                                                    @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                     @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -699,6 +699,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutSecond">
+                                                <span style="text-align:center">
+                                                    set as defalut :
+                                                    <a href="#" id="btnSetDefalutSecond"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                </span>
+
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
@@ -713,6 +720,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutThird">
+                                                <span style="text-align:center">
+                                                    set as defalut :
+                                                    <a href="#" id="btnSetDefalutThird"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                </span>
+
+                                            </div>
                                         </div>
                                         <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
                                             <div class="w3-card fileuploading">
@@ -726,8 +740,17 @@
                                                         <button type="button" id="btnFucFourDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
                                                     </div>
                                                 </div>
+
+                                            </div>
+                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutFour">
+                                                <span style="text-align:center">
+                                                    set as defalut :
+                                                    <a href="#" id="btnSetDefalutFour"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                </span>
+                                               
                                             </div>
                                         </div>
+                                      
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -946,7 +969,7 @@
         }
     });
 
-    
+
 
 </script>
 
@@ -983,7 +1006,8 @@
             loadMandal();
 
 
-            if("@ViewBag.img1" != null){
+           
+            if("@ViewBag.img1" != ""){
                 $('#imgFucFirst').attr('src', "@ViewBag.img1");
 
                 $("#btnFucFirstEdit").parent().css('display', 'none');
@@ -992,7 +1016,7 @@
             }
 
 
-            if("@ViewBag.img2" != null){
+            if("@ViewBag.img2" != ""){
                 $('#imgFucSecond').attr('src', "@ViewBag.img2");
 
                 $("#btnFucSecondEdit").parent().css('display', 'none');
@@ -1000,7 +1024,7 @@
                 $("#btnFucSecondDelete").parent().css('text-align', 'center');
             }
 
-            if("@ViewBag.img3" != null){
+            if("@ViewBag.img3" != ""){
                 $('#imgFucThird').attr('src', "@ViewBag.img3");
 
                 $("#btnFucThirdEdit").parent().css('display', 'none');
@@ -1008,7 +1032,7 @@
                 $("#btnFucThirdDelete").parent().css('text-align', 'center');
             }
 
-            if("@ViewBag.img4" != null){
+            if("@ViewBag.img4" != ""){
                 $('#imgFucFour').attr('src', "@ViewBag.img4");
 
                 $("#btnFucFourEdit").parent().css('display', 'none');
@@ -1016,7 +1040,7 @@
                 $("#btnFucFourDelete").parent().css('text-align', 'center');
             }
 
-
+            SetDefalutImage();
 
 
         });

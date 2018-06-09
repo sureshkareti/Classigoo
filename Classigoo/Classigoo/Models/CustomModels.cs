@@ -164,8 +164,9 @@ namespace Classigoo
 
         public static string PostDeleteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteAdd";
         public static string PostDeleteImage = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteImage";
+        public static string ChangeDefaultImage = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/ChangeDefaultImage";
 
-        
+
 
         public static string GetAdd = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetAdd";
         public static string GetRealestate = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetRealEstate";

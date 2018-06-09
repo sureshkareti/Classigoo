@@ -322,7 +322,7 @@ namespace Classigoo.Controllers
             return StatusCode(HttpStatusCode.NotFound);
         }
 
-        [HttpGet]
+        [HttpPost]
         [ActionName("DeleteImage")]
         public IHttpActionResult DeleteImage(string[] addArray)
         {
@@ -377,6 +377,75 @@ namespace Classigoo.Controllers
                             }
                         }
                        
+                    }
+
+                    #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi delete image from database", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+
+        [HttpPost]
+        [ActionName("ChangeDefaultImage")]
+        public IHttpActionResult ChangeDefaultImage(string[] addArray)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    #region RealEstate
+
+
+                    if (addArray[0] == Constants.RealEstate)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        RealEstate objRealestae = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            
+                            if (addArray[2] == "2")
+                            {
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                objRealestae.ImgUrlPrimary =objRealestae.ImgUrlThird ;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlPrimary  =objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                return StatusCode(HttpStatusCode.OK);
+                            }
+                            else
+                            {
+                                return StatusCode(HttpStatusCode.ExpectationFailed);
+                            }
+                        }
+
                     }
 
                     #endregion
