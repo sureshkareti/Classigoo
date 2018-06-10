@@ -146,6 +146,7 @@ namespace Classigoo.Controllers
             if (Session["UserId"] != null)
             {
               Guid userId = (Guid)Session["UserId"];
+              Session["UserName"] = GetUserDetails(userId).Name;
               addColl = GetMyAdds(userId);
               TempData["UserAddColl"] = addColl;
                 return View(addColl);
