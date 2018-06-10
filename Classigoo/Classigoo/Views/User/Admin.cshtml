@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Add>
+﻿@model IEnumerable<AdminAdd>
 @{
+
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
     List<SelectListItem> statusCollection = new List<SelectListItem>();
 
     statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
@@ -9,163 +11,169 @@
     statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
-    WebGrid grid = new WebGrid(source: Model,
-rowsPerPage: 15);
 }
-<table id="tblAdds" class="table" data-state="true" data-page-navigation=".pagination" data-paging="true" data-page-first-text="first" data-page-previous-text="prev" data-page-next-text="next" data-page-last-text="last">
-    <thead>
-    <th data-class="expand">AddId</th>
-    <th data-hide="phone">Created</th>
-    <th data-hide="phone">Category</th>
-    <th data-hide="phone">State</th>
-    <th data-hide="phone">District</th>
-    <th data-hide="phone">Mandal</th>
-    <th>Preview</th>
-    <th>Status</th>
-    <th>Action</th>
-    </thead>
-    @foreach (var item in Model)
-            {
 
-            <tr>
-                <td id="addId">
-                    @item.AddId
-                </td>
-                <td>
-                    @item.Created
-                </td>
-                <td>
-                    @item.Category
-                </td>
-                <td>
-                    @item.State
-                </td>
-                <td>
-                    @item.District
-                </td>
-                <td>
-                    @item.Mandal
-                </td>
-                <td>
-                    @Html.ActionLink("Preview", "PreviewAdd", "User",new { addId = @item.AddId }, new { target = "_blank" })
+@using (Html.BeginForm("Admin1", "Post", FormMethod.Get, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+{
+    <div>
+ </div>
 
-                </td>
-                <td>
-                    <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
-                    @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
-                </td>
-                <td>
-                    <button class="edit-user display-mode">Edit</button>
-                    <button class="save-user edit-mode">Save</button>
-                    <button class="cancel-user edit-mode">Cancel</button>
-                </td>
-            </tr>
+    <div>
+        <div class="breadcrumb-block">
 
-            }
-    <tfoot>
-        <tr class="footable-paging">
-            <td colspan="2">
-                <div class="pagination pagination-centered"></div>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+        </div>
+        <div class="add-listing-wrap">
+            <div class="container">
 
-@*@grid.GetHtml(
-                            tableStyle: "table table-bordered",
-                            rowStyle: "tcenter",
-                            columns: grid.Columns(
-    grid.Column("AddId", "AddId", format: @<text> <span> <label id="addId">@item.AddId</label> </span></text>),
-     grid.Column("Created", header: "CreatedDate"),
-     grid.Column("Category", "Category"),
-     grid.Column("State", "State"),
-     grid.Column("District", "District"),
-     grid.Column("Mandal", "Mandal"),
-     grid.Column("Status", "Status", format: @<text> <span class="display-mode">
-                <label id="lblSurName">@item.Status</label> </span>
-      @Html.DropDownList("ddlStatus", statusCollection, new {@class="edit-mode"})
-                </text>, style: "col2Width"),
-        grid.Column(header: "Preview", format: (add) =>
-        {
-            var link = Html.ActionLink("Preview", "PreviewAdd", "User",
-                                    new { addId = add.AddId }, new { });
-            return link;
-        }),
-         grid.Column("Action", format: @<text>
-            <button class="edit-user display-mode">Edit</button>
-            <button class="save-user edit-mode">Save</button>
-            <button class="cancel-user edit-mode">Cancel</button>
-        </text>, style: "col3Width", canSort: false)*@
-@*//grid.Column(header: "UpdateAddStatus", format: (add) =>
-    //{
-    //    var link = Html.ActionLink("UpdateAddStatus", "UpdateAddStatus", new { addId = add.AddId, status = "Active" });
-    //    return link;
-    //})
-    ))*@
-@*<p>No Messages are </p>*@
-@*<div class="pagination pagination-centered"></div>*@
-@*</div>
 
-    </div>*@
+                <div class="add-listing-tost-block">
+                    <p></p>
+                </div>
+
+                <div class="add-listing-tost-block" style="width:100%; padding:15px 15px 15px 15px;border-radius:3px;box-shadow:0px 1px 11px -1px rgba(216, 216, 216, 0.75)">
+
+                    <table id="tblAdds" class="table table-striped table-bordered nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th data-class="expand">AddId</th>
+                                <th data-hide="phone">Created</th>
+                                <th data-hide="phone">Category</th>
+                                <th data-hide="phone">State</th>
+                                <th data-hide="phone">District</th>
+                                <th data-hide="phone">Mandal</th>
+                                <th data-hide="phone">UserName</th>
+                                <th data-hide="phone">Mobile</th>
+                                <th data-hide="phone">Rent/Sale</th>
+                                <th>Preview</th>
+                                <th>Status</th>
+                                <th >Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td id="addId">
+                                        @item.AddId
+                                    </td>
+                                    <td>
+                                        @item.Created
+                                    </td>
+                                    <td>
+                                        @item.Category
+                                    </td>
+                                    <td>
+                                        @item.State
+                                    </td>
+                                    <td>
+                                        @item.District
+                                    </td>
+                                    <td>
+                                        @item.Mandal
+                                    </td>
+                                    <td>
+                                       @item.UserName
+                                    </td>
+                                    <td>
+                                       @item.PhoneNum
+                                    </td>
+                                    <td>
+                                        @item.Type
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Preview", "PreviewAdd", "User", new { addId = @item.AddId }, new { target = "_blank" })
+
+                                    </td>
+                                    <td>
+                                        <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
+                                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        <input type="button" value="Edit" class="edit-user display-mode" onclick="FnEditCancel(event);" />
+                                        <input type="button" class="save-user edit-mode" value="Save" onclick="FnSave(event)" />
+                                        <input type="button" class="cancel-user edit-mode" value="Cancel" onclick="FnEditCancel(event);"/>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+}
+
 <div class="loader-wrap" style="display:none">
     <div class="loader">
         <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
         <span class="loader-item"></span><span class="loader-item"></span>
     </div>
 </div>
-
-
 @section Styles {
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
-
-    @*<link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
-                <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
-        <link href="~/Content/List/color1.css" rel="stylesheet" />*@
-    @*<link href="@Url.Content("~/Content/List/footable.min.css")" rel="stylesheet" />*@
-
-
-}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
+ <link href="~/Content/List/color1.css" rel="stylesheet" />
+   }
 @section scripts{
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/List/footable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
-    <script src="~/Scripts/List/footable.paginate.js"></script>
-}
-@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">*@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+<script src="~/Scripts/List/dataTables.min.js"></script>
+<script src="~/Scripts/List/bootstrap.min.js"></script>
+<script src="~/Scripts/List/responsive.min.js"></script>
+<script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
+    }
 
-<link href="~/Content/List/footable.bootstrap.min.css" rel="stylesheet" />
-<link href="https://github.com/fooplugins/FooTable/blob/V3/src/css/components/FooTable.Paging.css" rel="stylesheet" />
-<link href="https://github.com/fooplugins/FooTable/blob/V3/docs/css/prism.css" rel="stylesheet" />
-<script>
+<script type="text/javascript">
+    function FnEditCancel(e) {
+        var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+        var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
+        $(editElemts).each(function (index) {
+            $(this).toggle();
+        });
+        $(displayElemts).each(function (index) {
+            $(this).toggle();
+        });
+    }
+    function FnSave(e)
+    {
+        $(".loader-wrap").show();
+        var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+        var status = editElemts.ddlStatus.value
+        var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
+        $.ajax({
+            url: '/User/UpdateAddStatus/',
+            data: { addId: addId, status: status },
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                window.location.href = "/User/Admin";
+                $(".loader-wrap").hide();
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            }
+        });
+    }
     $(document).ready(function () {
-        $('#tblAdds').footable({});
         $('.edit-mode').hide();
-        $('.edit-user, .cancel-user').on('click', function () {
-            var tr = $(this).parents('tr:first');
-            tr.find('.edit-mode, .display-mode').toggle();
-        });
-        $('.save-user').on('click', function () {
-            $(".loader-wrap").show();
-            var tr = $(this).parents('tr:first');
-            var status = tr.find("#ddlStatus").val();
-            var addId = tr.find("#addId").text();
-            $.ajax({
-                url: '/User/UpdateAddStatus/',
-                data: { addId: addId, status: status },
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                    window.location.href = "/User/Admin";
-                    $(".loader-wrap").hide();
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                }
-            });
-        });
+        var table = $('#tblAdds').DataTable({
+            "responsive": true,
+            //"columnDefs": [{ "targets": -1, "data": null, "defaultContent": "<input id='btnDetails' class='btn btn-success' width='25px' value='Get Details' />" }]
+
+        });  
+
     });
 </script>
+

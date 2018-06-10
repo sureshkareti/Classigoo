@@ -345,9 +345,12 @@ namespace Classigoo.Controllers
                                    State = add.State,
                                    District = add.District,
                                    Mandal = add.Mandal,
-                                   Status = add.Status
+                                   Status = add.Status,
+                                   Type=add.Type,
+                                   UserName = add.User.Name,
+                                   PhoneNum=add.User.MobileNumber
                                }).OrderByDescending(add => add.Created).ToList()
-                                .Select(add => new Add()
+                                .Select(add => new AdminAdd()
                                 {
                                     AddId = add.AddId,
                                     Created = add.Created,
@@ -355,7 +358,10 @@ namespace Classigoo.Controllers
                                     State = add.State,
                                     District = add.District,
                                     Mandal = add.Mandal,
-                                    Status = add.Status
+                                    Status = add.Status,
+                                    Type=add.Type,
+                                    UserName = add.UserName,
+                                    PhoneNum = add.PhoneNum
                                 });
             
                 if (addColl.Count() > 0)

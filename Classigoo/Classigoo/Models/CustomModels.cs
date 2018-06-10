@@ -10,7 +10,7 @@ namespace Classigoo
     {
         public List<CustomAdd> Adds { get; set; }
 
-        public List< List<CustomAdd>> AddsGrid { get; set; }
+        public List<List<CustomAdd>> AddsGrid { get; set; }
 
         public int CurrentPageIndex { get; set; }
 
@@ -66,9 +66,6 @@ namespace Classigoo
         public int Notification { get { return GroupedMessages.Count(x => x.IsRed == false); } }
 
     }
-
-
-
     public class Messages
     {
         public List<GroupedMessageDetail> Inbox { get; set; }
@@ -82,7 +79,7 @@ namespace Classigoo
     }
 
     public class PostAdd
-    {      
+    {
         public string txtTitle { set; get; }
         public string ddlRentOrSale { set; get; }
         public string hdnCateFristLevel { set; get; }
@@ -103,7 +100,7 @@ namespace Classigoo
 
         public string PVCompany_list { set; get; }
         public string PVOtherCompany { set; get; }
-        public int txtPV_price { set; get; }       
+        public int txtPV_price { set; get; }
         public string PVModel_list { set; get; }
         public int txtPV_Year { set; get; }
         public string PVfueltype_list { set; get; }
@@ -155,12 +152,12 @@ namespace Classigoo
         public const string PassengerVehicle = "Passenger Vehicles";
 
 
-        public static string PostAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/PostAdd";
-        public static string PostAgricutureVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/AgriculturalVehicle";
-        public static string PostConstructionVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/ConstructionVehicle";
-        public static string PostTransportationVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/TransportationVehicle";
-        public static string PostPassengerVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/PassengerVehicle";
-        public static string PostRealEstateUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+ "/api/PostApi/RealEstate";
+        public static string PostAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/PostAdd";
+        public static string PostAgricutureVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/AgriculturalVehicle";
+        public static string PostConstructionVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/ConstructionVehicle";
+        public static string PostTransportationVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/TransportationVehicle";
+        public static string PostPassengerVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/PassengerVehicle";
+        public static string PostRealEstateUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/RealEstate";
 
         public static string PostDeleteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteAdd";
         public static string PostDeleteImage = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteImage";
@@ -171,7 +168,7 @@ namespace Classigoo
         public static string GetAdd = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetAdd";
         public static string GetRealestate = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/GetRealEstate";
 
-        
+
 
         public const int NoOfAddsPerPage = 6;
 
@@ -192,4 +189,18 @@ namespace Classigoo
         //public ConstructionVehicle constructionVehicle { set; get; }
         //public AgriculturalVehicle agriculturalVehicle { set; get; }
     }
+    public class AdminAdd
+    {
+     public int AddId { get; set; }
+    public Nullable<System.DateTime> Created { get; set; }
+    public string UserName{ get; set; }
+    public string PhoneNum { get; set; }
+    public string Category { get; set; }
+    public string Status { get; set; }
+    public string State { get; set; }
+    public string District { get; set; }
+    public string Mandal { get; set; }
+    public string Type { get; set; }
+}
+    
 }
