@@ -63,12 +63,12 @@ namespace Classigoo.Controllers
             {
                 if (UserExists(user.UserId))
                 {
-                    Library.WriteLog("At adduser user already exist", ex);
+                    Library.WriteLog("At Api adduser user already exist", ex);
                    // return Conflict();
                 }
                 else
                 {
-                    Library.WriteLog("At adduser", ex);
+                    Library.WriteLog("At Api adduser", ex);
                     // throw;
                 }
             }
@@ -191,29 +191,35 @@ namespace Classigoo.Controllers
         [ActionName("UpdateUserDetails")]
         public IHttpActionResult UpdateUserDetails(User user)
         {
+            int response = 0;
             try
             {
                 //if (!ModelState.IsValid)
                 //{
                 //    return BadRequest(ModelState);
                 //}
-                db.Entry(user).State = EntityState.Modified;
+               db.Entry(user).State = EntityState.Modified;
 
                 try
                 {
-                    db.SaveChanges();
+                  response=  db.SaveChanges();
+                  Library.WriteLog("At Api updating user details - response code "+response);
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Library.WriteLog("At updating user details- dbupdate", ex);
+                    Library.WriteLog("At Api updating user details- dbupdate", ex);
                 }
             }
             catch(Exception ex)
             {
-                Library.WriteLog("At updating user details",ex);
+                Library.WriteLog("At Api updating user details",ex);
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            if(response==1)
+            return StatusCode(HttpStatusCode.OK);
+            else
+            {
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
         }
         [HttpGet]
         [ActionName("GetMyAdds")]
@@ -376,31 +382,43 @@ namespace Classigoo.Controllers
         [ActionName("UpdateAddStatus")]
         public IHttpActionResult UpdateAddStatus(int addId,string status)
         {
+            int response = 0;
             try
             {
-                Add add = db.Adds.Find(addId);
-                add.Status = status;
+                Add add = db.Adds.SingleOrDefault(a=>a.AddId==addId);
+                if (add != null)
+                {
+                    add.Status = status;
+                }
                 //if (!ModelState.IsValid)
                 //{
                 //    return BadRequest(ModelState);
                 //}
-                db.Entry(add).State = EntityState.Modified;
+               // db.Entry(add).State = EntityState.Modified;
 
                 try
                 {
-                    db.SaveChanges();
+                   response= db.SaveChanges();
+                  Library.WriteLog("At Api updating add status response code- "+response);
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Library.WriteLog("At Updating Add Status- db update", ex);
+                    Library.WriteLog("At Api Updating Add Status- db update", ex);
                 }
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At Updating Add Status", ex);
+                Library.WriteLog("At Api Updating Add Status", ex);
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            if (response == 1)
+            {
+                return StatusCode(HttpStatusCode.OK);
+            }
+            else
+            {
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+           // return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }
