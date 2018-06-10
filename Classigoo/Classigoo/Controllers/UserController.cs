@@ -461,6 +461,44 @@ namespace Classigoo.Controllers
             }
             return View(addColl);
         }
+
+        public ActionResult Admin1()
+        {
+            List<Add> addColl = new List<Add>();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string url = Constants.DomainName + "/api/UserApi/Admin";
+                    client.BaseAddress = new Uri(url);
+                    //HTTP GET
+                    var responseTask = client.GetAsync(url);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<List<Add>>();
+                        readTask.Wait();
+
+                        addColl = readTask.Result;
+
+                    }
+                    else //web api sent error response 
+                    {
+                        //log response status here..
+
+                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(addColl);
+        }
+
         public bool UpdateAddStatus(int addId, string status)
         {
             bool isSuccess = false;
