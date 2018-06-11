@@ -1546,7 +1546,7 @@ function testFunction() {
 
             $(window).scrollTop($('#scrolltoCat').offset().top);
 
-
+            alert("test");
             return;
 
         }
@@ -1598,7 +1598,23 @@ function testFunction() {
 
     if (isValid == "true") {
 
-        $(".loader-wrap").css("display", "block");
+
+        var inputElements1 = $('input');
+
+        inputElements1.each(function () {
+            $(this).removeAttr('required');
+
+        });
+
+        var selectElements1 = $('select');
+
+        selectElements1.each(function () {
+            $(this).removeAttr('required');
+          
+        });
+
+        alert("hei");
+        //$(".loader-wrap").css("display", "block");
     }
     else {
         return false;
