@@ -64,3 +64,9 @@ System.Web ; 'http:/localhost:51797/ImgColl/Andhra Pradesh/Nellore/Buchireddipal
 Classigoo ; Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[Classigoo.RealEstate]' to type 'Classigoo.RealEstate'.
 6/8/2018 11:10:31 AM : At controller Executing deletig physical image
 
+10/06/2018 9:10:19 PM : At Api updating user details - response code 0
+
+10/06/2018 9:15:22 PM : At Api updating user details - response code 0
+
+10/06/2018 9:20:32 PM : At Api updating user details - response code 1
+
