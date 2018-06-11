@@ -21,7 +21,7 @@ namespace Classigoo.Controllers
             //DeleteAdd("Real Estate", "56");
 
 
-
+            //DeleteImage(new List<string>() { "/ImgColl/Andhra Pradesh/Nellore/Balayapalle/1088-31516867145041.jpg" });
 
 
             PostAdd objPost = new PostAdd();
@@ -401,7 +401,7 @@ namespace Classigoo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4)
+        public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4,string addId)
         {
 
 
@@ -840,6 +840,8 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        
+
         public void CreateFolder(string path)
         {
             string dirPath = Server.MapPath(path);
@@ -883,7 +885,9 @@ namespace Classigoo.Controllers
         {
             foreach (string url in urls)
             {
-                FileInfo file = new FileInfo(url);
+                string domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url ;
+
+                FileInfo file = new FileInfo(domain);
                 if (file.Exists)//check file exsit or not
                 {
                     file.Delete();
@@ -925,11 +929,18 @@ namespace Classigoo.Controllers
                         Library.WriteLog("At controller Executing deletig physical image");
                     }
 
-                    return Json("sucess", JsonRequestBehavior.AllowGet);
+                    var readTask = deleteimgTask.Result.Content.ReadAsAsync<string[]>();
+                    readTask.Wait();
+
+
+                    string[] allImages = readTask.Result;
+                    return Json(allImages, JsonRequestBehavior.AllowGet);
+
+                    //return Json("sucess", JsonRequestBehavior.AllowGet);
                 }
             }
 
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json("error", JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult ChangeDefaultImage(string category ,string position, string id)
@@ -949,7 +960,13 @@ namespace Classigoo.Controllers
                     }
                     else if (changedefaltimgTask.Result.StatusCode == HttpStatusCode.OK)
                     {
-                        return Json("sucess", JsonRequestBehavior.AllowGet);
+
+                        var readTask = changedefaltimgTask.Result.Content.ReadAsAsync<string[]>();
+                        readTask.Wait();
+
+
+                        string[] allImages = readTask.Result;
+                        return Json(allImages, JsonRequestBehavior.AllowGet);
                     }
                 }
                 catch (Exception ex)
@@ -960,6 +977,18 @@ namespace Classigoo.Controllers
             }
 
             return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Index1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index1(PostAdd postAdd)
+        {
+            return View();
         }
 
     }

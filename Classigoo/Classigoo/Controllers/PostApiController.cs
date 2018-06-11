@@ -343,17 +343,30 @@ namespace Classigoo.Controllers
                         {
                             if (addArray[2] == "1")
                             {
-                                objRealestae.ImgUrlPrimary = string.Empty;
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
 
                             }
                             else if (addArray[2] == "2")
                             {
-                                objRealestae.ImgUrlSeconday = string.Empty;
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
 
                             }
                             else if (addArray[2] == "3")
                             {
-                                objRealestae.ImgUrlThird = string.Empty;
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
 
                             }
                             else if (addArray[2] == "4")
@@ -369,7 +382,15 @@ namespace Classigoo.Controllers
                             int response = classigooEntities.SaveChanges();
                             if (response == 1)
                             {
-                                return StatusCode(HttpStatusCode.OK);
+                                RealEstate objRealestaeUpdated = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+                                string[] allImages = new string[4];
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return Ok(allImages);
+                                //return StatusCode(HttpStatusCode.OK);
                             }
                             else
                             {
@@ -416,13 +437,16 @@ namespace Classigoo.Controllers
                             {
                                 objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
                                 objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;                               
 
                             }
                             else if (addArray[2] == "3")
                             {
                                 objRealestae.ImgUrlPrimary =objRealestae.ImgUrlThird ;
                                 objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
-
+                                objRealestae.ImgUrlFourth = string.Empty;
                             }
                             else if (addArray[2] == "4")
                             {
@@ -438,7 +462,15 @@ namespace Classigoo.Controllers
                             int response = classigooEntities.SaveChanges();
                             if (response == 1)
                             {
-                                return StatusCode(HttpStatusCode.OK);
+
+                                RealEstate objRealestaeUpdated = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+                                string[] allImages = new string[4];
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return Ok(allImages);
                             }
                             else
                             {

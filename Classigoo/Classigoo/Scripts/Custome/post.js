@@ -89,8 +89,6 @@ $("#fucFour").change(function () {
 
 $("#btnFucFirstDelete").click(function () {
 
-    alert(isEdit);
-
     if (isEdit) {
         var imgUrl = $('#imgFucFirst').attr('src');
         console.log(addId);
@@ -98,7 +96,7 @@ $("#btnFucFirstDelete").click(function () {
         var category = $("#hdnCateFristLevel").val();
         console.log(imgUrl + id + category);
 
-        DeleteImage(imgUrl, category,"1",id);
+        DeleteImage(imgUrl, category, "1", id);
     }
     else {
         $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
@@ -120,40 +118,78 @@ $("#btnFucFirstDelete").click(function () {
 
 $("#btnFucThirdDelete").click(function () {
 
-    $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
-    $('#imgFucThird').attr('src', '/images/upimglogo1.png');
+    if (isEdit) {
+        var imgUrl = $('#imgFucThird').attr('src');
+        console.log(addId);
+        var id = addId;
+        var category = $("#hdnCateFristLevel").val();
+        console.log(imgUrl + id + category);
 
-    $("#btnFucThirdEdit").parent().css('display', 'block');
-    $("#btnFucThirdEdit").parent().css('text-align', 'center');
+        DeleteImage(imgUrl, category, "3", id);
+    }
+    else {
 
-    $("#btnFucThirdDelete").parent().css('display', 'none');
+        $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
+        $('#imgFucThird').attr('src', '/images/upimglogo1.png');
+
+        $("#btnFucThirdEdit").parent().css('display', 'block');
+        $("#btnFucThirdEdit").parent().css('text-align', 'center');
+
+        $("#btnFucThirdDelete").parent().css('display', 'none');
+
+    }
 
 });
 
 $("#btnFucSecondDelete").click(function () {
 
-    $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
-    $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
+    if (isEdit) {
+        var imgUrl = $('#imgFucSecond').attr('src');
+        console.log(addId);
+        var id = addId;
+        var category = $("#hdnCateFristLevel").val();
+        console.log(imgUrl + id + category);
 
-    $("#btnFucSecondEdit").parent().css('display', 'block');
-    $("#btnFucSecondEdit").parent().css('text-align', 'center');
+        DeleteImage(imgUrl, category, "2", id);
+    }
+    else {
+        $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
+        $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
 
-    $("#btnFucSecondDelete").parent().css('display', 'none');
+        $("#btnFucSecondEdit").parent().css('display', 'block');
+        $("#btnFucSecondEdit").parent().css('text-align', 'center');
+
+        $("#btnFucSecondDelete").parent().css('display', 'none');
+    }
+    
 
 });
+
 $("#btnFucFourDelete").click(function () {
 
-    $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
-    $('#imgFucFour').attr('src', '/images/upimglogo1.png');
+    if (isEdit) {
+        var imgUrl = $('#imgFucFour').attr('src');
+        console.log(addId);
+        var id = addId;
+        var category = $("#hdnCateFristLevel").val();
+        console.log(imgUrl + id + category);
 
-    $("#btnFucFourEdit").parent().css('display', 'block');
-    $("#btnFucFourEdit").parent().css('text-align', 'center');
+        DeleteImage(imgUrl, category, "4", id);
+    }
+    else {
+        $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
+        $('#imgFucFour').attr('src', '/images/upimglogo1.png');
 
-    $("#btnFucFourDelete").parent().css('display', 'none');
+        $("#btnFucFourEdit").parent().css('display', 'block');
+        $("#btnFucFourEdit").parent().css('text-align', 'center');
+
+        $("#btnFucFourDelete").parent().css('display', 'none');
+    }
+    
 
 });
 
-function DeleteImage(imageUrl,category,position,id) {
+function DeleteImage(imageUrl, category, position, id) {
 
     $.ajax({
         type: "POST",
@@ -164,10 +200,27 @@ function DeleteImage(imageUrl,category,position,id) {
         async: false,
         data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
-            if (msg == "sucess") {
+            if (msg = "error") {
+                alert("there is problem with deleting image");
+            }
+            else {
 
-                if (position == "1") {
-                   
+                var imgUrl1 = msg[0];
+                var imgUrl2 = msg[2];
+                var imgUrl3 = msg[3];
+                var imgUrl4 = msg[4];
+
+                console.log(imgUrl1);
+                console.log(imgUrl2);
+                console.log(imgUrl3);
+                console.log(imgUrl4);
+
+                if (imgUrl1 != "") {
+
+                    $('#imgFucFirst').attr('src', "'" + imgUrl1 + "'");
+                }
+                else {
+
                     $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
                     $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
 
@@ -175,28 +228,87 @@ function DeleteImage(imageUrl,category,position,id) {
                     $("#btnFucFirstEdit").parent().css('text-align', 'center');
 
                     $("#btnFucFirstDelete").parent().css('display', 'none');
-
-                    $("#divimgFucFirst").css("border", "none");
-                    $("#divimgFucFirstError").css("display", "none");
                 }
-                else if (position == "2") {
+
+
+                if (imgUrl2 != "") {
+
+                    $('#imgFucSecond').attr('src', "'" + imgUrl2 + "'");
+                }
+                else {               
+                    $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
+                    $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
+
+                    $("#btnFucSecondEdit").parent().css('display', 'block');
+                    $("#btnFucSecondEdit").parent().css('text-align', 'center');
+
+                    $("#btnFucSecondDelete").parent().css('display', 'none');
+
 
                 }
-                else if (position == "3") {
+
+
+                if (imgUrl3 != "") {
+
+                    $('#imgFucThird').attr('src', "'" + imgUrl3 + "'");
+                }
+                else {
+                    $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
+                    $('#imgFucThird').attr('src', '/images/upimglogo1.png');
+
+                    $("#btnFucThirdEdit").parent().css('display', 'block');
+                    $("#btnFucThirdEdit").parent().css('text-align', 'center');
+
+                    $("#btnFucThirdDelete").parent().css('display', 'none');
 
                 }
-                else if (position == "4") {
+
+
+                if (imgUrl4 != "") {
+
+                    $('#imgFucFour').attr('src', "'" + imgUrl4 + "'");
+                }
+                else {
+                    $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
+                    $('#imgFucFour').attr('src', '/images/upimglogo1.png');
+
+                    $("#btnFucFourEdit").parent().css('display', 'block');
+                    $("#btnFucFourEdit").parent().css('text-align', 'center');
+
+                    $("#btnFucFourDelete").parent().css('display', 'none');
 
                 }
+
+                //if (position == "1") {
+
+                //    $("#fucFirst").replaceWith($("#fucFirst").val('').clone(true));
+                //    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+
+                //    $("#btnFucFirstEdit").parent().css('display', 'block');
+                //    $("#btnFucFirstEdit").parent().css('text-align', 'center');
+
+                //    $("#btnFucFirstDelete").parent().css('display', 'none');
+
+                //    $("#divimgFucFirst").css("border", "none");
+                //    $("#divimgFucFirstError").css("display", "none");
+
+                //    //SetDefalutImage();
+                //}
+                //else if (position == "2") {
+
+                //}
+                //else if (position == "3") {
+
+                //}
+                //else if (position == "4") {
+
+                //}
 
                 alert("delete img successfully");
             }
-            else if (msg = "error") {
-                alert("there is problem with deleting image");
-            }
-            
+
         },
-        error: function (xhr, status, p3, p4) {        
+        error: function (xhr, status, p3, p4) {
             var err = "Error " + " " + status + " " + p3 + " " + p4;
             if (xhr.responseText && xhr.responseText[0] == "{")
                 err = JSON.parse(xhr.responseText).Message;
@@ -207,10 +319,10 @@ function DeleteImage(imageUrl,category,position,id) {
 
 
 window.SetDefalutImage = function () {
- 
-    var imgFirstUrl =$('#imgFucFirst').attr('src');
-    var imgSecondUrl =$('#imgFucSecond').attr('src');
-    var imgThirdUrl =$('#imgFucThird').attr('src');
+
+    var imgFirstUrl = $('#imgFucFirst').attr('src');
+    var imgSecondUrl = $('#imgFucSecond').attr('src');
+    var imgThirdUrl = $('#imgFucThird').attr('src');
     var imgFourUrl = $('#imgFucFour').attr('src');
 
     if (imgSecondUrl != "/images/upimglogo1.png") {
@@ -224,17 +336,17 @@ window.SetDefalutImage = function () {
     if (imgFourUrl != "/images/upimglogo1.png") {
 
         $("#divSetDefalutFour").css("display", "block");
-    } 
+    }
 }
 
 $("#btnSetDefalutSecond").click(function () {
 
     var id = addId;
     var category = $("#hdnCateFristLevel").val();
-    ChangeDefaultImage(category,"2",id);
+    ChangeDefaultImage(category, "2", id);
 });
 
-function ChangeDefaultImage(category,position, id) {
+function ChangeDefaultImage(category, position, id) {
 
     $.ajax({
         type: "POST",
@@ -245,15 +357,57 @@ function ChangeDefaultImage(category,position, id) {
         async: false,
         data: JSON.stringify({ 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
-            if (msg == "sucess") {
 
-                $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
-
-                alert("delete img successfully");
-            }
-            else if (msg = "error") {
+            if (msg = "error") {
                 alert("there is problem with deleting image");
             }
+            else {
+                var imgUrl1 = msg[0];
+                var imgUrl2 = msg[2];
+                var imgUrl3 = msg[3];
+                var imgUrl4 = msg[4];
+
+                if (imgUrl1 != "") {
+                    $('#imgFucFirst').attr('src', "'" + imgUrl1 + "'");
+                }
+                else {
+                    $('#imgFucFirst').attr('src', '/images/upimglogo1.png');
+                }
+
+
+                if (imgUrl2 != "") {
+
+                    $('#imgFucSecond').attr('src', "'" + imgUrl2 + "'");
+                }
+                else {
+
+                    $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
+                    $("#divSetDefalutSecond").css("display", "none");
+                }
+
+
+                if (imgUrl3 != "") {
+
+                    $('#imgFucThird').attr('src', "'" + imgUrl3 + "'");
+                }
+                else {
+                    $('#imgFucThird').attr('src', '/images/upimglogo1.png');
+                    $("#divSetDefalutThird").css("display", "none");
+                }
+
+
+                if (imgUrl4 != "") {
+
+                    $('#imgFucFour').attr('src', "'" + imgUrl4 + "'");
+                }
+                else {
+                    $('#imgFucFour').attr('src', '/images/upimglogo1.png');
+                    $("#divSetDefalutFour").css("display", "none");
+
+                }
+
+            }
+
 
         },
         error: function (xhr, status, p3, p4) {
@@ -1052,7 +1206,7 @@ window.loadMandal = function () {
                 $.each(data, function (i, field) {
                     $.each(field.District, function (i1, field1) {
                         locations.push(field1);
-                       
+
                     });
 
                 });
@@ -1062,9 +1216,9 @@ window.loadMandal = function () {
         var selectedStae = locations.filter(a=>a.name == selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
-       
+
         $.each(selectedStae[0].Mondal, function (i1, field1) {
-          
+
             mandals.push(field1.name);
         });
 
@@ -1272,7 +1426,7 @@ function getMandal() {
                 $.each(data, function (i, field) {
                     $.each(field.District, function (i1, field1) {
                         locations.push(field1);
-                        
+
                     });
 
                 });
@@ -1282,9 +1436,9 @@ function getMandal() {
         var selectedStae = locations.filter(a=>a.name == selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
-      
+
         $.each(selectedStae[0].Mondal, function (i1, field1) {
-           
+
             mandals.push(field1.name);
         });
 
@@ -1420,6 +1574,7 @@ function testFunction() {
         if ($(this).attr("id") != "LocalArea") {
             if ($(this).val() == "") {
                 isValid = "false";
+                $(this).focus();
             }
         }
 
@@ -1429,7 +1584,9 @@ function testFunction() {
 
     selectElements.each(function () {
         if ($(this).val() == "") {
+                  
             isValid = "false";
+          
         }
 
     });

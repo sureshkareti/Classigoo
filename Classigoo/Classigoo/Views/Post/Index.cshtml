@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "Post", FormMethod.Post, new {  name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
 
     <div>
@@ -1040,7 +1040,7 @@
                 $("#btnFucFourDelete").parent().css('text-align', 'center');
             }
 
-            SetDefalutImage();
+            //SetDefalutImage();
 
 
         });
