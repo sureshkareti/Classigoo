@@ -289,7 +289,8 @@
     <Content Include="Content\img\product2.jpg" />
     <Content Include="Content\img\product2big.jpg" />
     <Content Include="Content\List\color1.css" />
-    <Content Include="Content\List\footable.min.css" />
+    <Content Include="Content\List\dataTables.bootstrap.min.css" />
+    <Content Include="Content\List\responsive.bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -347,6 +348,7 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="HtmlPage2.html" />
     <Content Include="images\22222.jpg" />
     <Content Include="images\4.jpg" />
     <Content Include="images\cg.jpg" />
@@ -407,11 +409,13 @@
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\Json\regions.js" />
+    <Content Include="Scripts\List\bootstrap.min.js" />
     <Content Include="Scripts\List\custom.js" />
-    <Content Include="Scripts\List\footable.min.js" />
-    <Content Include="Scripts\List\footable.paginate.js" />
+    <Content Include="Scripts\List\dataTables.min.js" />
     <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
     <Content Include="Scripts\List\jquery.flexslider.js" />
+    <Content Include="Scripts\List\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\List\responsive.min.js" />
     <Content Include="Scripts\List\search.js" />
     <Content Include="Scripts\List\zoomsl-3.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -467,10 +471,10 @@
     <Content Include="Scripts\Json\categories1.json" />
     <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\Shared\_LoadData.cshtml" />
-    <Content Include="Views\User\Admin.cshtml" />
     <Content Include="Views\Shared\_FillSearchResults.cshtml" />
     <Content Include="Views\List\Home.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\User\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

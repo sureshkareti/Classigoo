@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
   
     @Styles.Render("~/Content/css")
@@ -141,16 +141,12 @@
 
     <script>
         $(document).ready(function () {
-
-            var location = '@Session["Location"]';
-            if (location) {
-                $("#locations").attr("value", location);
-            }
             var user = '@Session["UserId"]';
+            var userName = '@Session["UserName"]';
             if(user)
             {
-
-                $("#userLoggedIn").css("display","block");
+                $("#userLoggedIn").css("display", "block");
+                $("#userName").text(userName);
             }
             else
             {

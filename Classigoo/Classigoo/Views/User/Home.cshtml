@@ -2,8 +2,6 @@
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    WebGrid grid = new WebGrid(source: Model,
-         rowsPerPage: 10);
 }
 @{
     string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
@@ -13,7 +11,7 @@
     <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
         <div class="col-md-5">
             <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your Classigoo Ads</span><br />
-            <span style="font-size:13px;color:#a5a5a5;font-weight:200;">can manage your @*Active & Inactive*@ Ads here</span>
+           
             <span style="font-size:13px;color:#a5a5a5;font-weight:200;">@ViewBag.status</span>
         </div>
         <div class="col-md-4">
@@ -73,33 +71,60 @@
                             </div>
                             @*<hr />*@
                             <div class="row" style="min-height:150px;text-align:center">
-                                @grid.GetHtml(
-                           tableStyle: "table table-bordered",
-                           rowStyle: "tcenter",
-                           columns: grid.Columns(grid.Column("CreatedDate", header: "CreatedDate"),
-     grid.Column("Title", "Title"),
-     grid.Column("Price", "Price"),
-     grid.Column("Status", "Status"),
-                    // grid.Column("Image",format: @<img src="~/images/logo.jpg"  class="list_thumbnail fleft" width="50"/>),
-                    grid.Column("Image",
+                               
+                                <table id="tblAdds" class="table table-striped table-bordered nowrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-class="expand">AddId</th>
+                                            <th data-hide="phone">CreatedDate</th>
+                                            <th data-hide="phone">Title</th>
+                                            <th data-hide="phone">price</th>
+                                            <th data-hide="phone">status</th>
+                                            <th data-hide="phone">image</th>
+                                            <th >preview</th>
+                                            <th >Edit</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
 
-                 format: (item) =>
-                 {
-                     return Html.Raw(string.Format("<text><img src=\"{0}\" alt=\"Image\" width='50'/></text>", @item.ImgUrlPrimary));
-                 }
-                ),
-    grid.Column(header: "Preview", format: (add) =>
-    {
-        var link = Html.ActionLink("Preview", "PreviewAdd", "User",
-                                new { addId = add.AddId }, new { });
-        return link;
-    }),
-    grid.Column(header: "Edit", format: (add) =>
-    {
-        var link = Html.ActionLink("Edit", "Edit", new { addId = add.AddId });
-        return link;
-    })
-    ))
+                                            <tr>
+                                                <td id="addId">
+                                                    @item.AddId
+                                                </td>
+                                                <td>
+                                                    @item.CreatedDate
+                                                </td>
+                                                <td>
+                                                    @item.Title
+                                                </td>
+                                                <td>
+                                                    @item.Price
+                                                </td>
+                                                <td>
+                                                    @item.Status
+                                                </td>
+                                                <td>
+                                                    <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "User", new { addId = @item.AddId }, new { target = "_blank" })
+
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Edit", "User", new { addId = @item.AddId }, new { target = "_blank" })
+                                                </td>
+                                                
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                    <tfoot>
+
+                                    </tfoot>
+                                </table>
                                 @*<p>No Messages are </p>*@
                             </div>
 
@@ -429,10 +454,26 @@
 
 @section Styles {
     <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
+<link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
 }
 
 @section Scripts{
     <script src="~/scripts/bootstrapValidator.min.js"></script>
     <script src="~/scripts/Custome/account.js"></script>
+<script src="~/Scripts/List/dataTables.min.js"></script>
+<script src="~/Scripts/List/bootstrap.min.js"></script>
+<script src="~/Scripts/List/responsive.min.js"></script>
+<script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
 }
+<script>
+ $(document).ready(function () {
+        $('.edit-mode').hide();
+        var table = $('#tblAdds').DataTable({
+            "responsive": true
+        });
+
+ });
+</script>
