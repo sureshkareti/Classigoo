@@ -1313,7 +1313,8 @@ window.loadStates = function () {
         cacheLength: 20,
         max: 20,
         close: function () {
-            $(this).blur();
+            //$(this).blur();
+            $("#District").focus();
         }
     }).focus(function () {
         $(this).data("uiAutocomplete").search('e');
@@ -1376,7 +1377,8 @@ function getDistricts() {
             cacheLength: 20,
             max: 20,
             close: function () {
-                $(this).blur();
+                //$(this).blur();
+                $("#Mandal").focus();
             }
         }).focus(function () {
             $(this).data("uiAutocomplete").search('e');
@@ -1467,7 +1469,9 @@ function getMandal() {
             cacheLength: 20,
             max: 20,
             close: function () {
-                $(this).blur();
+
+                $("#LocalArea").focus();
+                //$(this).blur();
             }
         }).focus(function () {
             $(this).data("uiAutocomplete").search('e');

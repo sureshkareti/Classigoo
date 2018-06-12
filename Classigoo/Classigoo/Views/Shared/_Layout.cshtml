@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
-  
+
     @Styles.Render("~/Content/css")
     @*@Scripts.Render("~/bundles/modernizr")*@
 
@@ -13,11 +13,45 @@
         <link href="~/Content/font-awesome.css" rel="stylesheet" />*@
     <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" />
     @RenderSection("Styles", false)
-    
+
     <link href="~/Content/CustomeNew/Style.css" rel="stylesheet" />
-   
+
     @Scripts.Render("~/scripts/jquery-3.2.1.js")
-   
+
+    <style type="text/css">
+        .navbar .dropdown-item i {
+            font-size: 16px;
+            min-width: 22px;
+        }
+
+        .navbar .nav-item.open > a {
+            background: none !important;
+        }
+
+        .navbar .dropdown-menu {
+            border-radius: 1px;
+            border-color: #e5e5e5;
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }
+
+            .navbar .dropdown-menu li a {
+                color: #777;
+                padding: 8px 20px;
+                line-height: normal;
+            }
+
+                .navbar .dropdown-menu li a:hover, .navbar .dropdown-menu li a:active {
+                    color: #333;
+                }
+
+        .navbar .dropdown-item .material-icons {
+            font-size: 21px;
+            line-height: 16px;
+            vertical-align: middle;
+            margin-top: -2px;
+        }
+    </style>
+
 </head>
 <body>
     <div class="main-wrapper">
@@ -45,25 +79,40 @@
                             <!--col-md-2 start-->
                             <div class="col-md-5 col-sm-12" style="">
                                 <div class="row" style="">
-                                    
+
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none" id="userLoggedIn">
-                                        <div class="navbar-collapse justify-content-end col-md-6 col-xs-6 col-sm-6" id="navbarCollapse">
-                                            <ul class="nav">
-                                                <li class="dropdown">
-         
-                                                    <a class="nav-link dropdown-toggle" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div style="width:100%" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
+                                            <ul class="nav" style="width:100%">
+                                                <li class="dropdown" style="width:100%">
+
+                                                    <a class="nav-link dropdown-toggle" style="width:100%" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="glyphicon glyphicon-user"></span>
-                                         
-                                                                        <span class="link inlblk acc-user-name fleft"><strong><span id="userName">Classigoo User</span></strong></span>
+
+                                                        <span class="link inlblk acc-user-name fleft"><strong><span id="userName">Classigoo User</span></strong></span>
                                                     </a>
                                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                                                         <li><a class="dropdown-item" href="~/User/Home">My DashBoard</a></li>
                                                         <li><a class="dropdown-item" href="~/User/SignOut">SignOut</a></li>
-                                                        
+
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </div>
+
+                                        @*<ul class="nav navbar-nav navbar-right ml-auto">
+
+                                                <li class="nav-item dropdown" style="width:100%">
+                                                    <a href="#" data-toggle="dropdown" style="color:white;width:100%" class="Button-login nav-link dropdown-toggle user-action">Paula Wilson <b class="caret"></b></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+                                                        <li class="divider dropdown-divider"></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sign-out">&#xE8AC;</i> Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>*@
+
                                     </div>
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none" id="userNotLoggedIn">
 
@@ -71,7 +120,7 @@
                                     </div>
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons">
 
-                                       
+
                                         <div style="text-align:center"><a href="~/Post/Index" class="Button-postadd">Post your Ad!</a></div>
                                     </div>
                                 </div>
@@ -83,9 +132,9 @@
                     </div>
                 </div>
             </div>
-           
+
         </header>
-    
+
         <section class="body-wrapper">
             @RenderBody()
         </section>
@@ -100,7 +149,7 @@
                                 <a href="index-2.html">
                                     <img src="~/images/cg.jpg" alt="" style="height:50px;">
                                 </a>
-                            </div>                            
+                            </div>
                             <p>Integer ac lorem sit amet est rhoncus dapi bus don cad pede acus morbi elit nunc molestie at ultrices eu eleifen lorem ut dictum erat masa... <a href="~/List/About">Read More</a></p>
                         </div>
                         <div class="col-md-2 col-sm-6">
@@ -120,7 +169,7 @@
                                 <li><a href="~/List/Index?category=Transportation Vehicles&type=Sale">Transportation Vehicles</a></li>
                                 <li><a href="~/List/Index?category=Passenger Vehicles&type=Sale">Passenger Vehicles</a></li>
                                 <li><a href="~/List/Index?category=Real Estate&type=Sale">Real Estate</a></li>
-                               
+
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -143,14 +192,12 @@
         $(document).ready(function () {
             var user = '@Session["UserId"]';
             var userName = '@Session["UserName"]';
-            if(user)
-            {
+            if (user) {
                 $("#userLoggedIn").css("display", "block");
                 $("#userName").text(userName);
             }
-            else
-            {
-                $("#userNotLoggedIn").css("display","block");
+            else {
+                $("#userNotLoggedIn").css("display", "block");
             }
         });
     </script>
