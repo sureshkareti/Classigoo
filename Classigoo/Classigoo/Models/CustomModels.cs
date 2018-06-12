@@ -84,36 +84,55 @@ namespace Classigoo
         public string ddlRentOrSale { set; get; }
         public string hdnCateFristLevel { set; get; }
         public string hdnCateSecondLevel { set; get; }
+
         public string AVCompany_list { set; get; }
         public string AVOtherCompany { set; get; }
-        public int txtAV_Price { set; get; }
+        //public int txtAV_Price { set; get; }
+        public string txtAV_Price { set; get; }
 
         public string CVCompany_list { set; get; }
         public string CVOtherCompany { set; get; }
-        public int txtCV_Price { set; get; }
+        //public int txtCV_Price { set; get; }
+        public string txtCV_Price { set; get; }
+
 
         public string TVCompany_list { set; get; }
         public string TVOtherCompany { set; get; }
-        public int txtTV_Price { set; get; }
+        //public int txtTV_Price { set; get; }
+        public string txtTV_Price { set; get; }
+
 
         public string OtherCompany { set; get; }
 
         public string PVCompany_list { set; get; }
         public string PVOtherCompany { set; get; }
-        public int txtPV_price { set; get; }
+        //public int txtPV_price { set; get; }
+        public string txtPV_price { set; get; }
+
+
+
+
         public string PVModel_list { set; get; }
         public int txtPV_Year { set; get; }
         public string PVfueltype_list { set; get; }
-        public int txtPV_kmdriven { set; get; }
+        //public int txtPV_kmdriven { set; get; }
+        public string txtPV_kmdriven { set; get; }
 
 
-        public int txtPro_Price { set; get; }
+
+        //public int txtPro_Price { set; get; }
+        public string txtPro_Price { set; get; }
+
         public string ddlBedrooms { set; get; }
         public string ddlFurnishing { set; get; }
         public string ddlPostedBy { set; get; }
         public string ddlAvailability { set; get; }
-        public int txtSquareFeet { set; get; }
-        public int txtSquareYards { set; get; }
+        //public int txtSquareFeet { set; get; }
+        public string txtSquareFeet { set; get; }
+
+        //public int txtSquareYards { set; get; }
+        public string txtSquareYards { set; get; }
+
         public string txtAcres { set; get; }
 
 
@@ -159,6 +178,9 @@ namespace Classigoo
         public static string PostPassengerVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/PassengerVehicle";
         public static string PostRealEstateUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/RealEstate";
 
+        public static string UpdateAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/UpdateAdd";
+
+
         public static string PostDeleteUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteAdd";
         public static string PostDeleteImage = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/DeleteImage";
         public static string ChangeDefaultImage = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/ChangeDefaultImage";
@@ -191,16 +213,16 @@ namespace Classigoo
     }
     public class AdminAdd
     {
-     public int AddId { get; set; }
-    public Nullable<System.DateTime> Created { get; set; }
-    public string UserName{ get; set; }
-    public string PhoneNum { get; set; }
-    public string Category { get; set; }
-    public string Status { get; set; }
-    public string State { get; set; }
-    public string District { get; set; }
-    public string Mandal { get; set; }
-    public string Type { get; set; }
-}
-    
+        public int AddId { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
+        public string UserName { get; set; }
+        public string PhoneNum { get; set; }
+        public string Category { get; set; }
+        public string Status { get; set; }
+        public string State { get; set; }
+        public string District { get; set; }
+        public string Mandal { get; set; }
+        public string Type { get; set; }
+    }
+
 }

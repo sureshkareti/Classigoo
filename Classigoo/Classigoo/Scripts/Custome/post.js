@@ -1519,7 +1519,7 @@ function testFunction() {
 
     hiddenElements.each(function () {
         $(this).prop('required', false);
-
+        $(this).removeAttr('pattern', false);
     })
 
 

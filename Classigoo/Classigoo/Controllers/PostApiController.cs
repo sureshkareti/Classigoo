@@ -177,6 +177,60 @@ namespace Classigoo.Controllers
         }
 
         [HttpPost]
+        [ActionName("UpdateAdd")]
+        public IHttpActionResult UpdateAdd(Add add)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    Add objAdd = classigooEntities.Adds.SingleOrDefault(a => a.AddId == add.AddId);
+
+                    if (objAdd != null)
+                    {
+                        objAdd.Category = add.Category;
+                        objAdd.SubCategory = add.SubCategory;
+                        objAdd.State = add.State;
+                        objAdd.District = add.District;
+                        objAdd.Mandal = add.Mandal;
+                        objAdd.NearestArea = add.NearestArea;
+                        objAdd.Title = add.Title;
+                        objAdd.Type = add.Type;
+
+
+                        //classigooEntities.RealEstates.Attach(objRealestae);
+                        //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+                        int response = classigooEntities.SaveChanges();
+                        if (response == 1)
+                        {
+                            return StatusCode(HttpStatusCode.OK);
+                        }
+                        else
+                        {
+                            return StatusCode(HttpStatusCode.ExpectationFailed);
+                        }
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Update Add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.ExpectationFailed);
+        }
+
+
+
+
+
+        [HttpPost]
         [ActionName("DeleteAdd")]
         public IHttpActionResult DeleteAdd(string[] tempArray)
         {
@@ -265,7 +319,7 @@ namespace Classigoo.Controllers
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
                     int id = Convert.ToInt32(addId);
-                    Add objAdd = classigooEntities.Adds.Find(id);
+                    Add objAdd = classigooEntities.Adds.SingleOrDefault(a => a.AddId == id);
 
                     if (objAdd != null)
                     {
@@ -294,17 +348,17 @@ namespace Classigoo.Controllers
             return StatusCode(HttpStatusCode.NotFound);
         }
 
-        [HttpGet]
+        [HttpPost]
         [ActionName("GetRealEstate")]
-        public IHttpActionResult GetRealEstate(string addId)
+        public IHttpActionResult GetRealEstate(string[] addId)
         {
 
             try
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                    int id = Convert.ToInt32(addId);
-                    RealEstate objRealestae = (RealEstate)classigooEntities.RealEstates.Where(a => a.AddId == id).Select(x => x);
+                    int id = Convert.ToInt32(addId[0]);
+                    RealEstate objRealestae = (RealEstate)classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
 
                     if (objRealestae != null)
                     {
@@ -316,6 +370,111 @@ namespace Classigoo.Controllers
             catch (Exception ex)
             {
                 Library.WriteLog("At APi Get Realestate Table add", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("GetPV")]
+        public IHttpActionResult GetPV(string addId)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);
+                    PassengerVehicle objPassengerVehicle = classigooEntities.PassengerVehicles.SingleOrDefault(a => a.AddId == id);
+
+                    if (objPassengerVehicle != null)
+                    {
+                        return Ok(objPassengerVehicle);
+                    }
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get Passenger Vehicles ", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("GetCV")]
+        public IHttpActionResult GetCV(string addId)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);
+                    ConstructionVehicle objConstructionVehicle = classigooEntities.ConstructionVehicles.SingleOrDefault(a => a.AddId == id);
+
+                    if (objConstructionVehicle != null)
+                    {
+                        return Ok(objConstructionVehicle);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get ConstructionVehicle ", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("GetTV")]
+        public IHttpActionResult GetTV(string addId)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);
+                    TransportationVehicle objTransportationVehicle = classigooEntities.TransportationVehicles.SingleOrDefault(a => a.AddId == id);
+
+                    if (objTransportationVehicle != null)
+                    {
+                        return Ok(objTransportationVehicle);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get TransportationVehicle ", ex);
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+
+            return StatusCode(HttpStatusCode.NotFound);
+        }
+
+        [HttpGet]
+        [ActionName("GetAV")]
+        public IHttpActionResult GetAV(string addId)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(addId);
+                    AgriculturalVehicle objAgriculturalVehicle = classigooEntities.AgriculturalVehicles.SingleOrDefault(a => a.AddId == id);
+
+                    if (objAgriculturalVehicle != null)
+                    {
+                        return Ok(objAgriculturalVehicle);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At APi Get AgriculturalVehicle ", ex);
                 return StatusCode(HttpStatusCode.ExpectationFailed);
             }
 
@@ -338,7 +497,7 @@ namespace Classigoo.Controllers
                         int id = Convert.ToInt32(addArray[1]);
                         RealEstate objRealestae = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
 
-                      
+
                         if (objRealestae != null)
                         {
                             if (addArray[2] == "1")
@@ -397,7 +556,7 @@ namespace Classigoo.Controllers
                                 return StatusCode(HttpStatusCode.ExpectationFailed);
                             }
                         }
-                       
+
                     }
 
                     #endregion
@@ -432,25 +591,25 @@ namespace Classigoo.Controllers
 
                         if (objRealestae != null)
                         {
-                            
+
                             if (addArray[2] == "2")
                             {
                                 objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
                                 objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
                                 objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
 
-                                objRealestae.ImgUrlFourth = string.Empty;                               
+                                objRealestae.ImgUrlFourth = string.Empty;
 
                             }
                             else if (addArray[2] == "3")
                             {
-                                objRealestae.ImgUrlPrimary =objRealestae.ImgUrlThird ;
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlThird;
                                 objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
                                 objRealestae.ImgUrlFourth = string.Empty;
                             }
                             else if (addArray[2] == "4")
                             {
-                                objRealestae.ImgUrlPrimary  =objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlFourth;
                                 objRealestae.ImgUrlFourth = string.Empty;
 
                             }
