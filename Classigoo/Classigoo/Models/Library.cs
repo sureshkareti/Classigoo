@@ -74,18 +74,23 @@ namespace Classigoo.Models
             }
         }
 
-        private static void EmailErrors(string emailErrorString)
+        public static void EmailErrors(string emailErrorString)
         {
             try
             {
-              
-                string fromAddress = ConfigurationManager.AppSettings["FromAddress"];
-                string fromAddressPassword = ConfigurationManager.AppSettings["frmAddressPassword"];
 
-                string toAddress = ConfigurationManager.AppSettings["ToAddress"];
-                string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
-                string subject = ConfigurationManager.AppSettings["Subject"];
-                string port = ConfigurationManager.AppSettings["Port"];
+                // string fromAddress = ConfigurationManager.AppSettings["FromAddress"];smtp.gmail.com
+                string fromAddress = "classigoo2018@gmail.com";
+              //string fromAddressPassword = ConfigurationManager.AppSettings["frmAddressPassword"];
+                string fromAddressPassword = "19052018";
+              //  string toAddress = ConfigurationManager.AppSettings["ToAddress"];
+                string toAddress = "classigoo2018@gmail.com";
+                // string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
+                string smtpServer = "smtp.gmail.com";
+                // string subject = ConfigurationManager.AppSettings["Subject"];
+                string subject = "Erro occured in Classigoo";
+                //string port = ConfigurationManager.AppSettings["Port"];
+                string port = "587";
 
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();

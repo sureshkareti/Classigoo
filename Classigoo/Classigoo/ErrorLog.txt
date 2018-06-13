@@ -80,3 +80,13 @@ Classigoo ; Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQ
 
 11/06/2018 11:14:10 PM : At controller Executing deletig physical image
 
+12/06/2018 11:51:32 PM : At Login post webapi sent error
+
+12/06/2018 11:51:40 PM : At Login post webapi sent error
+
+13/06/2018 12:10:45 AM : At Getmyadds webapisent error userid- cba730b0-022d-44da-99a4-32a76c8dcc2d
+
+13/06/2018 12:11:43 AM : At Login post webapi sent error
+
+13/06/2018 12:13:32 AM : At Getmyadds webapisent error userid- b48349eb-3b41-4e13-ab54-7219d418cc2d
+

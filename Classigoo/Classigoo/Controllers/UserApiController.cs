@@ -399,23 +399,25 @@ namespace Classigoo.Controllers
                 try
                 {
                    response= db.SaveChanges();
-                  Library.WriteLog("At Api updating add status response code- "+response);
+                  Library.EmailErrors("At Api updating add status response code0- "+response);
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (Exception ex)
                 {
-                    Library.WriteLog("At Api Updating Add Status- db update", ex);
+                    Library.EmailErrors("At Api Updating Add Status- db update-"+ ex.Message);
                 }
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At Api Updating Add Status", ex);
+                Library.EmailErrors("At Api Updating Add Status-"+ ex.Message);
             }
             if (response == 1)
             {
+                Library.EmailErrors("At Api updating add status response code1- " + response);
                 return StatusCode(HttpStatusCode.OK);
             }
             else
             {
+                Library.EmailErrors("At Api updating add status response code2- " + response);
                 return StatusCode(HttpStatusCode.ExpectationFailed);
             }
            // return StatusCode(HttpStatusCode.NoContent);

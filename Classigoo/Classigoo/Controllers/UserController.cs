@@ -491,7 +491,7 @@ namespace Classigoo.Controllers
                     }
                     else
                     {
-                        Library.WriteLog("At updating add status webapisenterror addid- " + addId);
+                        Library.EmailErrors("At updating add status webapisenterror addid- " + addId);
                         ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
                     }
@@ -499,7 +499,7 @@ namespace Classigoo.Controllers
             }
             catch(Exception ex)
             {
-                Library.WriteLog("At updating add status addid- "+addId,ex);
+                Library.EmailErrors("At updating add status - "+ex.Message);
             }
                
                 return isSuccess;
