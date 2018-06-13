@@ -19,8 +19,8 @@ namespace Classigoo.Controllers
         public ActionResult Index()
         {
 
-           // Library.WriteLog("hi");
-            Library.EmailErrors("hi");
+           Library.WriteLog("hi");
+            //Library.EmailErrors("hi");
 
             try
             {

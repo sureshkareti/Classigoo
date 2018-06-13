@@ -54,7 +54,7 @@ namespace Classigoo.Controllers
             }
             if (UserId != Guid.Empty)
             {
-                System.Web.HttpContext.Current.Session["UserId"] = UserId;
+                Session["UserId"] = UserId;
                 if (coll["email-phone"] =="1111111111" && coll["pwd"] == "admin")
                 {
                    return RedirectToAction("Admin", "User");
@@ -130,7 +130,7 @@ namespace Classigoo.Controllers
 
                         userId = readTask.Result;
                         if (userId != Guid.Empty)
-                            System.Web.HttpContext.Current.Session["UserId"] = userId;
+                            Session["UserId"] = userId;
                     }
                     else //web api sent error response 
                     {
@@ -491,7 +491,7 @@ namespace Classigoo.Controllers
                     }
                     else
                     {
-                        Library.EmailErrors("At updating add status webapisenterror addid- " + addId);
+                        Library.WriteLog("At updating add status webapisenterror addid- " + addId);
                         ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
                     }
@@ -499,7 +499,7 @@ namespace Classigoo.Controllers
             }
             catch(Exception ex)
             {
-                Library.EmailErrors("At updating add status - "+ex.Message);
+                Library.WriteLog("At updating add status  ",ex);
             }
                
                 return isSuccess;
