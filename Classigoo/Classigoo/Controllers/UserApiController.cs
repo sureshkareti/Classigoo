@@ -239,10 +239,9 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At GetMyadds for userid- " + userId, ex);
             }
-            if(addColl.Count>0)
+            //if(addColl.Count>0)
             return Ok(addColl);
-            else
-                return NotFound();
+           
         }
         [HttpGet]
         [ActionName("GetAddById")]
