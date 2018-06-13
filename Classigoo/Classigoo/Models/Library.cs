@@ -17,7 +17,7 @@ namespace Classigoo.Models
 
             try
             {
-                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + Constants.ErrorLogFileName, true);
+                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\bin\\" + Constants.ErrorLogFileName, true);
                 sw.WriteLine(DateTime.Now.ToString() + " : " + ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
                 sw.Flush();
                 sw.Close();
@@ -34,7 +34,7 @@ namespace Classigoo.Models
 
             try
             {
-                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + Constants.ErrorLogFileName, true);
+                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\bin\\" + Constants.ErrorLogFileName, true);
 
                 sw.WriteLine(DateTime.Now.ToString() + " : " + Message);
                 sw.WriteLine(ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
@@ -53,7 +53,7 @@ namespace Classigoo.Models
 
             try
             {
-                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + Constants.ErrorLogFileName, true);
+                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\bin\\" + Constants.ErrorLogFileName, true);
 
                 if (Message != "")
                 {

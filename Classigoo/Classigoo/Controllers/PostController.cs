@@ -18,47 +18,34 @@ namespace Classigoo.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //DeleteAdd("Real Estate", "56");
+
+            Library.WriteLog("hi");
+
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    Add add = db.Adds.SingleOrDefault(x => x.AddId == 20);
+                    add.Status = "Deactive";
 
 
-            //DeleteImage(new List<string>() { "/ImgColl/Andhra Pradesh/Nellore/Balayapalle/1088-31516867145041.jpg" });
+                    int response = db.SaveChanges();
+                    if (response == 1)
+                    {
+                        Library.WriteLog("ok changed");
 
-            //using (var clientDeleteImg = new HttpClient())
-            //{
+                    }
+                    else
+                    {
+                        Library.WriteLog("got exception");
+                    }
+                }
 
-            //    clientDeleteImg.BaseAddress = new Uri(Constants.GetRealestate);
-            //    var deleteimgTask = clientDeleteImg.PostAsJsonAsync<String[]>(Constants.GetRealestate, new string[] { "1088" });
-            //    try
-            //    {
-            //        deleteimgTask.Wait();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Library.WriteLog("At controller Executing Delete Image", ex);
-
-            //        return Json("error", JsonRequestBehavior.AllowGet);
-            //    }
-
-            //    if (deleteimgTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
-            //    {
-            //        return Json("error", JsonRequestBehavior.AllowGet);
-            //    }
-            //    else if (deleteimgTask.Result.StatusCode == HttpStatusCode.OK)
-            //    {
-
-            //        var readTask = deleteimgTask.Result.Content.ReadAsAsync<RealEstate>();
-            //        readTask.Wait();
-
-
-            //        RealEstate addRecord = readTask.Result;
-
-
-            //        //return Json("sucess", JsonRequestBehavior.AllowGet);
-            //    }
-            //}
-
-
-
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("got exception",ex);
+            }
 
 
             PostAdd objPost = new PostAdd();
