@@ -200,7 +200,8 @@ function DeleteImage(imageUrl, category, position, id) {
         async: false,
         data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
-            if (msg = "error") {
+            alert(msg);
+            if (msg == "error") {
                 alert("there is problem with deleting image");
             }
             else {

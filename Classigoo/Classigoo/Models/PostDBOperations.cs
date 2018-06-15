@@ -496,5 +496,369 @@ namespace Classigoo.Models
 
             return true;
         }
+
+        public string[] DeleteImage(string[] addArray)
+        {
+            string[] allImages = new string[4];
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    #region RealEstate
+
+
+                    if (addArray[0] == Constants.RealEstate)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        RealEstate objRealestae = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                RealEstate objRealestaeUpdated = classigooEntities.RealEstates.SingleOrDefault(a => a.AddId == id);
+
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return allImages;
+                                //return StatusCode(HttpStatusCode.OK);
+                            }
+
+                        }
+
+                    }
+
+                    #endregion
+
+                    #region CV
+
+
+                    if (addArray[0] == Constants.ConstructionVehicle)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        ConstructionVehicle objRealestae = classigooEntities.ConstructionVehicles.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                ConstructionVehicle objRealestaeUpdated = classigooEntities.ConstructionVehicles.SingleOrDefault(a => a.AddId == id);
+
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return allImages;
+                                //return StatusCode(HttpStatusCode.OK);
+                            }
+
+                        }
+
+                    }
+
+                    #endregion
+
+                    #region TV
+
+
+                    if (addArray[0] == Constants.TransportationVehicle)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        TransportationVehicle objRealestae = classigooEntities.TransportationVehicles.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                TransportationVehicle objRealestaeUpdated = classigooEntities.TransportationVehicles.SingleOrDefault(a => a.AddId == id);
+
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return allImages;
+                                //return StatusCode(HttpStatusCode.OK);
+                            }
+
+                        }
+
+                    }
+
+                    #endregion
+
+                    #region AV
+
+
+                    if (addArray[0] == Constants.AgriculturalVehicle)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        AgriculturalVehicle objRealestae = classigooEntities.AgriculturalVehicles.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                AgriculturalVehicle objRealestaeUpdated = classigooEntities.AgriculturalVehicles.SingleOrDefault(a => a.AddId == id);
+
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return allImages;
+                                //return StatusCode(HttpStatusCode.OK);
+                            }
+
+                        }
+
+                    }
+
+                    #endregion
+
+                    #region PV
+
+
+                    if (addArray[0] == Constants.PassengerVehicle)
+                    {
+                        int id = Convert.ToInt32(addArray[1]);
+                        PassengerVehicle objRealestae = classigooEntities.PassengerVehicles.SingleOrDefault(a => a.AddId == id);
+
+
+                        if (objRealestae != null)
+                        {
+                            if (addArray[2] == "1")
+                            {
+                                //objRealestae.ImgUrlPrimary = string.Empty;
+
+                                objRealestae.ImgUrlPrimary = objRealestae.ImgUrlSeconday;
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "2")
+                            {
+                                //objRealestae.ImgUrlSeconday = string.Empty;
+
+                                objRealestae.ImgUrlSeconday = objRealestae.ImgUrlThird;
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "3")
+                            {
+                                //objRealestae.ImgUrlThird = string.Empty;
+
+                                objRealestae.ImgUrlThird = objRealestae.ImgUrlFourth;
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+                            else if (addArray[2] == "4")
+                            {
+                                objRealestae.ImgUrlFourth = string.Empty;
+
+                            }
+
+                            //classigooEntities.RealEstates.Attach(objRealestae);
+                            //classigooEntities.Entry(objRealestae).Property(x => x.ImgUrlPrimary).IsModified = true;
+
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                                PassengerVehicle objRealestaeUpdated = classigooEntities.PassengerVehicles.SingleOrDefault(a => a.AddId == id);
+
+                                allImages[0] = objRealestaeUpdated.ImgUrlPrimary;
+                                allImages[1] = objRealestaeUpdated.ImgUrlSeconday;
+                                allImages[2] = objRealestaeUpdated.ImgUrlThird;
+                                allImages[3] = objRealestaeUpdated.ImgUrlFourth;
+
+                                return allImages;
+                                //return StatusCode(HttpStatusCode.OK);
+                            }
+
+                        }
+
+                    }
+
+                    #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At delete image from database", ex);
+
+            }
+
+            return allImages;
+        }
+
+
     }
 }

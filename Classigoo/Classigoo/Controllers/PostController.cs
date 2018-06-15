@@ -151,7 +151,7 @@ namespace Classigoo.Controllers
                     return View(objPostAdd);
 
 
-                   
+
                     #endregion
                 }
                 else if (addRecord.Category == Constants.PassengerVehicle)
@@ -175,7 +175,7 @@ namespace Classigoo.Controllers
                     ViewBag.img3 = passengerVehicleRecord.ImgUrlThird;
                     ViewBag.img4 = passengerVehicleRecord.ImgUrlFourth;
                     return View(objPostAdd);
-                    
+
                     #endregion
                 }
 
@@ -219,8 +219,8 @@ namespace Classigoo.Controllers
                         user.MobileNumber = postAdd.PhoneNumber;
                         user.Name = postAdd.Name;
                         user.Type = "Custom";
-                       Guid newUserId= userObj.AddUser(user);
-                        if(newUserId!=null)//user added successfully
+                        Guid newUserId = userObj.AddUser(user);
+                        if (newUserId != null)//user added successfully
                         {
                             userId = newUserId;
 
@@ -522,7 +522,7 @@ namespace Classigoo.Controllers
 
                             Price = Convert.ToInt32(postAdd.txtPV_price),
                             Model = postAdd.PVModel_list,
-                            Year = Convert.ToInt32( postAdd.txtPV_Year),
+                            Year = Convert.ToInt32(postAdd.txtPV_Year),
                             FuelType = postAdd.PVfueltype_list,
                             KMDriven = Convert.ToInt32(postAdd.txtPV_kmdriven),
                             Description = postAdd.txtAddDetails,
@@ -885,7 +885,7 @@ namespace Classigoo.Controllers
 
                                     Price = Convert.ToInt32(postAdd.txtPV_price),
                                     Model = postAdd.PVModel_list,
-                                    Year = Convert.ToInt32( postAdd.txtPV_Year),
+                                    Year = Convert.ToInt32(postAdd.txtPV_Year),
                                     FuelType = postAdd.PVfueltype_list,
                                     KMDriven = Convert.ToInt32(postAdd.txtPV_kmdriven),
                                     Description = postAdd.txtAddDetails,
@@ -978,46 +978,18 @@ namespace Classigoo.Controllers
 
         public JsonResult DeleteImageEdit(string imgUrl, string category, string position, string id)
         {
-            using (var clientDeleteImg = new HttpClient())
+
+
+            string[] allImages = new PostDBOperations().DeleteImage(new string[] { category, id, position });
+
+            bool isImgDeleted = DeleteImage(new List<string>() { imgUrl });
+            if (!isImgDeleted)
             {
-
-                clientDeleteImg.BaseAddress = new Uri(Constants.PostDeleteImage);
-                var deleteimgTask = clientDeleteImg.PostAsJsonAsync<String[]>(Constants.PostDeleteImage, new string[] { category, id, position });
-                try
-                {
-                    deleteimgTask.Wait();
-                }
-                catch (Exception ex)
-                {
-                    Library.WriteLog("At controller Executing Delete Image", ex);
-
-                    return Json("error", JsonRequestBehavior.AllowGet);
-                }
-
-                if (deleteimgTask.Result.StatusCode == HttpStatusCode.ExpectationFailed)
-                {
-                    return Json("error", JsonRequestBehavior.AllowGet);
-                }
-                else if (deleteimgTask.Result.StatusCode == HttpStatusCode.OK)
-                {
-                    bool isImgDeleted = DeleteImage(new List<string>() { imgUrl });
-                    if (!isImgDeleted)
-                    {
-                        Library.WriteLog("At controller Executing deletig physical image");
-                    }
-
-                    var readTask = deleteimgTask.Result.Content.ReadAsAsync<string[]>();
-                    readTask.Wait();
-
-
-                    string[] allImages = readTask.Result;
-                    return Json(allImages, JsonRequestBehavior.AllowGet);
-
-                    //return Json("sucess", JsonRequestBehavior.AllowGet);
-                }
+                Library.WriteLog("At controller Executing deletig physical image");
             }
 
-            return Json("error", JsonRequestBehavior.AllowGet);
+            return Json(allImages, JsonRequestBehavior.AllowGet);
+
         }
 
         public JsonResult ChangeDefaultImage(string category, string position, string id)

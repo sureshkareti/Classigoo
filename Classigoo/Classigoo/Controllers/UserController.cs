@@ -31,17 +31,17 @@ namespace Classigoo.Controllers
                     {
                         return RedirectToAction("Admin", "User");
                     }
-                
+
                     else
                     {
-                    return RedirectToAction("Home", "User");
+                        return RedirectToAction("Home", "User");
                     }
                 }
-            else
-            {
-                @ViewBag.status = " Invalid Email/Phone Number or Password";
+                else
+                {
+                    @ViewBag.status = " Invalid Email/Phone Number or Password";
+                }
             }
-        }
             catch (Exception ex)
             {
                 Library.WriteLog("At Login UserName - " + coll["email-phone"], ex);
@@ -70,7 +70,7 @@ namespace Classigoo.Controllers
                 if (userId == Guid.Empty)//User doesnot exist
                 {
                     userId = db.AddUser(user);
-                    if (userId!=Guid.Empty)//User Added successfully
+                    if (userId != Guid.Empty)//User Added successfully
                     {
                         Session["UserId"] = userId;
                         return RedirectToAction("Home", "User");
@@ -85,9 +85,9 @@ namespace Classigoo.Controllers
                     @ViewBag.status = " Phone Number " + user.MobileNumber + " already Registered";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Library.WriteLog("At Registering user custom method",ex);
+                Library.WriteLog("At Registering user custom method", ex);
             }
 
             return View();
@@ -96,7 +96,7 @@ namespace Classigoo.Controllers
 
         public ActionResult Home()
         {
-             List<CustomAdd> addColl = new List<CustomAdd>();
+            List<CustomAdd> addColl = new List<CustomAdd>();
             if (Session["UserId"] != null)//user logged in
             {
                 Guid userId = (Guid)Session["UserId"];
@@ -124,14 +124,14 @@ namespace Classigoo.Controllers
             if (Session["UserId"] != null)//user logged in
             {
                 try
-                { 
-                Guid userId = (Guid)Session["UserId"];
-                UserDBOperations db = new UserDBOperations();
-                User user = db.GetUser(userId);
-                addColl = (List<CustomAdd>)TempData["UserAddColl"];
-                Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
-                Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
-              TempData.Keep("UserAddColl");
+                {
+                    Guid userId = (Guid)Session["UserId"];
+                    UserDBOperations db = new UserDBOperations();
+                    User user = db.GetUser(userId);
+                    addColl = (List<CustomAdd>)TempData["UserAddColl"];
+                    Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
+                    Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
+                    TempData.Keep("UserAddColl");
                     switch (coll["action"])
                     {
                         case "Change Password":
@@ -155,7 +155,7 @@ namespace Classigoo.Controllers
                             }
                             #endregion
                             break;
-                           case "Change Email":
+                        case "Change Email":
                             #region ChangeEmail
                             if (emailExist == Guid.Empty)//Email doesnot exist
                             {
@@ -174,7 +174,7 @@ namespace Classigoo.Controllers
                                 @ViewBag.status = "Email already registered";
                             }
                             #endregion
-                            break;        
+                            break;
                         case "Change Phone":
                             #region ChangePhone
                             if (phoneExist == Guid.Empty)//Phone Num doesnt exist
@@ -195,14 +195,14 @@ namespace Classigoo.Controllers
                             }
                             #endregion
                             break;
-                         default:
+                        default:
                             break;
                     }
-                  
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    Library.WriteLog("At Updating user details",ex);
+                    Library.WriteLog("At Updating user details", ex);
                 }
             }
             return View(addColl);
@@ -218,11 +218,11 @@ namespace Classigoo.Controllers
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                addColl=db.GetAdminAdds();
+                addColl = db.GetAdminAdds();
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At Admin",ex);
+                Library.WriteLog("At Admin", ex);
             }
             return View(addColl);
         }
@@ -233,15 +233,15 @@ namespace Classigoo.Controllers
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                isAddUpdated= db.UpdateAddStatus(addId, status);
+                isAddUpdated = db.UpdateAddStatus(addId, status);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Library.WriteLog("At updating add status addId - "+addId,ex);
+                Library.WriteLog("At updating add status addId - " + addId, ex);
             }
-               
+
             return isAddUpdated;
-            }
+        }
 
         public ActionResult UnableToLogin()
         {
@@ -254,10 +254,10 @@ namespace Classigoo.Controllers
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                userId= db.AddUser(user);
+                userId = db.AddUser(user);
                 Session["UserId"] = userId;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At AddUser", ex);
             }
@@ -265,14 +265,14 @@ namespace Classigoo.Controllers
             return userId;
         }
 
-        public Guid UserExist(string id,string type)
+        public Guid UserExist(string id, string type)
         {
             Guid userId = Guid.Empty;
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                userId = db.UserExist(id,type);
-                if(userId!=Guid.Empty)
+                userId = db.UserExist(id, type);
+                if (userId != Guid.Empty)
                 {
                     Session["UserId"] = userId;
                 }
@@ -281,7 +281,7 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At AddUser", ex);
             }
-            
+
             return userId;
         }
     }

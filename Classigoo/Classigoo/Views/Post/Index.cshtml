@@ -67,11 +67,11 @@
                                     <div class="col-md-7 col-sm-12 col-xs-12">
 
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item" id="cat-nav-l0"><a href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l0"><a id="btnedithome" href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
                                             <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
                                             <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
                                             <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
+                                            <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a id="btneditedit" href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
                                         </ol>
                                         <div>
                                             @Html.HiddenFor(model => model.hdnCateFristLevel)
@@ -1013,6 +1013,8 @@
             loadMandal();
 
 
+            $("#btnedithome").addClass("not-active");
+            $("#btneditedit").addClass("not-active");
 
             if("@ViewBag.img1" != ""){
                 $('#imgFucFirst').attr('src', "@ViewBag.img1");
