@@ -90,3 +90,5 @@ Classigoo ; Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQ
 
 13/06/2018 12:13:32 AM : At Getmyadds webapisent error userid- b48349eb-3b41-4e13-ab54-7219d418cc2d
 
+15/06/2018 7:57:39 PM : At Get User
+EntityFramework ; The operation cannot be completed because the DbContext has been disposed.

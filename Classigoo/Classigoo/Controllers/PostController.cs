@@ -79,8 +79,8 @@ namespace Classigoo.Controllers
                 PostAdd objPostAdd = new PostAdd();
 
                 PostDBOperations objPostDbOpareations = new PostDBOperations();
-
-                Add addRecord = objPostDbOpareations.GetAdd(addId);
+                CommonDBOperations objCommonDBOperations = new CommonDBOperations();
+                Add addRecord = objCommonDBOperations.GetAdd(addId);
                 objPostAdd.AddId = Convert.ToString( addRecord.AddId);
                 objPostAdd.txtTitle = addRecord.Title;
                 objPostAdd.hdnCateFristLevel = addRecord.Category;
@@ -91,14 +91,14 @@ namespace Classigoo.Controllers
                 objPostAdd.LocalArea = addRecord.NearestArea;
                 objPostAdd.ddlRentOrSale = addRecord.Type;
 
-
+                
                 if (addRecord.Category == Constants.RealEstate)
                 {
                     #region RealEstate
 
 
 
-                    RealEstate realEstateRecord = objPostDbOpareations.GetRealEstate(addId);
+                    RealEstate realEstateRecord = objCommonDBOperations.GetRealEstate(addId);
 
                     objPostAdd.txtPro_Price = Convert.ToString(realEstateRecord.Price);//  realEstateRecord.Price == null ? 0 : Convert.ToInt32(realEstateRecord.Price);
                     objPostAdd.ddlAvailability = realEstateRecord.Availability;
