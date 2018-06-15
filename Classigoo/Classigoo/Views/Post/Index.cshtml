@@ -35,6 +35,8 @@
 
                                     </div>
                                     <div class="col-md-7">
+                                        @Html.HiddenFor(model=>model.AddId)
+
                                         @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
                                         @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
                                         <div class="help-block with-errors"></div>

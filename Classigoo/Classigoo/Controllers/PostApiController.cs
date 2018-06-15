@@ -226,10 +226,6 @@ namespace Classigoo.Controllers
             return StatusCode(HttpStatusCode.ExpectationFailed);
         }
 
-
-
-
-
         [HttpPost]
         [ActionName("DeleteAdd")]
         public IHttpActionResult DeleteAdd(string[] tempArray)
