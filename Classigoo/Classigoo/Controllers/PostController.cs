@@ -213,43 +213,23 @@ namespace Classigoo.Controllers
                     UserDBOperations userObj = new UserDBOperations();
 
                     Guid userExist = userObj.UserExist(postAdd.PhoneNumber, "Custom");
-                    if (userExist == Guid.Empty)
+                    if (userExist == Guid.Empty)//user doesnot exist so add user
                     {
-                        using (var client = new HttpClient())
+                        User user = new User();
+                        user.MobileNumber = postAdd.PhoneNumber;
+                        user.Name = postAdd.Name;
+                        user.Type = "Custom";
+                       Guid newUserId= userObj.AddUser(user);
+                        if(newUserId!=null)//user added successfully
                         {
-                            User user = new User();
-                            user.MobileNumber = postAdd.PhoneNumber;
-                            user.Name = postAdd.Name;
-                            //  user.Password = coll["inputPassword"];
-                            user.Type = "Custom";
-                            string url = Constants.DomainName + "/ api/UserApi/AddUser/?user=" + user;
-                            client.BaseAddress = new Uri(url);
-                            var postTask = client.PostAsJsonAsync<User>(url, user);
-                            try
-                            {
-                                postTask.Wait();
-                            }
-                            catch (Exception ex)
-                            {
+                            userId = newUserId;
 
-                            }
-                            var result = postTask.Result;
-                            if (result.IsSuccessStatusCode)
-                            {
-                                var readTask = result.Content.ReadAsAsync<User>();
-                                readTask.Wait();
-
-                                userId = readTask.Result.UserId;
-
-                                Session["UserId"] = userId;
-                            }
-                            else
-                            {
-                                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                            }
+                            Session["UserId"] = userId;
+                        }
+                        else//unbale to add register user
+                        {
 
                         }
-
                     }
                     else
                     {
