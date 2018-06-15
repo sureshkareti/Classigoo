@@ -114,7 +114,7 @@ namespace Classigoo
 
 
         public string PVModel_list { set; get; }
-        public int txtPV_Year { set; get; }
+        public string txtPV_Year { set; get; }
         public string PVfueltype_list { set; get; }
         //public int txtPV_kmdriven { set; get; }
         public string txtPV_kmdriven { set; get; }
