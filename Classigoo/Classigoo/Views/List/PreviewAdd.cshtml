@@ -129,9 +129,9 @@
                                             </div>
                                             <div class="tab-pane " id="cv-specification">
                                                 <ul class="productinfo">
-                                                    @if (@Model.CV != null)
+                                                    @if (@Model.Category == Constants.ConstructionVehicle)
                                                     {
-                                                        <li> <span class="productinfoleft"> Company: </span> @Model.CV.Company </li>
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                     }
 
                                                 </ul>
@@ -139,18 +139,18 @@
                                             </div>
                                             <div class="tab-pane " id="tv-specification">
                                                 <ul class="productinfo">
-                                                    @if (@Model.TV != null)
+                                                    @if (@Model.Category==Constants.TransportationVehicle)
                                                     {
-                                                        <li> <span class="productinfoleft"> Company: </span> @Model.TV.Company </li>
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                     }
                                                 </ul>
 
                                             </div>
                                             <div class="tab-pane " id="av-specification">
                                                 <ul class="productinfo">
-                                                    @if (@Model.AV != null)
+                                                    @if (@Model.Category==Constants.AgriculturalVehicle)
                                                     {
-                                                        <li> <span class="productinfoleft"> Company: </span> @Model.AV.Company </li>
+                                                        <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                     }
                                                 </ul>
                                             </div>

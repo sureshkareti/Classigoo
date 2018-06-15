@@ -67,61 +67,76 @@ namespace Classigoo.Controllers
                 customAdd.Location = add.Mandal + "," + add.State;
 
                 DateTime dtTemp = add.Created.Value;
-
                 customAdd.CreatedDate = dtTemp.ToString("MMMM") + ", " + dtTemp.Day + ", " + dtTemp.Year; // .mon.ToLongDateString();
                 customAdd.AddId = add.AddId;
                 customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
                 customAdd.Category = add.Category;
+                CommonDBOperations objCommonDbOperations = new CommonDBOperations();
                 switch (add.Category)
                 {
                     case Constants.RealEstate:
                         {
-                            foreach (var item in add.RealEstates)
+                            #region RealEstates
+                            RealEstate re = objCommonDbOperations.GetRealEstate(add.AddId.ToString());
+                            if(re!=null)
                             {
-                                customAdd.Description = item.Description;
-                                customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                customAdd.Price = item.Price;
+                                customAdd.Description = re.Description;
+                                customAdd.ImgUrlPrimary = re.ImgUrlPrimary;
+                                customAdd.Price = re.Price;
                             }
+                            #endregion
                             break;
                         }
                     case Constants.TransportationVehicle:
                         {
-                            foreach (var item in add.TransportationVehicles)
+                            #region TransportationVehicles
+                            TransportationVehicle tv = objCommonDbOperations.GetTV(add.AddId.ToString());
+                            if(tv!=null)
                             {
-                                customAdd.Description = item.Description;
-                                customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                customAdd.Price = item.Price;
+                                customAdd.Description = tv.Description;
+                                customAdd.ImgUrlPrimary = tv.ImgUrlPrimary;
+                                customAdd.Price = tv.Price;
                             }
+                            #endregion
                             break;
                         }
                     case Constants.ConstructionVehicle:
                         {
-                            foreach (var item in add.ConstructionVehicles)
+                            #region ConstructionVehicles
+                            ConstructionVehicle cv = objCommonDbOperations.GetCV(add.AddId.ToString());
+                           if(cv!=null)
                             {
-                                customAdd.Description = item.Description;
-                                customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                customAdd.Price = item.Price;
+                                customAdd.Description = cv.Description;
+                                customAdd.ImgUrlPrimary = cv.ImgUrlPrimary;
+                                customAdd.Price = cv.Price;
                             }
+                            #endregion
                             break;
                         }
                     case Constants.AgriculturalVehicle:
                         {
-                            foreach (var item in add.AgriculturalVehicles)
+                            #region AgriculturalVehicles
+                            AgriculturalVehicle av = objCommonDbOperations.GetAV(add.AddId.ToString());
+                            if(av!=null)
                             {
-                                customAdd.Description = item.Description;
-                                customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                customAdd.Price = item.Price;
+                                customAdd.Description = av.Description;
+                                customAdd.ImgUrlPrimary = av.ImgUrlPrimary;
+                                customAdd.Price = av.Price;
                             }
+                            #endregion
                             break;
                         }
                     case Constants.PassengerVehicle:
                         {
-                            foreach (var item in add.PassengerVehicles)
+                            #region PassengerVehicles
+                            PassengerVehicle pv = objCommonDbOperations.GetPV(add.AddId.ToString());
+                            if(pv!=null)
                             {
-                                customAdd.Description = item.Description;
-                                customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                customAdd.Price = item.Price;
+                                customAdd.Description = pv.Description;
+                                customAdd.ImgUrlPrimary = pv.ImgUrlPrimary;
+                                customAdd.Price = pv.Price;
                             }
+                            #endregion
                             break;
                         }
 
@@ -900,95 +915,102 @@ namespace Classigoo.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult PreviewAdd(int addId)
+        public ActionResult PreviewAdd(string addId)
         {
             CustomAdd customAdd = new CustomAdd();
             try
             {
-                UserDBOperations db = new UserDBOperations();
-                Add  add= db.GetAddById(addId);
+                CommonDBOperations db = new CommonDBOperations();
+                Add  add= db.GetAdd(addId);
                 customAdd.Location = add.Mandal + "," + add.State;
                 customAdd.CreatedDate = add.Created.ToString();
                 customAdd.AddId = add.AddId;
                 customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
                 #region RealEstates
-                if (add.RealEstates.Count() == 1)
+                if (add.Category == Constants.RealEstate)
                 {
-                    foreach (var item in add.RealEstates)
+                    RealEstate re = db.GetRealEstate(add.AddId.ToString());
+                    if(re!=null)
                     {
-                        customAdd.Description = item.Description;
-                        customAdd.Price = item.Price;
+                        customAdd.RE = re;
+                        customAdd.Description = re.Description;
+                        customAdd.Price = re.Price;
                         customAdd.Category = Constants.RealEstate;
-                        customAdd.RE = item;
-                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
-                        customAdd.ImgUrlThird = item.ImgUrlThird;
-                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        customAdd.ImgUrlPrimary = re.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = re.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = re.ImgUrlThird;
+                        customAdd.ImgUrlFourth = re.ImgUrlFourth;
                     }
                 }
                 #endregion
                 #region TransportationVehicles
-                else if (add.TransportationVehicles.Count == 1)
+                else if (add.Category ==Constants.TransportationVehicle)
                 {
-                    foreach (var item in add.TransportationVehicles)
+                    TransportationVehicle tv = db.GetTV(add.AddId.ToString());
+                    if (tv != null)
                     {
-                        customAdd.Description = item.Description;
-                        customAdd.Price = item.Price;
+                        customAdd.Description = tv.Description;
+                        customAdd.Price = tv.Price;
                         customAdd.Category = Constants.TransportationVehicle;
-                        customAdd.TV = item;
-                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
-                        customAdd.ImgUrlThird = item.ImgUrlThird;
-                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        customAdd.ImgUrlPrimary = tv.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = tv.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = tv.ImgUrlThird;
+                        customAdd.ImgUrlFourth = tv.ImgUrlFourth;
+                        customAdd.Company = tv.Company;
                     }
                 }
                 #endregion
                 #region ConstructionVehicles
-                else if (add.ConstructionVehicles.Count == 1)
+                else if (add.Category == Constants.ConstructionVehicle)
                 {
-                    foreach (var item in add.ConstructionVehicles)
+                    ConstructionVehicle cv = db.GetCV(add.AddId.ToString());
+                    if (cv != null)
                     {
-                        customAdd.Description = item.Description;
-                        customAdd.Price = item.Price;
+                        customAdd.Description = cv.Description;
+                        customAdd.Price = cv.Price;
                         customAdd.Category = Constants.ConstructionVehicle;
-                        customAdd.CV = item;
-                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
-                        customAdd.ImgUrlThird = item.ImgUrlThird;
-                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        customAdd.ImgUrlPrimary = cv.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = cv.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = cv.ImgUrlThird;
+                        customAdd.ImgUrlFourth = cv.ImgUrlFourth;
+                        customAdd.Company = cv.Company;
                     }
                 }
                 #endregion
                 #region AgriculturalVehicles
-                else if (add.AgriculturalVehicles.Count == 1)
+                else if (add.Category == Constants.AgriculturalVehicle)
                 {
-                    foreach (var item in add.AgriculturalVehicles)
+                    AgriculturalVehicle av = db.GetAV(add.AddId.ToString());
+                    if (av != null)
                     {
-                        customAdd.Description = item.Description;
-                        customAdd.Price = item.Price;
+                        customAdd.Description = av.Description;
+                        customAdd.Price = av.Price;
                         customAdd.Category = Constants.AgriculturalVehicle;
-                        customAdd.AV = item;
-                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
-                        customAdd.ImgUrlThird = item.ImgUrlThird;
-                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        customAdd.ImgUrlPrimary = av.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = av.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = av.ImgUrlThird;
+                        customAdd.ImgUrlFourth = av.ImgUrlFourth;
+                        customAdd.Company = av.Company;
                     }
+                  
                 }
                 #endregion
                 #region PassengerVehicles
-                else if (add.PassengerVehicles.Count == 1)
+                else if (add.Category == Constants.PassengerVehicle)
                 {
-                    foreach (var item in add.PassengerVehicles)
+                    PassengerVehicle pv = db.GetPV(add.AddId.ToString());
+                    if (pv != null)
                     {
-                        customAdd.Description = item.Description;
-                        customAdd.Price = item.Price;
+                        customAdd.PV = pv;
+                        customAdd.Description = pv.Description;
+                        customAdd.Price = pv.Price;
                         customAdd.Category = Constants.PassengerVehicle;
-                        customAdd.PV = item;
-                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
-                        customAdd.ImgUrlThird = item.ImgUrlThird;
-                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                        customAdd.ImgUrlPrimary = pv.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = pv.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = pv.ImgUrlThird;
+                        customAdd.ImgUrlFourth = pv.ImgUrlFourth;
                     }
+                   
                 }
                 #endregion
             }
