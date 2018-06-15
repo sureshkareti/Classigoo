@@ -900,5 +900,103 @@ namespace Classigoo.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult PreviewAdd(int addId)
+        {
+            CustomAdd customAdd = new CustomAdd();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                Add  add= db.GetAddById(addId);
+                customAdd.Location = add.Mandal + "," + add.State;
+                customAdd.CreatedDate = add.Created.ToString();
+                customAdd.AddId = add.AddId;
+                customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
+                #region RealEstates
+                if (add.RealEstates.Count() == 1)
+                {
+                    foreach (var item in add.RealEstates)
+                    {
+                        customAdd.Description = item.Description;
+                        customAdd.Price = item.Price;
+                        customAdd.Category = Constants.RealEstate;
+                        customAdd.RE = item;
+                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = item.ImgUrlThird;
+                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                    }
+                }
+                #endregion
+                #region TransportationVehicles
+                else if (add.TransportationVehicles.Count == 1)
+                {
+                    foreach (var item in add.TransportationVehicles)
+                    {
+                        customAdd.Description = item.Description;
+                        customAdd.Price = item.Price;
+                        customAdd.Category = Constants.TransportationVehicle;
+                        customAdd.TV = item;
+                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = item.ImgUrlThird;
+                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                    }
+                }
+                #endregion
+                #region ConstructionVehicles
+                else if (add.ConstructionVehicles.Count == 1)
+                {
+                    foreach (var item in add.ConstructionVehicles)
+                    {
+                        customAdd.Description = item.Description;
+                        customAdd.Price = item.Price;
+                        customAdd.Category = Constants.ConstructionVehicle;
+                        customAdd.CV = item;
+                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = item.ImgUrlThird;
+                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                    }
+                }
+                #endregion
+                #region AgriculturalVehicles
+                else if (add.AgriculturalVehicles.Count == 1)
+                {
+                    foreach (var item in add.AgriculturalVehicles)
+                    {
+                        customAdd.Description = item.Description;
+                        customAdd.Price = item.Price;
+                        customAdd.Category = Constants.AgriculturalVehicle;
+                        customAdd.AV = item;
+                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = item.ImgUrlThird;
+                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                    }
+                }
+                #endregion
+                #region PassengerVehicles
+                else if (add.PassengerVehicles.Count == 1)
+                {
+                    foreach (var item in add.PassengerVehicles)
+                    {
+                        customAdd.Description = item.Description;
+                        customAdd.Price = item.Price;
+                        customAdd.Category = Constants.PassengerVehicle;
+                        customAdd.PV = item;
+                        customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
+                        customAdd.ImgUrlSeconday = item.ImgUrlSeconday;
+                        customAdd.ImgUrlThird = item.ImgUrlThird;
+                        customAdd.ImgUrlFourth = item.ImgUrlFourth;
+                    }
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Preview add addid- " + addId, ex);
+            }
+            return View(customAdd);
+        }
     }
 }

@@ -27,7 +27,6 @@ function CheckUser(profile, type) {
         user.Type= type;
         user.Email = profile.getEmail();
         id= user.Email;
-        // url = 'http://localhost:51797/api/UserApi/CheckUser/?id=' + user.Email + '&type=Gmail';
     }
     else if (type == 'Fb')
     {
@@ -35,10 +34,9 @@ function CheckUser(profile, type) {
         user.Type = type;
         user.FbId = profile.id;
         id= user.FbId;
-        // url = 'http://localhost:51797/api/UserApi/CheckUser/?id=' + user.FbId + '&type=Fb';
     }
     $.ajax({
-        url: '/User/IsUserExist/',
+        url: '/User/UserExist/',
         type: 'GET',
         data:{"id":id,"type":user.Type},
         success: function (data) {
@@ -65,8 +63,12 @@ function RegisterUser(user)
         data: user,
         contentType: "application/json;charset=utf-8",
         success: function (data) {
-            if (data =="True") {
+            if (data !="00000000-0000-0000-0000-000000000000") {
                 window.location.href = "/User/Home";
+            }
+            else//Error while registering user
+            {
+                console.log("Error while registering user");
             }
         },
         error: function (x, y, z) {

@@ -15,71 +15,46 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        // POST: User
         [HttpPost]
         public ActionResult Login(FormCollection coll)
         {
-            Guid UserId = Guid.Empty;
             try
             {
-                using (var client = new HttpClient())
-                {
-                   
-                    string url = Constants.DomainName+"/api/UserApi/IsValidUser/?userName=" + coll["email-phone"] + "&pwd=" + coll["pwd"] + "&logintype=" + coll["logintype"];
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
+                UserDBOperations db = new UserDBOperations();
 
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
+                Guid userId = db.IsValidUser(coll["email-phone"], coll["pwd"], coll["logintype"]);
+
+                if (userId != Guid.Empty)//valid user
+                {
+                    Session["UserId"] = userId;
+                    if (coll["email-phone"] == "1111111111" && coll["pwd"] == "admin")//admin login
                     {
-                        var readTask = result.Content.ReadAsAsync<Guid>();
-                        readTask.Wait();
-
-                        UserId = readTask.Result;
-
+                        return RedirectToAction("Admin", "User");
                     }
-                    else //web api sent error response 
+                
+                    else
                     {
-                        //log response status here..
-                        Library.WriteLog("At Login post webapi sent error");
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Library.WriteLog("At Login post",ex);
-            }
-            if (UserId != Guid.Empty)
-            {
-                Session["UserId"] = UserId;
-                if (coll["email-phone"] =="1111111111" && coll["pwd"] == "admin")
-                {
-                   return RedirectToAction("Admin", "User");
-                }
-                else
-                {
                     return RedirectToAction("Home", "User");
+                    }
                 }
-            }
             else
             {
                 @ViewBag.status = " Invalid Email/Phone Number or Password";
             }
+        }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Login UserName - " + coll["email-phone"], ex);
+            }
 
             return View();
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Register(FormCollection coll)
         {
@@ -90,11 +65,20 @@ namespace Classigoo.Controllers
                 user.Name = coll["inputName"];
                 user.Password = coll["inputPassword"];
                 user.Type = "Custom";
-                Guid userId = IsUserExist(user.MobileNumber, "Custom");
-                if (userId == Guid.Empty)
+                UserDBOperations db = new UserDBOperations();
+                Guid userId = db.UserExist(user.MobileNumber, "Custom");
+                if (userId == Guid.Empty)//User doesnot exist
                 {
-                    if (AddUser(user))
+                    userId = db.AddUser(user);
+                    if (userId!=Guid.Empty)//User Added successfully
+                    {
+                        Session["UserId"] = userId;
                         return RedirectToAction("Home", "User");
+                    }
+                    else//Error occured while adding user
+                    {
+                        @ViewBag.status = "Error Occured while Registering User";
+                    }
                 }
                 else
                 {
@@ -109,85 +93,53 @@ namespace Classigoo.Controllers
             return View();
 
         }
-        public Guid IsUserExist(string id, string type)
-        {
-            Guid userId = Guid.Empty;
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName + "/api/UserApi/CheckUser/?id=" + id + "&type=" + type;
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
 
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<Guid>();
-                        readTask.Wait();
-
-                        userId = readTask.Result;
-                        if (userId != Guid.Empty)
-                            Session["UserId"] = userId;
-                    }
-                    else //web api sent error response 
-                    {
-                        Library.WriteLog("At Isuserexist webapi sent error type- " + type);
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                Library.WriteLog("At Isuserexist type- "+type,ex);
-            }
-
-            return userId;
-
-        }
-        public ActionResult UnableToLogin()
-        {
-            return View();
-        }
         public ActionResult Home()
         {
              List<CustomAdd> addColl = new List<CustomAdd>();
-            if (Session["UserId"] != null)
+            if (Session["UserId"] != null)//user logged in
             {
                 Guid userId = (Guid)Session["UserId"];
-                Session["UserName"] = GetUserDetails(userId).Name;
-                addColl = GetMyAdds(userId);
+                UserDBOperations db = new UserDBOperations();
+                User user = db.GetUser(userId);
+                if (user != null)
+                {
+                    Session["UserName"] = user.Name;
+                }
+                addColl = db.GetMyAdds(userId);
                 TempData["UserAddColl"] = addColl;
                 return View(addColl);
             }
-            else
+            else//user not logged in
             {
                 return RedirectToAction("Home", "List");
             }
 
         }
+
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-            if (Session["UserId"] != null)
+            if (Session["UserId"] != null)//user logged in
             {
-                try { 
+                try
+                { 
                 Guid userId = (Guid)Session["UserId"];
-                User user = GetUserDetails(userId);
+                UserDBOperations db = new UserDBOperations();
+                User user = db.GetUser(userId);
                 addColl = (List<CustomAdd>)TempData["UserAddColl"];
-                Guid emailExist = IsUserExist(coll["txtEmail"], "Gmail");
-                Guid phoneExist = IsUserExist(coll["txtPhone"], "Custom");
-                TempData.Keep("UserAddColl");
+                Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
+                Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
+              TempData.Keep("UserAddColl");
                     switch (coll["action"])
                     {
                         case "Change Password":
+                            #region ChangePassword
                             if (coll["txtOldPasscode"] == user.Password)
                             {
                                 user.Password = coll["txtPasscode"];
-                                if (UpdateUserDetails(user))
+                                if (db.UpdateUserDetails(user))
                                 {
                                     @ViewBag.status = "Password updated successfully";
                                 }
@@ -201,13 +153,14 @@ namespace Classigoo.Controllers
                             {
                                 @ViewBag.status = "Old Password is incorrect";
                             }
-
+                            #endregion
                             break;
-                        case "Change Email":
-                            if (emailExist == Guid.Empty)
+                           case "Change Email":
+                            #region ChangeEmail
+                            if (emailExist == Guid.Empty)//Email doesnot exist
                             {
                                 user.Email = coll["txtEmail"];
-                                if (UpdateUserDetails(user))
+                                if (db.UpdateUserDetails(user))
                                 {
                                     @ViewBag.status = "Email updated successfully";
                                 }
@@ -220,12 +173,14 @@ namespace Classigoo.Controllers
                             {
                                 @ViewBag.status = "Email already registered";
                             }
-                            break;
+                            #endregion
+                            break;        
                         case "Change Phone":
-                            if (phoneExist == Guid.Empty)
+                            #region ChangePhone
+                            if (phoneExist == Guid.Empty)//Phone Num doesnt exist
                             {
                                 user.MobileNumber = coll["txtPhone"];
-                                if (UpdateUserDetails(user))
+                                if (db.UpdateUserDetails(user))
                                 {
                                     @ViewBag.status = "Mobile Number updated successfully";
                                 }
@@ -238,8 +193,9 @@ namespace Classigoo.Controllers
                             {
                                 @ViewBag.status = "Mobile Number already registered";
                             }
+                            #endregion
                             break;
-                        default:
+                         default:
                             break;
                     }
                   
@@ -251,182 +207,6 @@ namespace Classigoo.Controllers
             }
             return View(addColl);
         }
-        public bool UpdateUserDetails(User user)
-        {
-            bool isSuccess = false;
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName + "/api/UserApi/UpdateUserDetails/?user=" + user;
-                    client.BaseAddress = new Uri(url);
-                    var postTask = client.PutAsJsonAsync<User>(url, user);
-
-                    postTask.Wait();
-                    var result = postTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        isSuccess = true;
-                    }
-                    else
-                    {
-                        Library.WriteLog("At updateuserdetails webapi sent error");
-                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                    }
-
-                }
-            }
-            catch(Exception ex)
-            {
-                Library.WriteLog("At updateuserdetails",ex);
-            }
-            return isSuccess;
-        }
-        public User GetUserDetails(Guid id)
-        {
-            User user = new User();
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName+"/api/UserApi/GetUser/?id=" + id;
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
-
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<User>();
-                        readTask.Wait();
-
-                        user = readTask.Result;
-
-                    }
-                    else //web api sent error response 
-                    {
-                        Library.WriteLog("At Getuserdetails webapi sent error userid - " + id);
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Library.WriteLog("At Getuserdetails userid - " + id, ex);
-            }
-            return user;
-        }
-        public List<CustomAdd> GetMyAdds(Guid id)
-        {
-            List<CustomAdd> addColl = new List<CustomAdd>();
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName+"/api/UserApi/GetMyAdds/?userId=" + id;
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
-
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<List<CustomAdd>>();
-                        readTask.Wait();
-
-                        addColl = readTask.Result;
-
-                    }
-                    else //web api sent error response 
-                    {
-                        Library.WriteLog("At Getmyadds webapisent error userid- " + id);
-
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Library.WriteLog("At Getmyadds userid- "+id,ex);
-            }
-            return addColl;
-        }
-
-        public ActionResult PreviewAdd(int addId)
-        {
-            Add add = new Add();
-            CustomAdd customAdd = new CustomAdd();
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName+"/api/UserApi/GetAddById/?addId=" + addId;
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
-
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<Add>();
-                        readTask.Wait();
-
-                        add = readTask.Result;
-                        CustomActions obj = new CustomActions();
-                        customAdd = obj.CheckCategory(add);
-                    }
-                    else //web api sent error response 
-                    {
-                        Library.WriteLog("At Preview add webapi sent error addid- " + addId);
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Library.WriteLog("At Preview add addid- "+addId,ex);
-            }
-            return View(customAdd);
-        }
-
-        //public void AddLog(Exception Exception)
-        //{
-        //    Log log = new Log();
-        //    log.ExceptionMsg = Exception.Message.ToString();
-        //    log.ExceptionSource = Exception.StackTrace.ToString();
-        //    log.ExceptionType = Exception.GetType().ToString();
-        //    log.ExceptionURL = Request.Url.ToString();
-        //    log.UserId = "";
-        //    log.CreatedDate = DateTime.Now;
-        //    using (var client = new HttpClient())
-        //    {
-
-        //        string url = Constants.DomainName+"/api/UserApi/AddLog/?log=" + log;
-        //        client.BaseAddress = new Uri(url);
-        //        var postTask = client.PostAsJsonAsync<Log>(url, log);
-        //        try
-        //        {
-        //            postTask.Wait();
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //        }
-        //        var result = postTask.Result;
-        //        if (result.IsSuccessStatusCode)
-        //        {
-
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-        //        }
-
-        //    }
-        //}
         public ActionResult SignOut()
         {
             Session.Remove("UserId");
@@ -434,33 +214,11 @@ namespace Classigoo.Controllers
         }
         public ActionResult Admin()
         {
-            List<AdminAdd> addColl = new List<AdminAdd>();
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
             try
             {
-                using (var client = new HttpClient())
-                {
-                    string url = Constants.DomainName + "/api/UserApi/Admin";
-                    client.BaseAddress = new Uri(url);
-                    //HTTP GET
-                    var responseTask = client.GetAsync(url);
-                    responseTask.Wait();
-
-                    var result = responseTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        var readTask = result.Content.ReadAsAsync<List<AdminAdd>>();
-                        readTask.Wait();
-
-                        addColl = readTask.Result;
-
-                    }
-                    else //web api sent error response 
-                    {
-                        Library.WriteLog("At Admin webapi sent error");
-
-                        ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-                    }
-                }
+                UserDBOperations db = new UserDBOperations();
+                addColl=db.GetAdminAdds();
             }
             catch (Exception ex)
             {
@@ -471,76 +229,60 @@ namespace Classigoo.Controllers
 
         public bool UpdateAddStatus(int addId, string status)
         {
-            bool isSuccess = false;
+            bool isAddUpdated = false;
             try
             {
-                using (var client = new HttpClient())
-                {
-
-                    string url = Constants.DomainName + "/api/UserApi/UpdateAddStatus/?addId=" + addId + "&status=" + status;
-                    client.BaseAddress = new Uri(url);
-                    var postTask = client.PutAsJsonAsync(url, addId);
-
-                    postTask.Wait();
-
-                    var result = postTask.Result;
-                    if (result.IsSuccessStatusCode)
-                    {
-                        isSuccess = true;
-
-                    }
-                    else
-                    {
-                        Library.WriteLog("At updating add status webapisenterror addid- " + addId);
-                        ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-
-                    }
-                }
+                UserDBOperations db = new UserDBOperations();
+                isAddUpdated= db.UpdateAddStatus(addId, status);
             }
             catch(Exception ex)
             {
-                Library.WriteLog("At updating add status  ",ex);
+                Library.WriteLog("At updating add status addId - "+addId,ex);
             }
                
-                return isSuccess;
+            return isAddUpdated;
             }
-        
 
-        public bool AddUser(User user)
+        public ActionResult UnableToLogin()
         {
-            bool isSuccess = true;
-            using (var client = new HttpClient())
-            {
-                string url = Constants.DomainName + "/api/UserApi/AddUser/?user=" + user;
-                client.BaseAddress = new Uri(url);
-                var postTask = client.PostAsJsonAsync<User>(url, user);
-                try
-                {
-                    postTask.Wait();
-                }
-                catch (Exception ex)
-                {
-                    isSuccess = false;
-                    Library.WriteLog("At Adduser",ex);
-                }
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readTask = result.Content.ReadAsAsync<User>();
-                    readTask.Wait();
-                    Session["UserId"] = readTask.Result.UserId;
-                   // return RedirectToAction("Home", "User");
-                }
-                else
-                {
-                    isSuccess = false;
-                    Library.WriteLog("At Adduser webapisent error");
-                    ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-                }
-                return isSuccess;
-            }
+            return View();
         }
 
-      
+        public Guid AddUser(User user)
+        {
+            Guid userId = Guid.Empty;
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                userId= db.AddUser(user);
+                Session["UserId"] = userId;
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At AddUser", ex);
+            }
+
+            return userId;
+        }
+
+        public Guid UserExist(string id,string type)
+        {
+            Guid userId = Guid.Empty;
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                userId = db.UserExist(id,type);
+                if(userId!=Guid.Empty)
+                {
+                    Session["UserId"] = userId;
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At AddUser", ex);
+            }
+            
+            return userId;
+        }
     }
 }

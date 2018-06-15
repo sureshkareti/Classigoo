@@ -60,8 +60,8 @@ namespace Classigoo.Controllers
             }
             if (userId != Guid.Empty)
             {
-                UserController userContObj = new UserController();
-                User user = userContObj.GetUserDetails(userId);
+                UserDBOperations userObj = new UserDBOperations();
+                User user = userObj.GetUser(userId);
                 objPost.PhoneNumber = user.MobileNumber;
                 objPost.Name = user.Name;
 
@@ -450,9 +450,9 @@ namespace Classigoo.Controllers
                 }
                 else
                 {
-                    UserController userContr = new UserController();
+                    UserDBOperations userObj = new UserDBOperations();
 
-                    Guid userExist = userContr.IsUserExist(postAdd.PhoneNumber, "Custom");
+                    Guid userExist = userObj.UserExist(postAdd.PhoneNumber, "Custom");
                     if (userExist == Guid.Empty)
                     {
                         using (var client = new HttpClient())
