@@ -80,6 +80,7 @@ namespace Classigoo
 
     public class PostAdd
     {
+        public string AddId { set; get; }
         public string txtTitle { set; get; }
         public string ddlRentOrSale { set; get; }
         public string hdnCateFristLevel { set; get; }
