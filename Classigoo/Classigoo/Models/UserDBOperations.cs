@@ -165,53 +165,59 @@ namespace Classigoo.Models
                             customAdd.CreatedDate = add.Created.ToString();
                             customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
                             customAdd.Status = add.Status;
+                            CommonDBOperations objCommonDbOperations = new CommonDBOperations();
                             #region RealEstates
-                            if (add.RealEstates.Count()==1)
+                            if (add.Category==Constants.RealEstate)
                             {
-                                foreach (var item in add.RealEstates)
+                                RealEstate re = objCommonDbOperations.GetRealEstate(add.AddId.ToString());
+                                if(re!=null)
                                 {
-                                    customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                    customAdd.Price = item.Price;
+                                    customAdd.ImgUrlPrimary = re.ImgUrlPrimary;
+                                    customAdd.Price = re.Price;
                                 }
                             }
                             #endregion
                             #region TransportationVehicles
-                            else if (add.TransportationVehicles.Count==1)
+                            else if (add.Category==Constants.TransportationVehicle)
                             {
-                                foreach (var item in add.TransportationVehicles)
+                                TransportationVehicle tv = objCommonDbOperations.GetTV(add.AddId.ToString());
+                                if(tv!=null)
                                 {
-                                    customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                    customAdd.Price = item.Price;
+                                    customAdd.ImgUrlPrimary = tv.ImgUrlPrimary;
+                                    customAdd.Price = tv.Price;
                                 }
                             }
                             #endregion
                             #region ConstructionVehicles
-                            else if (add.ConstructionVehicles.Count==1)
+                            else if (add.Category==Constants.ConstructionVehicle)
                             {
-                                foreach (var item in add.ConstructionVehicles)
+                                ConstructionVehicle cv = objCommonDbOperations.GetCV(add.AddId.ToString());
+                                if(cv!=null)
                                 {
-                                    customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                    customAdd.Price = item.Price;
+                                    customAdd.ImgUrlPrimary = cv.ImgUrlPrimary;
+                                    customAdd.Price = cv.Price;
                                 }
                             }
                             #endregion
                             #region AgriculturalVehicles
-                            else if (add.AgriculturalVehicles.Count == 1)
+                            else if (add.Category == Constants.AgriculturalVehicle)
                             {
-                                foreach (var item in add.AgriculturalVehicles)
+                                AgriculturalVehicle av = objCommonDbOperations.GetAV(add.AddId.ToString());
+                                if(av!=null)
                                 {
-                                    customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                    customAdd.Price = item.Price;
+                                    customAdd.ImgUrlPrimary = av.ImgUrlPrimary;
+                                    customAdd.Price = av.Price;
                                 }
                             }
                             #endregion
                             #region PassengerVehicles
-                            else if (add.PassengerVehicles.Count == 1)
+                            else if (add.Category == Constants.PassengerVehicle)
                             {
-                                foreach (var item in add.PassengerVehicles)
+                                PassengerVehicle pv = objCommonDbOperations.GetPV(add.AddId.ToString());
+                                if(pv!=null)
                                 {
-                                    customAdd.ImgUrlPrimary = item.ImgUrlPrimary;
-                                    customAdd.Price = item.Price;
+                                    customAdd.ImgUrlPrimary = pv.ImgUrlPrimary;
+                                    customAdd.Price = pv.Price;
                                 }
                             }
                             #endregion
@@ -234,25 +240,6 @@ namespace Classigoo.Models
 
         }
        
-        public Add GetAddById(int addId)
-        {
-            Add add = new Add();
-            try
-            {
-                ClassigooEntities db = new ClassigooEntities();
-                //  using (ClassigooEntities db = new ClassigooEntities())
-                //{
-                add = db.Adds.Find(addId);
-                //}
-            }
-            catch (Exception ex)
-            {
-                Library.WriteLog("At Getting add by id- " + addId, ex);
-            }
-
-            return add;
-        }
-     
         public IEnumerable<AdminAdd>  GetAdminAdds()
         {
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();

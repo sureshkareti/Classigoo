@@ -30,11 +30,9 @@ namespace Classigoo
         public string ImgUrlSeconday { get; set; }
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
+        public string Company { get; set; }
         public RealEstate RE { set; get; }
-        public AgriculturalVehicle AV { set; get; }
-        public ConstructionVehicle CV { set; get; }
         public PassengerVehicle PV { set; get; }
-        public TransportationVehicle TV { set; get; }
     }
     public class FiterOptions
     {

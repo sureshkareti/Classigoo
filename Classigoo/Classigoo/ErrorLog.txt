@@ -92,3 +92,5 @@ Classigoo ; Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQ
 
 15/06/2018 7:57:39 PM : At Get User
 EntityFramework ; The operation cannot be completed because the DbContext has been disposed.
+15/06/2018 10:28:30 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
