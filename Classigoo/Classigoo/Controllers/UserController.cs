@@ -227,13 +227,13 @@ namespace Classigoo.Controllers
             return View(addColl);
         }
 
-        public bool UpdateAddStatus(int addId, string status)
+        public bool UpdateAddStatus(int addId, string status,string remarks)
         {
             bool isAddUpdated = false;
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                isAddUpdated = db.UpdateAddStatus(addId, status);
+                isAddUpdated = db.UpdateAddStatus(addId, status,remarks);
             }
             catch (Exception ex)
             {

@@ -222,6 +222,7 @@ namespace Classigoo
         public string District { get; set; }
         public string Mandal { get; set; }
         public string Type { get; set; }
+        public string Remarks { get; set; }
     }
 
 }

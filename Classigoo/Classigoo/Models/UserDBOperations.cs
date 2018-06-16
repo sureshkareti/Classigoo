@@ -259,7 +259,8 @@ namespace Classigoo.Models
                                    Status = add.Status,
                                    Type = add.Type,
                                    UserName = add.User.Name,
-                                   PhoneNum = add.User.MobileNumber
+                                   PhoneNum = add.User.MobileNumber,
+                                   Remarks=add.Remarks
                                }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
                                      {
@@ -272,7 +273,8 @@ namespace Classigoo.Models
                                          Status = add.Status,
                                          Type = add.Type,
                                          UserName = add.UserName,
-                                         PhoneNum = add.PhoneNum
+                                         PhoneNum = add.PhoneNum,
+                                         Remarks = add.Remarks
                                      });
                 }
             }
@@ -283,7 +285,7 @@ namespace Classigoo.Models
             return addColl;
         }
         
-        public bool UpdateAddStatus(int addId, string status)
+        public bool UpdateAddStatus(int addId, string status,string remarks)
         {
             int response = 0;
             try
@@ -294,6 +296,7 @@ namespace Classigoo.Models
                     if (add != null)
                     {
                         add.Status = status;
+                        add.Remarks = remarks;
                         response = db.SaveChanges();
                     }
                 }

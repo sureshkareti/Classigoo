@@ -20,8 +20,8 @@ namespace Classigoo
             this.AgriculturalVehicles = new HashSet<AgriculturalVehicle>();
             this.ConstructionVehicles = new HashSet<ConstructionVehicle>();
             this.PassengerVehicles = new HashSet<PassengerVehicle>();
-            this.TransportationVehicles = new HashSet<TransportationVehicle>();
             this.RealEstates = new HashSet<RealEstate>();
+            this.TransportationVehicles = new HashSet<TransportationVehicle>();
         }
     
         public int AddId { get; set; }
@@ -36,6 +36,7 @@ namespace Classigoo
         public string Type { get; set; }
         public string SubCategory { get; set; }
         public string NearestArea { get; set; }
+        public string Remarks { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -45,8 +46,8 @@ namespace Classigoo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PassengerVehicle> PassengerVehicles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransportationVehicle> TransportationVehicles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RealEstate> RealEstates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TransportationVehicle> TransportationVehicles { get; set; }
     }
 }

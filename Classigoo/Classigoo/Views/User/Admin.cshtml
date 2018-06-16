@@ -46,6 +46,7 @@
                                 <th data-hide="phone">Rent/Sale</th>
                                 <th>Preview</th>
                                 <th>Status</th>
+                                <th>Remarks</th>
                                 <th >Action</th>
                             </tr>
                         </thead>
@@ -88,6 +89,10 @@
                                     <td>
                                         <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
                                         @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
+                                        @Html.TextArea("txtRemarks",item.Remarks, new { @class = "edit-mode", @maxlength = "1000",@style="@width=350px;@height=80px"})
                                     </td>
                                     <td>
                                         <input type="button" value="Edit" class="edit-user display-mode" onclick="FnEditCancel(event);" />
@@ -147,11 +152,12 @@
     {
         $(".loader-wrap").show();
         var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
-        var status = editElemts.ddlStatus.value
+        var status = editElemts.ddlStatus.value;
+        var remarks = editElemts.txtRemarks.value
         var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
         $.ajax({
             url: '/User/UpdateAddStatus/',
-            data: { addId: addId, status: status },
+            data: { addId: addId, status: status, remarks: remarks },
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
