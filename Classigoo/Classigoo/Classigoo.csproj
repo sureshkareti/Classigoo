@@ -220,6 +220,7 @@
     <Compile Include="Models\CustomModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\MyMembershipProvider.cs" />
     <Compile Include="Models\PostDBOperations.cs" />
     <Compile Include="Models\UserDBOperations.cs" />
     <Compile Include="PassengerVehicle.cs">

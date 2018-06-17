@@ -5,17 +5,26 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Classigoo.Controllers
 {
     public class UserController : Controller
     {
+
         public ActionResult Login()
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Home", "User");
+            }
+
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(FormCollection coll)
         {
             try
@@ -23,10 +32,11 @@ namespace Classigoo.Controllers
                 UserDBOperations db = new UserDBOperations();
 
                 Guid userId = db.IsValidUser(coll["email-phone"], coll["pwd"], coll["logintype"]);
-
+                //bool isLoggedIn = Membership.ValidateUser("fdsa","asfds");
                 if (userId != Guid.Empty)//valid user
                 {
-                    Session["UserId"] = userId;
+                    SetUserId(userId,false);
+                   // Session["UserId"] = userId;
                     if (coll["email-phone"] == "1111111111" && coll["pwd"] == "admin")//admin login
                     {
                         return RedirectToAction("Admin", "User");
@@ -72,7 +82,8 @@ namespace Classigoo.Controllers
                     userId = db.AddUser(user);
                     if (userId != Guid.Empty)//User Added successfully
                     {
-                        Session["UserId"] = userId;
+                        // Session["UserId"] = userId;
+                        SetUserId(userId, false);
                         return RedirectToAction("Home", "User");
                     }
                     else//Error occured while adding user
@@ -94,38 +105,44 @@ namespace Classigoo.Controllers
 
         }
 
+        [Authorize]
         public ActionResult Home()
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-            if (Session["UserId"] != null)//user logged in
+            try
             {
-                Guid userId = (Guid)Session["UserId"];
+                Guid userId = GetUserId();
                 UserDBOperations db = new UserDBOperations();
-                User user = db.GetUser(userId);
-                if (user != null)
-                {
-                    Session["UserName"] = user.Name;
-                }
                 addColl = db.GetMyAdds(userId);
                 TempData["UserAddColl"] = addColl;
-                return View(addColl);
+                //if (TempData["UserAddColl"]!=null)
+                //{
+                //    addColl= addColl = (List<CustomAdd>)TempData["UserAddColl"];
+                //}
+                //else
+                //{
+                //    addColl = db.GetMyAdds(userId);
+                //    TempData["UserAddColl"] = addColl;
+                //}
+                
             }
-            else//user not logged in
+            catch(Exception ex)
             {
-                return RedirectToAction("Home", "List");
+                Library.WriteLog("At User Home",ex);
             }
+            return View(addColl);
 
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-            if (Session["UserId"] != null)//user logged in
-            {
+           //if (User.Identity.IsAuthenticated)//user logged in
+         // {
                 try
                 {
-                    Guid userId = (Guid)Session["UserId"];
+                    Guid userId = GetUserId();
                     UserDBOperations db = new UserDBOperations();
                     User user = db.GetUser(userId);
                     addColl = (List<CustomAdd>)TempData["UserAddColl"];
@@ -204,14 +221,23 @@ namespace Classigoo.Controllers
                 {
                     Library.WriteLog("At Updating user details", ex);
                 }
-            }
+            //}
             return View(addColl);
         }
+        [Authorize]
         public ActionResult SignOut()
         {
             Session.Remove("UserId");
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("Classigoo"))
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["Classigoo"];
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            FormsAuthentication.SignOut();
             return RedirectToAction("Home", "List");
         }
+        [Authorize]
         public ActionResult Admin()
         {
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
@@ -255,7 +281,8 @@ namespace Classigoo.Controllers
             {
                 UserDBOperations db = new UserDBOperations();
                 userId = db.AddUser(user);
-                Session["UserId"] = userId;
+                //Session["UserId"] = userId;
+                SetUserId(userId, false);
             }
             catch (Exception ex)
             {
@@ -274,7 +301,8 @@ namespace Classigoo.Controllers
                 userId = db.UserExist(id, type);
                 if (userId != Guid.Empty)
                 {
-                    Session["UserId"] = userId;
+                    // Session["UserId"] = userId;
+                    SetUserId(userId, false);
                 }
             }
             catch (Exception ex)
@@ -283,6 +311,82 @@ namespace Classigoo.Controllers
             }
 
             return userId;
+        }
+
+        public void SetUserId(Guid userId,bool rememberMe)
+        {
+            try
+            {
+                HttpCookie signinCookie = new HttpCookie("Classigoo");
+                signinCookie.Value = userId.ToString();
+    
+                if (rememberMe)
+                {
+                    signinCookie.Expires = DateTime.Now.AddDays(2);
+                }
+                UserDBOperations db = new UserDBOperations();
+                User user = db.GetUser(userId);
+                if (user != null)
+                {
+                    //Session["UserName"] = user.Name;
+                    FormsAuthentication.SetAuthCookie(user.Name, rememberMe);
+                }
+                this.ControllerContext.HttpContext.Response.Cookies.Add(signinCookie);
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At setuserid saving userid to cookie", ex);
+            }
+        }
+
+        public  Guid  GetUserId()
+        {
+            Guid userId = Guid.Empty;
+            try
+            {
+                if (Request.Cookies["Classigoo"] != null)
+                {
+                    var value = Request.Cookies["Classigoo"].Value;
+                    userId = Guid.Parse(value);
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetUserId getting userid from cookie", ex);
+            }
+            return userId;
+        }
+        public string GetUserName()
+        {
+            string userName = string.Empty;
+            try
+            {
+                if (Session["UserName"] != null)
+                {
+                    userName = Session["UserName"].ToString();
+                }
+                else
+                {
+                    if (Request.Cookies["Classigoo"] != null)
+                    {
+                        var value = Request.Cookies["Classigoo"].Value;
+                        UserDBOperations db = new UserDBOperations();
+                        User user = db.GetUser(Guid.Parse(value));
+                        if (user != null)
+                        {
+                            Session["UserName"] = user.Name;
+                            userName = user.Name;
+                        }
+                       
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("Getting username from session/db", ex);
+            }
+
+            return userName;
         }
     }
 }

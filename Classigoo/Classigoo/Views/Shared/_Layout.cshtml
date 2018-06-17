@@ -192,9 +192,11 @@
         $(document).ready(function () {
             var user = '@Session["UserId"]';
             var userName = '@Session["UserName"]';
-            if (user) {
+            var isUserLoggedIn = '@User.Identity.IsAuthenticated';
+            console.log(isUserLoggedIn);
+            if (isUserLoggedIn=='True') {
                 $("#userLoggedIn").css("display", "block");
-                $("#userName").text(userName);
+                $("#userName").text('@User.Identity.Name');
             }
             else {
                 $("#userNotLoggedIn").css("display", "block");

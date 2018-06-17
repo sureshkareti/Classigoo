@@ -100,3 +100,33 @@ Classigoo ; Object reference not set to an instance of an object.
 
 16/06/2018 12:38:05 PM : At updating add status response code- 1
 
+16/06/2018 3:09:12 PM : At Login UserName - 9177098010
+System.Web ; Could not load type 'Classigoo.Models'. (E:\MadhuBabu\Classigoo\Classigoo\Classigoo\web.config line 23)
+16/06/2018 3:09:32 PM : At Login UserName - 9177098010
+System.Web ; Could not load type 'Classigoo.Models'. (E:\MadhuBabu\Classigoo\Classigoo\Classigoo\web.config line 23)
+17/06/2018 10:21:20 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 10:21:33 AM : At Get num of adds in home page
+EntityFramework ; The underlying provider failed on Open.
+17/06/2018 10:24:12 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 10:24:46 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 10:26:12 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:01:41 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:11:09 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:12:29 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:15:03 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:34:45 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 11:49:11 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 1:20:21 PM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+17/06/2018 1:58:19 PM : At setuserid saving userid to cookie
+Classigoo ; Object reference not set to an instance of an object.

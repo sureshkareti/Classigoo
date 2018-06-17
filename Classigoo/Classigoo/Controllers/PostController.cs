@@ -22,15 +22,17 @@ namespace Classigoo.Controllers
 
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
+            UserDBOperations userObj = new UserDBOperations();
+            UserController objUserCont = new UserController();
+            objUserCont.ControllerContext = new ControllerContext(this.Request.RequestContext, objUserCont);
 
-
-            if (Session["UserId"] != null)
-            {
-                userId = (Guid)Session["UserId"];
-            }
+            //if (Session["UserId"] != null)
+            //{
+            //    userId = (Guid)Session["UserId"];
+            //}
+            userId = objUserCont.GetUserId();
             if (userId != Guid.Empty)
             {
-                UserDBOperations userObj = new UserDBOperations();
                 User user = userObj.GetUser(userId);
                 objPost.PhoneNumber = user.MobileNumber;
                 objPost.Name = user.Name;
@@ -204,16 +206,19 @@ namespace Classigoo.Controllers
 
 
                 Guid userId = Guid.Empty;
-                if (Session["UserId"] != null)
-                {
-                    userId = (Guid)Session["UserId"];
-                }
-                else
+                UserController objUserCont = new UserController();
+                objUserCont.ControllerContext = new ControllerContext(this.Request.RequestContext, objUserCont);
+                userId = objUserCont.GetUserId();
+                //if (Session["UserId"] != null)
+                //{
+                //    userId = (Guid)Session["UserId"];
+                //}
+                if(userId==Guid.Empty)//User not logged in 
                 {
                     UserDBOperations userObj = new UserDBOperations();
 
                     Guid userExist = userObj.UserExist(postAdd.PhoneNumber, "Custom");
-                    if (userExist == Guid.Empty)//user doesnot exist so add user
+                    if (userExist == Guid.Empty)//user(PhoneNum) doesnot exist so add user
                     {
                         User user = new User();
                         user.MobileNumber = postAdd.PhoneNumber;
@@ -223,19 +228,19 @@ namespace Classigoo.Controllers
                         if (newUserId != null)//user added successfully
                         {
                             userId = newUserId;
-
-                            Session["UserId"] = userId;
+                            objUserCont.SetUserId(userId, false);
+                            //Session["UserId"] = userId;
                         }
                         else//unbale to add register user
                         {
 
                         }
                     }
-                    else
+                    else//Phone Num Eixst already
                     {
-
                         userId = userExist;
-                        Session["UserId"] = userId;
+                        objUserCont.SetUserId(userId, false);
+                        // Session["UserId"] = userId;
                     }
                 }
 
@@ -1039,6 +1044,6 @@ namespace Classigoo.Controllers
         {
             return View();
         }
-
+        
     }
 }

@@ -7,7 +7,7 @@
 }
 @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
-
+    @Html.AntiForgeryToken()
     <div>
         <div class="breadcrumb-block">
 
