@@ -118,6 +118,7 @@
                                                         @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
                                                         <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
                                                         <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                        <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
                                                         <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
                                                         <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
                                                         <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
@@ -125,7 +126,7 @@
                                                         <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
                                                         <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
                                                         <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
-                                                        <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
+                                                        
                                                     </div>
                                                     <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
                                                         @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
@@ -1058,6 +1059,8 @@
 else
 {
     <script type="text/javascript">
+        var isEdit = false;
+
         $(document).ready(function() {
             loadStates();
         });

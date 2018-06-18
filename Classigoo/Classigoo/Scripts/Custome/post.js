@@ -189,7 +189,10 @@ $("#btnFucFourDelete").click(function () {
 
 });
 
+
 function DeleteImage(imageUrl, category, position, id) {
+
+    $(".loader-wrap").css("display", "block");
 
     $.ajax({
         type: "POST",
@@ -200,7 +203,8 @@ function DeleteImage(imageUrl, category, position, id) {
         async: false,
         data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
-            alert(msg);
+            $(".loader-wrap").css("display", "none");
+           
             if (msg == "error") {
                 alert("there is problem with deleting image");
             }
@@ -1314,8 +1318,11 @@ window.loadStates = function () {
         cacheLength: 20,
         max: 20,
         close: function () {
+        
             //$(this).blur();
-            $("#District").focus();
+            //$("#user-district").css("display", "block");
+            //$("#District").focus();
+           
         }
     }).focus(function () {
         $(this).data("uiAutocomplete").search('e');
@@ -1617,9 +1624,8 @@ function testFunction() {
             $(this).removeAttr('required');
           
         });
-
-        alert("hei");
-        //$(".loader-wrap").css("display", "block");
+    
+        $(".loader-wrap").css("display", "block");
     }
     else {
         return false;
