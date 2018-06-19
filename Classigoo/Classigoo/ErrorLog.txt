@@ -132,3 +132,5 @@ Classigoo ; Object reference not set to an instance of an object.
 Classigoo ; Object reference not set to an instance of an object.
 6/18/2018 4:50:45 PM : At updating add status response code- 1
 
+19/06/2018 11:15:52 PM : At controller Executing deletig physical image
+

@@ -190,10 +190,7 @@
 
     <script>
         $(document).ready(function () {
-            var user = '@Session["UserId"]';
-            var userName = '@Session["UserName"]';
             var isUserLoggedIn = '@User.Identity.IsAuthenticated';
-            console.log(isUserLoggedIn);
             if (isUserLoggedIn=='True') {
                 $("#userLoggedIn").css("display", "block");
                 $("#userName").text('@User.Identity.Name');

@@ -573,11 +573,14 @@ namespace Classigoo.Controllers
                 int postId = Convert.ToInt32(postAdd.AddId);
 
                 Guid userId = Guid.Empty;
-                if (Session["UserId"] != null)
-                {
-                    userId = (Guid)Session["UserId"];
-                }
-                else
+                UserController objUserCont = new UserController();
+                objUserCont.ControllerContext = new ControllerContext(this.Request.RequestContext, objUserCont);
+                userId = objUserCont.GetUserId();
+                //if (Session["UserId"] != null)
+                //{
+                //    userId = (Guid)Session["UserId"];
+                //}
+                if(userId==Guid.Empty)
                 {
                     ViewBag.Message = "nologin";
                     return View();
@@ -965,16 +968,25 @@ namespace Classigoo.Controllers
 
         public bool DeleteImage(List<string> urls)
         {
+            string domain = string.Empty;
             foreach (string url in urls)
             {
-                string domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
-
-                FileInfo file = new FileInfo(domain);
-                if (file.Exists)//check file exsit or not
+                try
                 {
-                    file.Delete();
+                    domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
 
-                    return true;
+                    FileInfo file = new FileInfo(domain);
+                    if (file.Exists)//check file exsit or not
+                    {
+                        file.Delete();
+
+                        return true;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Library.WriteLog("At Deleting physical image ImgName - "+domain, ex);
+                   
                 }
             }
 
