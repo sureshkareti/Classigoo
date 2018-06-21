@@ -2,8 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/images/cg.jpg")">
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@ViewBag.Title</title>
+    @*<title>@ViewBag.Title</title>*@
+
+    <title>Classigoo - @ViewBag.Title</title>
 
     @Styles.Render("~/Content/css")
     @*@Scripts.Render("~/bundles/modernizr")*@
@@ -55,19 +59,22 @@
 </head>
 <body>
     <div class="main-wrapper">
-        <header>
+        <header >
             <div>
-                <div class="header-wrap" style="max-width:990px !important;margin:auto;">
-                    <div class="container-fluid">
+                <div class="header-wrap" style="padding:0 10px 0 10px">
+                    <div class="container-fluid" style="border:1px solid gray">
                         <!--row start-->
                         <div class="row">
                             <!--col-md-3 start-->
-                            <div class="col-md-3 col-sm-12" style="">
+                            <div class="col-md-3 col-sm-12" >
                                 <div class="logo" style="padding-top:20px;">
                                     <a href="~/List/Home">
-                                        <img src="~/images/logo.jpg" alt="" style="height:50px;">
+                                        @*<img src="~/images/logo.jpg" alt="" style="height:50px;">*@
+                                        <img src="~/images/Classi goo.png" alt="" style="height:50px;">
                                     </a>
                                 </div>
+                               
+                                
                             </div>
                             <!--col-md-3 end-->
                             <!--col-md-7 end-->
@@ -101,17 +108,17 @@
 
                                         @*<ul class="nav navbar-nav navbar-right ml-auto">
 
-                                                <li class="nav-item dropdown" style="width:100%">
-                                                    <a href="#" data-toggle="dropdown" style="color:white;width:100%" class="Button-login nav-link dropdown-toggle user-action">Paula Wilson <b class="caret"></b></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
-                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
-                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
-                                                        <li class="divider dropdown-divider"></li>
-                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sign-out">&#xE8AC;</i> Logout</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>*@
+                            <li class="nav-item dropdown" style="width:100%">
+                                <a href="#" data-toggle="dropdown" style="color:white;width:100%" class="Button-login nav-link dropdown-toggle user-action">Paula Wilson <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                                    <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
+                                    <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li><a href="#" class="dropdown-item"><i class="fa fa-sign-out">&#xE8AC;</i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>*@
 
                                     </div>
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none" id="userNotLoggedIn">
@@ -119,8 +126,6 @@
                                         <div style="text-align:center"><a href="~/User/Login" class="Button-login">Login</a></div>
                                     </div>
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons">
-
-
                                         <div style="text-align:center"><a href="~/Post/Index" class="Button-postadd">Post your Ad!</a></div>
                                     </div>
                                 </div>
