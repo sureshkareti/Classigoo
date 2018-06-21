@@ -802,7 +802,6 @@
                                 <div class="form-group row" id="user-district" style="display:none">
                                     <div class="col-md-3" style="text-align:right">
                                         <label for="listing_name" class="input-lg" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
-
                                     </div>
                                     <div class="col-md-4">
 
@@ -956,7 +955,7 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-
+    
 
         if("@ViewBag.Name" != ""){
 
@@ -1050,6 +1049,8 @@
                 $("#btnFucFourDelete").parent().css('text-align', 'center');
             }
 
+
+            $("#btnSubmit").val("Update");
             //SetDefalutImage();
 
 

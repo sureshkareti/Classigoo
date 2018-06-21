@@ -17,7 +17,7 @@ $("#fucFirst").change(function () {
 
         reader.onload = function (e) {
             $('#imgFucFirst').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(fileuploaded[0]);
     }
 
@@ -40,7 +40,7 @@ $("#fucSecond").change(function () {
 
         reader.onload = function (e) {
             $('#imgFucSecond').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(fileuploaded[0]);
     }
 
@@ -58,7 +58,7 @@ $("#fucThird").change(function () {
 
         reader.onload = function (e) {
             $('#imgFucThird').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(fileuploaded[0]);
     }
 
@@ -77,7 +77,7 @@ $("#fucFour").change(function () {
 
         reader.onload = function (e) {
             $('#imgFucFour').attr('src', e.target.result);
-        }
+        };
         reader.readAsDataURL(fileuploaded[0]);
     }
 
@@ -191,38 +191,36 @@ $("#btnFucFourDelete").click(function () {
 
 
 function DeleteImage(imageUrl, category, position, id) {
-
+  
     $(".loader-wrap").css("display", "block");
-
+  
     $.ajax({
         type: "POST",
         url: '/Post/DeleteImageEdit',
         contentType: "application/json; charset=utf-8",
         processData: false,
         dataType: 'json',
-        async: false,
+        async: true,
         data: JSON.stringify({ 'imgUrl': imageUrl, 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
+
             $(".loader-wrap").css("display", "none");
            
-            if (msg == "error") {
+            if (msg === "error") {
                 alert("there is problem with deleting image");
             }
             else {
 
                 var imgUrl1 = msg[0];
-                var imgUrl2 = msg[2];
-                var imgUrl3 = msg[3];
-                var imgUrl4 = msg[4];
+                var imgUrl2 = msg[1];
+                var imgUrl3 = msg[2];
+                var imgUrl4 = msg[3];
 
-                console.log(imgUrl1);
-                console.log(imgUrl2);
-                console.log(imgUrl3);
-                console.log(imgUrl4);
+           
 
-                if (imgUrl1 != "") {
+                if (imgUrl1 !== "") {
 
-                    $('#imgFucFirst').attr('src', "'" + imgUrl1 + "'");
+                    $('#imgFucFirst').attr('src',  imgUrl1 );
                 }
                 else {
 
@@ -236,9 +234,9 @@ function DeleteImage(imageUrl, category, position, id) {
                 }
 
 
-                if (imgUrl2 != "") {
+                if (imgUrl2 !== "") {
 
-                    $('#imgFucSecond').attr('src', "'" + imgUrl2 + "'");
+                    $('#imgFucSecond').attr('src',  imgUrl2 );
                 }
                 else {               
                     $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
@@ -253,9 +251,9 @@ function DeleteImage(imageUrl, category, position, id) {
                 }
 
 
-                if (imgUrl3 != "") {
+                if (imgUrl3 !== "") {
 
-                    $('#imgFucThird').attr('src', "'" + imgUrl3 + "'");
+                    $('#imgFucThird').attr('src',  imgUrl3 );
                 }
                 else {
                     $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
@@ -269,9 +267,9 @@ function DeleteImage(imageUrl, category, position, id) {
                 }
 
 
-                if (imgUrl4 != "") {
+                if (imgUrl4 !== "") {
 
-                    $('#imgFucFour').attr('src', "'" + imgUrl4 + "'");
+                    $('#imgFucFour').attr('src',  imgUrl4 );
                 }
                 else {
                     $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
@@ -309,18 +307,18 @@ function DeleteImage(imageUrl, category, position, id) {
 
                 //}
 
-                alert("delete img successfully");
+                //alert("delete img successfully");
             }
 
         },
         error: function (xhr, status, p3, p4) {
             var err = "Error " + " " + status + " " + p3 + " " + p4;
-            if (xhr.responseText && xhr.responseText[0] == "{")
+            if (xhr.responseText && xhr.responseText[0] === "{")
                 err = JSON.parse(xhr.responseText).Message;
             console.log(err);
         }
     });
-};
+}
 
 
 window.SetDefalutImage = function () {
@@ -330,19 +328,19 @@ window.SetDefalutImage = function () {
     var imgThirdUrl = $('#imgFucThird').attr('src');
     var imgFourUrl = $('#imgFucFour').attr('src');
 
-    if (imgSecondUrl != "/images/upimglogo1.png") {
+    if (imgSecondUrl !== "/images/upimglogo1.png") {
 
         $("#divSetDefalutSecond").css("display", "block");
     }
-    if (imgThirdUrl != "/images/upimglogo1.png") {
+    if (imgThirdUrl !== "/images/upimglogo1.png") {
 
         $("#divSetDefalutThird").css("display", "block");
     }
-    if (imgFourUrl != "/images/upimglogo1.png") {
+    if (imgFourUrl !== "/images/upimglogo1.png") {
 
         $("#divSetDefalutFour").css("display", "block");
     }
-}
+};
 
 $("#btnSetDefalutSecond").click(function () {
 
@@ -363,7 +361,7 @@ function ChangeDefaultImage(category, position, id) {
         data: JSON.stringify({ 'category': category, 'position': position, 'id': id }),
         success: function (msg) {
 
-            if (msg = "error") {
+            if (msg === "error") {
                 alert("there is problem with deleting image");
             }
             else {
@@ -372,7 +370,7 @@ function ChangeDefaultImage(category, position, id) {
                 var imgUrl3 = msg[3];
                 var imgUrl4 = msg[4];
 
-                if (imgUrl1 != "") {
+                if (imgUrl1 !== "") {
                     $('#imgFucFirst').attr('src', "'" + imgUrl1 + "'");
                 }
                 else {
@@ -380,7 +378,7 @@ function ChangeDefaultImage(category, position, id) {
                 }
 
 
-                if (imgUrl2 != "") {
+                if (imgUrl2 !== "") {
 
                     $('#imgFucSecond').attr('src', "'" + imgUrl2 + "'");
                 }
@@ -391,7 +389,7 @@ function ChangeDefaultImage(category, position, id) {
                 }
 
 
-                if (imgUrl3 != "") {
+                if (imgUrl3 !== "") {
 
                     $('#imgFucThird').attr('src', "'" + imgUrl3 + "'");
                 }
@@ -401,7 +399,7 @@ function ChangeDefaultImage(category, position, id) {
                 }
 
 
-                if (imgUrl4 != "") {
+                if (imgUrl4 !== "") {
 
                     $('#imgFucFour').attr('src', "'" + imgUrl4 + "'");
                 }
@@ -417,7 +415,7 @@ function ChangeDefaultImage(category, position, id) {
         },
         error: function (xhr, status, p3, p4) {
             var err = "Error " + " " + status + " " + p3 + " " + p4;
-            if (xhr.responseText && xhr.responseText[0] == "{")
+            if (xhr.responseText && xhr.responseText[0] === "{")
                 err = JSON.parse(xhr.responseText).Message;
             console.log(err);
         }
@@ -455,7 +453,7 @@ $("#tabCategories a").click(function () {
     //var selectedCate = $(this).text();
     var selectedCate = $(this).attr("id");
 
-    if (selectedCate == "catPro") {
+    if (selectedCate === "catPro") {
 
         PathSetFirstLevel("Real Estate");
 
@@ -464,7 +462,7 @@ $("#tabCategories a").click(function () {
         $("#tabPro").addClass("active");
 
     }
-    else if (selectedCate == "catCV") {
+    else if (selectedCate === "catCV") {
 
         PathSetFirstLevel("Construction Vehicles");
 
@@ -473,7 +471,7 @@ $("#tabCategories a").click(function () {
         $("#tabCV").addClass("active");
 
     }
-    else if (selectedCate == "catTV") {
+    else if (selectedCate === "catTV") {
 
         PathSetFirstLevel("Transportation Vehicles");
 
@@ -481,7 +479,7 @@ $("#tabCategories a").click(function () {
         $("#idtabTV").addClass("active");
         $("#tabTV").addClass("active");
     }
-    else if (selectedCate == "catAV") {
+    else if (selectedCate === "catAV") {
 
         PathSetFirstLevel("Agricultural Vehicles");
 
@@ -490,7 +488,7 @@ $("#tabCategories a").click(function () {
         $("#tabAV").addClass("active");
 
     }
-    else if (selectedCate == "catPV") {
+    else if (selectedCate === "catPV") {
 
         PathSetFirstLevel("Passenger Vehicles");
 
@@ -715,14 +713,14 @@ function DisplayRespectiveFields() {
     var selectedCate = $("#hdnCateFristLevel").val().trim();
 
 
-    if (selectedCate == "Real Estate") {
+    if (selectedCate === "Real Estate") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
 
         $("#forProperties").css('display', 'block');
 
 
-        if (selectedPrtoperty == "Agricultural Land") {
+        if (selectedPrtoperty === "Agricultural Land") {
             $("#pro-availability").css('display', 'block');
             $("#pro-acres").css('display', 'block');
 
@@ -732,7 +730,7 @@ function DisplayRespectiveFields() {
             $("#pro-squareyards").css('display', 'none');
         }
 
-        if (selectedPrtoperty == "Plots/Land") {
+        if (selectedPrtoperty === "Plots/Land") {
             $("#pro-availability").css('display', 'block');
             $("#pro-squareyards").css('display', 'block');
 
@@ -744,7 +742,7 @@ function DisplayRespectiveFields() {
 
 
 
-        if (selectedPrtoperty == "Shops & Offices") {
+        if (selectedPrtoperty === "Shops & Offices") {
             $("#pro-availability").css('display', 'block');
             $("#pro-sqarefeets").css('display', 'block');
             $("#pro-furnishing").css('display', 'block');
@@ -754,7 +752,7 @@ function DisplayRespectiveFields() {
             $("#pro-squareyards").css('display', 'none');
         }
 
-        if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
+        if (selectedPrtoperty === "Apartments" || selectedPrtoperty === "Independent Houses & Villas") {
             $("#pro-availability").css('display', 'block');
             $("#pro-sqarefeets").css('display', 'block');
             $("#pro-furnishing").css('display', 'block');
@@ -766,21 +764,21 @@ function DisplayRespectiveFields() {
 
 
     }
-    else if (selectedCate == "Construction Vehicles") {
+    else if (selectedCate === "Construction Vehicles") {
         $("#forCV").css('display', 'block');
         fillFromJson("CV");
 
     }
-    else if (selectedCate == "Transportation Vehicles") {
+    else if (selectedCate === "Transportation Vehicles") {
         $("#forTV").css('display', 'block');
         fillFromJson("TV");
     }
-    else if (selectedCate == "Agricultural Vehicles") {
+    else if (selectedCate === "Agricultural Vehicles") {
         $("#forAV").css('display', 'block');
         fillFromJson("AV");
 
         var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory == "Borewell Machine") {
+        if (selectedSubCategory === "Borewell Machine") {
             $("#divAVPrice").css('display', 'none');
         }
         else {
@@ -788,18 +786,18 @@ function DisplayRespectiveFields() {
         }
 
     }
-    else if (selectedCate == "Passenger Vehicles") {
+    else if (selectedCate === "Passenger Vehicles") {
         $("#forPV").css('display', 'block');
         fillFromJson("PV");
 
-        var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory == "Cars") {
+        var selectedSubCategory1 = $("#hdnCateSecondLevel").val();
+        if (selectedSubCategory1 === "Cars") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'block');
             $("#pv-kmdriven").css('display', 'block');
         }
-        else if (selectedSubCategory == "Bikes") {
+        else if (selectedSubCategory1 === "Bikes") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
@@ -823,7 +821,7 @@ function DisplayRespectiveFields() {
 function showothercompany() {
 
     var avSelectedCompnay = $("#AVCompany_list").val();
-    if (avSelectedCompnay == "Other") {
+    if (avSelectedCompnay === "Other") {
         $("#av-othercompany").css("display", "block");
     }
     else {
@@ -831,7 +829,7 @@ function showothercompany() {
     }
 
     var tvSelectedCompnay = $("#TVCompany_list").val();
-    if (tvSelectedCompnay == "Other") {
+    if (tvSelectedCompnay === "Other") {
         $("#tv-othercompany").css("display", "block");
     }
     else {
@@ -840,7 +838,7 @@ function showothercompany() {
 
 
     var cvSelectedCompnay = $("#CVCompany_list").val();
-    if (cvSelectedCompnay == "Other") {
+    if (cvSelectedCompnay === "Other") {
         $("#cv-othercompany").css("display", "block");
     }
     else {
@@ -849,7 +847,7 @@ function showothercompany() {
 
 
     var pvSelectedCompnay = $("#PVCompany_list").val();
-    if (pvSelectedCompnay == "Other") {
+    if (pvSelectedCompnay === "Other") {
         $("#pv-othercompany").css("display", "block");
     }
     else {
@@ -902,26 +900,26 @@ function fillFromJson(selectedType) {
     //});
 
 
-    var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedCategory);
+    var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
 
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);
+    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory);
 
 
     $.each(selectedModel[0].VehicleModel, function (i, field) {
         {
-            if (selectedType == "AV") {
+            if (selectedType === "AV") {
 
                 $("#AVCompany_list").append("<option>" + field.name + "</option>");
             }
-            else if (selectedType == "CV") {
+            else if (selectedType === "CV") {
 
                 $("#CVCompany_list").append("<option>" + field.name + "</option>");
             }
-            else if (selectedType == "TV") {
+            else if (selectedType === "TV") {
 
                 $("#TVCompany_list").append("<option>" + field.name + "</option>");
             }
-            else if (selectedType == "PV") {
+            else if (selectedType === "PV") {
 
                 $("#PVCompany_list").append("<option>" + field.name + "</option>");
             }
@@ -935,17 +933,17 @@ function fillModels() {
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
     var selectedCategory = "";
 
-    if (selectedSubCategory == "Cars") {
+    if (selectedSubCategory === "Cars") {
 
         selectedCategory = "Cars Models";
     }
-    else if (selectedSubCategory == "Bikes") {
+    else if (selectedSubCategory === "Bikes") {
 
         selectedCategory = "Bikes Models";
     }
 
 
-    var selectedSubCategory = $("#PVCompany_list").val();
+    var selectedSubCategory1 = $("#PVCompany_list").val();
 
     $("#PVModel_list").find('option').remove();
     $("#PVModel_list").append('<option value="">Select</option>');
@@ -966,9 +964,9 @@ function fillModels() {
     });
 
 
-    var selectedVehicle = VehiclesColl.filter(a=>a.name == selectedCategory);
+    var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
 
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);
+    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
 
 
     $.each(selectedModel[0].VehicleModel, function (i, field) {
@@ -1004,14 +1002,14 @@ window.BindEdit = function () {
 
 
 
-    if (selectedCate == "Real Estate") {
+    if (selectedCate === "Real Estate") {
 
         var selectedPrtoperty = $("#hdnCateSecondLevel").val().trim();
 
         $("#forProperties").css('display', 'block');
 
 
-        if (selectedPrtoperty == "Agricultural Land") {
+        if (selectedPrtoperty === "Agricultural Land") {
             $("#pro-availability").css('display', 'block');
             $("#pro-acres").css('display', 'block');
 
@@ -1021,7 +1019,7 @@ window.BindEdit = function () {
             $("#pro-squareyards").css('display', 'none');
         }
 
-        if (selectedPrtoperty == "Plots/Land") {
+        if (selectedPrtoperty === "Plots/Land") {
             $("#pro-availability").css('display', 'block');
             $("#pro-squareyards").css('display', 'block');
 
@@ -1033,7 +1031,7 @@ window.BindEdit = function () {
 
 
 
-        if (selectedPrtoperty == "Shops & Offices") {
+        if (selectedPrtoperty === "Shops & Offices") {
             $("#pro-availability").css('display', 'block');
             $("#pro-sqarefeets").css('display', 'block');
             $("#pro-furnishing").css('display', 'block');
@@ -1043,7 +1041,7 @@ window.BindEdit = function () {
             $("#pro-squareyards").css('display', 'none');
         }
 
-        if (selectedPrtoperty == "Apartments" || selectedPrtoperty == "Independent Houses & Villas") {
+        if (selectedPrtoperty === "Apartments" || selectedPrtoperty === "Independent Houses & Villas") {
             $("#pro-availability").css('display', 'block');
             $("#pro-sqarefeets").css('display', 'block');
             $("#pro-furnishing").css('display', 'block');
@@ -1055,21 +1053,21 @@ window.BindEdit = function () {
 
 
     }
-    else if (selectedCate == "Construction Vehicles") {
+    else if (selectedCate === "Construction Vehicles") {
         $("#forCV").css('display', 'block');
         fillFromJson("CV");
 
     }
-    else if (selectedCate == "Transportation Vehicles") {
+    else if (selectedCate === "Transportation Vehicles") {
         $("#forTV").css('display', 'block');
         fillFromJson("TV");
     }
-    else if (selectedCate == "Agricultural Vehicles") {
+    else if (selectedCate === "Agricultural Vehicles") {
         $("#forAV").css('display', 'block');
         fillFromJson("AV");
 
         var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory == "Borewell Machine") {
+        if (selectedSubCategory === "Borewell Machine") {
             $("#divAVPrice").css('display', 'none');
         }
         else {
@@ -1077,18 +1075,18 @@ window.BindEdit = function () {
         }
 
     }
-    else if (selectedCate == "Passenger Vehicles") {
+    else if (selectedCate === "Passenger Vehicles") {
         $("#forPV").css('display', 'block');
         fillFromJson("PV");
 
-        var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory == "Cars") {
+        var selectedSubCategory1 = $("#hdnCateSecondLevel").val();
+        if (selectedSubCategory1 === "Cars") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'block');
             $("#pv-kmdriven").css('display', 'block');
         }
-        else if (selectedSubCategory == "Bikes") {
+        else if (selectedSubCategory1 === "Bikes") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
@@ -1109,7 +1107,7 @@ window.BindEdit = function () {
 
     showothercompany();
     ShowPlaceData();
-}
+};
 
 
 function ShowPlaceData() {
@@ -1121,7 +1119,7 @@ function ShowPlaceData() {
 window.loadDistrict = function () {
     var selectedState = $("#State").val();
 
-    if (selectedState != "") {
+    if (selectedState !== "") {
 
 
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
@@ -1139,7 +1137,7 @@ window.loadDistrict = function () {
             }
         });
 
-        var selectedVehicle = locations.filter(a=>a.name == selectedState);
+        var selectedVehicle = locations.filter(a=>a.name === selectedState);
 
         $.each(selectedVehicle[0].District, function (i1, field1) {
 
@@ -1190,13 +1188,13 @@ window.loadDistrict = function () {
         $("#user-localarea").css("display", "none");
         $("#LocalArea").val("");
     }
-}
+};
 
 window.loadMandal = function () {
 
     var selectedDistric = $("#District").val();
 
-    if (selectedDistric != "") {
+    if (selectedDistric !== "") {
 
 
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
@@ -1218,7 +1216,7 @@ window.loadMandal = function () {
             }
         });
 
-        var selectedStae = locations.filter(a=>a.name == selectedDistric);
+        var selectedStae = locations.filter(a=>a.name === selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
 
@@ -1267,7 +1265,7 @@ window.loadMandal = function () {
         $("#user-localarea").css("display", "none");
         $("#LocalArea").val("");
     }
-}
+};
 
 //---------------------Binding edit options---------------------------------------//
 
@@ -1318,22 +1316,22 @@ window.loadStates = function () {
         cacheLength: 20,
         max: 20,
         close: function () {
-        
+
             //$(this).blur();
             //$("#user-district").css("display", "block");
             //$("#District").focus();
-           
+
         }
     }).focus(function () {
         $(this).data("uiAutocomplete").search('e');
     });
-}
+};
 
 function getDistricts() {
 
     var selectedState = $("#State").val();
     $("#District").val("");
-    if (selectedState != "") {
+    if (selectedState !== "") {
 
 
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
@@ -1351,7 +1349,7 @@ function getDistricts() {
             }
         });
 
-        var selectedVehicle = locations.filter(a=>a.name == selectedState);
+        var selectedVehicle = locations.filter(a=>a.name === selectedState);
 
         $.each(selectedVehicle[0].District, function (i1, field1) {
 
@@ -1421,7 +1419,7 @@ function getMandal() {
 
     var selectedDistric = $("#District").val();
     $("#Mandal").val("");
-    if (selectedDistric != "") {
+    if (selectedDistric !== "") {
 
 
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
@@ -1443,7 +1441,7 @@ function getMandal() {
             }
         });
 
-        var selectedStae = locations.filter(a=>a.name == selectedDistric);
+        var selectedStae = locations.filter(a=>a.name === selectedDistric);
 
         //var selectedVehicle = selectedStae[0].District.filter(a=>a.name == selectedDistric);
 
@@ -1510,7 +1508,7 @@ function getMandal() {
 function getLocal() {
     $("#LocalArea").val("");
     var selectedState = $("#Mandal").val();
-    if (selectedState != "") {
+    if (selectedState !== "") {
         $("#user-localarea").css("display", "block");
     }
     else {
@@ -1532,7 +1530,7 @@ function testFunction() {
     hiddenElements.each(function () {
         $(this).prop('required', false);
         $(this).removeAttr('pattern', false);
-    })
+    });
 
 
 
@@ -1540,8 +1538,8 @@ function testFunction() {
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
 
 
-    if ($("#txtTitle").val() != "") {
-        if (selectedCategory == "" || selectedSubCategory == "") {
+    if ($("#txtTitle").val() !== "") {
+        if (selectedCategory === "" || selectedSubCategory === "") {
 
             $("#divCategories").css("border", "1px solid #a94442");
             $("#divCategories").css("box-shadow", "0 1px 1px rgba(0,0,0,.075)");
@@ -1565,11 +1563,11 @@ function testFunction() {
     }
 
 
-    if ($("#txtAddDetails").val() != "") {
+    if ($("#txtAddDetails").val() !== "") {
 
         var firstImgvalue = $("#imgFucFirst").attr('src');
 
-        if (firstImgvalue == "/images/upimglogo1.png") {
+        if (firstImgvalue === "/images/upimglogo1.png") {
 
             showerrorImg1();
 
@@ -1583,8 +1581,8 @@ function testFunction() {
     var inputElements = $('input:not(:hidden)');
 
     inputElements.each(function () {
-        if ($(this).attr("id") != "LocalArea") {
-            if ($(this).val() == "") {
+        if ($(this).attr("id") !== "LocalArea") {
+            if ($(this).val() === "") {
                 isValid = "false";
                 $(this).focus();
             }
@@ -1595,7 +1593,7 @@ function testFunction() {
     var selectElements = $('select:not(:hidden)');
 
     selectElements.each(function () {
-        if ($(this).val() == "") {
+        if ($(this).val() === "") {
                   
             isValid = "false";
           
@@ -1603,12 +1601,12 @@ function testFunction() {
 
     });
 
-    if ($("#txtAddDetails").val() == "") {
+    if ($("#txtAddDetails").val() === "") {
 
         isValid = "false";
     }
 
-    if (isValid == "true") {
+    if (isValid === "true") {
 
 
         var inputElements1 = $('input');
@@ -1633,7 +1631,7 @@ function testFunction() {
 
 
     //alert($('#forProperties').css('display') == 'none');
-};
+}
 
 function showerrorImg1() {
     $("#divimgFucFirst").css("border", "1px solid #a94442");
