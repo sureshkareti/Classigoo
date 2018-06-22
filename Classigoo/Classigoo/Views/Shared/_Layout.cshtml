@@ -62,12 +62,12 @@
         <header >
             <div>
                 <div class="header-wrap" style="padding:0 10px 0 10px">
-                    <div class="container-fluid" style="border:1px solid gray">
+                    <div class="container-fluid" style="max-width:990px !important;margin:auto;">
                         <!--row start-->
                         <div class="row">
                             <!--col-md-3 start-->
                             <div class="col-md-3 col-sm-12" >
-                                <div class="logo" style="padding-top:20px;">
+                                <div class="logo" style="padding-top:40px;">
                                     <a href="~/List/Home">
                                         @*<img src="~/images/logo.jpg" alt="" style="height:50px;">*@
                                         <img src="~/images/Classi goo.png" alt="" style="height:50px;">
@@ -84,18 +84,26 @@
                             </div>
                             <!--col-md-3 end-->
                             <!--col-md-2 start-->
-                            <div class="col-md-5 col-sm-12" style="">
-                                <div class="row" style="">
+                            <div class="col-md-5 col-sm-12" style="border:1px solid gray">
+                                <div class="row showcontactdesktop">
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
 
-                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none" id="userLoggedIn">
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-sm-6" style="text-align:right;border:1px solid gray;padding-right:0px">
+                                        <a href="#" style="color:#C70;font-size:24px;"><i class="fa fa-phone"></i> <span>9014454730</span></a>
+                                    </div>
+                                </div>
+                                <div class="row" style="border:1px solid gray">
+
+                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:block" id="userLoggedIn">
                                         <div style="width:100%" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
                                             <ul class="nav" style="width:100%">
                                                 <li class="dropdown" style="width:100%">
 
-                                                    <a class="nav-link dropdown-toggle" style="width:100%" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="glyphicon glyphicon-user"></span>
 
-                                                        <span class="link inlblk acc-user-name fleft"><strong><span id="userName">Classigoo User</span></strong></span>
+                                                        <span class="link inlblk acc-user-name fleft"><strong><span id="userName" >Classigoo User</span></strong></span>
                                                     </a>
                                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                                                         <li><a class="dropdown-item" href="~/User/Home">My DashBoard</a></li>
@@ -128,6 +136,13 @@
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons">
                                         <div style="text-align:center"><a href="~/Post/Index" class="Button-postadd">Post your Ad!</a></div>
                                     </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="col-sm-12 showcontactmobile">
+                                <div class="logo" >
+                                    <a href="#" style="color:#C70;font-size:24px;"><i class="fa fa-phone"></i> <span>9014454730</span></a>
                                 </div>
                             </div>
 
