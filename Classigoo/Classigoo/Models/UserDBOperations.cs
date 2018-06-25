@@ -305,7 +305,6 @@ namespace Classigoo.Models
             {
                 Library.WriteLog("At Updating Add Status db addId- "+addId, ex);
             }
-            Library.WriteLog("At updating add status response code- " + response);
             if (response == 1)
             {
                 return true;
@@ -313,6 +312,22 @@ namespace Classigoo.Models
             else
             { 
                 return false;
+            }
+        }
+
+        public void IsPwdEmpty(Guid userId)
+        {
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    db.Users.Find(userId);
+                }
+            }
+
+            catch(Exception ex)
+            {
+
             }
         }
         
