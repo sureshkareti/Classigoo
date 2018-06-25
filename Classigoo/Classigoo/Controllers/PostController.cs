@@ -192,6 +192,8 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
+           
+
             PostDBOperations objPostDbOpareations = new PostDBOperations();
             string queryStringForEdit = Request.QueryString["addId"];
             if (postAdd.AddId == null)
@@ -262,7 +264,8 @@ namespace Classigoo.Controllers
                     Title = postAdd.txtTitle,
                     Type = postAdd.ddlRentOrSale,
                     Status = Constants.PendingSatus,
-                    UserId = userId
+                    UserId = userId,
+                    Created=DateTime.Now
                 };
 
 
@@ -276,6 +279,13 @@ namespace Classigoo.Controllers
                 string img4 = string.Empty;
                 try
                 {
+
+                    string psth = @"../../../img.classigoo.com/img/" + Image1.FileName;
+
+                    Library.WriteLog(Server.MapPath(psth));
+
+                    Image1.SaveAs(Server.MapPath(psth));
+
                     CreateFolder("/ImgColl/" + postAdd.State);
                     CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District);
                     CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal);

@@ -64,7 +64,7 @@ namespace Classigoo.Controllers
             CustomAdd customAdd = new CustomAdd();
             try
             {
-                customAdd.Location = add.Mandal + "," + add.State;
+                customAdd.Location = add.Mandal+", " +add.District + ", " + add.State;
 
                 DateTime dtTemp = add.Created.Value;
                 customAdd.CreatedDate = dtTemp.ToString("MMMM") + ", " + dtTemp.Day + ", " + dtTemp.Year; // .mon.ToLongDateString();

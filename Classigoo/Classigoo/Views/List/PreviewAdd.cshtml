@@ -27,7 +27,7 @@
                         <div class="col-md-8 col-sm-6">
                             <h2 style="text-align:left;"> @Model.Title @*test title for agricultural vebiclaes for the location andhra pradesh*@</h2>
                             <div>
-                                <i class="fa fa-map-marker"></i> @Model.Location  | Posted on: @Model.CreatedDate
+                                <i class="fa fa-map-marker"></i> @Model.Location  | Posted on: @Model.CreatedDate | Add id: @Model.AddId
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -66,16 +66,40 @@
                                         <div class="image-hover"></div>
                                     </li>
                                     <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
-                                        <img class="zoom image-grid image-grid2" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="2" title="Your Product Name">
-                                        <div class="image-hover"></div>
+                                        @{
+                                            if (Model.ImgUrlSeconday != "")
+                                            {
+                                                <img class="zoom image-grid image-grid2" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="2" title="Your Product Name">
+                                                <div class="image-hover"></div>
+                                            }
+
+                                        }
+                                       
                                     </li>
                                     <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
-                                        <img class="zoom image-grid image-grid3" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="3" title="Your Product Name">
-                                        <div class="image-hover"></div>
+
+                                        @{
+                                            if (Model.ImgUrlThird != "")
+                                            {
+                                                <img class="zoom image-grid image-grid3" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="3" title="Your Product Name">
+                                                <div class="image-hover"></div>
+                                            }
+
+                                        }
+                                      
                                     </li>
                                     <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
-                                        <img class="zoom image-grid image-grid4" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="4" title="Your Product Name">
-                                        <div class="image-hover"></div>
+
+                                        @{
+                                            if (Model.ImgUrlFourth != "")
+                                            {
+                                                <img class="zoom image-grid image-grid4" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="4" title="Your Product Name">
+                                                <div class="image-hover"></div>
+                                            }
+
+                                        }
+
+                                       
                                     </li>
                                 </ul>
                                 <div class="mt10">* Mouse move on Image to zoom</div>
@@ -318,27 +342,136 @@
 
         $(".image-hover").css('display', 'block');
 
+        
         var That;
+        var imageUrl= "" ;
         if (dataId == "1") {
 
             That = $(".image-grid4");
-            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
 
+            imageUrl = $(That).attr('src');
+
+           
+            if (imageUrl != undefined) {
+
+                $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+               
+                That = $(".image-grid3");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+                   
+                    That = $(".image-grid2");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+                        
+                        That = $(".image-grid1");
+                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
         }
         else if (dataId == "2") {
-
+          
             That = $(".image-grid1");
-            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+
+            imageUrl = $(That).attr('src');
+
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid4");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid3");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid2");
+                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
+
+
+           
         }
         else if (dataId == "3") {
 
             That = $(".image-grid2");
-            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                       
+            imageUrl = $(That).attr('src');
+
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid3");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid4");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid1");
+                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
+
         }
         else if (dataId == "4") {
 
             That = $(".image-grid3");
-            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+          
+            imageUrl = $(That).attr('src');
+
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid2");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid1");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid4");
+                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
         }
 
         $(".my-foto-container").fadeOut(100, function () {
@@ -358,25 +491,129 @@
         $(".image-hover").css('display', 'block');
 
         var That;
+        var imageUrl = "";
         if (dataId == "1") {
 
             That = $(".image-grid2");
-            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+           
+            imageUrl = $(That).attr('src');
+
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid3");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid4");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid1");
+                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
+
         }
         else if (dataId == "2") {
 
             That = $(".image-grid3");
-            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+            
+            imageUrl = $(That).attr('src');
+
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid4");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid1");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid2");
+                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
         }
         else if (dataId == "3") {
 
             That = $(".image-grid4");
-            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+           
+            imageUrl = $(That).attr('src');
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid1");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid2");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid3");
+                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
         }
         else if (dataId == "4") {
 
             That = $(".image-grid1");
-            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+            
+            imageUrl = $(That).attr('src');
+
+            if (imageUrl != undefined) {
+
+                $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+            }
+            else {
+
+                That = $(".image-grid2");
+                if ($(That).attr('src') != undefined) {
+                    $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid3");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid4");
+                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                    }
+                }
+            }
         }
 
         $(".my-foto-container").fadeOut(100, function () {

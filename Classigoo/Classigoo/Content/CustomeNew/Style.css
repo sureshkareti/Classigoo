@@ -546,7 +546,7 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
 }
 
 .headerbuttons {
-    padding-top: 25px;
+    padding-top: 10px;
     padding-right: 0px;
 }
 
@@ -590,7 +590,7 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     cursor: pointer;
     /*font-family: "Segoe UI Web Semibold","Segoe UI Semibold WestEuropean","Segoe UI Semibold","Segoe UI",Tahoma,Arial,sans-serif;*/
     font-size: 16px;
-    height: 42px;
+    height: 41px;
     max-width: 164px;
     padding: 7px 16px;
     text-align: center;
@@ -766,15 +766,15 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     padding-bottom: 10px;
 }
 
-.showcontactmobile{
-    display:none;
+.showcontactmobile {
+    display: none;
 }
 
 
 @media screen and (max-width: 991px) {
     .logo {
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .post-btn {

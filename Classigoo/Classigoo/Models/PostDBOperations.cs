@@ -18,7 +18,7 @@ namespace Classigoo.Models
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
                     ObjectParameter Output = new ObjectParameter("AddId", typeof(int));
-                    classigooEntities.FillAds(add.Category, add.SubCategory, add.State, add.District, add.Mandal, add.NearestArea, add.Title, add.Type, add.Status, add.UserId, Output);
+                    classigooEntities.FillAds(add.Category, add.SubCategory, add.State, add.District, add.Mandal, add.NearestArea, add.Title, add.Type, add.Status, add.UserId,add.Created, Output);
 
                     int responceCode = classigooEntities.SaveChanges();
                     if (responceCode == 0)

@@ -1,8 +1,12 @@
 ﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head >
+<head>
     <title></title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <style>
         #map {
             height: 100%;
@@ -13,6 +17,126 @@
             margin: 0;
             padding: 0;
         }
+
+
+        nav {
+            display: block;
+            text-align: center;
+        }
+
+            nav ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+        .nav a {
+            display: block;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8em 1.8em;
+            text-transform: uppercase;
+            font-size: 80%;
+            letter-spacing: 2px;
+            text-shadow: 0 -1px 0 #000;
+            position: relative;
+        }
+
+        .nav {
+            vertical-align: top;
+            display: inline-block;
+            box-shadow: 1px -1px -1px 1px #000, -1px 1px -1px 1px #fff, 0 0 6px 3px #fff;
+            border-radius: 6px;
+        }
+
+            .nav li {
+                position: relative;
+            }
+
+            .nav > li {
+                float: left;
+                /*border-bottom: 4px #aaa solid;*/
+                margin-right: 1px;
+            }
+
+                .nav > li > a {
+                    margin-bottom: 1px;
+                    box-shadow: inset 0 2em .33em -0.5em #555;
+                }
+
+                .nav > li:hover,
+                .nav > li:hover > a {
+                    border-bottom-color: orange;
+                }
+
+            .nav li:hover > a {
+                color: orange;
+            }
+
+            .nav > li:first-child {
+                /*border-radius: 4px 0 0 4px;*/
+            }
+
+                .nav > li:first-child > a {
+                    /*border-radius: 4px 0 0 0;*/
+                }
+
+            .nav > li:last-child {
+                /*border-radius: 0 0 4px 0;
+                margin-right: 0;*/
+            }
+
+                .nav > li:last-child > a {
+                    border-radius: 0 4px 0 0;
+                }
+
+            .nav li li a {
+                margin-top: 1px;
+            }
+
+
+            /* submenu positioning*/
+            .nav ul {
+                position: absolute;
+                white-space: nowrap;
+                /*border-bottom: 5px solid orange;*/
+                z-index: 1;
+                left: -99999em;
+            }
+
+            .nav > li:hover > ul {
+                left: auto;
+                /*margin-top: 5px;*/
+                min-width: 100%;
+            }
+
+            .nav > li li:hover > ul {
+                left: 100%;
+                margin-left: 1px;
+                top: -1px;
+            }
+            /* arrow hover styling */
+            .nav > li > a:first-child:nth-last-child(2):before {
+                border-top-color: #aaa;
+            }
+
+            .nav > li:hover > a:first-child:nth-last-child(2):before {
+                border: 5px solid transparent;
+                border-bottom-color: orange;
+                margin-top: -5px;
+            }
+
+            .nav li li > a:first-child:nth-last-child(2):before {
+                border-left-color: #aaa;
+                margin-top: -5px;
+            }
+
+            .nav li li:hover > a:first-child:nth-last-child(2):before {
+                border: 5px solid transparent;
+                border-right-color: orange;
+                right: 10px;
+            }
     </style>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
     <style>
@@ -68,33 +192,33 @@
     <script>
         $(document).ready(function () {
         });
-            var placeSearch, autocomplete;
-            var componentForm = {
-                street_number: 'short_name',
-                route: 'short_name',
-                locality: 'main_text',
-                administrative_area_level_1: 'short_name',
-                country: 'short_name',
-                postal_code: 'short_name',
-                administrative_area_level_3:'main_text'
-            };
+        var placeSearch, autocomplete;
+        var componentForm = {
+            street_number: 'short_name',
+            route: 'short_name',
+            locality: 'main_text',
+            administrative_area_level_1: 'short_name',
+            country: 'short_name',
+            postal_code: 'short_name',
+            administrative_area_level_3: 'main_text'
+        };
         //26.820 80.499  17.6078088 78.6561694
-            function initAutocomplete() {
-                var geolocation = {
-                    lat: 16.545,
-                    lng: 81.532
-                };
-                var circle = new google.maps.Circle({
-                    center: geolocation,
-                    radius: 100000,
+        function initAutocomplete() {
+            var geolocation = {
+                lat: 16.545,
+                lng: 81.532
+            };
+            var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: 100000,
 
-                });
-                autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-                    { types: ['geocode'], componentRestrictions: { country: "IN" }, strictBounds: true }
-                );
-                autocomplete.setBounds(circle.getBounds());
-            }
+            });
+            autocomplete = new google.maps.places.Autocomplete(
+  /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                { types: ['geocode'], componentRestrictions: { country: "IN" }, strictBounds: true }
+            );
+            autocomplete.setBounds(circle.getBounds());
+        }
 
     </script>
 </head>
@@ -105,7 +229,33 @@
                    type="text" />
         </div>
 
-        
+        <div class="container" style="width:100%;height:100px">
+            <div class="row">
+                <div class="col-md-10 col-sm-10" style="border:1px solid gray">
+
+                </div>
+                <div class="col-md-2 col-sm-2" style="border:1px solid gray">
+
+                    <nav>
+                        <ul class="nav">                          
+                            <li>
+                                <a href="#">Rants</a>
+                                <ul>
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">item</a></li>
+                                    <li><a href="#">item</a></li>
+                                    <li><a href="#">item</a></li>
+                                </ul>
+                            </li>
+                           
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+
+
     </form>
 </body>
 </html>

@@ -20,7 +20,6 @@ namespace Classigoo
         public ClassigooEntities()
             : base("name=ClassigooEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -37,7 +36,7 @@ namespace Classigoo
         public virtual DbSet<RealEstate> RealEstates { get; set; }
         public virtual DbSet<Add> Adds { get; set; }
     
-        public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, ObjectParameter addId)
+        public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, Nullable<System.DateTime> createdDate, ObjectParameter addId)
         {
             var categoryParameter = category != null ?
                 new ObjectParameter("Category", category) :
@@ -79,7 +78,11 @@ namespace Classigoo
                 new ObjectParameter("UserId", userId) :
                 new ObjectParameter("UserId", typeof(System.Guid));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryParameter, subCategoryParameter, stateParameter, districtParameter, mandalParameter, nearestAreaParameter, titleParameter, typeParameter, statusParameter, userIdParameter, addId);
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryParameter, subCategoryParameter, stateParameter, districtParameter, mandalParameter, nearestAreaParameter, titleParameter, typeParameter, statusParameter, userIdParameter, createdDateParameter, addId);
         }
     }
 }

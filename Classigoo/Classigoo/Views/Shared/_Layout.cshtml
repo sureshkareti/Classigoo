@@ -54,27 +54,153 @@
             vertical-align: middle;
             margin-top: -2px;
         }
+
+       .login-nav nav {
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+          .login-nav  nav ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+       .login-nav .nav a {
+            display: block;
+            background: #337ab7;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            max-width: 164px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+       .login-nav .nav {
+            vertical-align: top;
+            display: inline-block;
+            box-shadow: 1px -1px -1px 1px #000, -1px 1px -1px 1px #fff, 0 0 6px 3px #fff;
+            /*border-radius: 6px;*/
+            width: 100%;
+             max-width: 164px;
+        }
+
+           .login-nav .nav li {
+                position: relative;
+            }
+
+           .login-nav .nav > li {
+                float: left;
+                /*border-bottom: 4px #aaa solid;*/
+                margin-right: 1px;
+            }
+
+              .login-nav  .nav > li > a {
+                    background: #337ab7;
+                    color: #FFFFFF;
+                    max-width: 164px;
+                    width: 100%;
+                    padding: 7px 16px;
+                    text-align: center;
+                    height: 41px;
+                    /*margin-bottom: 1px;
+                    box-shadow: inset 0 2em .33em -0.5em #555;*/
+                }
+
+               .login-nav .nav > li:hover,
+               .login-nav .nav > li:hover > a {
+                    border-bottom-color: orange;
+                }
+
+           .login-nav .nav li:hover > a {
+                color: black;
+                 background: #337ab7;
+            }
+
+            .login-nav .nav li ul li:hover > a {
+                color: orange;
+                 background:#FFFFFF;
+            }            
+
+           .login-nav .nav li li a {
+                margin-top: 1px;
+                background-color: #FFFFFF;
+                color: #777;
+                font-size:14px;
+                border-radius: 1px;
+                border-color: #e5e5e5;
+                box-shadow: 0 2px 8px rgba(0,0,0,.05);
+            }
+
+
+            /* submenu positioning*/
+           .login-nav .nav ul {
+                position: absolute;
+                white-space: nowrap;
+                /*border-bottom: 5px solid orange;*/
+                z-index: 1;
+                left: -99999em;
+            }
+
+           .login-nav .nav > li:hover > ul {
+                left: auto;
+                /*margin-top: 5px;*/
+                min-width: 100%;
+            }
+
+           .login-nav .nav > li li:hover > ul {
+                left: 100%;
+                margin-left: 1px;
+                top: -1px;
+            }
+            /* arrow hover styling */
+           .login-nav .nav > li > a:first-child:nth-last-child(2):before {
+                border-top-color: #aaa;
+            }
+
+           .login-nav .nav > li:hover > a:first-child:nth-last-child(2):before {
+                border: 5px solid transparent;
+                border-bottom-color: orange;
+                margin-top: -5px;
+            }
+
+           .login-nav .nav li li > a:first-child:nth-last-child(2):before {
+                border-left-color: #aaa;
+                margin-top: -5px;
+            }
+
+           .login-nav .nav li li:hover > a:first-child:nth-last-child(2):before {
+                border: 5px solid transparent;
+                border-right-color: orange;
+                right: 10px;
+            }
     </style>
 
 </head>
 <body>
     <div class="main-wrapper">
-        <header >
+        <header>
             <div>
                 <div class="header-wrap" style="padding:0 10px 0 10px">
                     <div class="container-fluid" style="max-width:990px !important;margin:auto;">
                         <!--row start-->
                         <div class="row">
                             <!--col-md-3 start-->
-                            <div class="col-md-3 col-sm-12" >
+                            <div class="col-md-3 col-sm-12">
                                 <div class="logo" style="padding-top:40px;">
                                     <a href="~/List/Home">
                                         @*<img src="~/images/logo.jpg" alt="" style="height:50px;">*@
                                         <img src="~/images/Classi goo.png" alt="" style="height:50px;">
                                     </a>
                                 </div>
-                               
-                                
+
+
                             </div>
                             <!--col-md-3 end-->
                             <!--col-md-7 end-->
@@ -84,26 +210,26 @@
                             </div>
                             <!--col-md-3 end-->
                             <!--col-md-2 start-->
-                            <div class="col-md-5 col-sm-12" style="border:1px solid gray">
+                            <div class="col-md-5 col-sm-12" style="">
                                 <div class="row showcontactdesktop">
                                     <div class="col-md-6 col-xs-6 col-sm-6">
 
                                     </div>
-                                    <div class="col-md-6 col-xs-6 col-sm-6" style="text-align:right;border:1px solid gray;padding-right:0px">
-                                        <a href="#" style="color:#C70;font-size:24px;"><i class="fa fa-phone"></i> <span>9014454730</span></a>
+                                    <div class="col-md-6 col-xs-6 col-sm-6" style="text-align:right;padding-top:10px;padding-right:0">
+                                        <a href="#" style="color:#337ab7;font-size:24px;"><i class="fa fa-phone"></i> <span style="color:#f70;">9014454730</span></a>
                                     </div>
                                 </div>
-                                <div class="row" style="border:1px solid gray">
+                                <div class="row" style="">
 
-                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:block" id="userLoggedIn">
-                                        <div style="width:100%" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
+                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none;" id="userLoggedIn">
+                                        <div style="width:100%;text-align:center;display:none" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
                                             <ul class="nav" style="width:100%">
                                                 <li class="dropdown" style="width:100%">
 
                                                     <a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <span class="glyphicon glyphicon-user"></span>
 
-                                                        <span class="link inlblk acc-user-name fleft"><strong><span id="userName" >Classigoo User</span></strong></span>
+                                                        <span class="link inlblk acc-user-name fleft"><span id="userName1">Classigoo User</span></span>
                                                     </a>
                                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
                                                         <li><a class="dropdown-item" href="~/User/Home">My DashBoard</a></li>
@@ -114,22 +240,46 @@
                                             </ul>
                                         </div>
 
+                                        <div class="login-nav">
+                                            <nav>
+                                                <ul class="nav">
+                                                    <li style="width:100%">
+
+                                                        <a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="glyphicon glyphicon-user"></span>
+
+                                                            <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
+                                                        </a>
+                                                        <ul style="width:100%;border:1px solid gray;background-color:white">
+                                                            <li style="width:100%;"><a href="~/User/Home">My DashBoard</a></li>
+                                                            <li style="width:100%;"><a href="~/User/SignOut">SignOut</a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                
+
+
                                         @*<ul class="nav navbar-nav navbar-right ml-auto">
 
-                            <li class="nav-item dropdown" style="width:100%">
-                                <a href="#" data-toggle="dropdown" style="color:white;width:100%" class="Button-login nav-link dropdown-toggle user-action">Paula Wilson <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
-                                    <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
-                                    <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
-                                    <li class="divider dropdown-divider"></li>
-                                    <li><a href="#" class="dropdown-item"><i class="fa fa-sign-out">&#xE8AC;</i> Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>*@
+                                                <li class="nav-item dropdown" style="width:100%">
+                                                    <a href="#" data-toggle="dropdown" style="color:white;width:100%" class="Button-login nav-link dropdown-toggle user-action">Paula Wilson <b class="caret"></b></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a></li>
+                                                        <li class="divider dropdown-divider"></li>
+                                                        <li><a href="#" class="dropdown-item"><i class="fa fa-sign-out">&#xE8AC;</i> Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>*@
 
                                     </div>
-                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none" id="userNotLoggedIn">
+
+                                    <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none;" id="userNotLoggedIn">
 
                                         <div style="text-align:center"><a href="~/User/Login" class="Button-login">Login</a></div>
                                     </div>
@@ -137,12 +287,12 @@
                                         <div style="text-align:center"><a href="~/Post/Index" class="Button-postadd">Post your Ad!</a></div>
                                     </div>
                                 </div>
-                               
+
                             </div>
 
                             <div class="col-sm-12 showcontactmobile">
-                                <div class="logo" >
-                                    <a href="#" style="color:#C70;font-size:24px;"><i class="fa fa-phone"></i> <span>9014454730</span></a>
+                                <div class="logo">
+                                    <a href="#" style="color:#337ab7;font-size:24px;"><i class="fa fa-phone"></i> <span style="color:#f70;">9014454730</span></a>
                                 </div>
                             </div>
 
@@ -211,7 +361,7 @@
     <script>
         $(document).ready(function () {
             var isUserLoggedIn = '@User.Identity.IsAuthenticated';
-            if (isUserLoggedIn=='True') {
+            if (isUserLoggedIn == 'True') {
                 $("#userLoggedIn").css("display", "block");
                 $("#userName").text('@User.Identity.Name');
             }
