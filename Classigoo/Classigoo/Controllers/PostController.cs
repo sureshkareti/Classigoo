@@ -279,8 +279,16 @@ namespace Classigoo.Controllers
                 string img4 = string.Empty;
                 try
                 {
+                    Library.WriteLog(Server.MapPath("."));
+                    Library.WriteLog(Server.MapPath("/"));
+                    Library.WriteLog(Server.MapPath("~"));
+                    Library.WriteLog(Server.MapPath(".."));
+                    
 
-                    string psth = @"../../../img.classigoo.com/img/" + Image1.FileName;
+
+                    //string pathOfSubdomain = Server.MapPath("~").Split('\\')[]
+
+                    string psth = @"../../img.classigoo.com/img/" + Image1.FileName;
 
                     Library.WriteLog(Server.MapPath(psth));
 
