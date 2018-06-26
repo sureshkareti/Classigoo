@@ -47,7 +47,8 @@
                                 <th>Preview</th>
                                 <th>Status</th>
                                 <th>Remarks</th>
-                                <th >Action</th>
+                                <th>Action</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,6 +99,9 @@
                                         <input type="button" value="Edit" class="edit-user display-mode" onclick="FnEditCancel(event);" />
                                         <input type="button" class="save-user edit-mode" value="Save" onclick="FnSave(event)" />
                                         <input type="button" class="cancel-user edit-mode" value="Cancel" onclick="FnEditCancel(event);"/>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
                                     </td>
                                 </tr>
 

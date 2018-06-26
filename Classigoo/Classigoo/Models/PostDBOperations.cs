@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -18,7 +19,7 @@ namespace Classigoo.Models
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
                     ObjectParameter Output = new ObjectParameter("AddId", typeof(int));
-                    classigooEntities.FillAds(add.Category, add.SubCategory, add.State, add.District, add.Mandal, add.NearestArea, add.Title, add.Type, add.Status, add.UserId,add.Created, Output);
+                    classigooEntities.FillAds(add.Category, add.SubCategory, add.State, add.District, add.Mandal, add.NearestArea, add.Title, add.Type, add.Status, add.UserId, add.Created, Output);
 
                     int responceCode = classigooEntities.SaveChanges();
                     if (responceCode == 0)
@@ -152,6 +153,10 @@ namespace Classigoo.Models
                             RealEstate objRealEstate = classigooEntities.RealEstates.First(x => x.AddId == objAdd.AddId);
                             if (objRealEstate != null)
                             {
+
+                                DeleteImageLocal(new List<string>() { objRealEstate.ImgUrlPrimary, objRealEstate.ImgUrlSeconday, objRealEstate.ImgUrlThird, objRealEstate.ImgUrlFourth });
+
+
                                 classigooEntities.RealEstates.Remove(objRealEstate);
                                 classigooEntities.SaveChanges();
                             }
@@ -161,6 +166,9 @@ namespace Classigoo.Models
                             ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objCV != null)
                             {
+                                DeleteImageLocal(new List<string>() { objCV.ImgUrlPrimary, objCV.ImgUrlSeconday, objCV.ImgUrlThird, objCV.ImgUrlFourth });
+
+
                                 classigooEntities.ConstructionVehicles.Remove(objCV);
                                 classigooEntities.SaveChanges();
                             }
@@ -170,6 +178,8 @@ namespace Classigoo.Models
                             TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objTV != null)
                             {
+                                DeleteImageLocal(new List<string>() { objTV.ImgUrlPrimary, objTV.ImgUrlSeconday, objTV.ImgUrlThird, objTV.ImgUrlFourth });
+
                                 classigooEntities.TransportationVehicles.Remove(objTV);
                                 classigooEntities.SaveChanges();
                             }
@@ -179,6 +189,8 @@ namespace Classigoo.Models
                             AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objAV != null)
                             {
+                                DeleteImageLocal(new List<string>() { objAV.ImgUrlPrimary, objAV.ImgUrlSeconday, objAV.ImgUrlThird, objAV.ImgUrlFourth });
+
                                 classigooEntities.AgriculturalVehicles.Remove(objAV);
                                 classigooEntities.SaveChanges();
                             }
@@ -189,6 +201,8 @@ namespace Classigoo.Models
                             PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objPV != null)
                             {
+                                DeleteImageLocal(new List<string>() { objPV.ImgUrlPrimary, objPV.ImgUrlSeconday, objPV.ImgUrlThird, objPV.ImgUrlFourth });
+
                                 classigooEntities.PassengerVehicles.Remove(objPV);
                                 classigooEntities.SaveChanges();
                             }
@@ -207,6 +221,127 @@ namespace Classigoo.Models
             }
 
             return true;
+        }
+
+        public bool DeleteAdd(string addIdForDelete)
+        {
+            string id = addIdForDelete;
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int addId = Convert.ToInt32(id);
+                    Add objAdd = classigooEntities.Adds.Find(addId);
+                    string type = objAdd.Category;
+                    if (objAdd != null)
+                    {
+                        if (type == "Real Estate")
+                        {
+                            RealEstate objRealEstate = classigooEntities.RealEstates.First(x => x.AddId == objAdd.AddId);
+                            if (objRealEstate != null)
+                            {
+
+                                DeleteImageLocal(new List<string>() { objRealEstate.ImgUrlPrimary, objRealEstate.ImgUrlSeconday, objRealEstate.ImgUrlThird, objRealEstate.ImgUrlFourth });
+
+
+                                classigooEntities.RealEstates.Remove(objRealEstate);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Construction Vehicles")
+                        {
+                            ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objCV != null)
+                            {
+                                DeleteImageLocal(new List<string>() { objCV.ImgUrlPrimary, objCV.ImgUrlSeconday, objCV.ImgUrlThird, objCV.ImgUrlFourth });
+
+
+                                classigooEntities.ConstructionVehicles.Remove(objCV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Transportation Vehicles")
+                        {
+                            TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objTV != null)
+                            {
+                                DeleteImageLocal(new List<string>() { objTV.ImgUrlPrimary, objTV.ImgUrlSeconday, objTV.ImgUrlThird, objTV.ImgUrlFourth });
+
+                                classigooEntities.TransportationVehicles.Remove(objTV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Agricultural Vehicles")
+                        {
+                            AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objAV != null)
+                            {
+                                DeleteImageLocal(new List<string>() { objAV.ImgUrlPrimary, objAV.ImgUrlSeconday, objAV.ImgUrlThird, objAV.ImgUrlFourth });
+
+                                classigooEntities.AgriculturalVehicles.Remove(objAV);
+                                classigooEntities.SaveChanges();
+                            }
+
+                        }
+                        else if (type == "Passenger Vehicles")
+                        {
+                            PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objPV != null)
+                            {
+                                DeleteImageLocal(new List<string>() { objPV.ImgUrlPrimary, objPV.ImgUrlSeconday, objPV.ImgUrlThird, objPV.ImgUrlFourth });
+
+                                classigooEntities.PassengerVehicles.Remove(objPV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+
+                        classigooEntities.Adds.Remove(objAdd);
+                        classigooEntities.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at delete complete add postdboperations", ex);
+                return false;
+
+            }
+
+            return true;
+        }
+
+        public bool DeleteImageLocal(List<string> urls)
+        {
+            string domain = string.Empty;
+            foreach (string url in urls)
+            {
+                try
+                {
+                    //this is for delete localImage
+                    domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
+
+                    //this is for delete subdomain image
+                    //string[] pathSplits = Server.MapPath("~").Split('\\');
+                    //string urlForSubdomain = url.Remove(0, 7);
+                    //domain = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\" + urlForSubdomain;
+
+                    FileInfo file = new FileInfo(domain);
+
+                    if (file.Exists)//check file exsit or not
+                    {
+                        file.Delete();
+
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At Deleting physical image ImgName - " + domain, ex);
+
+                }
+            }
+
+            return false;
         }
 
         public bool UpdateAdd(Add add)

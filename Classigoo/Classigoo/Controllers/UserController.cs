@@ -14,9 +14,17 @@ namespace Classigoo.Controllers
 
         public ActionResult Login()
         {
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Home", "User");
+                if (isAdmin())
+                {
+                    return RedirectToAction("Admin", "User");
+                }
+                else
+                {
+                    return RedirectToAction("Home", "User");
+                }
+               
             }
 
             return View();
@@ -35,10 +43,12 @@ namespace Classigoo.Controllers
                 //bool isLoggedIn = Membership.ValidateUser("fdsa","asfds");
                 if (userId != Guid.Empty)//valid user
                 {
-                    SetUserId(userId,false);
-                   // Session["UserId"] = userId;
+                    SetUserId(userId, false);
+                    // Session["UserId"] = userId;
                     if (coll["email-phone"] == "1111111111" && coll["pwd"] == "admin")//admin login
                     {
+                        SetUserRole(false);
+
                         return RedirectToAction("Admin", "User");
                     }
 
@@ -108,6 +118,11 @@ namespace Classigoo.Controllers
         [Authorize]
         public ActionResult Home()
         {
+            if (isAdmin())
+            {
+                return RedirectToAction("Admin", "User");
+            }
+
             List<CustomAdd> addColl = new List<CustomAdd>();
             try
             {
@@ -124,103 +139,104 @@ namespace Classigoo.Controllers
                 //    addColl = db.GetMyAdds(userId);
                 //    TempData["UserAddColl"] = addColl;
                 //}
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Library.WriteLog("At User Home",ex);
+                Library.WriteLog("At User Home", ex);
             }
             return View(addColl);
 
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult Home(FormCollection coll)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-           //if (User.Identity.IsAuthenticated)//user logged in
-         // {
-                try
+            //if (User.Identity.IsAuthenticated)//user logged in
+            // {
+            try
+            {
+                Guid userId = GetUserId();
+                UserDBOperations db = new UserDBOperations();
+                User user = db.GetUser(userId);
+                addColl = (List<CustomAdd>)TempData["UserAddColl"];
+                Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
+                Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
+                TempData.Keep("UserAddColl");
+                switch (coll["action"])
                 {
-                    Guid userId = GetUserId();
-                    UserDBOperations db = new UserDBOperations();
-                    User user = db.GetUser(userId);
-                    addColl = (List<CustomAdd>)TempData["UserAddColl"];
-                    Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
-                    Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
-                    TempData.Keep("UserAddColl");
-                    switch (coll["action"])
-                    {
-                        case "Change Password":
-                            #region ChangePassword
-                            if (coll["txtOldPasscode"] == user.Password)
+                    case "Change Password":
+                        #region ChangePassword
+                        if (coll["txtOldPasscode"] == user.Password)
+                        {
+                            user.Password = coll["txtPasscode"];
+                            if (db.UpdateUserDetails(user))
                             {
-                                user.Password = coll["txtPasscode"];
-                                if (db.UpdateUserDetails(user))
-                                {
-                                    @ViewBag.status = "Password updated successfully";
-                                }
-                                else
-                                {
-                                    @ViewBag.status = "Eror occured while updating Password";
-                                }
+                                @ViewBag.status = "Password updated successfully";
+                            }
+                            else
+                            {
+                                @ViewBag.status = "Eror occured while updating Password";
+                            }
 
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Old Password is incorrect";
+                        }
+                        #endregion
+                        break;
+                    case "Change Email":
+                        #region ChangeEmail
+                        if (emailExist == Guid.Empty)//Email doesnot exist
+                        {
+                            user.Email = coll["txtEmail"];
+                            if (db.UpdateUserDetails(user))
+                            {
+                                @ViewBag.status = "Email updated successfully";
                             }
                             else
                             {
-                                @ViewBag.status = "Old Password is incorrect";
+                                @ViewBag.status = "Eror occured while updating Email";
                             }
-                            #endregion
-                            break;
-                        case "Change Email":
-                            #region ChangeEmail
-                            if (emailExist == Guid.Empty)//Email doesnot exist
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Email already registered";
+                        }
+                        #endregion
+                        break;
+                    case "Change Phone":
+                        #region ChangePhone
+                        if (phoneExist == Guid.Empty)//Phone Num doesnt exist
+                        {
+                            user.MobileNumber = coll["txtPhone"];
+                            if (db.UpdateUserDetails(user))
                             {
-                                user.Email = coll["txtEmail"];
-                                if (db.UpdateUserDetails(user))
-                                {
-                                    @ViewBag.status = "Email updated successfully";
-                                }
-                                else
-                                {
-                                    @ViewBag.status = "Eror occured while updating Email";
-                                }
+                                @ViewBag.status = "Mobile Number updated successfully";
                             }
                             else
                             {
-                                @ViewBag.status = "Email already registered";
+                                @ViewBag.status = "Error occured while updating Mobile Number ";
                             }
-                            #endregion
-                            break;
-                        case "Change Phone":
-                            #region ChangePhone
-                            if (phoneExist == Guid.Empty)//Phone Num doesnt exist
-                            {
-                                user.MobileNumber = coll["txtPhone"];
-                                if (db.UpdateUserDetails(user))
-                                {
-                                    @ViewBag.status = "Mobile Number updated successfully";
-                                }
-                                else
-                                {
-                                    @ViewBag.status = "Error occured while updating Mobile Number ";
-                                }
-                            }
-                            else
-                            {
-                                @ViewBag.status = "Mobile Number already registered";
-                            }
-                            #endregion
-                            break;
-                        default:
-                            break;
-                    }
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Mobile Number already registered";
+                        }
+                        #endregion
+                        break;
+                    default:
+                        break;
+                }
 
-                }
-                catch (Exception ex)
-                {
-                    Library.WriteLog("At Updating user details", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Updating user details", ex);
+            }
             //}
             return View(addColl);
         }
@@ -231,9 +247,21 @@ namespace Classigoo.Controllers
             if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("Classigoo"))
             {
                 HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["Classigoo"];
-                cookie.Expires = DateTime.Now.AddDays(-1);
-                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-1);
+                    this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                }          
+                
+                HttpCookie signinUserCookie = this.ControllerContext.HttpContext.Request.Cookies["ClassigooUserRole"];
+                if(signinUserCookie != null)
+                {
+                    signinUserCookie.Expires = DateTime.Now.AddDays(-1);
+                    this.ControllerContext.HttpContext.Response.Cookies.Add(signinUserCookie);
+                }
+             
             }
+
             FormsAuthentication.SignOut();
             return RedirectToAction("Home", "List");
         }
@@ -253,13 +281,13 @@ namespace Classigoo.Controllers
             return View(addColl);
         }
 
-        public bool UpdateAddStatus(int addId, string status,string remarks)
+        public bool UpdateAddStatus(int addId, string status, string remarks)
         {
             bool isAddUpdated = false;
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                isAddUpdated = db.UpdateAddStatus(addId, status,remarks);
+                isAddUpdated = db.UpdateAddStatus(addId, status, remarks);
             }
             catch (Exception ex)
             {
@@ -313,17 +341,22 @@ namespace Classigoo.Controllers
             return userId;
         }
 
-        public void SetUserId(Guid userId,bool rememberMe)
+        public void SetUserId(Guid userId, bool rememberMe)
         {
             try
             {
                 HttpCookie signinCookie = new HttpCookie("Classigoo");
                 signinCookie.Value = userId.ToString();
-    
+
                 if (rememberMe)
+                {
+                    signinCookie.Expires = DateTime.Now.AddDays(5);
+                }
+                else
                 {
                     signinCookie.Expires = DateTime.Now.AddDays(2);
                 }
+
                 UserDBOperations db = new UserDBOperations();
                 User user = db.GetUser(userId);
                 if (user != null)
@@ -333,13 +366,37 @@ namespace Classigoo.Controllers
                 }
                 this.ControllerContext.HttpContext.Response.Cookies.Add(signinCookie);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At setuserid saving userid to cookie", ex);
             }
         }
 
-        public  Guid  GetUserId()
+        public void SetUserRole(bool rememberMe)
+        {
+            try
+            {
+                HttpCookie signinUserCookie = new HttpCookie("ClassigooUserRole");
+                signinUserCookie.Value = "admin";
+                
+                if (rememberMe)
+                {
+                    signinUserCookie.Expires = DateTime.Now.AddDays(5);
+                }
+                else
+                {
+                    signinUserCookie.Expires = DateTime.Now.AddDays(2);
+                }
+
+                this.ControllerContext.HttpContext.Response.Cookies.Add(signinUserCookie);
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At set userrole cookies ", ex);
+            }
+        }
+
+        public Guid GetUserId()
         {
             Guid userId = Guid.Empty;
             try
@@ -350,7 +407,7 @@ namespace Classigoo.Controllers
                     userId = Guid.Parse(value);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At GetUserId getting userid from cookie", ex);
             }
@@ -377,16 +434,31 @@ namespace Classigoo.Controllers
                             Session["UserName"] = user.Name;
                             userName = user.Name;
                         }
-                       
+
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("Getting username from session/db", ex);
             }
 
             return userName;
         }
+
+        public bool isAdmin()
+        {
+            if (Request.Cookies["ClassigooUserRole"] != null)
+            {
+                var value = Request.Cookies["ClassigooUserRole"].Value;
+                if(value == "admin")
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }

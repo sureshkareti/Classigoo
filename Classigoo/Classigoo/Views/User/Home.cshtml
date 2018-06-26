@@ -88,7 +88,7 @@
                                                 <th data-hide="phone">image</th>
                                                 <th>preview</th>
                                                 <th>Edit</th>
-
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -120,6 +120,9 @@
                                             </td>
                                             <td>
                                                 @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
                                             </td>
 
                                         </tr>
