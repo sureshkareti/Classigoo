@@ -1,0 +1,21 @@
+﻿@model LoginWithOTP
+@{
+    ViewBag.Title = "VerifyOTP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VerifyOTP</h2>
+
+@using (Html.BeginForm("VerifyOTP", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
+{
+    <div class="form-group">
+
+        <span>Please enter the verification code sent to </span><span name="PhoneNumber"> @ViewBag.PhoneNumber</span><span> to Login</span>
+       @*@Html.LabelFor*@
+        @Html.TextBoxFor(model=>model.OTP, new {@class="form-control", @placeholder = "OTP", required = "required" })
+
+
+        <div class="help-block with-errors"></div>
+        <input type="submit" value="VerifyOTP" />
+    </div>
+}

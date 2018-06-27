@@ -460,5 +460,31 @@ namespace Classigoo.Controllers
             return false;
         }
 
+       public ActionResult LoginWithOtp()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LoginWithOtp(LoginWithOTP loginWithOtp)
+        {
+ 
+            CustomActions objCustom = new CustomActions();
+            //  objCustom.SendOTP(loginWithOtp.PhoneNumber);
+            ViewBag.PhoneNumber = loginWithOtp.PhoneNumber;
+            return View("VerifyOTP", loginWithOtp);
+        }
+        public ActionResult VerifyOTP()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult VerifyOTP(FormCollection loginWithOtp)
+        {
+            CustomActions objCustom = new CustomActions();
+            objCustom.VerifyOTP(loginWithOtp["PhoneNumber"], loginWithOtp["OTP"]);
+            return View();
+        }
     }
 }

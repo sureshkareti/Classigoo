@@ -489,6 +489,8 @@
     <Content Include="Views\User\Admin.cshtml" />
     <Content Include="Views\Post\Index1.cshtml" />
     <Content Include="Views\List\PreviewAdd.cshtml" />
+    <Content Include="Views\User\LoginWithOtp.cshtml" />
+    <Content Include="Views\User\VerifyOTP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

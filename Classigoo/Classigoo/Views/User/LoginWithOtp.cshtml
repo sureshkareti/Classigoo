@@ -1,0 +1,17 @@
+﻿@model LoginWithOTP
+@{
+    ViewBag.Title = "LoginWithOtp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LoginWithOtp</h2>
+
+@using (Html.BeginForm("LoginWithOtp", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
+{ 
+    <div class="form-group">
+        <label for="userName">Phone Number *</label>
+        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", pattern = @"^(\d{10})$", @placeholder = "Phone Number", required = "required" })
+        <div class="help-block with-errors"></div>
+        <input type="submit" value="GetOTP" />
+    </div>
+}

@@ -225,4 +225,10 @@ namespace Classigoo
         public string Remarks { get; set; }
     }
 
+    public class LoginWithOTP
+    {
+        public string PhoneNumber { get; set; }
+        public string OTP { set; get; }
+    }
+
 }
