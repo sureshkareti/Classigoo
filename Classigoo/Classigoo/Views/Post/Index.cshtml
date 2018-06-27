@@ -6,479 +6,483 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Index", "Post", FormMethod.Post, new {  name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Index", "Post", FormMethod.Post, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
 
     <div>
-        <div class="breadcrumb-block">
 
-        </div>
         <div class="add-listing-wrap">
-            <div class="container">
-                <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
-                    <p>
-                        <strong>Existing User? Please </strong><a href="~/User/Login">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
-                    </p>
+            <div class="container" style="width:100%;padding:0;">
+
+                <div style="width:13%;float:left;padding-top:80px;">
+
                 </div>
-                <div>
-                    <input type="text" id="validationTemp" style="display:none" required />
-                </div>
-                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
-                    <h4>Submit a Free Classified Add</h4>
-                    <div class="row">
-                        <div class="col-md-12">
+                <div style="width:74%;float:left;">
+                    <div style="max-width:970px !important;margin:auto;">
+                        <div class="add-listing-tost-block">
+                            <p>
+                                <strong>Existing User? Please </strong><a href="~/User/Login">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                            </p>
+                        </div>
+                        <div>
+                            <input type="text" id="validationTemp" style="display:none" required />
+                        </div>
+                        <div class="listing-block businessinfo-listing">
+                            <h4>Submit a Free Classified Add</h4>
+                            <div class="row">
+                                <div class="col-md-12">
 
-                            <form>
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Title<span style="color:#C91414">*</span></label>
+                                    <form>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Title<span style="color:#C91414">*</span></label>
 
-                                    </div>
-                                    <div class="col-md-7">
-                                        @Html.HiddenFor(model=>model.AddId)
+                                            </div>
+                                            <div class="col-md-7">
+                                                @Html.HiddenFor(model => model.AddId)
 
-                                        @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
-                                        @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div id="scrolltoCat"></div>
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Rent / Sale<span style="color:#C91414">*</span></label>
+                                                @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
+                                                @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div id="scrolltoCat"></div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Rent / Sale<span style="color:#C91414">*</span></label>
 
-                                    </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                        @Html.DropDownListFor(model => model.ddlRentOrSale, new List<SelectListItem> {
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                @Html.DropDownListFor(model => model.ddlRentOrSale, new List<SelectListItem> {
                                             new SelectListItem { Text = "Rent", Value = "Rent"},
                                             new SelectListItem { Text = "Sale", Value = "Sale"}}, new { style = "width:100px;height:40px;", @class = "form-control", required = "required" })
-                                        @*<select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
-                                                <option>Rent</option>
-                                                <option>Sale</option>
-                                            </select>*@
-                                    </div>
-                                </div>
+                                                @*<select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
+                                        <option>Rent</option>
+                                        <option>Sale</option>
+                                    </select>*@
+                                            </div>
+                                        </div>
 
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
+                                        <div class="form-group row">
+                                            <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
 
-                                    </div>
-                                    <div class="col-md-7 col-sm-12 col-xs-12">
+                                            </div>
+                                            <div class="col-md-7 col-sm-12 col-xs-12">
 
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item" id="cat-nav-l0"><a id="btnedithome" href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a id="btneditedit" href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
-                                        </ol>
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item" id="cat-nav-l0"><a id="btnedithome" href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
+                                                    <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
+                                                    <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
+                                                    <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
+                                                    <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a id="btneditedit" href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
+                                                </ol>
+                                                <div>
+                                                    @Html.HiddenFor(model => model.hdnCateFristLevel)
+                                                    @Html.HiddenFor(model => model.hdnCateSecondLevel)
+
+                                                    @*<input type="hidden" id="hdnCateFristLevel" />
+                                        <input type="hidden" id="hdnCateSecondLevel" />*@
+                                                    <input type="hidden" id="hdnCateThirdLevel" />
+                                                </div>
+
+                                                <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
+                                                    <div class="panel-heading">
+                                                        <ul class="nav nav-tabs idtabCategoriesul">
+                                                            <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
+                                                            <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
+                                                            <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
+                                                            <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
+                                                            <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
+                                                            <li style="display:none" id="idtabPV"><a href="#tabPV" data-id="Passenger Vehicles" data-toggle="tab">Passenger Vehicles</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane fade in active sub-category-items" id="tabCategories">
+                                                                <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                                <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
+                                                                <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                                <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
+
+                                                                <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
+                                                            </div>
+
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                                <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
+                                                                <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                                <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
+                                                                <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
+                                                                <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
+                                                                <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                            </div>
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                                <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                                <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
+                                                                <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
+                                                                <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
+                                                                <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                                <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
+                                                                <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
+                                                                <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
+                                                                <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
+
+                                                            </div>
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
+                                                                @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
+                                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                                <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
+                                                                <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
+                                                                <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
+                                                                <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                                <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
+                                                                <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
+                                                                <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                                <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
+                                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                                <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
+                                                                <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
+                                                                <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
+                                                                <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
+                                                                <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
+                                                                <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in" id="tabProSale">
+                                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                                <div class="panel with-nav-tabs panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <ul class="nav nav-tabs ">
+                                                                            <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
+                                                                            <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div class="tab-content tabProChilds">
+                                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
+                                                                                <a href="javascript:void(0)">Plots/Land</a><br />
+                                                                                <a href="javascript:void(0)">Agricultural Land</a><br />
+                                                                                <a href="javascript:void(0)">Shops & Offices</a><br />
+                                                                                <a href="javascript:void(0)">Apartments</a><br />
+                                                                                <a href="javascript:void(0)">Independent Houses & Villas</a>
+                                                                            </div>
+                                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
+                                                                                <a href="javascript:void(0)">Apartments</a><br />
+                                                                                <a href="javascript:void(0)">Independent Houses & Villas</a><br />
+                                                                                <a href="javascript:void(0)">Hostels & PG</a><br />
+                                                                                <a href="javascript:void(0)">Shops & Offices</a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade in" id="tabCars">
+                                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                                <div class="panel with-nav-tabs panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <ul class="nav nav-tabs">
+                                                                            <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div class="tab-content">
+                                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
+                                                                                <a href='javascript:void(0)'>Maruti Suzuki</a><br />
+                                                                                <a href='javascript:void(0)'>Hyundai</a><br />
+                                                                                <a href='javascript:void(0)'>Tata</a><br />
+                                                                                <a href='javascript:void(0)'>Mahindra</a><br />
+                                                                                <a href='javascript:void(0)'>Toyoto</a><br />
+                                                                                <a href='javascript:void(0)'>Honda</a><br />
+                                                                                <a href='javascript:void(0)'>Chevrolet</a><br />
+                                                                                <a href='javascript:void(0)'>Ford</a><br />
+                                                                                <a href='javascript:void(0)'>Skoda</a><br />
+                                                                                <a href='javascript:void(0)'>Volkswagen</a><br />
+                                                                                <a href='javascript:void(0)'>Fiat</a><br />
+                                                                                <a href='javascript:void(0)'>Nissan</a><br />
+                                                                                <a href='javascript:void(0)'>Renault</a><br />
+                                                                                <a href='javascript:void(0)'>Mitsubishi</a><br />
+                                                                                <a href='javascript:void(0)'>Mercedes-Benz</a><br />
+                                                                                <a href='javascript:void(0)'>Audi</a><br />
+                                                                                <a href='javascript:void(0)'>Mahindra Renault</a><br />
+                                                                                <a href='javascript:void(0)'>BMW</a><br />
+                                                                                <a href='javascript:void(0)'>Hindustan Motors</a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade in" id="tabBikes">
+                                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                                <div class="panel with-nav-tabs panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <ul class="nav nav-tabs">
+                                                                            <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
+                                                                            <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
+                                                                            <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
+                                                                            <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="panel-body">
+                                                                        <div class="tab-content tabBikesChilds">
+                                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
+                                                                                <a href="javascript:void(0)">Bajaj</a><br />
+                                                                                <a href="javascript:void(0)">Hero Honda</a><br />
+                                                                                <a href="javascript:void(0)">Yamaha</a><br />
+                                                                                <a href="javascript:void(0)">Royal Enfield</a><br />
+                                                                                <a href="javascript:void(0)">Honda</a><br />
+                                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                                <a href="javascript:void(0)">TVS</a><br />
+                                                                                <a href="javascript:void(0)">Suzuki</a><br />
+                                                                                <a href="javascript:void(0)">KTM</a><br />
+                                                                                <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                            </div>
+                                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
+                                                                                <a href="javascript:void(0)">Honda</a><br />
+                                                                                <a href="javascript:void(0)">TVS</a><br />
+                                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                                <a href="javascript:void(0)">Suzuki</a><br />
+                                                                                <a href="javascript:void(0)">Bajaj</a><br />
+                                                                                <a href="javascript:void(0)">Mahindra</a><br />
+                                                                                <a href="javascript:void(0)">Other Brands</a>
+
+                                                                            </div>
+                                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
+                                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                                <a href="javascript:void(0)">Hercules</a><br />
+                                                                                <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                                            </div>
+                                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
+                                                                                <a href="javascript:void(0)">Spare Parts</a><br />
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
+                                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                                <a href="javascript:void(0)">Computers & Laptops</a><br />
+                                                                <a href="javascript:void(0)">TVs, Video - Audio</a><br />
+                                                                <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
+                                                                <a href="javascript:void(0)">ACs</a><br />
+                                                                <a href="javascript:void(0)">Washing Machines</a><br />
+                                                                <a href="javascript:void(0)">Fridges</a><br />
+                                                                <a href="javascript:void(0)">Computer Accessories</a><br />
+                                                                <a href="javascript:void(0)">Cameras & Lenses</a><br />
+                                                                <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
+                                                                <a href="javascript:void(0)">Games & Entertainment</a>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which you want to submiting add</div>
+                                                @*<input type="button" id="tstButton" value="test me" />*@
+                                            </div>
+
+                                        </div>
+
                                         <div>
-                                            @Html.HiddenFor(model => model.hdnCateFristLevel)
-                                            @Html.HiddenFor(model => model.hdnCateSecondLevel)
+                                            <div>
 
-                                            @*<input type="hidden" id="hdnCateFristLevel" />
-                                                <input type="hidden" id="hdnCateSecondLevel" />*@
-                                            <input type="hidden" id="hdnCateThirdLevel" />
-                                        </div>
+                                                <div class="form-group row forallcollapse" id="forAV" style="display:none">
+                                                    <div class="form-group row" id="divAVPrice">
+                                                        <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 col-xs-12">
 
-                                        <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
-                                            <div class="panel-heading">
-                                                <ul class="nav nav-tabs idtabCategoriesul">
-                                                    <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                    <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
-                                                    <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
-                                                    <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
-                                                    <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
-                                                    <li style="display:none" id="idtabPV"><a href="#tabPV" data-id="Passenger Vehicles" data-toggle="tab">Passenger Vehicles</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade in active sub-category-items" id="tabCategories">
-                                                        <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
-
-                                                        <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
-                                                    </div>
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machine</a><br />
-                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                        <a href="javascript:void(0)" data-value="Dozer">Dozer</a><br />
-                                                        <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvester</a><br />
-                                                        <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loader</a><br />
-                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                    </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                        <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe_Loader</a><br />
-                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                        <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loader</a><br />
-                                                        <a href="javascript:void(0)" data-value="Crane">Crane</a><br />
-                                                        <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixer</a><br />
-                                                        <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactor</a><br />
-                                                        
-                                                    </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
-                                                        <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
-                                                        <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
-                                                        <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheeler</a><br />
-                                                        <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheeler</a><br />
-                                                        <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
-                                                        <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
-                                                        <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
-                                                        <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
-                                                        <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
-                                                        <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
-                                                        <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in" id="tabProSale">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs ">
-                                                                    <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                    <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content tabProChilds">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
-                                                                        <a href="javascript:void(0)">Plots/Land</a><br />
-                                                                        <a href="javascript:void(0)">Agricultural Land</a><br />
-                                                                        <a href="javascript:void(0)">Shops & Offices</a><br />
-                                                                        <a href="javascript:void(0)">Apartments</a><br />
-                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a>
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
-                                                                        <a href="javascript:void(0)">Apartments</a><br />
-                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a><br />
-                                                                        <a href="javascript:void(0)">Hostels & PG</a><br />
-                                                                        <a href="javascript:void(0)">Shops & Offices</a>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
+                                                            @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                            @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
+                                                    <option selected>Select Category</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade in" id="tabCars">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
-                                                                        <a href='javascript:void(0)'>Maruti Suzuki</a><br />
-                                                                        <a href='javascript:void(0)'>Hyundai</a><br />
-                                                                        <a href='javascript:void(0)'>Tata</a><br />
-                                                                        <a href='javascript:void(0)'>Mahindra</a><br />
-                                                                        <a href='javascript:void(0)'>Toyoto</a><br />
-                                                                        <a href='javascript:void(0)'>Honda</a><br />
-                                                                        <a href='javascript:void(0)'>Chevrolet</a><br />
-                                                                        <a href='javascript:void(0)'>Ford</a><br />
-                                                                        <a href='javascript:void(0)'>Skoda</a><br />
-                                                                        <a href='javascript:void(0)'>Volkswagen</a><br />
-                                                                        <a href='javascript:void(0)'>Fiat</a><br />
-                                                                        <a href='javascript:void(0)'>Nissan</a><br />
-                                                                        <a href='javascript:void(0)'>Renault</a><br />
-                                                                        <a href='javascript:void(0)'>Mitsubishi</a><br />
-                                                                        <a href='javascript:void(0)'>Mercedes-Benz</a><br />
-                                                                        <a href='javascript:void(0)'>Audi</a><br />
-                                                                        <a href='javascript:void(0)'>Mahindra Renault</a><br />
-                                                                        <a href='javascript:void(0)'>BMW</a><br />
-                                                                        <a href='javascript:void(0)'>Hindustan Motors</a>
-                                                                    </div>
+                                                    <div class="form-group row" id="av-othercompany" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.AVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
 
-                                                                </div>
-                                                            </div>
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade in" id="tabBikes">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
-                                                                    <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
-                                                                    <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
-                                                                    <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content tabBikesChilds">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
-                                                                        <a href="javascript:void(0)">Bajaj</a><br />
-                                                                        <a href="javascript:void(0)">Hero Honda</a><br />
-                                                                        <a href="javascript:void(0)">Yamaha</a><br />
-                                                                        <a href="javascript:void(0)">Royal Enfield</a><br />
-                                                                        <a href="javascript:void(0)">Honda</a><br />
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">TVS</a><br />
-                                                                        <a href="javascript:void(0)">Suzuki</a><br />
-                                                                        <a href="javascript:void(0)">KTM</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a><br />
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
-                                                                        <a href="javascript:void(0)">Honda</a><br />
-                                                                        <a href="javascript:void(0)">TVS</a><br />
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">Suzuki</a><br />
-                                                                        <a href="javascript:void(0)">Bajaj</a><br />
-                                                                        <a href="javascript:void(0)">Mahindra</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a>
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">Hercules</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a><br />
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
-                                                                        <a href="javascript:void(0)">Spare Parts</a><br />
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <a href="javascript:void(0)">Computers & Laptops</a><br />
-                                                        <a href="javascript:void(0)">TVs, Video - Audio</a><br />
-                                                        <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
-                                                        <a href="javascript:void(0)">ACs</a><br />
-                                                        <a href="javascript:void(0)">Washing Machines</a><br />
-                                                        <a href="javascript:void(0)">Fridges</a><br />
-                                                        <a href="javascript:void(0)">Computer Accessories</a><br />
-                                                        <a href="javascript:void(0)">Cameras & Lenses</a><br />
-                                                        <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
-                                                        <a href="javascript:void(0)">Games & Entertainment</a>
+                                                </div>
 
+                                                <div class="form-group row forallcollapse" id="forCV" style="display:none">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.CVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                            @*<select class="form-control" id="CVCompany_list" data-error="please select company name" required>
+                                                    <option selected>Select Category</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
                                                     </div>
+                                                    <div class="form-group row" id="cv-othercompany" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.CVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which you want to submiting add</div>
-                                        @*<input type="button" id="tstButton" value="test me" />*@
-                                    </div>
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
 
-                                </div>
+                                                            @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
 
-                                <div>
-                                    <div>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div class="form-group row forallcollapse" id="forAV" style="display:none">
-                                            <div class="form-group row" id="divAVPrice">
-                                                <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <div class="form-group row forallcollapse" id="forTV" style="display:none">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.TVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                            @*<select class="form-control" id="TVCompany_list" data-error="please select company name" required>
+                                                    <option selected>Select Category</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="tv-othercompany" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.TVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
 
-                                                    @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
-                                                    @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
-                                                            <option selected>Select Category</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row" id="av-othercompany" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.AVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
 
-                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAV_Price, new { data_error = "please fill the with price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                    @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
-                                                    @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
-                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <div class="form-group row forallcollapse" id="forPV" style="display:none">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control", data_error = "please select company name", required = "required" })
+                                                            @*<select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
+                                                    <option selected>Select Category</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pv-othercompany" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.PVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
 
-                                        <div class="form-group row forallcollapse" id="forCV" style="display:none">
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.CVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
-                                                    @*<select class="form-control" id="CVCompany_list" data-error="please select company name" required>
-                                                            <option selected>Select Category</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="cv-othercompany" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.CVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pv-model" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
 
-                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-
-                                                    @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
-
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row forallcollapse" id="forTV" style="display:none">
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.TVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
-                                                    @*<select class="form-control" id="TVCompany_list" data-error="please select company name" required>
-                                                            <option selected>Select Category</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="tv-othercompany" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.TVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
-
-                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtTV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtTV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row forallcollapse" id="forPV" style="display:none">
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Select Company<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control", data_error = "please select company name", required = "required" })
-                                                    @*<select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
-                                                            <option selected>Select Category</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pv-othercompany" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Company Name<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.PVOtherCompany, new { data_error = "please enter other brand company name", placeholder = "name", @class = "form-control col-md-7", required = "required" })
-
-                                                    @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pv-model" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-
-                                                    @Html.DropDownListFor(model => model.PVModel_list, new List<SelectListItem> { }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
-                                                    @*<select id="PVModel_list" class="form-control" data-error="please select model" required>
-                                                            <option>Select</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pv-year" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Year<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPV_Year, new { data_error = "Please enter a value between 1900 and current year", pattern = @"^(\d{4})$", @maxLength = "4", placeholder = "year of model", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtPV_Year" class="form-control col-md-7" data-error="please fill the year" placeholder="year of model" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pv-fueltype" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.PVfueltype_list, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                            @Html.DropDownListFor(model => model.PVModel_list, new List<SelectListItem> { }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
+                                                            @*<select id="PVModel_list" class="form-control" data-error="please select model" required>
+                                                    <option>Select</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pv-year" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Year<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPV_Year, new { data_error = "Please enter a value between 1900 and current year", pattern = @"^(\d{4})$", @maxLength = "4", placeholder = "year of model", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPV_Year" class="form-control col-md-7" data-error="please fill the year" placeholder="year of model" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pv-fueltype" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Fuel Type<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.PVfueltype_list, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
                                                    new SelectListItem() { Value = "Petrol", Text = "Petrol" },
                                                     new SelectListItem() { Value = "Diesel", Text = "Diesel" },
                                                      new SelectListItem() { Value = "LPG", Text = "LPG" },
@@ -486,111 +490,111 @@
 
                                                         }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
 
-                                                    @*<select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
-                                                            <option value="">Select</option>
-                                                            <option value="Petrol">Petrol</option>
-                                                            <option value="Diesel">Diesel</option>
-                                                            <option value="LPG">LPG</option>
-                                                            <option value="CNG">CNG & Hybrids</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
+                                                            @*<select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Petrol">Petrol</option>
+                                                    <option value="Diesel">Diesel</option>
+                                                    <option value="LPG">LPG</option>
+                                                    <option value="CNG">CNG & Hybrids</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="form-group row" id="pv-kmdriven" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPV_kmdriven, new { data_error = "please fill with travelled distance", placeholder = "KM", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtPV_kmdriven" class="form-control col-md-7" data-error="please fill with travelled distance" placeholder="KM" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
+                                                    <div class="form-group row" id="pv-kmdriven" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPV_kmdriven, new { data_error = "please fill with travelled distance", placeholder = "KM", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPV_kmdriven" class="form-control col-md-7" data-error="please fill with travelled distance" placeholder="KM" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
 
-                                        </div>
+                                                </div>
 
-                                        <div class="forallcollapse" id="forProperties" style="display:none">
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill with the price", placeholder = "Please enter price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-bedrooms" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlBedrooms, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
+                                                <div class="forallcollapse" id="forProperties" style="display:none">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill with the price", placeholder = "Please enter price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-bedrooms" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.ddlBedrooms, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select" },
                                                    new SelectListItem() { Value = "1", Text = "1" },
                                                     new SelectListItem() { Value = "2", Text = "2" },
                                                      new SelectListItem() { Value = "3", Text = "3" },
                                                        new SelectListItem() { Value = "4", Text = "4" },
                                                        new SelectListItem() { Value = "5", Text = "4+"}
                                                }, "Select Category", new { @class = "form-control", data_error = "please select number of bedrooms", required = "required" })
-                                                    @*<select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
-                                                            <option value="">Select</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">4+</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-furnishing" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlFurnishing, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
+                                                            @*<select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
+                                                    <option value="">Select</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">4+</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-furnishing" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Furnishing<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.ddlFurnishing, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Furnished", Text = "Furnished" },
                                                     new SelectListItem() { Value = "Unfurnished", Text = "Unfurnished" },
                                                      new SelectListItem() { Value = "Semi-Furnished", Text = "Semi-Furnished" }
                                                     }, new { @class = "form-control", data_error = "please select is furnished", required = "required" })
 
-                                                    @*<select id="ddlFurnishing" class="form-control" data-error="please slect is furnished" required>
-                                                            <option value="">Select</option>
-                                                            <option value="Furnished">Furnished</option>
-                                                            <option value="Unfurnished">Unfurnished</option>
-                                                            <option value="Semi-Furnished">Semi-Furnished</option>
+                                                            @*<select id="ddlFurnishing" class="form-control" data-error="please slect is furnished" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Furnished">Furnished</option>
+                                                    <option value="Unfurnished">Unfurnished</option>
+                                                    <option value="Semi-Furnished">Semi-Furnished</option>
 
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-availability" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Availability<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlAvailability, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-availability" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Availability<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.ddlAvailability, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Under Construction", Text = "Under Construction" },
                                                     new SelectListItem() { Value = "Ready to Move", Text = "Ready to Move" },
                                                      new SelectListItem() { Value = "New Launch", Text = "New Launch" }
                                                     }, new { @class = "form-control", data_error = "please select availability", required = "required" })
 
-                                                    @*<select id="ddlAvailability" class="form-control" data-error="please slect status" required>
-                                                            <option value="">Select</option>
-                                                            <option value="Construction">Under Construction</option>
-                                                            <option value="Ready">Ready to Move</option>
-                                                            <option value="New-Launch">New Launch</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Posted By<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.DropDownListFor(model => model.ddlPostedBy, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
+                                                            @*<select id="ddlAvailability" class="form-control" data-error="please slect status" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Construction">Under Construction</option>
+                                                    <option value="Ready">Ready to Move</option>
+                                                    <option value="New-Launch">New Launch</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Posted By<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.DropDownListFor(model => model.ddlPostedBy, new List<SelectListItem> { new SelectListItem() { Value = "", Text = "Select Category" },
                                                    new SelectListItem() { Value = "Owner", Text = "Owner" },
                                                     new SelectListItem() { Value = "Dealer", Text = "Dealer" },
                                                      new SelectListItem() { Value = "Builder", Text = "Builder" }
@@ -598,300 +602,304 @@
 
 
 
-                                                    @*<select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
-                                                            <option value="">Select</option>
-                                                            <option value="Owner">Owner</option>
-                                                            <option value="Dealer">Dealer</option>
-                                                            <option value="Builder">Builder</option>
-                                                        </select>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-sqarefeets" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square feet<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtSquareFeet, new { data_error = "Please enter area in square feets", placeholder = "square feets", @class = "form-control col-md-7", required = "required" })
+                                                            @*<select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Owner">Owner</option>
+                                                    <option value="Dealer">Dealer</option>
+                                                    <option value="Builder">Builder</option>
+                                                </select>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-sqarefeets" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square feet<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtSquareFeet, new { data_error = "Please enter area in square feets", placeholder = "square feets", @class = "form-control col-md-7", required = "required" })
 
-                                                    @*<input type="text" id="txtSquareFeet" class="form-control col-md-7" data-error="Please enter area in square feets" placeholder="square feets" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
+                                                            @*<input type="text" id="txtSquareFeet" class="form-control col-md-7" data-error="Please enter area in square feets" placeholder="square feets" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-squareyards" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtSquareYards, new { data_error = "Please enter area in square yards", placeholder = "square yards", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="Please enter area in square yards" placeholder="square yards" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row" id="pro-acres" style="display:none">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Acres<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtAcres, new { data_error = "Please enter area in acres", placeholder = "acres", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-squareyards" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Square Yards<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtSquareYards, new { data_error = "Please enter area in square yards", placeholder = "square yards", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtSquareYards" class="form-control col-md-7" data-error="Please enter area in square yards" placeholder="square yards" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="pro-acres" style="display:none">
-                                                <div class="col-md-3" style="text-align:right">
-                                                    <label for="listing_name" class="input-lg" style="font-weight:100">Acres<span style="color:#C91414">*</span></label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @Html.TextBoxFor(model => model.txtAcres, new { data_error = "Please enter area in acres", placeholder = "acres", @class = "form-control col-md-7", required = "required" })
-                                                    @*<input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>*@
-                                                    <div class="help-block with-errors"></div>
-                                                </div>
+
                                             </div>
                                         </div>
 
-                                    </div>
-                                </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Add Details<span style="color:#C91414">*</span></label>
+                                            </div>
+                                            <div class="col-md-7">
 
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Add Details<span style="color:#C91414">*</span></label>
-                                    </div>
-                                    <div class="col-md-7">
+                                                @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", @minlength = "10", @maxlength = "1000", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
 
-                                        @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", @minlength = "10", @maxlength = "1000", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
+                                                @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
+                                                <div class="help-block with-errors"></div>
 
-                                        @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
-                                        <div class="help-block with-errors"></div>
-
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
-                                    </div>
-                                    <div class="col-md-9 col-sm-12 col-xs-12">
-                                        <div style="padding:0px;margin:0">
-                                            <p style="line-height: 26px;font-size: 14px;font-family:'Poppins', sans-serif;">
-                                                Please upload atlest <strong>one</strong> image and <strong><span style="color:#fd880a">first</span></strong> image will be your main photo.
-                                            </p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
 
-                                            <div class="w3-card fileuploading" id="divimgFucFirst">
-
-                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
-                                                <div class="w3-container">
-                                                    <div style="text-align:center">
-                                                        <input type="file" style="display:none" id="fucFirst" accept=".png,.jpg,.jpeg,.gif" name="Image1" />
-
-                                                        <button type="button" id="btnFucFirstEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
-                                                    </div>
-                                                    <div style="display:none;">
-                                                        <button type="button" id="btnFucFirstDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
-                                                    </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Upload Images</label>
+                                            </div>
+                                            <div class="col-md-9 col-sm-12 col-xs-12">
+                                                <div style="padding:0px;margin:0">
+                                                    <p style="line-height: 26px;font-size: 14px;font-family:'Poppins', sans-serif;">
+                                                        Please upload atlest <strong>one</strong> image and <strong><span style="color:#fd880a">first</span></strong> image will be your main photo.
+                                                    </p>
                                                 </div>
-                                            </div>
-                                            <div style="text-align:center;padding-top:5px;display:none" id="divimgFucFirstError">
-                                                <span style="color:#a94442;cursor:pointer;font-size:20px;" title="please upload image"><i class="fa fa-exclamation-triangle"></i></span>
-                                            </div>
-                                        </div>
+                                                <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
 
-                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
-                                            <div class="w3-card fileuploading">
-                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucSecond" style="width:100%;height:80px">
+                                                    <div class="w3-card fileuploading" id="divimgFucFirst">
 
-                                                <div class="w3-container">
-                                                    <div style="text-align:center">
-                                                        <input type="file" style="display:none" id="fucSecond" accept=".png,.jpg,.jpeg,.gif" name="Image2" />
-                                                        <button type="button" id="btnFucSecondEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
-                                                    </div>
-                                                    <div style="display:none;">
-                                                        <button type="button" id="btnFucSecondDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutSecond">
-                                                <span style="text-align:center">
-                                                    set as defalut :
-                                                    <a href="#" id="btnSetDefalutSecond"><span class="glyphicon glyphicon-ok-circle"></span></a>
-                                                </span>
+                                                        <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFirst" style="width:100%;height:80px">
+                                                        <div class="w3-container">
+                                                            <div style="text-align:center">
+                                                                <input type="file" style="display:none" id="fucFirst" accept=".png,.jpg,.jpeg,.gif" name="Image1" />
 
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
-                                            <div class="w3-card fileuploading">
-                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucThird" style="width:100%;height:80px">
-                                                <div class="w3-container">
-                                                    <div style="text-align:center">
-                                                        <input type="file" style="display:none" accept=".png,.jpg,.jpeg,.gif" id="fucThird" name="Image3" />
-                                                        <button type="button" id="btnFucThirdEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
+                                                                <button type="button" id="btnFucFirstEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
+                                                            </div>
+                                                            <div style="display:none;">
+                                                                <button type="button" id="btnFucFirstDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div style="display:none;">
-                                                        <button type="button" id="btnFucThirdDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutThird">
-                                                <span style="text-align:center">
-                                                    set as defalut :
-                                                    <a href="#" id="btnSetDefalutThird"><span class="glyphicon glyphicon-ok-circle"></span></a>
-                                                </span>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
-                                            <div class="w3-card fileuploading">
-                                                <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFour" style="width:100%;height:80px">
-                                                <div class="w3-container">
-                                                    <div style="text-align:center">
-                                                        <input type="file" style="display:none" accept=".png,.jpg,.jpeg,.gif" id="fucFour" name="Image4" />
-                                                        <button type="button" id="btnFucFourEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
-                                                    </div>
-                                                    <div style="display:none;">
-                                                        <button type="button" id="btnFucFourDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                    <div style="text-align:center;padding-top:5px;display:none" id="divimgFucFirstError">
+                                                        <span style="color:#a94442;cursor:pointer;font-size:20px;" title="please upload image"><i class="fa fa-exclamation-triangle"></i></span>
                                                     </div>
                                                 </div>
 
-                                            </div>
-                                            <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutFour">
-                                                <span style="text-align:center">
-                                                    set as defalut :
-                                                    <a href="#" id="btnSetDefalutFour"><span class="glyphicon glyphicon-ok-circle"></span></a>
-                                                </span>
-                                               
+                                                <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
+                                                    <div class="w3-card fileuploading">
+                                                        <img src="~/images/upimglogo1.png" alt="Person" id="imgFucSecond" style="width:100%;height:80px">
+
+                                                        <div class="w3-container">
+                                                            <div style="text-align:center">
+                                                                <input type="file" style="display:none" id="fucSecond" accept=".png,.jpg,.jpeg,.gif" name="Image2" />
+                                                                <button type="button" id="btnFucSecondEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
+                                                            </div>
+                                                            <div style="display:none;">
+                                                                <button type="button" id="btnFucSecondDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutSecond">
+                                                        <span style="text-align:center">
+                                                            set as defalut :
+                                                            <a href="#" id="btnSetDefalutSecond"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
+                                                    <div class="w3-card fileuploading">
+                                                        <img src="~/images/upimglogo1.png" alt="Person" id="imgFucThird" style="width:100%;height:80px">
+                                                        <div class="w3-container">
+                                                            <div style="text-align:center">
+                                                                <input type="file" style="display:none" accept=".png,.jpg,.jpeg,.gif" id="fucThird" name="Image3" />
+                                                                <button type="button" id="btnFucThirdEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
+                                                            </div>
+                                                            <div style="display:none;">
+                                                                <button type="button" id="btnFucThirdDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutThird">
+                                                        <span style="text-align:center">
+                                                            set as defalut :
+                                                            <a href="#" id="btnSetDefalutThird"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-sm-12 col-xs-12" style="padding:0 20px 0 20px">
+                                                    <div class="w3-card fileuploading">
+                                                        <img src="~/images/upimglogo1.png" alt="Person" id="imgFucFour" style="width:100%;height:80px">
+                                                        <div class="w3-container">
+                                                            <div style="text-align:center">
+                                                                <input type="file" style="display:none" accept=".png,.jpg,.jpeg,.gif" id="fucFour" name="Image4" />
+                                                                <button type="button" id="btnFucFourEdit" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;" class="btnFucEdit"><span class="glyphicon glyphicon-plus"></span></button>
+                                                            </div>
+                                                            <div style="display:none;">
+                                                                <button type="button" id="btnFucFourDelete" style="width:28px;height:28px;background-color:#337ab7; color:white;border:1px solid white;border-radius:100%;padding:0px 0 0 0px;"><span class="glyphicon glyphicon-trash"></span></button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div style="margin:0 auto;text-align:center;padding-top:5px;display:none" id="divSetDefalutFour">
+                                                        <span style="text-align:center">
+                                                            set as defalut :
+                                                            <a href="#" id="btnSetDefalutFour"><span class="glyphicon glyphicon-ok-circle"></span></a>
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
-                                      
-                                    </div>
+                                        <div class="form-group row">
+                                            <hr />
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Name<span style="color:#C91414">*</span></label>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.Name, new { data_error = "Please enter user name", rows = "7", placeholder = "name", @class = "form-control col-md-7", required = "required" })
+                                                @*<input type="text" class="form-control col-md-7" id="txtName">*@
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Phone number<span style="color:#C91414">*</span></label>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })
+                                                @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+
+                                                @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
+                                    new SelectListItem() { Value = "", Text = "Select" },
+                                                new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
+                                                  new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })*@
+
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="user-district" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+
+                                                @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
+                                    new SelectListItem() { Value = "", Text = "Select" },
+                                    new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
+                                    new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
+                                      new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })*@
+
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="user-mandal" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                                @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+
+
+
+
+                                                @*@Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
+                                     new SelectListItem() { Value = "", Text = "Select" },
+                                    new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
+                                    new SelectListItem() { Value = "Bela", Text = "Bela" },
+                                    new SelectListItem() { Value = "Kothagudem", Text = "Kothagudem" },
+                                    new SelectListItem() { Value = "Palwancha", Text = "Palwancha" },
+                                    new SelectListItem() { Value = "Tekulapalli", Text = "Tekulapalli" },
+                                    new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
+                                    new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
+                                    new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
+                                      new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })*@
+
+
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="user-localarea" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Enter Nearest Area</label>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                @Html.TextBoxFor(model => model.LocalArea, new { placeholder = "nearest area", @class = "form-control col-md-7" })
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control col-md-7" id="txtCity">
+                                                <small class="text-muted">Type your city name and select the matching city</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" style="display:none">
+                                            <div class="col-md-3" style="text-align:right">
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
+
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control col-md-7" id="txtLocalcity">
+                                                <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <hr />
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-9" style="text-align:right">
+                                                @*<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>*@
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="submit" id="btnSubmit" onclick="return testFunction();" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-group row">
-                                    <hr />
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Name<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.Name, new { data_error = "Please enter user name", rows = "7", placeholder = "name", @class = "form-control col-md-7", required = "required" })
-                                        @*<input type="text" class="form-control col-md-7" id="txtName">*@
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Phone number<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })
-                                        @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
-
-                                        @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
-                                            new SelectListItem() { Value = "", Text = "Select" },
-                                                        new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
-                                                          new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })*@
-
-
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row" id="user-district" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
-                                    </div>
-                                    <div class="col-md-4">
-
-                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
-
-                                        @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
-                                            new SelectListItem() { Value = "", Text = "Select" },
-                                            new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
-                                            new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
-                                              new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })*@
-
-
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row" id="user-mandal" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4">
-
-                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
-
-
-
-
-                                        @*@Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
-                                             new SelectListItem() { Value = "", Text = "Select" },
-                                            new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
-                                            new SelectListItem() { Value = "Bela", Text = "Bela" },
-                                            new SelectListItem() { Value = "Kothagudem", Text = "Kothagudem" },
-                                            new SelectListItem() { Value = "Palwancha", Text = "Palwancha" },
-                                            new SelectListItem() { Value = "Tekulapalli", Text = "Tekulapalli" },
-                                            new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
-                                            new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
-                                            new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
-                                              new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })*@
-
-
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row" id="user-localarea" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter Nearest Area</label>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.LocalArea, new { placeholder = "nearest area", @class = "form-control col-md-7" })
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter City</label>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control col-md-7" id="txtCity">
-                                        <small class="text-muted">Type your city name and select the matching city</small>
-                                    </div>
-                                </div>
-                                <div class="form-group row" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
-
-                                    </div>
-                                    <div class="col-md-5">
-                                        <input type="text" class="form-control col-md-7" id="txtLocalcity">
-                                        <small class="text-muted">Type your locality name and select the matching locality or nearest from the list</small>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <hr />
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-9" style="text-align:right">
-                                        @*<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>*@
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input type="submit" id="btnSubmit" onclick="return testFunction();" class="btn btn-primary btn-lg" value="Submit & Preview" style="background-color:#f70;color:white;border:1px solid #f70" />
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>              
+                <div style="width:13%;float:right;padding-top:80px;">
 
+                </div>
             </div>
         </div>
     </div>
@@ -955,7 +963,7 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-    
+
 
         if("@ViewBag.Name" != ""){
 
