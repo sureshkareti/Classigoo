@@ -165,7 +165,7 @@ iframe {
     top: 0;
     height: 100%;
     width: 100%;
-    background: rgba(17, 17, 17, 0.7);
+    /*background: rgba(17, 17, 17, 0.7);*/
 }
 
 .social-with-label span {
@@ -363,7 +363,7 @@ a[class^='icon-btn-'] {
 }
 
 .danger-btn {
-    background: #ff6c02;
+    background: #f70;
 }
 
 .border-btn {
@@ -627,9 +627,10 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
 
 
 .footer-wrap {
-    background: url(../../images/icons-bg.PNG) no-repeat top;
+    /*background: url(../../images/icons-bg.PNG) no-repeat top;*/
     padding-top: 30px;
     background-size: cover;
+    background-color:#337ab7;
 }
 
     .footer-wrap h3 {
@@ -643,7 +644,8 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     .footer-wrap p {
         font-size: 14px;
         line-height: 24px;
-        color: #b3b3b3;
+        /*color: #b3b3b3;*/
+        color:white;
         margin-top: 15px;
     }
 
@@ -684,7 +686,8 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
         .footer-links li a {
             font-size: 14px;
             line-height: 26px;
-            color: #b3b3b3;
+            /*color: #b3b3b3;*/
+            color:white;
             text-decoration: none;
         }
 
@@ -728,7 +731,8 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
 
 .address {
     font-size: 14px;
-    color: #b3b3b3;
+    /*color: #b3b3b3;*/
+    color:white;
     font-size: 14px;
     position: relative;
     padding-left: 30px;
@@ -745,7 +749,8 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
 
 .info a {
     font-size: 14px;
-    color: #b3b3b3;
+    /*color: #b3b3b3;*/
+    color:white;
     font-size: 14px;
     line-height: 30px;
     font-weight: normal;
