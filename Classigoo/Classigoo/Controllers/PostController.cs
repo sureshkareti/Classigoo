@@ -265,7 +265,7 @@ namespace Classigoo.Controllers
                     Type = postAdd.ddlRentOrSale,
                     Status = Constants.PendingSatus,
                     UserId = userId,
-                    Created = DateTime.Now
+                    Created = CustomActions.GetCurrentISTTime()
                 };
 
 

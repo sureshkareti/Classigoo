@@ -469,22 +469,60 @@ namespace Classigoo.Controllers
         public ActionResult LoginWithOtp(LoginWithOTP loginWithOtp)
         {
  
-            CustomActions objCustom = new CustomActions();
-            //  objCustom.SendOTP(loginWithOtp.PhoneNumber);
-            ViewBag.PhoneNumber = loginWithOtp.PhoneNumber;
-            return View("VerifyOTP", loginWithOtp);
-        }
-        public ActionResult VerifyOTP()
-        {
-
-            return View();
+            Communication objCommunication = new Communication();
+             bool status=  objCommunication.SendOTP(loginWithOtp.PhoneNumber);
+            if (status)
+            {
+                return View("VerifyOTP", loginWithOtp);
+            }
+            else
+            {
+                ViewBag.Status = "Error occured while sending OTP please try again later";
+                return View();
+            }
         }
         [HttpPost]
-        public ActionResult VerifyOTP(FormCollection loginWithOtp)
+        public ActionResult VerifyOTP(LoginWithOTP loginWithOtp)
         {
-            CustomActions objCustom = new CustomActions();
-            objCustom.VerifyOTP(loginWithOtp["PhoneNumber"], loginWithOtp["OTP"]);
+            Communication objCommunication = new Communication();
+           bool isVerified= objCommunication.VerifyOTP(loginWithOtp.PhoneNumber, loginWithOtp.OTP);
+            if (isVerified)
+            {
+                UserDBOperations db = new UserDBOperations();
+                Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
+                if (userId == Guid.Empty)//User doesnot exist
+                {
+                    User user = new User();
+                    user.MobileNumber = loginWithOtp.PhoneNumber;
+                    user.Name = "ClassigooUser";
+                    user.Type = "Custom";
+                    userId = db.AddUser(user);
+                    if (userId != Guid.Empty)//User Added successfully
+                    {
+                        SetUserId(userId, false);
+                        return RedirectToAction("Home", "User");
+                    }
+                    else//Error occured while adding user
+                    {
+                        @ViewBag.Status = "Error Occured while Registering User";
+                    }
+                }
+                else
+                {
+                    SetUserId(userId, false);
+                    return RedirectToAction("Home", "User");
+                }
+            }
+            else
+            {
+                @ViewBag.Status = "Wrong or Expired OTP! Use resend to send OTP on "+loginWithOtp.PhoneNumber;
+            }
             return View();
         }
+        //public ActionResult VerifyOTP()
+        //{
+
+        //    return View();
+        //}
     }
 }

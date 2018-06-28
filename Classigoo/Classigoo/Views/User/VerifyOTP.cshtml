@@ -8,14 +8,17 @@
 
 @using (Html.BeginForm("VerifyOTP", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
-    <div class="form-group">
+    <div class="container" style="max-width:970px !important;margin:auto;">
+        <span>@ViewBag.Status</span>
+        <div class="form-group">
 
-        <span>Please enter the verification code sent to </span><span name="PhoneNumber"> @ViewBag.PhoneNumber</span><span> to Login</span>
-       @*@Html.LabelFor*@
-        @Html.TextBoxFor(model=>model.OTP, new {@class="form-control", @placeholder = "OTP", required = "required" })
+            <span>Please enter the verification code sent to </span><span name="PhoneNumber"> @Model.PhoneNumber</span><span> to Login</span>
+            @Html.HiddenFor(model => model.PhoneNumber)
+            @Html.TextBoxFor(model => model.OTP, new { @class = "form-control", @placeholder = "OTP", required = "required" })
 
 
-        <div class="help-block with-errors"></div>
-        <input type="submit" value="VerifyOTP" />
-    </div>
-}
+            <div class="help-block with-errors"></div>
+            <input type="submit" value="VerifyOTP" />
+        </div>
+        </div>
+        }

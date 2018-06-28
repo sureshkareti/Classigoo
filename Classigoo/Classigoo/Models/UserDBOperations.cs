@@ -35,7 +35,7 @@ namespace Classigoo.Models
         {
             try
             {
-                user.Created = DateTime.Now;
+                user.Created = CustomActions.GetCurrentISTTime();
                 user.UserId = Guid.NewGuid();
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
