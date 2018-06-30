@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,43 +22,28 @@ namespace Classigoo.Models
             string senderId = "ClassigooOTP";
             string message = HttpUtility.UrlEncode("Dear Classigoo User, The OTP for login on Classigoo is ");
             int otp = GenarateOTP();
-            //message += otp;
+            message += otp;
            
-            StringBuilder sbPostData = new StringBuilder();
-            sbPostData.AppendFormat("authkey={0}", authKey);
-            sbPostData.AppendFormat("&mobile={0}", mobileNumber);
-            sbPostData.AppendFormat("&message={0}", message);
-            sbPostData.AppendFormat("&sender={0}", senderId);
-            sbPostData.AppendFormat("&otp={0}", otp);
-
-             string sendSMSUri = "http://control.msg91.com/api/sendotp.php";
-                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(sendSMSUri);
-                UTF8Encoding encoding = new UTF8Encoding();
-                byte[] data = encoding.GetBytes(sbPostData.ToString());
-                httpWReq.Method = "POST";
-                httpWReq.ContentType = "application/x-www-form-urlencoded";
-                httpWReq.ContentLength = data.Length;
-                using (Stream stream = httpWReq.GetRequestStream())
+                var client = new RestSharp.RestClient("http://control.msg91.com/api/sendotp.php");
+                var request = new RestSharp.RestRequest(RestSharp.Method.POST);
+                request.AddParameter("authkey", authKey);
+                request.AddParameter("mobile", mobileNumber);
+                request.AddParameter("message", message);
+                request.AddParameter("sender", senderId);
+                request.AddParameter("otp", otp);
+                RestSharp.IRestResponse response = client.Execute(request);
+                Status status = JsonConvert.DeserializeObject<Status>(response.Content);
+                if (status.type=="error")
                 {
-                    stream.Write(data, 0, data.Length);
+                   isOTPSent = false;
+                   Library.WriteLog("Unable to send OTP, error msg - " + status.message);
                 }
-                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
-                HttpStatusCode statusCode = response.StatusCode;
-                if (statusCode != HttpStatusCode.OK)
-                {
-                    isOTPSent = false;
-                    string status = response.StatusDescription;
-                    Library.WriteLog("Unable to send OTP, error msg - " + status);
-                }
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string responseString = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
+             
             }
-            catch (SystemException ex)
+            catch (Exception ex)
             {
                 isOTPSent = false;
-                Library.WriteLog("At sending OTP", ex);
+                Library.WriteLog("At sending OTP API", ex);
             }
             return isOTPSent;
         }
@@ -67,47 +53,26 @@ namespace Classigoo.Models
             bool isVerified = true;
             try
             {
-            string authKey = "222262AHv0m83QXj5b2fa36c";
-            string mobileNumber = "91" + phoneNumber;
-        
-            StringBuilder sbPostData = new StringBuilder();
-            sbPostData.AppendFormat("authkey={0}", authKey);
-            sbPostData.AppendFormat("&mobile={0}", mobileNumber);
-            sbPostData.AppendFormat("&otp={0}", otp);
-
-       
-                string verifySMSUri = "https://control.msg91.com/api/verifyRequestOTP.php";
-                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(verifySMSUri);
-                UTF8Encoding encoding = new UTF8Encoding();
-                byte[] data = encoding.GetBytes(sbPostData.ToString());
-                httpWReq.Method = "POST";
-                httpWReq.ContentType = "application/x-www-form-urlencoded";
-                httpWReq.ContentLength = data.Length;
-                using (Stream stream = httpWReq.GetRequestStream())
-                {
-                    stream.Write(data, 0, data.Length);
-                }
-                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
-               
-                HttpStatusCode statusCode = response.StatusCode;
-                if(statusCode!=HttpStatusCode.OK)
+                string authKey = "222262AHv0m83QXj5b2fa36c";
+                string mobileNumber = "91" + phoneNumber;
+                var client = new RestSharp.RestClient("https://control.msg91.com/api/verifyRequestOTP.php");
+                var request = new RestSharp.RestRequest(RestSharp.Method.POST);
+                request.AddParameter("authkey", authKey);
+                request.AddParameter("mobile", mobileNumber);
+                request.AddParameter("otp", otp);
+                RestSharp.IRestResponse response = client.Execute(request);
+                Status status = JsonConvert.DeserializeObject<Status>(response.Content);
+                if (status.type == "error")
                 {
                     isVerified = false;
-                    string status = response.StatusDescription;
-                    Library.WriteLog("Unable to send OTP, error msg - "+status);
+                    Library.WriteLog("Unable to verify OTP, error msg - " + status.message);
                 }
-                
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string responseString = reader.ReadToEnd();
 
-           
-                reader.Close();
-                response.Close();
             }
-            catch (SystemException ex)
+            catch (Exception ex)
             {
                 isVerified = false;
-                Library.WriteLog("At Verify OTP", ex);
+                Library.WriteLog("At Verify OTP Api", ex);
             }
 
             return isVerified;
@@ -115,53 +80,31 @@ namespace Classigoo.Models
 
         public bool ResendOTP(string phoneNumber)
         {
-            bool isVerified = true;
+            bool isOTPSent = true;
             try
             {
                 string authKey = "222262AHv0m83QXj5b2fa36c";
                 string mobileNumber = "91" + phoneNumber;
-
-                StringBuilder sbPostData = new StringBuilder();
-                sbPostData.AppendFormat("authkey={0}", authKey);
-                sbPostData.AppendFormat("&mobile={0}", mobileNumber);
-                sbPostData.AppendFormat("&retrytype={0}", "text");
-
-
-                string verifySMSUri = "http://control.msg91.com/api/retryotp.php";
-                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(verifySMSUri);
-                UTF8Encoding encoding = new UTF8Encoding();
-                byte[] data = encoding.GetBytes(sbPostData.ToString());
-                httpWReq.Method = "POST";
-                httpWReq.ContentType = "application/x-www-form-urlencoded";
-                httpWReq.ContentLength = data.Length;
-                using (Stream stream = httpWReq.GetRequestStream())
+                var client = new RestSharp.RestClient("http://control.msg91.com/api/retryotp.php");
+                var request = new RestSharp.RestRequest(RestSharp.Method.POST);
+                request.AddParameter("authkey", authKey);
+                request.AddParameter("mobile", mobileNumber);
+                request.AddParameter("retrytype", "text");
+                RestSharp.IRestResponse response = client.Execute(request);
+                Status status = JsonConvert.DeserializeObject<Status>(response.Content);
+                if (status.type == "error")
                 {
-                    stream.Write(data, 0, data.Length);
+                    isOTPSent = false;
+                    Library.WriteLog("Unable to send OTP, error msg - " + status.message);
                 }
-                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
-
-                HttpStatusCode statusCode = response.StatusCode;
-                if (statusCode != HttpStatusCode.OK)
-                {
-                    isVerified = false;
-                    string status = response.StatusDescription;
-                    Library.WriteLog("Unable to send OTP, error msg - " + status);
-                }
-
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string responseString = reader.ReadToEnd();
-
-
-                reader.Close();
-                response.Close();
             }
-            catch (SystemException ex)
+            catch (Exception ex)
             {
-                isVerified = false;
+                isOTPSent = false;
                 Library.WriteLog("At Verify OTP", ex);
             }
 
-            return isVerified;
+            return isOTPSent;
         }
 
         public int GenarateOTP()

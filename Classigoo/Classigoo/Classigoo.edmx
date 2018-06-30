@@ -71,6 +71,20 @@
           <Property Name="UserId" Type="varchar" MaxLength="250" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ToUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AdId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Archive" Type="bit" />
+          <Property Name="IsRed" Type="bit" />
+        </EntityType>
         <EntityType Name="PassengerVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -185,6 +199,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Messages_Adds">
+          <End Role="Adds" Type="Self.Adds" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adds">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="AdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Messages">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PassengerVehicle_Adds">
           <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -246,6 +296,7 @@
           <EntitySet Name="AgriculturalVehicle" EntityType="Self.AgriculturalVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConstructionVehicle" EntityType="Self.ConstructionVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassengerVehicle" EntityType="Self.PassengerVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportationVehicle" EntityType="Self.TransportationVehicle" Schema="dbo" store:Type="Tables" />
@@ -261,6 +312,18 @@
           <AssociationSet Name="FK_ConstructionVehicle_Adds" Association="Self.FK_ConstructionVehicle_Adds">
             <End Role="Adds" EntitySet="Adds" />
             <End Role="ConstructionVehicle" EntitySet="ConstructionVehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Adds" Association="Self.FK_Messages_Adds">
+            <End Role="Adds" EntitySet="Adds" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Messages" Association="Self.FK_Messages_Messages">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Users" Association="Self.FK_Messages_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
           <AssociationSet Name="FK_PassengerVehicle_Adds" Association="Self.FK_PassengerVehicle_Adds">
             <End Role="Adds" EntitySet="Adds" />
@@ -326,6 +389,19 @@
             <End Role="Add" EntitySet="Adds" />
             <End Role="TransportationVehicle" EntitySet="TransportationVehicles" />
           </AssociationSet>
+          <EntitySet Name="Messages" EntityType="ClassigooModel.Message" />
+          <AssociationSet Name="FK_Messages_Adds" Association="ClassigooModel.FK_Messages_Adds">
+            <End Role="Add" EntitySet="Adds" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Messages" Association="ClassigooModel.FK_Messages_Messages">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Users" Association="ClassigooModel.FK_Messages_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -340,6 +416,8 @@
           <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Created" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Adds" Relationship="ClassigooModel.FK_Adds_Users" FromRole="User" ToRole="Add" />
+          <NavigationProperty Name="Messages" Relationship="ClassigooModel.FK_Messages_Messages" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="ClassigooModel.FK_Messages_Users" FromRole="User" ToRole="Message" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -476,6 +554,7 @@
           <NavigationProperty Name="PassengerVehicles" Relationship="ClassigooModel.FK_PassengerVehicle_Adds" FromRole="Add" ToRole="PassengerVehicle" />
           <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
           <NavigationProperty Name="TransportationVehicles" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="Add" ToRole="TransportationVehicle" />
+          <NavigationProperty Name="Messages" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Add" ToRole="Message" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -558,6 +637,59 @@
             </Principal>
             <Dependent Role="TransportationVehicle">
               <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MsgId" />
+          </Key>
+          <Property Name="MsgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUserId" Type="Guid" Nullable="false" />
+          <Property Name="ToUserId" Type="Guid" Nullable="false" />
+          <Property Name="AdId" Type="Int32" Nullable="false" />
+          <Property Name="Message1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Archive" Type="Boolean" />
+          <Property Name="IsRed" Type="Boolean" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Message" ToRole="Add" />
+          <NavigationProperty Name="User" Relationship="ClassigooModel.FK_Messages_Messages" FromRole="Message" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ClassigooModel.FK_Messages_Users" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Messages_Adds">
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="1" />
+          <End Type="ClassigooModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Add">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="AdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Messages">
+          <End Type="ClassigooModel.User" Role="User" Multiplicity="1" />
+          <End Type="ClassigooModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Users">
+          <End Type="ClassigooModel.User" Role="User" Multiplicity="1" />
+          <End Type="ClassigooModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="ToUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -711,6 +843,21 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="ClassigooModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="IsRed" ColumnName="IsRed" />
+                <ScalarProperty Name="Archive" ColumnName="Archive" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="AdId" ColumnName="AdId" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="MsgId" ColumnName="MsgId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,13 +12,12 @@
         <span>@ViewBag.Status</span>
         <div class="form-group">
 
-            <span>Please enter the verification code sent to </span><span name="PhoneNumber"> @Model.PhoneNumber</span><span> to Login</span>
+            @*<span>Please enter the verification code sent to </span><span name="PhoneNumber">@Model.PhoneNumber</span><span> to Login</span>*@
             @Html.HiddenFor(model => model.PhoneNumber)
             @Html.TextBoxFor(model => model.OTP, new { @class = "form-control", @placeholder = "OTP", required = "required" })
-
-
+            @Html.ActionLink("Resend OTP", "ResendOtp","User", Model,null)
             <div class="help-block with-errors"></div>
             <input type="submit" value="VerifyOTP" />
         </div>
         </div>
-        }
+}

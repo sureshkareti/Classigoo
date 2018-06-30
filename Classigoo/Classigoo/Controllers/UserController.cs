@@ -24,7 +24,7 @@ namespace Classigoo.Controllers
                 {
                     return RedirectToAction("Home", "User");
                 }
-               
+
             }
 
             return View();
@@ -124,21 +124,18 @@ namespace Classigoo.Controllers
             }
 
             List<CustomAdd> addColl = new List<CustomAdd>();
+            List<Message> chatColl = new List<Message>();
             try
             {
                 Guid userId = GetUserId();
                 UserDBOperations db = new UserDBOperations();
                 addColl = db.GetMyAdds(userId);
                 TempData["UserAddColl"] = addColl;
-                //if (TempData["UserAddColl"]!=null)
-                //{
-                //    addColl= addColl = (List<CustomAdd>)TempData["UserAddColl"];
-                //}
-                //else
-                //{
-                //    addColl = db.GetMyAdds(userId);
-                //    TempData["UserAddColl"] = addColl;
-                //}
+                MessageDBOperations msgDb = new MessageDBOperations();
+                chatColl = msgDb.GetMyChats(userId);
+                TempData["UserChatColl"] = chatColl;
+                ViewBag.IsPwdEmpty = db.IsPwdEmpty(userId);
+                
 
             }
             catch (Exception ex)
@@ -154,17 +151,20 @@ namespace Classigoo.Controllers
         public ActionResult Home(FormCollection coll)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-            //if (User.Identity.IsAuthenticated)//user logged in
-            // {
+            List<Message> chatColl = new List<Message>();
             try
             {
                 Guid userId = GetUserId();
                 UserDBOperations db = new UserDBOperations();
                 User user = db.GetUser(userId);
                 addColl = (List<CustomAdd>)TempData["UserAddColl"];
+                chatColl = (List<Message>)TempData["UserChatColl"];
                 Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
                 Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
+                ViewBag.IsPwdEmpty = Convert.ToBoolean(coll["IsPwdEmpty"]);
                 TempData.Keep("UserAddColl");
+                TempData.Keep("UserChatColl");
+
                 switch (coll["action"])
                 {
                     case "Change Password":
@@ -228,6 +228,20 @@ namespace Classigoo.Controllers
                         }
                         #endregion
                         break;
+                    case "Create Password":
+                        #region CreatePassword
+                        user.Password = coll["txtPasscode"];
+                        if (db.UpdateUserDetails(user))
+                        {
+                            @ViewBag.status = "Password updated successfully";
+                            ViewBag.IsPwdEmpty = false;
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Eror occured while updating Password";
+                        }
+                        #endregion
+                        break;
                     default:
                         break;
                 }
@@ -237,7 +251,6 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At Updating user details", ex);
             }
-            //}
             return View(addColl);
         }
         [Authorize]
@@ -251,15 +264,15 @@ namespace Classigoo.Controllers
                 {
                     cookie.Expires = DateTime.Now.AddDays(-1);
                     this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
-                }          
-                
+                }
+
                 HttpCookie signinUserCookie = this.ControllerContext.HttpContext.Request.Cookies["ClassigooUserRole"];
-                if(signinUserCookie != null)
+                if (signinUserCookie != null)
                 {
                     signinUserCookie.Expires = DateTime.Now.AddDays(-1);
                     this.ControllerContext.HttpContext.Response.Cookies.Add(signinUserCookie);
                 }
-             
+
             }
 
             FormsAuthentication.SignOut();
@@ -378,7 +391,7 @@ namespace Classigoo.Controllers
             {
                 HttpCookie signinUserCookie = new HttpCookie("ClassigooUserRole");
                 signinUserCookie.Value = "admin";
-                
+
                 if (rememberMe)
                 {
                     signinUserCookie.Expires = DateTime.Now.AddDays(5);
@@ -451,7 +464,7 @@ namespace Classigoo.Controllers
             if (Request.Cookies["ClassigooUserRole"] != null)
             {
                 var value = Request.Cookies["ClassigooUserRole"].Value;
-                if(value == "admin")
+                if (value == "admin")
                 {
                     return true;
                 }
@@ -460,7 +473,7 @@ namespace Classigoo.Controllers
             return false;
         }
 
-       public ActionResult LoginWithOtp()
+        public ActionResult LoginWithOtp()
         {
 
             return View();
@@ -468,57 +481,77 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult LoginWithOtp(LoginWithOTP loginWithOtp)
         {
- 
-            Communication objCommunication = new Communication();
-             bool status=  objCommunication.SendOTP(loginWithOtp.PhoneNumber);
-            if (status)
-            {
-                return View("VerifyOTP", loginWithOtp);
-            }
-            else
-            {
-                ViewBag.Status = "Error occured while sending OTP please try again later";
-                return View();
-            }
-        }
-        [HttpPost]
-        public ActionResult VerifyOTP(LoginWithOTP loginWithOtp)
-        {
-            Communication objCommunication = new Communication();
-           bool isVerified= objCommunication.VerifyOTP(loginWithOtp.PhoneNumber, loginWithOtp.OTP);
-            if (isVerified)
+            try
             {
                 UserDBOperations db = new UserDBOperations();
                 Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
-                if (userId == Guid.Empty)//User doesnot exist
+                if (userId != Guid.Empty)
                 {
-                    User user = new User();
-                    user.MobileNumber = loginWithOtp.PhoneNumber;
-                    user.Name = "ClassigooUser";
-                    user.Type = "Custom";
-                    userId = db.AddUser(user);
-                    if (userId != Guid.Empty)//User Added successfully
+                    Communication objCommunication = new Communication();
+                    bool status = objCommunication.SendOTP(loginWithOtp.PhoneNumber);
+                    if (status)
                     {
-                        SetUserId(userId, false);
-                        return RedirectToAction("Home", "User");
+                        ViewBag.Status = "Please enter the verification code sent to "+ loginWithOtp.PhoneNumber + " to Login";
+                        return View("VerifyOTP", loginWithOtp);
                     }
-                    else//Error occured while adding user
+                    else
                     {
-                        @ViewBag.Status = "Error Occured while Registering User";
+                        ViewBag.Status = "Error occured while sending OTP please try again later";
                     }
                 }
                 else
                 {
-                    SetUserId(userId, false);
-                    return RedirectToAction("Home", "User");
+                    ViewBag.Status = "Account does not exist with this phone please register before using this feature";
                 }
             }
-            else
+            catch (Exception ex)
             {
-                @ViewBag.Status = "Wrong or Expired OTP! Use resend to send OTP on "+loginWithOtp.PhoneNumber;
+                Library.WriteLog("At Send OTP", ex);
             }
             return View();
         }
+        [HttpPost]
+        public ActionResult VerifyOTP(LoginWithOTP loginWithOtp)
+        {
+            try
+            {
+                Communication objCommunication = new Communication();
+                bool isVerified = objCommunication.VerifyOTP(loginWithOtp.PhoneNumber, loginWithOtp.OTP);
+                if (isVerified)
+                {
+                    UserDBOperations db = new UserDBOperations();
+                    Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
+                    SetUserId(userId, false);
+                    return RedirectToAction("Home", "User");
+                }
+                else
+                {
+                    @ViewBag.Status = "Wrong or Expired OTP! Use resend to send OTP on " + loginWithOtp.PhoneNumber;
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At verifyOTP", ex);
+            }
+            return View(loginWithOtp);
+        }
+
+        public ActionResult ResendOtp(LoginWithOTP loginWithOtp)
+        {
+            Communication objCommunication = new Communication();
+            bool isOTPSent = objCommunication.ResendOTP(loginWithOtp.PhoneNumber);
+            if(isOTPSent)
+            {
+           ViewBag.Status = "Please enter the verification code sent to " + loginWithOtp.PhoneNumber + " to Login";
+            }
+            else
+            {
+           ViewBag.Status = "Error occured while sending OTP please try again later";
+            }
+            return View("VerifyOTP", loginWithOtp);
+
+        }
+
         //public ActionResult VerifyOTP()
         //{
 

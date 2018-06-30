@@ -183,7 +183,7 @@
                                             <div class="tab-pane active" id="portlet_Inbox">
 
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                    <p>No Messages.</p>
+                                                   
 
                                                 </div>
 
@@ -329,8 +329,9 @@
                                         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                             <div class="panel-body">
                                                 @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePhone" }))
-                                            {
-
+                                                {
+                                                    @Html.Hidden("IsPwdEmpty",(bool)ViewBag.IsPwdEmpty)
+                                                    
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>New Phone Number<span style="color:red">*</span></span>
@@ -358,42 +359,62 @@
                                         <div class="panel-heading" role="tab" id="headingThree">
                                             <h4 class="panel-title">
                                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    Change password
+                                                    @if (ViewBag.IsPwdEmpty)
+                                                    {
+                                                        <span>Create password</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Change password</span>
+                                                    }
                                                 </a>
                                             </h4>
                                         </div>
                                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                             <div class="panel-body">
-                                                @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePassword" }))
-                                            {
-                                            <div class="row  form-group">
+                                             @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePassword" }))
+                                             {
+                                                @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty )
+                                                 if (!ViewBag.IsPwdEmpty)
+                                                 {
+                                               <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>Old Password<span style="color:red">*</span></span>
                                                     <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
                                                 </div>
-                                            </div>
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <span>New Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                                            </div>   
+                                                 }
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New Password<span style="color:red">*</span></span>
+                                                        <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <span>Repeat new password<span style="color:red">*</span></span>
-                                                    <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>Repeat new password<span style="color:red">*</span></span>
+                                                        <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                                    </div>
                                                 </div>
-                                            </div>
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
-                                                    <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
+                                                    @if (ViewBag.IsPwdEmpty)
+                                                    {
+                                                    <input type="submit" class="btn btn-primary" value="Create Password" name="action" />
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
+                                                    }
+                                                   
                                                 </div>
                                             </div>
                                             }
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default accordion-header">
+                                    @*<div class="panel panel-default accordion-header">
 
                                         <div class="panel-heading" role="tab" id="headingFour">
                                             <h4 class="panel-title">
@@ -406,7 +427,8 @@
                                         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                             <div class="panel-body">
                                                 @using (Html.BeginForm("Home", "User", FormMethod.Post))
-                                            {
+                                                {
+                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty )
                                             <div class="row  form-group">
                                                 <div class="col-md-4">
                                                     <span>New email<span style="color:red">*</span></span>
@@ -424,7 +446,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div>*@
                                     @*<div class="panel panel-default accordion-header">
                                             <div class="panel-heading" role="tab" id="headingFive">
                                                 <h4 class="panel-title">

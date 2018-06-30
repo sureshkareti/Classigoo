@@ -1020,5 +1020,38 @@ namespace Classigoo.Controllers
             }
             return View(customAdd);
         }
+
+        [HttpPost]
+        public ActionResult AddChat(string usermessage,string AddId)
+        {
+            bool status = false;
+            try
+            {
+                MessageDBOperations msgDbObj = new MessageDBOperations();
+                Guid toUserId = (Guid)msgDbObj.GetAddOwnerUserId(Convert.ToInt32(AddId));
+                UserController useCntObj = new UserController();
+                useCntObj.ControllerContext = new ControllerContext(this.Request.RequestContext, useCntObj);
+                Guid frmUserId = useCntObj.GetUserId();
+                Message msg = new Message();
+                msg.AdId = Convert.ToInt32(AddId);
+                msg.CreatedOn = CustomActions.GetCurrentISTTime();
+                msg.FromUserId = frmUserId;
+                msg.ToUserId = toUserId;
+                msg.Message1 = usermessage;
+                status = msgDbObj.AddChat(msg);         
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At AddChat",ex);
+            }
+            if (status)
+            {
+                return RedirectToAction("Home", "User");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }

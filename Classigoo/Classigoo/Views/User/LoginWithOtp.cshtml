@@ -9,8 +9,8 @@
 @using (Html.BeginForm("LoginWithOtp", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
     <div class="container" style="max-width:970px !important;margin:auto;">
+        <span>@ViewBag.Status</span>
         <div class="form-group">
-            <span >@ViewBag.Status</span>
             <label for="userName">Phone Number *</label>
             @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", pattern = @"^(\d{10})$", @placeholder = "Phone Number", required = "required", style = "height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" })
             <div class="help-block with-errors"></div>

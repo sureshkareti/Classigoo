@@ -239,4 +239,19 @@ namespace Classigoo
         public string OTP { set; get; }
     }
 
+    public class Status
+    {
+        public string type { get; set; }
+        public string message { get; set; }
+    }
+
+    public class CustomMessage
+    {
+        public int MsgId { get; set; }
+        public System.Guid FromUserId { get; set; }
+        public System.Guid ToUserId { get; set; }
+        public int AdId { get; set; }
+        public string Message1 { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+    }
 }

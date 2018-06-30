@@ -315,20 +315,30 @@ namespace Classigoo.Models
             }
         }
 
-        public void IsPwdEmpty(Guid userId)
+        public bool IsPwdEmpty(Guid userId)
         {
+            bool isPwdEmpty = false;
             try
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                    db.Users.Find(userId);
+                 User user= db.Users.Find(userId);
+                    if(user!=null)
+                    {
+                        if(string.IsNullOrEmpty(user.Password))
+                        {
+                            isPwdEmpty = true;
+
+                        }
+                    }
                 }
             }
 
             catch(Exception ex)
             {
-
+                Library.WriteLog("At checking Password empty userid - " + userId, ex);
             }
+            return isPwdEmpty;
         }
         
     }

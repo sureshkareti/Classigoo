@@ -3,11 +3,7 @@
     ViewBag.Title = "Preview Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm("PreviewAdd", "User", FormMethod.Post, new { id = "PreviewAdd" }))
-{
-
-    <div>
+ <div>
         <div class="breadcrumb-block">
 
         </div>
@@ -144,7 +140,7 @@
                                         <ul class="nav nav-tabs" id="myTab">
                                             <li id="tabdesc"><a href="#description"><b>Description</b></a> </li>
                                             <li id="tabspec"><a href="#specification"><b>Specification</b></a> </li>
-                                            <li id="tabcontact"><a href="#contact"><b>Send Message</b></a> </li>
+                                            @*<li id="tabcontact"><a href="#contact"><b>Send Message</b></a> </li>*@
                                         </ul>
                                         <div class="tab-content" style="min-height:150px;">
                                             <div class="tab-pane active" id="description">
@@ -164,7 +160,7 @@
                                             </div>
                                             <div class="tab-pane " id="tv-specification">
                                                 <ul class="productinfo">
-                                                    @if (@Model.Category==Constants.TransportationVehicle)
+                                                    @if (@Model.Category == Constants.TransportationVehicle)
                                                     {
                                                         <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                     }
@@ -173,7 +169,7 @@
                                             </div>
                                             <div class="tab-pane " id="av-specification">
                                                 <ul class="productinfo">
-                                                    @if (@Model.Category==Constants.AgriculturalVehicle)
+                                                    @if (@Model.Category == Constants.AgriculturalVehicle)
                                                     {
                                                         <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                     }
@@ -204,8 +200,9 @@
                                                     }
                                                 </ul>
                                             </div>
-                                            <div class="tab-pane" id="contact">
-                                                <form class="form-vertical">
+                                            @Html.HiddenFor(m => m.AddId)
+                                            @*<div class="tab-pane" id="contact">
+                                                @*<form class="form-vertical">
                                                     <fieldset>
                                                         @*<div class="control-group">
                                                                 <label class="control-label">Your Name</label>
@@ -213,29 +210,40 @@
 
                                                                     <input type="text" class="span3">
                                                                 </div>
-                                                            </div>*@
+                                                            </div>
                                                         <div class="control-group">
                                                             <label class="control-label">Message</label>
                                                             <div class="controls">
-                                                                <textarea rows="3" style="width:100%" name="user-message" class="span3"></textarea>
+                                                                <textarea rows="3" style="width:100%" name="usermessage" class="span3"></textarea>
                                                             </div>
                                                         </div>
                                                     </fieldset>
                                                     <input type="submit" class="btn btn-orange" value="continue">
                                                     @Html.HiddenFor(m => m.AddId)
-                                                </form>
-                                            </div>
+                                                @*</form>
+                                            </div>*@
+                                            
                                         </div>
                                     </div>
+@using (Html.BeginForm("AddChat", "List", FormMethod.Post, new { id = "Chat" }))
+{
+    @Html.HiddenFor(m => m.AddId)
+                                    <div id="chat">
+                                        <div class="control-group">
+                                            <label class="control-label">Message</label>
+                                            <div class="controls">
+                                                <textarea rows="3" style="width:100%" name="usermessage" class="span3"></textarea>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="btn btn-orange" value="continue">
+                                    </div>
+}
                                 </div>
                             </div>
                         </div>
 
 
                     </div>
-
-
-
                 </div>
             </div>
         </div>
@@ -250,8 +258,6 @@
         </div>
 
     </div>
-}
-
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/List/color1.css" rel="stylesheet" />
@@ -313,11 +319,11 @@
                 $("#tabdesc").addClass("active");
 
             }
-            else if (selectedTab == "Send Message") {
-                $("#contact").css("display", "block");
+            //else if (selectedTab == "Send Message") {
+            //    $("#contact").css("display", "block");
 
-                $("#tabcontact").addClass("active");
-            }
+            //    $("#tabcontact").addClass("active");
+            //}
         })
 
         $('#myTab a:first').tab('show') // Select first tab
