@@ -134,3 +134,27 @@ Classigoo ; Object reference not set to an instance of an object.
 
 19/06/2018 11:15:52 PM : At controller Executing deletig physical image
 
+30/06/2018 2:59:48 PM : Unable to send OTP, error msg - {"type":"error","message":"otp_not_found_and_placeholder_not_found_in_message"}
+
+30/06/2018 3:09:43 PM : Unable to send OTP, error msg - otp_not_found_and_placeholder_not_found_in_message
+
+30/06/2018 3:22:07 PM : Unable to verify OTP, error msg - otp_not_verified
+
+30/06/2018 3:30:09 PM : Unable to verify OTP, error msg - otp_not_verified
+
+30/06/2018 3:37:13 PM : Unable to verify OTP, error msg - otp_not_verified
+
+30/06/2018 5:07:33 PM : Unable to verify OTP, error msg - already_verified
+
+30/06/2018 5:15:56 PM : Unable to verify OTP, error msg - already_verified
+
+30/06/2018 5:16:20 PM : Unable to verify OTP, error msg - already_verified
+
+30/06/2018 5:33:32 PM : Unable to verify OTP, error msg - already_verified
+
+01/07/2018 12:25:29 AM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
+01/07/2018 12:53:06 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.
+01/07/2018 12:55:30 AM : At GetUserId getting userid from cookie
+Classigoo ; Object reference not set to an instance of an object.

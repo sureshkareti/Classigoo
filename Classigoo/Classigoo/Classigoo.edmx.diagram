@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8bdf6c8e6a44c46aea92f435f5a9d72" Name="Diagram1" ZoomLevel="42" >
+      <Diagram DiagramId="d8bdf6c8e6a44c46aea92f435f5a9d72" Name="Diagram1" ZoomLevel="55" >
         <EntityTypeShape EntityType="ClassigooModel.User" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ClassigooModel.Log" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="ClassigooModel.AgriculturalVehicle" Width="1.5" PointX="11" PointY="13.875" />
@@ -19,6 +19,10 @@
         <AssociationConnector Association="ClassigooModel.FK_PassengerVehicle_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_RealEstate_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_TransportationVehicle_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.Message" Width="1.5" PointX="8.875" PointY="7.375" />
+        <AssociationConnector Association="ClassigooModel.FK_Messages_Adds" />
+        <AssociationConnector Association="ClassigooModel.FK_Messages_Messages" />
+        <AssociationConnector Association="ClassigooModel.FK_Messages_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
