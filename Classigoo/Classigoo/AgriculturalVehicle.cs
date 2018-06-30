@@ -25,6 +25,8 @@ namespace Classigoo
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
         public Nullable<int> AddId { get; set; }
+        public string ManufacturingYear { get; set; }
+        public string Model { get; set; }
     
         public virtual Add Add { get; set; }
     }

@@ -38,6 +38,8 @@
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
+          <Property Name="ManufacturingYear" Type="varchar" MaxLength="4" />
+          <Property Name="Model" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ConstructionVehicle">
           <Key>
@@ -54,6 +56,8 @@
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
+          <Property Name="ManufacturingYear" Type="varchar" MaxLength="4" />
+          <Property Name="Model" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -123,6 +127,8 @@
           <Property Name="ImgUrlThird" Type="varchar(max)" />
           <Property Name="ImgUrlFourth" Type="varchar(max)" />
           <Property Name="AddId" Type="int" />
+          <Property Name="ManufacturingYear" Type="varchar" MaxLength="4" />
+          <Property Name="Model" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -232,7 +238,7 @@
           <Parameter Name="Type" Type="varchar" Mode="In" />
           <Parameter Name="Status" Type="varchar" Mode="In" />
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
-          <Parameter Name="CreatedDate" Type="date" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
           <Parameter Name="AddId" Type="int" Mode="InOut" />
         </Function>
         <EntityContainer Name="ClassigooModelStoreContainer">
@@ -363,6 +369,8 @@
           <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_AgriculturalVehicle_Adds" FromRole="AgriculturalVehicle" ToRole="Add" />
+          <Property Name="ManufacturingYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ConstructionVehicle">
           <Key>
@@ -380,6 +388,8 @@
           <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_ConstructionVehicle_Adds" FromRole="ConstructionVehicle" ToRole="Add" />
+          <Property Name="ManufacturingYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PassengerVehicle">
           <Key>
@@ -418,6 +428,8 @@
           <Property Name="ImgUrlFourth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddId" Type="Int32" />
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="TransportationVehicle" ToRole="Add" />
+          <Property Name="ManufacturingYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="RealEstate">
           <Key>
@@ -586,6 +598,8 @@
           <EntitySetMapping Name="AgriculturalVehicles">
             <EntityTypeMapping TypeName="ClassigooModel.AgriculturalVehicle">
               <MappingFragment StoreEntitySet="AgriculturalVehicle">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
                 <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
@@ -603,6 +617,8 @@
           <EntitySetMapping Name="ConstructionVehicles">
             <EntityTypeMapping TypeName="ClassigooModel.ConstructionVehicle">
               <MappingFragment StoreEntitySet="ConstructionVehicle">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
                 <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />
@@ -641,6 +657,8 @@
           <EntitySetMapping Name="TransportationVehicles">
             <EntityTypeMapping TypeName="ClassigooModel.TransportationVehicle">
               <MappingFragment StoreEntitySet="TransportationVehicle">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ManufacturingYear" ColumnName="ManufacturingYear" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="ImgUrlFourth" ColumnName="ImgUrlFourth" />
                 <ScalarProperty Name="ImgUrlThird" ColumnName="ImgUrlThird" />

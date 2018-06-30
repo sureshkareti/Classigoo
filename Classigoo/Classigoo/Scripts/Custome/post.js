@@ -796,18 +796,21 @@ function DisplayRespectiveFields() {
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'block');
             $("#pv-kmdriven").css('display', 'block');
+            $("#pvModelForOtherthanCars").css('display', 'none');
         }
         else if (selectedSubCategory1 === "Bikes") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
             $("#pv-kmdriven").css('display', 'block');
+            $("#pvModelForOtherthanCars").css('display', 'none');
         }
         else {
             $("#pv-model").css('display', 'none');
-            $("#pv-year").css('display', 'none');
+            $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
             $("#pv-kmdriven").css('display', 'none');
+            $("#pvModelForOtherthanCars").css('display', 'block');
         }
     }
 
@@ -1085,18 +1088,21 @@ window.BindEdit = function () {
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'block');
             $("#pv-kmdriven").css('display', 'block');
+            $("#pvModelForOtherthanCars").css('display', 'none');
         }
         else if (selectedSubCategory1 === "Bikes") {
             $("#pv-model").css('display', 'block');
             $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
             $("#pv-kmdriven").css('display', 'block');
+            $("#pvModelForOtherthanCars").css('display', 'none');
         }
         else {
             $("#pv-model").css('display', 'none');
-            $("#pv-year").css('display', 'none');
+            $("#pv-year").css('display', 'block');
             $("#pv-fueltype").css('display', 'none');
             $("#pv-kmdriven").css('display', 'none');
+            $("#pvModelForOtherthanCars").css('display', 'block');
         }
     }
 

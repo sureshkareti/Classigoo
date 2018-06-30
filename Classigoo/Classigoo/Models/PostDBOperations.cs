@@ -452,6 +452,9 @@ namespace Classigoo.Models
                         objAV.OtherCompany = agriculturalV.OtherCompany;
                         objAV.SubCategory = agriculturalV.SubCategory;
 
+                        objAV.Model = agriculturalV.Model;
+                        objAV.ManufacturingYear = agriculturalV.ManufacturingYear;
+
                         objAV.Price = Convert.ToInt32(agriculturalV.Price);
                         objAV.Description = agriculturalV.Description;
 
@@ -500,6 +503,9 @@ namespace Classigoo.Models
                         objTV.Company = transportationV.Company;
                         objTV.OtherCompany = transportationV.OtherCompany;
                         objTV.SubCategory = transportationV.SubCategory;
+
+                        objTV.Model = transportationV.Model;
+                        objTV.ManufacturingYear = transportationV.ManufacturingYear;
 
                         objTV.Price = Convert.ToInt32(transportationV.Price);
                         objTV.Description = transportationV.Description;
@@ -550,6 +556,13 @@ namespace Classigoo.Models
                         objPV.OtherCompany = passengerV.OtherCompany;
                         objPV.SubCategory = passengerV.SubCategory;
 
+                        objPV.Model = passengerV.Model;
+
+                        objPV.Year = passengerV.Year;
+
+                        objPV.FuelType = passengerV.FuelType;
+                        objPV.KMDriven = passengerV.KMDriven;
+
                         objPV.Price = Convert.ToInt32(passengerV.Price);
                         objPV.Description = passengerV.Description;
 
@@ -598,6 +611,9 @@ namespace Classigoo.Models
                         objCV.Company = constructionV.Company;
                         objCV.OtherCompany = constructionV.OtherCompany;
                         objCV.SubCategory = constructionV.SubCategory;
+
+                        objCV.Model = constructionV.Model;
+                        objCV.ManufacturingYear = constructionV.ManufacturingYear;
 
                         objCV.Price = Convert.ToInt32(constructionV.Price);
                         objCV.Description = constructionV.Description;

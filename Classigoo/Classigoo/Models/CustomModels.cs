@@ -88,15 +88,21 @@ namespace Classigoo
         public string AVOtherCompany { set; get; }
         //public int txtAV_Price { set; get; }
         public string txtAV_Price { set; get; }
+        public string txtAV_MYear { set; get; }
+        public string txtAV_Model { set; get; }
 
         public string CVCompany_list { set; get; }
         public string CVOtherCompany { set; get; }
+        public string txtCV_MYear { set; get; }
+        public string txtCV_Model { set; get; }
         //public int txtCV_Price { set; get; }
         public string txtCV_Price { set; get; }
 
 
         public string TVCompany_list { set; get; }
         public string TVOtherCompany { set; get; }
+        public string txtTV_MYear { set; get; }
+        public string txtTV_Model { set; get; }
         //public int txtTV_Price { set; get; }
         public string txtTV_Price { set; get; }
 
@@ -105,6 +111,8 @@ namespace Classigoo
 
         public string PVCompany_list { set; get; }
         public string PVOtherCompany { set; get; }
+       
+        public string txtPV_Model { set; get; }
         //public int txtPV_price { set; get; }
         public string txtPV_price { set; get; }
 

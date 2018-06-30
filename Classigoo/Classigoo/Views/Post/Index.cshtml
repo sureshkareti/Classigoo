@@ -332,6 +332,30 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
+                                                    <div id="avModel" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtAV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle",  @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="avManufacturingYear" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtAV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
@@ -370,6 +394,32 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
+
+                                                    <div id="cvModel" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtCV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="cvManufacturingYear" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtCV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
@@ -408,6 +458,32 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
+
+                                                    <div id="tvModel" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtTV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="tvManufacturingYear" class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtTV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
@@ -467,9 +543,23 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
+
+                                                    <div id="pvModelForOtherthanCars" class="form-group row" >
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle", @class = "form-control col-md-7", required = "required" })
+                                                            @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
+                                                            @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                                            @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row" id="pv-year" style="display:none">
                                                         <div class="col-md-3" style="text-align:right">
-                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Year<span style="color:#C91414">*</span></label>
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
                                                             @Html.TextBoxFor(model => model.txtPV_Year, new { data_error = "Please enter a value between 1900 and current year", pattern = @"^(\d{4})$", @maxLength = "4", placeholder = "year of model", @class = "form-control col-md-7", required = "required" })
