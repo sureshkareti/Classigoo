@@ -126,9 +126,11 @@ namespace Classigoo.Controllers
             {
                 return RedirectToAction("Admin", "User");
             }
-
             List<CustomAdd> addColl = new List<CustomAdd>();
             List<CustomMessage> chatColl = new List<CustomMessage>();
+         //   List<CustomMessage> inboxChatColl = new List<CustomMessage>();
+          //  List<CustomMessage> sentChatColl = new List<CustomMessage>();
+            CustomHomeModel homeModel = new CustomHomeModel();
             try
             {
                 Guid userId = GetUserId();
@@ -139,14 +141,35 @@ namespace Classigoo.Controllers
                 chatColl = msgDb.GetMyChats(userId);
                 TempData["UserChatColl"] = chatColl;
                 ViewBag.IsPwdEmpty = db.IsPwdEmpty(userId);
-                
+                if(TempData["status"]!=null)//mobile number update status
+                {
+                    ViewBag.status = TempData["status"].ToString();
+                }
+       // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
+       // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
 
+                homeModel.AddColl = addColl;
+                foreach(CustomMessage chat in chatColl)
+                {
+                    if(chat.Msg.FromUserId==userId)
+                    {
+                        chat.FromUserName = "[Me]";
+                    }
+                    if(chat.Msg.ToUserId==userId)
+                    {
+                        chat.ToUserName = "[Me]";
+                    }
+                }
+                //  homeModel.InboxChatColl =inboxChatColl;
+                //  homeModel.SentChatColl = sentChatColl;
+                homeModel.ChatColl = chatColl;
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At User Home", ex);
             }
-            return View(addColl);
+           
+            return View(homeModel);
 
         }
 
@@ -156,6 +179,9 @@ namespace Classigoo.Controllers
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
             List<CustomMessage> chatColl = new List<CustomMessage>();
+            CustomHomeModel homeModel = new CustomHomeModel();
+           // List<CustomMessage> inboxChatColl = new List<CustomMessage>();
+           // List<CustomMessage> sentChatColl = new List<CustomMessage>();
             try
             {
                 Guid userId = GetUserId();
@@ -232,15 +258,7 @@ namespace Classigoo.Controllers
                             {
                                 @ViewBag.status = "Error occured while sending OTP please try again later";
                             }
-                            
-                            //if (db.UpdateUserDetails(user))
-                            //{
-                            //    @ViewBag.status = "Mobile Number updated successfully";
-                            //}
-                            //else
-                            //{
-                            //    @ViewBag.status = "Error occured while updating Mobile Number ";
-                            //}
+                         
                         }
                         else
                         {
@@ -265,13 +283,31 @@ namespace Classigoo.Controllers
                     default:
                         break;
                 }
+               // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
+               // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
 
+                homeModel.AddColl = addColl;
+                //homeModel.InboxChatColl = inboxChatColl;
+                //homeModel.SentChatColl = sentChatColl;
+                foreach (CustomMessage chat in chatColl)
+                {
+                    if (chat.Msg.FromUserId == userId)
+                    {
+                        chat.FromUserName = "[Me]";
+                    }
+                    if (chat.Msg.ToUserId == userId)
+                    {
+                        chat.ToUserName = "[Me]";
+                    }
+                }
+                homeModel.ChatColl = chatColl;
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At Updating user details", ex);
             }
-            return View(addColl);
+            
+            return View(homeModel);
         }
         [Authorize]
         public ActionResult SignOut()
@@ -566,11 +602,11 @@ namespace Classigoo.Controllers
                         User user = (User)TempData["UserToModify"];
                         if (db.UpdateUserDetails(user))
                         {
-                            @ViewBag.status = "Mobile Number updated successfully";
+                            TempData["status"] = "Mobile Number updated successfully";
                         }
                         else
                         {
-                            @ViewBag.status = "Error occured while updating Mobile Number ";
+                            TempData["status"] = "Error occured while updating Mobile Number ";
                         }
                         return RedirectToAction("Home", "User");
                     }

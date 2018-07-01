@@ -241,7 +241,6 @@ namespace Classigoo
     {
         public string PhoneNumber { get; set; }
         public string OTP { set; get; }
-       // public User user { set; get; }
         public string VerifyType { set; get; }
     }
 
@@ -256,5 +255,17 @@ namespace Classigoo
         public Message Msg;
         public string AddTitle { set; get; }
         public string ToUserName { set; get; }
+        public string FromUserName { set; get; }
+    }
+
+    public class CustomHomeModel
+    {
+        public List<CustomAdd> AddColl { set; get; }
+
+         public List<CustomMessage> ChatColl { set; get; }
+
+        //public List<CustomMessage> InboxChatColl { set; get; }
+
+       // public List<CustomMessage> SentChatColl { set; get; }
     }
 }

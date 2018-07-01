@@ -83,6 +83,11 @@ namespace Classigoo.Models
                     {
                         chat.ToUserName = user.Name;
                     }
+                     user = objUserDbOperations.GetUser(msg.FromUserId);
+                    if (user != null)
+                    {
+                        chat.FromUserName = user.Name;
+                    }
                     myChatColl.Add(chat);
                 }
 
