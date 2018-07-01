@@ -87,18 +87,22 @@ namespace Classigoo.Controllers
                 user.Type = "Custom";
                 UserDBOperations db = new UserDBOperations();
                 Guid userId = db.UserExist(user.MobileNumber, "Custom");
-                if (userId == Guid.Empty)//User doesnot exist
+                if (userId == Guid.Empty)//User doesnot exist lets add user
                 {
-                    userId = db.AddUser(user);
-                    if (userId != Guid.Empty)//User Added successfully
+                    Communication objCommunication = new Communication();
+                    bool status = objCommunication.SendOTP(user.MobileNumber);
+                    if (status)
                     {
-                        // Session["UserId"] = userId;
-                        SetUserId(userId, false);
-                        return RedirectToAction("Home", "User");
+                        @ViewBag.Status = "Please enter the verification code sent to " + user.MobileNumber + " to Login";
+                        LoginWithOTP objLoginWithOtp = new LoginWithOTP();
+                        objLoginWithOtp.PhoneNumber = user.MobileNumber;
+                        objLoginWithOtp.VerifyType = Constants.VerifyOTPFrmRegistration;
+                        TempData["UserToAdd"] = user;
+                        return View("VerifyOTP", objLoginWithOtp);
                     }
-                    else//Error occured while adding user
+                    else
                     {
-                        @ViewBag.status = "Error Occured while Registering User";
+                        @ViewBag.status = "Error occured while sending OTP please try again later";
                     }
                 }
                 else
@@ -124,7 +128,7 @@ namespace Classigoo.Controllers
             }
 
             List<CustomAdd> addColl = new List<CustomAdd>();
-            List<Message> chatColl = new List<Message>();
+            List<CustomMessage> chatColl = new List<CustomMessage>();
             try
             {
                 Guid userId = GetUserId();
@@ -151,14 +155,14 @@ namespace Classigoo.Controllers
         public ActionResult Home(FormCollection coll)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
-            List<Message> chatColl = new List<Message>();
+            List<CustomMessage> chatColl = new List<CustomMessage>();
             try
             {
                 Guid userId = GetUserId();
                 UserDBOperations db = new UserDBOperations();
                 User user = db.GetUser(userId);
                 addColl = (List<CustomAdd>)TempData["UserAddColl"];
-                chatColl = (List<Message>)TempData["UserChatColl"];
+                chatColl = (List<CustomMessage>)TempData["UserChatColl"];
                 Guid emailExist = db.UserExist(coll["txtEmail"], "Gmail");
                 Guid phoneExist = db.UserExist(coll["txtPhone"], "Custom");
                 ViewBag.IsPwdEmpty = Convert.ToBoolean(coll["IsPwdEmpty"]);
@@ -213,14 +217,30 @@ namespace Classigoo.Controllers
                         if (phoneExist == Guid.Empty)//Phone Num doesnt exist
                         {
                             user.MobileNumber = coll["txtPhone"];
-                            if (db.UpdateUserDetails(user))
+                            Communication objCommunication = new Communication();
+                            bool status = objCommunication.SendOTP(user.MobileNumber);
+                            if (status)
                             {
-                                @ViewBag.status = "Mobile Number updated successfully";
+                                @ViewBag.Status = "Please enter the verification code sent to " + user.MobileNumber + " to Login";
+                                LoginWithOTP objLoginWithOtp = new LoginWithOTP();
+                                objLoginWithOtp.PhoneNumber = user.MobileNumber;
+                                objLoginWithOtp.VerifyType = Constants.VerifyOTPFrmChangePhoneNum;
+                                TempData["UserToModify"] = user;
+                                return View("VerifyOTP", objLoginWithOtp);
                             }
                             else
                             {
-                                @ViewBag.status = "Error occured while updating Mobile Number ";
+                                @ViewBag.status = "Error occured while sending OTP please try again later";
                             }
+                            
+                            //if (db.UpdateUserDetails(user))
+                            //{
+                            //    @ViewBag.status = "Mobile Number updated successfully";
+                            //}
+                            //else
+                            //{
+                            //    @ViewBag.status = "Error occured while updating Mobile Number ";
+                            //}
                         }
                         else
                         {
@@ -491,6 +511,7 @@ namespace Classigoo.Controllers
                     bool status = objCommunication.SendOTP(loginWithOtp.PhoneNumber);
                     if (status)
                     {
+                        loginWithOtp.VerifyType = Constants.VerifyOTPFrmLoginWIthOTP;
                         ViewBag.Status = "Please enter the verification code sent to "+ loginWithOtp.PhoneNumber + " to Login";
                         return View("VerifyOTP", loginWithOtp);
                     }
@@ -520,9 +541,39 @@ namespace Classigoo.Controllers
                 if (isVerified)
                 {
                     UserDBOperations db = new UserDBOperations();
-                    Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
-                    SetUserId(userId, false);
-                    return RedirectToAction("Home", "User");
+                    if (loginWithOtp.VerifyType== Constants.VerifyOTPFrmRegistration)// verifying otp from registeration page so lets add user
+                    {
+                        User user = (User)TempData["UserToAdd"];
+                        Guid userId = db.AddUser(user);
+                        if (userId != Guid.Empty)//User Added successfully
+                        {
+                            SetUserId(userId, false);
+                            return RedirectToAction("Home", "User");
+                        }
+                        else//Error occured while adding user
+                        {
+                            @ViewBag.Status = "Error Occured while Registering User";
+                        }
+                    }
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmLoginWIthOTP)
+                    {
+                        Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
+                        SetUserId(userId, false);
+                        return RedirectToAction("Home", "User");
+                    }
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmChangePhoneNum)
+                    {
+                        User user = (User)TempData["UserToModify"];
+                        if (db.UpdateUserDetails(user))
+                        {
+                            @ViewBag.status = "Mobile Number updated successfully";
+                        }
+                        else
+                        {
+                            @ViewBag.status = "Error occured while updating Mobile Number ";
+                        }
+                        return RedirectToAction("Home", "User");
+                    }
                 }
                 else
                 {

@@ -41,7 +41,6 @@ namespace Classigoo.Models
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
                     Add add = db.Adds.Find(addId);
-
                     userId= add.UserId;
                 }
             }
@@ -53,20 +52,40 @@ namespace Classigoo.Models
             return userId;
         }
 
-        public List<Message> GetMyChats(Guid userId)
+        public List<CustomMessage> GetMyChats(Guid userId)
         {
-            List<Message> myChatColl = new List<Message>();
+            List<CustomMessage> myChatColl = new List<CustomMessage>();
             try
             {
+                List<Message> myMsgColl = new List<Message>();
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                    myChatColl = (from msg in db.Messages
+                    myMsgColl = (from msg in db.Messages
                                   where (msg.FromUserId == userId) ||
                                   (msg.ToUserId == userId)
                                   select msg).OrderBy(msg => msg.CreatedOn).ToList();
 
 
                 }
+                foreach (Message msg in myMsgColl)
+                {
+                    CustomMessage chat = new CustomMessage();
+                    chat.Msg = msg;
+                    CommonDBOperations objCommonOperatoins = new CommonDBOperations();
+                    Add add=   objCommonOperatoins.GetAdd(msg.AdId.ToString());
+                    if(add!=null)
+                    {
+                        chat.AddTitle = add.Title;
+                    }
+                    UserDBOperations objUserDbOperations = new UserDBOperations();
+                    User user = objUserDbOperations.GetUser(msg.ToUserId);
+                    if(user!=null)
+                    {
+                        chat.ToUserName = user.Name;
+                    }
+                    myChatColl.Add(chat);
+                }
+
             }
             catch(Exception ex)
             {

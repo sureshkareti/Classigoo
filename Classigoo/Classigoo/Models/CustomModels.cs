@@ -177,6 +177,10 @@ namespace Classigoo
         public const string AgriculturalVehicle = "Agricultural Vehicles";
         public const string PassengerVehicle = "Passenger Vehicles";
 
+        public const string VerifyOTPFrmRegistration = "VerifyOTPFrmRegistration";
+        public const string VerifyOTPFrmLoginWIthOTP = "VerifyOTPFrmLoginWIthOTP";
+        public const string VerifyOTPFrmPostAdd = "VerifyOTPFrmPostAdd";
+        public const string VerifyOTPFrmChangePhoneNum = "VerifyOTPFrmChangePhoneNum";
 
         public static string PostAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/PostAdd";
         public static string PostAgricutureVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/AgriculturalVehicle";
@@ -237,6 +241,8 @@ namespace Classigoo
     {
         public string PhoneNumber { get; set; }
         public string OTP { set; get; }
+       // public User user { set; get; }
+        public string VerifyType { set; get; }
     }
 
     public class Status
@@ -247,11 +253,8 @@ namespace Classigoo
 
     public class CustomMessage
     {
-        public int MsgId { get; set; }
-        public System.Guid FromUserId { get; set; }
-        public System.Guid ToUserId { get; set; }
-        public int AdId { get; set; }
-        public string Message1 { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public Message Msg;
+        public string AddTitle { set; get; }
+        public string ToUserName { set; get; }
     }
 }
