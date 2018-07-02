@@ -185,10 +185,11 @@
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                                    @foreach (var chat in Model.ChatColl)
                                                    {
+                                                       <span>@chat.Msg.AdId</span>
                                                        <span>@chat.FromUserName</span>
                                                        <span>@chat.ToUserName</span>
-                                                       <span>@chat.Msg.Message1</span>
-                                                       <span>@chat.AddTitle</span>
+                                                       @Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })
+                                                        <span>@chat.Msg.Message1</span>
                                                        <span>@chat.Msg.CreatedOn</span>
                                                        <br />
                                                    }
