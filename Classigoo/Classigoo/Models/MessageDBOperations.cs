@@ -57,44 +57,81 @@ namespace Classigoo.Models
             List<CustomMessage> myChatColl = new List<CustomMessage>();
             try
             {
-                List<Message> myMsgColl = new List<Message>();
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                    myMsgColl = (from msg in db.Messages
-                                  where (msg.FromUserId == userId) ||
-                                  (msg.ToUserId == userId)
-                                  select msg).OrderBy(msg => msg.CreatedOn).ToList();
 
-
+                    var distinctMsgColl = from msg in db.Messages
+                                           where msg.FromUserId == userId || msg.ToUserId == userId
+                                           group msg by new
+                                           {
+                                               msg.AdId
+                                           } into grp
+                                           select grp.FirstOrDefault();
+                    myChatColl= FillChat(distinctMsgColl);
+                   // myChatColl = myChatColl.OrderByDescending(msg => msg.Msg.CreatedOn).ToList();
                 }
-                foreach (Message msg in myMsgColl)
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetMyChats", ex);
+            }
+
+            return myChatColl;
+        }
+
+        public List<CustomMessage> FillChat(IQueryable<Message> distinctMsgColl)
+        {
+            List<CustomMessage> myChatColl = new List<CustomMessage>();
+            try
+            {
+                foreach (Message msg in distinctMsgColl)
                 {
                     CustomMessage chat = new CustomMessage();
                     chat.Msg = msg;
                     CommonDBOperations objCommonOperatoins = new CommonDBOperations();
-                    Add add=   objCommonOperatoins.GetAdd(msg.AdId.ToString());
-                    if(add!=null)
+                    Add add = objCommonOperatoins.GetAdd(msg.AdId.ToString());
+                    if (add != null)
                     {
                         chat.AddTitle = add.Title;
                     }
                     UserDBOperations objUserDbOperations = new UserDBOperations();
                     User user = objUserDbOperations.GetUser(msg.ToUserId);
-                    if(user!=null)
+                    if (user != null)
                     {
                         chat.ToUserName = user.Name;
                     }
-                     user = objUserDbOperations.GetUser(msg.FromUserId);
+                    user = objUserDbOperations.GetUser(msg.FromUserId);
                     if (user != null)
                     {
                         chat.FromUserName = user.Name;
                     }
                     myChatColl.Add(chat);
                 }
-
+                
             }
             catch(Exception ex)
             {
-                Library.WriteLog("At GetMyChats", ex);
+                Library.WriteLog("At fill chat", ex);
+            }
+            return myChatColl;
+        }
+
+        public List<CustomMessage> LoadChat(Guid userId,int addId)
+        {
+            List<CustomMessage> myChatColl = new List<CustomMessage>();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+
+                    var msgColl = db.Messages.Where(msg => msg.FromUserId == userId ||
+                           msg.ToUserId == userId).Where(msg => msg.AdId == addId);
+                    myChatColl = FillChat(msgColl);
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At LoadChats", ex);
             }
 
             return myChatColl;
