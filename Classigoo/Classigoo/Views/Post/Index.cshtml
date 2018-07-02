@@ -1025,7 +1025,7 @@
     <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
         <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
             
-            <span>Your Add of id:<span id="spnAddId"></span></span><br />
+            <span>Your Add of id:<span id="spnAddIdUpdated"></span></span><br />
             <span style="font-size: 26px;">Successfully updated</span><br />
             
         </div>
@@ -1119,7 +1119,7 @@
         if("@ViewBag.Message" == "updated"){
 
             var addId = "@ViewBag.addId";
-            $("#spnAddId").text(addId);
+            $("#spnAddIdUpdated").text(addId);
             $("#addUpdatedAlert").css("display","block");
 
         }
