@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CustomAdd>
+﻿@model CustomHomeModel
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -92,7 +92,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach (var item in Model)
+                                            @foreach (var item in Model.AddColl)
                                         {
 
                                         <tr>
@@ -147,10 +147,10 @@
                                             <ul class="nav nav-tabs">
                                                 <li class="active">
                                                     <a href="#portlet_Inbox" data-toggle="tab" style="background-color:white">
-                                                        Inbox
+                                                        Chat
                                                     </a>
                                                 </li>
-                                                <li>
+                                                @*<li>
                                                     <a href="#portlet_Sent" data-toggle="tab" style="background-color:white">
                                                         Sent
                                                     </a>
@@ -159,12 +159,12 @@
                                                     <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
                                                         Archive
                                                     </a>
-                                                </li>
+                                                </li>*@
 
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    @*<div class="col-md-4">
                                         <div id="custom-search-input">
                                             <div class="input-group col-md-12">
                                                 <input type="text" class="form-control " placeholder="Buscar" />
@@ -175,7 +175,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>*@
 
 
                                     <div class="portlet-body">
@@ -183,15 +183,23 @@
                                             <div class="tab-pane active" id="portlet_Inbox">
 
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                   
+                                                   @foreach (var chat in Model.ChatColl)
+                                                   {
+                                                       <span>@chat.FromUserName</span>
+                                                       <span>@chat.ToUserName</span>
+                                                       <span>@chat.Msg.Message1</span>
+                                                       <span>@chat.AddTitle</span>
+                                                       <span>@chat.Msg.CreatedOn</span>
+                                                       <br />
+                                                   }
 
                                                 </div>
 
                                             </div>
-                                            <div class="tab-pane" id="portlet_Sent">
+                                            @*<div class="tab-pane" id="portlet_Sent">
 
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                    <p>No Messages.</p>
+                                                  
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="portlet_archive">
@@ -199,7 +207,7 @@
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                                     <p>No Messages.</p>
                                                 </div>
-                                            </div>
+                                            </div>*@
 
                                         </div>
                                     </div>
@@ -236,7 +244,7 @@
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="portlet_History">
-                                                <div class="row">
+                                                @*<div class="row">
                                                     <div class="col-md-8"></div>
                                                     <div class="col-md-4">
 
@@ -251,7 +259,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>*@
 
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                                     <p>Empty payment history.</p>

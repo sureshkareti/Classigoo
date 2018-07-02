@@ -14,20 +14,22 @@ namespace Classigoo.Models
 
         public User GetUser(Guid id)
         {
-            User user = new User();
             try
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                 user = db.Users.Find(id);
-                 return user;
+                    User user = db.Users.Find(id);
+                    if(user!=null)
+                    return user;
                 }
             }
             catch(Exception ex)
             {
                 Library.WriteLog("At Get User", ex);
-                return user;
+               
             }
+
+            return null;
                
         }
 

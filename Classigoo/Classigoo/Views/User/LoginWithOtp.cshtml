@@ -12,7 +12,7 @@
         <span>@ViewBag.Status</span>
         <div class="form-group">
             <label for="userName">Phone Number *</label>
-            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", pattern = @"^(\d{10})$", @placeholder = "Phone Number", required = "required", style = "height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" })
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @data_error = "Please enter a valid  PhoneNumber.", @class = "form-control", pattern = @"^(\d{10})$", @placeholder = "Phone Number", required = "required", style = "height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" })
             <div class="help-block with-errors"></div>
             <input type="submit" value="GetOTP" />
         </div>
@@ -22,3 +22,7 @@
             <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
             <link href="~/Content/Custome/account.css" rel="stylesheet" />
         }
+@section scripts{
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
+}
