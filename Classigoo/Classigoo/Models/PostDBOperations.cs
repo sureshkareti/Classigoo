@@ -310,8 +310,74 @@ namespace Classigoo.Models
             return true;
         }
 
-        public bool DeleteRealEstate()
+        public bool DeleteAddWhenCategoryChange(string addIdForDelete)
         {
+            string id = addIdForDelete;
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int addId = Convert.ToInt32(id);
+                    Add objAdd = classigooEntities.Adds.Find(addId);
+                    string type = objAdd.Category;
+                    if (objAdd != null)
+                    {
+                        if (type == "Real Estate")
+                        {
+                            RealEstate objRealEstate = classigooEntities.RealEstates.First(x => x.AddId == objAdd.AddId);
+                            if (objRealEstate != null)
+                            {
+                                classigooEntities.RealEstates.Remove(objRealEstate);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Construction Vehicles")
+                        {
+                            ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objCV != null)
+                            {                                
+                                classigooEntities.ConstructionVehicles.Remove(objCV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Transportation Vehicles")
+                        {
+                            TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objTV != null)
+                            {                              
+                                classigooEntities.TransportationVehicles.Remove(objTV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }
+                        else if (type == "Agricultural Vehicles")
+                        {
+                            AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objAV != null)
+                            {                              
+                                classigooEntities.AgriculturalVehicles.Remove(objAV);
+                                classigooEntities.SaveChanges();
+                            }
+
+                        }
+                        else if (type == "Passenger Vehicles")
+                        {
+                            PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
+                            if (objPV != null)
+                            {                               
+                                classigooEntities.PassengerVehicles.Remove(objPV);
+                                classigooEntities.SaveChanges();
+                            }
+                        }                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at delete for categorychnage add postdboperations", ex);
+                return false;
+
+            }
+
             return true;
         }
 

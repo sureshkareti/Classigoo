@@ -57,9 +57,9 @@
                                             new SelectListItem { Text = "Rent", Value = "Rent"},
                                             new SelectListItem { Text = "Sale", Value = "Sale"}}, new { style = "width:100px;height:40px;", @class = "form-control", required = "required" })
                                                 @*<select id="ddlRentOrSale" class="form-control" style="width:100px;height:40px;" required>
-                                        <option>Rent</option>
-                                        <option>Sale</option>
-                                    </select>*@
+                                                        <option>Rent</option>
+                                                        <option>Sale</option>
+                                                    </select>*@
                                             </div>
                                         </div>
 
@@ -82,7 +82,7 @@
                                                     @Html.HiddenFor(model => model.hdnCateSecondLevel)
 
                                                     @*<input type="hidden" id="hdnCateFristLevel" />
-                                        <input type="hidden" id="hdnCateSecondLevel" />*@
+                                                        <input type="hidden" id="hdnCateSecondLevel" />*@
                                                     <input type="hidden" id="hdnCateThirdLevel" />
                                                 </div>
 
@@ -316,8 +316,8 @@
 
                                                             @Html.DropDownListFor(model => model.AVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                             @*<select class="form-control" id="AVCompany_list" data-error="please select company name" required>
-                                                    <option selected>Select Category</option>
-                                                </select>*@
+                                                                    <option selected>Select Category</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -337,7 +337,7 @@
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtAV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle",  @class = "form-control col-md-7", required = "required" })
+                                                            @Html.TextBoxFor(model => model.txtAV_Model, new { data_error = "please fill the with model of vehicle", placeholder = "model of vehicle", @class = "form-control col-md-7", required = "required" })
                                                             @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
                                                             @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                             @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
@@ -349,7 +349,7 @@
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtAV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @Html.TextBoxFor(model => model.txtAV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$", @maxLength = "4", @class = "form-control col-md-7", required = "required" })
                                                             @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
                                                             @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                             @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
@@ -378,8 +378,8 @@
                                                         <div class="col-md-4">
                                                             @Html.DropDownListFor(model => model.CVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                             @*<select class="form-control" id="CVCompany_list" data-error="please select company name" required>
-                                                    <option selected>Select Category</option>
-                                                </select>*@
+                                                                    <option selected>Select Category</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -412,7 +412,7 @@
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtCV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @Html.TextBoxFor(model => model.txtCV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$", @maxLength = "4", @class = "form-control col-md-7", required = "required" })
                                                             @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
                                                             @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                             @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
@@ -442,8 +442,8 @@
                                                         <div class="col-md-4">
                                                             @Html.DropDownListFor(model => model.TVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                             @*<select class="form-control" id="TVCompany_list" data-error="please select company name" required>
-                                                    <option selected>Select Category</option>
-                                                </select>*@
+                                                                    <option selected>Select Category</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -476,7 +476,7 @@
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtTV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$",  @maxLength = "4", @class = "form-control col-md-7", required = "required" })
+                                                            @Html.TextBoxFor(model => model.txtTV_MYear, new { data_error = "please fill the with manufacturing year", placeholder = "year", pattern = @"^(\d{4})$", @maxLength = "4", @class = "form-control col-md-7", required = "required" })
                                                             @*@Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })*@
                                                             @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                             @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
@@ -504,8 +504,8 @@
                                                         <div class="col-md-4">
                                                             @Html.DropDownListFor(model => model.PVCompany_list, new List<SelectListItem> { }, "Select Category", new { onchange = "showothercompany();fillModels()", @class = "form-control", data_error = "please select company name", required = "required" })
                                                             @*<select class="form-control" id="PVCompany_list" onchange="fillModels()" data-error="please select company name" required>
-                                                    <option selected>Select Category</option>
-                                                </select>*@
+                                                                    <option selected>Select Category</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -538,13 +538,13 @@
 
                                                             @Html.DropDownListFor(model => model.PVModel_list, new List<SelectListItem> { }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
                                                             @*<select id="PVModel_list" class="form-control" data-error="please select model" required>
-                                                    <option>Select</option>
-                                                </select>*@
+                                                                    <option>Select</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
 
-                                                    <div id="pvModelForOtherthanCars" class="form-group row" >
+                                                    <div id="pvModelForOtherthanCars" class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
                                                         </div>
@@ -581,12 +581,12 @@
                                                         }, "Select Category", new { @class = "form-control", data_error = "please select model", required = "required" })
 
                                                             @*<select id="PVfueltype_list" class="form-control" data-error="please select fuel type" required>
-                                                    <option value="">Select</option>
-                                                    <option value="Petrol">Petrol</option>
-                                                    <option value="Diesel">Diesel</option>
-                                                    <option value="LPG">LPG</option>
-                                                    <option value="CNG">CNG & Hybrids</option>
-                                                </select>*@
+                                                                    <option value="">Select</option>
+                                                                    <option value="Petrol">Petrol</option>
+                                                                    <option value="Diesel">Diesel</option>
+                                                                    <option value="LPG">LPG</option>
+                                                                    <option value="CNG">CNG & Hybrids</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -628,13 +628,13 @@
                                                        new SelectListItem() { Value = "5", Text = "4+"}
                                                }, "Select Category", new { @class = "form-control", data_error = "please select number of bedrooms", required = "required" })
                                                             @*<select id="ddlBedrooms" class="form-control" data-error="please select number of bedrooms" required>
-                                                    <option value="">Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">4+</option>
-                                                </select>*@
+                                                                    <option value="">Select</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">4+</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -650,12 +650,12 @@
                                                     }, new { @class = "form-control", data_error = "please select is furnished", required = "required" })
 
                                                             @*<select id="ddlFurnishing" class="form-control" data-error="please slect is furnished" required>
-                                                    <option value="">Select</option>
-                                                    <option value="Furnished">Furnished</option>
-                                                    <option value="Unfurnished">Unfurnished</option>
-                                                    <option value="Semi-Furnished">Semi-Furnished</option>
+                                                                    <option value="">Select</option>
+                                                                    <option value="Furnished">Furnished</option>
+                                                                    <option value="Unfurnished">Unfurnished</option>
+                                                                    <option value="Semi-Furnished">Semi-Furnished</option>
 
-                                                </select>*@
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -671,11 +671,11 @@
                                                     }, new { @class = "form-control", data_error = "please select availability", required = "required" })
 
                                                             @*<select id="ddlAvailability" class="form-control" data-error="please slect status" required>
-                                                    <option value="">Select</option>
-                                                    <option value="Construction">Under Construction</option>
-                                                    <option value="Ready">Ready to Move</option>
-                                                    <option value="New-Launch">New Launch</option>
-                                                </select>*@
+                                                                    <option value="">Select</option>
+                                                                    <option value="Construction">Under Construction</option>
+                                                                    <option value="Ready">Ready to Move</option>
+                                                                    <option value="New-Launch">New Launch</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -693,11 +693,11 @@
 
 
                                                             @*<select id="ddlPostedBy" class="form-control" data-error="please slect user type" required>
-                                                    <option value="">Select</option>
-                                                    <option value="Owner">Owner</option>
-                                                    <option value="Dealer">Dealer</option>
-                                                    <option value="Builder">Builder</option>
-                                                </select>*@
+                                                                    <option value="">Select</option>
+                                                                    <option value="Owner">Owner</option>
+                                                                    <option value="Dealer">Dealer</option>
+                                                                    <option value="Builder">Builder</option>
+                                                                </select>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -885,9 +885,9 @@
                                                 @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
 
                                                 @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
-                                    new SelectListItem() { Value = "", Text = "Select" },
-                                                new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
-                                                  new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })*@
+                                                    new SelectListItem() { Value = "", Text = "Select" },
+                                                                new SelectListItem() { Value = "Andhra Pradesh", Text = "Andhra Pradesh" },
+                                                                  new SelectListItem() { Value = "Telangana", Text = "Telangana" }}, new { onchange = "getDistricts()", @class = "form-control", data_error = "please select state", required = "required" })*@
 
 
                                                 <div class="help-block with-errors"></div>
@@ -902,10 +902,10 @@
                                                 @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
 
                                                 @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
-                                    new SelectListItem() { Value = "", Text = "Select" },
-                                    new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
-                                    new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
-                                      new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })*@
+                                                    new SelectListItem() { Value = "", Text = "Select" },
+                                                    new SelectListItem() { Value = "Adilabad", Text = "Adilabad" },
+                                                    new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" },
+                                                      new SelectListItem() { Value = "Bhadradri Kothagudem", Text = "Bhadradri Kothagudem" }}, new { onchange = "getMandal()", @class = "form-control", data_error = "please select district", required = "required" })*@
 
 
                                                 <div class="help-block with-errors"></div>
@@ -924,16 +924,16 @@
 
 
                                                 @*@Html.DropDownListFor(model => model.Mandal, new List<SelectListItem> {
-                                     new SelectListItem() { Value = "", Text = "Select" },
-                                    new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
-                                    new SelectListItem() { Value = "Bela", Text = "Bela" },
-                                    new SelectListItem() { Value = "Kothagudem", Text = "Kothagudem" },
-                                    new SelectListItem() { Value = "Palwancha", Text = "Palwancha" },
-                                    new SelectListItem() { Value = "Tekulapalli", Text = "Tekulapalli" },
-                                    new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
-                                    new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
-                                    new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
-                                      new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })*@
+                                                     new SelectListItem() { Value = "", Text = "Select" },
+                                                    new SelectListItem() { Value = "Bheempur", Text = "Bheempur" },
+                                                    new SelectListItem() { Value = "Bela", Text = "Bela" },
+                                                    new SelectListItem() { Value = "Kothagudem", Text = "Kothagudem" },
+                                                    new SelectListItem() { Value = "Palwancha", Text = "Palwancha" },
+                                                    new SelectListItem() { Value = "Tekulapalli", Text = "Tekulapalli" },
+                                                    new SelectListItem() { Value = "Ameerpet", Text = "Ameerpet" },
+                                                    new SelectListItem() { Value = "Tirumalagiri", Text = "Tirumalagiri" },
+                                                    new SelectListItem() { Value = "Maredpally", Text = "Maredpally" },
+                                                      new SelectListItem() { Value = "Jainath", Text = "Jainath" }}, new { onchange = "getLocal()", @class = "form-control", data_error = "please select mandal", required = "required" })*@
 
 
                                                 <div class="help-block with-errors"></div>
@@ -986,7 +986,7 @@
                             </div>
                         </div>
                     </div>
-                </div>              
+                </div>
                 <div style="width:13%;float:right;padding-top:80px;">
 
                 </div>
@@ -1002,6 +1002,43 @@
         <span class="loader-item"></span><span class="loader-item"></span>
     </div>
 </div>
+
+<div id="addSuccessAlert" style="display:none;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background-color: #ffffff;opacity: 1;z-index: 9999;opacity: 0.9;">
+    <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
+        <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
+            <span style="font-size: 32px;">Awesome !!</span><br />
+            <span>Your Add Posted.</span><br />
+            <span>Add id:<span id="spnAddId"></span></span>
+           
+        </div>
+        <div style="height:100px;width:100%;padding-top:30px;">
+            <a href="~/User/Home" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">ok</a>
+            <a href="~/Post/Index" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">Post Another Add</a>
+
+            @*<input type="button" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer" value="Ok" />*@
+            @*<input type="button" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer" value="Post Another Add" />*@
+        </div>
+    </div>
+</div>
+
+<div id="addUpdatedAlert" style="display:none;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background-color: #ffffff;opacity: 1;z-index: 9999;opacity: 0.9;">
+    <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
+        <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
+            
+            <span>Your Add of id:<span id="spnAddId"></span></span><br />
+            <span style="font-size: 26px;">Successfully updated</span><br />
+            
+        </div>
+        <div style="height:100px;width:100%;padding-top:30px;">
+            <a href="~/User/Home" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">ok</a>
+            <a href="~/Post/Index" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">Post Another Add</a>
+
+            @*<input type="button" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer" value="Ok" />*@
+            @*<input type="button" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer" value="Post Another Add" />*@
+        </div>
+    </div>
+</div>
+
 
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-confirm">
@@ -1072,6 +1109,23 @@
             alert("user not logged into ...please login and try again")
         }
 
+        if("@ViewBag.Message" == "sucess"){
+
+            var addId = "@ViewBag.addId";
+            $("#spnAddId").text(addId);
+            $("#addSuccessAlert").css("display","block");
+
+        }
+        if("@ViewBag.Message" == "updated"){
+
+            var addId = "@ViewBag.addId";
+            $("#spnAddId").text(addId);
+            $("#addUpdatedAlert").css("display","block");
+
+        }
+
+        
+
     });
 
 
@@ -1115,7 +1169,7 @@
             console.log("@ViewBag.img2");
             console.log("@ViewBag.img3");
             console.log("@ViewBag.img4");
-            
+
             // to disable edit category
             //$("#btnedithome").addClass("not-active");
             //$("#btneditedit").addClass("not-active");

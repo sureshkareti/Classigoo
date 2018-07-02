@@ -428,7 +428,9 @@ namespace Classigoo.Controllers
 
                         if (isRealestateadedd)
                         {
-                            return RedirectToAction("Home", "User");
+                            ViewBag.addId = postId;
+                            ViewBag.Message = "sucess"; 
+                            //return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -477,7 +479,9 @@ namespace Classigoo.Controllers
 
                         if (isCVadedd)
                         {
-                            return RedirectToAction("Home", "User");
+                            ViewBag.addId = postId;
+                            ViewBag.Message = "sucess";
+                            //return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -524,7 +528,9 @@ namespace Classigoo.Controllers
 
                         if (isTVadedd)
                         {
-                            return RedirectToAction("Home", "User");
+                            ViewBag.addId = postId;
+                            ViewBag.Message = "sucess";
+                            //return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -573,7 +579,9 @@ namespace Classigoo.Controllers
 
                         if (isAVadedd)
                         {
-                            return RedirectToAction("Home", "User");
+                            ViewBag.addId = postId;
+                            ViewBag.Message = "sucess";
+                            //return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -638,7 +646,9 @@ namespace Classigoo.Controllers
 
                         if (isPVadedd)
                         {
-                            return RedirectToAction("Home", "User");
+                            ViewBag.addId = postId;
+                            ViewBag.Message = "sucess";
+                            //return RedirectToAction("Home", "User");
                         }
                         else
                         {
@@ -952,10 +962,11 @@ namespace Classigoo.Controllers
 
                                     if (isRealestateadedd)
                                     {
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString( postId));
 
-
-
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -981,6 +992,27 @@ namespace Classigoo.Controllers
                                 #region CV
                                 try
                                 {
+                                    ConstructionVehicle objPreviousCV = objCommonDBOperations.GetCV(Convert.ToString(postId));
+                                    if (img1 == string.Empty)
+                                    {
+                                        img1 = objPreviousCV.ImgUrlPrimary;
+                                    }
+
+                                    if (img2 == string.Empty)
+                                    {
+                                        img2 = objPreviousCV.ImgUrlSeconday;
+                                    }
+
+                                    if (img3 == string.Empty)
+                                    {
+                                        img3 = objPreviousCV.ImgUrlThird;
+                                    }
+
+                                    if (img4 == string.Empty)
+                                    {
+                                        img4 = objPreviousCV.ImgUrlFourth;
+                                    }
+
                                     ConstructionVehicle objConstructionVehicle = new ConstructionVehicle()
                                     {
                                         Company = postAdd.CVCompany_list,
@@ -1004,7 +1036,11 @@ namespace Classigoo.Controllers
 
                                     if (isCVadedd)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
+
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1028,6 +1064,27 @@ namespace Classigoo.Controllers
                                 #region TV
                                 try
                                 {
+                                    TransportationVehicle objPreviousTV = objCommonDBOperations.GetTV(Convert.ToString(postId));
+                                    if (img1 == string.Empty)
+                                    {
+                                        img1 = objPreviousTV.ImgUrlPrimary;
+                                    }
+
+                                    if (img2 == string.Empty)
+                                    {
+                                        img2 = objPreviousTV.ImgUrlSeconday;
+                                    }
+
+                                    if (img3 == string.Empty)
+                                    {
+                                        img3 = objPreviousTV.ImgUrlThird;
+                                    }
+
+                                    if (img4 == string.Empty)
+                                    {
+                                        img4 = objPreviousTV.ImgUrlFourth;
+                                    }
+
                                     TransportationVehicle objTransportationVehicle = new TransportationVehicle()
                                     {
                                         Company = postAdd.TVCompany_list,
@@ -1051,7 +1108,10 @@ namespace Classigoo.Controllers
 
                                     if (isTVadedd)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1078,6 +1138,28 @@ namespace Classigoo.Controllers
                                 #region AV
                                 try
                                 {
+                                    AgriculturalVehicle objPreviousAV = objCommonDBOperations.GetAV(Convert.ToString(postId));
+                                    if (img1 == string.Empty)
+                                    {
+                                        img1 = objPreviousAV.ImgUrlPrimary;
+                                    }
+
+                                    if (img2 == string.Empty)
+                                    {
+                                        img2 = objPreviousAV.ImgUrlSeconday;
+                                    }
+
+                                    if (img3 == string.Empty)
+                                    {
+                                        img3 = objPreviousAV.ImgUrlThird;
+                                    }
+
+                                    if (img4 == string.Empty)
+                                    {
+                                        img4 = objPreviousAV.ImgUrlFourth;
+                                    }
+
+
                                     AgriculturalVehicle objAgriculturalVehicle = new AgriculturalVehicle()
                                     {
                                         Company = postAdd.AVCompany_list,
@@ -1100,7 +1182,11 @@ namespace Classigoo.Controllers
 
                                     if (isAVadedd)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
+
                                     }
                                     else
                                     {
@@ -1126,6 +1212,26 @@ namespace Classigoo.Controllers
                                 #region PV
                                 try
                                 {
+                                    PassengerVehicle objPreviousPV = objCommonDBOperations.GetPV(Convert.ToString(postId));
+                                    if (img1 == string.Empty)
+                                    {
+                                        img1 = objPreviousPV.ImgUrlPrimary;
+                                    }
+
+                                    if (img2 == string.Empty)
+                                    {
+                                        img2 = objPreviousPV.ImgUrlSeconday;
+                                    }
+
+                                    if (img3 == string.Empty)
+                                    {
+                                        img3 = objPreviousPV.ImgUrlThird;
+                                    }
+
+                                    if (img4 == string.Empty)
+                                    {
+                                        img4 = objPreviousPV.ImgUrlFourth;
+                                    }
 
                                     string model = string.Empty;
 
@@ -1165,7 +1271,10 @@ namespace Classigoo.Controllers
 
                                     if (isPVadedd)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1220,7 +1329,9 @@ namespace Classigoo.Controllers
 
                                     if (isRealEstaeUpdated)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1267,7 +1378,9 @@ namespace Classigoo.Controllers
 
                                     if (isConstructionVehicleUpdated)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1317,7 +1430,9 @@ namespace Classigoo.Controllers
 
                                     if (isTransportationVehicleUpdated)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1368,7 +1483,9 @@ namespace Classigoo.Controllers
 
                                     if (isAgriculturalVehicleUpdated)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
@@ -1428,7 +1545,9 @@ namespace Classigoo.Controllers
 
                                     if (isPassengerVehicleUpdated)
                                     {
-                                        return RedirectToAction("Home", "User");
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
