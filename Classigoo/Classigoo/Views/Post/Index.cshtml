@@ -962,7 +962,7 @@
                                         </div>
                                         <div class="form-group row" style="display:none">
                                             <div class="col-md-3" style="text-align:right">
-                                                <label for="listing_name" class="input-lg" style="font-weight:100">Enter a locality(nearby)</label>
+                                                <label for="listing_name" class="input-lg" style="font-weight:100">Village/ Nearest Area</label>
 
                                             </div>
                                             <div class="col-md-5">
@@ -1115,9 +1115,10 @@
             console.log("@ViewBag.img2");
             console.log("@ViewBag.img3");
             console.log("@ViewBag.img4");
-
-            $("#btnedithome").addClass("not-active");
-            $("#btneditedit").addClass("not-active");
+            
+            // to disable edit category
+            //$("#btnedithome").addClass("not-active");
+            //$("#btneditedit").addClass("not-active");
 
             if("@ViewBag.img1" != ""){
                 $('#imgFucFirst').attr('src', "@ViewBag.img1");

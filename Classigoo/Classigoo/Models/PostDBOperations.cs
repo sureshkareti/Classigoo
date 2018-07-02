@@ -310,6 +310,11 @@ namespace Classigoo.Models
             return true;
         }
 
+        public bool DeleteRealEstate()
+        {
+            return true;
+        }
+
         public bool DeleteImageLocal(List<string> urls)
         {
             string domain = string.Empty;
