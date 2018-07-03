@@ -11,7 +11,7 @@
     <div>
         @*<div class="breadcrumb-block">
 
-        </div>*@
+            </div>*@
 
         <div class="row loginform" style="max-width:970px !important;margin:auto;padding:30px;">
             <div class="col-md-5">
@@ -93,41 +93,41 @@
                                         </thead>
                                         <tbody>
                                             @foreach (var item in Model.AddColl)
-                                        {
+                                            {
 
-                                        <tr>
-                                            <td id="addId">
-                                                @item.AddId
-                                            </td>
-                                            <td>
-                                                @item.CreatedDate
-                                            </td>
-                                            <td>
-                                                @item.Title
-                                            </td>
-                                            <td>
-                                                @item.Price
-                                            </td>
-                                            <td>
-                                                @item.Status
-                                            </td>
-                                            <td>
-                                                <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
+                                                <tr>
+                                                    <td id="addId">
+                                                        @item.AddId
+                                                    </td>
+                                                    <td>
+                                                        @item.CreatedDate
+                                                    </td>
+                                                    <td>
+                                                        @item.Title
+                                                    </td>
+                                                    <td>
+                                                        @item.Price
+                                                    </td>
+                                                    <td>
+                                                        @item.Status
+                                                    </td>
+                                                    <td>
+                                                        <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
 
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
-                                            </td>
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
+                                                    </td>
 
-                                        </tr>
+                                                </tr>
 
-                                        }
+                                            }
                                         </tbody>
                                         <tfoot>
 
@@ -156,61 +156,181 @@
                                                     </a>
                                                 </li>
                                                 @*<li>
-                                                    <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
-                                                        Archive
-                                                    </a>
-                                                </li>*@
+                                                        <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
+                                                            Archive
+                                                        </a>
+                                                    </li>*@
 
                                             </ul>
                                         </div>
                                     </div>
                                     @*<div class="col-md-4">
-                                        <div id="custom-search-input">
-                                            <div class="input-group col-md-12">
-                                                <input type="text" class="form-control " placeholder="Buscar" />
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-info " type="button">
-                                                        <i class="glyphicon glyphicon-search"></i>
-                                                    </button>
-                                                </span>
+                                            <div id="custom-search-input">
+                                                <div class="input-group col-md-12">
+                                                    <input type="text" class="form-control " placeholder="Buscar" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-info " type="button">
+                                                            <i class="glyphicon glyphicon-search"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>*@
+                                        </div>*@
 
 
                                     <div class="portlet-body">
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="portlet_Inbox">
+                                        <div class="tab-content" style="min-height:400px;">
+                                            <div class="tab-pane active" id="portlet_Inbox" style="text-align:center">
+                                                <div class="row" style="padding-top:60px;display:none">
 
-                                                <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                   @foreach (var chat in Model.ChatColl)
-                                                   {
-                                                       <span>@chat.Msg.AdId</span>
-                                                       <span>@chat.FromUserName</span>
-                                                       <span>@chat.ToUserName</span>
-                                                       <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
-                                                       @*@Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })*@
+                                                    <div class="col-md-12" style="height:20px;width:100%;">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                delete
+                                                            </div>
+                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
+                                                                User
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                Add
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                Date
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0;cursor:pointer">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <span><i class="fa fa-angle-right"></i> Me,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">Madhu Babu suresh kareti</span> ..(23) </span>
+                                                            </div>
+                                                            <div class="col-md-5">
+
+                                                                <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
+                                                                    samsung phone working superfast testting food neberer testdst sdtsts sctsdfctcsdtcsd
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                2 july , 11 pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                            </div>
+                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
+                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                samsung phone working superfast
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                2 july , 11 pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                            </div>
+                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
+                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                samsung phone working superfast
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                2 july , 11 pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                            </div>
+                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
+                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                samsung phone working superfast
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                2 july , 11 pm
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row" id="individualChat" style="padding-top:60px;">
+                                                    <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                                                        <div class="row">
+                                                            <div class="col-md-6 pull-left" style="text-align:left">
+                                                                Madhu Babu
+                                                            </div>
+                                                            <div class="col-md-6 pull-right" style="text-align:right">
+                                                                28 jan , 08:03 PM
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
+                                                            </div>
+                                                            <div class="col-md-11" style="vertical-align:middle;display:table-cell">
+                                                              <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
+                                                               <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
+                                                    @foreach (var chat in Model.ChatColl)
+                                                    {
+                                                        <span>@chat.Msg.AdId</span>
+                                                        <span>@chat.FromUserName</span>
+                                                        <span>@chat.ToUserName</span>
+                                                        <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
+                                                        @*@Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })*@
                                                         <span>@chat.Msg.Message1</span>
-                                                       <span>@chat.Msg.CreatedOn</span>
-                                                       <br />
-                                                   }
+                                                        <span>@chat.Msg.CreatedOn</span>
+                                                        <br />
+                                                    }
 
                                                 </div>
 
                                             </div>
                                             <div class="tab-pane" id="portlet_Sent">
 
-                                                <div  id="loadChat"class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                  
+                                                <div id="loadChat" class="row" style="min-height:150px;text-align:center;padding-top:80px">
+
 
                                                 </div>
                                             </div>
-                                           @* <div class="tab-pane" id="portlet_archive">
+                                            @* <div class="tab-pane" id="portlet_archive">
 
-        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-            <p>No Messages.</p>
-        </div>
-    </div>*@
+                                                    <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                        <p>No Messages.</p>
+                                                    </div>
+                                                </div>*@
 
                                         </div>
                                     </div>
@@ -248,21 +368,21 @@
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="portlet_History">
                                                 @*<div class="row">
-                                                    <div class="col-md-8"></div>
-                                                    <div class="col-md-4">
+                                                        <div class="col-md-8"></div>
+                                                        <div class="col-md-4">
 
-                                                        <div id="custom-search-input">
-                                                            <div class="input-group col-md-12">
-                                                                <input type="text" class="form-control " placeholder="Buscar" />
-                                                                <span class="input-group-btn">
-                                                                    <button class="btn btn-info " type="button">
-                                                                        <i class="glyphicon glyphicon-search"></i>
-                                                                    </button>
-                                                                </span>
+                                                            <div id="custom-search-input">
+                                                                <div class="input-group col-md-12">
+                                                                    <input type="text" class="form-control " placeholder="Buscar" />
+                                                                    <span class="input-group-btn">
+                                                                        <button class="btn btn-info " type="button">
+                                                                            <i class="glyphicon glyphicon-search"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>*@
+                                                    </div>*@
 
                                                 <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                                     <p>Empty payment history.</p>
@@ -341,26 +461,26 @@
                                             <div class="panel-body">
                                                 @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePhone" }))
                                                 {
-                                                    @Html.Hidden("IsPwdEmpty",(bool)ViewBag.IsPwdEmpty)
-                                                    
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <span>New Phone Number<span style="color:red">*</span></span>
+                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
 
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">+91</span>
-                                                        <input id="inputPhone" type="text" class="form-control" name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
-                                                               oninput="setCustomValidity('')">
-                                                        <div class="help-block with-errors"></div>
+                                                    <div class="row  form-group">
+                                                        <div class="col-md-4">
+                                                            <span>New Phone Number<span style="color:red">*</span></span>
+
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">+91</span>
+                                                                <input id="inputPhone" type="text" class="form-control" name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
+                                                                       oninput="setCustomValidity('')">
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <input type="submit" class="btn btn-primary" value="Change Phone" name="action" />
-                                                </div>
-                                            </div>
-                                            }
+                                                    <div class="row  form-group">
+                                                        <div class="col-md-4">
+                                                            <input type="submit" class="btn btn-primary" value="Change Phone" name="action" />
+                                                        </div>
+                                                    </div>
+                                                }
 
                                             </div>
                                         </div>
@@ -383,81 +503,81 @@
                                         </div>
                                         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                             <div class="panel-body">
-                                             @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePassword" }))
-                                             {
-                                                @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty )
-                                                 if (!ViewBag.IsPwdEmpty)
-                                                 {
-                                               <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <span>Old Password<span style="color:red">*</span></span>
-                                                    <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
-                                                </div>
-                                            </div>   
-                                                 }
-                                                <div class="row  form-group">
-                                                    <div class="col-md-4">
-                                                        <span>New Password<span style="color:red">*</span></span>
-                                                        <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
-                                                    </div>
-                                                </div>
-                                                <div class="row  form-group">
-                                                    <div class="col-md-4">
-                                                        <span>Repeat new password<span style="color:red">*</span></span>
-                                                        <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
-                                                    </div>
-                                                </div>
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    @if (ViewBag.IsPwdEmpty)
+                                                @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePassword" }))
+                                                {
+                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
+                                                    if (!ViewBag.IsPwdEmpty)
                                                     {
-                                                    <input type="submit" class="btn btn-primary" value="Create Password" name="action" />
+                                                        <div class="row  form-group">
+                                                            <div class="col-md-4">
+                                                                <span>Old Password<span style="color:red">*</span></span>
+                                                                <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                                                            </div>
+                                                        </div>
                                                     }
-                                                    else
-                                                    {
+                                                    <div class="row  form-group">
+                                                        <div class="col-md-4">
+                                                            <span>New Password<span style="color:red">*</span></span>
+                                                            <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  form-group">
+                                                        <div class="col-md-4">
+                                                            <span>Repeat new password<span style="color:red">*</span></span>
+                                                            <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row  form-group">
+                                                        <div class="col-md-4">
+                                                            @if (ViewBag.IsPwdEmpty)
+                                                            {
+                                                                <input type="submit" class="btn btn-primary" value="Create Password" name="action" />
+                                                            }
+                                                            else
+                                                            {
 
-                                                        <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
-                                                    }
-                                                   
-                                                </div>
-                                            </div>
-                                            }
+                                                                <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                     @*<div class="panel panel-default accordion-header">
 
-                                        <div class="panel-heading" role="tab" id="headingFour">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                            <div class="panel-heading" role="tab" id="headingFour">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
 
-                                                    Change email
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                            <div class="panel-body">
-                                                @using (Html.BeginForm("Home", "User", FormMethod.Post))
-                                                {
-                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty )
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <span>New email<span style="color:red">*</span></span>
+                                                        Change email
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                                <div class="panel-body">
+                                                    @using (Html.BeginForm("Home", "User", FormMethod.Post))
+                                                    {
+                                                        @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty )
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New email<span style="color:red">*</span></span>
 
-                                                    <input type="text" class="form-control" name="txtEmail" required pattern="@emailPattern" oninvalid="this.setCustomValidity('Please enter a valid Email address.')"
-                                                           oninput="setCustomValidity('')" />
+                                                        <input type="text" class="form-control" name="txtEmail" required pattern="@emailPattern" oninvalid="this.setCustomValidity('Please enter a valid Email address.')"
+                                                               oninput="setCustomValidity('')" />
+                                                    </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <input type="submit" class="btn btn-primary" value="Change Email" name="action" />
+                                                    </div>
+                                                </div>
+                                                }
                                                 </div>
                                             </div>
-                                            <div class="row  form-group">
-                                                <div class="col-md-4">
-                                                    <input type="submit" class="btn btn-primary" value="Change Email" name="action" />
-                                                </div>
-                                            </div>
-                                            }
-                                            </div>
-                                        </div>
 
-                                    </div>*@
+                                        </div>*@
                                     @*<div class="panel panel-default accordion-header">
                                             <div class="panel-heading" role="tab" id="headingFive">
                                                 <h4 class="panel-title">
@@ -495,19 +615,19 @@
 
 @section Styles {
     <link href="@Url.Content("~/Content/Custome/account.css")" rel="stylesheet" type="text/css" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
-<link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
 }
 
 @section Scripts{
     <script src="~/scripts/bootstrapValidator.min.js"></script>
     <script src="~/scripts/Custome/account.js"></script>
-<script src="~/Scripts/List/dataTables.min.js"></script>
-<script src="~/Scripts/List/bootstrap.min.js"></script>
-<script src="~/Scripts/List/responsive.min.js"></script>
-<script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
+    <script src="~/Scripts/List/dataTables.min.js"></script>
+    <script src="~/Scripts/List/bootstrap.min.js"></script>
+    <script src="~/Scripts/List/responsive.min.js"></script>
+    <script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
 }
 <script>
     $(document).ready(function () {
