@@ -122,18 +122,15 @@ namespace Classigoo.Controllers
         [Authorize]
         public ActionResult Home()
         {
-            CustomHomeModel homeModel = new CustomHomeModel();
-
-
             if (isAdmin())
             {
                 return RedirectToAction("Admin", "User");
             }
             List<CustomAdd> addColl = new List<CustomAdd>();
             List<CustomMessage> chatColl = new List<CustomMessage>();
-            //   List<CustomMessage> inboxChatColl = new List<CustomMessage>();
-            //  List<CustomMessage> sentChatColl = new List<CustomMessage>();
-
+         //   List<CustomMessage> inboxChatColl = new List<CustomMessage>();
+          //  List<CustomMessage> sentChatColl = new List<CustomMessage>();
+            CustomHomeModel homeModel = new CustomHomeModel();
             try
             {
                 Guid userId = GetUserId();
@@ -144,21 +141,21 @@ namespace Classigoo.Controllers
                 chatColl = msgDb.GetMyChats(userId);
                 TempData["UserChatColl"] = chatColl;
                 ViewBag.IsPwdEmpty = db.IsPwdEmpty(userId);
-                if (TempData["status"] != null)//mobile number update status
+                if(TempData["status"]!=null)//mobile number update status
                 {
                     ViewBag.status = TempData["status"].ToString();
                 }
-                // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
-                // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
+       // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
+       // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
 
                 homeModel.AddColl = addColl;
-                foreach (CustomMessage chat in chatColl)
+                foreach(CustomMessage chat in chatColl)
                 {
-                    if (chat.Msg.FromUserId == userId)
+                    if(chat.Msg.FromUserId==userId)
                     {
                         chat.FromUserName = "[Me]";
                     }
-                    if (chat.Msg.ToUserId == userId)
+                    if(chat.Msg.ToUserId==userId)
                     {
                         chat.ToUserName = "[Me]";
                     }
@@ -171,7 +168,7 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At User Home", ex);
             }
-
+           
             return View(homeModel);
 
         }
@@ -183,8 +180,8 @@ namespace Classigoo.Controllers
             List<CustomAdd> addColl = new List<CustomAdd>();
             List<CustomMessage> chatColl = new List<CustomMessage>();
             CustomHomeModel homeModel = new CustomHomeModel();
-            // List<CustomMessage> inboxChatColl = new List<CustomMessage>();
-            // List<CustomMessage> sentChatColl = new List<CustomMessage>();
+           // List<CustomMessage> inboxChatColl = new List<CustomMessage>();
+           // List<CustomMessage> sentChatColl = new List<CustomMessage>();
             try
             {
                 Guid userId = GetUserId();
@@ -261,7 +258,7 @@ namespace Classigoo.Controllers
                             {
                                 @ViewBag.status = "Error occured while sending OTP please try again later";
                             }
-
+                         
                         }
                         else
                         {
@@ -286,8 +283,8 @@ namespace Classigoo.Controllers
                     default:
                         break;
                 }
-                // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
-                // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
+               // inboxChatColl = chatColl.Where(chat => chat.Msg.ToUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
+               // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat => chat.Msg.CreatedOn).ToList();
 
                 homeModel.AddColl = addColl;
                 //homeModel.InboxChatColl = inboxChatColl;
@@ -309,7 +306,7 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At Updating user details", ex);
             }
-
+            
             return View(homeModel);
         }
         [Authorize]
@@ -340,17 +337,24 @@ namespace Classigoo.Controllers
         [Authorize]
         public ActionResult Admin()
         {
-            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
-            try
+            if (isAdmin())
             {
-                UserDBOperations db = new UserDBOperations();
-                addColl = db.GetAdminAdds();
+                IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+                try
+                {
+                    UserDBOperations db = new UserDBOperations();
+                    addColl = db.GetAdminAdds();
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At Admin", ex);
+                }
+                return View(addColl);
             }
-            catch (Exception ex)
+            else
             {
-                Library.WriteLog("At Admin", ex);
+              return  RedirectToAction("Login","User");
             }
-            return View(addColl);
         }
 
         public bool UpdateAddStatus(int addId, string status, string remarks)
@@ -550,8 +554,17 @@ namespace Classigoo.Controllers
                     bool status = objCommunication.SendOTP(loginWithOtp.PhoneNumber);
                     if (status)
                     {
-                        loginWithOtp.VerifyType = Constants.VerifyOTPFrmLoginWIthOTP;
-                        ViewBag.Status = "Please enter the verification code sent to " + loginWithOtp.PhoneNumber + " to Login";
+                        if(TempData["VerifyType"]!=null)
+                        {
+                            if(TempData["VerifyType"].ToString()==Constants.VerifyOTPFrmForgotPwd)
+                            loginWithOtp.VerifyType = Constants.VerifyOTPFrmForgotPwd;
+                        }
+                        else
+                        {
+                            loginWithOtp.VerifyType = Constants.VerifyOTPFrmLoginWIthOTP;
+                        }
+                        
+                        ViewBag.Status = "Please enter the verification code sent to "+ loginWithOtp.PhoneNumber + " to Login";
                         return View("VerifyOTP", loginWithOtp);
                     }
                     else
@@ -580,7 +593,7 @@ namespace Classigoo.Controllers
                 if (isVerified)
                 {
                     UserDBOperations db = new UserDBOperations();
-                    if (loginWithOtp.VerifyType == Constants.VerifyOTPFrmRegistration)// verifying otp from registeration page so lets add user
+                    if (loginWithOtp.VerifyType== Constants.VerifyOTPFrmRegistration)// verifying otp from registeration page so lets add user
                     {
                         User user = (User)TempData["UserToAdd"];
                         Guid userId = db.AddUser(user);
@@ -594,13 +607,13 @@ namespace Classigoo.Controllers
                             @ViewBag.Status = "Error Occured while Registering User";
                         }
                     }
-                    else if (loginWithOtp.VerifyType == Constants.VerifyOTPFrmLoginWIthOTP)
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmLoginWIthOTP)
                     {
                         Guid userId = db.UserExist(loginWithOtp.PhoneNumber, "Custom");
                         SetUserId(userId, false);
                         return RedirectToAction("Home", "User");
                     }
-                    else if (loginWithOtp.VerifyType == Constants.VerifyOTPFrmChangePhoneNum)
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmChangePhoneNum)
                     {
                         User user = (User)TempData["UserToModify"];
                         if (db.UpdateUserDetails(user))
@@ -612,6 +625,13 @@ namespace Classigoo.Controllers
                             TempData["status"] = "Error occured while updating Mobile Number ";
                         }
                         return RedirectToAction("Home", "User");
+                    }
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmForgotPwd)
+                    {
+                        ForgotPwd objForgotPwd = new ForgotPwd();
+                        objForgotPwd.PhoneNumber = loginWithOtp.PhoneNumber;
+
+                        return View("ForgotPwd", objForgotPwd);
                     }
                 }
                 else
@@ -630,13 +650,13 @@ namespace Classigoo.Controllers
         {
             Communication objCommunication = new Communication();
             bool isOTPSent = objCommunication.ResendOTP(loginWithOtp.PhoneNumber);
-            if (isOTPSent)
+            if(isOTPSent)
             {
-                ViewBag.Status = "Please enter the verification code sent to " + loginWithOtp.PhoneNumber + " to Login";
+           ViewBag.Status = "Please enter the verification code sent to " + loginWithOtp.PhoneNumber + " to Login";
             }
             else
             {
-                ViewBag.Status = "Error occured while sending OTP please try again later";
+           ViewBag.Status = "Error occured while sending OTP please try again later";
             }
             return View("VerifyOTP", loginWithOtp);
 
@@ -652,8 +672,41 @@ namespace Classigoo.Controllers
         {
             MessageDBOperations objMsgDbOperations = new MessageDBOperations();
             Guid userId = GetUserId();
-            List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId, addid);
-            return PartialView("_LoadChat", chatColl);
+            List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId,addid);
+            return PartialView("_LoadChat",chatColl);
+        }
+
+        public ActionResult ForgotPwd()
+        {
+            TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
+            return View("LoginWithOtp");
+        }
+        [HttpPost]
+        public ActionResult ForgotPwd(ForgotPwd forgotPwd)
+        {
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                Guid userId = db.UserExist(forgotPwd.PhoneNumber, "Custom");
+                User user = db.GetUser(userId);
+                user.Password = forgotPwd.txtPasscode;
+                if (db.UpdateUserDetails(user))
+                {
+                    TempData["status"] = "Password created successfully";
+                    SetUserId(userId, false);
+                }
+                else
+                {
+                    @ViewBag.Status = "Error occured while creating Password ";
+                }
+                return RedirectToAction("Home", "User");
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At forgot password", ex);
+                @ViewBag.Status = "Error occured while creating Password ";
+            }
+            return View();
         }
     }
 }

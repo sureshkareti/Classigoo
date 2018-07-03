@@ -1,0 +1,45 @@
+﻿@model ForgotPwd
+@{
+    ViewBag.Title = "Forgot Password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>LoginWithOtp</h2>*@
+
+@using (Html.BeginForm("ForgotPwd", "User", FormMethod.Post, new { id = "frmChangePassword", data_toggle = "validator" }))
+{
+    <div class="container" style="max-width:970px !important;margin:auto;">
+        <span>@ViewBag.Status</span>
+        <div class="form-group">
+            @Html.HiddenFor(model => model.PhoneNumber);
+             <div class="help-block with-errors"></div>
+           
+            <div class="row  form-group">
+                <div class="col-md-4">
+                    <span>New Password<span style="color:red">*</span></span>
+                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                </div>
+            </div>
+            <div class="row  form-group">
+                <div class="col-md-4">
+                    <span>Repeat new password<span style="color:red">*</span></span>
+                    <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
+                </div>
+            </div>
+            <div class="panel panel-default accordion-header">
+                <input type="submit" value="Change Password" />
+            </div>
+            </div>
+    </div>
+}
+@section Styles {
+    <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Custome/account.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/scripts/Custome/account.js"></script>
+    <script src="~/scripts/bootstrapValidator.min.js"></script>
+}
+
+

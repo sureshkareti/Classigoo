@@ -262,7 +262,8 @@ namespace Classigoo.Models
                                    Type = add.Type,
                                    UserName = add.User.Name,
                                    PhoneNum = add.User.MobileNumber,
-                                   Remarks=add.Remarks
+                                   Remarks=add.Remarks,
+                                   SubCategory=add.SubCategory
                                }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
                                      {
@@ -276,7 +277,8 @@ namespace Classigoo.Models
                                          Type = add.Type,
                                          UserName = add.UserName,
                                          PhoneNum = add.PhoneNum,
-                                         Remarks = add.Remarks
+                                         Remarks = add.Remarks,
+                                         SubCategory=add.SubCategory
                                      });
                 }
             }
