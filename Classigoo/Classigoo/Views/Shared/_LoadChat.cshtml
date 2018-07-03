@@ -1,0 +1,14 @@
+﻿@model IEnumerable<CustomMessage>
+@{
+    Layout = null;
+}
+
+@foreach (var chat in Model)
+{
+    <span>@chat.Msg.AdId</span>
+    <span>@chat.FromUserName</span>
+    <span>@chat.ToUserName</span>
+    <span>@chat.Msg.Message1</span>
+    <span>@chat.Msg.CreatedOn</span>
+   <br />
+}

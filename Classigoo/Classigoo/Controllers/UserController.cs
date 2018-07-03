@@ -645,12 +645,12 @@ namespace Classigoo.Controllers
         //    return View();
         //}
 
-        public ActionResult LoadChat(int addid)
+        public PartialViewResult LoadChat(int addid)
         {
             MessageDBOperations objMsgDbOperations = new MessageDBOperations();
             Guid userId = GetUserId();
             List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId,addid);
-            return View();
+            return PartialView("_LoadChat",chatColl);
         }
     }
 }

@@ -145,17 +145,17 @@
                                     <div class="col-md-8">
                                         <div class="portlet-title">
                                             <ul class="nav nav-tabs">
-                                                <li class="active">
+                                                <li class="active" id="mainChat">
                                                     <a href="#portlet_Inbox" data-toggle="tab" style="background-color:white">
                                                         Chat
                                                     </a>
                                                 </li>
-                                                @*<li>
+                                                <li id="detailedChat">
                                                     <a href="#portlet_Sent" data-toggle="tab" style="background-color:white">
                                                         Sent
                                                     </a>
                                                 </li>
-                                                <li>
+                                                @*<li>
                                                     <a href="#portlet_archive" data-toggle="tab" style="background-color:white">
                                                         Archive
                                                     </a>
@@ -188,7 +188,8 @@
                                                        <span>@chat.Msg.AdId</span>
                                                        <span>@chat.FromUserName</span>
                                                        <span>@chat.ToUserName</span>
-                                                       @Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })
+                                                       <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
+                                                       @*@Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })*@
                                                         <span>@chat.Msg.Message1</span>
                                                        <span>@chat.Msg.CreatedOn</span>
                                                        <br />
@@ -197,18 +198,19 @@
                                                 </div>
 
                                             </div>
-                                            @*<div class="tab-pane" id="portlet_Sent">
+                                            <div class="tab-pane" id="portlet_Sent">
 
-                                                <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                <div  id="loadChat"class="row" style="min-height:150px;text-align:center;padding-top:80px">
                                                   
+
                                                 </div>
                                             </div>
-                                            <div class="tab-pane" id="portlet_archive">
+                                           @* <div class="tab-pane" id="portlet_archive">
 
-                                                <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
-                                                    <p>No Messages.</p>
-                                                </div>
-                                            </div>*@
+        <div class="row" style="min-height:150px;text-align:center;padding-top:80px">
+            <p>No Messages.</p>
+        </div>
+    </div>*@
 
                                         </div>
                                     </div>
@@ -508,11 +510,34 @@
 <script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
 }
 <script>
- $(document).ready(function () {
+    $(document).ready(function () {
         $('.edit-mode').hide();
         var table = $('#tblAdds').DataTable({
             "responsive": true
         });
 
- });
+    });
+    function LoadChat() {
+        $.ajax({
+            url: '/User/LoadChat',
+            type: 'GET',
+            dataType: "html",
+            data: { "addId": "25" },
+            success: function (data) {
+                $("#mainChat").removeClass("active");
+                $('#detailedhat').addClass("active");
+                $("#loadChat").html(data);
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+            },
+            complete: function (data) {
+
+            }
+
+        });
+    }
 </script>
