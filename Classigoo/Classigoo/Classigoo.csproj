@@ -502,6 +502,7 @@
     <Content Include="Views\User\LoginWithOtp.cshtml" />
     <Content Include="Views\User\VerifyOTP.cshtml" />
     <Content Include="Views\Shared\_LoadChat.cshtml" />
+    <Content Include="Views\User\ForgotPwd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -181,6 +181,7 @@ namespace Classigoo
         public const string VerifyOTPFrmLoginWIthOTP = "VerifyOTPFrmLoginWIthOTP";
         public const string VerifyOTPFrmPostAdd = "VerifyOTPFrmPostAdd";
         public const string VerifyOTPFrmChangePhoneNum = "VerifyOTPFrmChangePhoneNum";
+        public const string VerifyOTPFrmForgotPwd = "VerifyOTPFrmForgotPwd";
 
         public static string PostAddUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/PostAdd";
         public static string PostAgricutureVehicleUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "/api/PostApi/AgriculturalVehicle";
@@ -229,6 +230,7 @@ namespace Classigoo
         public string UserName { get; set; }
         public string PhoneNum { get; set; }
         public string Category { get; set; }
+        public string SubCategory { get; set; }
         public string Status { get; set; }
         public string State { get; set; }
         public string District { get; set; }
@@ -243,7 +245,12 @@ namespace Classigoo
         public string OTP { set; get; }
         public string VerifyType { set; get; }
     }
-
+    public class ForgotPwd
+    {
+        public string PhoneNumber { get; set; }
+        public string txtPasscode { set; get; }
+        public string txtConfirmPasscode { set; get; }
+    }
     public class Status
     {
         public string type { get; set; }

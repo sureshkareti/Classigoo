@@ -337,17 +337,24 @@ namespace Classigoo.Controllers
         [Authorize]
         public ActionResult Admin()
         {
-            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
-            try
+            if (isAdmin())
             {
-                UserDBOperations db = new UserDBOperations();
-                addColl = db.GetAdminAdds();
+                IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+                try
+                {
+                    UserDBOperations db = new UserDBOperations();
+                    addColl = db.GetAdminAdds();
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At Admin", ex);
+                }
+                return View(addColl);
             }
-            catch (Exception ex)
+            else
             {
-                Library.WriteLog("At Admin", ex);
+              return  RedirectToAction("Login","User");
             }
-            return View(addColl);
         }
 
         public bool UpdateAddStatus(int addId, string status, string remarks)
@@ -547,7 +554,16 @@ namespace Classigoo.Controllers
                     bool status = objCommunication.SendOTP(loginWithOtp.PhoneNumber);
                     if (status)
                     {
-                        loginWithOtp.VerifyType = Constants.VerifyOTPFrmLoginWIthOTP;
+                        if(TempData["VerifyType"]!=null)
+                        {
+                            if(TempData["VerifyType"].ToString()==Constants.VerifyOTPFrmForgotPwd)
+                            loginWithOtp.VerifyType = Constants.VerifyOTPFrmForgotPwd;
+                        }
+                        else
+                        {
+                            loginWithOtp.VerifyType = Constants.VerifyOTPFrmLoginWIthOTP;
+                        }
+                        
                         ViewBag.Status = "Please enter the verification code sent to "+ loginWithOtp.PhoneNumber + " to Login";
                         return View("VerifyOTP", loginWithOtp);
                     }
@@ -610,6 +626,13 @@ namespace Classigoo.Controllers
                         }
                         return RedirectToAction("Home", "User");
                     }
+                    else if(loginWithOtp.VerifyType==Constants.VerifyOTPFrmForgotPwd)
+                    {
+                        ForgotPwd objForgotPwd = new ForgotPwd();
+                        objForgotPwd.PhoneNumber = loginWithOtp.PhoneNumber;
+
+                        return View("ForgotPwd", objForgotPwd);
+                    }
                 }
                 else
                 {
@@ -651,6 +674,39 @@ namespace Classigoo.Controllers
             Guid userId = GetUserId();
             List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId,addid);
             return PartialView("_LoadChat",chatColl);
+        }
+
+        public ActionResult ForgotPwd()
+        {
+            TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
+            return View("LoginWithOtp");
+        }
+        [HttpPost]
+        public ActionResult ForgotPwd(ForgotPwd forgotPwd)
+        {
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                Guid userId = db.UserExist(forgotPwd.PhoneNumber, "Custom");
+                User user = db.GetUser(userId);
+                user.Password = forgotPwd.txtPasscode;
+                if (db.UpdateUserDetails(user))
+                {
+                    TempData["status"] = "Password created successfully";
+                    SetUserId(userId, false);
+                }
+                else
+                {
+                    @ViewBag.Status = "Error occured while creating Password ";
+                }
+                return RedirectToAction("Home", "User");
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At forgot password", ex);
+                @ViewBag.Status = "Error occured while creating Password ";
+            }
+            return View();
         }
     }
 }
