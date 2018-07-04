@@ -1037,8 +1037,9 @@ namespace Classigoo.Controllers
                 msg.CreatedOn = CustomActions.GetCurrentISTTime();
                 msg.FromUserId = frmUserId;
                 msg.ToUserId = toUserId;
+                msg.RequestorUserId = frmUserId;
                 msg.Message1 = usermessage;
-                status = msgDbObj.AddChat(msg , frmUserId);         
+                status = msgDbObj.AddChat(msg);         
             }
             catch(Exception ex)
             {

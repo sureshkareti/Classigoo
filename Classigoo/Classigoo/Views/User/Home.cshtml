@@ -225,106 +225,33 @@
                                                             </div>
                                                             <input type="hidden" value="@chat.FromUserId" id="hdnFromUserId" />
                                                             <input type="hidden" value="@chat.ToUserId" id="hdnToUserId" />
-                                                            <input type="hidden" value="@chat.Msg.AdId" id="hdnToUserId" />
+                                                            <input type="hidden" value="@chat.Msg.AdId" id="hdnAddId" />
+                                                            <input type="hidden" value="@chat.Msg.RequestorUserId" id="hdnRequestorUserId" />
                                                         </div>                                                  
                                                     }                                                   
                                                 </div>
 
                                                 <div class="row" id="individualChat" style="padding-top:60px;display:block">
-                                                    <div class="col-md-12">
 
-                                                        <div class="row">
-                                                            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 pull-left" style="text-align:left">
-                                                                        Madhu Babu
-                                                                    </div>
-                                                                    <div class="col-md-6 pull-right" style="text-align:right">
-                                                                        28 jan , 08:03 PM
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
-                                                                <div class="row">
-                                                                    <div class="col-md-1">
-                                                                        <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
-                                                                    </div>
-                                                                    <div class="col-md-11" style="vertical-align:middle;display:table-cell">
-                                                                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
-                                                                        <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row" style="padding:10px 0 10px 0">
-                                                            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 pull-left" style="text-align:left">
-                                                                        Madhu Babu
-                                                                    </div>
-                                                                    <div class="col-md-6 pull-right" style="text-align:right">
-                                                                        28 jan , 08:03 PM
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
-                                                                <div class="row">
-
-                                                                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                                                                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row" style="padding:10px 0 10px 0">
-                                                            <div class="col-md-12 pull-right" style="height:20px;width:80%;">
-                                                                <div class="row">
-                                                                    <div class="col-md-6 pull-left" style="text-align:left">
-                                                                        Me
-                                                                    </div>
-                                                                    <div class="col-md-6 pull-right" style="text-align:right">
-                                                                        28 jan , 08:03 PM
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 pull-right" style="min-height:50px;width:80%;background-color:#fafafa;">
-                                                                <div class="row">
-
-                                                                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                                                                        <span class="pull-left">tssting message here for foltureeExplicit localization is useful when you have large bodies of text or custom messages you want to localize, in addition to controls and labels. For example, you could develop a series of localized welcome and thank you</span>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
                                                     </div>
-                                                </div>
 
+                                                    @*<div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
+                @foreach (var chat in Model.ChatColl)
+                {
+                    <span>@chat.Msg.AdId</span>
+                    <span>@chat.FromUserName</span>
+                    <span>@chat.ToUserName</span>
+                    <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
+                    @Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })
+                    <span>@chat.Msg.Message1</span>
+                    <span>@chat.Msg.CreatedOn</span>
+                    <br />
+                }
 
-
-
-                                                <div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
-                                                    @foreach (var chat in Model.ChatColl)
-                                                    {
-                                                        <span>@chat.Msg.AdId</span>
-                                                        <span>@chat.FromUserName</span>
-                                                        <span>@chat.ToUserName</span>
-                                                        <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
-                                                        @*@Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })*@
-                                                        <span>@chat.Msg.Message1</span>
-                                                        <span>@chat.Msg.CreatedOn</span>
-                                                        <br />
-                                                    }
+            </div>*@
 
                                                 </div>
-
-                                            </div>
                                             <div class="tab-pane" id="portlet_Sent">
 
                                                 <div id="loadChat" class="row" style="min-height:150px;text-align:center;padding-top:80px">
@@ -651,21 +578,21 @@
         });
 
         $(".message").click(function () {
-            alert($(this).find("#hdnFromUserId").val());
+            var addId = $(this).find("#hdnAddId").val();
+            var requestorUserId = $(this).find("#hdnRequestorUserId").val();
+            LoadChat(addId, requestorUserId);
         });
 
 
     });
-    function LoadChat() {
+    function LoadChat(addId, requestorUserId) {    
         $.ajax({
             url: '/User/LoadChat',
             type: 'GET',
             dataType: "html",
-            data: { "addId": "25" },
+            data: { "addId": addId,"requestorUserId":requestorUserId },
             success: function (data) {
-                $("#mainChat").removeClass("active");
-                $('#detailedhat').addClass("active");
-                $("#loadChat").html(data);
+                $("#individualChat").html(data);
             },
             failure: function (response) {
                 console.log(response.responseText);

@@ -152,17 +152,6 @@ namespace Classigoo.Controllers
                 // sentChatColl = chatColl.Where(chat => chat.Msg.FromUserId == userId).OrderBy(chat=>chat.Msg.CreatedOn).ToList();
 
                 homeModel.AddColl = addColl;
-                foreach (CustomMessage chat in chatColl)
-                {
-                    if (chat.Msg.FromUserId == userId)
-                    {
-                        chat.FromUserName = "[Me]";
-                    }
-                    if (chat.Msg.ToUserId == userId)
-                    {
-                        chat.ToUserName = "[Me]";
-                    }
-                }
                 //  homeModel.InboxChatColl =inboxChatColl;
                 //  homeModel.SentChatColl = sentChatColl;
                 homeModel.ChatColl = chatColl;
@@ -292,17 +281,7 @@ namespace Classigoo.Controllers
                 homeModel.AddColl = addColl;
                 //homeModel.InboxChatColl = inboxChatColl;
                 //homeModel.SentChatColl = sentChatColl;
-                foreach (CustomMessage chat in chatColl)
-                {
-                    if (chat.Msg.FromUserId == userId)
-                    {
-                        chat.FromUserName = "[Me]";
-                    }
-                    if (chat.Msg.ToUserId == userId)
-                    {
-                        chat.ToUserName = "[Me]";
-                    }
-                }
+                
                 homeModel.ChatColl = chatColl;
             }
             catch (Exception ex)
@@ -677,11 +656,11 @@ namespace Classigoo.Controllers
         //    return View();
         //}
 
-        public PartialViewResult LoadChat(int addid)
+        public PartialViewResult LoadChat(int addid,Guid requestorUserId)
         {
             MessageDBOperations objMsgDbOperations = new MessageDBOperations();
             Guid userId = GetUserId();
-            List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId, addid);
+            List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId, addid, requestorUserId);
             return PartialView("_LoadChat", chatColl);
         }
 
