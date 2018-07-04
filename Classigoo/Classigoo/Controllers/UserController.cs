@@ -695,19 +695,19 @@ namespace Classigoo.Controllers
                 user.Password = forgotPwd.txtPasscode;
                 if (db.UpdateUserDetails(user))
                 {
-                    TempData["status"] = "Password created successfully";
+                    TempData["status"] = "Password changed successfully";
                     SetUserId(userId, false);
                 }
                 else
                 {
-                    @ViewBag.Status = "Error occured while creating Password ";
+                    @ViewBag.Status = "Error occured while changed Password ";
                 }
                 return RedirectToAction("Home", "User");
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At forgot password", ex);
-                @ViewBag.Status = "Error occured while creating Password ";
+                @ViewBag.Status = "Error occured while changing Password ";
             }
             return View();
         }

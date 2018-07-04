@@ -75,20 +75,21 @@ namespace Classigoo.Models
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
 
-                    var distinctMsgColl1 = from msg in db.Messages
-                                           where msg.FromUserId == userId || msg.ToUserId == userId
-                                           group msg by new
-                                           {
-                                               msg.AdId
-                                           } into grp
-                                           select grp;
+                    //var distinctMsgColl1 = from msg in db.Messages
+                    //                       where msg.FromUserId == userId || msg.ToUserId == userId
+                    //                       group msg by new
+                    //                       {
+                    //                           msg.AdId
+                    //                       } into grp
+                    //                       select grp;
 
 
                     var distinctMsgColl = from msg in db.Messages
                                           where msg.FromUserId == userId || msg.ToUserId == userId
                                           group msg by new
                                           {
-                                              msg.AdId
+                                              msg.AdId,
+                                              msg.RequestorUserId
                                           } into grp
                                           select grp.FirstOrDefault();
 
@@ -116,11 +117,11 @@ namespace Classigoo.Models
 
                     if (msg.FromUserId == userId)
                     {
-                        msg.Status = "send";
+                        chat.Status = "send";
                     }
                     else
                     {
-                        msg.Status = "receive";
+                        chat.Status = "receive";
                     }
 
                     chat.Msg = msg;
