@@ -5,10 +5,83 @@
 
 @foreach (var chat in Model)
 {
-    <span>@chat.Msg.AdId</span>
-    <span>@chat.FromUserName</span>
-    <span>@chat.ToUserName</span>
-    <span>@chat.Msg.Message1</span>
-    <span>@chat.Msg.CreatedOn</span>
-   <br />
+
+    <div class="col-md-12">
+
+        @*<div class="row">
+            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                <div class="row">
+                    <div class="col-md-6 pull-left" style="text-align:left">
+                        Madhu Babu
+                    </div>
+                    <div class="col-md-6 pull-right" style="text-align:right">
+                        28 jan , 08:03 PM
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
+                    </div>
+                    <div class="col-md-11" style="vertical-align:middle;display:table-cell">
+                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
+                        <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+        @if (chat.Status == "receive")
+        {
+        <div class="row" style="padding:10px 0 10px 0">
+            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                <div class="row">
+                    <div class="col-md-6 pull-left" style="text-align:left">
+                       @chat.FromUserName
+                    </div>
+                    <div class="col-md-6 pull-right" style="text-align:right">
+                       @chat.MessageSentDate
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
+                <div class="row">
+
+                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                        <span class="pull-left">@chat.Msg.Message1</span> <br />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        }
+        @if (chat.Status == "send")
+        {
+        <div class="row" style="padding:10px 0 10px 0">
+            <div class="col-md-12 pull-right" style="height:20px;width:80%;">
+                <div class="row">
+                    <div class="col-md-6 pull-left" style="text-align:left">
+                       @chat.FromUserName
+                    </div>
+                    <div class="col-md-6 pull-right" style="text-align:right">
+                        @chat.MessageSentDate
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pull-right" style="min-height:50px;width:80%;background-color:#fafafa;">
+                <div class="row">
+
+                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                        <span class="pull-left">@chat.Msg.Message1</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+
 }

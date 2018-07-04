@@ -7,7 +7,7 @@ namespace Classigoo.Models
 {
     public class MessageDBOperations
     {
-        public bool AddChat(Message msg,Guid userId)
+        public bool AddChat(Message msg)
         {
             int statusCode = 0;
             try
@@ -114,15 +114,7 @@ namespace Classigoo.Models
                 foreach (Message msg in distinctMsgColl)
                 {
                     CustomMessage chat = new CustomMessage();
-
-                    if (msg.FromUserId == userId)
-                    {
-                        chat.Status = "send";
-                    }
-                    else
-                    {
-                        chat.Status = "receive";
-                    }
+                    
 
                     chat.Msg = msg;
 
@@ -146,6 +138,16 @@ namespace Classigoo.Models
                         chat.FromUserName = user.Name;
                         chat.FromUserId = Convert.ToString(user.UserId);
                     }
+                    if (msg.FromUserId == userId)
+                    {
+                        chat.Status = "send";
+                        chat.FromUserName = "[Me]";
+                    }
+                    else if (msg.ToUserId == userId)
+                    {
+                        chat.Status = "receive";
+                        chat.ToUserName = "[Me]";
+                    }
                     myChatColl.Add(chat);
                 }
 
@@ -157,7 +159,7 @@ namespace Classigoo.Models
             return myChatColl;
         }
 
-        public List<CustomMessage> LoadChat(Guid userId, int addId)
+        public List<CustomMessage> LoadChat(Guid userId, int addId,Guid requestorUserId)
         {
             List<CustomMessage> myChatColl = new List<CustomMessage>();
             try
@@ -166,13 +168,13 @@ namespace Classigoo.Models
                 {
 
                     var msgColl = db.Messages.Where(msg => msg.FromUserId == userId ||
-                           msg.ToUserId == userId).Where(msg => msg.AdId == addId);
+                           msg.ToUserId == userId).Where(msg => msg.AdId == addId).Where(msg=>msg.RequestorUserId==requestorUserId);
                     myChatColl = FillChat(msgColl, userId);
                 }
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At LoadChats", ex);
+                Library.WriteLog("At LoadChats db", ex);
             }
 
             return myChatColl;
