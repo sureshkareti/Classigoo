@@ -1,87 +1,137 @@
-﻿@model IEnumerable<CustomMessage>
+﻿@model IndividualChat
 @{
     Layout = null;
+   
 }
 
-@foreach (var chat in Model)
+@foreach (var chat in Model.CustomMsgColl)
 {
 
     <div class="col-md-12">
 
         @*<div class="row">
-            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
-                <div class="row">
-                    <div class="col-md-6 pull-left" style="text-align:left">
-                        Madhu Babu
-                    </div>
-                    <div class="col-md-6 pull-right" style="text-align:right">
-                        28 jan , 08:03 PM
+                <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                    <div class="row">
+                        <div class="col-md-6 pull-left" style="text-align:left">
+                            Madhu Babu
+                        </div>
+                        <div class="col-md-6 pull-right" style="text-align:right">
+                            28 jan , 08:03 PM
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
-                <div class="row">
-                    <div class="col-md-1">
-                        <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
-                    </div>
-                    <div class="col-md-11" style="vertical-align:middle;display:table-cell">
-                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
-                        <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
-                    </div>
+                <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
+                        </div>
+                        <div class="col-md-11" style="vertical-align:middle;display:table-cell">
+                            <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
+                            <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
         @if (chat.Status == "receive")
         {
-        <div class="row" style="padding:10px 0 10px 0">
-            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
-                <div class="row">
-                    <div class="col-md-6 pull-left" style="text-align:left">
-                       @chat.FromUserName
+            <div class="row" style="padding:10px 0 10px 0">
+                <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                    <div class="row">
+                        <div class="col-md-6 pull-left" style="text-align:left">
+                            @chat.FromUserName
+                        </div>
+                        <div class="col-md-6 pull-right" style="text-align:right">
+                            @chat.MessageSentDate
+                        </div>
                     </div>
-                    <div class="col-md-6 pull-right" style="text-align:right">
-                       @chat.MessageSentDate
+                </div>
+                <div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
+                    <div class="row">
+
+                        <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                            <span class="pull-left">@chat.Msg.Message1</span> <br />
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
-                <div class="row">
-
-                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                        <span class="pull-left">@chat.Msg.Message1</span> <br />
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
         }
         @if (chat.Status == "send")
         {
-        <div class="row" style="padding:10px 0 10px 0">
-            <div class="col-md-12 pull-right" style="height:20px;width:80%;">
-                <div class="row">
-                    <div class="col-md-6 pull-left" style="text-align:left">
-                       @chat.FromUserName
+            <div class="row" style="padding:10px 0 10px 0">
+                <div class="col-md-12 pull-right" style="height:20px;width:80%;">
+                    <div class="row">
+                        <div class="col-md-6 pull-left" style="text-align:left">
+                            @chat.FromUserName
+                        </div>
+                        <div class="col-md-6 pull-right" style="text-align:right">
+                            @chat.MessageSentDate
+                        </div>
                     </div>
-                    <div class="col-md-6 pull-right" style="text-align:right">
-                        @chat.MessageSentDate
+                </div>
+                <div class="col-md-12 pull-right" style="min-height:50px;width:80%;background-color:#fafafa;">
+                    <div class="row">
+
+                        <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                            <span class="pull-left">@chat.Msg.Message1</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 pull-right" style="min-height:50px;width:80%;background-color:#fafafa;">
-                <div class="row">
+        }
+    </div>
+}
 
-                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                        <span class="pull-left">@chat.Msg.Message1</span>
-                    </div>
+        <div class="clearfix">
+            <div class="price pull-right"><a id="loginToChat" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">login to chat</a></div>
 
-                </div>
-            </div>
+            <div class="price pull-right"><a id="chatWithUser" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">chat with user</a></div>
+
+
         </div>
+        <div id="chat" >
+            <div class="control-group">
+                <label class="control-label">Message</label>
+                <div class="controls">
+                    <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3"></textarea>
+                </div>
+            </div>
+            <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat">
+            <input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;
+        </div>
+    <script>
+        $(document).ready(function () {
+            console.log("load")
+            $("#submitChat").click(function (){
+                console.log("buttonclik")
+                var userMsg=$("message").val();
+                AddChat(userMsg)
+            });
+
+        });
+        function AddChat(userMsg) {
+            $.ajax({
+                url: '/User/AddChat',
+                type: 'GET',
+               // dataType: "html",
+                data: { "addId":@Model.AddId, "frmUserId":@Model.FromUserId,"toUserId":"@Model.ToUserId","requestorUserId":"@Model.RequestorUserId","userMessage":userMsg },
+                success: function (data) {
+                  //  $("#individualChat").html(data);
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                },
+                complete: function (data) {
+
+                }
+
+            });
         }
 
-    </div>
-
-}
+    </script>

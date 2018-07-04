@@ -1,4 +1,5 @@
 ﻿using Classigoo.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -661,7 +662,36 @@ namespace Classigoo.Controllers
             MessageDBOperations objMsgDbOperations = new MessageDBOperations();
             Guid userId = GetUserId();
             List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId, addid, requestorUserId);
-            return PartialView("_LoadChat", chatColl);
+            IndividualChat individualChatColl = new IndividualChat();
+            individualChatColl.CustomMsgColl = chatColl;
+            individualChatColl.FromUserId = userId;
+            individualChatColl.RequestorUserId = requestorUserId;
+            individualChatColl.AddId = addid;
+            if (requestorUserId==userId)//you are not add owner
+            {
+                foreach(CustomMessage msg in chatColl)
+                {
+                    if(msg.Status=="send")
+                    {
+                        individualChatColl.ToUserId = msg.ToUserId;
+                        break;
+                    }
+                }
+                
+            }
+            else//your are not a requestor so ur add owner 
+            {
+                foreach (CustomMessage msg in chatColl)
+                {
+                    if (msg.Status == "receive")
+                    {
+                        individualChatColl.ToUserId = msg.FromUserId;
+                        break;
+                    }
+                }
+            }
+
+            return PartialView("_LoadChat", individualChatColl);
         }
 
         public ActionResult ForgotPwd()
@@ -697,6 +727,19 @@ namespace Classigoo.Controllers
                 @ViewBag.Status = "Error occured while changing Password ";
             }
             return View();
+        }
+
+        public void AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
+        {
+            MessageDBOperations msgDbObj = new MessageDBOperations();
+            Message msg = new Message();
+            msg.AdId = addId;
+            msg.CreatedOn = CustomActions.GetCurrentISTTime();
+           msg.FromUserId = frmUserId;
+           msg.ToUserId = toUserId;
+            msg.RequestorUserId = requestorUserId;
+            msg.Message1 = userMessage;
+          bool  status = msgDbObj.AddChat(msg);
         }
     }
 }

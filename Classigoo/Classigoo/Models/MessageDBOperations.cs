@@ -130,13 +130,13 @@ namespace Classigoo.Models
                     if (user != null)
                     {
                         chat.ToUserName = user.Name;
-                        chat.ToUserId = Convert.ToString(user.UserId);
+                        chat.ToUserId = user.UserId;
                     }
                     user = objUserDbOperations.GetUser(msg.FromUserId);
                     if (user != null)
                     {
                         chat.FromUserName = user.Name;
-                        chat.FromUserId = Convert.ToString(user.UserId);
+                        chat.FromUserId = user.UserId;
                     }
                     if (msg.FromUserId == userId)
                     {

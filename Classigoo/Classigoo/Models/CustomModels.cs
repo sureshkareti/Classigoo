@@ -264,9 +264,18 @@ namespace Classigoo
         public string ToUserName { set; get; }
         public string FromUserName { set; get; }
         public string MessageSentDate { set; get; }
-        public string ToUserId { set; get; }
-        public string FromUserId { set; get; }
+        public Guid ToUserId { set; get; }
+        public Guid FromUserId { set; get; }
         public string Status { set; get; }
+    }
+
+    public class IndividualChat
+    {
+        public List<CustomMessage> CustomMsgColl { set; get; }
+        public Guid FromUserId { set; get; }
+        public Guid ToUserId { set; get; }
+        public Guid RequestorUserId { set; get; }
+        public int AddId { set; get; }
     }
 
     public class CustomHomeModel
