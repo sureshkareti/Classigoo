@@ -8,28 +8,54 @@
 
 @using (Html.BeginForm("ForgotPwd", "User", FormMethod.Post, new { id = "frmChangePassword", data_toggle = "validator" }))
 {
-    <div class="container" style="max-width:970px !important;margin:auto;">
+    <div class="container" style="max-width:970px !important;margin:auto;padding:80px 0 100px 0">
         <span>@ViewBag.Status</span>
-        <div class="form-group">
-            @Html.HiddenFor(model => model.PhoneNumber);
-             <div class="help-block with-errors"></div>
-           
-            <div class="row  form-group">
-                <div class="col-md-4">
-                    <span>New Password<span style="color:red">*</span></span>
-                    <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+        <div>
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <div class="registration-form-block">
+                    <div class="registration-form-title">
+                        <h4>Change Password</h4>
+                    </div>
+                    <div class="form-block">
+
+                        <form class="form-common">
+
+                            <div class="form-group">
+                                @Html.HiddenFor(model => model.PhoneNumber);
+                                <div class="help-block with-errors"></div>
+
+                                <div class="row  form-group">
+                                    <div class="col-md-12">
+                                        <span>New Password<span style="color:red">*</span></span>
+                                        <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" />
+                                    </div>
+                                </div>
+                                <div class="row  form-group">
+                                    <div class="col-md-12">
+                                        <span>Repeat new password<span style="color:red">*</span></span>
+                                        <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" />
+                                    </div>
+                                </div>
+                                <input type="submit" value="Change Password" />
+
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
+
             </div>
-            <div class="row  form-group">
-                <div class="col-md-4">
-                    <span>Repeat new password<span style="color:red">*</span></span>
-                    <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
-                </div>
+            <div class="col-md-3">
+
             </div>
-            <div class="panel panel-default accordion-header">
-                <input type="submit" value="Change Password" />
-            </div>
-            </div>
+        </div>
+
+
+
+
     </div>
 }
 @section Styles {
@@ -38,7 +64,7 @@
 }
 @section scripts{
     <script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/scripts/Custome/account.js"></script>
+    <script src="~/scripts/Custome/account.js"></script>
     <script src="~/scripts/bootstrapValidator.min.js"></script>
 }
 

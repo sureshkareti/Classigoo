@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("VerifyOTP", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
+{
+    <div class="container" style="max-width:970px !important;margin:auto;padding:100px 0 200px 0">
+        <span>@ViewBag.Status</span>
+        <div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-10 col-xs-12 col-sm-12">
+              <div style="width: 100%; height: 300px; border: 1px solid gray; background-image: url(../../images/upimglogo1.png); background-repeat: no-repeat;background-size: cover;background-position: center;">
+                  <div style="width:60%;margin:0 auto;height:200px;border:1px solid gray">
+
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+        </div>
+
+    </div>
+}

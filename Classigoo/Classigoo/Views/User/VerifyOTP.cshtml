@@ -4,23 +4,44 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VerifyOTP</h2>
-
 @using (Html.BeginForm("VerifyOTP", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
-    <div class="container" style="max-width:970px !important;margin:auto;">
+    <div class="container" style="max-width:970px !important;margin:auto;padding:100px 0 200px 0">
         <span>@ViewBag.Status</span>
-        <div class="form-group">
+        <div>
+            <div class="col-md-3">
 
-            @*<span>Please enter the verification code sent to </span><span name="PhoneNumber">@Model.PhoneNumber</span><span> to Login</span>*@
-            @Html.HiddenFor(model => model.PhoneNumber)
-            @Html.HiddenFor(model => model.VerifyType)
-            @Html.TextBoxFor(model => model.OTP, new { @data_error = "Please enter a valid 4 digit Numeric OTP.",@class = "form-control", @placeholder = "OTP", required = "required", pattern = @"^(\d{4})$" })
-            @Html.ActionLink("Resend OTP", "ResendOtp","User", Model,null)
-            <div class="help-block with-errors"></div>
-            <input type="submit" value="VerifyOTP" />
+            </div>
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <div class="registration-form-block">
+                    <div class="registration-form-title">
+                        <h4>verify OTP</h4>
+                    </div>
+                    <div class="form-block">
+
+                        <form class="form-common">
+
+                            <div class="form-group">
+
+                                @*<span>Please enter the verification code sent to </span><span name="PhoneNumber">@Model.PhoneNumber</span><span> to Login</span>*@
+                                @Html.HiddenFor(model => model.PhoneNumber)
+                                @Html.HiddenFor(model => model.VerifyType)
+                                @Html.TextBoxFor(model => model.OTP, new { @data_error = "Please enter a valid 4 digit Numeric OTP.", @class = "form-control", @placeholder = "OTP", required = "required", pattern = @"^(\d{4})$" , style = "height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;" })
+                                @Html.ActionLink("Resend OTP", "ResendOtp", "User", Model, null)
+                                <div class="help-block with-errors"></div>
+                                <input type="submit" value="VerifyOTP" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+
+            </div>
         </div>
-        </div>
+
+    </div>
 }
 @section scripts{
     <script src="~/Scripts/bootstrap.min.js"></script>

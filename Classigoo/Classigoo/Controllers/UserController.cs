@@ -586,6 +586,12 @@ namespace Classigoo.Controllers
             }
             return View();
         }
+
+        public ActionResult VerifyOTP()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult VerifyOTP(LoginWithOTP loginWithOtp)
         {
@@ -681,8 +687,10 @@ namespace Classigoo.Controllers
 
         public ActionResult ForgotPwd()
         {
-            TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
-            return View("LoginWithOtp");
+            //TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
+            //return View("LoginWithOtp");
+
+            return View();
         }
         [HttpPost]
         public ActionResult ForgotPwd(ForgotPwd forgotPwd)

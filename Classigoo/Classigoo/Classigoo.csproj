@@ -252,6 +252,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404NotFound.html" />
     <Content Include="Classigoo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Classigoo.edmx</DependentUpon>
@@ -503,6 +504,7 @@
     <Content Include="Views\User\VerifyOTP.cshtml" />
     <Content Include="Views\Shared\_LoadChat.cshtml" />
     <Content Include="Views\User\ForgotPwd.cshtml" />
+    <Content Include="Views\List\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
