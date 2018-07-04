@@ -23,6 +23,7 @@ namespace Classigoo
         public Nullable<System.DateTime> UpdatedOn { get; set; }
         public Nullable<bool> Archive { get; set; }
         public Nullable<bool> IsRed { get; set; }
+        public Nullable<System.Guid> RequestorUserId { get; set; }
     
         public virtual Add Add { get; set; }
         public virtual User User { get; set; }

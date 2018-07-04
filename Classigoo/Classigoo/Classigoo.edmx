@@ -84,6 +84,7 @@
           <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="Archive" Type="bit" />
           <Property Name="IsRed" Type="bit" />
+          <Property Name="RequestorUserId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="PassengerVehicle">
           <Key>
@@ -656,6 +657,7 @@
           <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Message" ToRole="Add" />
           <NavigationProperty Name="User" Relationship="ClassigooModel.FK_Messages_Messages" FromRole="Message" ToRole="User" />
           <NavigationProperty Name="User1" Relationship="ClassigooModel.FK_Messages_Users" FromRole="Message" ToRole="User" />
+          <Property Name="RequestorUserId" Type="Guid" />
         </EntityType>
         <Association Name="FK_Messages_Adds">
           <End Type="ClassigooModel.Add" Role="Add" Multiplicity="1" />
@@ -849,6 +851,7 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="ClassigooModel.Message">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="RequestorUserId" ColumnName="RequestorUserId" />
                 <ScalarProperty Name="IsRed" ColumnName="IsRed" />
                 <ScalarProperty Name="Archive" ColumnName="Archive" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />

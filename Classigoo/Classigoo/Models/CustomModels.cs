@@ -263,6 +263,10 @@ namespace Classigoo
         public string AddTitle { set; get; }
         public string ToUserName { set; get; }
         public string FromUserName { set; get; }
+        public string MessageSentDate { set; get; }
+        public string ToUserId { set; get; }
+        public string FromUserId { set; get; }
+       
     }
 
     public class CustomHomeModel

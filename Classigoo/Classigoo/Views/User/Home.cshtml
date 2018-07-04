@@ -181,7 +181,9 @@
                                     <div class="portlet-body">
                                         <div class="tab-content" style="min-height:400px;">
                                             <div class="tab-pane active" id="portlet_Inbox" style="text-align:center">
-                                                <div class="row" style="padding-top:60px;display:none">
+
+
+                                                <div class="row" style="padding-top:60px;display:block">
 
                                                     <div class="col-md-12" style="height:20px;width:100%;">
                                                         <div class="row">
@@ -200,102 +202,107 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0;cursor:pointer">
-                                                        <div class="row">
-                                                            <div class="col-md-1">
-                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <span><i class="fa fa-angle-right"></i> Me,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">Madhu Babu suresh kareti</span> ..(23) </span>
-                                                            </div>
-                                                            <div class="col-md-5">
 
-                                                                <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
-                                                                    samsung phone working superfast testting food neberer testdst sdtsts sctsdfctcsdtcsd
-                                                                </span>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                2 july , 11 pm
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    @foreach (var chat in Model.ChatColl)
+                                                    {
+                                                        <div class="col-md-12 message">
+                                                            <div class="row">
+                                                                <div class="col-md-1">
+                                                                    <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <span><i class="fa fa-angle-right"></i> @chat.FromUserName,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">@chat.ToUserName</span> ..(23) </span>
+                                                                </div>
+                                                                <div class="col-md-5">
 
-
-                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
-                                                        <div class="row">
-                                                            <div class="col-md-1">
-                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                                    <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
+                                                                       @chat.AddTitle
+                                                                    </span>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    @chat.MessageSentDate
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
-                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                samsung phone working superfast
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                2 july , 11 pm
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
-                                                        <div class="row">
-                                                            <div class="col-md-1">
-                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
-                                                            </div>
-                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
-                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                samsung phone working superfast
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                2 july , 11 pm
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-12" style="height:50px;width:100%;border:1px solid #fafafa;font-size:16px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0">
-                                                        <div class="row">
-                                                            <div class="col-md-1">
-                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
-                                                            </div>
-                                                            <div class="col-md-4" style="vertical-align:middle;display:table-cell">
-                                                                <span><i class="fa fa-angle-right"></i> Me,Madhu Babu(23) </span>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                samsung phone working superfast
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                2 july , 11 pm
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
+                                                            <input type="hidden" value="@chat.FromUserId" id="hdnFromUserId" />
+                                                            <input type="hidden" value="@chat.ToUserId" id="hdnToUserId" />
+                                                            <input type="hidden" value="@chat.Msg.AdId" id="hdnToUserId" />
+                                                        </div>                                                  
+                                                    }                                                   
                                                 </div>
 
-                                                <div class="row" id="individualChat" style="padding-top:60px;">
-                                                    <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                                                <div class="row" id="individualChat" style="padding-top:60px;display:block">
+                                                    <div class="col-md-12">
+
                                                         <div class="row">
-                                                            <div class="col-md-6 pull-left" style="text-align:left">
-                                                                Madhu Babu
+                                                            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 pull-left" style="text-align:left">
+                                                                        Madhu Babu
+                                                                    </div>
+                                                                    <div class="col-md-6 pull-right" style="text-align:right">
+                                                                        28 jan , 08:03 PM
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-6 pull-right" style="text-align:right">
-                                                                28 jan , 08:03 PM
+                                                            <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+                                                                <div class="row">
+                                                                    <div class="col-md-1">
+                                                                        <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
+                                                                    </div>
+                                                                    <div class="col-md-11" style="vertical-align:middle;display:table-cell">
+                                                                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
+                                                                        <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
-                                                        <div class="row">
-                                                            <div class="col-md-1">
-                                                                <img src="~/images/22222.jpg" style="height:50px;width:50px;" />
+
+                                                        <div class="row" style="padding:10px 0 10px 0">
+                                                            <div class="col-md-12 pull-left" style="height:20px;width:80%;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 pull-left" style="text-align:left">
+                                                                        Madhu Babu
+                                                                    </div>
+                                                                    <div class="col-md-6 pull-right" style="text-align:right">
+                                                                        28 jan , 08:03 PM
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-11" style="vertical-align:middle;display:table-cell">
-                                                              <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
-                                                               <span class="pull-left"><a href="#">view</a> Add Id:2356</span>
+                                                            <div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                                                                        <span class="pull-left">test titijfhsfa jdhfjsjfhsf sjfhsjfjsfhsjfs fsdjfdshj</span> <br />
+
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
-                                                            
                                                         </div>
+
+                                                        <div class="row" style="padding:10px 0 10px 0">
+                                                            <div class="col-md-12 pull-right" style="height:20px;width:80%;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6 pull-left" style="text-align:left">
+                                                                        Me
+                                                                    </div>
+                                                                    <div class="col-md-6 pull-right" style="text-align:right">
+                                                                        28 jan , 08:03 PM
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 pull-right" style="min-height:50px;width:80%;background-color:#fafafa;">
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12" style="vertical-align:middle;display:table-cell">
+                                                                        <span class="pull-left">tssting message here for foltureeExplicit localization is useful when you have large bodies of text or custom messages you want to localize, in addition to controls and labels. For example, you could develop a series of localized welcome and thank you</span>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
 
@@ -629,12 +636,24 @@
     <script src="~/Scripts/List/responsive.min.js"></script>
     <script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
 }
+
+<style type="text/css">
+    .message{
+        height:50px;width:100%;border:1px solid #fafafa;font-size:14px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0;cursor:pointer
+    }
+</style>
+
 <script>
     $(document).ready(function () {
         $('.edit-mode').hide();
         var table = $('#tblAdds').DataTable({
             "responsive": true
         });
+
+        $(".message").click(function () {
+            alert($(this).find("#hdnFromUserId").val());
+        });
+
 
     });
     function LoadChat() {

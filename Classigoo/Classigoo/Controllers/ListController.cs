@@ -1038,7 +1038,7 @@ namespace Classigoo.Controllers
                 msg.FromUserId = frmUserId;
                 msg.ToUserId = toUserId;
                 msg.Message1 = usermessage;
-                status = msgDbObj.AddChat(msg);         
+                status = msgDbObj.AddChat(msg , frmUserId);         
             }
             catch(Exception ex)
             {
