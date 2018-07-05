@@ -34,7 +34,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(FormCollection coll)
+        public ActionResult Login(FormCollection coll, string ReturnUrl = null)
         {
             try
             {
@@ -49,12 +49,20 @@ namespace Classigoo.Controllers
                     if (coll["email-phone"] == "1111111111" && coll["pwd"] == "admin")//admin login
                     {
                         SetUserRole(false);
-
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
                         return RedirectToAction("Admin", "User");
                     }
 
                     else
                     {
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
                         return RedirectToAction("Home", "User");
                     }
                 }
@@ -696,10 +704,10 @@ namespace Classigoo.Controllers
 
         public ActionResult ForgotPwd()
         {
-            //TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
-            //return View("LoginWithOtp");
+            TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
+            return View("LoginWithOtp");
 
-            return View();
+            //return View();
         }
         [HttpPost]
         public ActionResult ForgotPwd(ForgotPwd forgotPwd)

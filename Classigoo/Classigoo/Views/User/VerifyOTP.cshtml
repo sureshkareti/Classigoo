@@ -7,16 +7,18 @@
 @using (Html.BeginForm("VerifyOTP", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
     <div class="container" style="max-width:970px !important;margin:auto;padding:100px 0 200px 0">
-        <span>@ViewBag.Status</span>
+        
         <div>
             <div class="col-md-3">
 
             </div>
             <div class="col-md-6 col-xs-12 col-sm-12">
                 <div class="registration-form-block">
+                    
                     <div class="registration-form-title">
-                        <h4>verify OTP</h4>
+                        <h4>Verify OTP</h4>
                     </div>
+                    <span>@ViewBag.Status</span>
                     <div class="form-block">
 
                         <form class="form-common">
