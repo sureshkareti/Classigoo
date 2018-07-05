@@ -233,9 +233,9 @@
 
                                                 <div class="row" id="individualChat" style="padding-top:60px;display:block">
 
-
-                                                    </div>
-
+                                                    
+                                                 </div>
+                                                
                                                     @*<div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
                 @foreach (var chat in Model.ChatColl)
                 {
@@ -545,6 +545,14 @@
         </div>
 
     </div>
+    <br />
+    <br/>
+    <div class="loader-wrap" style="display:none">
+        <div class="loader">
+            <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+            <span class="loader-item"></span><span class="loader-item"></span>
+        </div>
+    </div>
 }
 
 @section Styles {
@@ -553,6 +561,7 @@
     <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
     <link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/List/color1.css" rel="stylesheet" />
 }
 
 @section Scripts{
@@ -580,9 +589,10 @@
         $(".message").click(function () {
             var addId = $(this).find("#hdnAddId").val();
             var requestorUserId = $(this).find("#hdnRequestorUserId").val();
+            $(".loader-wrap").show();
             LoadChat(addId, requestorUserId);
         });
-
+        
 
     });
     function LoadChat(addId, requestorUserId) {    
@@ -593,12 +603,15 @@
             data: { "addId": addId,"requestorUserId":requestorUserId },
             success: function (data) {
                 $("#individualChat").html(data);
+                $(".loader-wrap").hide();
             },
             failure: function (response) {
                 console.log(response.responseText);
+                $(".loader-wrap").hide();
             },
             error: function (response) {
                 console.log(response.responseText);
+                $(".loader-wrap").hide();
             },
             complete: function (data) {
 

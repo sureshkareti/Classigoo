@@ -729,17 +729,32 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public void AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
+        public PartialViewResult AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
         {
-            MessageDBOperations msgDbObj = new MessageDBOperations();
             Message msg = new Message();
-            msg.AdId = addId;
-            msg.CreatedOn = CustomActions.GetCurrentISTTime();
-           msg.FromUserId = frmUserId;
-           msg.ToUserId = toUserId;
-            msg.RequestorUserId = requestorUserId;
-            msg.Message1 = userMessage;
-          bool  status = msgDbObj.AddChat(msg);
+            bool status = false;
+            try
+            {
+                MessageDBOperations msgDbObj = new MessageDBOperations();
+                msg.AdId = addId;
+                msg.CreatedOn = CustomActions.GetCurrentISTTime();
+                msg.FromUserId = frmUserId;
+                msg.ToUserId = toUserId;
+                msg.RequestorUserId = requestorUserId;
+                msg.Message1 = userMessage;
+                status = msgDbObj.AddChat(msg);
+                
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At add chat from dashboard", ex);
+            }
+            //if(status)
+            return PartialView("_SentChat", msg);
+           // else
+          //  {
+               // return RedirectToAction("Home","User");
+            //}
         }
     }
 }

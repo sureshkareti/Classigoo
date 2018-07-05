@@ -60,7 +60,7 @@
         }
         @if (chat.Status == "send")
         {
-            <div class="row" style="padding:10px 0 10px 0">
+            <div class="row" style="padding:10px 0 10px 0" >
                 <div class="col-md-12 pull-right" style="height:20px;width:80%;">
                     <div class="row">
                         <div class="col-md-6 pull-left" style="text-align:left">
@@ -82,32 +82,25 @@
                 </div>
             </div>
         }
-    </div>
-}
-
-        <div class="clearfix">
-            <div class="price pull-right"><a id="loginToChat" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">login to chat</a></div>
-
-            <div class="price pull-right"><a id="chatWithUser" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">chat with user</a></div>
-
-
+        
         </div>
+        
+}
         <div id="chat" >
             <div class="control-group">
                 <label class="control-label">Message</label>
                 <div class="controls">
-                    <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3"></textarea>
+                    <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3" required ></textarea>
                 </div>
             </div>
-            <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat">
+            <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat" >
             <input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;
         </div>
     <script>
         $(document).ready(function () {
-            console.log("load")
-            $("#submitChat").click(function (){
-                console.log("buttonclik")
-                var userMsg=$("message").val();
+            $("#submitChat").click(function () {
+                var userMsg = $("#message").val();
+                $(".loader-wrap").show();
                 AddChat(userMsg)
             });
 
@@ -117,15 +110,19 @@
                 url: '/User/AddChat',
                 type: 'GET',
                // dataType: "html",
-                data: { "addId":@Model.AddId, "frmUserId":@Model.FromUserId,"toUserId":"@Model.ToUserId","requestorUserId":"@Model.RequestorUserId","userMessage":userMsg },
+                data: { "addId": '@Model.AddId', "frmUserId": '@Model.FromUserId', "toUserId": '@Model.ToUserId', "requestorUserId": '@Model.RequestorUserId', "userMessage": userMsg },
                 success: function (data) {
-                  //  $("#individualChat").html(data);
+                    $(data).insertBefore($("#chat"));
+                    $("#message").val("");
+                    $(".loader-wrap").hide(); 
                 },
                 failure: function (response) {
                     console.log(response.responseText);
+                    $(".loader-wrap").hide();
                 },
                 error: function (response) {
                     console.log(response.responseText);
+                    $(".loader-wrap").hide();
                 },
                 complete: function (data) {
 
