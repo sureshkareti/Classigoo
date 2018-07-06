@@ -295,81 +295,81 @@ namespace Classigoo.Controllers
 
                     #region Images Saving Subdomain
 
-                    //string[] pathSplits = Server.MapPath("~").Split('\\');
+                    string[] pathSplits = Server.MapPath("~").Split('\\');
 
-                    //string combinedPath = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\img.classigoo.com";
+                    string combinedPath = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\img.classigoo.com";
 
-                    //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State);
-                    //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District);
-                    //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal);
+                    CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State);
+                    CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District);
+                    CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal);
 
 
-                    //if (Image1 != null)
-                    //{
-                    //    string img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
-                    //    Image1.SaveAs(img1SubdomainPath);
+                    if (Image1 != null)
+                    {
+                        string img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
+                        Image1.SaveAs(img1SubdomainPath);
 
-                    //    img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
+                        img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
 
-                    //}
+                    }
 
-                    //if (Image2 != null)
-                    //{
-                    //    string img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
-                    //    Image2.SaveAs(img2SubdomainPath);
+                    if (Image2 != null)
+                    {
+                        string img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
+                        Image2.SaveAs(img2SubdomainPath);
 
-                    //    img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
+                        img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
 
-                    //}
-                    //if (Image3 != null)
-                    //{
-                    //    string img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
-                    //    Image3.SaveAs(img3SubdomainPath);
+                    }
+                    if (Image3 != null)
+                    {
+                        string img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+                        Image3.SaveAs(img3SubdomainPath);
 
-                    //    img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+                        img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
 
-                    //}
-                    //if (Image4 != null)
-                    //{
-                    //    string img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
-                    //    Image4.SaveAs(img4SubdomainPath);
+                    }
+                    if (Image4 != null)
+                    {
+                        string img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+                        Image4.SaveAs(img4SubdomainPath);
 
-                    //    img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+                        img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
 
-                    //}
+                    }
 
                     #endregion
 
                     #region Images Saving Local
 
-                    CreateFolder("/ImgColl/" + postAdd.State);
-                    CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District);
-                    CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal);
+                    //CreateFolder("/ImgColl/" + postAdd.State);
+                    //CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District);
+                    //CreateFolder("/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal);
 
 
-                    if (Image1 != null)
-                    {
-                        img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
-                        Image1.SaveAs(Server.MapPath(img1));
-                    }
+                    //if (Image1 != null)
+                    //{
+                    //    img1 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
+                    //    Image1.SaveAs(Server.MapPath(img1));
+                    //}
 
-                    if (Image2 != null)
-                    {
-                        img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
-                        Image2.SaveAs(Server.MapPath(img2));
-                    }
-                    if (Image3 != null)
-                    {
+                    //if (Image2 != null)
+                    //{
+                    //    img2 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
+                    //    Image2.SaveAs(Server.MapPath(img2));
+                    //}
+                    //if (Image3 != null)
+                    //{
 
-                        img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
-                        Image3.SaveAs(Server.MapPath(img3));
-                    }
-                    if (Image4 != null)
-                    {
+                    //    img3 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+                    //    Image3.SaveAs(Server.MapPath(img3));
+                    //}
+                    //if (Image4 != null)
+                    //{
 
-                        img4 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
-                        Image4.SaveAs(Server.MapPath(img4));
-                    }
+                    //    img4 = "/ImgColl/" + postAdd.State + "/" + postAdd.District + "/" + postAdd.Mandal + "/" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+                    //    Image4.SaveAs(Server.MapPath(img4));
+                    //}
                     #endregion
 
 
@@ -733,95 +733,95 @@ namespace Classigoo.Controllers
 
                             #region Images SavingSubdomain
 
-                            //string[] pathSplits = Server.MapPath("~").Split('\\');
+                            string[] pathSplits = Server.MapPath("~").Split('\\');
 
-                            //string combinedPath = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\img.classigoo.com";
+                            string combinedPath = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\img.classigoo.com";
 
-                            //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State);
-                            //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District);
-                            //CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal);
-
-
-                            //if (Image1 != null)
-                            //{
-                            //    string img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
-
-                            //    if (!System.IO.File.Exists(img1SubdomainPath))
-                            //    {
-                            //        Image1.SaveAs(img1SubdomainPath);
-                            //        img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
-                            //    }
-                            //    else
-                            //    {
-                            //        //System.IO.FileInfo obj = new FileInfo(img1SubdomainPath);
-                            //        //string previousname = "copy-"+ obj.Name;
-
-                            //        img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 1 + Image1.FileName);
-                            //        Image1.SaveAs(img1SubdomainPath);
-                            //        img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 1 + Image1.FileName);
-
-                            //    }
-                            //}
-
-                            //if (Image2 != null)
-                            //{
-                            //    string img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
-
-                            //    if (!System.IO.File.Exists(img2SubdomainPath))
-                            //    {
-                            //        Image2.SaveAs(img2SubdomainPath);
-                            //        img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
-                            //    }
-                            //    else
-                            //    {
-                            //        img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 2 + Image2.FileName);
-                            //        Image2.SaveAs(img2SubdomainPath);
-                            //        img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 2 + Image2.FileName);
-
-                            //    }
+                            CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State);
+                            CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District);
+                            CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal);
 
 
-                            //}
-                            //if (Image3 != null)
-                            //{
-                            //    string img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+                            if (Image1 != null)
+                            {
+                                string img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
 
-                            //    if (!System.IO.File.Exists(img3SubdomainPath))
-                            //    {
-                            //        Image3.SaveAs(img3SubdomainPath);
+                                if (!System.IO.File.Exists(img1SubdomainPath))
+                                {
+                                    Image1.SaveAs(img1SubdomainPath);
+                                    img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 1 + Image1.FileName);
+                                }
+                                else
+                                {
+                                    //System.IO.FileInfo obj = new FileInfo(img1SubdomainPath);
+                                    //string previousname = "copy-"+ obj.Name;
 
-                            //        img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
-                            //    }
-                            //    else
-                            //    {
-                            //        img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 3 + Image3.FileName);
-                            //        Image3.SaveAs(img3SubdomainPath);
+                                    img1SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 1 + Image1.FileName);
+                                    Image1.SaveAs(img1SubdomainPath);
+                                    img1 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 1 + Image1.FileName);
 
-                            //        img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 3 + Image3.FileName);
+                                }
+                            }
 
-                            //    }
+                            if (Image2 != null)
+                            {
+                                string img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
 
-                            //}
-                            //if (Image4 != null)
-                            //{
-                            //    string img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
-                            //    Image4.SaveAs(img4SubdomainPath);
+                                if (!System.IO.File.Exists(img2SubdomainPath))
+                                {
+                                    Image2.SaveAs(img2SubdomainPath);
+                                    img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 2 + Image2.FileName);
+                                }
+                                else
+                                {
+                                    img2SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 2 + Image2.FileName);
+                                    Image2.SaveAs(img2SubdomainPath);
+                                    img2 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 2 + Image2.FileName);
 
-                            //    if (!System.IO.File.Exists(img4SubdomainPath))
-                            //    {
-                            //        Image4.SaveAs(img4SubdomainPath);
-                            //        img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
-                            //    }
-                            //    else
-                            //    {
-                            //        img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 4 + Image4.FileName);
-                            //        Image4.SaveAs(img4SubdomainPath);
-                            //        img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 4 + Image4.FileName);
-
-                            //    }
+                                }
 
 
-                            //}
+                            }
+                            if (Image3 != null)
+                            {
+                                string img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+
+                                if (!System.IO.File.Exists(img3SubdomainPath))
+                                {
+                                    Image3.SaveAs(img3SubdomainPath);
+
+                                    img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 3 + Image3.FileName);
+                                }
+                                else
+                                {
+                                    img3SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 3 + Image3.FileName);
+                                    Image3.SaveAs(img3SubdomainPath);
+
+                                    img3 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 3 + Image3.FileName);
+
+                                }
+
+                            }
+                            if (Image4 != null)
+                            {
+                                string img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+                                Image4.SaveAs(img4SubdomainPath);
+
+                                if (!System.IO.File.Exists(img4SubdomainPath))
+                                {
+                                    Image4.SaveAs(img4SubdomainPath);
+                                    img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-" + 4 + Image4.FileName);
+                                }
+                                else
+                                {
+                                    img4SubdomainPath = combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 4 + Image4.FileName);
+                                    Image4.SaveAs(img4SubdomainPath);
+                                    img4 = "http:\\\\img.classigoo.com" + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal + "\\" + Path.GetFileName(postId + "-copy" + 4 + Image4.FileName);
+
+                                }
+
+
+                            }
 
                             #endregion
 
