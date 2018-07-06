@@ -18,8 +18,7 @@ namespace Classigoo.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
-
+             
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
             UserDBOperations userObj = new UserDBOperations();
