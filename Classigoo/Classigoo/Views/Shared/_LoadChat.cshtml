@@ -3,7 +3,18 @@
     Layout = null;
    
 }
+<div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+    <div class="row">
+        @*<div class="col-md-1">
+            <img src="@Model.ImgUrl" style="height:50px;width:50px;" />
+        </div>*@
+        <div class="col-md-11" style="vertical-align:middle;display:table-cell">
+            <span class="pull-left">@Model.AddTitle</span> <br />
+            <span class="pull-left">@Html.ActionLink("Preview Add", "PreviewAdd", "List", new { addId = Model.AddId }, new { target = "_blank" }) Add Id:@Model.AddId</span>
+        </div>
 
+    </div>
+</div>
 @foreach (var chat in Model.CustomMsgColl)
 {
 
@@ -50,7 +61,7 @@
                     <div class="row">
 
                         <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                            <span class="pull-left">@chat.Msg.Message1</span> <br />
+                            <span class="pull-left">@chat.message</span> <br />
 
                         </div>
 
@@ -75,7 +86,7 @@
                     <div class="row">
 
                         <div class="col-md-12" style="vertical-align:middle;display:table-cell">
-                            <span class="pull-left">@chat.Msg.Message1</span>
+                            <span class="pull-left">@chat.message</span>
                         </div>
 
                     </div>
@@ -86,31 +97,40 @@
         </div>
         
 }
-        <div id="chat" >
-            <div class="control-group">
-                <label class="control-label">Message</label>
-                <div class="controls">
-                    <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3" required ></textarea>
-                </div>
+  <div id="chat">
+        <div class="control-group">
+            <label class="control-label">Message</label>
+            <div class="controls">
+                <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3" required ></textarea>
             </div>
-            <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat" >
-
-            <a href="#" id="refreshPage">new messages</a>
-
-            @*<input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;*@
         </div>
+        <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat">
+
+        <a href="#" id="refreshPage">Get NewMessages</a>
+
+        @*<input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;*@
+    </div>
     <script>
         $(document).ready(function () {
             $("#submitChat").click(function () {
                 var userMsg = $("#message").val();
-                $(".loader-wrap").show();
-                AddChat(userMsg)
+                if (userMsg != null && userMsg != '') {
+                    $(".loader-wrap").show();
+                    AddChat(userMsg)
+                }
+                else
+                {
+                    alert("Please enter the message to send");
+                    return false;
+                }
             });
 
         });
 
         $("#refreshPage").click(function () {
-            window.location.reload(true);
+            // window.location.reload(true);
+            $(".loader-wrap").show();
+            LoadChat('@Model.AddId', '@Model.RequestorUserId');
         });
 
         function AddChat(userMsg) {
@@ -122,7 +142,7 @@
                 success: function (data) {
                     $(data).insertBefore($("#chat"));
                     $("#message").val("");
-                    $(".loader-wrap").hide(); 
+                    $(".loader-wrap").hide();
                 },
                 failure: function (response) {
                     console.log(response.responseText);

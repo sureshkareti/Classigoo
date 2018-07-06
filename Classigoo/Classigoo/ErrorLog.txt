@@ -166,3 +166,5 @@ EntityFramework ; An error occurred while updating the entries. See the inner ex
 EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
 7/6/2018 11:51:20 AM : At AddChat db
 EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+06/07/2018 11:53:15 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
