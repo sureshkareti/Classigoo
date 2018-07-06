@@ -9,7 +9,7 @@
 @using (Html.BeginForm("LoginWithOtp", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
 {
     <div class="container" style="max-width:970px !important;margin:auto;padding:80px 0 160px 0;">
-        <span>@ViewBag.Status</span>
+       
         <div>
             <div class="col-md-3">
 
@@ -17,10 +17,10 @@
             <div class="col-md-6 col-xs-12 col-sm-12">
                 <div class="registration-form-block">
                     <div class="registration-form-title">
-                        <h4>Login with OTP</h4>
+                        @*<h4>Login with OTP</h4>*@
                     </div>
                     <div class="form-block">
-                        <span name="status">@ViewBag.status</span>
+                        <span name="status">@ViewBag.Status</span>
                         <br />
                         <form class="form-common">
                            

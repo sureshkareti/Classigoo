@@ -17,6 +17,7 @@
             <div class="col-md-5">
                 <span style="color:#2B2B2B;font-weight:200;font-size:20px">Your Classigoo Ads</span><br />
 
+               
                 <span style="font-size:13px;color:#a5a5a5;font-weight:200;">@ViewBag.status</span>
             </div>
             <div class="col-md-4">
@@ -45,12 +46,11 @@
             <div class="col-md-12">
                 <div class="panel with-nav-tabs panel-default">
                     <div class="panel-heading">
-                        <ul class="nav nav-tabs">
+                        <ul class="nav nav-tabs" id="parentTab">
                             <li class="active"><a href="#tab1default" data-toggle="tab">Ads</a></li>
                             <li><a href="#tab2default" data-toggle="tab">Messages</a></li>
                             <li><a href="#tab3default" data-toggle="tab">Payments</a></li>
                             <li><a href="#tab4default" data-toggle="tab">Settings</a></li>
-
                         </ul>
                     </div>
                     <div class="panel-body">
@@ -95,37 +95,37 @@
                                             @foreach (var item in Model.AddColl)
                                             {
 
-                                                <tr>
-                                                    <td id="addId">
-                                                        @item.AddId
-                                                    </td>
-                                                    <td>
-                                                        @item.CreatedDate
-                                                    </td>
-                                                    <td>
-                                                        @item.Title
-                                                    </td>
-                                                    <td>
-                                                        @item.Price
-                                                    </td>
-                                                    <td>
-                                                        @item.Status
-                                                    </td>
-                                                    <td>
-                                                        <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
-                                                    </td>
-                                                    <td>
-                                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
+                                            <tr>
+                                                <td id="addId">
+                                                    @item.AddId
+                                                </td>
+                                                <td>
+                                                    @item.CreatedDate
+                                                </td>
+                                                <td>
+                                                    @item.Title
+                                                </td>
+                                                <td>
+                                                    @item.Price
+                                                </td>
+                                                <td>
+                                                    @item.Status
+                                                </td>
+                                                <td>
+                                                    <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
 
-                                                    </td>
-                                                    <td>
-                                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
-                                                    </td>
-                                                    <td>
-                                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
-                                                    </td>
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
+                                                </td>
 
-                                                </tr>
+                                            </tr>
 
                                             }
                                         </tbody>
@@ -144,15 +144,15 @@
                                 <div class="portlet">
                                     <div class="col-md-8">
                                         <div class="portlet-title">
-                                            <ul class="nav nav-tabs">
+                                            <ul class="nav nav-tabs" id="chaildChat">
                                                 <li class="active" id="mainChat">
                                                     <a href="#portlet_Inbox" data-toggle="tab" style="background-color:white">
-                                                        Chat
+                                                        Inbox
                                                     </a>
                                                 </li>
-                                                <li id="detailedChat">
+                                                <li  id="detailedChat" >
                                                     <a href="#portlet_Sent" data-toggle="tab" style="background-color:white">
-                                                        Sent
+                                                        Chat
                                                     </a>
                                                 </li>
                                                 @*<li>
@@ -179,11 +179,10 @@
 
 
                                     <div class="portlet-body">
-                                        <div class="tab-content" style="min-height:400px;">
+                                        <div class="tab-content" style="min-height:400px;" id="chatContent">
                                             <div class="tab-pane active" id="portlet_Inbox" style="text-align:center">
 
-
-                                                <div class="row" style="padding-top:60px;display:block">
+                                                <div class="row" style="padding-top:30px;display:block">
 
                                                     <div class="col-md-12" style="height:20px;width:100%;">
                                                         <div class="row">
@@ -205,59 +204,62 @@
 
                                                     @foreach (var chat in Model.ChatColl)
                                                     {
-                                                        <div class="col-md-12 message">
-                                                            <div class="row">
-                                                                <div class="col-md-1">
-                                                                    <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <span><i class="fa fa-angle-right"></i> @chat.FromUserName,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">@chat.ToUserName</span> ..(23) </span>
-                                                                </div>
-                                                                <div class="col-md-5">
-
-                                                                    <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
-                                                                       @chat.AddTitle
-                                                                    </span>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    @chat.MessageSentDate
-                                                                </div>
+                                                    <div class="col-md-12 message">
+                                                        <div class="row">
+                                                            <div class="col-md-1">
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
                                                             </div>
-                                                            <input type="hidden" value="@chat.FromUserId" id="hdnFromUserId" />
-                                                            <input type="hidden" value="@chat.ToUserId" id="hdnToUserId" />
-                                                            <input type="hidden" value="@chat.Msg.AdId" id="hdnAddId" />
-                                                            <input type="hidden" value="@chat.Msg.RequestorUserId" id="hdnRequestorUserId" />
-                                                        </div>                                                  
-                                                    }                                                   
-                                                </div>
+                                                            <div class="col-md-4">
+                                                                <span><i class="fa fa-angle-right"></i> @chat.FromUserName,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">@chat.ToUserName</span> ..(23) </span>
+                                                            </div>
+                                                            <div class="col-md-5">
 
-                                                <div class="row" id="individualChat" style="padding-top:60px;display:block">
-
-
+                                                                <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
+                                                                    @chat.AddTitle
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                @chat.MessageSentDate
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" value="@chat.FromUserId" id="hdnFromUserId" />
+                                                        <input type="hidden" value="@chat.ToUserId" id="hdnToUserId" />
+                                                        <input type="hidden" value="@chat.Msg.AdId" id="hdnAddId" />
+                                                        <input type="hidden" value="@chat.Msg.RequestorUserId" id="hdnRequestorUserId" />
                                                     </div>
+                                                    }
+                                                </div>
 
-                                                    @*<div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
-                @foreach (var chat in Model.ChatColl)
-                {
-                    <span>@chat.Msg.AdId</span>
-                    <span>@chat.FromUserName</span>
-                    <span>@chat.ToUserName</span>
-                    <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
-                    @Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })
-                    <span>@chat.Msg.Message1</span>
-                    <span>@chat.Msg.CreatedOn</span>
-                    <br />
-                }
 
-            </div>*@
+
+                                                @*<div class="row" style="min-height:150px;text-align:center;padding-top:80px;display:none">
+                                                        @foreach (var chat in Model.ChatColl)
+                                                        {
+                                                            <span>@chat.Msg.AdId</span>
+                                                            <span>@chat.FromUserName</span>
+                                                            <span>@chat.ToUserName</span>
+                                                            <a id="loadChat" href="#" onClick="LoadChat()">@chat.AddTitle</a>
+                                                            @Html.ActionLink(@chat.AddTitle, "LoadChat", new {addId=chat.Msg.AdId })
+                                                            <span>@chat.Msg.Message1</span>
+                                                            <span>@chat.Msg.CreatedOn</span>
+                                                            <br />
+                                                        }
+
+                                                    </div>*@
+
+                                            </div>
+                                            <div class="tab-pane" id="portlet_Sent" style="padding:10px;">
+
+
+                                                <div class="row" id="individualChat" style="padding-top:30px;display:block">
+
 
                                                 </div>
-                                            <div class="tab-pane" id="portlet_Sent">
 
-                                                <div id="loadChat" class="row" style="min-height:150px;text-align:center;padding-top:80px">
+                                                @*<div id="loadChat" class="row" style="min-height:150px;text-align:center;padding-top:80px">
 
 
-                                                </div>
+                                                    </div>*@
                                             </div>
                                             @* <div class="tab-pane" id="portlet_archive">
 
@@ -395,25 +397,25 @@
                                             <div class="panel-body">
                                                 @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePhone" }))
                                                 {
-                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
+                                                @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
 
-                                                    <div class="row  form-group">
-                                                        <div class="col-md-4">
-                                                            <span>New Phone Number<span style="color:red">*</span></span>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New Phone Number<span style="color:red">*</span></span>
 
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">+91</span>
-                                                                <input id="inputPhone" type="text" class="form-control" name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
-                                                                       oninput="setCustomValidity('')">
-                                                                <div class="help-block with-errors"></div>
-                                                            </div>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">+91</span>
+                                                            <input id="inputPhone" type="text" class="form-control" name="txtPhone" required="required" pattern="^\d{10}$" oninvalid="this.setCustomValidity('Please enter a valid 10 digit Phone Number.')"
+                                                                   oninput="setCustomValidity('')">
+                                                            <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="row  form-group">
-                                                        <div class="col-md-4">
-                                                            <input type="submit" class="btn btn-primary" value="Change Phone" name="action" />
-                                                        </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <input type="submit" class="btn btn-primary" value="Change Phone" name="action" />
                                                     </div>
+                                                </div>
                                                 }
 
                                             </div>
@@ -426,11 +428,11 @@
                                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                     @if (ViewBag.IsPwdEmpty)
                                                     {
-                                                        <span>Create password</span>
+                                                    <span>Create password</span>
                                                     }
                                                     else
                                                     {
-                                                        <span>Change password</span>
+                                                    <span>Change password</span>
                                                     }
                                                 </a>
                                             </h4>
@@ -439,42 +441,42 @@
                                             <div class="panel-body">
                                                 @using (Html.BeginForm("Home", "User", FormMethod.Post, new { id = "frmChangePassword" }))
                                                 {
-                                                    @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
+                                                @Html.Hidden("IsPwdEmpty", (bool)ViewBag.IsPwdEmpty)
                                                     if (!ViewBag.IsPwdEmpty)
                                                     {
-                                                        <div class="row  form-group">
-                                                            <div class="col-md-4">
-                                                                <span>Old Password<span style="color:red">*</span></span>
-                                                                <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
-                                                            </div>
-                                                        </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>Old Password<span style="color:red">*</span></span>
+                                                        <input type="password" name="txtOldPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
+                                                    </div>
+                                                </div>
                                                     }
-                                                    <div class="row  form-group">
-                                                        <div class="col-md-4">
-                                                            <span>New Password<span style="color:red">*</span></span>
-                                                            <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
-                                                        </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>New Password<span style="color:red">*</span></span>
+                                                        <input type="password" name="txtPasscode" class="form-control" required="required" minlength="5" data-error="This field is required." />
                                                     </div>
-                                                    <div class="row  form-group">
-                                                        <div class="col-md-4">
-                                                            <span>Repeat new password<span style="color:red">*</span></span>
-                                                            <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
-                                                        </div>
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        <span>Repeat new password<span style="color:red">*</span></span>
+                                                        <input type="password" class="form-control" name="txtConfirmPasscode" required="required" data-error="This field is required." />
                                                     </div>
-                                                    <div class="row  form-group">
-                                                        <div class="col-md-4">
-                                                            @if (ViewBag.IsPwdEmpty)
+                                                </div>
+                                                <div class="row  form-group">
+                                                    <div class="col-md-4">
+                                                        @if (ViewBag.IsPwdEmpty)
                                                             {
-                                                                <input type="submit" class="btn btn-primary" value="Create Password" name="action" />
+                                                            <input type="submit" class="btn btn-primary" value="Create Password" name="action" />
                                                             }
                                                             else
                                                             {
 
-                                                                <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
+                                                            <input type="submit" class="btn btn-primary" value="Change Password" name="action" />
                                                             }
 
-                                                        </div>
                                                     </div>
+                                                </div>
                                                 }
                                             </div>
                                         </div>
@@ -545,6 +547,14 @@
         </div>
 
     </div>
+    <br />
+    <br />
+    <div class="loader-wrap" style="display:none">
+        <div class="loader">
+            <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+            <span class="loader-item"></span><span class="loader-item"></span>
+        </div>
+    </div>
 }
 
 @section Styles {
@@ -553,6 +563,7 @@
     <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" />
     <link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/List/color1.css" rel="stylesheet" />
 }
 
 @section Scripts{
@@ -565,13 +576,55 @@
 }
 
 <style type="text/css">
-    .message{
-        height:50px;width:100%;border:1px solid #fafafa;font-size:14px;padding-top:10px;background-color:#fafafa;margin:5px 0 5px 0;cursor:pointer
+    .message {
+        min-height: 50px;
+        width: 100%;
+        border: 1px solid #fafafa;
+        font-size: 14px;
+        padding-top: 10px;
+        background-color: #fafafa;
+        margin: 5px 0 5px 0;
+        cursor: pointer;
     }
 </style>
 
 <script>
     $(document).ready(function () {
+
+
+       
+
+        $('#parentTab a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+
+        $('#chaildChat a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            
+            localStorage.setItem('activeTabC', $(e.target).attr('href'));
+        });
+
+
+        var activeTab = localStorage.getItem('activeTab');
+        var activeTabC = localStorage.getItem('activeTabC');
+
+        if (activeTab) {
+            $('#parentTab a[href="' + activeTab + '"]').tab('show');
+        }
+
+        if (activeTabC) {
+            $('#chaildChat a[href="' + activeTabC + '"]').tab('show');
+        }
+
+
+        var addid = localStorage.getItem('localAddId');
+        var requestorId = localStorage.getItem('localRequestorId');
+
+    
+        if ((addid != null) && (requestorId != null)) {
+            LoadChat(addid, requestorId);
+        }
+        
+
         $('.edit-mode').hide();
         var table = $('#tblAdds').DataTable({
             "responsive": true
@@ -580,25 +633,45 @@
         $(".message").click(function () {
             var addId = $(this).find("#hdnAddId").val();
             var requestorUserId = $(this).find("#hdnRequestorUserId").val();
+            $(".loader-wrap").show();
+
+
+            localStorage.setItem('localAddId', addId);
+            localStorage.setItem('localRequestorId', requestorUserId);
+
             LoadChat(addId, requestorUserId);
         });
-
-
+        
     });
-    function LoadChat(addId, requestorUserId) {    
+
+   
+
+    function LoadChat(addId, requestorUserId) {
         $.ajax({
             url: '/User/LoadChat',
             type: 'GET',
             dataType: "html",
-            data: { "addId": addId,"requestorUserId":requestorUserId },
+            data: { "addId": addId, "requestorUserId": requestorUserId },
             success: function (data) {
+
+                $("#mainChat").removeClass("active");
+                $("#detailedChat").addClass("active");
+
+                $("#chatContent #portlet_Inbox").removeClass("active");
+                $("#chatContent #portlet_Sent").addClass("active");
+
+                localStorage.setItem('activeTabC','#portlet_Sent');
+
                 $("#individualChat").html(data);
+                $(".loader-wrap").hide();
             },
             failure: function (response) {
                 console.log(response.responseText);
+                $(".loader-wrap").hide();
             },
             error: function (response) {
                 console.log(response.responseText);
+                $(".loader-wrap").hide();
             },
             complete: function (data) {
 

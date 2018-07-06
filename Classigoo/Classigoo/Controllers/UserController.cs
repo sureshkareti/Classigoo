@@ -34,7 +34,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(FormCollection coll)
+        public ActionResult Login(FormCollection coll, string ReturnUrl = null)
         {
             try
             {
@@ -49,12 +49,20 @@ namespace Classigoo.Controllers
                     if (coll["email-phone"] == "1111111111" && coll["pwd"] == "admin")//admin login
                     {
                         SetUserRole(false);
-
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
                         return RedirectToAction("Admin", "User");
                     }
 
                     else
                     {
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
                         return RedirectToAction("Home", "User");
                     }
                 }
@@ -696,10 +704,10 @@ namespace Classigoo.Controllers
 
         public ActionResult ForgotPwd()
         {
-            //TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
-            //return View("LoginWithOtp");
+            TempData["VerifyType"] = Constants.VerifyOTPFrmForgotPwd;
+            return View("LoginWithOtp");
 
-            return View();
+            //return View();
         }
         [HttpPost]
         public ActionResult ForgotPwd(ForgotPwd forgotPwd)
@@ -729,17 +737,32 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public void AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
+        public PartialViewResult AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
         {
-            MessageDBOperations msgDbObj = new MessageDBOperations();
             Message msg = new Message();
-            msg.AdId = addId;
-            msg.CreatedOn = CustomActions.GetCurrentISTTime();
-           msg.FromUserId = frmUserId;
-           msg.ToUserId = toUserId;
-            msg.RequestorUserId = requestorUserId;
-            msg.Message1 = userMessage;
-          bool  status = msgDbObj.AddChat(msg);
+            bool status = false;
+            try
+            {
+                MessageDBOperations msgDbObj = new MessageDBOperations();
+                msg.AdId = addId;
+                msg.CreatedOn = CustomActions.GetCurrentISTTime();
+                msg.FromUserId = frmUserId;
+                msg.ToUserId = toUserId;
+                msg.RequestorUserId = requestorUserId;
+                msg.Message1 = userMessage;
+                status = msgDbObj.AddChat(msg);
+                
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At add chat from dashboard", ex);
+            }
+            //if(status)
+            return PartialView("_SentChat", msg);
+           // else
+          //  {
+               // return RedirectToAction("Home","User");
+            //}
         }
     }
 }

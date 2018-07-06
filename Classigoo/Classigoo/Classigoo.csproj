@@ -505,6 +505,7 @@
     <Content Include="Views\Shared\_LoadChat.cshtml" />
     <Content Include="Views\User\ForgotPwd.cshtml" />
     <Content Include="Views\List\NotFound.cshtml" />
+    <Content Include="Views\Shared\_SentChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

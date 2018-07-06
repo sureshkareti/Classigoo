@@ -5,9 +5,10 @@
 @{
     string emailPattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
 }
-@using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "LoginForm", data_toggle = "validator" }))
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new { ReturnUrl = Request.QueryString["ReturnUrl"] ,id = "LoginForm", data_toggle = "validator" }))
 {
     @Html.AntiForgeryToken()
+    <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
     <div>
         @*<div class="breadcrumb-block">
 
