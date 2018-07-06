@@ -74,16 +74,6 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-
-                    //var distinctMsgColl1 = from msg in db.Messages
-                    //                       where msg.FromUserId == userId || msg.ToUserId == userId
-                    //                       group msg by new
-                    //                       {
-                    //                           msg.AdId
-                    //                       } into grp
-                    //                       select grp;
-
-
                     var distinctMsgColl = from msg in db.Messages
                                           where msg.FromUserId == userId || msg.ToUserId == userId
                                           group msg by new
@@ -114,10 +104,11 @@ namespace Classigoo.Models
                 foreach (Message msg in distinctMsgColl)
                 {
                     CustomMessage chat = new CustomMessage();
-                    
 
-                    chat.Msg = msg;
 
+                    chat.AddId = msg.AdId;
+                    chat.RequestorUserId = (Guid)msg.RequestorUserId;
+                    chat.message = msg.Message1;
                     CommonDBOperations objCommonOperatoins = new CommonDBOperations();
                     Add add = objCommonOperatoins.GetAdd(msg.AdId.ToString());
                     if (add != null)

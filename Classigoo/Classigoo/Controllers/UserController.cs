@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -675,6 +676,7 @@ namespace Classigoo.Controllers
             individualChatColl.FromUserId = userId;
             individualChatColl.RequestorUserId = requestorUserId;
             individualChatColl.AddId = addid;
+            individualChatColl.AddTitle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(chatColl[0].AddTitle);
             if (requestorUserId==userId)//you are not add owner
             {
                 foreach(CustomMessage msg in chatColl)

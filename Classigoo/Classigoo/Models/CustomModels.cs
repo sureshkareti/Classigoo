@@ -259,7 +259,7 @@ namespace Classigoo
 
     public class CustomMessage
     {
-        public Message Msg;
+        //public Message Msg;
         public string AddTitle { set; get; }
         public string ToUserName { set; get; }
         public string FromUserName { set; get; }
@@ -267,6 +267,9 @@ namespace Classigoo
         public Guid ToUserId { set; get; }
         public Guid FromUserId { set; get; }
         public string Status { set; get; }
+        public int AddId { set; get; }
+        public Guid RequestorUserId { set; get; }
+        public string message { set; get; }
     }
 
     public class IndividualChat
@@ -276,6 +279,7 @@ namespace Classigoo
         public Guid ToUserId { set; get; }
         public Guid RequestorUserId { set; get; }
         public int AddId { set; get; }
+        public string AddTitle { set; get; }
     }
 
     public class CustomHomeModel
