@@ -94,7 +94,10 @@
                 </div>
             </div>
             <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat" >
-            <input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;
+
+            <a href="#" id="refreshPage">new messages</a>
+
+            @*<input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;*@
         </div>
     <script>
         $(document).ready(function () {
@@ -105,6 +108,11 @@
             });
 
         });
+
+        $("#refreshPage").click(function () {
+            window.location.reload(true);
+        });
+
         function AddChat(userMsg) {
             $.ajax({
                 url: '/User/AddChat',
