@@ -922,7 +922,18 @@ namespace Classigoo.Controllers
             try
             {
                 CommonDBOperations db = new CommonDBOperations();
+                UserController objUserCont = new UserController();
+                objUserCont.ControllerContext = new ControllerContext(this.Request.RequestContext, objUserCont);
+               Guid userId = objUserCont.GetUserId();
                 Add  add= db.GetAdd(addId);
+                if(userId==add.UserId)
+                {
+                    ViewBag.IsOwner = true;
+                }
+                else
+                {
+                    ViewBag.IsOwner = false;
+                }
                 customAdd.Location = add.Mandal + "," + add.State;
                 customAdd.CreatedDate = add.Created.ToString();
                 customAdd.AddId = add.AddId;

@@ -291,14 +291,17 @@
     $(document).ready(function () {
 
         var isUserLoggedIn = '@User.Identity.IsAuthenticated';
-        if (isUserLoggedIn == 'True') {
+        var isOwner='@ViewBag.IsOwner';
+        if (isOwner=='False') {
+            if (isUserLoggedIn == 'True') {
 
-            $("#chatWithUser").css("display", "block");
-        }
-        else {
-           // $("#chatWithUser").css("display", "block");
+                $("#chatWithUser").css("display", "block");
+            }
+            else {
+                // $("#chatWithUser").css("display", "block");
 
-            $("#loginToChat").css("display", "block");
+                $("#loginToChat").css("display", "block");
+            }
         }
 
         $("#chatWithUser").click(function () {
@@ -311,7 +314,8 @@
             $("#chat").css("display", "none");
         });
         $("#loginToChat").click(function () {
-            window.location.href = "/User/Login?ReturnUrl=List/PreviewAdd?addId=23";
+
+            window.location.href = "/User/Login?ReturnUrl=/List/PreviewAdd?addId=@Model.AddId";
         });
 
         //$(".my-foto-container").fadeOut(100, function () {
@@ -320,7 +324,7 @@
         //    .attr("data-title", $(That).attr("data-title"))
         //    .attr("data-help", $(That).attr("data-help"))
         //    .attr("data-id", $(That).attr("data-id"))
-        //});
+        //});?ReturnUrl=List/PreviewAdd?addId=23";?ReturnUrl=%2fUser%2fadmin
 
 
 
