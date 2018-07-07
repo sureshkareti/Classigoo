@@ -20,7 +20,7 @@ namespace Classigoo.Models
             {
             string authKey = "222262AHv0m83QXj5b2fa36c";
             string mobileNumber = "91" + phoneNumber;
-            string senderId = "ClassigooOTP";
+            string senderId = "MSGCLG";
             string message = HttpUtility.UrlEncode("Dear Classigoo User, The OTP for login on Classigoo is ");
             int otp = GenarateOTP();
             message += otp;
