@@ -207,6 +207,7 @@ namespace Classigoo.Controllers
 
 
             PostDBOperations objPostDbOpareations = new PostDBOperations();
+            Communication objComm = new Communication();
             string queryStringForEdit = Request.QueryString["addId"];
             if (postAdd.AddId == null)
             {
@@ -428,7 +429,9 @@ namespace Classigoo.Controllers
                         if (isRealestateadedd)
                         {
                             ViewBag.addId = postId;
-                            ViewBag.Message = "sucess"; 
+                            ViewBag.Message = "sucess";
+                           objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -480,6 +483,8 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
+                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -529,6 +534,8 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
+                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -580,6 +587,8 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
+                          objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -647,6 +656,8 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
+                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else

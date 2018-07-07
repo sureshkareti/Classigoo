@@ -21,7 +21,7 @@
                     <div style="max-width:970px !important;margin:auto;">
                         <div class="add-listing-tost-block">
                             <p>
-                                <strong>Existing User? Please </strong><a href="~/User/Login">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Email</strong> Address along with listing information at the bottom.
+                                <strong>Existing User? Please </strong><a href="~/User/Login">Sign in.</a> <strong>New here? </strong>Please <strong>continue</strong> and enter your <strong>Name</strong> & <strong>Phone Number</strong> Address along with listing information at the bottom.
                             </p>
                         </div>
                         <div>
@@ -871,7 +871,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })
-                                                @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+                                              
+                                                 @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -1098,7 +1099,7 @@
             $("#PhoneNumber").val("@ViewBag.Number");
 
             $("#Name").attr("disabled", "disabled");
-            $("#PhoneNumber").attr("disabled", "disabled");
+            $("#PhoneNumber").attr("readonly", "true");
         }
 
         if("@ViewBag.Message" == "error"){

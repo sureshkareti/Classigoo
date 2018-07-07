@@ -24,6 +24,9 @@ namespace Classigoo.Controllers
                 }
                 else
                 {
+                    //Communication obj = new Communication();
+                    // obj.SendMessage("9177098010",User.Identity.Name);
+                   // Library.SendEmail("46");
                     return RedirectToAction("Home", "User");
                 }
 
@@ -672,31 +675,34 @@ namespace Classigoo.Controllers
             Guid userId = GetUserId();
             List<CustomMessage> chatColl = objMsgDbOperations.LoadChat(userId, addid, requestorUserId);
             IndividualChat individualChatColl = new IndividualChat();
-            individualChatColl.CustomMsgColl = chatColl;
-            individualChatColl.FromUserId = userId;
-            individualChatColl.RequestorUserId = requestorUserId;
-            individualChatColl.AddId = addid;
-            individualChatColl.AddTitle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(chatColl[0].AddTitle);
-            if (requestorUserId==userId)//you are not add owner
+            if (chatColl.Count > 0)
             {
-                foreach(CustomMessage msg in chatColl)
+                individualChatColl.CustomMsgColl = chatColl;
+                individualChatColl.FromUserId = userId;
+                individualChatColl.RequestorUserId = requestorUserId;
+                individualChatColl.AddId = addid;
+                individualChatColl.AddTitle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(chatColl[0].AddTitle);
+                if (requestorUserId == userId)//you are not add owner
                 {
-                    if(msg.Status=="send")
+                    foreach (CustomMessage msg in chatColl)
                     {
-                        individualChatColl.ToUserId = msg.ToUserId;
-                        break;
+                        if (msg.Status == "send")
+                        {
+                            individualChatColl.ToUserId = msg.ToUserId;
+                            break;
+                        }
                     }
+
                 }
-                
-            }
-            else//your are not a requestor so ur add owner 
-            {
-                foreach (CustomMessage msg in chatColl)
+                else//your are not a requestor so ur add owner 
                 {
-                    if (msg.Status == "receive")
+                    foreach (CustomMessage msg in chatColl)
                     {
-                        individualChatColl.ToUserId = msg.FromUserId;
-                        break;
+                        if (msg.Status == "receive")
+                        {
+                            individualChatColl.ToUserId = msg.FromUserId;
+                            break;
+                        }
                     }
                 }
             }

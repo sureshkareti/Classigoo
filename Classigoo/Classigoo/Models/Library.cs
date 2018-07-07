@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 using System.Web;
 
 namespace Classigoo.Models
@@ -99,6 +100,53 @@ namespace Classigoo.Models
                 message.To.Add(new MailAddress(toAddress));
                 message.Subject = subject;
                 message.Body = emailErrorString;
+
+                smtp.Port = Convert.ToInt32(port);
+                smtp.Host = smtpServer;
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = new NetworkCredential(fromAddress, fromAddressPassword);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Models.Library.WriteLog("undergoes into exception while Sending email of Errors ;below is exception  ", ex);
+            }
+        }
+
+        public static void SendEmail(string addId)
+        {
+            try
+            {
+                string fromAddress = "classigoo2018@gmail.com";
+                string fromAddressPassword = "19052018";
+                string toAddress = "classigoo2018@gmail.com";
+                string smtpServer = "smtp.gmail.com";
+                string subject = "New Ad Published";
+                string port = "587";
+
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress(fromAddress);
+                message.To.Add(new MailAddress(toAddress));
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId="+addId+"";
+               // addUrl = "< a href =\"" + addUrl + "\">" + "here" + "</a>";
+                // string Body= "<html><body> <span> Hello Admin,</span></br><span> New Ad was published AdId: "+addId+"</span></br><span>Preview Add: "+addUrl+"</ body ></ html > ";
+                // message.Body = Body;
+                var body = new StringBuilder();
+                body.AppendLine("Hello Admin,");
+                body.AppendLine();
+                body.AppendLine("New Ad was published.");
+                body.AppendLine();
+                body.AppendLine("AdId: "+addId+"");
+                body.AppendLine();
+                body.AppendLine("Preview Add: <a href=\""+ addUrl + "\">"+addUrl+"</a>");
+                body.AppendLine();
+                message.Body = body.ToString();
 
                 smtp.Port = Convert.ToInt32(port);
                 smtp.Host = smtpServer;

@@ -168,3 +168,7 @@ EntityFramework ; An error occurred while updating the entries. See the inner ex
 EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
 06/07/2018 11:53:15 PM : At Preview add addid- 
 Classigoo ; Object reference not set to an instance of an object.
+07/07/2018 11:29:44 AM : At sending Message API
+Newtonsoft.Json ; Input string '3867676b4252303634313930' is not a valid number. Path '', line 1, position 24.
+07/07/2018 11:29:47 AM : Unable to send add published success message to user addid 
+

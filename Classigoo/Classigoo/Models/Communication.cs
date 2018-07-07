@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 
 namespace Classigoo.Models
 {
@@ -113,6 +114,43 @@ namespace Classigoo.Models
             int _max = 9999;
             Random _rdm = new Random();
             return _rdm.Next(_min, _max);
+        }
+
+        public void SendMessage(string phoneNumber,string userName)
+        {
+            try
+            {
+                string authKey = "222262AHv0m83QXj5b2fa36c";
+                string mobileNumber = "91" + phoneNumber;
+                string senderId = "MSGCLG";
+                string homePageUrl = Constants.DomainName + "/User/Home";
+                var message = new StringBuilder();
+                message.AppendLine("Congracts," + userName+"!");
+                message.AppendLine("Your Ad published successfully. ");
+                message.AppendLine("View and manage adds here: ");
+                message.AppendLine(homePageUrl);
+             
+                var client = new RestSharp.RestClient("http://control.msg91.com/api/sendhttp.php");
+                var request = new RestSharp.RestRequest(RestSharp.Method.POST);
+                request.AddParameter("authkey", authKey);
+                request.AddParameter("mobiles", mobileNumber);
+                request.AddParameter("message", message);
+                request.AddParameter("sender", senderId);
+                request.AddParameter("route", "4");
+                request.AddParameter("country", "91");
+                RestSharp.IRestResponse response = client.Execute(request);
+                //Status status = JsonConvert.DeserializeObject<Status>(response.Content);
+                //if (status.type == "error")
+                //{
+                //    isMsgSent = false;
+                //    Library.WriteLog("Unable to send Message, error msg - " + status.message);
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At sending Message API", ex);
+            }
         }
     }
 }
