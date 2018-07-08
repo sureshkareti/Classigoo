@@ -208,3 +208,13 @@ Classigoo ; Object reference not set to an instance of an object.
 Classigoo ; Object reference not set to an instance of an object.
 08/07/2018 12:49:10 AM : Unable to send OTP, error msg - otp_not_found_and_placeholder_not_found_in_message
 
+08/07/2018 11:42:02 AM : undergoes into exception while Sending email of Errors ;below is exception  
+System ; Failure sending mail.
+08/07/2018 1:50:15 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
+08/07/2018 1:50:35 PM : At Preview add addid- 13
+Classigoo ; Object reference not set to an instance of an object.
+08/07/2018 2:48:13 PM : At saving images
+System.Web ; Failed to map the path '/ImgColl/Telangana/Bhadradri Kothagudem /cvzcv/1112-1_20171115_135131 (1) (1) (2) (1).png'.
+08/07/2018 2:48:47 PM : exception at adding CV postdboperations
+EntityFramework ; An error occurred while updating the entries. See the inner exception for details.

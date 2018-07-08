@@ -205,7 +205,6 @@ namespace Classigoo.Controllers
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
 
-
             PostDBOperations objPostDbOpareations = new PostDBOperations();
             Communication objComm = new Communication();
             string queryStringForEdit = Request.QueryString["addId"];
@@ -297,9 +296,7 @@ namespace Classigoo.Controllers
                     #region Images Saving Subdomain
 
                     string[] pathSplits = Server.MapPath("~").Split('\\');
-
                     string combinedPath = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\img.classigoo.com";
-
                     CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State);
                     CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District);
                     CreateFolderSubdomain(combinedPath + "\\Img\\" + postAdd.State + "\\" + postAdd.District + "\\" + postAdd.Mandal);
@@ -430,7 +427,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                           objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                           objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
                             Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
@@ -483,7 +480,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
                             Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
@@ -534,7 +531,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
                             Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
@@ -587,7 +584,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                          objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                          objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
                             Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
@@ -656,7 +653,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber,User.Identity.Name);
+                            objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
                             Library.SendEmail(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
@@ -1629,7 +1626,7 @@ namespace Classigoo.Controllers
 
         public void CreateFolderSubdomain(string path)
         {
-            //string dirPath = Server.MapPath(path);
+         //  string dirPath = Server.MapPath(path);
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

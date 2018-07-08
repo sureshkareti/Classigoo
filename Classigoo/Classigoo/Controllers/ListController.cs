@@ -290,7 +290,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                      (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                                      orderby add.Created
+                                      orderby add.Created descending
                                       select new CustomAdd
                                       {
                                           AddId = add.AddId,
@@ -324,7 +324,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                      (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                                      orderby add.Created
+                                      orderby add.Created descending
                                       select new CustomAdd
                                       {
                                           AddId = add.AddId,
@@ -399,7 +399,7 @@ namespace Classigoo.Controllers
                              (add.Type == type) &&
                              (add.Status == Constants.ActiveSatus) &&
                              (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -432,7 +432,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                       (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -507,7 +507,7 @@ namespace Classigoo.Controllers
                              (add.Type == type) &&
                              (add.Status == Constants.ActiveSatus) &&
                              (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -541,7 +541,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                       (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -616,7 +616,7 @@ namespace Classigoo.Controllers
                              (add.Type == type) &&
                              (add.Status == Constants.ActiveSatus) &&
                              (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -650,7 +650,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                       (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -742,7 +742,7 @@ namespace Classigoo.Controllers
                              (add.Type == type) &&
                              (add.Status == Constants.ActiveSatus) &&
                              (keyword != "" ? add.Title.Contains(keyword) : true)
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -779,7 +779,7 @@ namespace Classigoo.Controllers
                                       (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
 
-                              orderby add.Created
+                              orderby add.Created descending
                               select new CustomAdd
                               {
                                   AddId = add.AddId,
@@ -825,7 +825,7 @@ namespace Classigoo.Controllers
                                      (add.Type == type) &&
                                       (add.Status == Constants.ActiveSatus) &&
                                      (keyword != "" ? add.Title.Contains(keyword) : true)
-                                        orderby add.Created
+                                        orderby add.Created descending
                                         select add).Skip((currentPage - 1) * maxRows).Take(maxRows).ToList();
                 foreach (var add in addsByPage)
                 {
