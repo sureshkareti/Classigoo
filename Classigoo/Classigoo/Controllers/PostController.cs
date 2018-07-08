@@ -428,7 +428,8 @@ namespace Classigoo.Controllers
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
                            objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
-                            Library.SendEmail(postId.ToString());
+                            //Library.SendEmail(postId.ToString());
+                            Library.SendEmailGodaddy(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -481,7 +482,8 @@ namespace Classigoo.Controllers
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
                             objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
-                            Library.SendEmail(postId.ToString());
+                            //Library.SendEmail(postId.ToString());
+                            Library.SendEmailGodaddy(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -532,7 +534,8 @@ namespace Classigoo.Controllers
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
                             objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
-                            Library.SendEmail(postId.ToString());
+                           // Library.SendEmail(postId.ToString());
+                            Library.SendEmailGodaddy(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -585,7 +588,8 @@ namespace Classigoo.Controllers
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
                           objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
-                            Library.SendEmail(postId.ToString());
+                            // Library.SendEmail(postId.ToString());
+                            Library.SendEmailGodaddy(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -654,7 +658,8 @@ namespace Classigoo.Controllers
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
                             objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
-                            Library.SendEmail(postId.ToString());
+                            // Library.SendEmail(postId.ToString());
+                            Library.SendEmailGodaddy(postId.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else

@@ -39,6 +39,7 @@ namespace Classigoo.Models
 
                 sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + Message);
                 sw.WriteLine(ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
+                
                 sw.Flush();
                 sw.Close();
 
@@ -159,6 +160,62 @@ namespace Classigoo.Models
             catch (Exception ex)
             {
                 Models.Library.WriteLog("undergoes into exception while Sending email of Errors ;below is exception  ", ex);
+            }
+        }
+
+        public static void SendEmailGodaddy(string addId)
+        {
+            try
+            {
+                //Create the msg object to be sent
+                MailMessage msg = new MailMessage();
+                //Add your email address to the recipients
+                msg.To.Add("classigoo2018@gmail.com");
+                //Configure the address we are sending the mail from
+                MailAddress address = new MailAddress("classigoo2018@gmail.com");
+                msg.From = address;
+                msg.Subject = "New Ad Published";
+                msg.IsBodyHtml = true;
+                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + addId + "";
+                // addUrl = "< a href =\"" + addUrl + "\">" + "here" + "</a>";
+                // string Body= "<html><body> <span> Hello Admin,</span></br><span> New Ad was published AdId: "+addId+"</span></br><span>Preview Add: "+addUrl+"</ body ></ html > ";
+                // message.Body = Body;
+                var body = new StringBuilder();
+                body.AppendLine("Hello Admin,");
+                body.AppendLine();
+                body.AppendLine("New Ad was published.");
+                body.AppendLine();
+                body.AppendLine("AdId: " + addId + "");
+                body.AppendLine();
+                body.AppendLine("Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
+                body.AppendLine();
+                msg.Body = body.ToString();
+               // msg.Body = txtName.Text + "n" + txtEmail.Text + "n" + txtMessage.Text;
+
+                //Configure an SmtpClient to send the mail.            
+                SmtpClient client = new SmtpClient();
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Host = "smtp.gmail.com";
+                client.Port = 25;
+
+                //Setup credentials to login to our sender email address ("UserName", "Password")
+                NetworkCredential credentials = new NetworkCredential("classigoo2018@gmail.com", "19052018");
+                client.UseDefaultCredentials = true;
+                client.Credentials = credentials;
+
+                //Send the msg
+                client.Send(msg);
+
+                //Display some feedback to the user to let them know it was sent
+                //lblResult.Text = "Your message was sent!";
+            }
+            catch (Exception ex)
+            {
+                Models.Library.WriteLog("undergoes into exception while Sending email of Errors ;below is exception  ", ex);
+                //If the message failed at some point, let the user know
+                // lblResult.Text = ex.ToString();
+                //"Your message failed to send, please try again."
             }
         }
     }

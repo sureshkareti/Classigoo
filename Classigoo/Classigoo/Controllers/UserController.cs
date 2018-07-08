@@ -26,7 +26,7 @@ namespace Classigoo.Controllers
                 {
                     //Communication obj = new Communication();
                     // obj.SendMessage("9177098010",User.Identity.Name);
-                   // Library.SendEmail("46");
+                    //Library.SendEmailGodaddy("46");
                     return RedirectToAction("Home", "User");
                 }
 
