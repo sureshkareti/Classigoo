@@ -20,6 +20,12 @@ namespace Classigoo.Models
             {
                 sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + Constants.ErrorLogFileName, true);
                 sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
+                if(ex.InnerException != null)
+                {
+                    sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + Convert.ToString( ex.InnerException.Message));
+                }
+
+
                 sw.Flush();
                 sw.Close();
 
@@ -39,7 +45,10 @@ namespace Classigoo.Models
 
                 sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + Message);
                 sw.WriteLine(ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
-                
+                if (ex.InnerException != null)
+                {
+                    sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + Convert.ToString(ex.InnerException.Message));
+                }
                 sw.Flush();
                 sw.Close();
 
