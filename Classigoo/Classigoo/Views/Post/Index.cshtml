@@ -41,7 +41,7 @@
                                             <div class="col-md-7">
                                                 @Html.HiddenFor(model => model.AddId)
 
-                                                @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
+                                                @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", pattern = ".*[^ ].*", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
                                                 @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -306,7 +306,6 @@
 
                                         <div>
                                             <div>
-
                                                 <div class="form-group row forallcollapse" id="forAV" style="display:none">
                                                     <div class="form-group row" id="divAVPrice">
                                                         <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
@@ -394,7 +393,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div id="cvModel" class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
@@ -419,7 +417,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
@@ -458,7 +455,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div id="tvModel" class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
@@ -483,7 +479,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
@@ -519,17 +514,7 @@
                                                             @*<input type="text" id="txtAV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="price in repease" value="" required>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-3" style="text-align:right">
-                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                            @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
-                                                            <div class="help-block with-errors"></div>
-                                                        </div>
-                                                    </div>
+                                                    </div>                                                  
                                                     <div class="form-group row" id="pv-model" style="display:none">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
@@ -543,7 +528,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div id="pvModelForOtherthanCars" class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Model<span style="color:#C91414">*</span></label>
@@ -556,7 +540,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row" id="pv-year" style="display:none">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Manufacturing Year<span style="color:#C91414">*</span></label>
@@ -590,7 +573,6 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row" id="pv-kmdriven" style="display:none">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">KM Driven<span style="color:#C91414">*</span></label>
@@ -601,20 +583,19 @@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
-
-                                                </div>
-
-                                                <div class="forallcollapse" id="forProperties" style="display:none">
                                                     <div class="form-group row">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill with the price", placeholder = "Please enter price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
-                                                            @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
+                                                            @Html.TextBoxFor(model => model.txtPV_price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPV_price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
+                                                </div>
+
+                                                <div class="forallcollapse" id="forProperties" style="display:none">                                                 
                                                     <div class="form-group row" id="pro-bedrooms" style="display:none">
                                                         <div class="col-md-3" style="text-align:right">
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Bedrooms<span style="color:#C91414">*</span></label>
@@ -729,6 +710,16 @@
                                                         <div class="col-md-4">
                                                             @Html.TextBoxFor(model => model.txtAcres, new { data_error = "Please enter area in acres", placeholder = "acres", @class = "form-control col-md-7", required = "required" })
                                                             @*<input type="text" id="txtAcres" class="form-control col-md-7" data-error="Please enter area in acres" placeholder="acres" value="" required>*@
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3" style="text-align:right">
+                                                            <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            @Html.TextBoxFor(model => model.txtPro_Price, new { data_error = "please fill with the price", placeholder = "Please enter price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @*<input type="text" id="txtPro_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
                                                             <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
@@ -871,8 +862,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter phone number", pattern = @"^(\d{10})$", rows = "7", placeholder = "mobile", @class = "form-control col-md-7", required = "required" })
-                                              
-                                                 @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
+
+                                                @*<input type="text" class="form-control col-md-7" id="txtPhonenumber">*@
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -883,7 +874,7 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+                                                @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", pattern = ".*[^ ].*", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
 
                                                 @*@Html.DropDownListFor(model => model.State, new List<SelectListItem> {
                                                     new SelectListItem() { Value = "", Text = "Select" },
@@ -900,7 +891,7 @@
                                             </div>
                                             <div class="col-md-4">
 
-                                                @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+                                                @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
 
                                                 @*@Html.DropDownListFor(model => model.District, new List<SelectListItem> {
                                                     new SelectListItem() { Value = "", Text = "Select" },
@@ -919,7 +910,7 @@
                                             </div>
                                             <div class="col-md-4">
 
-                                                @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+                                                @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
 
 
 
@@ -1010,7 +1001,7 @@
             <span style="font-size: 32px;">Awesome !!</span><br />
             <span>Your Add Posted.</span><br />
             <span>Add id:<span id="spnAddId"></span></span>
-           
+
         </div>
         <div style="height:100px;width:100%;padding-top:30px;">
             <a href="~/User/Home" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">ok</a>
@@ -1025,10 +1016,10 @@
 <div id="addUpdatedAlert" style="display:none;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background-color: #ffffff;opacity: 1;z-index: 9999;opacity: 0.9;">
     <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
         <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
-            
+
             <span>Your Add of id:<span id="spnAddIdUpdated"></span></span><br />
             <span style="font-size: 26px;">Successfully updated</span><br />
-            
+
         </div>
         <div style="height:100px;width:100%;padding-top:30px;">
             <a href="~/User/Home" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">ok</a>
@@ -1125,7 +1116,7 @@
 
         }
 
-        
+
 
     });
 

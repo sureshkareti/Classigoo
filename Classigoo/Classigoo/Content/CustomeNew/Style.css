@@ -573,7 +573,7 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     font-size: 16px;
     height: 42px;
     max-width: 164px;
-    padding: 7px 16px;
+    padding: 7px 1px;
     text-align: center;
     margin-right: 0;
     float: right;
@@ -592,7 +592,7 @@ input:not([type=submit]):not([type=radio]):not([type=checkbox]):focus, select:fo
     font-size: 16px;
     height: 42px;
     max-width: 164px;
-    padding: 7px 16px;
+    padding: 7px 1px;
     text-align: center;
     margin-right: 0;
     float: right;

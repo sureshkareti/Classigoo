@@ -1335,11 +1335,11 @@ window.loadStates = function () {
 
 function getDistricts() {
 
-    var selectedState = $("#State").val();
+    var selectedState = $.trim( $("#State").val());
     $("#District").val("");
     if (selectedState !== "") {
 
-
+        $("#user-district").css("display", "block");
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
 
         var locations = new Array();
@@ -1396,7 +1396,7 @@ function getDistricts() {
             $(this).data("uiAutocomplete").search('e');
         });
 
-        $("#user-district").css("display", "block");
+        
 
     }
     else {
@@ -1423,11 +1423,11 @@ function getDistricts() {
 function getMandal() {
 
 
-    var selectedDistric = $("#District").val();
+    var selectedDistric = $.trim( $("#District").val());
     $("#Mandal").val("");
     if (selectedDistric !== "") {
 
-
+        $("#user-mandal").css("display", "block");
         //var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == selectedSubCategory);   
 
         var locations = new Array();
@@ -1489,7 +1489,7 @@ function getMandal() {
             $(this).data("uiAutocomplete").search('e');
         });
 
-        $("#user-mandal").css("display", "block");
+       
 
     }
     else {
@@ -1544,7 +1544,7 @@ function testFunction() {
     var selectedSubCategory = $("#hdnCateSecondLevel").val();
 
 
-    if ($("#txtTitle").val() !== "") {
+    if ($.trim($("#txtTitle").val()) !== "") {
         if (selectedCategory === "" || selectedSubCategory === "") {
 
             $("#divCategories").css("border", "1px solid #a94442");
@@ -1562,14 +1562,25 @@ function testFunction() {
 
             $(window).scrollTop($('#scrolltoCat').offset().top);
 
-            alert("test");
-            return;
+            
+            return false;
 
         }
     }
 
+    if ($.trim($("#txtTitle").val()) !== "") {
 
-    if ($("#txtAddDetails").val() !== "") {
+        if ($.trim($("#txtAV_Price").val()) !== "" || $.trim($("#txtCV_Price").val()) !== "" || $.trim($("#txtTV_Price").val()) !== "" || $.trim($("#txtPro_Price").val()) !== "" || $.trim($("#txtPV_price").val()) !== "") {
+            if ($.trim($("#txtAddDetails").val()) === "") {
+                $("#txtAddDetails").prop('required', true);
+                $("#txtAddDetails").focus();
+                return false;
+            }
+        }
+    }
+    
+
+    if ($.trim($("#txtAddDetails").val()) !== "") {
 
         var firstImgvalue = $("#imgFucFirst").attr('src');
 
@@ -1588,9 +1599,13 @@ function testFunction() {
 
     inputElements.each(function () {
         if ($(this).attr("id") !== "LocalArea") {
-            if ($(this).val() === "") {
+            if ($.trim($(this).val()) === "") {
+
+                $("input").prop('required', true);
                 isValid = "false";
                 $(this).focus();
+
+                return false;
             }
         }
 
@@ -1599,9 +1614,13 @@ function testFunction() {
     var selectElements = $('select:not(:hidden)');
 
     selectElements.each(function () {
-        if ($(this).val() === "") {
+        if ($.trim($(this).val()) === "") {
                   
+            $("select").prop('required', true);
             isValid = "false";
+            $(this).focus();
+
+            return false;
           
         }
 

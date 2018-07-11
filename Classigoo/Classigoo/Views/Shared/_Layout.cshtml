@@ -181,19 +181,25 @@
                 right: 10px;
             }
 
-            .paddingContent{
-                /*padding-top:80px;*/
-            }
-            .logosize{
-                height:50px;
-            }
+        .paddingContent {
+            /*padding-top:80px;*/
+        }
+
+        .logosize {
+            height: 50px;
+        }
 
         @@media screen and (max-width: 991px) {
-             .paddingContent{
+            .paddingContent {
                 /*padding-top:160px;*/
             }
-              .logosize{
-                height:50px;
+
+            .logosize {
+                height: 50px;
+            }
+
+            .login-nav ul.nav li.dropdown:hover > ul.dropdown-menu {
+                display: block;
             }
         }
     </style>
@@ -326,10 +332,10 @@
             </div>
 
         </header>
-        
+
         <section class="body-wrapper">
             <!--position:relative; for freeze for following div-->
-            <div class="paddingContent" >
+            <div class="paddingContent">
                 @RenderBody()
             </div>
         </section>
@@ -368,10 +374,10 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-2 col-sm-6" >
+                        <div class="col-md-2 col-sm-6">
                             <h3>REACH US</h3>
-                            <div class="address" >Mayfair # 305, SP Road, Police Lines, Hyderabad </div>
-                            <div class="info" ><i class="fa fa-phone" aria-hidden="true"></i> <a href="#.">(960) 369 9900</a></div>
+                            <div class="address">Mayfair # 305, SP Road, Police Lines, Hyderabad </div>
+                            <div class="info"><i class="fa fa-phone" aria-hidden="true"></i> <a href="#.">(960) 369 9900</a></div>
                             @*<div class="info" ><i class="fa fa-fax" aria-hidden="true"></i> <a href="#.">(123) 456 7890</a></div>*@
                         </div>
                     </div>

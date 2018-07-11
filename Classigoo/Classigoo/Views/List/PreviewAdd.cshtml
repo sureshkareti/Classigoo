@@ -6,7 +6,7 @@
 <div>
     @*<div class="breadcrumb-block">
 
-    </div>*@
+        </div>*@
     <div class="add-listing-wrap">
         <div class="container">
             <div class="add-listing-tost-block" style="max-width:970px !important;margin:auto;">
@@ -125,19 +125,39 @@
 
                 </div>
 
-                <div class="row mt40">
+                <div class="row mt20">
 
                     <!-- Left Image-->
                     <div class="col-md-12 col-xs-12 col-sm-12">
-                        <div class="mt40" id="serchlist">
-                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt40column">
-                                <div class="clearfix">
+                        <div class="mt20" id="serchlist">
+                            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 mt20column">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-4 col-xs-12 col-sm-12" style="padding-left:0;padding-right:0;text-align:center">
+                                            <span style="font-size:18px;color:#f70;font-weight:bold">contact : </span><span style="font-size:28px;color:#f70;font-weight:bold">9603699900</span>
+                                        </div>
+                                        <div class="col-md-1 col-xs-12 col-sm-12" style="text-align:center">
+                                            <span style="padding:0 15px 0 15px;">or</span>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
+                                            <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
+                                            <a id="loginToChat" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">login to chat</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 pull-left" style="display:none">
+                                        <a class="pull-left btn btn-orange btn-lg">Contact : 9603699900</a> or
+                                        <div>
+                                            <a id="chatWithUser" class="pull-right btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
+                                            <a id="loginToChat" class="pull-right btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">login to chat</a>
+                                        </div>
+                                    </div>
                                    
-                                    <div class="price pull-right"><a id="chatWithUser" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a></div>
-                                    
-                                     <div class="price pull-right"><a id="loginToChat" class="pull-left btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">login to chat</a></div>
-                                    
-                                    <a class="pull-left btn btn-orange btn-lg">Contact : 9603699900</a>
+                                </div>
+
+                                <div class="clearfix">
+
                                 </div>
 
                                 <br />
@@ -151,11 +171,14 @@
                                                 <textarea rows="3" style="width:100%" name="usermessage" class="span3" required></textarea>
                                             </div>
                                         </div>
-                                        <input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;
+                                        <input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel" style="margin-left:3px;">
                                         <input type="submit" class="btn btn-orange pull-right" value="send">
                                     </div>
                                 }
 
+                                <div class="clearfix">
+
+                                </div>
                                 <!-- Product Description tab & comments-->
                                 <div class="productdesc">
                                     <ul class="nav nav-tabs" id="myTab">
@@ -173,7 +196,7 @@
                                             <ul class="productinfo">
                                                 @if (@Model.Category == Constants.ConstructionVehicle)
                                                 {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                 }
 
                                             </ul>
@@ -183,7 +206,7 @@
                                             <ul class="productinfo">
                                                 @if (@Model.Category == Constants.TransportationVehicle)
                                                 {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                 }
                                             </ul>
 
@@ -192,7 +215,7 @@
                                             <ul class="productinfo">
                                                 @if (@Model.Category == Constants.AgriculturalVehicle)
                                                 {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
                                                 }
                                             </ul>
                                         </div>
@@ -200,12 +223,12 @@
                                             <ul class="productinfo">
                                                 @if (@Model.RE != null)
                                                 {
-                                                <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
-                                                <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
-                                                <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
-                                                <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
-                                                <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
-                                                <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
+                                                    <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
+                                                    <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
+                                                    <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
+                                                    <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
+                                                    <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
+                                                    <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
                                                 }
                                             </ul>
                                         </div>
@@ -213,11 +236,11 @@
                                             <ul class="productinfo">
                                                 @if (@Model.PV != null)
                                                 {
-                                                <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
-                                                <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
-                                                <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
-                                                <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
-                                                <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
+                                                    <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
+                                                    <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
+                                                    <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
+                                                    <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
                                                 }
                                             </ul>
                                         </div>
@@ -282,8 +305,8 @@
     @*<script src="~/Scripts/bootstrap.min.js"></script>**@
     <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
 }
 <script type="text/javascript">
 
@@ -291,8 +314,8 @@
     $(document).ready(function () {
 
         var isUserLoggedIn = '@User.Identity.IsAuthenticated';
-        var isOwner='@ViewBag.IsOwner';
-        if (isOwner=='False') {
+        var isOwner = '@ViewBag.IsOwner';
+        if (isOwner == 'False') {
             if (isUserLoggedIn == 'True') {
 
                 $("#chatWithUser").css("display", "block");
