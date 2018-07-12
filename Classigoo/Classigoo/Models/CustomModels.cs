@@ -204,7 +204,7 @@ namespace Classigoo
 
 
 
-        public const int NoOfAddsPerPage = 6;
+        public const int NoOfAddsPerPage = 30;
 
         public static string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
 

@@ -252,22 +252,6 @@ $("#clearfilter").click(function () {
 });
 $("#divFilter select").change(function () {
     var filterObj = {};
-    var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
-    var priceTo = $('[id="priceTo"]').filter(':visible').val();
-    if (priceFrom == "Price From") {
-        priceFrom = 0;
-    }
-    else {
-        priceFrom = priceFrom.substring(1, priceFrom.length);
-        priceFrom = priceFrom.replace(/,/g, '');
-    }
-    if (priceTo == "Price To") {
-        priceTo = 0;
-    }
-    else {
-        priceTo = priceTo.substring(1, priceTo.length);
-        priceTo = priceTo.replace(/,/g, '');
-    }
     if (category == "Real Estate") {
         var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
         var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
@@ -278,57 +262,22 @@ $("#divFilter select").change(function () {
             squareFeetsTo = 0;
         }
         var bedRooms = $("#bedRooms").val();
-        //if (bedRooms=="4+")
-        //{
-        //    bedRooms = 5;
-        //}
-    }
-    else if (category == "Passenger Vehicles") {
-        //Travel Vans Autos
-        var pvSubCategory = $("#pvSubCategory").val();
-        if (pvSubCategory == "Travel Vans" || pvSubCategory == "Autos") {
-            $("#pvCbFilters").hide();
-            yearFrom = 0;
-            yearTo = 0;
-            kmFrom = 0;
-            kmTo = 0;
+        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
+        var priceTo = $('[id="priceTo"]').filter(':visible').val();
+        if (priceFrom == "Price From") {
+            priceFrom = 0;
         }
         else {
-            $("#pvCbFilters").show();
-            if (pvSubCategory == "Bikes") {
-                $("#divFuelType").hide();
-            }
-            else {
-                $("#divFuelType").show();
-            }
-            var yearFrom = $("#yearFrom").val();
-            var yearTo = $("#yearTo").val();
-            var kmFrom = $("#kmFrom").val();
-            var kmTo = $("#kmTo").val();
-            if (yearFrom == "Year From") {
-                yearFrom = 0;
-            }
-            if (yearTo == "Year To") {
-                yearTo = 0;
-            }
-            if (kmFrom == "KM Driven") {
-                kmFrom = 0;
-            }
-            else {
-                kmFrom = kmFrom.replace(/,/g, '');
-                kmFrom = kmFrom.replace(" km", '');
-            }
-            if (kmTo == "KM Driven") {
-                kmTo = 0;
-            }
-            else {
-                kmTo = kmTo.replace(/,/g, '');
-                kmTo = kmTo.replace(" km", '');
-            }
+            priceFrom = priceFrom.substring(1, priceFrom.length);
+            priceFrom = priceFrom.replace(/,/g, '');
         }
-
-
-
+        if (priceTo == "Price To") {
+            priceTo = 0;
+        }
+        else {
+            priceTo = priceTo.substring(1, priceTo.length);
+            priceTo = priceTo.replace(/,/g, '');
+        }
     }
     switch (category) {
         case "Real Estate":
@@ -346,22 +295,12 @@ $("#divFilter select").change(function () {
         case "Construction Vehicles":
         case "Transportation Vehicles":
         case "Agricultural Vehicles":
-            filterObj.priceFrom = priceFrom;
-            filterObj.priceTo = priceTo;
             filterObj.subCategory = $("#allvSubCategory").val();
             filterObj.company = $("#allvCompany").val();
             break;
         case "Passenger Vehicles":
-            filterObj.subCategory = pvSubCategory;
+            filterObj.subCategory = $("#pvSubCategory").val();
             filterObj.company = $("#pvCompany").val();
-            filterObj.priceFrom = priceFrom;
-            filterObj.priceTo = priceTo;
-            filterObj.yearFrom = yearFrom;
-            filterObj.yearTo = yearTo;
-            filterObj.kmFrom = kmFrom;
-            filterObj.kmTo = kmTo;
-            filterObj.model = $("#model").val();
-            filterObj.fuelType = $("#fuelType").val();
             break;
     }
     filterAdds(filterObj, 1, false);

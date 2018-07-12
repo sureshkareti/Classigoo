@@ -367,16 +367,16 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                    int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                    int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                  //  int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
 
                     totalRowCount = (from AV in db.AgriculturalVehicles
                                      join add in db.Adds on AV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? AV.SubCategory == subCategory : true) &&
                     (company != "All" ? AV.Company == company : true) &&
-                     (priceFrom != 0 ? AV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? AV.Price <= priceTo : true) &&
+                     //(priceFrom != 0 ? AV.Price >= priceFrom : true) &&
+                     //(priceTo != 0 ? AV.Price <= priceTo : true) &&
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
                                       (location != "" ? add.Mandal == location : true)) &&
@@ -390,8 +390,8 @@ namespace Classigoo.Controllers
                               where
              (subCategory != "All" ? AV.SubCategory == subCategory : true) &&
             (company != "All" ? AV.Company == company : true) &&
-           (priceFrom != 0 ? AV.Price >= priceFrom : true) &&
-             (priceTo != 0 ? AV.Price <= priceTo : true) &&
+           //(priceFrom != 0 ? AV.Price >= priceFrom : true) &&
+           //  (priceTo != 0 ? AV.Price <= priceTo : true) &&
 
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
@@ -475,16 +475,16 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                    int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                    int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                   // int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
 
                     totalRowCount = (from CV in db.ConstructionVehicles
                                      join add in db.Adds on CV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? CV.SubCategory == subCategory : true) &&
                     (company != "All" ? CV.Company == company : true) &&
-                     (priceFrom != 0 ? CV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? CV.Price <= priceTo : true) &&
+                   //  (priceFrom != 0 ? CV.Price >= priceFrom : true) &&
+                   //  (priceTo != 0 ? CV.Price <= priceTo : true) &&
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
                                       (location != "" ? add.Mandal == location : true)) &&
@@ -498,8 +498,8 @@ namespace Classigoo.Controllers
                               where
              (subCategory != "All" ? CV.SubCategory == subCategory : true) &&
             (company != "All" ? CV.Company == company : true) &&
-            (priceFrom != 0 ? CV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? CV.Price <= priceTo : true) &&
+            //(priceFrom != 0 ? CV.Price >= priceFrom : true) &&
+               //      (priceTo != 0 ? CV.Price <= priceTo : true) &&
 
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
@@ -584,16 +584,16 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                    int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                    int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                   // int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
 
                     totalRowCount = (from TV in db.TransportationVehicles
                                      join add in db.Adds on TV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? TV.SubCategory == subCategory : true) &&
                     (company != "All" ? TV.Company == company : true) &&
-                    (priceFrom != 0 ? TV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? TV.Price <= priceTo : true) &&
+                  //  (priceFrom != 0 ? TV.Price >= priceFrom : true) &&
+                  //   (priceTo != 0 ? TV.Price <= priceTo : true) &&
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
                                       (location != "" ? add.Mandal == location : true)) &&
@@ -607,8 +607,8 @@ namespace Classigoo.Controllers
                               where
              (subCategory != "All" ? TV.SubCategory == subCategory : true) &&
             (company != "All" ? TV.Company == company : true) &&
-            (priceFrom != 0 ? TV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? TV.Price <= priceTo : true) &&
+            //(priceFrom != 0 ? TV.Price >= priceFrom : true) &&
+                //     (priceTo != 0 ? TV.Price <= priceTo : true) &&
 
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
@@ -692,28 +692,28 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                    int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                    int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
-                    int yearFrom = Convert.ToInt32(filterOptions["yearFrom"]);
-                    int yearTo = Convert.ToInt32(filterOptions["yearTo"]);
-                    int kmFrom = Convert.ToInt32(filterOptions["kmFrom"]);
-                    int kmTo = Convert.ToInt32(filterOptions["kmTo"]);
-                    string model = filterOptions["model"].ToString();
-                    string fuelType = filterOptions["fuelType"].ToString();
+                    //int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                    //int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                    //int yearFrom = Convert.ToInt32(filterOptions["yearFrom"]);
+                    //int yearTo = Convert.ToInt32(filterOptions["yearTo"]);
+                    //int kmFrom = Convert.ToInt32(filterOptions["kmFrom"]);
+                    //int kmTo = Convert.ToInt32(filterOptions["kmTo"]);
+                    //string model = filterOptions["model"].ToString();
+                    //string fuelType = filterOptions["fuelType"].ToString();
 
                     totalRowCount = (from PV in db.PassengerVehicles
                                      join add in db.Adds on PV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? PV.SubCategory == subCategory : true) &&
                     (company != "All" ? PV.Company == company : true) &&
-                     (priceFrom != 0 ? PV.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? PV.Price <= priceTo : true) &&
-                     (yearFrom != 0 ? PV.Year >= yearFrom : true) &&
-                     (yearTo != 0 ? PV.Year <= yearTo : true) &&
-                     (kmFrom != 0 ? PV.KMDriven >= kmFrom : true) &&
-                     (kmTo != 0 ? PV.KMDriven <= kmTo : true) &&
-                     (model != "All" ? PV.Model == model : true) &&
-                     (fuelType != "All" ? PV.FuelType == fuelType : true) &&
+                    // (priceFrom != 0 ? PV.Price >= priceFrom : true) &&
+                     //(priceTo != 0 ? PV.Price <= priceTo : true) &&
+                     //(yearFrom != 0 ? PV.Year >= yearFrom : true) &&
+                     //(yearTo != 0 ? PV.Year <= yearTo : true) &&
+                     //(kmFrom != 0 ? PV.KMDriven >= kmFrom : true) &&
+                     //(kmTo != 0 ? PV.KMDriven <= kmTo : true) &&
+                     //(model != "All" ? PV.Model == model : true) &&
+                     //(fuelType != "All" ? PV.FuelType == fuelType : true) &&
 
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
@@ -728,14 +728,14 @@ namespace Classigoo.Controllers
                               where
             (subCategory != "All" ? PV.SubCategory == subCategory : true) &&
             (company != "All" ? PV.Company == company : true) &&
-             (priceFrom != 0 ? PV.Price >= priceFrom : true) &&
-             (priceTo != 0 ? PV.Price <= priceTo : true) &&
-             (yearFrom != 0 ? PV.Year >= yearFrom : true) &&
-             (yearTo != 0 ? PV.Year <= yearTo : true) &&
-             (kmFrom != 0 ? PV.KMDriven >= kmFrom : true) &&
-             (kmTo != 0 ? PV.KMDriven <= kmTo : true) &&
-             (model != "All" ? PV.Model == model : true) &&
-              (fuelType != "All" ? PV.FuelType == fuelType : true) &&
+            // (priceFrom != 0 ? PV.Price >= priceFrom : true) &&
+             //(priceTo != 0 ? PV.Price <= priceTo : true) &&
+             //(yearFrom != 0 ? PV.Year >= yearFrom : true) &&
+             //(yearTo != 0 ? PV.Year <= yearTo : true) &&
+             //(kmFrom != 0 ? PV.KMDriven >= kmFrom : true) &&
+             //(kmTo != 0 ? PV.KMDriven <= kmTo : true) &&
+             //(model != "All" ? PV.Model == model : true) &&
+              //(fuelType != "All" ? PV.FuelType == fuelType : true) &&
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
                              (location != "" ? add.Mandal == location : true)) &&
@@ -797,13 +797,14 @@ namespace Classigoo.Controllers
                 {
                     Library.WriteLog("Ar Fiter PV without filter options",ex);
                 }
-                addColl.Adds = pvColl;
-                addColl.AddsGrid = GetGridAdds(pvColl);
-                double pageCount = (double)((decimal)totalRowCount / Convert.ToDecimal(maxRows));
-                addColl.PageCount = (int)Math.Ceiling(pageCount);
-
-                addColl.CurrentPageIndex = currentPage; 
+               
             }
+            addColl.Adds = pvColl;
+            addColl.AddsGrid = GetGridAdds(pvColl);
+            double pageCount = (double)((decimal)totalRowCount / Convert.ToDecimal(maxRows));
+            addColl.PageCount = (int)Math.Ceiling(pageCount);
+
+            addColl.CurrentPageIndex = currentPage;
             return addColl;
         }
         public AddsModel FilterCategoryNotSelect(string location, string keyword, string type, int pageNum)
