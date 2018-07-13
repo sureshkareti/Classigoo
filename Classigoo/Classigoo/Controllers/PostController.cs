@@ -18,7 +18,13 @@ namespace Classigoo.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-             
+
+            //var convertedValue = Convert.ToDouble("0.0");
+
+            //Library.SendEmailFromGodaddy();
+            //Library.EmailErrors("Test Message");
+
+
             PostAdd objPost = new PostAdd();
             Guid userId = Guid.Empty;
             UserDBOperations userObj = new UserDBOperations();

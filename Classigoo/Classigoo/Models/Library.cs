@@ -20,9 +20,9 @@ namespace Classigoo.Models
             {
                 sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + Constants.ErrorLogFileName, true);
                 sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + ex.Message.ToString().Trim());
-                if(ex.InnerException != null)
+                if (ex.InnerException != null)
                 {
-                    sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + Convert.ToString( ex.InnerException.Message));
+                    sw.WriteLine(CustomActions.GetCurrentISTTime().ToString() + " : " + ex.Source.ToString().Trim() + " ; " + Convert.ToString(ex.InnerException.Message));
                 }
 
 
@@ -92,9 +92,9 @@ namespace Classigoo.Models
 
                 // string fromAddress = ConfigurationManager.AppSettings["FromAddress"];smtp.gmail.com
                 string fromAddress = "classigoo2018@gmail.com";
-              //string fromAddressPassword = ConfigurationManager.AppSettings["frmAddressPassword"];
+                //string fromAddressPassword = ConfigurationManager.AppSettings["frmAddressPassword"];
                 string fromAddressPassword = "19052018";
-              //  string toAddress = ConfigurationManager.AppSettings["ToAddress"];
+                //  string toAddress = ConfigurationManager.AppSettings["ToAddress"];
                 string toAddress = "classigoo2018@gmail.com";
                 // string smtpServer = ConfigurationManager.AppSettings["SmtpServer"];
                 string smtpServer = "smtp.gmail.com";
@@ -143,8 +143,8 @@ namespace Classigoo.Models
                 message.To.Add(new MailAddress(toAddress));
                 message.Subject = subject;
                 message.IsBodyHtml = true;
-                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId="+addId+"";
-               // addUrl = "< a href =\"" + addUrl + "\">" + "here" + "</a>";
+                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + addId + "";
+                // addUrl = "< a href =\"" + addUrl + "\">" + "here" + "</a>";
                 // string Body= "<html><body> <span> Hello Admin,</span></br><span> New Ad was published AdId: "+addId+"</span></br><span>Preview Add: "+addUrl+"</ body ></ html > ";
                 // message.Body = Body;
                 var body = new StringBuilder();
@@ -152,9 +152,9 @@ namespace Classigoo.Models
                 body.AppendLine();
                 body.AppendLine("New Ad was published.");
                 body.AppendLine();
-                body.AppendLine("AdId: "+addId+"");
+                body.AppendLine("AdId: " + addId + "");
                 body.AppendLine();
-                body.AppendLine("Preview Add: <a href=\""+ addUrl + "\">"+addUrl+"</a>");
+                body.AppendLine("Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
                 body.AppendLine();
                 message.Body = body.ToString();
 
@@ -199,7 +199,7 @@ namespace Classigoo.Models
                 body.AppendLine("Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
                 body.AppendLine();
                 msg.Body = body.ToString();
-               // msg.Body = txtName.Text + "n" + txtEmail.Text + "n" + txtMessage.Text;
+                // msg.Body = txtName.Text + "n" + txtEmail.Text + "n" + txtMessage.Text;
 
                 //Configure an SmtpClient to send the mail.            
                 SmtpClient client = new SmtpClient();
@@ -226,6 +226,36 @@ namespace Classigoo.Models
                 // lblResult.Text = ex.ToString();
                 //"Your message failed to send, please try again."
             }
+        }
+
+        public static void SendEmailFromGodaddy()
+        {
+            //MailMessage message = new MailMessage();
+            //message.From = new MailAddress("classigoo2018@gmail.com");
+
+            //message.To.Add(new MailAddress("classigoo2018@gmail.com"));
+
+            //message.Subject = "your subject";
+            //message.Body = "content of your email";
+
+            //SmtpClient client = new SmtpClient();
+            //client.Send(message);
+
+            MailMessage msgs = new MailMessage();
+            msgs.To.Add(new MailAddress("classigoo2018@gmail.com"));
+            MailAddress address = new MailAddress("abc@domain.com");
+            msgs.From = new MailAddress("classigoo2018@gmail.com");
+            msgs.Subject = "Contact";
+            msgs.Sender = new MailAddress("classigoo2018@gmail.com");
+            msgs.Body = "content of your email";
+            msgs.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.Host = "relay-hosting.secureserver.net";
+            client.Port = 25;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("classigoo2018@gmail.com", "19052018");
+            //Send the msgs  
+            client.Send(msgs);
         }
     }
 }
