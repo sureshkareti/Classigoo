@@ -119,10 +119,10 @@ namespace Classigoo.Controllers
                         objLoginWithOtp.PhoneNumber = user.MobileNumber;
                         objLoginWithOtp.VerifyType = Constants.VerifyOTPFrmRegistration;
                         TempData["UserToAdd"] = user;
-                        if(!string.IsNullOrEmpty(ReturnUrl))
-                        {
+                       // if(!string.IsNullOrEmpty(ReturnUrl))
+                        //{
                             TempData["ReturnUrl"] = ReturnUrl;
-                        }
+                        //}
                         return View("VerifyOTP", objLoginWithOtp);
                     }
                     else

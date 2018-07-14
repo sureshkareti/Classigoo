@@ -402,7 +402,7 @@ namespace Classigoo.Controllers
                 }
                 #region successmsg
                 string homePageUrl = Constants.DomainName + "/User/Home";
-                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + addId + "";
+                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + postId + "";
                 var message = new StringBuilder();
                 message.AppendLine("Congracts," + postAdd.Name + "!");
                 message.AppendLine("Your Ad published successfully. ");
@@ -413,7 +413,7 @@ namespace Classigoo.Controllers
                 body.AppendLine();
                 body.AppendLine("New Ad was published.");
                 body.AppendLine();
-                body.AppendLine("AdId: " + addId + "");
+                body.AppendLine("AdId: " + postId + "");
                 body.AppendLine();
                 body.AppendLine("Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
                 body.AppendLine();
