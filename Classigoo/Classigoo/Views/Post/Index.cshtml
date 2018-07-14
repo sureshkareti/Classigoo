@@ -422,7 +422,7 @@
                                                             <label for="listing_name" class="input-lg" style="font-weight:100">Price<span style="color:#C91414">*</span></label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^\d+.\d{0,2}$", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
+                                                            @Html.TextBoxFor(model => model.txtCV_Price, new { data_error = "please fill with the price", placeholder = "price in rupees", pattern = @"^[1-9]\d*$", @minLength = "2", @maxLength = "8", @class = "form-control col-md-7", required = "required" })
 
                                                             @*<input type="text" id="txtCV_Price" class="form-control col-md-7" data-error="please fill the with price" placeholder="Please enter price in repease" value="" required>*@
 
