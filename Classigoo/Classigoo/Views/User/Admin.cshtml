@@ -53,7 +53,8 @@
 
                                 <th>Action</th>
                                 <th>Delete</th>
-                               
+                                <th >User Name</th>
+                                <th>Mobile No</th>  
                             </tr>
                         </thead>
                         <tbody>
@@ -83,13 +84,13 @@
                                     </td>
                                     
                                     <td>
-                                        <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
-                                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                        <span> <label id="lblSurName">@item.Status</label></span>
+                                       
                                     </td>
-                                    <td>
+                                    <td >
                                        @item.UserName
                                     </td>
-                                    <td>
+                                    <td >
                                        @item.PhoneNum
                                     </td>
                                     
@@ -122,7 +123,12 @@
                                     <td>
                                         @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
                                     </td>
-                                   
+                                    <td  >
+                                      <span id="userName" class="UserInfo" >@item.UserName</span>  
+                                    </td>
+                                    <td  >
+                                      <span id="userPhoneNum"  class="UserInfo" >@item.PhoneNum</span> 
+                                    </td>
                                 </tr>
 
                             }
@@ -179,9 +185,12 @@
         var status = editElemts.ddlStatus.value;
         var remarks = editElemts.txtRemarks.value
         var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
+        var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
+        var userName = userElemts.userName.innerText;
+        var userPhoneNum = userElemts.userPhoneNum.innerText;
         $.ajax({
             url: '/User/UpdateAddStatus/',
-            data: { addId: addId, status: status, remarks: remarks },
+            data: { addId: addId, status: status, remarks: remarks, userName: userName, userPhoneNum: userPhoneNum },
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             success: function (data) {

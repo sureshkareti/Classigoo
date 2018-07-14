@@ -209,7 +209,7 @@ namespace Classigoo
         public static string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
 
         public static string ErrorLogFileName = "ErrorLog.txt";
-
+        public const string AdminPhoneNum = "9603699900";
     }
 
 

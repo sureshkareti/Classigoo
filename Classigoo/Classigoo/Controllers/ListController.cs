@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -1041,7 +1042,9 @@ namespace Classigoo.Controllers
             try
             {
                 MessageDBOperations msgDbObj = new MessageDBOperations();
-                Guid toUserId = (Guid)msgDbObj.GetAddOwnerUserId(Convert.ToInt32(AddId));
+                CommonDBOperations commonDbObj = new CommonDBOperations();
+                UserDBOperations userDbObj = new UserDBOperations();
+                Add add =commonDbObj.GetAdd(AddId);
                 UserController useCntObj = new UserController();
                 useCntObj.ControllerContext = new ControllerContext(this.Request.RequestContext, useCntObj);
                 Guid frmUserId = useCntObj.GetUserId();
@@ -1049,10 +1052,38 @@ namespace Classigoo.Controllers
                 msg.AdId = Convert.ToInt32(AddId);
                 msg.CreatedOn = CustomActions.GetCurrentISTTime();
                 msg.FromUserId = frmUserId;
-                msg.ToUserId = toUserId;
+                msg.ToUserId = (Guid)add.UserId;
                 msg.RequestorUserId = frmUserId;
                 msg.Message1 = usermessage;
-                status = msgDbObj.AddChat(msg);         
+                status = msgDbObj.AddChat(msg);   
+                if(status)
+                {
+                    string addTitle = add.Title;
+                    User frmUserInfo = userDbObj.GetUser(frmUserId);
+                    User toUserInfo = userDbObj.GetUser((Guid)add.UserId);
+                    //send msg to user and mail to admin
+                    #region successmsg
+                    string homePageUrl = Constants.DomainName + "/User/Home";
+                    string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + AddId + "";
+                    var message = new StringBuilder();
+                    message.AppendLine(frmUserInfo.Name +" has sent you a chat message ");
+                    message.AppendLine("\""+usermessage +"\" for ad \""+ addTitle+"\"");
+                    message.AppendLine(" Respond now " + homePageUrl);
+                    Communication objComm = new Communication();
+                    objComm.SendMessage(toUserInfo.MobileNumber, message.ToString());
+                    var body = new StringBuilder();
+                    body.AppendLine("Hello Admin,");
+                    body.AppendLine("Messages exchanged for ad " +addTitle);
+                    body.AppendLine(" Message: " + usermessage);
+                    body.AppendLine(" Ad Id " + AddId);
+                    body.AppendLine(" Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
+                    body.AppendLine(" From UserName: "+frmUserInfo.Name);
+                    body.AppendLine(" From PhoneNumber: " + frmUserInfo.MobileNumber);
+                    body.AppendLine(" To UserName: " + toUserInfo.Name);
+                    body.AppendLine(" To PhoneNumber: " + toUserInfo.MobileNumber);
+                    Library.SendEmailFromGodaddy("Messages Exchanged for ad " + addTitle, body.ToString());
+                    #endregion
+                }
             }
             catch(Exception ex)
             {

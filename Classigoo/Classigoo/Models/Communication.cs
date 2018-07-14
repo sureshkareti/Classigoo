@@ -116,19 +116,19 @@ namespace Classigoo.Models
             return _rdm.Next(_min, _max);
         }
 
-        public void SendMessage(string phoneNumber,string userName)
+        public void SendMessage(string phoneNumber,string message)
         {
             try
             {
                 string authKey = "222262AHv0m83QXj5b2fa36c";
                 string mobileNumber = "91" + phoneNumber;
                 string senderId = "MSGCLG";
-                string homePageUrl = Constants.DomainName + "/User/Home";
-                var message = new StringBuilder();
-                message.AppendLine("Congracts," + userName+"!");
-                message.AppendLine("Your Ad published successfully. ");
-                message.AppendLine("View and manage adds here: ");
-                message.AppendLine(homePageUrl);
+                //string homePageUrl = Constants.DomainName + "/User/Home";
+               // var message = new StringBuilder();
+                //message.AppendLine("Congracts," + userName+"!");
+                //message.AppendLine("Your Ad published successfully. ");
+                //message.AppendLine("View and manage adds here: ");
+                //message.AppendLine(homePageUrl);
              
                 var client = new RestSharp.RestClient("http://control.msg91.com/api/sendhttp.php");
                 var request = new RestSharp.RestRequest(RestSharp.Method.POST);
