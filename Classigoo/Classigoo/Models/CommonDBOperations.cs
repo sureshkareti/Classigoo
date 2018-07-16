@@ -154,5 +154,27 @@ namespace Classigoo.Models
             return null;
 
         }
+
+        public List<Add> GetSimilarAdds(string category,string subCategory,string type)
+        {
+            List<Add> addColl = new List<Add>();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    addColl = db.Adds.Where(add => add.SubCategory.ToLower() == subCategory.ToLower())
+                        .Where(add=>add.Category.ToLower()==category.ToLower())
+                        .Where(add=>add.Type.ToLower()==type.ToLower())
+                        .Where(add=>add.Status==Constants.ActiveSatus)
+                        .OrderByDescending(add => add.Created)
+                                   .Take(4).ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At getting similar adds", ex);
+            }
+            return addColl;
+        }
     }
 }

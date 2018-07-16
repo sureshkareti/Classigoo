@@ -16,6 +16,11 @@ namespace Classigoo
 
         public int PageCount { get; set; }
     }
+    public class PreviewAdd
+    {
+        public CustomAdd Add { set; get; }
+        public List<List<CustomAdd>> SimilarAddColl { set; get; }
+    }
     public class CustomAdd
     {
         public int AddId { get; set; }
@@ -31,6 +36,8 @@ namespace Classigoo
         public string ImgUrlThird { get; set; }
         public string ImgUrlFourth { get; set; }
         public string Company { get; set; }
+        public string Model { get; set; }
+        public string ManufacturingYear { get; set; }
         public RealEstate RE { set; get; }
         public PassengerVehicle PV { set; get; }
     }

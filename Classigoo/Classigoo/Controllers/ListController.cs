@@ -921,6 +921,8 @@ namespace Classigoo.Controllers
         {
          
             CustomAdd customAdd = new CustomAdd();
+            List<CustomAdd> similarAddColl = new List<CustomAdd>();
+            PreviewAdd previewAdd = new PreviewAdd();
             try
             {
                 CommonDBOperations db = new CommonDBOperations();
@@ -971,6 +973,8 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = tv.ImgUrlThird;
                         customAdd.ImgUrlFourth = tv.ImgUrlFourth;
                         customAdd.Company = tv.Company;
+                        customAdd.Model = tv.Model;
+                        customAdd.ManufacturingYear = tv.ManufacturingYear;
                     }
                 }
                 #endregion
@@ -988,6 +992,8 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = cv.ImgUrlThird;
                         customAdd.ImgUrlFourth = cv.ImgUrlFourth;
                         customAdd.Company = cv.Company;
+                        customAdd.Model = cv.Model;
+                        customAdd.ManufacturingYear = cv.ManufacturingYear;
                     }
                 }
                 #endregion
@@ -1005,6 +1011,9 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = av.ImgUrlThird;
                         customAdd.ImgUrlFourth = av.ImgUrlFourth;
                         customAdd.Company = av.Company;
+                        customAdd.Model = av.Model;
+                        customAdd.ManufacturingYear = av.ManufacturingYear;
+
                     }
                   
                 }
@@ -1023,16 +1032,30 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlSeconday = pv.ImgUrlSeconday;
                         customAdd.ImgUrlThird = pv.ImgUrlThird;
                         customAdd.ImgUrlFourth = pv.ImgUrlFourth;
+                        
                     }
                    
                 }
                 #endregion
+
+                List<Add> addColl = db.GetSimilarAdds(add.Category,add.SubCategory,add.Type);
+  
+                foreach(Add similarAdd in addColl)
+                {
+                    if (similarAdd.AddId != add.AddId)
+                    {
+                        similarAddColl.Add(CheckCategory(similarAdd));
+                    }
+                   
+                }
+                previewAdd.Add = customAdd;
+                previewAdd.SimilarAddColl = GetGridAdds(similarAddColl);
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At Preview add addid- " + addId, ex);
             }
-            return View(customAdd);
+            return View(previewAdd);
         }
 
         [HttpPost]
