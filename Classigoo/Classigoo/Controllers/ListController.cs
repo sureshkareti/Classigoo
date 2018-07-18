@@ -959,7 +959,7 @@ namespace Classigoo.Controllers
                 {
                     ViewBag.IsOwner = false;
                 }
-                customAdd.Location = add.Mandal + "," + add.State;
+                customAdd.Location = "Mandal: "+ add.Mandal + ", District: " +add.District +", State: " + add.State;
                 customAdd.CreatedDate = add.Created.ToString();
                 customAdd.AddId = add.AddId;
                 customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
