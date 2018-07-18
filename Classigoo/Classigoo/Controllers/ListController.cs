@@ -56,10 +56,31 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(FormCollection frmCollection)
+        {
+            ViewBag.send = "success";
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();
         }
+
+        public ActionResult Disclaimer()
+        {
+            return View();
+        }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult Terms()
+        {
+            return View();
+        }
+
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();

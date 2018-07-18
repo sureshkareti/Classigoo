@@ -135,10 +135,10 @@
 
                                     <div class="col-md-12">
                                         <div class="col-md-4 col-xs-12 col-sm-12" style="padding-left:0;padding-right:0;text-align:center">
-                                            <span style="font-size:26px;color:#f70;font-weight:bold">contact : </span><span style="font-size:26px;color:#f70;font-weight:bold">9603699900</span>
+                                            <span style="font-size:22px;color:#f70;font-weight:bold">contact : </span><span style="font-size:24px;color:#f70;font-weight:bold">9603699900</span>
                                         </div>
                                         <div class="col-md-1 col-xs-12 col-sm-12" style="text-align:center">
-                                            <span style="padding:0 15px 0 15px;">or</span>
+                                            <span style="padding:0 15px 0 15px;display:none" id="contactOrSendmessage">or</span>
                                         </div>
                                         <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
                                             <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
@@ -281,7 +281,17 @@
                         </div>
                     </div>
 
-                    @Html.Partial("_SimilarAdds",Model.SimilarAddColl)
+                    
+                </div>
+                <div class="row mt20">
+                    <div class="col-md-12">
+                        <div class="pull-left">
+                           <span style="font-size:24px;font-weight:bold;text-decoration:underline">hot deals</span> 
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.Partial("_SimilarAdds", Model.SimilarAddColl)
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,13 +300,7 @@
 
 
 
-<div id="maincontainer">
 
-    <div class="container listing-block" style="max-width:970px !important;margin:auto;">
-
-    </div>
-
-</div>
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/List/color1.css" rel="stylesheet" />
@@ -325,11 +329,13 @@
             if (isUserLoggedIn == 'True') {
 
                 $("#chatWithUser").css("display", "block");
+                $("#contactOrSendmessage").css("display", "block");
             }
             else {
                 // $("#chatWithUser").css("display", "block");
 
                 $("#loginToChat").css("display", "block");
+                $("#contactOrSendmessage").css("display", "block");
             }
         }
 
