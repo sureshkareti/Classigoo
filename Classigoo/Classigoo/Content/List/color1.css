@@ -1989,11 +1989,11 @@ ul.productinfo {
     ul.productinfo li {
         padding: 5px 0;
         list-style: none;
-        display: block;
+        display: flow-root;
     }
 
         ul.productinfo li .productinfoleft {
-            width: 160px;
+            width: 140px;
             float: left;
             font-weight: bold;
         }
