@@ -187,7 +187,8 @@
                                                     <div class="col-md-12" style="height:20px;width:100%;">
                                                         <div class="row">
                                                             <div class="col-md-1">
-                                                                delete
+                                                                &nbsp;
+                                                                @*delete*@
                                                             </div>
                                                             <div class="col-md-4" style="vertical-align:middle;display:table-cell">
                                                                 User
@@ -207,14 +208,16 @@
                                                     <div class="col-md-12 message">
                                                         <div class="row">
                                                             <div class="col-md-1">
-                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>
+                                                                @*<a href="#" style="font-size:24px;"> <span><i class="fa fa-trash"></i></span></a>*@
+                                                                <a href="#" style="font-size:24px;"> <span><i class="fa fa-arrow-right"></i></span></a>
+
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <span><i class="fa fa-angle-right"></i> @chat.FromUserName,<span style="max-width:80px;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;display:inline-flex">@chat.ToUserName</span> ..(23) </span>
                                                             </div>
                                                             <div class="col-md-5">
 
-                                                                <span style="width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
+                                                                <span style="max-width:200px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;display:inline-block;text-align:center">
                                                                     @chat.AddTitle
                                                                 </span>
                                                             </div>
@@ -589,10 +592,7 @@
 </style>
 
 <script>
-    $(document).ready(function () {
-
-
-       
+    $(document).ready(function () {    
 
         $('#parentTab a[data-toggle="tab"]').on('show.bs.tab', function (e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
@@ -606,7 +606,8 @@
 
         var activeTab = localStorage.getItem('activeTab');
         var activeTabC = localStorage.getItem('activeTabC');
-
+                 
+        
         if (activeTab) {
             $('#parentTab a[href="' + activeTab + '"]').tab('show');
         }
