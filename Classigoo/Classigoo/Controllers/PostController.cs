@@ -214,6 +214,7 @@ namespace Classigoo.Controllers
 
             PostDBOperations objPostDbOpareations = new PostDBOperations();
             Communication objComm = new Communication();
+            UserDBOperations userObj = new UserDBOperations();
             string queryStringForEdit = Request.QueryString["addId"];
             if (postAdd.AddId == null)
             {
@@ -236,7 +237,7 @@ namespace Classigoo.Controllers
                 //}
                 if (userId == Guid.Empty)//User not logged in 
                 {
-                    UserDBOperations userObj = new UserDBOperations();
+                   
 
                     Guid userExist = userObj.UserExist(postAdd.PhoneNumber, "Custom");
                     if (userExist == Guid.Empty)//user(PhoneNum) doesnot exist so add user
@@ -725,6 +726,26 @@ namespace Classigoo.Controllers
                 {
                     ViewBag.Message = "nologin";
                     return View();
+                }
+                else
+                {
+                    bool isAuthorizedUser = false;
+                    MessageDBOperations objMsgDbOper = new MessageDBOperations();
+                  Guid addOwnerUserId=(Guid)objMsgDbOper.GetAddOwnerUserId(postId);
+                  Guid adminUserId= userObj.UserExist("1111111111", "Custom");
+                    if(userId==addOwnerUserId)//he is owner
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    else if(userId==adminUserId)//he is admin
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    if(!isAuthorizedUser)
+                    {
+                        ViewBag.Message = "UnAuthorizedToUpdate";
+                        return View();
+                    }
                 }
 
                 Add add = new Add()
