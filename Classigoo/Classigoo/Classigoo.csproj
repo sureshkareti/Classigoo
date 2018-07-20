@@ -505,6 +505,10 @@
     <Content Include="Views\User\ForgotPwd.cshtml" />
     <Content Include="Views\List\NotFound.cshtml" />
     <Content Include="Views\Shared\_SentChat.cshtml" />
+    <Content Include="Views\Shared\_SimilarAdds.cshtml" />
+    <Content Include="Views\List\Disclaimer.cshtml" />
+    <Content Include="Views\List\Privacy.cshtml" />
+    <Content Include="Views\List\Terms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

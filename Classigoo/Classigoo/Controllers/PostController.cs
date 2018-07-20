@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using Classigoo.Models;
+using System.Text;
 
 namespace Classigoo.Controllers
 {
@@ -399,7 +400,24 @@ namespace Classigoo.Controllers
 
                     ViewBag.Message = "error";
                 }
-
+                #region successmsg
+                string homePageUrl = Constants.DomainName + "/User/Home";
+                string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + postId + "";
+                var message = new StringBuilder();
+                message.AppendLine("Congracts," + postAdd.Name + "!");
+                message.AppendLine("Your Ad published successfully. ");
+                message.AppendLine("View and manage adds here: ");
+                message.AppendLine(homePageUrl);
+                var body = new StringBuilder();
+                body.AppendLine("Hello Admin,");
+                body.AppendLine();
+                body.AppendLine("New Ad was published.");
+                body.AppendLine();
+                body.AppendLine("AdId: " + postId + "");
+                body.AppendLine();
+                body.AppendLine("Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
+                body.AppendLine();
+                #endregion
                 if (postAdd.hdnCateFristLevel == "Real Estate")
                 {
                     #region RealEstate
@@ -433,9 +451,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                           objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
+                           objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             //Library.SendEmail(postId.ToString());
-                            Library.SendEmailGodaddy(postId.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published",body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -487,9 +505,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
+                            objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             //Library.SendEmail(postId.ToString());
-                            Library.SendEmailGodaddy(postId.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -539,9 +557,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber,postAdd.Name);
-                           // Library.SendEmail(postId.ToString());
-                            Library.SendEmailGodaddy(postId.ToString());
+                            objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
+                            // Library.SendEmail(postId.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -593,9 +611,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                          objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
+                          objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             // Library.SendEmail(postId.ToString());
-                            Library.SendEmailGodaddy(postId.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -663,9 +681,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                            objComm.SendMessage(postAdd.PhoneNumber, postAdd.Name);
+                            objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             // Library.SendEmail(postId.ToString());
-                            Library.SendEmailGodaddy(postId.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else

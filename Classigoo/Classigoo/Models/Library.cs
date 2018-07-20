@@ -205,7 +205,8 @@ namespace Classigoo.Models
                 SmtpClient client = new SmtpClient();
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.EnableSsl = true;
-                client.Host = "smtp.gmail.com";
+                // client.Host = "smtp.gmail.com";
+                client.Host = "relay-hosting.secureserver.net";
                 client.Port = 25;
 
                 //Setup credentials to login to our sender email address ("UserName", "Password")
@@ -228,34 +229,75 @@ namespace Classigoo.Models
             }
         }
 
-        public static void SendEmailFromGodaddy()
+        public static void SendEmailFromGodaddy(string subject,string body)
         {
-            //MailMessage message = new MailMessage();
-            //message.From = new MailAddress("classigoo2018@gmail.com");
+            try
+            {
+                MailMessage msgs = new MailMessage();
+                msgs.To.Add(new MailAddress("classigoo2018@gmail.com"));
+                MailAddress address = new MailAddress("abc@domain.com");
+                msgs.From = new MailAddress("classigoo2018@gmail.com");
+                msgs.Subject = subject;
+                msgs.Sender = new MailAddress("classigoo2018@gmail.com");
+                msgs.Body = body;
+                msgs.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient();
+                client.Host = "relay-hosting.secureserver.net";
+                client.Port = 25;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("classigoo2018@gmail.com", "19052018");
+                //Send the msgs  
+                client.Send(msgs);
+            }
+            catch(Exception ex)
+            {
+                Models.Library.WriteLog("Error occured while sending an email ", ex);
+            }
+        }
 
-            //message.To.Add(new MailAddress("classigoo2018@gmail.com"));
+        public static void SendEmailContactForm(string name,string email,string phoneNumber,string message)
+        {
+            try
+            {
+                MailMessage msgs = new MailMessage();
+                msgs.To.Add(new MailAddress("classigoo2018@gmail.com"));
+                MailAddress address = new MailAddress("abc@domain.com");
+                msgs.From = new MailAddress("classigoo2018@gmail.com");
+                msgs.Subject = "Hello!!! An User Contacted you.";
+                msgs.Sender = new MailAddress("classigoo2018@gmail.com");
 
-            //message.Subject = "your subject";
-            //message.Body = "content of your email";
+                var body = new StringBuilder();
+                body.AppendLine("Dear Classigoo,");
+                body.AppendLine();
+                body.AppendLine("the user has contacted you and details are below.");
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Name : " + name + "");
+                body.AppendLine();
+                body.AppendLine("Email : " + email + "");
+                body.AppendLine();
+                body.AppendLine("Phone Number : " + phoneNumber + "");
+                body.AppendLine();
+                body.AppendLine("Message : " + message + "");
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Thanks,");
+                body.AppendLine(name);
 
-            //SmtpClient client = new SmtpClient();
-            //client.Send(message);
-
-            MailMessage msgs = new MailMessage();
-            msgs.To.Add(new MailAddress("classigoo2018@gmail.com"));
-            MailAddress address = new MailAddress("abc@domain.com");
-            msgs.From = new MailAddress("classigoo2018@gmail.com");
-            msgs.Subject = "Contact";
-            msgs.Sender = new MailAddress("classigoo2018@gmail.com");
-            msgs.Body = "content of your email";
-            msgs.IsBodyHtml = true;
-            SmtpClient client = new SmtpClient();
-            client.Host = "relay-hosting.secureserver.net";
-            client.Port = 25;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("classigoo2018@gmail.com", "19052018");
-            //Send the msgs  
-            client.Send(msgs);
+                msgs.Body = body.ToString();
+                msgs.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient();
+                client.Host = "relay-hosting.secureserver.net";
+                client.Port = 25;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("classigoo2018@gmail.com", "19052018");
+                //Send the msgs  
+                client.Send(msgs);
+            }
+            catch (Exception ex)
+            {
+                Models.Library.WriteLog("Error occured while sending an email from contact form ", ex);
+            }
         }
     }
 }

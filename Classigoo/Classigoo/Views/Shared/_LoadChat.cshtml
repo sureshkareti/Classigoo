@@ -1,16 +1,16 @@
 ﻿@model IndividualChat
 @{
     Layout = null;
-   
+
 }
-<div class="col-md-12 pull-left" style="height:50px;width:80%;background-color:#fafafa;">
+<div class="col-md-12 pull-left" style="min-height:50px;width:80%;background-color:#fafafa;">
     <div class="row">
         @*<div class="col-md-1">
-            <img src="@Model.ImgUrl" style="height:50px;width:50px;" />
-        </div>*@
+                <img src="@Model.ImgUrl" style="height:50px;width:50px;" />
+            </div>*@
         <div class="col-md-11" style="vertical-align:middle;display:table-cell">
-            <span class="pull-left">@Model.AddTitle</span> <br />
-            <span class="pull-left">@Html.ActionLink("Preview Add", "PreviewAdd", "List", new { addId = Model.AddId }, new { target = "_blank" }) Add Id:@Model.AddId</span>
+            <span class="pull-left">Title: @Model.AddTitle</span> <br />
+            <span class="pull-left">@Html.ActionLink("Preview Add", "PreviewAdd", "List", new { addId = Model.AddId }, new { target = "_blank", style = "text-decoration:underline;" }) Add Id:@Model.AddId</span>
         </div>
 
     </div>
@@ -71,7 +71,7 @@
         }
         @if (chat.Status == "send")
         {
-            <div class="row" style="padding:10px 0 10px 0" >
+            <div class="row" style="padding:10px 0 10px 0">
                 <div class="col-md-12 pull-right" style="height:20px;width:80%;">
                     <div class="row">
                         <div class="col-md-6 pull-left" style="text-align:left">
@@ -93,70 +93,75 @@
                 </div>
             </div>
         }
-        
-        </div>
-        
+
+    </div>
+
 }
-  <div id="chat">
+<div class="col-md-12">
+    <div id="chat">
         <div class="control-group">
             <label class="control-label">Message</label>
             <div class="controls">
-                <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3" required ></textarea>
+                <textarea rows="3" style="width:100%" id="message" name="usermessage" class="span3" required></textarea>
             </div>
-        </div>
+            <a href="#" id="refreshPage">Get NewMessages</a>
+        </div>        
         <input type="button" class="btn btn-orange pull-right" value="send" id="submitChat">
 
-        <a href="#" id="refreshPage">Get NewMessages</a>
+        
 
         @*<input type="button" id="btnCancelMsg" class="btn btn-orange pull-right" value="cancel">&nbsp;*@
     </div>
-    <script>
-        $(document).ready(function () {
-            $("#submitChat").click(function () {
-                var userMsg = $("#message").val();
-                if (userMsg != null && userMsg != '') {
-                    $(".loader-wrap").show();
-                    AddChat(userMsg)
-                }
-                else
-                {
-                    alert("Please enter the message to send");
-                    return false;
-                }
-            });
+</div>
 
+
+
+<script>
+    $(document).ready(function () {
+        $("#submitChat").click(function () {
+            var userMsg = $("#message").val();
+            if (userMsg != null && userMsg != '') {
+                $(".loader-wrap").show();
+                AddChat(userMsg)
+            }
+            else {
+                alert("Please enter the message to send");
+                return false;
+            }
         });
 
-        $("#refreshPage").click(function () {
-            // window.location.reload(true);
-            $(".loader-wrap").show();
-            LoadChat('@Model.AddId', '@Model.RequestorUserId');
+    });
+
+    $("#refreshPage").click(function () {
+        // window.location.reload(true);
+        $(".loader-wrap").show();
+        LoadChat('@Model.AddId', '@Model.RequestorUserId');
+    });
+
+    function AddChat(userMsg) {
+        $.ajax({
+            url: '/User/AddChat',
+            type: 'GET',
+            // dataType: "html",
+            data: { "addId": '@Model.AddId', "frmUserId": '@Model.FromUserId', "toUserId": '@Model.ToUserId', "requestorUserId": '@Model.RequestorUserId', "userMessage": userMsg },
+            success: function (data) {
+                $(data).insertBefore($("#chat"));
+                $("#message").val("");
+                $(".loader-wrap").hide();
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+                $(".loader-wrap").hide();
+            },
+            error: function (response) {
+                console.log(response.responseText);
+                $(".loader-wrap").hide();
+            },
+            complete: function (data) {
+
+            }
+
         });
+    }
 
-        function AddChat(userMsg) {
-            $.ajax({
-                url: '/User/AddChat',
-                type: 'GET',
-               // dataType: "html",
-                data: { "addId": '@Model.AddId', "frmUserId": '@Model.FromUserId', "toUserId": '@Model.ToUserId', "requestorUserId": '@Model.RequestorUserId', "userMessage": userMsg },
-                success: function (data) {
-                    $(data).insertBefore($("#chat"));
-                    $("#message").val("");
-                    $(".loader-wrap").hide();
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                    $(".loader-wrap").hide();
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                    $(".loader-wrap").hide();
-                },
-                complete: function (data) {
-
-                }
-
-            });
-        }
-
-    </script>
+</script>

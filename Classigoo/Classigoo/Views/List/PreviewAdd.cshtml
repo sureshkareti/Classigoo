@@ -1,4 +1,4 @@
-﻿@model CustomAdd
+﻿@model PreviewAdd
 @{
     ViewBag.Title = "Preview Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,13 +21,14 @@
 
                 <div class="row">
                     <div class="col-md-8 col-sm-6">
-                        <h2 style="text-align:left;"> @Model.Title @*test title for agricultural vebiclaes for the location andhra pradesh*@</h2>
+                        <h2 style="text-align:left;"> @Model.Add.Title @*test title for agricultural vebiclaes for the location andhra pradesh*@</h2>
                         <div>
-                            <i class="fa fa-map-marker"></i> @Model.Location  | Posted on: @Model.CreatedDate | Add id: @Model.AddId
+                            <i class="fa fa-map-marker"></i> @Model.Add.Location  
+                            <br /> Posted on: @Model.Add.CreatedDate | Add id: @Model.Add.AddId
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;@Model.Price</div>
+                        <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;@Model.Add.Price</div>
                         @*<a class="pull-right btn btn-orange btn-lg">Contact</a>*@
                     </div>
                 </div>
@@ -54,18 +55,18 @@
                         <div class="col-md-10 col-xs-10 col-sm-10">
 
                             <ul class="thumbnails mainimage clearfix image-frame">
-                                <li> <img class="my-foto-container image-frame" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name" /> </li>
+                                <li> <img class="my-foto-container image-frame" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name" /> </li>
                             </ul>
                             <ul class="thumbnails mainimage clearfix mt10">
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3" style="position:relative">
-                                    <img class="zoom image-grid image-grid1" src="@Model.ImgUrlPrimary" data-large="@Model.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name">
+                                    <img class="zoom image-grid image-grid1" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="1" title="Your Product Name">
                                     <div class="image-hover"></div>
                                 </li>
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
                                     @{
-                                        if (Model.ImgUrlSeconday != "")
+                                        if (Model.Add.ImgUrlSeconday != "")
                                         {
-                                            <img class="zoom image-grid image-grid2" src="@Model.ImgUrlSeconday" data-large="@Model.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="2" title="Your Product Name">
+                                            <img class="zoom image-grid image-grid2" src="@Model.Add.ImgUrlSeconday" data-large="@Model.Add.ImgUrlSeconday" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="2" title="Your Product Name">
                                             <div class="image-hover"></div>
                                         }
 
@@ -75,9 +76,9 @@
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
 
                                     @{
-                                        if (Model.ImgUrlThird != "")
+                                        if (Model.Add.ImgUrlThird != "")
                                         {
-                                            <img class="zoom image-grid image-grid3" src="@Model.ImgUrlThird" data-large="@Model.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="3" title="Your Product Name">
+                                            <img class="zoom image-grid image-grid3" src="@Model.Add.ImgUrlThird" data-large="@Model.Add.ImgUrlThird" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="3" title="Your Product Name">
                                             <div class="image-hover"></div>
                                         }
 
@@ -87,9 +88,9 @@
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
 
                                     @{
-                                        if (Model.ImgUrlFourth != "")
+                                        if (Model.Add.ImgUrlFourth != "")
                                         {
-                                            <img class="zoom image-grid image-grid4" src="@Model.ImgUrlFourth" data-large="@Model.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="4" title="Your Product Name">
+                                            <img class="zoom image-grid image-grid4" src="@Model.Add.ImgUrlFourth" data-large="@Model.Add.ImgUrlFourth" data-title="Your Product Name" alt="Your Product Name" data-help="Your Product Name" data-id="4" title="Your Product Name">
                                             <div class="image-hover"></div>
                                         }
 
@@ -135,10 +136,10 @@
 
                                     <div class="col-md-12">
                                         <div class="col-md-4 col-xs-12 col-sm-12" style="padding-left:0;padding-right:0;text-align:center">
-                                            <span style="font-size:26px;color:#f70;font-weight:bold">contact : </span><span style="font-size:26px;color:#f70;font-weight:bold">9603699900</span>
+                                            <span style="font-size:22px;color:#f70;font-weight:bold">CALL : </span><span style="font-size:24px;color:#f70;font-weight:bold">9603699900</span>
                                         </div>
                                         <div class="col-md-1 col-xs-12 col-sm-12" style="text-align:center">
-                                            <span style="padding:0 15px 0 15px;">or</span>
+                                            <span style="padding:0 15px 0 15px;display:none" id="contactOrSendmessage">or</span>
                                         </div>
                                         <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
                                             <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
@@ -147,7 +148,7 @@
                                     </div>
 
                                     <div class="col-md-5 pull-left" style="display:none">
-                                        <a class="pull-left btn btn-orange btn-lg">Contact : 9603699900</a> or
+                                        <a class="pull-left btn btn-orange btn-lg">CALL : 9603699900</a> or
                                         <div>
                                             <a id="chatWithUser" class="pull-right btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
                                             <a id="loginToChat" class="pull-right btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
@@ -163,7 +164,7 @@
                                 <br />
                                 @using (Html.BeginForm("AddChat", "List", FormMethod.Post, new { id = "Chat" }))
                                 {
-                                    @Html.HiddenFor(m => m.AddId)
+                                    @Html.HiddenFor(m => m.Add.AddId,new { Name = "AddId" })
                                     <div id="chat" style="display:none">
                                         <div class="control-group">
                                             <label class="control-label">Message</label>
@@ -182,21 +183,23 @@
                                 <!-- Product Description tab & comments-->
                                 <div class="productdesc">
                                     <ul class="nav nav-tabs" id="myTab">
-                                        <li id="tabdesc"><a href="#description"><b>Description</b></a> </li>
-                                        <li id="tabspec"><a href="#specification"><b>Specification</b></a> </li>
+                                        <li id="tabdesc"><a href="#description"><b><span style="color:#337ab7">Description</span></b></a> </li>
+                                        <li id="tabspec"><a href="#specification"><b><span style="color:#f70">Specification</span></b></a> </li>
                                         @*<li id="tabcontact"><a href="#contact"><b>Send Message</b></a> </li>*@
                                     </ul>
                                     <div class="tab-content" style="min-height:150px;">
                                         <div class="tab-pane active" id="description">
-                                            <p class="m0">@Model.Description</p>
+                                            <p class="m0">@Model.Add.Description</p>
                                             <br />
 
                                         </div>
                                         <div class="tab-pane " id="cv-specification">
                                             <ul class="productinfo">
-                                                @if (@Model.Category == Constants.ConstructionVehicle)
+                                                @if (@Model.Add.Category == Constants.ConstructionVehicle)
                                                 {
-                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
+                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
 
                                             </ul>
@@ -204,47 +207,51 @@
                                         </div>
                                         <div class="tab-pane " id="tv-specification">
                                             <ul class="productinfo">
-                                                @if (@Model.Category == Constants.TransportationVehicle)
+                                                @if (@Model.Add.Category == Constants.TransportationVehicle)
                                                 {
-                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
+                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
                                             </ul>
 
                                         </div>
                                         <div class="tab-pane " id="av-specification">
                                             <ul class="productinfo">
-                                                @if (@Model.Category == Constants.AgriculturalVehicle)
+                                                @if (@Model.Add.Category == Constants.AgriculturalVehicle)
                                                 {
-                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Company </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
+                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
                                             </ul>
                                         </div>
                                         <div class="tab-pane " id="re-specification">
                                             <ul class="productinfo">
-                                                @if (@Model.RE != null)
+                                                @if (@Model.Add.RE != null)
                                                 {
-                                                    <li> <span class="productinfoleft"> Availability:</span> @Model.RE.Availability </li>
-                                                    <li> <span class="productinfoleft"> ListedBy:</span> @Model.RE.ListedBy</li>
-                                                    <li> <span class="productinfoleft"> Furnishing: </span> @Model.RE.Furnishing </li>
-                                                    <li> <span class="productinfoleft"> Bedrooms: </span> @Model.RE.Bedrooms </li>
-                                                    <li> <span class="productinfoleft"> SquareFeets: </span> @Model.RE.SquareFeets</li>
-                                                    <li> <span class="productinfoleft"> Squareyards: </span> @Model.RE.Squareyards </li>
+                                                    <li> <span class="productinfoleft"> Availability:</span> @Model.Add.RE.Availability </li>
+                                                    <li> <span class="productinfoleft"> ListedBy:</span> @Model.Add.RE.ListedBy</li>
+                                                    <li> <span class="productinfoleft"> Furnishing: </span> @Model.Add.RE.Furnishing </li>
+                                                    <li> <span class="productinfoleft"> Bedrooms: </span> @Model.Add.RE.Bedrooms </li>
+                                                    <li> <span class="productinfoleft"> SquareFeets: </span> @Model.Add.RE.SquareFeets</li>
+                                                    <li> <span class="productinfoleft"> Squareyards: </span> @Model.Add.RE.Squareyards </li>
                                                 }
                                             </ul>
                                         </div>
                                         <div class="tab-pane " id="pv-specification">
                                             <ul class="productinfo">
-                                                @if (@Model.PV != null)
+                                                @if (@Model.Add.PV != null)
                                                 {
-                                                    <li> <span class="productinfoleft"> Company: </span> @Model.PV.Company </li>
-                                                    <li> <span class="productinfoleft"> Model:</span> @Model.PV.Model </li>
-                                                    <li> <span class="productinfoleft"> Year:</span> @Model.PV.Year</li>
-                                                    <li> <span class="productinfoleft"> FuelType:</span> @Model.PV.FuelType</li>
-                                                    <li> <span class="productinfoleft"> KMDriven: </span> @Model.PV.KMDriven </li>
+                                                    <li> <span class="productinfoleft"> Company: </span> @Model.Add.PV.Company </li>
+                                                    <li> <span class="productinfoleft"> Model:</span> @Model.Add.PV.Model </li>
+                                                    <li> <span class="productinfoleft"> Year:</span> @Model.Add.PV.Year</li>
+                                                    <li> <span class="productinfoleft"> FuelType:</span> @Model.Add.PV.FuelType</li>
+                                                    <li> <span class="productinfoleft"> KMDriven: </span> @Model.Add.PV.KMDriven </li>
                                                 }
                                             </ul>
                                         </div>
-                                        @Html.HiddenFor(m => m.AddId)
+                                        @Html.HiddenFor(m => m.Add.AddId)
                                         @*<div class="tab-pane" id="contact">
                                                 @*<form class="form-vertical">
                                                     <fieldset>
@@ -275,7 +282,17 @@
                         </div>
                     </div>
 
-
+                    
+                </div>
+                <div class="row mt20">
+                    <div class="col-md-12">
+                        <div class="pull-left">
+                           <span style="font-size:24px;font-weight:bold;"><span style="color:#337ab7">HOT </span><span style="color:#f70">DEALS:</span> </span> 
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.Partial("_SimilarAdds", Model.SimilarAddColl)
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,13 +301,7 @@
 
 
 
-<div id="maincontainer">
 
-    <div class="container listing-block" style="max-width:970px !important;margin:auto;">
-
-    </div>
-
-</div>
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/List/color1.css" rel="stylesheet" />
@@ -319,11 +330,13 @@
             if (isUserLoggedIn == 'True') {
 
                 $("#chatWithUser").css("display", "block");
+                $("#contactOrSendmessage").css("display", "block");
             }
             else {
                 // $("#chatWithUser").css("display", "block");
 
                 $("#loginToChat").css("display", "block");
+                $("#contactOrSendmessage").css("display", "block");
             }
         }
 
@@ -338,7 +351,7 @@
         });
         $("#loginToChat").click(function () {
 
-            window.location.href = "/User/Login?ReturnUrl=/List/PreviewAdd?addId=@Model.AddId";
+            window.location.href = "/User/Register?ReturnUrl=/List/PreviewAdd?addId=@Model.Add.AddId";
         });
 
         //$(".my-foto-container").fadeOut(100, function () {
@@ -354,7 +367,7 @@
         $('#myTab a').click(function (e) {
             e.preventDefault()
             var selectedTab = $(this).context.innerText;
-            var selectedCategory = '@Model.Category';
+            var selectedCategory = '@Model.Add.Category';
             ClearTabs();
             if (selectedTab == "Specification") {
                 $("#tabspec").addClass("active");

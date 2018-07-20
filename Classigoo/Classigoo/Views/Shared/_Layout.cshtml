@@ -110,7 +110,7 @@
                     text-align: center;
                     height: 41px;
                     /*margin-bottom: 1px;
-                    box-shadow: inset 0 2em .33em -0.5em #555;*/
+                            box-shadow: inset 0 2em .33em -0.5em #555;*/
                 }
 
                 .login-nav .nav > li:hover,
@@ -212,59 +212,61 @@
         }
 
 
+
+
         /*.dropbtn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
+                    background-color: #3498DB;
+                    color: white;
+                    padding: 16px;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
                 }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+                    .dropbtn:hover, .dropbtn:focus {
+                        background-color: #2980B9;
+                    }
 
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }*/
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f1f1f1;
+                    min-width: 160px;
+                    overflow: auto;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                    .dropdown-content a {
+                        color: black;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    }
+
+                .dropdown a:hover {
+                    background-color: #ddd;
+                }*/
+
+
 
         .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 16px;
+            background-color: #337ab7;
+            border: 1px solid #fff;
+            color: #FFFFFF;
+            padding: 7px 7px;
             font-size: 16px;
+            height: 42px;
+            max-width: 164px;
             border: none;
-            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
         }
-
-            .dropbtn:hover, .dropbtn:focus {
-                background-color: #2980B9;
-            }
 
         .dropdown {
             position: relative;
@@ -275,26 +277,30 @@
             display: none;
             position: absolute;
             background-color: #f1f1f1;
-            min-width: 160px;
-            overflow: auto;
+            max-width: 164px;
+            width:100%;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
             .dropdown-content a {
                 color: black;
-                padding: 12px 16px;
+                padding: 5px 10px;
                 text-decoration: none;
                 display: block;
             }
-
-        .dropdown a:hover {
-            background-color: #ddd;
-        }
 
         .show {
             display: block;
         }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /*.dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}*/
     </style>
 
 </head>
@@ -339,70 +345,112 @@
                                 <div class="row" style="">
 
                                     <div class="col-md-6 col-xs-6 col-sm-6 headerbuttons" style="display:none;" id="userLoggedIn">
-                                        <div style="width:100%;text-align:center;display:none" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
-                                            <ul class="nav" style="width:100%">
-                                                <li class="dropdown" style="width:100%">
 
-                                                    <a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                        <div style="text-align:center;max-width: 164px">
+                                            <div class="dropdown" style="width:100%;max-width:164px;">
+                                                <div>
+                                                    <button class="dropbtn" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" onclick="myFunction()">
+
                                                         <span class="glyphicon glyphicon-user"></span>
 
-                                                        <span class="link inlblk acc-user-name fleft"><span id="userName1">Classigoo User</span></span>
-                                                    </a>
-                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                                                        <li><a class="dropdown-item" href="~/User/Home">My Ads</a></li>
-                                                        <li><a class="dropdown-item" href="~/User/SignOut">SignOut</a></li>
-
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                                        <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
+                                                    </button>
+                                                </div>
+                                               
+                                                <div class="dropdown-content">
+                                                    <a href="~/User/Home">My Ads</a>
+                                                    <a href="~/User/SignOut">Sign Out</a>
+                                                   
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="login-nav">
-                                            <nav>
-                                                <ul class="nav">
-                                                    <li style="width:100%">
+                                       
 
-                                                        @*<div class="dropdown">
-                                                                <button class="dropbtn">
+                                        <div style="display:none">
+
+                                            <div style="width:100%;text-align:center;display:none" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse">
+                                                <ul class="nav" style="width:100%">
+                                                    <li class="dropdown" style="width:100%">
+
+                                                        <a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <span class="glyphicon glyphicon-user"></span>
+
+                                                            <span class="link inlblk acc-user-name fleft"><span id="userName1">Classigoo User</span></span>
+                                                        </a>
+                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                                            <li><a class="dropdown-item" href="~/User/Home">My Ads</a></li>
+                                                            <li><a class="dropdown-item" href="~/User/SignOut">Sign Out</a></li>
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div style="width:100%;text-align:center;" class="navbar-collapse justify-content-end col-md-12 col-xs-12 col-sm-12" id="navbarCollapse1">
+                                                <div class="dropdown">
+                                                    <button class="Button-login btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                                                        Dropdown Example
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                                                        <li role="presentation" class="divider"></li>
+                                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="login-nav" style="display:none">
+                                                <nav>
+                                                    <ul class="nav">
+                                                        <li style="width:100%">
+
+                                                            @*<div class="dropdown">
+                                                                    <button class="dropbtn">
+                                                                        <span class="glyphicon glyphicon-user"></span>
+
+                                                                        <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
+                                                                    </button>
+                                                                    <div class="dropdown-content">
+                                                                        <a class="dropdown-item" href="~/User/Home">My Ads</a>
+
+                                                                        <a class="dropdown-item" href="~/User/SignOut">SignOut</a>
+                                                                    </div>
+                                                                </div>*@
+                                                            <div class="dropdown">
+                                                                <button onclick="myFunction()" class="dropbtn">
                                                                     <span class="glyphicon glyphicon-user"></span>
 
                                                                     <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
-                                                                </button>
-                                                                <div class="dropdown-content">
-                                                                    <a class="dropdown-item" href="~/User/Home">My Ads</a>
 
+                                                                </button>
+                                                                <div id="myDropdown" class="dropdown-content">
+                                                                    <a class="dropdown-item" href="~/User/Home">My Ads</a>
                                                                     <a class="dropdown-item" href="~/User/SignOut">SignOut</a>
                                                                 </div>
-                                                            </div>*@
-                                                        <div class="dropdown">
-                                                            <button onclick="myFunction()" class="dropbtn">
-                                                                <span class="glyphicon glyphicon-user"></span>
-
-                                                                <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
-
-                                                            </button>
-                                                            <div id="myDropdown" class="dropdown-content">
-                                                                <a class="dropdown-item" href="~/User/Home">My Ads</a>
-
-                                                                <a class="dropdown-item" href="~/User/SignOut">SignOut</a>
                                                             </div>
-                                                        </div>
 
-                                                        @*<a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <span class="glyphicon glyphicon-user"></span>
+                                                            @*<a class="nav-link dropdown-toggle" style="width:100%;white-space: nowrap; overflow: hidden;text-overflow: ellipsis;" href="listing-map-left.html" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span class="glyphicon glyphicon-user"></span>
 
-                                                                <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
-                                                            </a>
-                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" style="width:100%;border:1px solid gray;background-color:white">
-                                                                <li style="width:100%;"><a class="dropdown-item" href="~/User/Home">My Ads</a></li>
-                                                                <li style="width:100%;"><a class="dropdown-item" href="~/User/SignOut">SignOut</a></li>
+                                                                    <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
+                                                                </a>
+                                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" style="width:100%;border:1px solid gray;background-color:white">
+                                                                    <li style="width:100%;"><a class="dropdown-item" href="~/User/Home">My Ads</a></li>
+                                                                    <li style="width:100%;"><a class="dropdown-item" href="~/User/SignOut">SignOut</a></li>
 
-                                                            </ul>*@
-                                                    </li>
+                                                                </ul>*@
+                                                        </li>
 
-                                                </ul>
-                                            </nav>
+                                                    </ul>
+                                                </nav>
+                                            </div>
                                         </div>
+
 
 
 
@@ -435,7 +483,7 @@
 
                             <div class="col-sm-12 showcontactmobile">
 
-                                <div>
+                                <div style="text-align:center">
                                     <a href="#" style="color:#337ab7;font-size:22px;"><span style="color:#337ab7;font-family:'Poppins', sans-serif;font-size: 14px;line-height: 26px;font-weight: 400;"><strong>Vehicle Rent- Sale- Buy <i class="fa fa-phone"></i>:</strong></span>  <span style="color:#f70;font-weight:bold">9603699900</span></a>
                                 </div>
                             </div>
@@ -451,7 +499,6 @@
             </div>
 
         </header>
-
         <section class="body-wrapper">
             <!--position:relative; for freeze for following div-->
             <div class="paddingContent">
@@ -470,18 +517,21 @@
                                     <img src="~/images/cg.jpg" alt="" style="height:50px;">
                                 </a>
                             </div>
-                            <p>Integer ac lorem sit amet est rhoncus dapi bus don cad pede acus morbi elit nunc molestie at ultrices eu eleifen lorem ut dictum erat masa... <a href="~/List/About">Read More</a></p>
+                            <p style="text-align:justify">Classigoo is your one stop shop for your vehicle purchase needs. If you are tired of looking for buying, selling or rent of commerical, agricultural, trasnsport and passenger vehicles... <a href="~/List/About">Read More</a></p>
                         </div>
-                        <div class="col-md-2 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <h3>Quick  LInks</h3>
                             <ul class="footer-links" style="color:white">
                                 <li><a href="~/List/Home">Home</a></li>
                                 <li><a href="~/List/About">About Us</a></li>
                                 <li><a href="~/Post/Index">Post Free Add</a></li>
                                 <li><a href="~/List/Contact">Contact Us</a></li>
+                                <li><a href="~/List/Disclaimer">Disclaimer</a></li>
+                                <li><a href="~/List/Privacy">Privacy Policy</a></li>
+                                <li><a href="~/List/Terms">Terms and conditions</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <h3>MAIN CATEGORIES</h3>
                             <ul class="footer-links" style="color:white">
                                 <li><a href="~/List/Index?category=Agricultural Vehicles&type=Sale">Agricultural Vehicles</a></li>
@@ -510,6 +560,9 @@
 
     <script>
         $(document).ready(function () {
+
+            $(".dropdown-toggle").dropdown();
+
             var isUserLoggedIn = '@User.Identity.IsAuthenticated';
             if (isUserLoggedIn == 'True') {
                 $("#userLoggedIn").css("display", "block");
@@ -524,21 +577,29 @@
         /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
         function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
+
+            //document.getElementById("myDropdown").classList.toggle("show");
+
+            $(".dropdown-content").toggleClass("show");
         }
 
         // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
+
+
+
             if (!event.target.matches('.dropbtn')) {
 
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+                //$(".dropdown-content").toggleClass("show");
+
+                //    var dropdowns = document.getElementsByClassName("dropdown-content");
+                //    var i;
+                //    for (i = 0; i < dropdowns.length; i++) {
+                //        var openDropdown = dropdowns[i];
+                //        if (openDropdown.classList.contains('show')) {
+                //            openDropdown.classList.remove('show');
+                //        }
+                //    }
             }
         }
 

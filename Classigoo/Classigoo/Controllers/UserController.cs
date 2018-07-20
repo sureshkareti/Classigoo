@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -24,6 +25,13 @@ namespace Classigoo.Controllers
                 }
                 else
                 {
+                    //User user = new User();
+                    //user.MobileNumber = "1232123321";
+                    //user.Name = "test";
+                    //user.Password = "test12";
+                    //user.Type = "Custom";
+                    //UserDBOperations obj = new UserDBOperations();
+                    //obj.AddUser(user);
                     //Communication obj = new Communication();
                     // obj.SendMessage("9177098010",User.Identity.Name);
                     //Library.SendEmailGodaddy("46");
@@ -89,7 +97,7 @@ namespace Classigoo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(FormCollection coll)
+        public ActionResult Register(FormCollection coll, string ReturnUrl = null)
         {
             try
             {
@@ -111,6 +119,10 @@ namespace Classigoo.Controllers
                         objLoginWithOtp.PhoneNumber = user.MobileNumber;
                         objLoginWithOtp.VerifyType = Constants.VerifyOTPFrmRegistration;
                         TempData["UserToAdd"] = user;
+                       // if(!string.IsNullOrEmpty(ReturnUrl))
+                        //{
+                            TempData["ReturnUrl"] = ReturnUrl;
+                        //}
                         return View("VerifyOTP", objLoginWithOtp);
                     }
                     else
@@ -352,13 +364,28 @@ namespace Classigoo.Controllers
             }
         }
 
-        public bool UpdateAddStatus(int addId, string status, string remarks)
+        public bool UpdateAddStatus(int addId, string status, string remarks,string userName,string userPhoneNum)
         {
             bool isAddUpdated = false;
             try
             {
                 UserDBOperations db = new UserDBOperations();
                 isAddUpdated = db.UpdateAddStatus(addId, status, remarks);
+                if(isAddUpdated)
+                {
+                    if (status == Constants.ActiveSatus)
+                    {
+                        string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + addId + "";
+                        var message = new StringBuilder();
+                        message.AppendLine("Congracts," + userName + "!");
+                        message.AppendLine("Your Ad Activated successfully. ");
+                        message.AppendLine("View Ad here: ");
+                        message.AppendLine(addUrl);
+                        message.AppendLine("Please contact "+Constants.AdminPhoneNum+" for any assistance ");
+                        Communication objComm = new Communication();
+                       objComm.SendMessage(userPhoneNum, message.ToString());
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -600,8 +627,16 @@ namespace Classigoo.Controllers
                         Guid userId = db.AddUser(user);
                         if (userId != Guid.Empty)//User Added successfully
                         {
+                            string returnUrl = TempData["ReturnUrl"].ToString();
                             SetUserId(userId, false);
-                            return RedirectToAction("Home", "User");
+                            if (Url.IsLocalUrl(returnUrl))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Home", "User");
+                            }
                         }
                         else//Error occured while adding user
                         {

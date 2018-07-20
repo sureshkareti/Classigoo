@@ -177,6 +177,7 @@ function ShowCategoryFilter(category) {
 
         });
     }
+    $(".loader-wrap").show();
     filterAdds("", 1, false);
 }
 function HideDivs() {
@@ -303,6 +304,7 @@ $("#divFilter select").change(function () {
             filterObj.company = $("#pvCompany").val();
             break;
     }
+    $(".loader-wrap").show();
     filterAdds(filterObj, 1, false);
 });
 function filterAdds(selectedValue, pageNum) {
@@ -319,9 +321,11 @@ function filterAdds(selectedValue, pageNum) {
         },
         failure: function (response) {
             console.log(response.responseText);
+            $(".loader-wrap").hide();
         },
         error: function (response) {
             console.log(response.responseText);
+            $(".loader-wrap").hide();
         },
         complete: function (data) {
 

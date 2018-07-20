@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.ModelBinding;
 
@@ -43,6 +44,15 @@ namespace Classigoo.Models
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
+                    //send message email to admin
+                    var message = new StringBuilder();
+                    message.AppendLine("Hi Admin!");
+                    message.AppendLine("New user registered");
+                    message.AppendLine("Name: "+user.Name);
+                    message.AppendLine("PhoneNumber: " + user.MobileNumber);
+                    Communication objComm = new Communication();
+                    objComm.SendMessage(Constants.AdminPhoneNum, message.ToString());
+                    Library.SendEmailFromGodaddy("New User Registered", message.ToString());
                 }
             }
             catch(Exception ex)
@@ -311,6 +321,7 @@ namespace Classigoo.Models
             }
             if (response == 1)
             {
+               
                 return true;
             }
             else

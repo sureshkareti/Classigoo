@@ -18,13 +18,13 @@
                 <div style="background-color:#f5f5f5;border-radius: 4px;">
                     <div style="width:50%;float:left">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="~/List/Index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="~/List/Home">Home</a></li>
                             <li class="breadcrumb-item active">Contact us</li>
                         </ol>
                     </div>
 
                     <div class="breadcrumb-call-to-action" style="padding: 8px 15px;list-style: none;background-color: #f5f5f5;border-radius: 4px;">
-                        <p>Call Us : <i style="color:#F70" class="fa fa-phone" aria-hidden="true"></i> +91-90144-547-30</p>
+                        <p>Call Us : <i style="color:#F70" class="fa fa-phone" aria-hidden="true"></i> +91-96036-999-00</p>
                         @*<a href="javascript:void(0)" class="contact-btn">
                             Call Us
                         </a>*@
@@ -72,7 +72,7 @@
             <div class="container" style="max-width:970px !important;margin:auto;">
                 <div class="section-title">
                     <h2>Get in Touch</h2>
-                    <p>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos</p>
+                    <p>We really appreciate you taking the time to get in touch</p>
                 </div>
                 <div class="row">
                     <div class="col-md-1">
@@ -85,22 +85,18 @@
                                 @*class="address"*@
                                 <p>
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <span>256 Christchurch Road, <br> California, CA785853</span>
+                                    <span>11-24, Sri Shankar Colony,<br> LB Nagar, Hyderabad,<br> Telangana - 74</span>
                                 </p>
                                 <p>
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <span>
-                                        +91-90144-547-30
-                                        <br>
-                                        +91-90144-547-30
+                                        +91-96036-999-00
                                     </span>
                                 </p>
                                 <p class="last-type">
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                                     <span>
-                                        info@classigoo.com
-                                        <br>
-                                        sales@classigoo.com
+                                        classigoo2018@gmail.com                                    
                                     </span>
                                 </p>
                                 <div class="social-with-label">
@@ -140,16 +136,16 @@
                         <div class="contactform-block">
                             <form id="contactForm" class="form-common">
                                 <div class="form-group">
-                                    <input id="name" type="text" class="form-control" placeholder="Name">
+                                    <input id="name" name="name" type="text" class="form-control" placeholder="Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="email" type="email" class="form-control" placeholder="Email">
+                                    <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="phone" type="text" class="form-control" placeholder="Phone">
+                                    <input id="phone" name="phone" type="text" pattern="[0-9]{10}" class="form-control" placeholder="Phone" required>
                                 </div>
                                 <div class="form-group textarea-form-group">
-                                    <textarea id="message" rows="5" cols="5" class="form-control" placeholder="Message"></textarea>
+                                    <textarea id="message" name="message" rows="5" cols="5" class="form-control" placeholder="Message" required></textarea>
                                 </div>
                                 <button type="submit" class="form-btn">Submit</button>
                                 <p class="input-success">Your message has sent. Thanks for contacting.</p>
@@ -186,7 +182,23 @@
 
 
 }
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        if ("@ViewBag.send" !== "") {
+
+            if ("@ViewBag.send" == "success") {
+                $(".input-success").css("display", "block");
+                $(window).scrollTop($('.section-title').offset().top);
+            }
+            else {
+                $(".input-error").css("display", "block");
+                $(window).scrollTop($('.section-title').offset().top);
+            }
+
+        }
+    });
+</script>
 
 @section scripts{
 

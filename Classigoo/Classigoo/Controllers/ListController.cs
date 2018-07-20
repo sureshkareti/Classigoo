@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -55,10 +56,32 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(FormCollection frmCollection)
+        {
+            Library.SendEmailContactForm(frmCollection["name"], frmCollection["email"], frmCollection["phone"], frmCollection["message"]);
+            ViewBag.send = "success";
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();
         }
+
+        public ActionResult Disclaimer()
+        {
+            return View();
+        }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+        public ActionResult Terms()
+        {
+            return View();
+        }
+
         public CustomAdd CheckCategory(Add add)
         {
             CustomAdd customAdd = new CustomAdd();
@@ -920,6 +943,8 @@ namespace Classigoo.Controllers
         {
          
             CustomAdd customAdd = new CustomAdd();
+            List<CustomAdd> similarAddColl = new List<CustomAdd>();
+            PreviewAdd previewAdd = new PreviewAdd();
             try
             {
                 CommonDBOperations db = new CommonDBOperations();
@@ -935,7 +960,7 @@ namespace Classigoo.Controllers
                 {
                     ViewBag.IsOwner = false;
                 }
-                customAdd.Location = add.Mandal + "," + add.State;
+                customAdd.Location = "Mandal: "+ add.Mandal + ", District: " +add.District +", State: " + add.State;
                 customAdd.CreatedDate = add.Created.ToString();
                 customAdd.AddId = add.AddId;
                 customAdd.Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(add.Title);
@@ -970,6 +995,8 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = tv.ImgUrlThird;
                         customAdd.ImgUrlFourth = tv.ImgUrlFourth;
                         customAdd.Company = tv.Company;
+                        customAdd.Model = tv.Model;
+                        customAdd.ManufacturingYear = tv.ManufacturingYear;
                     }
                 }
                 #endregion
@@ -987,6 +1014,8 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = cv.ImgUrlThird;
                         customAdd.ImgUrlFourth = cv.ImgUrlFourth;
                         customAdd.Company = cv.Company;
+                        customAdd.Model = cv.Model;
+                        customAdd.ManufacturingYear = cv.ManufacturingYear;
                     }
                 }
                 #endregion
@@ -1004,6 +1033,9 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlThird = av.ImgUrlThird;
                         customAdd.ImgUrlFourth = av.ImgUrlFourth;
                         customAdd.Company = av.Company;
+                        customAdd.Model = av.Model;
+                        customAdd.ManufacturingYear = av.ManufacturingYear;
+
                     }
                   
                 }
@@ -1022,16 +1054,30 @@ namespace Classigoo.Controllers
                         customAdd.ImgUrlSeconday = pv.ImgUrlSeconday;
                         customAdd.ImgUrlThird = pv.ImgUrlThird;
                         customAdd.ImgUrlFourth = pv.ImgUrlFourth;
+                        
                     }
                    
                 }
                 #endregion
+
+                List<Add> addColl = db.GetSimilarAdds(add.Category,add.SubCategory,add.Type);
+  
+                foreach(Add similarAdd in addColl)
+                {
+                    if (similarAdd.AddId != add.AddId)
+                    {
+                        similarAddColl.Add(CheckCategory(similarAdd));
+                    }
+                   
+                }
+                previewAdd.Add = customAdd;
+                previewAdd.SimilarAddColl = GetGridAdds(similarAddColl);
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At Preview add addid- " + addId, ex);
             }
-            return View(customAdd);
+            return View(previewAdd);
         }
 
         [HttpPost]
@@ -1041,7 +1087,9 @@ namespace Classigoo.Controllers
             try
             {
                 MessageDBOperations msgDbObj = new MessageDBOperations();
-                Guid toUserId = (Guid)msgDbObj.GetAddOwnerUserId(Convert.ToInt32(AddId));
+                CommonDBOperations commonDbObj = new CommonDBOperations();
+                UserDBOperations userDbObj = new UserDBOperations();
+                Add add =commonDbObj.GetAdd(AddId);
                 UserController useCntObj = new UserController();
                 useCntObj.ControllerContext = new ControllerContext(this.Request.RequestContext, useCntObj);
                 Guid frmUserId = useCntObj.GetUserId();
@@ -1049,10 +1097,38 @@ namespace Classigoo.Controllers
                 msg.AdId = Convert.ToInt32(AddId);
                 msg.CreatedOn = CustomActions.GetCurrentISTTime();
                 msg.FromUserId = frmUserId;
-                msg.ToUserId = toUserId;
+                msg.ToUserId = (Guid)add.UserId;
                 msg.RequestorUserId = frmUserId;
                 msg.Message1 = usermessage;
-                status = msgDbObj.AddChat(msg);         
+                status = msgDbObj.AddChat(msg);   
+                if(status)
+                {
+                    string addTitle = add.Title;
+                    User frmUserInfo = userDbObj.GetUser(frmUserId);
+                    User toUserInfo = userDbObj.GetUser((Guid)add.UserId);
+                    //send msg to user and mail to admin
+                    #region successmsg
+                    string homePageUrl = Constants.DomainName + "/User/Home";
+                    string addUrl = Constants.DomainName + "/List/PreviewAdd?addId=" + AddId + "";
+                    var message = new StringBuilder();
+                    message.AppendLine(frmUserInfo.Name +" has sent you a chat message ");
+                    message.AppendLine("\""+usermessage +"\" for ad \""+ addTitle+"\"");
+                    message.AppendLine(" Respond now " + homePageUrl);
+                    Communication objComm = new Communication();
+                    objComm.SendMessage(toUserInfo.MobileNumber, message.ToString());
+                    var body = new StringBuilder();
+                    body.AppendLine("Hello Admin,");
+                    body.AppendLine("Messages exchanged for ad " +addTitle);
+                    body.AppendLine(" Message: " + usermessage);
+                    body.AppendLine(" Ad Id " + AddId);
+                    body.AppendLine(" Preview Add: <a href=\"" + addUrl + "\">" + addUrl + "</a>");
+                    body.AppendLine(" From UserName: "+frmUserInfo.Name);
+                    body.AppendLine(" From PhoneNumber: " + frmUserInfo.MobileNumber);
+                    body.AppendLine(" To UserName: " + toUserInfo.Name);
+                    body.AppendLine(" To PhoneNumber: " + toUserInfo.MobileNumber);
+                    Library.SendEmailFromGodaddy("Messages Exchanged for ad " + addTitle, body.ToString());
+                    #endregion
+                }
             }
             catch(Exception ex)
             {
