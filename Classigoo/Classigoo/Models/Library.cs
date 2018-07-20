@@ -254,5 +254,50 @@ namespace Classigoo.Models
                 Models.Library.WriteLog("Error occured while sending an email ", ex);
             }
         }
+
+        public static void SendEmailContactForm(string name,string email,string phoneNumber,string message)
+        {
+            try
+            {
+                MailMessage msgs = new MailMessage();
+                msgs.To.Add(new MailAddress("classigoo2018@gmail.com"));
+                MailAddress address = new MailAddress("abc@domain.com");
+                msgs.From = new MailAddress("classigoo2018@gmail.com");
+                msgs.Subject = "Hello!!! An User Contacted you.";
+                msgs.Sender = new MailAddress("classigoo2018@gmail.com");
+
+                var body = new StringBuilder();
+                body.AppendLine("Dear Classigoo,");
+                body.AppendLine();
+                body.AppendLine("the user has contacted you and details are below.");
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Name : " + name + "");
+                body.AppendLine();
+                body.AppendLine("Email : " + email + "");
+                body.AppendLine();
+                body.AppendLine("Phone Number : " + phoneNumber + "");
+                body.AppendLine();
+                body.AppendLine("Message : " + message + "");
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Thanks,");
+                body.AppendLine(name);
+
+                msgs.Body = body.ToString();
+                msgs.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient();
+                client.Host = "relay-hosting.secureserver.net";
+                client.Port = 25;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("classigoo2018@gmail.com", "19052018");
+                //Send the msgs  
+                client.Send(msgs);
+            }
+            catch (Exception ex)
+            {
+                Models.Library.WriteLog("Error occured while sending an email from contact form ", ex);
+            }
+        }
     }
 }

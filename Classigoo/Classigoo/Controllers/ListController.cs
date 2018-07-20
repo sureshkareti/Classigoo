@@ -59,6 +59,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Contact(FormCollection frmCollection)
         {
+            Library.SendEmailContactForm(frmCollection["name"], frmCollection["email"], frmCollection["phone"], frmCollection["message"]);
             ViewBag.send = "success";
             return View();
         }
