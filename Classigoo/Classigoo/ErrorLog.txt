@@ -228,3 +228,24 @@ System ; The operation has timed out.
 Classigoo ; Object reference not set to an instance of an object.
 19/07/2018 12:16:00 AM : Error occured while sending an email 
 System ; The operation has timed out.
+7/20/2018 10:38:32 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:40:27 AM : Error occured while sending an email 
+System ; Failure sending mail.
+7/20/2018 10:40:27 AM : System ; Unable to connect to the remote server
+7/20/2018 10:42:11 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:42:28 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:42:42 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:43:15 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:43:41 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:44:51 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:45:35 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 11:08:36 AM : At fill chat
+mscorlib ; Nullable object must have a value.
