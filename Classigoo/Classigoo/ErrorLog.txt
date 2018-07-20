@@ -218,3 +218,42 @@ Classigoo ; Object reference not set to an instance of an object.
 System.Web ; Failed to map the path '/ImgColl/Telangana/Bhadradri Kothagudem /cvzcv/1112-1_20171115_135131 (1) (1) (2) (1).png'.
 08/07/2018 2:48:47 PM : exception at adding CV postdboperations
 EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+14/07/2018 7:36:09 PM : Error occured while sending an email 
+System ; The operation has timed out.
+14/07/2018 7:47:54 PM : Error occured while sending an email 
+System ; The operation has timed out.
+14/07/2018 9:16:10 PM : Error occured while sending an email 
+System ; The operation has timed out.
+17/07/2018 12:36:22 AM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
+19/07/2018 12:16:00 AM : Error occured while sending an email 
+System ; The operation has timed out.
+7/20/2018 10:38:32 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:40:27 AM : Error occured while sending an email 
+System ; Failure sending mail.
+7/20/2018 10:40:27 AM : System ; Unable to connect to the remote server
+7/20/2018 10:42:11 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:42:28 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:42:42 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:43:15 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:43:41 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:44:51 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 10:45:35 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+7/20/2018 11:08:36 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+21/07/2018 12:21:09 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+21/07/2018 12:21:57 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+21/07/2018 12:22:08 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+21/07/2018 12:25:29 AM : At fill chat
+mscorlib ; Nullable object must have a value.

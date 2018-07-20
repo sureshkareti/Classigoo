@@ -460,7 +460,7 @@ namespace Classigoo.Controllers
                 if (user != null)
                 {
                     //Session["UserName"] = user.Name;
-                    FormsAuthentication.SetAuthCookie(user.Name, rememberMe);
+                    FormsAuthentication.SetAuthCookie(user.Name, true);
                 }
                 this.ControllerContext.HttpContext.Response.Cookies.Add(signinCookie);
             }
