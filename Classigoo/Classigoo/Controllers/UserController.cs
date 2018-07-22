@@ -777,6 +777,7 @@ namespace Classigoo.Controllers
                 Library.WriteLog("At forgot password", ex);
                 @ViewBag.Status = "Error occured while changing Password ";
             }
+            //thisis test
             return View();
         }
 
