@@ -257,3 +257,11 @@ mscorlib ; Nullable object must have a value.
 mscorlib ; Nullable object must have a value.
 21/07/2018 12:25:29 AM : At fill chat
 mscorlib ; Nullable object must have a value.
+21/07/2018 4:57:26 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
+21/07/2018 4:59:55 PM : At Filter RE with filter options
+mscorlib ; Input string was not in a correct format.
+21/07/2018 5:02:06 PM : At Filter RE with filter options
+mscorlib ; Input string was not in a correct format.
+22/07/2018 11:44:49 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.

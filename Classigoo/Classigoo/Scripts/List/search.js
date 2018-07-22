@@ -56,8 +56,8 @@ function FillCategories() {
     });
     $.each(categoryColl, function (i, field) {
         if (field.name !== "Cars Models" && field.name !== "Bikes Models") {
-            $("#listing_catagory_list").append("<option>" + field.name + "</option>");
-            $("#listing_catagory").append("<option>" + field.name + "</option>");
+            $("#listing_catagory_list").append("<option value=\"" + field.name + "\">" + field.name + "</option>");
+            $("#listing_catagory").append("<option value=\"" + field.name +"\">" + field.name + "</option>");
         }
         // searchSource.push(field.name);
         var VehicleTypeColl = field.VehicleType;
