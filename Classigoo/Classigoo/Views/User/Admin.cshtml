@@ -138,7 +138,28 @@
                             }
                         </tbody>
                         <tfoot>
+                            <tr>
+                                <th data-class="expand">AddId</th>
+                                <th data-hide="phone">Date and Time</th>
+                                <th data-hide="phone">Sub Category</th>
+                                <th data-hide="phone">Rent/Sale</th>
+                                <th>Preview</th>
+                                <th>Edit</th>
+                                <th>Status</th>
+                                <th data-hide="phone">User Name</th>
+                                <th data-hide="phone">Mobile No</th>
+                                <th data-hide="phone">Category</th>
+                                <th data-hide="phone">State</th>
+                                <th data-hide="phone">District</th>
+                                <th data-hide="phone">Mandal</th>
+                                <th>Remarks</th>
+                                <th>Status</th>
 
+                                <th>Action</th>
+                                <th>Delete</th>
+                                <th>User Name</th>
+                                <th>Mobile No</th>
+                            </tr>
                         </tfoot>
                     </table>
 
@@ -213,7 +234,28 @@
         $('.edit-mode').hide();
         var table = $('#tblAdds').DataTable({
             "responsive": true,
-            //"columnDefs": [{ "targets": -1, "data": null, "defaultContent": "<input id='btnDetails' class='btn btn-success' width='25px' value='Get Details' />" }]
+            initComplete: function () {
+                this.api().columns([0,3,6,8]).every(function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+
+                    column.data().unique().sort().each(function (d, j) {
+                        // select.append('<option value="' + d + '">' + d + '</option>')
+                        var val = $('<div/>').html(d).text();
+                        select.append('<option value="' + val + '">' + val + '</option>');
+                    });
+                });
+            }
 
         });  
 
