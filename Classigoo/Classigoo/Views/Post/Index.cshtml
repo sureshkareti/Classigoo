@@ -28,7 +28,7 @@
                             <input type="text" id="validationTemp" style="display:none" required />
                         </div>
                         <div class="listing-block businessinfo-listing">
-                            <h4>Submit a Free Classified Add</h4>
+                            <h4>Publish Your Vehicle / Free Ad</h4>
                             <div class="row">
                                 <div class="col-md-12">
 
@@ -41,7 +41,7 @@
                                             <div class="col-md-7">
                                                 @Html.HiddenFor(model => model.AddId)
 
-                                                @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", pattern = ".*[^ ].*", placeholder = "enter title here edited", @class = "form-control col-md-7 input-lg", required = "required" })
+                                                @Html.TextBoxFor(model => model.txtTitle, new { data_error = "Please define the add with title", pattern = ".*[^ ].*", placeholder = "Ex- Car for Rent in Nalgonda", @class = "form-control col-md-7 input-lg", required = "required" })
                                                 @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -734,7 +734,7 @@
                                             </div>
                                             <div class="col-md-7">
 
-                                                @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", @minlength = "10", @maxlength = "1000", rows = "7", placeholder = "description here..", @class = "form-control col-md-7", required = "required" })
+                                                @Html.TextAreaFor(model => model.txtAddDetails, new { data_error = "Please meanstion description about your add", @minlength = "10", @maxlength = "1000", rows = "7", placeholder = "Ex : Vehicle / Property current condition with full details", @class = "form-control col-md-7", required = "required" })
 
                                                 @*<textarea id="txtAddDetails" rows="7" class="form-control col-md-7" data-error="Please meanstion description about your add" placeholder="description here.." value="" required></textarea>*@
                                                 <div class="help-block with-errors"></div>

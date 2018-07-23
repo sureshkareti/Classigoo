@@ -24,11 +24,12 @@
                         <h2 style="text-align:left;"> @Model.Add.Title @*test title for agricultural vebiclaes for the location andhra pradesh*@</h2>
                         <div>
                             <i class="fa fa-map-marker"></i> @Model.Add.Location  
-                            <br /> Posted on: @Model.Add.CreatedDate | Add id: @Model.Add.AddId
+                            <br /><i class="fa fa-calendar"></i> Posted on: @Model.Add.CreatedDate 
+                            <br /> Add id: @Model.Add.AddId
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377;@Model.Add.Price</div>
+                        <div class="price pull-right"> <i class="fa fa-tags"></i>  &#8377; @Model.Add.Price</div>
                         @*<a class="pull-right btn btn-orange btn-lg">Contact</a>*@
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                                                 @if (@Model.Add.Category == Constants.ConstructionVehicle)
                                                 {
                                                     <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
-                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Manufacturing Year: </span> @Model.Add.ManufacturingYear </li>
                                                     <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
 
@@ -210,7 +211,7 @@
                                                 @if (@Model.Add.Category == Constants.TransportationVehicle)
                                                 {
                                                     <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
-                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Manufacturing Year: </span> @Model.Add.ManufacturingYear </li>
                                                     <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
                                             </ul>
@@ -221,7 +222,7 @@
                                                 @if (@Model.Add.Category == Constants.AgriculturalVehicle)
                                                 {
                                                     <li> <span class="productinfoleft"> Company: </span> @Model.Add.Company </li>
-                                                    <li> <span class="productinfoleft"> ManufacturingYear: </span> @Model.Add.ManufacturingYear </li>
+                                                    <li> <span class="productinfoleft"> Manufacturing Year: </span> @Model.Add.ManufacturingYear </li>
                                                     <li> <span class="productinfoleft"> Model: </span> @Model.Add.Model </li>
                                                 }
                                             </ul>
@@ -231,11 +232,11 @@
                                                 @if (@Model.Add.RE != null)
                                                 {
                                                     <li> <span class="productinfoleft"> Availability:</span> @Model.Add.RE.Availability </li>
-                                                    <li> <span class="productinfoleft"> ListedBy:</span> @Model.Add.RE.ListedBy</li>
+                                                    <li> <span class="productinfoleft"> Listed By:</span> @Model.Add.RE.ListedBy</li>
                                                     <li> <span class="productinfoleft"> Furnishing: </span> @Model.Add.RE.Furnishing </li>
                                                     <li> <span class="productinfoleft"> Bedrooms: </span> @Model.Add.RE.Bedrooms </li>
-                                                    <li> <span class="productinfoleft"> SquareFeets: </span> @Model.Add.RE.SquareFeets</li>
-                                                    <li> <span class="productinfoleft"> Squareyards: </span> @Model.Add.RE.Squareyards </li>
+                                                    <li> <span class="productinfoleft"> Square Feets: </span> @Model.Add.RE.SquareFeets</li>
+                                                    <li> <span class="productinfoleft"> Square yards: </span> @Model.Add.RE.Squareyards </li>
                                                 }
                                             </ul>
                                         </div>
@@ -245,9 +246,9 @@
                                                 {
                                                     <li> <span class="productinfoleft"> Company: </span> @Model.Add.PV.Company </li>
                                                     <li> <span class="productinfoleft"> Model:</span> @Model.Add.PV.Model </li>
-                                                    <li> <span class="productinfoleft"> Year:</span> @Model.Add.PV.Year</li>
-                                                    <li> <span class="productinfoleft"> FuelType:</span> @Model.Add.PV.FuelType</li>
-                                                    <li> <span class="productinfoleft"> KMDriven: </span> @Model.Add.PV.KMDriven </li>
+                                                    <li> <span class="productinfoleft"> Manufacturing Year:</span> @Model.Add.PV.Year</li>
+                                                    <li> <span class="productinfoleft"> Fuel Type:</span> @Model.Add.PV.FuelType</li>
+                                                    <li> <span class="productinfoleft"> KM Driven: </span> @Model.Add.PV.KMDriven </li>
                                                 }
                                             </ul>
                                         </div>

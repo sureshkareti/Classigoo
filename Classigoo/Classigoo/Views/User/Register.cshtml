@@ -8,10 +8,7 @@
 {
     <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
     <div>
-        <div class="breadcrumb-block">
-
-        </div>
-
+      
         <div class="user-form-block">
             <div class="container" style="max-width:970px !important;margin:auto;">
                 <div class="row">
@@ -43,7 +40,7 @@
                                     <div class="form-group">
                                         <label for="password">Name</label>
 
-                                        <input type="text" data-minlength="2" maxlength="20" pattern="^[A-z]+$"  class="form-control" id="inputName" name="inputName" data-error="Please enter name." placeholder="name" required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
+                                        <input type="text" data-minlength="2" pattern="^[a-zA-Z ]*$"  class="form-control" id="inputName" name="inputName" data-error="Please enter name." placeholder="name" required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
                                        
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -113,3 +110,9 @@
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
 }
 
+<script type="text/javascript">
+    $("#inputName").on("keypress", function (e) {
+        if (e.which === 32 && !this.value.length)
+            e.preventDefault();
+    });
+</script>

@@ -76,16 +76,18 @@
                                     </td>
                                    
                                     <td>
-                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
+                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" ,style= "color:#337ab7;"})
 
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
+                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" , style = "color:#337ab7;" })
                                     </td>
-                                    
+
+
                                     <td>
                                         <span> <label id="lblSurName">@item.Status</label></span>
-                                       
+
+
                                     </td>
                                     <td >
                                        @item.UserName
@@ -93,7 +95,8 @@
                                     <td >
                                        @item.PhoneNum
                                     </td>
-                                    
+
+
                                     <td>
                                         @item.Category
                                     </td>
@@ -106,7 +109,8 @@
                                     <td>
                                        @item.Mandal
                                      </td>
-                                   
+
+
                                     <td>
                                         <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
                                         @Html.TextArea("txtRemarks",item.Remarks, new { @class = "edit-mode", @maxlength = "1000",@style="@width=350px;@height=80px"})
@@ -116,12 +120,12 @@
                                         @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
                                     </td>
                                     <td>
-                                        <input type="button" value="Edit" class="edit-user display-mode" onclick="FnEditCancel(event);" />
-                                        <input type="button" class="save-user edit-mode" value="Save" onclick="FnSave(event)" />
-                                        <input type="button" class="cancel-user edit-mode" value="Cancel" onclick="FnEditCancel(event);"/>
+                                        <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
+                                        <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
+                                        <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);"/>
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
+                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
                                     </td>
                                     <td  >
                                       <span id="userName" class="UserInfo" >@item.UserName</span>  

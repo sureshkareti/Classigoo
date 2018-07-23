@@ -115,14 +115,14 @@
                                                     <img src="@item.ImgUrlPrimary" class="list_thumbnail fleft" width="50" />
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank" })
+                                                    @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#f70;" })
 
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank" })
+                                                    @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#f70;" })
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" })
+                                                    @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "" , style = "color:#f70;" })
                                                 </td>
 
                                             </tr>
