@@ -717,6 +717,7 @@ namespace Classigoo.Controllers
                 individualChatColl.RequestorUserId = requestorUserId;
                 individualChatColl.AddId = addid;
                 individualChatColl.AddTitle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(chatColl[0].AddTitle);
+              //  individualChatColl.ChatCount = chatColl.Count;
                 if (requestorUserId == userId)//you are not add owner
                 {
                     foreach (CustomMessage msg in chatColl)

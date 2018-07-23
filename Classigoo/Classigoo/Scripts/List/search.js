@@ -1,47 +1,47 @@
 ﻿var categoryColl = new Array();
 var locationColl = new Array();
-var searchSource = new Array();
+//var searchSource = new Array();
 var category = "";
 // var category = $("#listing_catagory").val();
 //ShowCategoryFilter(category);
 FillCategories();
 FillLocations();
-FillSearchBox();
-function FillSearchBox() {
-    searchSource = jQuery.unique(searchSource);
-    jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-        $('#listing_keword').autocomplete({
-            source: function (request, response) {
-                var filteredArray = $.map(searchSource, function (item) {
-                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-                        return item;
-                    }
-                    else {
-                        return null;
-                    }
-                });
-                response(filteredArray);
-            },
-            minLength: 1,
-            scroll: true,
-            matchContains: true,
-            minChars: 2,
-            autoFill: true,
-            mustMatch: false,
-            cacheLength: 20,
-            max: 20,
-            close: function () {
-                //$(this).blur();
-            }
-        }).focus(function () {
-            $(this).data("uiAutocomplete").search('ma');
-        }).focusout(data, function (event) {
-            category = $("#listing_catagory").val();
-            ShowCategoryFilter(category);
-        });
-    });
+//FillSearchBox();
+//function FillSearchBox() {
+//    searchSource = jQuery.unique(searchSource);
+//    jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
+//        $('#listing_keword').autocomplete({
+//            source: function (request, response) {
+//                var filteredArray = $.map(searchSource, function (item) {
+//                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
+//                        return item;
+//                    }
+//                    else {
+//                        return null;
+//                    }
+//                });
+//                response(filteredArray);
+//            },
+//            minLength: 1,
+//            scroll: true,
+//            matchContains: true,
+//            minChars: 2,
+//            autoFill: true,
+//            mustMatch: false,
+//            cacheLength: 20,
+//            max: 20,
+//            close: function () {
+//                //$(this).blur();
+//            }
+//        }).focus(function () {
+//            $(this).data("uiAutocomplete").search('ma');
+//        }).focusout(data, function (event) {
+//            category = $("#listing_catagory").val();
+//            ShowCategoryFilter(category);
+//        });
+//    });
 
-}
+//}
 function FillCategories() {
     $.ajax({
         url: '/Scripts/Json/categories.json',
@@ -60,14 +60,14 @@ function FillCategories() {
             $("#listing_catagory").append("<option value=\"" + field.name +"\">" + field.name + "</option>");
         }
         // searchSource.push(field.name);
-        var VehicleTypeColl = field.VehicleType;
-        $.each(VehicleTypeColl, function (j, vehicleType) {
-            searchSource.push(vehicleType.name);
-            var vehicleModelColl = vehicleType.VehicleModel;
-            $.each(vehicleModelColl, function (k, vehicleModel) {
-                searchSource.push(vehicleModel.name);
-            });
-        });
+       // var VehicleTypeColl = field.VehicleType;
+      //  $.each(VehicleTypeColl, function (j, vehicleType) {
+            //searchSource.push(vehicleType.name);
+          //  var vehicleModelColl = vehicleType.VehicleModel;
+          //  $.each(vehicleModelColl, function (k, vehicleModel) {
+               // searchSource.push(vehicleModel.name);
+           // });
+       // });
     });
 
 
@@ -185,6 +185,10 @@ function HideDivs() {
     $("#pv").hide();
     $("#allv").hide();
 }
+$("#listing_keword").focusout(function () {
+    category = $("#listing_catagory").val();
+    ShowCategoryFilter(category);
+});
 $("#listing_catagory").change(function () {
     category = $("#listing_catagory").val();
     ShowCategoryFilter(category);

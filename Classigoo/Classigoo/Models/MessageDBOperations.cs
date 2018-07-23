@@ -14,21 +14,6 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-
-                    //var distinctMsgColl1 = from msg1 in db.Messages
-                    //                       where (msg1.FromUserId == userId || msg1.ToUserId == userId)
-                    //                       && (msg1.AdId == msg.AdId)
-                    //                       group msg1 by new
-                    //                       {
-                    //                           msg.AdId
-                    //                       } into grp
-                    //                       select grp.ToList();
-
-                    //if(distinctMsgColl1.ToList().Count > 0)
-                    //{
-
-                    //}
-
                     db.Messages.Add(msg);
                     statusCode = db.SaveChanges();
                 }
@@ -74,18 +59,26 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
+                    Dictionary<List<Message>, int> distinctMsgColl1 = new Dictionary<List<Message>, int>();
                     var distinctMsgColl = from msg in db.Messages
                                           where msg.FromUserId == userId || msg.ToUserId == userId
                                           group msg by new
                                           {
                                               msg.AdId,
                                               msg.RequestorUserId
+
                                           } into grp
-                                          select grp.FirstOrDefault();
-
-
-                    myChatColl = FillChat(distinctMsgColl, userId);
-                    // myChatColl = myChatColl.OrderByDescending(msg => msg.Msg.CreatedOn).ToList();
+                                          select new DistinctChat
+                                          {
+                                              Msg = grp.FirstOrDefault(),
+                                              Count = grp.Count()
+                                          };
+                    foreach(DistinctChat distinctChat in distinctMsgColl)
+                    {
+                        CustomMessage chat = FillChat(distinctChat.Msg, userId);
+                        chat.ChatCount = distinctChat.Count;
+                        myChatColl.Add(chat);
+                    }
                 }
             }
             catch (Exception ex)
@@ -96,16 +89,11 @@ namespace Classigoo.Models
             return myChatColl;
         }
 
-        public List<CustomMessage> FillChat(IQueryable<Message> distinctMsgColl, Guid userId)
+        public CustomMessage FillChat(Message msg, Guid userId)
         {
-            List<CustomMessage> myChatColl = new List<CustomMessage>();
+            CustomMessage chat = new CustomMessage();
             try
             {
-                foreach (Message msg in distinctMsgColl)
-                {
-                    CustomMessage chat = new CustomMessage();
-
-
                     chat.AddId = msg.AdId;
                     chat.RequestorUserId = (Guid)msg.RequestorUserId;
                     chat.message = msg.Message1;
@@ -139,15 +127,12 @@ namespace Classigoo.Models
                         chat.Status = "receive";
                         chat.ToUserName = "[Me]";
                     }
-                    myChatColl.Add(chat);
-                }
-
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At fill chat", ex);
             }
-            return myChatColl;
+            return chat;
         }
 
         public List<CustomMessage> LoadChat(Guid userId, int addId,Guid requestorUserId)
@@ -160,7 +145,11 @@ namespace Classigoo.Models
 
                     var msgColl = db.Messages.Where(msg => msg.FromUserId == userId ||
                            msg.ToUserId == userId).Where(msg => msg.AdId == addId).Where(msg=>msg.RequestorUserId==requestorUserId);
-                    myChatColl = FillChat(msgColl, userId);
+                    foreach (Message msg in msgColl)
+                    {
+                        CustomMessage chat = FillChat(msg, userId);
+                        myChatColl.Add(chat);
+                    }
                 }
             }
             catch (Exception ex)

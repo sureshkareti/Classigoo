@@ -265,3 +265,15 @@ mscorlib ; Input string was not in a correct format.
 mscorlib ; Input string was not in a correct format.
 22/07/2018 11:44:49 PM : At Preview add addid- 
 Classigoo ; Object reference not set to an instance of an object.
+23/07/2018 8:56:52 PM : At Get adds count
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+23/07/2018 8:56:52 PM : EntityFramework ; A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+23/07/2018 8:57:06 PM : At filter adds when no category selected
+EntityFramework ; The underlying provider failed on Open.
+23/07/2018 8:57:06 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+23/07/2018 8:57:15 PM : At Get adds count
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+23/07/2018 8:57:15 PM : EntityFramework ; A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+23/07/2018 8:57:30 PM : At filter adds when no category selected
+EntityFramework ; The underlying provider failed on Open.
+23/07/2018 8:57:30 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
