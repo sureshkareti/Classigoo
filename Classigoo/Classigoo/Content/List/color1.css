@@ -1130,14 +1130,14 @@ ul.maincategory {
         ul.maincategory li i {
             cursor: pointer;
             border-radius: 100px;
-            height: 100px;
-            width: 100px;
+            height: 60px;
+            width: 60px;
             display: inline-block;
-            padding: 20px 25px 25px 25px;
+            padding: 5px 12px 12px 12px;
             vertical-align: center;
             color: #fff;
-            font-size: 48px;
-            line-height: 60px;
+            font-size: 36px;
+            line-height: 50px;
         }
 
         ul.maincategory li .direname {
@@ -1152,12 +1152,12 @@ ul.maincategory {
         }
 
 .prevcarousal {
-    left: 15px;
+    left: 1px;
     top: 44%;
 }
 
 .nextcarosal {
-    right: 15px;
+    right: 1px;
     top: 44%;
 }
 

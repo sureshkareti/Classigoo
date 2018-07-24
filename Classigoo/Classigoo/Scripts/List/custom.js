@@ -19,6 +19,8 @@ $(document).ready(function () {
         prev: '#prevcat',
         next: '#nextcat',
         width: '100%',
+        height: "120px",
+       
         scroll: 1,
         items: {
             //	width: 200,
