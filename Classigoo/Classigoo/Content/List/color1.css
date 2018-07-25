@@ -1140,10 +1140,28 @@ ul.maincategory {
             line-height: 50px;
         }
 
+        ul.maincategory li img {
+            cursor: pointer;
+            border-radius: 100px;
+            height: 70px;
+            width: 70px;
+            display: inline-block;
+            /*padding: 5px 12px 12px 12px;*/
+            vertical-align: center;
+            color: #fff;
+            font-size: 36px;
+            line-height: 50px;
+        }
+
         ul.maincategory li .direname {
             font-size: 16px;
             margin: 6px 0;
             font-weight: 600;
+        }
+
+         ul.maincategory li:hover img {
+            animation: 0.35s linear 0s alternate none 1 maincategory;
+            -webkit-animation: 0.35s linear 0s alternate none 1 maincategory;
         }
 
         ul.maincategory li:hover i {
@@ -1253,6 +1271,14 @@ ul.maincategory {
 .c17 {
     background: #10A592;
 }
+
+
+
+
+
+
+
+
 /*Directorylisting*/
 .directorylist {
     margin: 0 0 30px 0;
@@ -2162,7 +2188,7 @@ ul.state {
 .bloglisting > ul > li h3 {
     padding: 0px;
     margin: 0px;
-}
+}   
 
 .bloglisting > ul > li .icondetail {
     margin: 10px 0;
@@ -2172,7 +2198,7 @@ ul.state {
         padding: 3px 0;
         display: inline-block;
         margin-right: 20px;
-        width: 40%;
+        /*width: 40%;*/
     }
 
         .bloglisting > ul > li .icondetail li i {

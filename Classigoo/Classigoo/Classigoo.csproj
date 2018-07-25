@@ -390,6 +390,14 @@
     <Content Include="images\pic01.jpg" />
     <Content Include="images\right.png" />
     <Content Include="images\rightx30.png" />
+    <Content Include="images\scroll\scroll_BHL.jpg" />
+    <Content Include="images\scroll\scroll_BWM.jpeg" />
+    <Content Include="images\scroll\scroll_BWM1.jpg" />
+    <Content Include="images\scroll\scroll_CMHV.png" />
+    <Content Include="images\scroll\scroll_dozzer.jpg" />
+    <Content Include="images\scroll\scroll_exavator.jpg" />
+    <Content Include="images\scroll\scroll_tracot1.jpg" />
+    <Content Include="images\scroll\scroll_tractor.jpg" />
     <Content Include="images\upimglogo1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

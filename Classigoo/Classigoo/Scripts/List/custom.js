@@ -32,6 +32,96 @@ $(document).ready(function () {
         }
     });
 
+    // AV Category
+    $('.maincategoryAV').carouFredSel({
+        prev: '#prevcatAV',
+        next: '#nextcatAV',
+        width: '100%',
+        height: "120px",
+
+        scroll: 1,
+        items: {
+            //	width: 200,
+            //	height: '30%',	//	optionally resize item-height
+            visible: {
+                min: 2,
+                max: 8
+            }
+        }
+    });
+
+    // PV Category
+    $('.maincategoryPV').carouFredSel({
+        prev: '#prevcatPV',
+        next: '#nextcatPV',
+        width: '100%',
+        height: "120px",
+
+        scroll: 1,
+        items: {
+            //	width: 200,
+            //	height: '30%',	//	optionally resize item-height
+            visible: {
+                min: 2,
+                max: 8
+            }
+        }
+    });
+
+    // CV Category
+    $('.maincategoryCV').carouFredSel({
+        prev: '#prevcatCV',
+        next: '#nextcatCV',
+        width: '100%',
+        height: "120px",
+
+        scroll: 1,
+        items: {
+            //	width: 200,
+            //	height: '30%',	//	optionally resize item-height
+            visible: {
+                min: 2,
+                max: 8
+            }
+        }
+    });
+
+    // PV Category
+    $('.maincategoryTV').carouFredSel({
+        prev: '#prevcatTV',
+        next: '#nextcatTV',
+        width: '100%',
+        height: "120px",
+
+        scroll: 1,
+        items: {
+            //	width: 200,
+            //	height: '30%',	//	optionally resize item-height
+            visible: {
+                min: 2,
+                max: 8
+            }
+        }
+    });
+
+    // PV Category
+    $('.maincategoryRE').carouFredSel({
+        prev: '#prevcatRE',
+        next: '#nextcatRE',
+        width: '100%',
+        height: "120px",
+
+        scroll: 1,
+        items: {
+            //	width: 200,
+            //	height: '30%',	//	optionally resize item-height
+            visible: {
+                min: 2,
+                max: 8
+            }
+        }
+    });
+
     // Prmium Listing
     $('#premiumlisting').carouFredSel({
         responsive: true,

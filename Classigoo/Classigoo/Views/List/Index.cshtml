@@ -16,74 +16,34 @@
             <br />
             <br />
 
+          
             <div class="container">
-                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
+                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;padding:20px 30px 20px 30px;background-color:#F0FFFF">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="row form-group">
-                                <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                    <div class="form-group">
-                                        <select class="form-control" id="listing_catagory" name="category">
-                                            <option selected>Select Category</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" onclick="this.value=''" style="border:1px solid rgb(204, 204, 204);border-radius:0px" id="listing_keword" placeholder="Ex: Tractor, Car, Bike, Lorry, DCM..etc" name="searchKeyword">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                    <div class="form-group">
-                                        <input type="text" id="listing_location_list" lt="" onclick="this.value=''" style="border:1px solid rgb(204, 204, 204);border-radius:0px;font-family:FontAwesome, Poppins, sans-serif;" class="form-control" placeholder="&#xf041; Warangal, Hyderabad, Nalgonda" name="location" />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-12 col-xs-12 form-group">
-                                    <div class="form-group">
-                                        <select id="listing_rent_listGeneral" name="type" class="form-control">
-
-                                            <option selected value="Rent">Rent</option>
-                                            <option value="Sale">Sale</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @*@Html.Partial("_LoadData")*@
-                          
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="listing-block businessinfo-listing" style="max-width:970px !important;margin:auto;">
-                    <div class="row">
-                        <div class="col-sm-12" style="background-color:#F0FFFF;padding-top:15px">
                             @*@Html.Partial("_LoadData")*@
                             <div class="clearfix" style="display:block">
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
                                     <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <select class="form-control" id="listing_catagory" name="category">
                                                 <option selected>Select Category</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <input type="text" class="form-control" onclick="this.value=''" style="border:1px solid rgb(204, 204, 204);border-radius:0px" id="listing_keword" placeholder="Ex: Tractor, Car, Bike, Lorry, DCM..etc" name="searchKeyword">
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <input type="text" id="listing_location_list" lt="" onclick="this.value=''" style="border:1px solid rgb(204, 204, 204);border-radius:0px;font-family:FontAwesome, Poppins, sans-serif;" class="form-control" placeholder="&#xf041; Warangal, Hyderabad, Nalgonda" name="location" />
                                         </div>
                                     </div>
                                  
                                     <div class="col-md-3 col-sm-12 col-xs-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <select id="listing_rent_listGeneral" name="type" class="form-control">
 
                                                 <option selected value="Rent">Rent</option>
@@ -99,14 +59,14 @@
             </div>
             <br />
             <div class="container">
-                <div class="listing-block businessinfo-listing" id="divFilter" style="max-width:970px !important;margin:auto;display:none">
-                    <div class="row form-group">
-                        <div class="col-sm-12" style="background-color:#F0FFFF;padding-top:15px">
+                <div class="listing-block businessinfo-listing" id="divFilter" style="max-width:970px !important;margin:auto;display:none;padding:20px 30px 20px 30px;background-color:#F0FFFF">
+                    <div class="row">
+                        <div class="col-sm-12">
                             <div class="clearfix" id="re" style="display:none">
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Sub Category</span><br>
                                             <select class="form-control" id="reSubCategory">
                                                 <option>Select Category</option>
@@ -121,7 +81,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Furnishing</span><br>
                                             <select class="form-control" id="furnishing">
                                                 <option selected>Furnishing</option>
@@ -133,7 +93,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Construction Status</span><br>
                                             <select class="form-control" id="consructionStatus">
                                                 <option selected>Construction Status</option>
@@ -145,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Listed By</span><br>
                                             <select class="form-control" id="listedBy">
                                                 <option selected>Listed By</option>
@@ -157,9 +117,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Super Builtup Area ft²</span><br>
                                             <select class="form-control" id="builtupAreaFrom">
                                                 <option selected>Builtup Area</option>
@@ -181,7 +141,7 @@
                                     </div>
                                     <div class="col-md-2 col-xs-4 col-sm-4">
                                         <br />
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <select class="form-control" id="builtupAreaTo">
                                                 <option selected>Builtup Area</option>
                                                 <option>300</option>
@@ -197,7 +157,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Price Range</span><br>
 
                                             <select class="form-control" id="priceFrom">
@@ -221,7 +181,7 @@
                                         -
                                     </div>
                                     <div class="col-md-2 col-xs-4 col-sm-4">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <br />
                                             <select class="form-control" id="priceTo">
                                                 <option selected>Price To</option>
@@ -239,10 +199,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Bed Rooms</span><br>
                                             <select class="form-control" name="langOpt[]" id="bedRooms">
                                                 <option selected>Bed Rooms</option>
@@ -260,10 +220,10 @@
                             </div>
 
                             <div class="clearfix" id="pv" style="display:none">
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Sub Category</span><br>
                                             <select class="form-control" id="pvSubCategory">
                                                 @*<option>Select Category</option>
@@ -276,7 +236,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Company</span><br>
                                             <select class="form-control" id="pvCompany">
                                                 @*<option selected>Select Company</option>
@@ -471,11 +431,12 @@
                                         </div>
                                     </div>*@
                             </div>
+
                             <div class="clearfix" id="allv" style="display:none">
-                                <div class="row form-group">
+                                <div class="row form-group" style="margin-bottom:0px;">
 
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;">
                                             <span>Sub Category</span><br>
                                             <select class="form-control" id="allvSubCategory">
                                                 <option>Select Category</option>
@@ -488,7 +449,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom:0px;"> 
                                             <span>Company</span><br>
                                             <select class="form-control" id="allvCompany">
                                                 @*<option selected>Select Company</option>
@@ -543,169 +504,425 @@
                                 </div>
                             </div>
 
-                            <div class="clearfix" id="allvv" style="display:none">
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <div class="container">
-                                            <div class="row">
-                                                <h2>Media Slider Carousel BS3</h2>
-                                            </div>
-                                            <div class='row'>
-                                                <div class='col-md-8'>
-                                                    <div class="carousel slide media-carousel" id="media">
-                                                        <div class="carousel-inner">
-                                                            <div class="item  active">
-                                                                <div class="row">
-                                                                    <div class="col-md-3 col-xs-6">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xs-6">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xs-6">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-3 col-xs-6">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item">
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item">
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
-                                                        <a data-slide="next" href="#media" class="right carousel-control">›</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                        </div>
 
-                                </div>
+                      
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="container">
+                <div class="listing-block businessinfo-listing" id="divFilter" style="max-width:970px !important;margin:auto;padding:20px 30px 20px 30px">
+                    <div class="row form-group" style="margin-bottom:0px">
+                        <div class="col-sm-12 scrollHide" id="scrollAll" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategory" style="width:100%;display:block;">
+                                <ul class="maincategory row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70"/><br>                                          
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">                                       
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>                                            
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>                                          
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                          
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                           
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                           
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>                                  
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcat" class="prevcarousal" href="#">Previous</a> <a id="nextcat" class="nextcarosal" href="#">Next</a>
+                            </div>
+                         
+                        </div>
+
+                        <div class="col-sm-12 scrollHide" id="scrollAV" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategoryAV" style="width:100%;display:block;position:relative">
+                                <ul class="maincategory maincategoryAV row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcatAV" class="prevcarousal" href="#">Previous</a> <a id="nextcatAV" class="nextcarosal" href="#">Next</a>
                             </div>
 
+                        </div>
+
+                        <div class="col-sm-12 scrollHide" id="scrollPV" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategoryPV" style="width:100%;display:block;position:relative">
+                                <ul class="maincategory maincategoryPV row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcatPV" class="prevcarousal" href="#">Previous</a> <a id="nextcatPV" class="nextcarosal" href="#">Next</a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 scrollHide" id="scrollCV" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategoryCV" style="width:100%;display:block;position:relative">
+                                <ul class="maincategory maincategoryCV row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcatCV" class="prevcarousal" href="#">Previous</a> <a id="nextcatCV" class="nextcarosal" href="#">Next</a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 scrollHide" id="scrollTV" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategoryTV" style="width:100%;display:block;position:relative">
+                                <ul class="maincategory maincategoryTV row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcatTV" class="prevcarousal" href="#">Previous</a> <a id="nextcatTV" class="nextcarosal" href="#">Next</a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-12 scrollHide" id="scrollRE" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;display:none">
+                            <div class="container" id="maincategoryRE" style="width:100%;display:block;position:relative">
+                                <ul class="maincategory maincategoryRE row" style="height:120px;">
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="listing.html">
+
+                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <a id="prevcatRE" class="prevcarousal" href="#">Previous</a> <a id="nextcatRE" class="nextcarosal" href="#">Next</a>
+                            </div>
 
                         </div>
 
                         <div class="clearfix" style="float:right;display:block" id="clearfilter">
                             <a class="ex1" id="clearfilter" style="color:dodgerblue" href="#">&times;&nbsp;&nbsp;&nbsp;Clear filters</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="listing-block businessinfo-listing" id="divFilter" style="max-width:970px !important;margin:auto;">
-                    <div class="row form-group">
-                        <div class="col-sm-12" style="background-color:#F0FFFF;padding-top:0px;padding-bottom:0px;">
-                            <div class="container" id="maincategory" style="width:100%;display:block;">
-                                <ul class="maincategory row" style="height:120px;">
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-user c12"></i> <br>
-                                            <span class="direname">Personals</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-home c1"></i> <br>
-                                            <span class="direname">Real Estate</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-twitter c2"></i> <br>
-                                            <span class="direname">Pets</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-thumbs-o-up c3"></i> <br>
-                                            <span class="direname">Services</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-desktop c16"></i> <br>
-                                            <span class="direname">Computers</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-user c12"></i> <br>
-                                            <span class="direname">Personals</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-home c1"></i> <br>
-                                            <span class="direname">Real Estate</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-twitter c2"></i> <br>
-                                            <span class="direname">Pets</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-thumbs-o-up c3"></i> <br>
-                                            <span class="direname">Services</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-                                            <i class="fa fa-desktop c16"></i> <br>
-                                            <span class="direname">Computers</span>
-                                        </a>
-                                    </li>
-                                   
-                                </ul>
-                                <div class="clearfix"></div>
-                                <a id="prevcat" class="prevcarousal" href="#">Previous</a> <a id="nextcat" class="nextcarosal" href="#">Next</a>
-                            </div>
-                            <div class="container" style="display:none">
-                                <section class="customer-logos slider">
-                                    <div class="slide"><img src="images/partners/iso.gif"></div>
-                                    <div class="slide"><img src="images/partners/iso27001.gif"></div>
-                                    <div class="slide"><img src="images/partners/cmmi.gif"></div>
-                                    <div class="slide"><img src="images/partners/microsoft.gif"></div>
-                                    <div class="slide"><img src="images/partners/zenoss.gif"></div>
-                                    <div class="slide"><img src="images/partners/opentext.gif"></div>
-                                    <div class="slide"><img src="images/partners/atlassian.gif"></div>
-                                    <div class="slide"><img src="images/partners/kofax.gif"></div>
-                                    <div class="slide"><img src="images/partners/ServiceNow.gif"></div>
-                                    <div class="slide"><img src="images/partners/splunk.gif"></div>
-                                </section>
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -787,7 +1004,7 @@
 @section Styles {
     <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/List/color1.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
     @*<link href="~/Content/Carousel/style.css" rel="stylesheet" />*@
 
@@ -827,5 +1044,33 @@
         $('#listing_location_list').val('@ViewBag.FilterValues.Location');
         $('#listing_keword').val('@ViewBag.FilterValues.SearchKeyword');
         ShowCategoryFilter('@ViewBag.FilterValues.Category');
+
+        var categorySelected = "@ViewBag.FilterValues.Category";
+
+        //$(".scrollHide").css("display","none");
+        if(categorySelected == "Passenger Vehicles"){
+            $("#scrollAll").css("display","block");
+        }
+        else if(categorySelected == "Transportation Vehicles"){
+            $("#scrollTV").css("display","block");
+        }
+        else if(categorySelected == "Construction Vehicles"){
+            $("#scrollCV").css("display","block");
+        }
+        else if(categorySelected == "Agricultural Vehicles"){
+            $("#scrollAV").css("display","block");
+        }
+        else if(categorySelected == "Real Estate"){
+
+            $("#scrollRE").css("display","block");
+
+            
+        }
+        else{
+            $("#scrollAll").css("display","block");
+        }
+
+
+
     }
 </script>
