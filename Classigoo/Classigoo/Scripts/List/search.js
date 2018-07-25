@@ -384,60 +384,8 @@ $("#clearfilter").click(function () {
     $('select').prop('selectedIndex', 0);
 });
 $("#divFilter select").change(function () {
-    var filterObj = {};
-    if (category == "Real Estate") {
-        var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
-        var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
-        if (squareFeetsFrom == "Builtup Area") {
-            squareFeetsFrom = 0;
-        }
-        if (squareFeetsTo == "Builtup Area") {
-            squareFeetsTo = 0;
-        }
-        var bedRooms = $("#bedRooms").val();
-        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
-        var priceTo = $('[id="priceTo"]').filter(':visible').val();
-        if (priceFrom == "Price From") {
-            priceFrom = 0;
-        }
-        else {
-            priceFrom = priceFrom.substring(1, priceFrom.length);
-            priceFrom = priceFrom.replace(/,/g, '');
-        }
-        if (priceTo == "Price To") {
-            priceTo = 0;
-        }
-        else {
-            priceTo = priceTo.substring(1, priceTo.length);
-            priceTo = priceTo.replace(/,/g, '');
-        }
-    }
-    switch (category) {
-        case "Real Estate":
-            filterObj.subCategory = $("#reSubCategory").val();
-            filterObj.furnishing = $("#furnishing").val();
-            filterObj.availability = $("#consructionStatus").val();
-            filterObj.listedBy = $("#listedBy").val();
-            filterObj.squareFeetsFrom = squareFeetsFrom;
-            filterObj.squareFeetsTo = squareFeetsTo;
-            filterObj.priceFrom = priceFrom;
-            filterObj.priceTo = priceTo;
-            filterObj.bedRooms = bedRooms;
-
-            break;
-        case "Construction Vehicles":
-        case "Transportation Vehicles":
-        case "Agricultural Vehicles":
-            filterObj.subCategory = $("#allvSubCategory").val();
-            filterObj.company = $("#allvCompany").val();
-            break;
-        case "Passenger Vehicles":
-            filterObj.subCategory = $("#pvSubCategory").val();
-            filterObj.company = $("#pvCompany").val();
-            break;
-    }
-    $(".loader-wrap").show();
-    filterAdds(filterObj, 1, false);
+    Filter();
+    
 });
 function filterAdds(selectedValue, pageNum) {
 
@@ -464,4 +412,74 @@ function filterAdds(selectedValue, pageNum) {
         }
 
     });
+}
+$('a').click(function () {
+    category = $("#listing_catagory").val();
+    if (category = "") {
+        $('#allvSubCategory').val(this.innerText.trim()).attr("selected", "selected");
+    }
+    else if (category = "")
+
+    {
+
+    }
+    Filter();
+});
+
+function Filter()
+{
+    var filterObj = {};
+    if (category == "Real Estate") {
+        //var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
+        //var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
+        //if (squareFeetsFrom == "Builtup Area") {
+        //    squareFeetsFrom = 0;
+        //}
+        //if (squareFeetsTo == "Builtup Area") {
+        //    squareFeetsTo = 0;
+        //}
+        var bedRooms = $("#bedRooms").val();
+        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
+        var priceTo = $('[id="priceTo"]').filter(':visible').val();
+        if (priceFrom == "Price From") {
+            priceFrom = 0;
+        }
+        else {
+            priceFrom = priceFrom.substring(1, priceFrom.length);
+            priceFrom = priceFrom.replace(/,/g, '');
+        }
+        if (priceTo == "Price To") {
+            priceTo = 0;
+        }
+        else {
+            priceTo = priceTo.substring(1, priceTo.length);
+            priceTo = priceTo.replace(/,/g, '');
+        }
+    }
+    switch (category) {
+        case "Real Estate":
+            filterObj.subCategory = $("#reSubCategory").val();
+            // filterObj.furnishing = $("#furnishing").val();
+            filterObj.availability = $("#consructionStatus").val();
+            filterObj.listedBy = $("#listedBy").val();
+            //  filterObj.squareFeetsFrom = squareFeetsFrom;
+            //  filterObj.squareFeetsTo = squareFeetsTo;
+            filterObj.priceFrom = priceFrom;
+            filterObj.priceTo = priceTo;
+            filterObj.bedRooms = bedRooms;
+
+            break;
+        case "Construction Vehicles":
+        case "Transportation Vehicles":
+        case "Agricultural Vehicles":
+            filterObj.subCategory = $("#allvSubCategory").val();
+            filterObj.company = $("#allvCompany").val();
+            break;
+        case "Passenger Vehicles":
+            filterObj.subCategory = $("#pvSubCategory").val();
+            filterObj.company = $("#pvCompany").val();
+            break;
+    }
+    $(".loader-wrap").show();
+    filterAdds(filterObj, 1, false);
 }

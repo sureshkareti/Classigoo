@@ -80,18 +80,18 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                    @*<div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Furnishing</span><br>
                                             <select class="form-control" id="furnishing">
                                                 <option selected>Furnishing</option>
-                                                @*<option>All</option>*@
+                                                @*<option>All</option>
                                                 <option>Furnished</option>
                                                 <option>Unfurnished</option>
                                                 <option>Semi-Furnished</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Construction Status</span><br>
@@ -118,44 +118,44 @@
                                     </div>
                                 </div>
                                 <div class="row form-group" style="margin-bottom:0px;">
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <span>Super Builtup Area ft²</span><br>
-                                            <select class="form-control" id="builtupAreaFrom">
-                                                <option selected>Builtup Area</option>
-                                                <option>300</option>
-                                                <option>600</option>
-                                                <option>900</option>
-                                                <option>1,250</option>
-                                                <option>1,500</option>
-                                                <option>1,750</option>
-                                                <option>2,250</option>
-                                                <option>2,500</option>
-                                                <option>5,000</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-xs-2 col-sm-2">
-                                        <br />
-                                        -
-                                    </div>
-                                    <div class="col-md-2 col-xs-4 col-sm-4">
-                                        <br />
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <select class="form-control" id="builtupAreaTo">
-                                                <option selected>Builtup Area</option>
-                                                <option>300</option>
-                                                <option>600</option>
-                                                <option>900</option>
-                                                <option>1,250</option>
-                                                <option>1,500</option>
-                                                <option>1,750</option>
-                                                <option>2,250</option>
-                                                <option>2,500</option>
-                                                <option>5,000</option>
-                                            </select>
-                                        </div>
-                                    </div>
+    @*<div class="col-md-3 col-xs-6 col-sm-6">
+        <div class="form-group" style="margin-bottom:0px;">
+            <span>Super Builtup Area ft²</span><br>
+            <select class="form-control" id="builtupAreaFrom">
+                <option selected>Builtup Area</option>
+                <option>300</option>
+                <option>600</option>
+                <option>900</option>
+                <option>1,250</option>
+                <option>1,500</option>
+                <option>1,750</option>
+                <option>2,250</option>
+                <option>2,500</option>
+                <option>5,000</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-1 col-xs-2 col-sm-2">
+        <br />
+        -
+    </div>
+    <div class="col-md-2 col-xs-4 col-sm-4">
+        <br />
+        <div class="form-group" style="margin-bottom:0px;">
+            <select class="form-control" id="builtupAreaTo">
+                <option selected>Builtup Area</option>
+                <option>300</option>
+                <option>600</option>
+                <option>900</option>
+                <option>1,250</option>
+                <option>1,500</option>
+                <option>1,750</option>
+                <option>2,250</option>
+                <option>2,500</option>
+                <option>5,000</option>
+            </select>
+        </div>
+    </div>*@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Price Range</span><br>
@@ -198,9 +198,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row form-group" style="margin-bottom:0px;">
-
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Bed Rooms</span><br>
@@ -213,10 +210,16 @@
                                                 <option value="5">4+</option>
                                             </select>
                                         </div>
+                                        </div>
+                                    </div>
+                                @*<div class="row form-group" style="margin-bottom:0px;">
+
+                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                        
 
                                     </div>
 
-                                </div>
+                                </div>*@
                             </div>
 
                             <div class="clearfix" id="pv" style="display:none">
@@ -518,7 +521,7 @@
                             <div class="container" id="maincategory" style="width:100%;display:block;">
                                 <ul class="maincategory row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
+                                        <a >
                                             <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70"/><br>                                          
                                             <span class="direname" style="color:#337ab7">Borewell Machine</span>
                                         </a>
@@ -568,40 +571,40 @@
                             <div class="container" id="maincategoryAV" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryAV row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
+                                        <a >
                                             <img src="~/images/scroll/AV/AV1.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Borewell Machine</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a>
                                             <img src="~/images/scroll/AV/AV2.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Tractors</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a>
 
                                             <img src="~/images/scroll/AV/AV3.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Dozer</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a >
 
                                             <img src="~/images/scroll/AV/AV4.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Combine Harvester</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a >
 
                                             <img src="~/images/scroll/AV/AV5.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Backhoe Loader</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a >
 
                                             <img src="~/images/scroll/AV/AV6.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Excavators</span>
