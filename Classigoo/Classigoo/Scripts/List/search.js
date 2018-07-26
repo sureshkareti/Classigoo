@@ -1,4 +1,7 @@
-﻿var categoryColl = new Array();
+﻿
+
+
+var categoryColl = new Array();
 var locationColl = new Array();
 //var searchSource = new Array();
 var category = "";
@@ -57,17 +60,17 @@ function FillCategories() {
     $.each(categoryColl, function (i, field) {
         if (field.name !== "Cars Models" && field.name !== "Bikes Models") {
             $("#listing_catagory_list").append("<option value=\"" + field.name + "\">" + field.name + "</option>");
-            $("#listing_catagory").append("<option value=\"" + field.name +"\">" + field.name + "</option>");
+            $("#listing_catagory").append("<option value=\"" + field.name + "\">" + field.name + "</option>");
         }
         // searchSource.push(field.name);
-       // var VehicleTypeColl = field.VehicleType;
-      //  $.each(VehicleTypeColl, function (j, vehicleType) {
-            //searchSource.push(vehicleType.name);
-          //  var vehicleModelColl = vehicleType.VehicleModel;
-          //  $.each(vehicleModelColl, function (k, vehicleModel) {
-               // searchSource.push(vehicleModel.name);
-           // });
-       // });
+        // var VehicleTypeColl = field.VehicleType;
+        //  $.each(VehicleTypeColl, function (j, vehicleType) {
+        //searchSource.push(vehicleType.name);
+        //  var vehicleModelColl = vehicleType.VehicleModel;
+        //  $.each(vehicleModelColl, function (k, vehicleModel) {
+        // searchSource.push(vehicleModel.name);
+        // });
+        // });
     });
 
 
@@ -193,134 +196,137 @@ $("#listing_catagory").change(function () {
     category = $("#listing_catagory").val();
     ShowCategoryFilter(category);
 
-   
+
     $(".scrollHide").css("display", "none");
     if (category == "Passenger Vehicles") {
 
-            $("#scrollAll").css("display", "block");
+        $("#scrollAll").css("display", "block");
 
-            $('.maincategoryPV').carouFredSel({
-                prev: '#prevcatPV',
-                next: '#nextcatPV',
-                width: '100%',
-                height: "120px",
+        $('.maincategoryPV').carouFredSel({
+            prev: '#prevcatPV',
+            next: '#nextcatPV',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
-        else if(category == "Transportation Vehicles"){
-            $("#scrollTV").css("display", "block");
+            }
+        });
+    }
+    else if (category == "Transportation Vehicles") {
+        $("#scrollTV").css("display", "block");
 
-            $('.maincategoryTV').carouFredSel({
-                prev: '#prevcatTV',
-                next: '#nextcatTV',
-                width: '100%',
-                height: "120px",
+        $('.maincategoryTV').carouFredSel({
+            prev: '#prevcatTV',
+            next: '#nextcatTV',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
-        else if (category == "Construction Vehicles") {
+            }
+        });
+    }
+    else if (category == "Construction Vehicles") {
 
-            $("#scrollCV").css("display", "block");
+        $("#scrollCV").css("display", "block");
 
-            $('.maincategoryCV').carouFredSel({
-                prev: '#prevcatCV',
-                next: '#nextcatCV',
-                width: '100%',
-                height: "120px",
+        $('.maincategoryCV').carouFredSel({
+            prev: '#prevcatCV',
+            next: '#nextcatCV',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
-        else if (category == "Agricultural Vehicles") {
+            }
+        });
+    }
+    else if (category == "Agricultural Vehicles") {
 
-            $("#scrollAV").css("display", "block");
+        $("#scrollAV").css("display", "block");
 
-            $('.maincategoryAV').carouFredSel({
-                prev: '#prevcatAV',
-                next: '#nextcatAV',
-                width: '100%',
-                height: "120px",
+        $('.maincategoryAV').carouFredSel({
+            prev: '#prevcatAV',
+            next: '#nextcatAV',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
-        else if (category == "Real Estate") {
+            }
+        });
+    }
+    else if (category == "Real Estate") {
 
-            $("#scrollRE").css("display", "block");
+        $("#scrollRE").css("display", "block");
 
-            $('.maincategoryRE').carouFredSel({
-                prev: '#prevcatRE',
-                next: '#nextcatRE',
-                width: '100%',
-                height: "120px",
+        $('.maincategoryRE').carouFredSel({
+            prev: '#prevcatRE',
+            next: '#nextcatRE',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
-        else{
-            $("#scrollAll").css("display", "block");
+            }
+        });
+    }
+    else {
+        $("#scrollAll").css("display", "block");
 
-            $('.maincategory').carouFredSel({
-                prev: '#prevcat',
-                next: '#nextcat',
-                width: '100%',
-                height: "120px",
+        $('.maincategory').carouFredSel({
+            prev: '#prevcat',
+            next: '#nextcat',
+            width: '100%',
+            height: "120px",
 
-                scroll: 1,
-                items: {
-                    //	width: 200,
-                    //	height: '30%',	//	optionally resize item-height
-                    visible: {
-                        min: 2,
-                        max: 8
-                    }
+            scroll: 1,
+            items: {
+                //	width: 200,
+                //	height: '30%',	//	optionally resize item-height
+                visible: {
+                    min: 2,
+                    max: 8
                 }
-            });
-        }
+            }
+        });
+    }
 
 });
+
+
+
 //$("#listing_location_list").change(function () {
 //    category = $("#listing_catagory").val();
 //    ShowCategoryFilter(category);
@@ -385,7 +391,7 @@ $("#clearfilter").click(function () {
 });
 $("#divFilter select").change(function () {
     Filter();
-    
+
 });
 function filterAdds(selectedValue, pageNum) {
 
@@ -413,21 +419,21 @@ function filterAdds(selectedValue, pageNum) {
 
     });
 }
-$('a').click(function () {
+$('.scrollimg').click(function () {
+
+    $(this).attr("data-")
+
     category = $("#listing_catagory").val();
     if (category = "") {
         $('#allvSubCategory').val(this.innerText.trim()).attr("selected", "selected");
     }
-    else if (category = "")
-
-    {
+    else if (category = "") {
 
     }
     Filter();
 });
 
-function Filter()
-{
+function Filter() {
     var filterObj = {};
     if (category == "Real Estate") {
         //var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
