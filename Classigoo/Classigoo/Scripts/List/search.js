@@ -1,7 +1,4 @@
-﻿
-
-
-var categoryColl = new Array();
+﻿var categoryColl = new Array();
 var locationColl = new Array();
 //var searchSource = new Array();
 var category = "";
@@ -195,12 +192,160 @@ $("#listing_keword").focusout(function () {
 $("#listing_catagory").change(function () {
     category = $("#listing_catagory").val();
     ShowCategoryFilter(category);
+    ShowSubCatImgs();
+});
 
 
+
+//$("#listing_location_list").change(function () {
+//    category = $("#listing_catagory").val();
+//    ShowCategoryFilter(category);
+//});
+//$("#listing_keword").change(function () {
+//    category = $("#listing_catagory").val();
+//    ShowCategoryFilter(category);
+//});
+$("#listing_rent_listGeneral").change(function () {
+    category = $("#listing_catagory").val();
+    ShowCategoryFilter(category);
+});
+$("#allvSubCategory, #pvSubCategory").change(function () {
+    FillCompany($(this)[0].id, $(this).val());
+});
+$("#pvCompany").change(function () {
+    var subCategory = $("#pvSubCategory").val();
+    var selectedVehicle = "";
+    if (subCategory == "Bikes" || subCategory == "Cars") {
+        if (subCategory == "Bikes") {
+            selectedVehicle = categoryColl.filter(a=>a.name == "Bikes Models");
+        }
+        else if (subCategory == "Cars") {
+            selectedVehicle = categoryColl.filter(a=>a.name == "Cars Models");
+        }
+        var selectedVType = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).val());
+        $("#model").empty();
+        $("#model").append("<option>" + "All" + "</option>");
+        if (selectedVType.length != 0) {
+            $.each(selectedVType[0].VehicleModel, function (i, field) {
+                {
+                    $("#model").append("<option>" + field.name + "</option>");
+                }
+            });
+        }
+    }
+
+});
+$("#clearfilter").click(function () {
+    $('select').prop('selectedIndex', 0);
+});
+$("#divFilter select").change(function () {
+    Filter();
+
+});
+function filterAdds(selectedValue, pageNum) {
+
+    $.ajax({
+        url: '/List/ApplyFilter',
+        type: 'GET',
+        dataType: "html",
+        data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": $("#listing_catagory").val(), "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val(), "isSearchFrmHomePage": false },
+        success: function (data) {
+            $("#content").html(data);
+            $(".bloglisting").css("display", "block");
+            $(".loader-wrap").hide();
+        },
+        failure: function (response) {
+            console.log(response.responseText);
+            $(".loader-wrap").hide();
+        },
+        error: function (response) {
+            console.log(response.responseText);
+            $(".loader-wrap").hide();
+        },
+        complete: function (data) {
+
+        }
+
+    });
+}
+$('.scrollimg').click(function () {
+   var currentCat = $(this)[0].getAttribute("data-category");
+    var currentSubCat = $(this)[0].getAttribute("data-subcategory");
+    category = $("#listing_catagory").val();   
+    if (category = "Select Category")
+    {
+        $('#listing_catagory').val(currentCat).attr("selected", "selected");
+        category = $("#listing_catagory").val();
+        ShowCategoryFilter(category);
+        ShowSubCatImgs();
+    }
+   SetSubCatValue(currentSubCat);
+   Filter();
+});
+
+function Filter() {
+    var filterObj = {};
+    if (category == "Real Estate") {
+        //var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
+        //var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
+        //if (squareFeetsFrom == "Builtup Area") {
+        //    squareFeetsFrom = 0;
+        //}
+        //if (squareFeetsTo == "Builtup Area") {
+        //    squareFeetsTo = 0;
+        //}
+        var bedRooms = $("#bedRooms").val();
+        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
+        var priceTo = $('[id="priceTo"]').filter(':visible').val();
+        if (priceFrom == "Price From") {
+            priceFrom = 0;
+        }
+        else {
+            priceFrom = priceFrom.substring(1, priceFrom.length);
+            priceFrom = priceFrom.replace(/,/g, '');
+        }
+        if (priceTo == "Price To") {
+            priceTo = 0;
+        }
+        else {
+            priceTo = priceTo.substring(1, priceTo.length);
+            priceTo = priceTo.replace(/,/g, '');
+        }
+    }
+    switch (category) {
+        case "Real Estate":
+            filterObj.subCategory = $("#reSubCategory").val();
+            // filterObj.furnishing = $("#furnishing").val();
+            filterObj.availability = $("#consructionStatus").val();
+            filterObj.listedBy = $("#listedBy").val();
+            //  filterObj.squareFeetsFrom = squareFeetsFrom;
+            //  filterObj.squareFeetsTo = squareFeetsTo;
+            filterObj.priceFrom = priceFrom;
+            filterObj.priceTo = priceTo;
+            filterObj.bedRooms = bedRooms;
+
+            break;
+        case "Construction Vehicles":
+        case "Transportation Vehicles":
+        case "Agricultural Vehicles":
+            filterObj.subCategory = $("#allvSubCategory").val();
+            filterObj.company = $("#allvCompany").val();
+            break;
+        case "Passenger Vehicles":
+            filterObj.subCategory = $("#pvSubCategory").val();
+            filterObj.company = $("#pvCompany").val();
+            break;
+    }
+    $(".loader-wrap").show();
+    filterAdds(filterObj, 1, false);
+}
+
+function ShowSubCatImgs()
+{
     $(".scrollHide").css("display", "none");
     if (category == "Passenger Vehicles") {
 
-        $("#scrollAll").css("display", "block");
+        $("#scrollPV").css("display", "block");
 
         $('.maincategoryPV').carouFredSel({
             prev: '#prevcatPV',
@@ -323,26 +468,13 @@ $("#listing_catagory").change(function () {
         });
     }
 
-});
+}
 
-
-
-//$("#listing_location_list").change(function () {
-//    category = $("#listing_catagory").val();
-//    ShowCategoryFilter(category);
-//});
-//$("#listing_keword").change(function () {
-//    category = $("#listing_catagory").val();
-//    ShowCategoryFilter(category);
-//});
-$("#listing_rent_listGeneral").change(function () {
-    category = $("#listing_catagory").val();
-    ShowCategoryFilter(category);
-});
-$("#allvSubCategory, #pvSubCategory").change(function () {
-    var currentSubCategory = $(this)[0].id;
+function FillCompany(currentSubCategoryType, currentSubCategoryValue)
+{
+    // var currentSubCategory = $(this)[0].id;currentSubCategoryValue$(this).val()
     var selectedVehicle = categoryColl.filter(a=>a.name == category);
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).val());
+    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == currentSubCategoryValue);
     $("#allvCompany").empty();
     $("#pvCompany").empty();
     $("#model").empty();
@@ -352,140 +484,30 @@ $("#allvSubCategory, #pvSubCategory").change(function () {
     if (selectedModel.length != 0) {
         $.each(selectedModel[0].VehicleModel, function (i, field) {
             {
-                if (currentSubCategory == "allvSubCategory") {
+                if (currentSubCategoryType == "allvSubCategory") {
                     $("#allvCompany").append("<option>" + field.name + "</option>");
                 }
-                else if (currentSubCategory == "pvSubCategory") {
+                else if (currentSubCategoryType == "pvSubCategory") {
                     $("#pvCompany").append("<option>" + field.name + "</option>");
                 }
             }
         });
     }
-
-});
-$("#pvCompany").change(function () {
-    var subCategory = $("#pvSubCategory").val();
-    var selectedVehicle = "";
-    if (subCategory == "Bikes" || subCategory == "Cars") {
-        if (subCategory == "Bikes") {
-            selectedVehicle = categoryColl.filter(a=>a.name == "Bikes Models");
-        }
-        else if (subCategory == "Cars") {
-            selectedVehicle = categoryColl.filter(a=>a.name == "Cars Models");
-        }
-        var selectedVType = selectedVehicle[0].VehicleType.filter(v=>v.name == $(this).val());
-        $("#model").empty();
-        $("#model").append("<option>" + "All" + "</option>");
-        if (selectedVType.length != 0) {
-            $.each(selectedVType[0].VehicleModel, function (i, field) {
-                {
-                    $("#model").append("<option>" + field.name + "</option>");
-                }
-            });
-        }
-    }
-
-});
-$("#clearfilter").click(function () {
-    $('select').prop('selectedIndex', 0);
-});
-$("#divFilter select").change(function () {
-    Filter();
-
-});
-function filterAdds(selectedValue, pageNum) {
-
-    $.ajax({
-        url: '/List/ApplyFilter',
-        type: 'GET',
-        dataType: "html",
-        data: { "filterOptions": JSON.stringify(selectedValue), "pageNum": pageNum, "category": $("#listing_catagory").val(), "location": $("#listing_location_list").val(), "keyword": $("#listing_keword").val(), "type": $("#listing_rent_listGeneral").val(), "isSearchFrmHomePage": false },
-        success: function (data) {
-            $("#content").html(data);
-            $(".bloglisting").css("display", "block");
-            $(".loader-wrap").hide();
-        },
-        failure: function (response) {
-            console.log(response.responseText);
-            $(".loader-wrap").hide();
-        },
-        error: function (response) {
-            console.log(response.responseText);
-            $(".loader-wrap").hide();
-        },
-        complete: function (data) {
-
-        }
-
-    });
 }
-$('.scrollimg').click(function () {
 
-    $(this).attr("data-")
-
-    category = $("#listing_catagory").val();
-    if (category = "") {
-        $('#allvSubCategory').val(this.innerText.trim()).attr("selected", "selected");
+function SetSubCatValue(currentSubCat)
+{
+    if (category =="Agricultural Vehicles" ||category=="Construction Vehicles" ||category=="Transportation Vehicles" )
+    {
+        $('#allvSubCategory').val(currentSubCat.trim()).attr("selected", "selected");
+        FillCompany("allvSubCategory", currentSubCat.trim());
     }
-    else if (category = "") {
-
+    else if (category == "Passenger Vehicles") {
+        $('#pvSubCategory').val(currentSubCat.trim()).attr("selected", "selected");
+        FillCompany("pvSubCategory", currentSubCat.trim());
     }
-    Filter();
-});
-
-function Filter() {
-    var filterObj = {};
-    if (category == "Real Estate") {
-        //var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
-        //var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
-        //if (squareFeetsFrom == "Builtup Area") {
-        //    squareFeetsFrom = 0;
-        //}
-        //if (squareFeetsTo == "Builtup Area") {
-        //    squareFeetsTo = 0;
-        //}
-        var bedRooms = $("#bedRooms").val();
-        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
-        var priceTo = $('[id="priceTo"]').filter(':visible').val();
-        if (priceFrom == "Price From") {
-            priceFrom = 0;
-        }
-        else {
-            priceFrom = priceFrom.substring(1, priceFrom.length);
-            priceFrom = priceFrom.replace(/,/g, '');
-        }
-        if (priceTo == "Price To") {
-            priceTo = 0;
-        }
-        else {
-            priceTo = priceTo.substring(1, priceTo.length);
-            priceTo = priceTo.replace(/,/g, '');
-        }
+    else if (category == "Real Estate")
+    {
+        $('#reSubCategory').val(currentSubCat.trim()).attr("selected", "selected");
     }
-    switch (category) {
-        case "Real Estate":
-            filterObj.subCategory = $("#reSubCategory").val();
-            // filterObj.furnishing = $("#furnishing").val();
-            filterObj.availability = $("#consructionStatus").val();
-            filterObj.listedBy = $("#listedBy").val();
-            //  filterObj.squareFeetsFrom = squareFeetsFrom;
-            //  filterObj.squareFeetsTo = squareFeetsTo;
-            filterObj.priceFrom = priceFrom;
-            filterObj.priceTo = priceTo;
-            filterObj.bedRooms = bedRooms;
-
-            break;
-        case "Construction Vehicles":
-        case "Transportation Vehicles":
-        case "Agricultural Vehicles":
-            filterObj.subCategory = $("#allvSubCategory").val();
-            filterObj.company = $("#allvCompany").val();
-            break;
-        case "Passenger Vehicles":
-            filterObj.subCategory = $("#pvSubCategory").val();
-            filterObj.company = $("#pvCompany").val();
-            break;
-    }
-    $(".loader-wrap").show();
-    filterAdds(filterObj, 1, false);
 }
