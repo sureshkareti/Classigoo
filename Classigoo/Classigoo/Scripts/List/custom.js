@@ -16,6 +16,7 @@ $(document).ready(function () {
 
     // Main Category
     $('.maincategory').carouFredSel({
+        infinite: true,
         prev: '#prevcat',
         next: '#nextcat',
         width: '100%',
