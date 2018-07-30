@@ -211,7 +211,7 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
-
+             
             PostDBOperations objPostDbOpareations = new PostDBOperations(); 
             Communication objComm = new Communication();
             UserDBOperations userObj = new UserDBOperations();
