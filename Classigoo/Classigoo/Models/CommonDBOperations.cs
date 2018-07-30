@@ -194,9 +194,9 @@ namespace Classigoo.Models
         Where(add => add.SubCategory == "Dozer").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
                     objAV.HarvesterCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
         Where(add => add.SubCategory == "Combine Harvester").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
-                    objAV.BackhoeLoaderCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+                    objAV.BackhoeLoaderCount = db.Adds./*.Where(add => add.Category == Constants.AgriculturalVehicle).*/
         Where(add => add.SubCategory == "Backhoe Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
-                    objAV.ExcavatorsCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+                    objAV.ExcavatorsCount = db.Adds./*Where(add => add.Category == Constants.AgriculturalVehicle).*/
         Where(add => add.SubCategory == "Excavators").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
                     objSubCatCount.AVSubCat = objAV;
                     #endregion
@@ -207,9 +207,9 @@ namespace Classigoo.Models
               Where(add => add.SubCategory == "Tractors").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
                     objCV.DozerCount = db.Adds./*Where(add => add.Category == Constants.ConstructionVehicle).*/
              Where(add => add.SubCategory == "Dozers").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
-                    objCV.BackhoeLoaderCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+                    objCV.BackhoeLoaderCount = db.Adds./*Where(add => add.Category == Constants.ConstructionVehicle).*/
              Where(add => add.SubCategory == "Backhoe_Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
-                    objCV.ExcavatorsCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+                    objCV.ExcavatorsCount = db.Adds./*Where(add => add.Category == Constants.ConstructionVehicle).*/
              Where(add => add.SubCategory == "Excavators").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
                     objCV.WheelLoaderCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
              Where(add => add.SubCategory == "Wheel Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
