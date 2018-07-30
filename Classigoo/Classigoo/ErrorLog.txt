@@ -277,9 +277,65 @@ EntityFramework ; An error occurred while executing the command definition. See 
 23/07/2018 8:57:30 PM : At filter adds when no category selected
 EntityFramework ; The underlying provider failed on Open.
 23/07/2018 8:57:30 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
-7/25/2018 10:34:52 PM : At Get adds count
-EntityFramework ; The underlying provider failed on Open.
-7/25/2018 10:34:52 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
-7/25/2018 10:34:52 PM : At filter adds when no category selected
-EntityFramework ; The underlying provider failed on Open.
-7/25/2018 10:34:52 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+26/07/2018 12:50:18 AM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 12:52:38 AM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 12:53:31 AM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 12:54:59 AM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 10:40:24 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 10:40:28 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 10:40:55 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:25 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:29 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:30 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:34 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:37 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:39 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:44:56 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:45:08 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:45:14 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:45:19 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:46:21 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:47:28 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:47:36 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:47:37 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:47:55 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:48:01 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:48:03 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:48:06 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:49:31 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+26/07/2018 11:49:33 PM : At Filter PV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+27/07/2018 12:02:15 AM : At Filter CV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+27/07/2018 12:02:22 AM : At Filter CV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+27/07/2018 12:02:49 AM : At Filter CV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+27/07/2018 12:03:57 AM : At Filter CV with filter options
+Classigoo ; Object reference not set to an instance of an object.

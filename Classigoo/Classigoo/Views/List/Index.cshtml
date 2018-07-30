@@ -80,18 +80,18 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                    @*<div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Furnishing</span><br>
                                             <select class="form-control" id="furnishing">
                                                 <option selected>Furnishing</option>
-                                                @*<option>All</option>*@
+                                                @*<option>All</option>
                                                 <option>Furnished</option>
                                                 <option>Unfurnished</option>
                                                 <option>Semi-Furnished</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Construction Status</span><br>
@@ -118,44 +118,44 @@
                                     </div>
                                 </div>
                                 <div class="row form-group" style="margin-bottom:0px;">
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <span>Super Builtup Area ft²</span><br>
-                                            <select class="form-control" id="builtupAreaFrom">
-                                                <option selected>Builtup Area</option>
-                                                <option>300</option>
-                                                <option>600</option>
-                                                <option>900</option>
-                                                <option>1,250</option>
-                                                <option>1,500</option>
-                                                <option>1,750</option>
-                                                <option>2,250</option>
-                                                <option>2,500</option>
-                                                <option>5,000</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 col-xs-2 col-sm-2">
-                                        <br />
-                                        -
-                                    </div>
-                                    <div class="col-md-2 col-xs-4 col-sm-4">
-                                        <br />
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <select class="form-control" id="builtupAreaTo">
-                                                <option selected>Builtup Area</option>
-                                                <option>300</option>
-                                                <option>600</option>
-                                                <option>900</option>
-                                                <option>1,250</option>
-                                                <option>1,500</option>
-                                                <option>1,750</option>
-                                                <option>2,250</option>
-                                                <option>2,500</option>
-                                                <option>5,000</option>
-                                            </select>
-                                        </div>
-                                    </div>
+    @*<div class="col-md-3 col-xs-6 col-sm-6">
+        <div class="form-group" style="margin-bottom:0px;">
+            <span>Super Builtup Area ft²</span><br>
+            <select class="form-control" id="builtupAreaFrom">
+                <option selected>Builtup Area</option>
+                <option>300</option>
+                <option>600</option>
+                <option>900</option>
+                <option>1,250</option>
+                <option>1,500</option>
+                <option>1,750</option>
+                <option>2,250</option>
+                <option>2,500</option>
+                <option>5,000</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-1 col-xs-2 col-sm-2">
+        <br />
+        -
+    </div>
+    <div class="col-md-2 col-xs-4 col-sm-4">
+        <br />
+        <div class="form-group" style="margin-bottom:0px;">
+            <select class="form-control" id="builtupAreaTo">
+                <option selected>Builtup Area</option>
+                <option>300</option>
+                <option>600</option>
+                <option>900</option>
+                <option>1,250</option>
+                <option>1,500</option>
+                <option>1,750</option>
+                <option>2,250</option>
+                <option>2,500</option>
+                <option>5,000</option>
+            </select>
+        </div>
+    </div>*@
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Price Range</span><br>
@@ -198,9 +198,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row form-group" style="margin-bottom:0px;">
-
                                     <div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Bed Rooms</span><br>
@@ -213,10 +210,16 @@
                                                 <option value="5">4+</option>
                                             </select>
                                         </div>
+                                        </div>
+                                    </div>
+                                @*<div class="row form-group" style="margin-bottom:0px;">
+
+                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                        
 
                                     </div>
 
-                                </div>
+                                </div>*@
                             </div>
 
                             <div class="clearfix" id="pv" style="display:none">
@@ -518,45 +521,197 @@
                             <div class="container" id="maincategory" style="width:100%;display:block;">
                                 <ul class="maincategory row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70"/><br>                                          
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Borewell Machine">
+                                            <img src="~/images/scroll/AV/AV1.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Borewell Machine</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">                                       
-                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>                                            
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Tractors">
+                                            <img src="~/images/scroll/AV/AV2.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Tractors</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                            
-                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>                                          
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Dozer">
+
+                                            <img src="~/images/scroll/AV/AV3.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Dozer</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                          
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Combine Harvester">
+
+                                            <img src="~/images/scroll/AV/AV4.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Combine Harvester</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                           
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Backhoe Loader">
+
+                                            <img src="~/images/scroll/AV/AV5.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Backhoe Loader</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                           
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Excavators">
+                                            <img src="~/images/scroll/AV/AV6.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Excavators</span>
                                         </a>
-                                    </li>                                  
+                                    </li>     
+                                    <li>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Autos">
+                                            <img src="~/images/scroll/PV/PV1.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Autos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Cars">
+                                            <img src="~/images/scroll/PV/PV2.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Cars</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Travel Vans">
+
+                                            <img src="~/images/scroll/PV/PV3.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Travel Vans</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Bikes">
+
+                                            <img src="~/images/scroll/PV/PV4.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Bikes</span>
+                                        </a>
+                                    </li>      
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Tractors">
+                                            <img src="~/images/scroll/CV/CV1.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Dozers">
+                                            <img src="~/images/scroll/CV/CV2.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Dozers</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Backhoe_Loader">
+
+                                            <img src="~/images/scroll/CV/CV3.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Backhoe_Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Excavators">
+
+                                            <img src="~/images/scroll/CV/CV4.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Wheel Loader">
+
+                                            <img src="~/images/scroll/CV/CV5.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Wheel Loader</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Crane">
+
+                                            <img src="~/images/scroll/CV/CV6.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Crane</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Transit Mixer">
+
+                                            <img src="~/images/scroll/CV/CV7.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Transit Mixer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Soil Compactor">
+
+                                            <img src="~/images/scroll/CV/CV8.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Soil Compactor</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Tippers">
+
+                                            <img src="~/images/scroll/CV/CV9.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Tippers</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Autos - 3 wheeler">
+                                            <img src="~/images/scroll/TV/TV1.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Autos - 3 wheeler</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Mini Trucks - 4 wheeler">
+                                            <img src="~/images/scroll/TV/TV2.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Mini Trucks - 4 wheeler</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Lorry Trucks">
+
+                                            <img src="~/images/scroll/TV/TV3.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Lorry Trucks</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="DCM Trucks">
+
+                                            <img src="~/images/scroll/TV/TV4.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">DCM Trucks</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Apartments">
+                                            <img src="~/images/scroll/RE/RE1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Apartments</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Plots/Land">
+                                            <img src="~/images/scroll/RE/RE2.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Plots/Land</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Agricultural Land">
+
+                                            <img src="~/images/scroll/RE/RE3.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Agricultural Land</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Shops & Offices">
+
+                                            <img src="~/images/scroll/RE/RE4.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Shops & Offices</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Independent Houses & Villas">
+
+                                            <img src="~/images/scroll/RE/RE5.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Independent Houses & Villas</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Hostels & PG">
+
+                                            <img src="~/images/scroll/RE/RE6.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Hostels & PG</span>
+                                        </a>
+                                    </li> 
                                 </ul>
                                 <div class="clearfix"></div>
                                 <a id="prevcat" class="prevcarousal" href="#">Previous</a> <a id="nextcat" class="nextcarosal" href="#">Next</a>
@@ -568,41 +723,40 @@
                             <div class="container" id="maincategoryAV" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryAV row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Borewell Machine">
                                             <img src="~/images/scroll/AV/AV1.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Borewell Machine</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Tractors">
                                             <img src="~/images/scroll/AV/AV2.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Tractors</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Dozer">
 
                                             <img src="~/images/scroll/AV/AV3.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Dozer</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Combine Harvester">
 
                                             <img src="~/images/scroll/AV/AV4.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Combine Harvester</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Backhoe Loader">
 
-                                            <img src="~/images/scroll/AV/AV5.png" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/AV/AV5.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Backhoe Loader</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-
+                                        <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Excavators">
                                             <img src="~/images/scroll/AV/AV6.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Excavators</span>
                                         </a>
@@ -620,66 +774,32 @@
                             <div class="container" id="maincategoryPV" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryPV row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Autos">
+                                            <img src="~/images/scroll/PV/PV1.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Autos</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Cars">
+                                            <img src="~/images/scroll/PV/PV2.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Cars</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Travel Vans">
 
-                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                            <img src="~/images/scroll/PV/PV3.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Travel Vans</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Bikes">
 
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                            <img src="~/images/scroll/PV/PV4.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Bikes</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
-                                        </a>
-                                    </li>
+                                   
                                 </ul>
                                 <div class="clearfix"></div>
                                 <a id="prevcatPV" class="prevcarousal" href="#">Previous</a> <a id="nextcatPV" class="nextcarosal" href="#">Next</a>
@@ -691,63 +811,63 @@
                             <div class="container" id="maincategoryCV" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryCV row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Tractors">
+                                            <img src="~/images/scroll/CV/CV1.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Tractors</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Dozers">
+                                            <img src="~/images/scroll/CV/CV2.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Dozers</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Backhoe_Loader">
 
-                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV3.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Backhoe_Loader</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Excavators">
 
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV4.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Excavators</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Wheel Loader">
 
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV5.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Wheel Loader</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Crane">
 
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV6.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Crane</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Transit Mixer">
 
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV7.png" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Transit Mixer</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Soil Compactor">
 
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV8.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Soil Compactor</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Tippers">
 
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
+                                            <img src="~/images/scroll/CV/CV9.jpg" style="background-color:#f70" /><br>
                                             <span class="direname" style="color:#337ab7">Tippers</span>
                                         </a>
                                     </li>
@@ -762,66 +882,32 @@
                             <div class="container" id="maincategoryTV" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryTV row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        <a class="scrollimg" data-category="TV" data-subcategory="Autos - 3 wheeler">
+                                            <img src="~/images/scroll/TV/TV1.png" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Autos - 3 wheeler</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Mini Trucks - 4 wheeler">
+                                            <img src="~/images/scroll/TV/TV2.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Mini Trucks - 4 wheeler</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Lorry Trucks">
 
-                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                            <img src="~/images/scroll/TV/TV3.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Lorry Trucks</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="DCM Trucks">
 
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                            <img src="~/images/scroll/TV/TV4.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">DCM Trucks</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
-                                        </a>
-                                    </li>
+                                   
                                 </ul>
                                 <div class="clearfix"></div>
                                 <a id="prevcatTV" class="prevcarousal" href="#">Previous</a> <a id="nextcatTV" class="nextcarosal" href="#">Next</a>
@@ -833,66 +919,46 @@
                             <div class="container" id="maincategoryRE" style="width:100%;display:block;position:relative">
                                 <ul class="maincategory maincategoryRE row" style="height:120px;">
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_BWM1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Borewell Machine</span>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Apartments">
+                                            <img src="~/images/scroll/RE/RE1.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Apartments</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
-                                            <img src="~/images/scroll/scroll_tracot1.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Tractors</span>
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Plots/Land">
+                                            <img src="~/images/scroll/RE/RE2.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Plots/Land</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Agricultural Land">
 
-                                            <img src="~/images/scroll/scroll_dozzer.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Dozer</span>
+                                            <img src="~/images/scroll/RE/RE3.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Agricultural Land</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Shops & Offices">
 
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
+                                            <img src="~/images/scroll/RE/RE4.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Shops & Offices</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Independent Houses & Villas">
 
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
+                                            <img src="~/images/scroll/RE/RE5.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Independent Houses & Villas</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="listing.html">
+                                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Hostels & PG">
 
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
+                                            <img src="~/images/scroll/RE/RE6.jpg" style="background-color:#f70" /><br>
+                                            <span class="direname" style="color:#337ab7">Hostels & PG</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_CMHV.png" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Combine Harvester</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_BHL.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">
-
-                                            <img src="~/images/scroll/scroll_exavator.jpg" style="background-color:#f70" /><br>
-                                            <span class="direname" style="color:#337ab7">Excavators</span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                                 <div class="clearfix"></div>
                                 <a id="prevcatRE" class="prevcarousal" href="#">Previous</a> <a id="nextcatRE" class="nextcarosal" href="#">Next</a>
@@ -1042,9 +1108,7 @@
         }
         else if(categorySelected == "Real Estate"){
 
-            $("#scrollRE").css("display","block");
-
-            
+            $("#scrollRE").css("display","block");          
         }
         else{
             $("#scrollAll").css("display","block");

@@ -381,20 +381,24 @@ namespace Classigoo.Models
             return true;
         }
 
+        
+
         public bool DeleteImageLocal(List<string> urls)
         {
             string domain = string.Empty;
+            bool isAllDelated = false;
             foreach (string url in urls)
             {
                 try
                 {
                     //this is for delete localImage
-                    domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
+                    //domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
 
                     //this is for delete subdomain image
-                    //string[] pathSplits = Server.MapPath("~").Split('\\');
-                    //string urlForSubdomain = url.Remove(0, 7);
-                    //domain = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\" + urlForSubdomain;
+                 
+                    string[] pathSplits = HttpContext.Current.Server.MapPath("~").Split('\\');
+                    string urlForSubdomain = url.Remove(0, 7);
+                    domain = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\" + urlForSubdomain;
 
                     FileInfo file = new FileInfo(domain);
 
@@ -402,17 +406,17 @@ namespace Classigoo.Models
                     {
                         file.Delete();
 
-                        return true;
+                        isAllDelated = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     Library.WriteLog("At Deleting physical image ImgName - " + domain, ex);
-
+                    isAllDelated = false;
                 }
             }
 
-            return false;
+            return isAllDelated;
         }
 
         public bool UpdateAdd(Add add)

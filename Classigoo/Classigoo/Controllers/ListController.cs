@@ -265,11 +265,11 @@ namespace Classigoo.Controllers
                 try
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
-                    string furnishing = filterOptions["furnishing"].ToString();
+                   // string furnishing = filterOptions["furnishing"].ToString();
                     string availability = filterOptions["availability"].ToString();
                     string listedBy = filterOptions["listedBy"].ToString();
-                    int squareFeetsFrom = Convert.ToInt32(filterOptions["squareFeetsFrom"]);
-                    int squareFeetsTo = Convert.ToInt32(filterOptions["squareFeetsTo"]);
+                   // int squareFeetsFrom = Convert.ToInt32(filterOptions["squareFeetsFrom"]);
+                   // int squareFeetsTo = Convert.ToInt32(filterOptions["squareFeetsTo"]);
                     int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
                     int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
                     string bedRooms = filterOptions["bedRooms"].ToString();
@@ -278,11 +278,11 @@ namespace Classigoo.Controllers
                                      join add in db.Adds on RE.AddId equals add.AddId
                                      where
                        (subCategory != "Select Category" ? RE.SubCategory == subCategory : true) &&
-                    (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
+                    //(furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
                      (availability != "Construction Status" ? RE.Availability == availability : true) &&
                     (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
-                     (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
+                  //   (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
+                  //   (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
                      (priceFrom != 0 ? RE.Price >= priceFrom : true) &&
                      (priceTo != 0 ? RE.Price <= priceTo : true) &&
                      (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
@@ -299,11 +299,11 @@ namespace Classigoo.Controllers
                                       join add in db.Adds on RE.AddId equals add.AddId
                                       where
                      (subCategory != "Select Category" ? RE.SubCategory == subCategory : true) &&
-                   (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
+                  // (furnishing != "Furnishing" ? RE.Furnishing == furnishing : true) &&
                     (availability != "Construction Status" ? RE.Availability == availability : true) &&
                    (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                    (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
-                     (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
+                   // (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
+                   //  (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
                     (priceFrom != 0 ? RE.Price >= priceFrom : true) &&
                     (priceTo != 0 ? RE.Price <= priceTo : true) &&
                     (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
