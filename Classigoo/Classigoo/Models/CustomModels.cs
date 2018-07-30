@@ -15,7 +15,68 @@ namespace Classigoo
         public int CurrentPageIndex { get; set; }
 
         public int PageCount { get; set; }
+
+        public SubCategoryCount SubCatCount { set; get; }
     }
+    public class SubCategoryCount
+    {
+        public AV AVSubCat { set; get; }
+        public CV CVSubCat { set; get; }
+        public TV TVSubCat { set; get; }
+        public PV PVSubCat { set; get; }
+        public RE RESubCat { set; get; }
+    }
+    public class AV
+    {
+        public string BorewellMachineCount { set; get; }
+        public string TractorsCount { set; get; }
+        public string DozerCount { set; get; }
+        public string HarvesterCount { set; get; }
+        public string BackhoeLoaderCount { set; get; }
+        public string ExcavatorsCount { set; get; }
+        //Tractors Dozer Combine Harvester Backhoe Loader Excavators
+    }
+    public class CV
+    {
+        //Tractors Dozers Backhoe_Loader Excavators Wheel Loader Crane Transit Mixer Soil Compactor Tippers
+        public string TractorsCount { set; get; }
+        public string DozerCount { set; get; }
+        public string BackhoeLoaderCount { set; get; }
+        public string ExcavatorsCount { set; get; }
+        public string WheelLoaderCount { set; get; }
+        public string CraneCount { set; get; }
+        public string TransitMixerCount { set; get; }
+        public string SoilCompactorCount { set; get; }
+        public string TippersCount { set; get; }    
+    }
+
+    public class TV
+    {
+        public string Autos3wheelerCount { set; get; }
+        public string MiniTrucks4wheelerCount { set; get; }
+        public string LorryTrucksCount { set; get; }
+        public string DCMTrucksCount { set; get; }
+        //Autos - 3 wheeler  Mini Trucks - 4 wheeler Lorry Trucks DCM Trucks
+    }
+    public class PV
+    {
+        public string AutosCount { set; get; }
+        public string CarsCount { set; get; }
+        public string TravelVansCount { set; get; }
+        public string BikesCount { set; get; }
+        //Autos Cars Travel Vans Bikes
+    }
+    public class RE
+    {
+        public string ApartmentsCount { set; get; }
+        public string PlotsLandCount { set; get; }
+        public string AgriculturalLandCount { set; get; }
+        public string ShopsOfficesCount { set; get; }
+        public string IndependentHousesVillasCount { set; get; }
+        public string HostelsPGCount { set; get; }
+        //Apartments Plots/Land Agricultural Land  Shops & Offices Independent Houses & Villas Hostels & PG
+    }
+
     public class PreviewAdd
     {
         public CustomAdd Add { set; get; }

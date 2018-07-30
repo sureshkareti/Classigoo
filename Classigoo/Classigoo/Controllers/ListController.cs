@@ -243,6 +243,7 @@ namespace Classigoo.Controllers
             }
             if (isSearchFrmHomePage)
             {
+                addColl.SubCatCount = GetSubCatCount();
                 return View("Index", addColl);
             }
             else
@@ -1149,5 +1150,19 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        public SubCategoryCount GetSubCatCount()
+        {
+            SubCategoryCount objSubCatCount = new SubCategoryCount();
+            try
+            {
+                CommonDBOperations objCommon = new CommonDBOperations();
+                objSubCatCount= objCommon.GetSubCatCount();
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At getsubcount", ex);
+            }
+            return objSubCatCount;
+        }
     }
 }

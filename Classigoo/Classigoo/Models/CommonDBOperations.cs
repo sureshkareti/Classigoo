@@ -176,5 +176,104 @@ namespace Classigoo.Models
             }
             return addColl;
         }
+
+        public SubCategoryCount GetSubCatCount()
+        {
+            SubCategoryCount objSubCatCount = new SubCategoryCount();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region AV
+                   AV objAV = new AV();
+                    objAV.BorewellMachineCount=db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+         Where(add => add.SubCategory == "Borewell Machine").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objAV.TractorsCount = db.Adds./*Where(add => add.Category == Constants.AgriculturalVehicle).*/
+        Where(add => add.SubCategory == "Tractors").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objAV.DozerCount = db.Adds./*Where(add => add.Category == Constants.AgriculturalVehicle).*/
+        Where(add => add.SubCategory == "Dozer").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objAV.HarvesterCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+        Where(add => add.SubCategory == "Combine Harvester").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objAV.BackhoeLoaderCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+        Where(add => add.SubCategory == "Backhoe Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objAV.ExcavatorsCount = db.Adds.Where(add => add.Category == Constants.AgriculturalVehicle).
+        Where(add => add.SubCategory == "Excavators").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objSubCatCount.AVSubCat = objAV;
+                    #endregion
+
+                    #region CV
+                    CV objCV = new CV();
+                    objCV.TractorsCount = db.Adds./*Where(add => add.Category == Constants.ConstructionVehicle).*/
+              Where(add => add.SubCategory == "Tractors").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.DozerCount = db.Adds./*Where(add => add.Category == Constants.ConstructionVehicle).*/
+             Where(add => add.SubCategory == "Dozers").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.BackhoeLoaderCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Backhoe_Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.ExcavatorsCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Excavators").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.WheelLoaderCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Wheel Loader").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.CraneCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Crane").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.TransitMixerCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Transit Mixer").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.SoilCompactorCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Soil Compactor").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objCV.TippersCount = db.Adds.Where(add => add.Category == Constants.ConstructionVehicle).
+             Where(add => add.SubCategory == "Tippers").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objSubCatCount.CVSubCat = objCV;
+                    #endregion
+
+                    #region TV
+                    TV objTV = new TV();
+                    objTV.Autos3wheelerCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).
+             Where(add => add.SubCategory == "Autos - 3 wheeler").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objTV.MiniTrucks4wheelerCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).
+             Where(add => add.SubCategory == "Mini Trucks - 4 wheeler").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objTV.LorryTrucksCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).
+             Where(add => add.SubCategory == "Lorry Trucks").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objTV.DCMTrucksCount = db.Adds.Where(add => add.Category == Constants.TransportationVehicle).
+             Where(add => add.SubCategory == "DCM Trucks").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objSubCatCount.TVSubCat = objTV;
+                    #endregion
+
+                    #region PV
+                    PV objPV = new PV();
+                 objPV.AutosCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).
+                   Where(add => add.SubCategory == "Autos").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objPV.CarsCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).
+                  Where(add => add.SubCategory == "Cars").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objPV.TravelVansCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).
+                  Where(add => add.SubCategory == "Travel Vans").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objPV.BikesCount = db.Adds.Where(add => add.Category == Constants.PassengerVehicle).
+                  Where(add => add.SubCategory == "Bikes").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objSubCatCount.PVSubCat = objPV;
+                    #endregion
+
+                    #region RE
+                    RE objRE = new RE();
+                objRE.ApartmentsCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+               Where(add => add.SubCategory == "Apartments").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objRE.PlotsLandCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+              Where(add => add.SubCategory == "Plots/Land").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objRE.AgriculturalLandCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+              Where(add => add.SubCategory == "Agricultural Land").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objRE.ShopsOfficesCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+              Where(add => add.SubCategory == "Shops & Offices").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objRE.IndependentHousesVillasCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+              Where(add => add.SubCategory == "Independent Houses & Villas").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objRE.HostelsPGCount = db.Adds.Where(add => add.Category == Constants.RealEstate).
+              Where(add => add.SubCategory == "Hostels & PG").Where(add => add.Status == Constants.ActiveSatus).Count().ToString();
+                    objSubCatCount.RESubCat = objRE;
+                    #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get subcategory count commondboperations", ex);
+            }
+
+            return objSubCatCount;
+        }
     }
 }
