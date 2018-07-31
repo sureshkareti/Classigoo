@@ -476,7 +476,6 @@
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\Json\regions.js" />
     <Content Include="Scripts\List\bootstrap.min.js" />
     <Content Include="Scripts\List\custom.js" />
     <Content Include="Scripts\List\dataTables.min.js" />
@@ -498,7 +497,6 @@
     <Content Include="Scripts\ScriptsNew\retina-1.1.0.min.js" />
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
     <Content Include="Scripts\Json\categories.json" />
-    <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
     <Content Include="Scripts\slick\slick.min.js" />
     <Content Include="Views\List\Index.cshtml" />
@@ -538,8 +536,6 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UnableToLogin.cshtml" />
     <Content Include="Views\User\Home.cshtml" />
-    <Content Include="Scripts\Json\categories1.json" />
-    <Content Include="Scripts\Json\locations.json" />
     <Content Include="Views\Shared\_LoadData.cshtml" />
     <Content Include="Views\Shared\_FillSearchResults.cshtml" />
     <Content Include="Views\List\Home.cshtml" />

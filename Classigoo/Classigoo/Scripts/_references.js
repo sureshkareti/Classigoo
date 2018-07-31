@@ -16,7 +16,6 @@
 /// <reference path="jquery-3.2.1.js" />
 /// <reference path="jquery-ui-1.12.1.js" />
 /// <reference path="jquery-ui-1.12.1.min.js" />
-/// <reference path="json/regions.js" />
 /// <reference path="list/bootstrap.min.js" />
 /// <reference path="list/custom.js" />
 /// <reference path="list/datatables.min.js" />
