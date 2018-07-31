@@ -306,6 +306,10 @@
     <Content Include="Content\List\dataTables.bootstrap.min.css" />
     <Content Include="Content\List\responsive.bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\slick\fonts\slick.svg" />
+    <Content Include="Content\slick\slick-custom.css" />
+    <Content Include="Content\slick\slick-theme.css" />
+    <Content Include="Content\slick\slick.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -450,6 +454,9 @@
     <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="fonts\fontawesome-webfontba72.ttf" />
     <Content Include="fonts\fontawesome-webfontba72.woff" />
+    <Content Include="Content\slick\fonts\slick.eot" />
+    <Content Include="Content\slick\fonts\slick.ttf" />
+    <Content Include="Content\slick\fonts\slick.woff" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\Home\custom-select.min.js" />
     <Content Include="Scripts\Home\selectron.js" />
@@ -493,6 +500,7 @@
     <Content Include="Scripts\Json\categories.json" />
     <Content Include="Scripts\Json\regions.json" />
     <Content Include="Scripts\Json\location1.json" />
+    <Content Include="Scripts\slick\slick.min.js" />
     <Content Include="Views\List\Index.cshtml" />
     <Content Include="Views\List\Contact.cshtml" />
     <Content Include="Views\List\About.cshtml" />

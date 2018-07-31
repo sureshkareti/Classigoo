@@ -50,3 +50,4 @@
 /// <reference path="scriptsnew/tether.min.js" />
 /// <reference path="scriptsnew/tinymce.min.js" />
 /// <reference path="scriptsnew/zoomsl-3.0.min.js" />
+/// <reference path="slick/slick.min.js" />
