@@ -1,4 +1,5 @@
-﻿
+﻿@model SubCategoryCount
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -150,7 +151,7 @@
                         <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Borewell Machine">
                             <img src="~/images/scroll/AV/AV1.png"  /><br>
                             <span class="direname" style="color:#337ab7">Borewell Machine</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.BorewellMachineCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.BorewellMachineCount)</span>
                         </a>
                         @*<a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Borewell Machine">
                                 <img src="~/images/scroll/AV/AV1.png" style="background-color:#f70;height:70px;width:70px;" /><br />
@@ -161,14 +162,14 @@
                         <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Tractors">
                             <img src="~/images/scroll/AV/AV2.png" /><br>
                             <span class="direname" style="color:#337ab7">Tractors</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.TractorsCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.TractorsCount)</span>
                         </a>
                     </div>
                     <div class="slide">
                         <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Dozer">
                             <img src="~/images/scroll/AV/AV3.jpg" /><br>
                             <span class="direname" style="color:#337ab7">Dozer</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.DozerCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.DozerCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -176,7 +177,7 @@
 
                             <img src="~/images/scroll/AV/AV4.jpg" /><br>
                             <span class="direname" style="color:#337ab7">Combine Harvester</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.HarvesterCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.HarvesterCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -184,14 +185,14 @@
 
                             <img src="~/images/scroll/AV/AV5.jpg" /><br>
                             <span class="direname" style="color:#337ab7">Backhoe Loader</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.BackhoeLoaderCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.BackhoeLoaderCount)</span>
                         </a>
                     </div>
                     <div class="slide">
                         <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Excavators">
                             <img src="~/images/scroll/AV/AV6.png" /><br>
                             <span class="direname" style="color:#337ab7">Excavators</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.AVSubCat.ExcavatorsCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.AVSubCat.ExcavatorsCount)</span>
 
                         </a>
                     </div>
@@ -199,14 +200,14 @@
                         <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Autos">
                             <img src="~/images/scroll/PV/PV1.png" /><br>
                             <span class="direname" style="color:#337ab7">Autos</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.PVSubCat.AutosCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.PVSubCat.AutosCount)</span>
                         </a>
                     </div>
                     <div class="slide">
                         <a class="scrollimg" data-category="Passenger Vehicles" data-subcategory="Cars">
                             <img src="~/images/scroll/PV/PV2.png" /><br>
                             <span class="direname" style="color:#337ab7">Cars</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.PVSubCat.CarsCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.PVSubCat.CarsCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -214,7 +215,7 @@
 
                             <img src="~/images/scroll/PV/PV3.png" /><br>
                             <span class="direname" style="color:#337ab7">Travel Vans</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.PVSubCat.TravelVansCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.PVSubCat.TravelVansCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -222,21 +223,21 @@
 
                             <img src="~/images/scroll/PV/PV4.png" /><br>
                             <span class="direname" style="color:#337ab7">Bikes</span>
-                            @* <span class="direname" style="color:#337ab7">(@Model.SubCatCount.PVSubCat.BikesCount)</span>*@
+                             <span class="direname" style="color:#337ab7">(@Model.PVSubCat.BikesCount)</span>
                         </a>
                     </div>
                     <div class="slide">
                         <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Tractors">
                             <img src="~/images/scroll/CV/CV1.png"  /><br>
                             <span class="direname" style="color:#337ab7">Tractors</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.TractorsCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.TractorsCount)</span>
                         </a>
                     </div>
                     <div class="slide">
                         <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Dozers">
                             <img src="~/images/scroll/CV/CV2.jpg"  /><br>
                             <span class="direname" style="color:#337ab7">Dozers</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.DozerCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.DozerCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -244,7 +245,7 @@
 
                             <img src="~/images/scroll/CV/CV3.jpg"  /><br>
                             <span class="direname" style="color:#337ab7">Backhoe_Loader</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.BackhoeLoaderCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.BackhoeLoaderCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -252,7 +253,7 @@
 
                             <img src="~/images/scroll/CV/CV4.jpg"  /><br>
                             <span class="direname" style="color:#337ab7">Excavators</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.ExcavatorsCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.ExcavatorsCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -260,7 +261,7 @@
 
                             <img src="~/images/scroll/CV/CV5.jpg"/><br>
                             <span class="direname" style="color:#337ab7">Wheel Loader</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.WheelLoaderCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.WheelLoaderCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -268,7 +269,7 @@
 
                             <img src="~/images/scroll/CV/CV6.png"/><br>
                             <span class="direname" style="color:#337ab7">Crane</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.CraneCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.CraneCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -276,7 +277,7 @@
 
                             <img src="~/images/scroll/CV/CV7.png"/><br>
                             <span class="direname" style="color:#337ab7">Transit Mixer</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.TransitMixerCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.TransitMixerCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -284,7 +285,7 @@
 
                             <img src="~/images/scroll/CV/CV8.jpg"  /><br>
                             <span class="direname" style="color:#337ab7">Soil Compactor</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.SoilCompactorCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.SoilCompactorCount)</span>
                         </a>
                     </div>
                     <div class="slide">
@@ -292,9 +293,86 @@
 
                             <img src="~/images/scroll/CV/CV9.jpg"/><br>
                             <span class="direname" style="color:#337ab7">Tippers</span>
-                            @*<span class="direname" style="color:#337ab7">(@Model.SubCatCount.CVSubCat.TippersCount)</span>*@
+                            <span class="direname" style="color:#337ab7">(@Model.CVSubCat.TippersCount)</span>
                         </a>
                     </div>
+
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Autos - 3 wheeler">
+                            <img src="~/images/scroll/TV/TV1.png"  /><br>
+                            <span class="direname" style="color:#337ab7">Autos - 3 wheeler</span>
+                            <span class="direname" style="color:#337ab7">(@Model.TVSubCat.Autos3wheelerCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Mini Trucks - 4 wheeler">
+                            <img src="~/images/scroll/TV/TV2.jpg"  /><br>
+                            <span class="direname" style="color:#337ab7">Mini Trucks - 4 wheeler</span>
+                            <span class="direname" style="color:#337ab7">(@Model.TVSubCat.MiniTrucks4wheelerCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Lorry Trucks">
+
+                            <img src="~/images/scroll/TV/TV3.jpg" style="background-color:#f70" /><br>
+                            <span class="direname" style="color:#337ab7">Lorry Trucks</span>
+                            <span class="direname" style="color:#337ab7">(@Model.TVSubCat.LorryTrucksCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="DCM Trucks">
+
+                            <img src="~/images/scroll/TV/TV4.jpg" /><br>
+                            <span class="direname" style="color:#337ab7">DCM Trucks</span>
+                            <span class="direname" style="color:#337ab7">(@Model.TVSubCat.DCMTrucksCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Apartments">
+                            <img src="~/images/scroll/RE/RE1.jpg" /><br>
+                            <span class="direname" style="color:#337ab7">Apartments</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.ApartmentsCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Plots/Land">
+                            <img src="~/images/scroll/RE/RE2.jpg"  /><br>
+                            <span class="direname" style="color:#337ab7">Plots/Land</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.PlotsLandCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Agricultural Land">
+
+                            <img src="~/images/scroll/RE/RE3.jpg"  /><br>
+                            <span class="direname" style="color:#337ab7">Agricultural Land</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.AgriculturalLandCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Shops & Offices">
+
+                            <img src="~/images/scroll/RE/RE4.jpg" /><br>
+                            <span class="direname" style="color:#337ab7">Shops & Offices</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.ShopsOfficesCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Independent Houses & Villas">
+
+                            <img src="~/images/scroll/RE/RE5.jpg" /><br>
+                            <span class="direname" style="color:#337ab7">Independent Houses & Villas</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.IndependentHousesVillasCount)</span>
+                        </a>
+                    </div>
+                    <div class="slide">
+                        <a class="scrollimg" data-category="Real Estate" data-subcategory="Hostels & PG">
+
+                            <img src="~/images/scroll/RE/RE6.jpg"  /><br>
+                            <span class="direname" style="color:#337ab7">Hostels & PG</span>
+                            <span class="direname" style="color:#337ab7">(@Model.RESubCat.HostelsPGCount)</span>
+                        </a>
+                    </div> 
 
 
                 </section>
@@ -325,7 +403,6 @@
 <script>
     $(document).ready(function () {
 
-
         $(".autoplay").slick({
 
             variableWidth: true,
@@ -354,14 +431,21 @@
                 }]
         });
 
+        $('.scrollimg').click(function () {
+            var currentCat = $(this)[0].getAttribute("data-category");
+            var currentSubCat = $(this)[0].getAttribute("data-subcategory");
+            window.location.href = "/List/Index?category=" + currentCat + "&subCategory=" + currentSubCat;
+        });
 
         GetAddsCount();
+
         $("#divCategory a").click(function () {
             var selectedCategory = $(this).attr("category");
             var type = $(this).attr("type");
             //  window.target = "_blank";
             window.location.href = "/List/Index?category=" + selectedCategory + "&type=" + type;
         })
+
         function GetAddsCount() {
             $.ajax({
                 url: '/List/GetCount',

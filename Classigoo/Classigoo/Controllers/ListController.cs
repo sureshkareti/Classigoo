@@ -15,9 +15,10 @@ namespace Classigoo.Controllers
         // GET: List
         public ActionResult Home()
         {
-            return View();
+           SubCategoryCount objSubCategoryCount = GetSubCatCount();
+            return View(objSubCategoryCount);
         }
-        public ActionResult Index(string category = "Select Category", string type = "Rent")
+        public ActionResult Index(string subCategory,string category = "Select Category", string type = "Rent")
         {
             try
             {
