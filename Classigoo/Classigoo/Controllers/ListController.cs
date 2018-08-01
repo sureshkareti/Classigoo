@@ -245,10 +245,17 @@ namespace Classigoo.Controllers
             if (isSearchFrmHomePage)
             {
                 addColl.SubCatCount = GetSubCatCount();
+                ViewBag.SubCatCount= GetSubCatCount();
                 return View("Index", addColl);
             }
             else
             {
+                SubCategoryCount count = new SubCategoryCount();
+                AV obj = new AV();
+                obj.BorewellMachineCount = "1";
+                count.AVSubCat = obj;
+                //addColl.SubCatCount = GetSubCatCount();
+                ViewBag.SubCatCount = count;
                 return PartialView("_FillSearchResults", addColl);
             }
         }

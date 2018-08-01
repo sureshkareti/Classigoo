@@ -283,3 +283,39 @@ EntityFramework ; The underlying provider failed on Open.
 7/30/2018 10:59:26 PM : At filter adds when no category selected
 EntityFramework ; The underlying provider failed on Open.
 7/30/2018 10:59:26 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+01/08/2018 8:12:51 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:26 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:28 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:29 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:31 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:32 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:44 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:13:46 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:16:47 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:16:48 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:21:01 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:21:06 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:21:07 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 8:21:12 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 9:04:35 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 9:04:36 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+01/08/2018 9:04:38 PM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
+02/08/2018 1:26:52 AM : At Filter AV with filter options
+Classigoo ; Object reference not set to an instance of an object.
