@@ -207,7 +207,7 @@ function DeleteImage(imageUrl, category, position, id) {
             $(".loader-wrap").css("display", "none");
            
             if (msg === "error") {
-                alert("there is problem with deleting image");
+                alert("there is problem with deleting image please try again");
             }
             else {
 
@@ -362,7 +362,7 @@ function ChangeDefaultImage(category, position, id) {
         success: function (msg) {
 
             if (msg === "error") {
-                alert("there is problem with deleting image");
+                alert("there is problem with deleting image please try again");
             }
             else {
                 var imgUrl1 = msg[0];
