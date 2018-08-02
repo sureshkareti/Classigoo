@@ -43,10 +43,25 @@
     }
 
 
-.slider {
+.slider-home-all {
     width: 90%;
     margin: 10px auto;
     margin-bottom: 40px;
+}
+
+.slider-index-all {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.slider-index-pv {
+    width: 50%;
+    margin: 10px auto;
+}
+
+.slider-index-tv {
+    width: 70%;
+    margin: 10px auto;
 }
 
 .slick-slide {
@@ -77,7 +92,19 @@
 }
 
 @media screen and (max-width: 736px) {
-    .slider {
+    .slider-home-all {
         width: 70%;
+    }
+
+    .slider-index-all {
+        width: 100%;
+    }
+
+    .slider-index-pv {
+        width: 100%;
+    }
+
+    .slider-index-tv {
+        width: 100%;
     }
 }
