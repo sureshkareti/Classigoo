@@ -14,10 +14,10 @@
     <meta http-equiv="distribution" content="Global" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+
     @*<title>@ViewBag.Title</title>*@
 
-   
+
 
     @Styles.Render("~/Content/css")
     @*@Scripts.Render("~/bundles/modernizr")*@
@@ -288,7 +288,7 @@
             position: absolute;
             background-color: #f1f1f1;
             max-width: 164px;
-            width:100%;
+            width: 100%;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
@@ -366,16 +366,16 @@
                                                         <span class="link inlblk acc-user-name fleft"><span id="userName">Classigoo User</span></span>
                                                     </button>
                                                 </div>
-                                               
+
                                                 <div class="dropdown-content">
                                                     <a href="~/User/Home">My Ads</a>
                                                     <a href="~/User/SignOut">Sign Out</a>
-                                                   
+
                                                 </div>
                                             </div>
                                         </div>
 
-                                       
+
 
                                         <div style="display:none">
 
@@ -613,6 +613,18 @@ toggle between hiding and showing the dropdown content */
         }
 
     </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122468022-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-122468022-2');
+    </script>*@
+
+
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/scripts/bootstrap.js")
 </body>

@@ -319,3 +319,5 @@ Classigoo ; Object reference not set to an instance of an object.
 Classigoo ; Object reference not set to an instance of an object.
 02/08/2018 1:26:52 AM : At Filter AV with filter options
 Classigoo ; Object reference not set to an instance of an object.
+8/3/2018 6:30:44 PM : At fill chat
+mscorlib ; Nullable object must have a value.
