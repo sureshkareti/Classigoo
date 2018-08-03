@@ -511,3 +511,4 @@ function SetSubCatValue(currentSubCat)
         $('#reSubCategory').val(currentSubCat.trim()).attr("selected", "selected");
     }
 }
+

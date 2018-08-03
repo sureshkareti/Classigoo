@@ -15,10 +15,10 @@ namespace Classigoo.Controllers
         // GET: List
         public ActionResult Home()
         {
-           SubCategoryCount objSubCategoryCount = GetSubCatCount();
+            SubCategoryCount objSubCategoryCount = GetSubCatCount("", "Rent", "", "", "", "\"\"");
             return View(objSubCategoryCount);
         }
-        public ActionResult Index(string subCategory,string category = "Select Category", string type = "Rent")
+        public ActionResult Index(string subCategory="",string category = "Select Category", string type = "Rent")
         {
             try
             {
@@ -27,6 +27,7 @@ namespace Classigoo.Controllers
                 filterOptions.Location = "";
                 filterOptions.SearchKeyword = "";
                 filterOptions.Type = type;
+                filterOptions.SubCategory = subCategory;
                 ViewBag.FilterValues = filterOptions;
             }
             catch(Exception ex)
@@ -204,13 +205,33 @@ namespace Classigoo.Controllers
             AddsModel addColl = new AddsModel();
             Dictionary<string, object> filterColl = new Dictionary<string, object>();
             JavaScriptSerializer j = new JavaScriptSerializer();
+            string subCategory = "";
+            string company = "";
             try
             {
             
-                object filters = j.Deserialize(filterOptions, typeof(object));
+                 object filters = j.Deserialize(filterOptions, typeof(object));
                 if (filters.ToString() != "")
                 {
                     filterColl = (Dictionary<string, object>)filters;
+                    if(category!="Select Category" && category!=Constants.RealEstate)
+                    {
+                        subCategory = filterColl["subCategory"].ToString();
+                        company = filterColl["company"].ToString();
+                       
+                    }
+                    if(category==Constants.RealEstate)
+                    {
+                        ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
+                    }
+                    else
+                    {
+                        ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, "\"\"");
+                    }
+                }
+                else
+                {
+                    ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
                 }
                 switch (category)
                 {
@@ -244,18 +265,15 @@ namespace Classigoo.Controllers
             }
             if (isSearchFrmHomePage)
             {
-                addColl.SubCatCount = GetSubCatCount();
-                ViewBag.SubCatCount= GetSubCatCount();
+                //if(category==Constants.RealEstate)
+                //ViewBag.SubCatCount=GetSubCatCount(location, type, keyword, subCategory, company,filterOptions);
+                //else
+                // ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
                 return View("Index", addColl);
             }
             else
             {
-                SubCategoryCount count = new SubCategoryCount();
-                AV obj = new AV();
-                obj.BorewellMachineCount = "1";
-                count.AVSubCat = obj;
-                //addColl.SubCatCount = GetSubCatCount();
-                ViewBag.SubCatCount = count;
+               // ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
                 return PartialView("_FillSearchResults", addColl);
             }
         }
@@ -1158,13 +1176,13 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public SubCategoryCount GetSubCatCount()
+        public SubCategoryCount GetSubCatCount(string location, string type, string keyword, string subCategory, string company, string reFilters)
         {
             SubCategoryCount objSubCatCount = new SubCategoryCount();
             try
             {
                 CommonDBOperations objCommon = new CommonDBOperations();
-                objSubCatCount= objCommon.GetSubCatCount();
+                objSubCatCount = objCommon.GetSubCatCount(location, type, keyword, subCategory, company, reFilters);
             }
             catch (Exception ex)
             {

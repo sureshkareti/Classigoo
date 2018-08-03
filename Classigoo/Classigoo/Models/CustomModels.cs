@@ -16,7 +16,7 @@ namespace Classigoo
 
         public int PageCount { get; set; }
 
-        public SubCategoryCount SubCatCount { set; get; }
+        //public SubCategoryCount SubCatCount { set; get; }
     }
     public class SubCategoryCount
     {
@@ -28,52 +28,52 @@ namespace Classigoo
     }
     public class AV
     {
-        public string BorewellMachineCount { set; get; }
-        public string TractorsCount { set; get; }
-        public string DozerCount { set; get; }
-        public string HarvesterCount { set; get; }
-        public string BackhoeLoaderCount { set; get; }
-        public string ExcavatorsCount { set; get; }
+        public int BorewellMachineCount { set; get; }
+        public int TractorsCount { set; get; }
+        public int DozerCount { set; get; }
+        public int HarvesterCount { set; get; }
+        public int BackhoeLoaderCount { set; get; }
+        public int ExcavatorsCount { set; get; }
         //Tractors Dozer Combine Harvester Backhoe Loader Excavators
     }
     public class CV
     {
         //Tractors Dozers Backhoe_Loader Excavators Wheel Loader Crane Transit Mixer Soil Compactor Tippers
-        public string TractorsCount { set; get; }
-        public string DozerCount { set; get; }
-        public string BackhoeLoaderCount { set; get; }
-        public string ExcavatorsCount { set; get; }
-        public string WheelLoaderCount { set; get; }
-        public string CraneCount { set; get; }
-        public string TransitMixerCount { set; get; }
-        public string SoilCompactorCount { set; get; }
-        public string TippersCount { set; get; }    
+        public int TractorsCount { set; get; }
+        public int DozerCount { set; get; }
+        public int BackhoeLoaderCount { set; get; }
+        public int ExcavatorsCount { set; get; }
+        public int WheelLoaderCount { set; get; }
+        public int CraneCount { set; get; }
+        public int TransitMixerCount { set; get; }
+        public int SoilCompactorCount { set; get; }
+        public int TippersCount { set; get; }    
     }
 
     public class TV
     {
-        public string Autos3wheelerCount { set; get; }
-        public string MiniTrucks4wheelerCount { set; get; }
-        public string LorryTrucksCount { set; get; }
-        public string DCMTrucksCount { set; get; }
+        public int Autos3wheelerCount { set; get; }
+        public int MiniTrucks4wheelerCount { set; get; }
+        public int LorryTrucksCount { set; get; }
+        public int DCMTrucksCount { set; get; }
         //Autos - 3 wheeler  Mini Trucks - 4 wheeler Lorry Trucks DCM Trucks
     }
     public class PV
     {
-        public string AutosCount { set; get; }
-        public string CarsCount { set; get; }
-        public string TravelVansCount { set; get; }
-        public string BikesCount { set; get; }
+        public int AutosCount { set; get; }
+        public int CarsCount { set; get; }
+        public int TravelVansCount { set; get; }
+        public int BikesCount { set; get; }
         //Autos Cars Travel Vans Bikes
     }
     public class RE
     {
-        public string ApartmentsCount { set; get; }
-        public string PlotsLandCount { set; get; }
-        public string AgriculturalLandCount { set; get; }
-        public string ShopsOfficesCount { set; get; }
-        public string IndependentHousesVillasCount { set; get; }
-        public string HostelsPGCount { set; get; }
+        public int ApartmentsCount { set; get; }
+        public int PlotsLandCount { set; get; }
+        public int AgriculturalLandCount { set; get; }
+        public int ShopsOfficesCount { set; get; }
+        public int IndependentHousesVillasCount { set; get; }
+        public int HostelsPGCount { set; get; }
         //Apartments Plots/Land Agricultural Land  Shops & Offices Independent Houses & Villas Hostels & PG
     }
 
@@ -108,6 +108,7 @@ namespace Classigoo
         public string Location { set; get; }
         public string SearchKeyword { set; get; }
         public string Type { set; get; }
+        public string SubCategory { set; get; }
     }
     public class MessageDetail
     {

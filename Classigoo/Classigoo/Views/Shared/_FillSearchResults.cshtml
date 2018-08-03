@@ -165,6 +165,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        FillSubCatCount();
         $('#bloglist .bloglisting').hide();
         if ($("#list").hasClass("btn-orange")) {
             $('#bloglist .bloglisting:nth-child(2)').show();
@@ -182,6 +183,83 @@
             last: 'Last'
         });
 
+
     });
+
+    function FillSubCatCount()
+    {
+        //.............AV...............
+        $(".direname.spnCntAV-BorewellMachineCount").text(@ViewBag.SubCatCount.AVSubCat.BorewellMachineCount);
+        $(".direname.spnCntAV-TractorsCount").text(@ViewBag.SubCatCount.AVSubCat.TractorsCount)
+        $(".direname.spnCntAV-DozerCount").text(@ViewBag.SubCatCount.AVSubCat.DozerCount)
+        $(".direname.spnCntAV-HarvesterCount").text(@ViewBag.SubCatCount.AVSubCat.HarvesterCount);
+        $(".direname.spnCntAV-BackhoeLoaderCount").text(@ViewBag.SubCatCount.AVSubCat.BackhoeLoaderCount);
+        $(".direname.spnCntAV-ExcavatorsCount").text(@ViewBag.SubCatCount.AVSubCat.ExcavatorsCount);
+
+        //.........PV.............
+        $(".direname.spnCntPV-AutosCount").text(@ViewBag.SubCatCount.PVSubCat.AutosCount);
+        $(".direname.spnCntPV-CarsCount").text(@ViewBag.SubCatCount.PVSubCat.CarsCount)
+        $(".direname.spnCntPV-TravelVansCount").text(@ViewBag.SubCatCount.PVSubCat.TravelVansCount)
+        $(".direname.spnCntPV-BikesCount").text(@ViewBag.SubCatCount.PVSubCat.BikesCount);
+
+        //.......CV............
+        $(".direname.spnCntCV-TractorsCount").text(@ViewBag.SubCatCount.CVSubCat.TractorsCount);
+        $(".direname.spnCntCV-DozerCount").text(@ViewBag.SubCatCount.CVSubCat.DozerCount)
+        $(".direname.spnCntCV-BackhoeLoaderCount").text(@ViewBag.SubCatCount.CVSubCat.BackhoeLoaderCount)
+        $(".direname.spnCntCV-ExcavatorsCount").text(@ViewBag.SubCatCount.CVSubCat.ExcavatorsCount);
+        $(".direname.spnCntCV-WheelLoaderCount").text(@ViewBag.SubCatCount.CVSubCat.WheelLoaderCount);
+        $(".direname.spnCntCV-CraneCount").text(@ViewBag.SubCatCount.CVSubCat.CraneCount);
+        $(".direname.spnCntCV-TransitMixerCount").text(@ViewBag.SubCatCount.CVSubCat.TransitMixerCount);
+        $(".direname.spnCntCV-SoilCompactorCount").text(@ViewBag.SubCatCount.CVSubCat.SoilCompactorCount)
+        //.........TV......
+        $(".direname.spnCntTV-Autos3wheelerCount").text(@ViewBag.SubCatCount.TVSubCat.Autos3wheelerCount);
+        $(".direname.spnCntTV-MiniTrucks4wheelerCount").text(@ViewBag.SubCatCount.TVSubCat.MiniTrucks4wheelerCount)
+        $(".direname.spnCntTV-LorryTrucksCount").text(@ViewBag.SubCatCount.TVSubCat.LorryTrucksCount)
+        $(".direname.spnCntTV-DCMTrucksCount").text(@ViewBag.SubCatCount.TVSubCat.DCMTrucksCount);
+
+        //.... RE..........
+
+        $(".direname.spnCntRE-ApartmentsCount").text(@ViewBag.SubCatCount.RESubCat.ApartmentsCount);
+        $(".direname.spnCntRE-PlotsLandCount").text(@ViewBag.SubCatCount.RESubCat.PlotsLandCount)
+        $(".direname.spnCntRE-AgriculturalLandCount").text(@ViewBag.SubCatCount.RESubCat.AgriculturalLandCount)
+        $(".direname.spnCntRE-ShopsOfficesCount").text(@ViewBag.SubCatCount.RESubCat.ShopsOfficesCount);
+        $(".direname.spnCntRE-IndependentHousesVillasCount").text(@ViewBag.SubCatCount.RESubCat.IndependentHousesVillasCount);
+        $(".direname.spnCntRE-HostelsPGCount").text(@ViewBag.SubCatCount.RESubCat.HostelsPGCount);
+
+        //............All
+        $(".direname.spnCntAll-BorewellMachineCount").text(@ViewBag.SubCatCount.AVSubCat.BorewellMachineCount);
+        $(".direname.spnCntAll-TractorsCount").text(@ViewBag.SubCatCount.AVSubCat.TractorsCount)
+        $(".direname.spnCntAll-DozerCount").text(@ViewBag.SubCatCount.AVSubCat.DozerCount)
+        $(".direname.spnCntAll-HarvesterCount").text(@ViewBag.SubCatCount.AVSubCat.HarvesterCount);
+        $(".direname.spnCntAll-BackhoeLoaderCount").text(@ViewBag.SubCatCount.AVSubCat.BackhoeLoaderCount);
+        $(".direname.spnCntAll-ExcavatorsCount").text(@ViewBag.SubCatCount.AVSubCat.ExcavatorsCount);
+
+        $(".direname.spnCntAll-AutosCount").text(@ViewBag.SubCatCount.PVSubCat.AutosCount);
+        $(".direname.spnCntAll-CarsCount").text(@ViewBag.SubCatCount.PVSubCat.CarsCount)
+        $(".direname.spnCntAll-TravelVansCount").text(@ViewBag.SubCatCount.PVSubCat.TravelVansCount)
+        $(".direname.spnCntAll-BikesCount").text(@ViewBag.SubCatCount.PVSubCat.BikesCount);
+
+        $(".direname.spnCntAll-TractorsCount").text(@ViewBag.SubCatCount.CVSubCat.TractorsCount);
+        $(".direname.spnCntAll-DozerCount").text(@ViewBag.SubCatCount.CVSubCat.DozerCount)
+        $(".direname.spnCntAll-BackhoeLoaderCount").text(@ViewBag.SubCatCount.CVSubCat.BackhoeLoaderCount)
+        $(".direname.spnCntAll-ExcavatorsCount").text(@ViewBag.SubCatCount.CVSubCat.ExcavatorsCount);
+        $(".direname.spnCntAll-WheelLoaderCount").text(@ViewBag.SubCatCount.CVSubCat.WheelLoaderCount);
+        $(".direname.spnCntAll-CraneCount").text(@ViewBag.SubCatCount.CVSubCat.CraneCount);
+        $(".direname.spnCntAll-TransitMixerCount").text(@ViewBag.SubCatCount.CVSubCat.TransitMixerCount);
+        $(".direname.spnCntAll-SoilCompactorCount").text(@ViewBag.SubCatCount.CVSubCat.SoilCompactorCount)
+
+        $(".direname.spnCntAll-Autos3wheelerCount").text(@ViewBag.SubCatCount.TVSubCat.Autos3wheelerCount);
+        $(".direname.spnCntAll-MiniTrucks4wheelerCount").text(@ViewBag.SubCatCount.TVSubCat.MiniTrucks4wheelerCount)
+        $(".direname.spnCntAll-LorryTrucksCount").text(@ViewBag.SubCatCount.TVSubCat.LorryTrucksCount)
+        $(".direname.spnCntAll-DCMTrucksCount").text(@ViewBag.SubCatCount.TVSubCat.DCMTrucksCount);
+
+        $(".direname.spnCntAll-ApartmentsCount").text(@ViewBag.SubCatCount.RESubCat.ApartmentsCount);
+        $(".direname.spnCntAll-PlotsLandCount").text(@ViewBag.SubCatCount.RESubCat.PlotsLandCount)
+        $(".direname.spnCntAll-AgriculturalLandCount").text(@ViewBag.SubCatCount.RESubCat.AgriculturalLandCount)
+        $(".direname.spnCntAll-ShopsOfficesCount").text(@ViewBag.SubCatCount.RESubCat.ShopsOfficesCount);
+        $(".direname.spnCntAll-IndependentHousesVillasCount").text(@ViewBag.SubCatCount.RESubCat.IndependentHousesVillasCount);
+        $(".direname.spnCntAll-HostelsPGCount").text(@ViewBag.SubCatCount.RESubCat.HostelsPGCount);
+
+    }
 
 </script>
