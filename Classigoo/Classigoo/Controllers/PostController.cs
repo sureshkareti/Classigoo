@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Classigoo.Models;
 using System.Text;
+using System.Reflection;
 
 namespace Classigoo.Controllers
 {
@@ -51,156 +52,170 @@ namespace Classigoo.Controllers
 
             if (addId != null)
             {
-                ViewBag.addId = addId;
-
-                PostAdd objPostAdd = new PostAdd();
-
-                //PostDBOperations objPostDbOpareations = new PostDBOperations();
-                CommonDBOperations objCommonDBOperations = new CommonDBOperations();
-                Add addRecord = objCommonDBOperations.GetAdd(addId);
-                objPostAdd.AddId = Convert.ToString(addRecord.AddId);
-                objPostAdd.txtTitle = addRecord.Title;
-                objPostAdd.hdnCateFristLevel = addRecord.Category;
-                objPostAdd.hdnCateSecondLevel = addRecord.SubCategory;
-                objPostAdd.State = addRecord.State;
-                objPostAdd.District = addRecord.District;
-                objPostAdd.Mandal = addRecord.Mandal;
-                objPostAdd.LocalArea = addRecord.NearestArea;
-                objPostAdd.ddlRentOrSale = addRecord.Type;
-
-
-                if (addRecord.Category == Constants.RealEstate)
-                {
-                    #region RealEstate
-
-
-
-                    RealEstate realEstateRecord = objCommonDBOperations.GetRealEstate(addId);
-
-                    objPostAdd.txtPro_Price = Convert.ToString(realEstateRecord.Price);//  realEstateRecord.Price == null ? 0 : Convert.ToInt32(realEstateRecord.Price);
-                    objPostAdd.ddlAvailability = realEstateRecord.Availability;
-                    objPostAdd.ddlFurnishing = realEstateRecord.Furnishing;
-
-                    objPostAdd.txtAcres = realEstateRecord.Acres == null ? "" : Convert.ToString(realEstateRecord.Acres);
-                    objPostAdd.ddlPostedBy = realEstateRecord.ListedBy;
-                    objPostAdd.ddlBedrooms = realEstateRecord.Bedrooms;
-                    objPostAdd.txtSquareFeet = Convert.ToString(realEstateRecord.SquareFeets);  //realEstateRecord.SquareFeets == null ? default(int) : Convert.ToInt32(realEstateRecord.SquareFeets);
-                    objPostAdd.txtSquareYards = Convert.ToString(realEstateRecord.Squareyards); // realEstateRecord.Squareyards == null ? default(int) : Convert.ToInt32(realEstateRecord.Squareyards);
-                    objPostAdd.txtAddDetails = realEstateRecord.Description;
-
-                    ViewBag.img1 = realEstateRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
-                    ViewBag.img2 = realEstateRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
-                    ViewBag.img3 = realEstateRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
-                    ViewBag.img4 = realEstateRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
-
-                    return View(objPostAdd);
-
-                    #endregion
-                }
-                else if (addRecord.Category == Constants.ConstructionVehicle)
-                {
-                    #region CV
-                    ConstructionVehicle constructionVehicleRecord = objCommonDBOperations.GetCV(addId);
-
-                    objPostAdd.CVCompany_list = constructionVehicleRecord.Company;
-                    objPostAdd.CVOtherCompany = constructionVehicleRecord.OtherCompany;
-                    objPostAdd.txtCV_Model = constructionVehicleRecord.Model;
-                    objPostAdd.txtCV_MYear = constructionVehicleRecord.ManufacturingYear;
-
-                    objPostAdd.hdnCateSecondLevel = constructionVehicleRecord.SubCategory;
-
-                    objPostAdd.txtCV_Price = Convert.ToString(constructionVehicleRecord.Price);
-                    objPostAdd.txtAddDetails = constructionVehicleRecord.Description;
-
-                    ViewBag.img1 = constructionVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\");
-                    ViewBag.img2 = constructionVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
-                    ViewBag.img3 = constructionVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
-                    ViewBag.img4 = constructionVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
-                    return View(objPostAdd);
-
-                    #endregion
-                }
-                else if (addRecord.Category == Constants.TransportationVehicle)
-                {
-                    #region TV
-
-                    TransportationVehicle transportationVehicleRecord = objCommonDBOperations.GetTV(addId);
-
-                    objPostAdd.TVCompany_list = transportationVehicleRecord.Company;
-                    objPostAdd.TVOtherCompany = transportationVehicleRecord.OtherCompany;
-                    objPostAdd.hdnCateSecondLevel = transportationVehicleRecord.SubCategory;
-
-                    objPostAdd.txtTV_Model = transportationVehicleRecord.Model;
-                    objPostAdd.txtTV_MYear = transportationVehicleRecord.ManufacturingYear;
-
-                    objPostAdd.txtTV_Price = Convert.ToString(transportationVehicleRecord.Price);
-                    objPostAdd.txtAddDetails = transportationVehicleRecord.Description;
-
-                    ViewBag.img1 = transportationVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
-                    ViewBag.img2 = transportationVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
-                    ViewBag.img3 = transportationVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
-                    ViewBag.img4 = transportationVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
-                    return View(objPostAdd);
-
-
-                    #endregion
-                }
-                else if (addRecord.Category == Constants.AgriculturalVehicle)
+                if (!User.Identity.IsAuthenticated)
                 {
 
-                    #region AV
-                    AgriculturalVehicle agriculturalVehicleRecord = objCommonDBOperations.GetAV(addId);
-
-                    objPostAdd.AVCompany_list = agriculturalVehicleRecord.Company;
-                    objPostAdd.AVOtherCompany = agriculturalVehicleRecord.OtherCompany;
-                    objPostAdd.hdnCateSecondLevel = agriculturalVehicleRecord.SubCategory;
-
-                    objPostAdd.txtAV_Model = agriculturalVehicleRecord.Model;
-                    objPostAdd.txtAV_MYear = agriculturalVehicleRecord.ManufacturingYear;
-
-                    objPostAdd.txtAV_Price = Convert.ToString(agriculturalVehicleRecord.Price);
-                    objPostAdd.txtAddDetails = agriculturalVehicleRecord.Description;
-
-                    ViewBag.img1 = agriculturalVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
-                    ViewBag.img2 = agriculturalVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
-                    ViewBag.img3 = agriculturalVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
-                    ViewBag.img4 = agriculturalVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
-                    return View(objPostAdd);
-
-
-
-                    #endregion
+                    return RedirectToAction("Index", "Post");
                 }
-                else if (addRecord.Category == Constants.PassengerVehicle)
+                else
                 {
-                    #region PV
-                    PassengerVehicle passengerVehicleRecord = objCommonDBOperations.GetPV(addId);
+                    PostAdd objPostAdd = new PostAdd();
 
-                    objPostAdd.PVCompany_list = passengerVehicleRecord.Company;
-                    objPostAdd.PVOtherCompany = passengerVehicleRecord.OtherCompany;
-                    objPostAdd.hdnCateSecondLevel = passengerVehicleRecord.SubCategory;
+                    //PostDBOperations objPostDbOpareations = new PostDBOperations();
+                    CommonDBOperations objCommonDBOperations = new CommonDBOperations();
+                    Add addRecord = objCommonDBOperations.GetAdd(addId);
 
-                    objPostAdd.txtPV_price = Convert.ToString(passengerVehicleRecord.Price);
+                    if (userId != addRecord.UserId)
+                    {
+                        return RedirectToAction("Index", "Post");
+                    }
+                    else
+                    {
+                        ViewBag.addId = addId;
 
-                    objPostAdd.PVModel_list = Convert.ToString(passengerVehicleRecord.Model);
+                        objPostAdd.AddId = Convert.ToString(addRecord.AddId);
+                        objPostAdd.txtTitle = addRecord.Title;
+                        objPostAdd.hdnCateFristLevel = addRecord.Category;
+                        objPostAdd.hdnCateSecondLevel = addRecord.SubCategory;
+                        objPostAdd.State = addRecord.State;
+                        objPostAdd.District = addRecord.District;
+                        objPostAdd.Mandal = addRecord.Mandal;
+                        objPostAdd.LocalArea = addRecord.NearestArea;
+                        objPostAdd.ddlRentOrSale = addRecord.Type;
 
-                    objPostAdd.txtPV_Model = Convert.ToString(passengerVehicleRecord.Model);
 
-                    objPostAdd.txtPV_Year = Convert.ToString(passengerVehicleRecord.Year);
-                    objPostAdd.PVfueltype_list = Convert.ToString(passengerVehicleRecord.FuelType);
-                    objPostAdd.txtPV_kmdriven = Convert.ToString(passengerVehicleRecord.KMDriven);
-                    objPostAdd.txtAddDetails = passengerVehicleRecord.Description;
+                        if (addRecord.Category == Constants.RealEstate)
+                        {
+                            #region RealEstate
 
-                    ViewBag.img1 = passengerVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
-                    ViewBag.img2 = passengerVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
-                    ViewBag.img3 = passengerVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
-                    ViewBag.img4 = passengerVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
-                    return View(objPostAdd);
 
-                    #endregion
+
+                            RealEstate realEstateRecord = objCommonDBOperations.GetRealEstate(addId);
+
+                            objPostAdd.txtPro_Price = Convert.ToString(realEstateRecord.Price);//  realEstateRecord.Price == null ? 0 : Convert.ToInt32(realEstateRecord.Price);
+                            objPostAdd.ddlAvailability = realEstateRecord.Availability;
+                            objPostAdd.ddlFurnishing = realEstateRecord.Furnishing;
+
+                            objPostAdd.txtAcres = realEstateRecord.Acres == null ? "" : Convert.ToString(realEstateRecord.Acres);
+                            objPostAdd.ddlPostedBy = realEstateRecord.ListedBy;
+                            objPostAdd.ddlBedrooms = realEstateRecord.Bedrooms;
+                            objPostAdd.txtSquareFeet = Convert.ToString(realEstateRecord.SquareFeets);  //realEstateRecord.SquareFeets == null ? default(int) : Convert.ToInt32(realEstateRecord.SquareFeets);
+                            objPostAdd.txtSquareYards = Convert.ToString(realEstateRecord.Squareyards); // realEstateRecord.Squareyards == null ? default(int) : Convert.ToInt32(realEstateRecord.Squareyards);
+                            objPostAdd.txtAddDetails = realEstateRecord.Description;
+
+                            ViewBag.img1 = realEstateRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
+                            ViewBag.img2 = realEstateRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
+                            ViewBag.img3 = realEstateRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
+                            ViewBag.img4 = realEstateRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
+
+                            return View(objPostAdd);
+
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.ConstructionVehicle)
+                        {
+                            #region CV
+                            ConstructionVehicle constructionVehicleRecord = objCommonDBOperations.GetCV(addId);
+
+                            objPostAdd.CVCompany_list = constructionVehicleRecord.Company;
+                            objPostAdd.CVOtherCompany = constructionVehicleRecord.OtherCompany;
+                            objPostAdd.txtCV_Model = constructionVehicleRecord.Model;
+                            objPostAdd.txtCV_MYear = constructionVehicleRecord.ManufacturingYear;
+
+                            objPostAdd.hdnCateSecondLevel = constructionVehicleRecord.SubCategory;
+
+                            objPostAdd.txtCV_Price = Convert.ToString(constructionVehicleRecord.Price);
+                            objPostAdd.txtAddDetails = constructionVehicleRecord.Description;
+
+                            ViewBag.img1 = constructionVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\");
+                            ViewBag.img2 = constructionVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
+                            ViewBag.img3 = constructionVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
+                            ViewBag.img4 = constructionVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
+                            return View(objPostAdd);
+
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.TransportationVehicle)
+                        {
+                            #region TV
+
+                            TransportationVehicle transportationVehicleRecord = objCommonDBOperations.GetTV(addId);
+
+                            objPostAdd.TVCompany_list = transportationVehicleRecord.Company;
+                            objPostAdd.TVOtherCompany = transportationVehicleRecord.OtherCompany;
+                            objPostAdd.hdnCateSecondLevel = transportationVehicleRecord.SubCategory;
+
+                            objPostAdd.txtTV_Model = transportationVehicleRecord.Model;
+                            objPostAdd.txtTV_MYear = transportationVehicleRecord.ManufacturingYear;
+
+                            objPostAdd.txtTV_Price = Convert.ToString(transportationVehicleRecord.Price);
+                            objPostAdd.txtAddDetails = transportationVehicleRecord.Description;
+
+                            ViewBag.img1 = transportationVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
+                            ViewBag.img2 = transportationVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
+                            ViewBag.img3 = transportationVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
+                            ViewBag.img4 = transportationVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
+                            return View(objPostAdd);
+
+
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.AgriculturalVehicle)
+                        {
+
+                            #region AV
+                            AgriculturalVehicle agriculturalVehicleRecord = objCommonDBOperations.GetAV(addId);
+
+                            objPostAdd.AVCompany_list = agriculturalVehicleRecord.Company;
+                            objPostAdd.AVOtherCompany = agriculturalVehicleRecord.OtherCompany;
+                            objPostAdd.hdnCateSecondLevel = agriculturalVehicleRecord.SubCategory;
+
+                            objPostAdd.txtAV_Model = agriculturalVehicleRecord.Model;
+                            objPostAdd.txtAV_MYear = agriculturalVehicleRecord.ManufacturingYear;
+
+                            objPostAdd.txtAV_Price = Convert.ToString(agriculturalVehicleRecord.Price);
+                            objPostAdd.txtAddDetails = agriculturalVehicleRecord.Description;
+
+                            ViewBag.img1 = agriculturalVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
+                            ViewBag.img2 = agriculturalVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
+                            ViewBag.img3 = agriculturalVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
+                            ViewBag.img4 = agriculturalVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
+                            return View(objPostAdd);
+
+
+
+                            #endregion
+                        }
+                        else if (addRecord.Category == Constants.PassengerVehicle)
+                        {
+                            #region PV
+                            PassengerVehicle passengerVehicleRecord = objCommonDBOperations.GetPV(addId);
+
+                            objPostAdd.PVCompany_list = passengerVehicleRecord.Company;
+                            objPostAdd.PVOtherCompany = passengerVehicleRecord.OtherCompany;
+                            objPostAdd.hdnCateSecondLevel = passengerVehicleRecord.SubCategory;
+
+                            objPostAdd.txtPV_price = Convert.ToString(passengerVehicleRecord.Price);
+
+                            objPostAdd.PVModel_list = Convert.ToString(passengerVehicleRecord.Model);
+
+                            objPostAdd.txtPV_Model = Convert.ToString(passengerVehicleRecord.Model);
+
+                            objPostAdd.txtPV_Year = Convert.ToString(passengerVehicleRecord.Year);
+                            objPostAdd.PVfueltype_list = Convert.ToString(passengerVehicleRecord.FuelType);
+                            objPostAdd.txtPV_kmdriven = Convert.ToString(passengerVehicleRecord.KMDriven);
+                            objPostAdd.txtAddDetails = passengerVehicleRecord.Description;
+
+                            ViewBag.img1 = passengerVehicleRecord.ImgUrlPrimary.Replace("\\", "\\\\"); ;
+                            ViewBag.img2 = passengerVehicleRecord.ImgUrlSeconday.Replace("\\", "\\\\"); ;
+                            ViewBag.img3 = passengerVehicleRecord.ImgUrlThird.Replace("\\", "\\\\"); ;
+                            ViewBag.img4 = passengerVehicleRecord.ImgUrlFourth.Replace("\\", "\\\\"); ;
+                            return View(objPostAdd);
+
+                            #endregion
+                        }
+                    }
                 }
-
-
 
             }
 
@@ -208,11 +223,18 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        public ActionResult Test()
+        {
+            RedirectToAction("Index", "Post");
+
+            return View("Index");
+        }
+
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
-             
-            PostDBOperations objPostDbOpareations = new PostDBOperations(); 
+
+            PostDBOperations objPostDbOpareations = new PostDBOperations();
             Communication objComm = new Communication();
             UserDBOperations userObj = new UserDBOperations();
             string queryStringForEdit = Request.QueryString["addId"];
@@ -237,7 +259,7 @@ namespace Classigoo.Controllers
                 //}
                 if (userId == Guid.Empty)//User not logged in 
                 {
-                   
+
 
                     Guid userExist = userObj.UserExist(postAdd.PhoneNumber, "Custom");
                     if (userExist == Guid.Empty)//user(PhoneNum) doesnot exist so add user
@@ -452,9 +474,9 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                           objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
+                            objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             //Library.SendEmail(postId.ToString());
-                            Library.SendEmailFromGodaddy("New Ad Published",body.ToString());
+                            Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
                         }
                         else
@@ -594,8 +616,8 @@ namespace Classigoo.Controllers
                             OtherCompany = postAdd.AVOtherCompany,
                             SubCategory = postAdd.hdnCateSecondLevel,
 
-                            ManufacturingYear=postAdd.txtAV_MYear,
-                            Model=postAdd.txtAV_Model,
+                            ManufacturingYear = postAdd.txtAV_MYear,
+                            Model = postAdd.txtAV_Model,
 
                             Price = Convert.ToInt32(postAdd.txtAV_Price),
                             Description = postAdd.txtAddDetails,
@@ -612,7 +634,7 @@ namespace Classigoo.Controllers
                         {
                             ViewBag.addId = postId;
                             ViewBag.Message = "sucess";
-                          objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
+                            objComm.SendMessage(postAdd.PhoneNumber, message.ToString());
                             // Library.SendEmail(postId.ToString());
                             Library.SendEmailFromGodaddy("New Ad Published", body.ToString());
                             //return RedirectToAction("Home", "User");
@@ -643,7 +665,7 @@ namespace Classigoo.Controllers
                     {
 
                         string model = string.Empty;
-                       
+
                         if (postAdd.hdnCateSecondLevel.Trim() == "Cars" || postAdd.hdnCateSecondLevel.Trim() == "Bikes")
                         {
                             model = postAdd.PVModel_list;
@@ -653,7 +675,7 @@ namespace Classigoo.Controllers
                             model = postAdd.txtPV_Model;
                         }
 
-                       
+
 
 
                         PassengerVehicle objPassengerVehicle = new PassengerVehicle()
@@ -731,17 +753,17 @@ namespace Classigoo.Controllers
                 {
                     bool isAuthorizedUser = false;
                     MessageDBOperations objMsgDbOper = new MessageDBOperations();
-                  Guid addOwnerUserId=(Guid)objMsgDbOper.GetAddOwnerUserId(postId);
-                  Guid adminUserId= userObj.UserExist("1111111111", "Custom");
-                    if(userId==addOwnerUserId)//he is owner
+                    Guid addOwnerUserId = (Guid)objMsgDbOper.GetAddOwnerUserId(postId);
+                    Guid adminUserId = userObj.UserExist("1111111111", "Custom");
+                    if (userId == addOwnerUserId)//he is owner
                     {
                         isAuthorizedUser = true;
                     }
-                    else if(userId==adminUserId)//he is admin
+                    else if (userId == adminUserId)//he is admin
                     {
                         isAuthorizedUser = true;
                     }
-                    if(!isAuthorizedUser)
+                    if (!isAuthorizedUser)
                     {
                         ViewBag.Message = "UnAuthorizedToUpdate";
                         return View();
@@ -769,10 +791,10 @@ namespace Classigoo.Controllers
                     //to find isCategoryChange
                     bool isCategoryCnaged = false;
                     CommonDBOperations objCommonDBOperations = new CommonDBOperations();
-                    Add addRecord = objCommonDBOperations.GetAdd( postId.ToString());
-                    if(addRecord.Category != postAdd.hdnCateFristLevel || addRecord.SubCategory != postAdd.hdnCateSecondLevel)
+                    Add addRecord = objCommonDBOperations.GetAdd(postId.ToString());
+                    if (addRecord.Category != postAdd.hdnCateFristLevel || addRecord.SubCategory != postAdd.hdnCateSecondLevel)
                     {
-                         isCategoryCnaged = true;
+                        isCategoryCnaged = true;
 
                     }
 
@@ -1019,7 +1041,7 @@ namespace Classigoo.Controllers
 
                                     if (isRealestateadedd)
                                     {
-                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString( postId));
+                                        objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
 
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
@@ -1627,7 +1649,7 @@ namespace Classigoo.Controllers
                             }
                         }
 
-                        
+
                     }
                 }
                 catch (Exception ex)
@@ -1676,7 +1698,7 @@ namespace Classigoo.Controllers
 
         public void CreateFolderSubdomain(string path)
         {
-         //  string dirPath = Server.MapPath(path);
+            //  string dirPath = Server.MapPath(path);
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

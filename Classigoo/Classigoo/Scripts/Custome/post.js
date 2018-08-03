@@ -980,6 +980,59 @@ function fillModels() {
     });
 }
 
+window.fillModelsForPV = function () {
+
+    var selectedSubCategory = $("#hdnCateSecondLevel").val();
+    var selectedCategory = "";
+
+    if (selectedSubCategory === "Cars") {
+
+        selectedCategory = "Cars Models";
+    }
+    else if (selectedSubCategory === "Bikes") {
+
+        selectedCategory = "Bikes Models";
+    }
+
+
+    var selectedSubCategory1 = $("#PVCompany_list").val();
+
+    $("#PVModel_list").find('option').remove();
+    $("#PVModel_list").append('<option value="">Select</option>');
+
+
+    var VehiclesColl = new Array();
+
+
+    $.ajax({
+        url: '/Scripts/Json/categories.json',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            $.each(data, function (i, field) {
+                VehiclesColl.push(field);
+            });
+        }
+    });
+
+
+    var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+
+    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
+
+
+    $.each(selectedModel[0].VehicleModel, function (i, field) {
+        {
+            $("#PVModel_list").append("<option>" + field.name + "</option>");
+
+        }
+    });
+}
+
+
+
+
+
 //---------------------binding json data---------------------------------------//
 
 

@@ -1150,6 +1150,7 @@
             var pvCompnayList = @Html.Raw(Json.Encode(Model.PVCompany_list));
             $("#PVCompany_list").val(pvCompnayList);
 
+            fillModelsForPV();
 
             var pvModel_list = @Html.Raw(Json.Encode(Model.PVModel_list));
             $("#PVModel_list").val(pvModel_list);
