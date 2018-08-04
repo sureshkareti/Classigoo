@@ -188,6 +188,12 @@ namespace Classigoo.Models
                 objSubCatCount.TVSubCat = GetTVSubCount(location, type, keyword, subCategory, company);
                 objSubCatCount.PVSubCat = GetPVSubCount(location, type, keyword, subCategory, company);
                 objSubCatCount.RESubCat = GetRESubCount(location, type, keyword, subCategory, company,reFilters);
+
+                //common subcategories count
+               
+
+
+
             }
             catch(Exception ex)
             {
@@ -226,9 +232,9 @@ namespace Classigoo.Models
                                             (add.Type == type) &&
                                             (add.Status == Constants.ActiveSatus) &&
                                             (add.SubCategory == "Tractors") &&
-
                                             (keyword != "" ? add.Title.Contains(keyword) : true)
                                            select add.AddId).Count();
+
                     objAV.DozerCount = (from AV in db.AgriculturalVehicles
                                         join add in db.Adds on AV.AddId equals add.AddId
                                         where

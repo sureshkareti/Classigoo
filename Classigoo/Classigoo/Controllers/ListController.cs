@@ -246,6 +246,7 @@ namespace Classigoo.Controllers
                         break;
                     case Constants.RealEstate:
                         addColl = FilterRE(filterColl, location, keyword, type, pageNum);
+                       
                         break;
                     case Constants.AgriculturalVehicle:
                         addColl = FilterAV(filterColl, location, keyword, type, pageNum);
@@ -271,15 +272,10 @@ namespace Classigoo.Controllers
             }
             if (isSearchFrmHomePage)
             {
-                //if(category==Constants.RealEstate)
-                //ViewBag.SubCatCount=GetSubCatCount(location, type, keyword, subCategory, company,filterOptions);
-                //else
-                // ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
                 return View("Index", addColl);
             }
             else
             {
-               // ViewBag.SubCatCount = GetSubCatCount(location, type, keyword, subCategory, company, filterOptions);
                 return PartialView("_FillSearchResults", addColl);
             }
         }
@@ -413,7 +409,6 @@ namespace Classigoo.Controllers
 
             int currentPage = pageNum;
             int maxRows = Constants.NoOfAddsPerPage;
-            //ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> avColl = new List<CustomAdd>();
             int totalRowCount = 0;
@@ -423,16 +418,11 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                  //  int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
-
                     totalRowCount = (from AV in db.AgriculturalVehicles
                                      join add in db.Adds on AV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? AV.SubCategory == subCategory : true) &&
                     (company != "All" ? AV.Company == company : true) &&
-                     //(priceFrom != 0 ? AV.Price >= priceFrom : true) &&
-                     //(priceTo != 0 ? AV.Price <= priceTo : true) &&
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
                                       (location != "" ? add.Mandal == location : true)) &&
@@ -446,9 +436,6 @@ namespace Classigoo.Controllers
                               where
              (subCategory != "All" ? AV.SubCategory == subCategory : true) &&
             (company != "All" ? AV.Company == company : true) &&
-           //(priceFrom != 0 ? AV.Price >= priceFrom : true) &&
-           //  (priceTo != 0 ? AV.Price <= priceTo : true) &&
-
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
                              (location != "" ? add.Mandal == location : true)) &&
