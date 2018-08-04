@@ -1,47 +1,8 @@
 ﻿var categoryColl = new Array();
 var locationColl = new Array();
-//var searchSource = new Array();
 var category = "";
-// var category = $("#listing_catagory").val();
-//ShowCategoryFilter(category);
 FillCategories();
 FillLocations();
-//FillSearchBox();
-//function FillSearchBox() {
-//    searchSource = jQuery.unique(searchSource);
-//    jQuery.getScript("/Scripts/ScriptsNew/jquery-ui.min.js", function (data, status, jqxhr) {
-//        $('#listing_keword').autocomplete({
-//            source: function (request, response) {
-//                var filteredArray = $.map(searchSource, function (item) {
-//                    if (item.toLowerCase().startsWith(request.term.toLowerCase())) {
-//                        return item;
-//                    }
-//                    else {
-//                        return null;
-//                    }
-//                });
-//                response(filteredArray);
-//            },
-//            minLength: 1,
-//            scroll: true,
-//            matchContains: true,
-//            minChars: 2,
-//            autoFill: true,
-//            mustMatch: false,
-//            cacheLength: 20,
-//            max: 20,
-//            close: function () {
-//                //$(this).blur();
-//            }
-//        }).focus(function () {
-//            $(this).data("uiAutocomplete").search('ma');
-//        }).focusout(data, function (event) {
-//            category = $("#listing_catagory").val();
-//            ShowCategoryFilter(category);
-//        });
-//    });
-
-//}
 function FillCategories() {
     $.ajax({
         url: '/Scripts/Json/categories.json',
@@ -89,20 +50,14 @@ function FillLocations() {
         }
     });
     $.each(locationSource, function (i, field) {
-        // searchSource.push(field.name);
         locationColl.push(field.name);
-        // locationColl.push({name:field.name, type:"state"});
-
         var districtColl = field.District;
         $.each(districtColl, function (j, district) {
-            // searchSource.push(district.name);
             locationColl.push(district.name);
-            //locationColl.push({ name: district.name, type: "district" });
-            var mondalColl = district.Mondal;
+          var mondalColl = district.Mondal;
             $.each(mondalColl, function (k, mondal) {
-                // searchSource.push(mondal.name);
-                locationColl.push(mondal.name);
-                //locationColl.push({ name: mondal.name, type: "mondal" });
+              locationColl.push(mondal.name);
+               
             });
         });
     });
@@ -133,7 +88,15 @@ function FillLocations() {
 
             }).focusout(data, function (event) {
                 category = $("#listing_catagory").val();
-                ShowCategoryFilter(category);
+                // ShowCategoryFilter(category);
+                $(".loader-wrap").show();
+                //filterAdds("", 1, false);
+                if ($("#divFilter").is(":visible")) {
+                    Filter();
+                }
+                else {
+                    filterAdds("", 1, false);
+                }
             });
     });
 }
@@ -177,8 +140,8 @@ function ShowCategoryFilter(category) {
 
         });
     }
-    $(".loader-wrap").show();
-    filterAdds("", 1, false);
+    //$(".loader-wrap").show();
+    //filterAdds("", 1, false);
 }
 function HideDivs() {
     $("#re").hide();
@@ -186,28 +149,36 @@ function HideDivs() {
     $("#allv").hide();
 }
 $("#listing_keword").focusout(function () {
+    $(".loader-wrap").show();
     category = $("#listing_catagory").val();
-    ShowCategoryFilter(category);
+    // ShowCategoryFilter(category);
+    // filterAdds("", 1, false);
+    if ($("#divFilter").is(":visible")) {
+        Filter();
+    }
+    else {
+        filterAdds("", 1, false);
+    }
 });
 $("#listing_catagory").change(function () {
+    $(".loader-wrap").show();
     category = $("#listing_catagory").val();
     ShowCategoryFilter(category);
     ShowSubCatImgs();
+    filterAdds("", 1, false);
 });
-
-
-
-//$("#listing_location_list").change(function () {
-//    category = $("#listing_catagory").val();
-//    ShowCategoryFilter(category);
-//});
-//$("#listing_keword").change(function () {
-//    category = $("#listing_catagory").val();
-//    ShowCategoryFilter(category);
-//});
 $("#listing_rent_listGeneral").change(function () {
+    $(".loader-wrap").show();
     category = $("#listing_catagory").val();
-    ShowCategoryFilter(category);
+   // ShowCategoryFilter(category); 
+    if ($("#divFilter").is(":visible")) {
+        Filter();
+    }
+    else
+    {
+       filterAdds("", 1, false);
+    }
+   
 });
 $("#allvSubCategory, #pvSubCategory").change(function () {
     FillCompany($(this)[0].id, $(this).val());
@@ -240,7 +211,6 @@ $("#clearfilter").click(function () {
 });
 $("#divFilter select").change(function () {
     Filter();
-
 });
 function filterAdds(selectedValue, pageNum) {
 
@@ -286,14 +256,6 @@ $('.scrollimg').click(function () {
 function Filter() {
     var filterObj = {};
     if (category == "Real Estate") {
-        //var squareFeetsFrom = (($("#builtupAreaFrom").val()).replace(/,/g, ''));
-        //var squareFeetsTo = (($("#builtupAreaTo").val()).replace(/,/g, ''));
-        //if (squareFeetsFrom == "Builtup Area") {
-        //    squareFeetsFrom = 0;
-        //}
-        //if (squareFeetsTo == "Builtup Area") {
-        //    squareFeetsTo = 0;
-        //}
         var bedRooms = $("#bedRooms").val();
         var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
         var priceTo = $('[id="priceTo"]').filter(':visible').val();
@@ -315,11 +277,8 @@ function Filter() {
     switch (category) {
         case "Real Estate":
             filterObj.subCategory = $("#reSubCategory").val();
-            // filterObj.furnishing = $("#furnishing").val();
             filterObj.availability = $("#consructionStatus").val();
             filterObj.listedBy = $("#listedBy").val();
-            //  filterObj.squareFeetsFrom = squareFeetsFrom;
-            //  filterObj.squareFeetsTo = squareFeetsTo;
             filterObj.priceFrom = priceFrom;
             filterObj.priceTo = priceTo;
             filterObj.bedRooms = bedRooms;
@@ -473,6 +432,7 @@ function ShowSubCatImgs()
 function FillCompany(currentSubCategoryType, currentSubCategoryValue)
 {
     // var currentSubCategory = $(this)[0].id;currentSubCategoryValue$(this).val()
+    category = $("#listing_catagory").val();
     var selectedVehicle = categoryColl.filter(a=>a.name == category);
     var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name == currentSubCategoryValue);
     $("#allvCompany").empty();
@@ -497,6 +457,7 @@ function FillCompany(currentSubCategoryType, currentSubCategoryValue)
 
 function SetSubCatValue(currentSubCat)
 {
+    category = $("#listing_catagory").val();
     if (category =="Agricultural Vehicles" ||category=="Construction Vehicles" ||category=="Transportation Vehicles" )
     {
         $('#allvSubCategory').val(currentSubCat.trim()).attr("selected", "selected");

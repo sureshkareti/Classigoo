@@ -197,98 +197,110 @@ namespace Classigoo.Models
          }
         public AV GetAVSubCount(string location,string type,string keyword,string subCategory,string company)
         {
-            using (ClassigooEntities db = new ClassigooEntities())
+            AV objAV = new AV();
+            try
             {
-                AV objAV = new AV();
-               
-              objAV.BorewellMachineCount = (from AV in db.AgriculturalVehicles
-                                 join add in db.Adds on AV.AddId equals add.AddId
-                                 where
-                          (subCategory == "Borewell Machines" && company!="All" ? AV.Company == company : true) &&
-                             ((location != "" ? add.State == location : true) ||
-                                  (location != "" ? add.District == location : true) ||
-                                  (location != "" ? add.Mandal == location : true)) &&
-                                  (add.Type == type) &&
-                                  (add.Status == Constants.ActiveSatus)&&
-                                  (add.SubCategory == "Borewell Machines") &&
-                                  (keyword != "" ? add.Title.Contains(keyword) : true)
-                                 select add.AddId).Count();
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region AV
+                    objAV.BorewellMachineCount = (from AV in db.AgriculturalVehicles
+                                                  join add in db.Adds on AV.AddId equals add.AddId
+                                                  where
+                                           (subCategory == "Borewell Machines" && company != "All" ? AV.Company == company : true) &&
+                                              ((location != "" ? add.State == location : true) ||
+                                                   (location != "" ? add.District == location : true) ||
+                                                   (location != "" ? add.Mandal == location : true)) &&
+                                                   (add.Type == type) &&
+                                                   (add.Status == Constants.ActiveSatus) &&
+                                                   (add.SubCategory == "Borewell Machines") &&
+                                                   (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                  select add.AddId).Count();
 
-                objAV.TractorsCount = (from AV in db.AgriculturalVehicles
-                                              join add in db.Adds on AV.AddId equals add.AddId
-                                              where
-                                        (subCategory == "Tractors" && company != "All" ? AV.Company == company : true) &&
-                                          ((location != "" ? add.State == location : true) ||
-                                               (location != "" ? add.District == location : true) ||
-                                               (location != "" ? add.Mandal == location : true)) &&
-                                               (add.Type == type) &&
-                                               (add.Status == Constants.ActiveSatus) &&
-                                               (add.SubCategory == "Tractors") &&
+                    objAV.TractorsCount = (from AV in db.AgriculturalVehicles
+                                           join add in db.Adds on AV.AddId equals add.AddId
+                                           where
+                                     (subCategory == "Tractors" && company != "All" ? AV.Company == company : true) &&
+                                       ((location != "" ? add.State == location : true) ||
+                                            (location != "" ? add.District == location : true) ||
+                                            (location != "" ? add.Mandal == location : true)) &&
+                                            (add.Type == type) &&
+                                            (add.Status == Constants.ActiveSatus) &&
+                                            (add.SubCategory == "Tractors") &&
 
-                                               (keyword != "" ? add.Title.Contains(keyword) : true)
-                                              select add.AddId).Count();
-                objAV.DozerCount = (from AV in db.AgriculturalVehicles
-                                              join add in db.Adds on AV.AddId equals add.AddId
-                                              where
-                                        (subCategory == "Dozers" && company != "All" ? AV.Company == company : true) &&
-                                          ((location != "" ? add.State == location : true) ||
-                                               (location != "" ? add.District == location : true) ||
-                                               (location != "" ? add.Mandal == location : true)) &&
-                                               (add.Type == type) &&
-                                               (add.Status == Constants.ActiveSatus) &&
-                                               (add.SubCategory == "Dozers") &&
+                                            (keyword != "" ? add.Title.Contains(keyword) : true)
+                                           select add.AddId).Count();
+                    objAV.DozerCount = (from AV in db.AgriculturalVehicles
+                                        join add in db.Adds on AV.AddId equals add.AddId
+                                        where
+                                  (subCategory == "Dozers" && company != "All" ? AV.Company == company : true) &&
+                                    ((location != "" ? add.State == location : true) ||
+                                         (location != "" ? add.District == location : true) ||
+                                         (location != "" ? add.Mandal == location : true)) &&
+                                         (add.Type == type) &&
+                                         (add.Status == Constants.ActiveSatus) &&
+                                         (add.SubCategory == "Dozers") &&
 
-                                               (keyword != "" ? add.Title.Contains(keyword) : true)
-                                              select add.AddId).Count();
-                objAV.HarvesterCount = (from AV in db.AgriculturalVehicles
-                                              join add in db.Adds on AV.AddId equals add.AddId
-                                              where
-                                        (subCategory == "Combine Harvesters" && company != "All" ? AV.Company == company : true) &&
-                                          ((location != "" ? add.State == location : true) ||
-                                               (location != "" ? add.District == location : true) ||
-                                               (location != "" ? add.Mandal == location : true)) &&
-                                               (add.Type == type) &&
-                                               (add.Status == Constants.ActiveSatus) &&
-                                               (add.SubCategory == "Combine Harvesters") &&
-
-                                               (keyword != "" ? add.Title.Contains(keyword) : true)
-                                              select add.AddId).Count();
-                objAV.BackhoeLoaderCount = (from AV in db.AgriculturalVehicles
-                                              join add in db.Adds on AV.AddId equals add.AddId
-                                              where
-                                          (subCategory == "Backhoe Loaders" && company != "All" ? AV.Company == company : true) &&
-                                          ((location != "" ? add.State == location : true) ||
-                                               (location != "" ? add.District == location : true) ||
-                                               (location != "" ? add.Mandal == location : true)) &&
-                                               (add.Type == type) &&
-                                               (add.Status == Constants.ActiveSatus) &&
-                                               (add.SubCategory == "Backhoe Loaders") &&
-
-                                               (keyword != "" ? add.Title.Contains(keyword) : true)
-                                              select add.AddId).Count();
-                objAV.ExcavatorsCount = (from AV in db.AgriculturalVehicles
+                                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                                        select add.AddId).Count();
+                    objAV.HarvesterCount = (from AV in db.AgriculturalVehicles
                                             join add in db.Adds on AV.AddId equals add.AddId
                                             where
-                                     (subCategory == "Excavators" && company != "All" ? AV.Company == company : true) &&
+                                      (subCategory == "Combine Harvesters" && company != "All" ? AV.Company == company : true) &&
                                         ((location != "" ? add.State == location : true) ||
                                              (location != "" ? add.District == location : true) ||
                                              (location != "" ? add.Mandal == location : true)) &&
                                              (add.Type == type) &&
                                              (add.Status == Constants.ActiveSatus) &&
-                                             (add.SubCategory == "Excavators") &&
+                                             (add.SubCategory == "Combine Harvesters") &&
 
                                              (keyword != "" ? add.Title.Contains(keyword) : true)
                                             select add.AddId).Count();
+                    objAV.BackhoeLoaderCount = (from AV in db.AgriculturalVehicles
+                                                join add in db.Adds on AV.AddId equals add.AddId
+                                                where
+                                            (subCategory == "Backhoe Loaders" && company != "All" ? AV.Company == company : true) &&
+                                            ((location != "" ? add.State == location : true) ||
+                                                 (location != "" ? add.District == location : true) ||
+                                                 (location != "" ? add.Mandal == location : true)) &&
+                                                 (add.Type == type) &&
+                                                 (add.Status == Constants.ActiveSatus) &&
+                                                 (add.SubCategory == "Backhoe Loaders") &&
 
-                return objAV;
+                                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                select add.AddId).Count();
+                    objAV.ExcavatorsCount = (from AV in db.AgriculturalVehicles
+                                             join add in db.Adds on AV.AddId equals add.AddId
+                                             where
+                                      (subCategory == "Excavators" && company != "All" ? AV.Company == company : true) &&
+                                         ((location != "" ? add.State == location : true) ||
+                                              (location != "" ? add.District == location : true) ||
+                                              (location != "" ? add.Mandal == location : true)) &&
+                                              (add.Type == type) &&
+                                              (add.Status == Constants.ActiveSatus) &&
+                                              (add.SubCategory == "Excavators") &&
+
+                                              (keyword != "" ? add.Title.Contains(keyword) : true)
+                                             select add.AddId).Count();
+                    #endregion
+                }
             }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetAVSubcatcount", ex);
+            }
+
+             return objAV;
+            
         }
 
         public CV GetCVSubCount(string location, string type, string keyword, string subCategory, string company)
         {
-            using (ClassigooEntities db = new ClassigooEntities())
+            CV objCV = new CV();
+            try
             {
-                     CV objCV = new CV();
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region CV
                     objCV.TractorsCount = (from CV in db.ConstructionVehicles
                                            join add in db.Adds on CV.AddId equals add.AddId
                                            where
@@ -303,309 +315,337 @@ namespace Classigoo.Models
                                             (keyword != "" ? add.Title.Contains(keyword) : true)
                                            select add.AddId).Count();
 
-                objCV.DozerCount = (from CV in db.ConstructionVehicles
-                                       join add in db.Adds on CV.AddId equals add.AddId
-                                       where
-                                   (subCategory == "Dozers" && company != "All" ? CV.Company == company : true) &&
-                                   ((location != "" ? add.State == location : true) ||
-                                        (location != "" ? add.District == location : true) ||
-                                        (location != "" ? add.Mandal == location : true)) &&
-                                        (add.Type == type) &&
-                                        (add.Status == Constants.ActiveSatus) &&
-                                        (add.SubCategory == "Dozers") &&
-
-                                        (keyword != "" ? add.Title.Contains(keyword) : true)
-                                       select add.AddId).Count();
-
-                objCV.BackhoeLoaderCount = (from CV in db.ConstructionVehicles
-                                    join add in db.Adds on CV.AddId equals add.AddId
-                                    where
-                                (subCategory == "Backhoe Loaders" && company != "All" ? CV.Company == company : true) &&
-                                ((location != "" ? add.State == location : true) ||
-                                     (location != "" ? add.District == location : true) ||
-                                     (location != "" ? add.Mandal == location : true)) &&
-                                     (add.Type == type) &&
-                                     (add.Status == Constants.ActiveSatus) &&
-                                     (add.SubCategory == "Backhoe Loaders") &&
-
-                                     (keyword != "" ? add.Title.Contains(keyword) : true)
-                                    select add.AddId).Count();
-
-                objCV.ExcavatorsCount = (from CV in db.ConstructionVehicles
-                                            join add in db.Adds on CV.AddId equals add.AddId
-                                            where
-                                        (subCategory == "Excavators" && company != "All" ? CV.Company == company : true) &&
-                                        ((location != "" ? add.State == location : true) ||
-                                             (location != "" ? add.District == location : true) ||
-                                             (location != "" ? add.Mandal == location : true)) &&
-                                             (add.Type == type) &&
-                                             (add.Status == Constants.ActiveSatus) &&
-                                             (add.SubCategory == "Excavators") &&
-
-                                             (keyword != "" ? add.Title.Contains(keyword) : true)
-                                            select add.AddId).Count();
-
-                objCV.WheelLoaderCount = (from CV in db.ConstructionVehicles
-                                         join add in db.Adds on CV.AddId equals add.AddId
-                                         where
-                                     (subCategory == "Wheel Loaders" && company != "All" ? CV.Company == company : true) &&
-                                     ((location != "" ? add.State == location : true) ||
-                                          (location != "" ? add.District == location : true) ||
-                                          (location != "" ? add.Mandal == location : true)) &&
-                                          (add.Type == type) &&
-                                          (add.Status == Constants.ActiveSatus) &&
-                                          (add.SubCategory == "Wheel Loaders") &&
-
-                                          (keyword != "" ? add.Title.Contains(keyword) : true)
-                                         select add.AddId).Count();
-                objCV.CraneCount = (from CV in db.ConstructionVehicles
-                                          join add in db.Adds on CV.AddId equals add.AddId
-                                          where
-                                      (subCategory == "Cranes" && company != "All" ? CV.Company == company : true) &&
-                                      ((location != "" ? add.State == location : true) ||
-                                           (location != "" ? add.District == location : true) ||
-                                           (location != "" ? add.Mandal == location : true)) &&
-                                           (add.Type == type) &&
-                                           (add.Status == Constants.ActiveSatus) &&
-                                           (add.SubCategory == "Cranes") &&
-
-                                           (keyword != "" ? add.Title.Contains(keyword) : true)
-                                          select add.AddId).Count();
-
-                objCV.TransitMixerCount = (from CV in db.ConstructionVehicles
-                                    join add in db.Adds on CV.AddId equals add.AddId
-                                    where
-                                (subCategory == "Transit Mixers" && company != "All" ? CV.Company == company : true) &&
-                                ((location != "" ? add.State == location : true) ||
-                                     (location != "" ? add.District == location : true) ||
-                                     (location != "" ? add.Mandal == location : true)) &&
-                                     (add.Type == type) &&
-                                     (add.Status == Constants.ActiveSatus) &&
-                                     (add.SubCategory == "Transit Mixers") &&
-
-                                     (keyword != "" ? add.Title.Contains(keyword) : true)
-                                    select add.AddId).Count();
-
-
-                objCV.SoilCompactorCount = (from CV in db.ConstructionVehicles
-                                           join add in db.Adds on CV.AddId equals add.AddId
-                                           where
-                                          (subCategory == "Soil Compactors" && company != "All" ? CV.Company == company : true) &&
-                                       ((location != "" ? add.State == location : true) ||
-                                            (location != "" ? add.District == location : true) ||
-                                            (location != "" ? add.Mandal == location : true)) &&
-                                            (add.Type == type) &&
-                                            (add.Status == Constants.ActiveSatus) &&
-                                            (add.SubCategory == "Soil Compactors") &&
-
-                                            (keyword != "" ? add.Title.Contains(keyword) : true)
-                                           select add.AddId).Count();
-                objCV.TippersCount = (from CV in db.ConstructionVehicles
-                                            join add in db.Adds on CV.AddId equals add.AddId
-                                            where
-                                        (subCategory == "Tippers" && company != "All" ? CV.Company == company : true) &&
-                                        ((location != "" ? add.State == location : true) ||
-                                             (location != "" ? add.District == location : true) ||
-                                             (location != "" ? add.Mandal == location : true)) &&
-                                             (add.Type == type) &&
-                                             (add.Status == Constants.ActiveSatus) &&
-                                             (add.SubCategory == "Tippers") &&
-
-                                             (keyword != "" ? add.Title.Contains(keyword) : true)
-                                            select add.AddId).Count();
-               return objCV;
-            }
-        }
-
-        public TV GetTVSubCount(string location, string type, string keyword, string subCategory, string company)
-        {
-            using (ClassigooEntities db = new ClassigooEntities())
-            {
-                TV objTV = new TV();
-                objTV.Autos3wheelerCount = (from TV in db.TransportationVehicles
-                                       join add in db.Adds on TV.AddId equals add.AddId
-                                       where
-                                    (subCategory == "Autos - 3 wheelers" && company != "All" ? TV.Company == company : true) &&
-                                   ((location != "" ? add.State == location : true) ||
-                                        (location != "" ? add.District == location : true) ||
-                                        (location != "" ? add.Mandal == location : true)) &&
-                                        (add.Type == type) &&
-                                        (add.Status == Constants.ActiveSatus) &&
-                                        (add.SubCategory == "Autos - 3 wheelers") &&
-                                        (keyword != "" ? add.Title.Contains(keyword) : true)
-                                         select add.AddId).Count();
-                objTV.MiniTrucks4wheelerCount = (from TV in db.TransportationVehicles
-                                            join add in db.Adds on TV.AddId equals add.AddId
-                                            where
-                                        (subCategory == "Mini Trucks - 4 wheelers" && company != "All" ? TV.Company == company : true) &&
-                                        ((location != "" ? add.State == location : true) ||
-                                             (location != "" ? add.District == location : true) ||
-                                             (location != "" ? add.Mandal == location : true)) &&
-                                             (add.Type == type) &&
-                                             (add.Status == Constants.ActiveSatus) &&
-                                             (add.SubCategory == "Mini Trucks - 4 wheelers") &&
-                                             (keyword != "" ? add.Title.Contains(keyword) : true)
-                                            select add.AddId).Count();
-                objTV.LorryTrucksCount = (from TV in db.TransportationVehicles
-                                                 join add in db.Adds on TV.AddId equals add.AddId
-                                                 where
-                                             (subCategory == "Lorry Trucks" && company != "All" ? TV.Company == company : true) &&
-                                             ((location != "" ? add.State == location : true) ||
-                                                  (location != "" ? add.District == location : true) ||
-                                                  (location != "" ? add.Mandal == location : true)) &&
-                                                  (add.Type == type) &&
-                                                  (add.Status == Constants.ActiveSatus) &&
-                                                  (add.SubCategory == "Lorry Trucks") &&
-                                                  (keyword != "" ? add.Title.Contains(keyword) : true)
-                                                 select add.AddId).Count();
-                objTV.DCMTrucksCount = (from TV in db.TransportationVehicles
-                                          join add in db.Adds on TV.AddId equals add.AddId
-                                          where
-                                      (subCategory == "DCM Trucks" && company != "All" ? TV.Company == company : true) &&
-                                      ((location != "" ? add.State == location : true) ||
-                                           (location != "" ? add.District == location : true) ||
-                                           (location != "" ? add.Mandal == location : true)) &&
-                                           (add.Type == type) &&
-                                           (add.Status == Constants.ActiveSatus) &&
-                                           (add.SubCategory == "DCM Trucks") &&
-                                           (keyword != "" ? add.Title.Contains(keyword) : true)
-                                          select add.AddId).Count();
-
-                return objTV;
-            }
-        }
-        public PV GetPVSubCount(string location, string type, string keyword,  string subCategory, string company)
-        {
-            using (ClassigooEntities db = new ClassigooEntities())
-            {
-                PV objPV = new PV();
-                objPV.AutosCount = (from PV in db.PassengerVehicles
-                                    join add in db.Adds on PV.AddId equals add.AddId
-                                    where
-                                (subCategory == "Autos" && company != "All" ? PV.Company == company : true) &&
-                                ((location != "" ? add.State == location : true) ||
-                                     (location != "" ? add.District == location : true) ||
-                                     (location != "" ? add.Mandal == location : true)) &&
-                                     (add.Type == type) &&
-                                     (add.Status == Constants.ActiveSatus) &&
-                                     (add.SubCategory == "Autos") &&
-                                     (keyword != "" ? add.Title.Contains(keyword) : true)
-                                    select add.AddId).Count();
-                objPV.CarsCount = (from PV in db.PassengerVehicles
-                                    join add in db.Adds on PV.AddId equals add.AddId
-                                    where
-(subCategory == "Cars" && company != "All" ? PV.Company == company : true) &&
-                                ((location != "" ? add.State == location : true) ||
-                                     (location != "" ? add.District == location : true) ||
-                                     (location != "" ? add.Mandal == location : true)) &&
-                                     (add.Type == type) &&
-                                     (add.Status == Constants.ActiveSatus) &&
-                                     (add.SubCategory == "Cars") &&
-                                     (keyword != "" ? add.Title.Contains(keyword) : true)
-                                    select add.AddId).Count();
-
-                objPV.TravelVansCount = (from PV in db.PassengerVehicles
-                                   join add in db.Adds on PV.AddId equals add.AddId
-                                   where
-                               (subCategory == "Travel Vans" && company != "All" ? PV.Company == company : true) &&
-                               ((location != "" ? add.State == location : true) ||
-                                    (location != "" ? add.District == location : true) ||
-                                    (location != "" ? add.Mandal == location : true)) &&
-                                    (add.Type == type) &&
-                                    (add.Status == Constants.ActiveSatus) &&
-                                    (add.SubCategory == "Travel Vans") &&
-                                    (keyword != "" ? add.Title.Contains(keyword) : true)
-                                   select add.AddId).Count();
-
-                objPV.BikesCount = (from PV in db.PassengerVehicles
-                                         join add in db.Adds on PV.AddId equals add.AddId
-                                         where
-                                     (subCategory == "Bikes" && company != "All" ? PV.Company == company : true) &&
-                                     ((location != "" ? add.State == location : true) ||
-                                          (location != "" ? add.District == location : true) ||
-                                          (location != "" ? add.Mandal == location : true)) &&
-                                          (add.Type == type) &&
-                                          (add.Status == Constants.ActiveSatus) &&
-                                          (add.SubCategory == "Bikes") &&
-                                          (keyword != "" ? add.Title.Contains(keyword) : true)
-                                         select add.AddId).Count();
-
-                return objPV;
-            }
-        }
-        public RE GetRESubCount(string location, string type, string keyword,  string subCategory, string company,string reFilters)
-        {
-            using (ClassigooEntities db = new ClassigooEntities())
-            {
-                RE objRE = new RE();
-                Dictionary<string, object> filterColl = new Dictionary<string, object>();
-                JavaScriptSerializer j = new JavaScriptSerializer();
-                object filters = j.Deserialize(reFilters, typeof(object));
-                string availability = "Construction Status";
-                string listedBy = "Listed By";
-                int priceFrom = 0;
-                int priceTo = 0;
-                string bedRooms = "Bed Rooms";
-                if (filters.ToString() != "")
-                {
-                    filterColl = (Dictionary<string, object>)filters;
-                    subCategory = filterColl["subCategory"].ToString();
-                    availability = filterColl["availability"].ToString();
-                    listedBy = filterColl["listedBy"].ToString();
-                    priceFrom = Convert.ToInt32(filterColl["priceFrom"]);
-                     priceTo = Convert.ToInt32(filterColl["priceTo"]);
-                    bedRooms = filterColl["bedRooms"].ToString();
-                }
-                objRE.ApartmentsCount = (from RE in db.RealEstates
-                                    join add in db.Adds on RE.AddId equals add.AddId
-                                    where
-                     (subCategory == "Apartments" && availability != "Construction Status" ? RE.Availability == availability : true) &&
-                    (subCategory == "Apartments" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Apartments" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Apartments" && priceTo != 0 ? RE.Price <= priceTo : true) &&
-                     (subCategory == "Apartments" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
-                                ((location != "" ? add.State == location : true) ||
-                                     (location != "" ? add.District == location : true) ||
-                                     (location != "" ? add.Mandal == location : true)) &&
-                                     (add.Type == type) &&
-                                     (add.Status == Constants.ActiveSatus) &&
-                                     (add.SubCategory == "Apartments") &&
-                                     (keyword != "" ? add.Title.Contains(keyword) : true)
-                                    select add.AddId).Count();
-                
-                objRE.PlotsLandCount = (from RE in db.RealEstates
-                                         join add in db.Adds on RE.AddId equals add.AddId
-                                         where
-                    (subCategory == "Plots/Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
-                    (subCategory == "Plots/Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Plots/Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Plots/Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
-                     (subCategory == "Plots/Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
-                                     ((location != "" ? add.State == location : true) ||
-                                          (location != "" ? add.District == location : true) ||
-                                          (location != "" ? add.Mandal == location : true)) &&
-                                          (add.Type == type) &&
-                                          (add.Status == Constants.ActiveSatus) &&
-                                          (add.SubCategory == "Plots/Land") &&
-                                          (keyword != "" ? add.Title.Contains(keyword) : true)
-                                         select add.AddId).Count();
-                objRE.AgriculturalLandCount = (from RE in db.RealEstates
-                                        join add in db.Adds on RE.AddId equals add.AddId
+                    objCV.DozerCount = (from CV in db.ConstructionVehicles
+                                        join add in db.Adds on CV.AddId equals add.AddId
                                         where
-                        (subCategory == "Agricultural Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
-                    (subCategory == "Agricultural Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Agricultural Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Agricultural Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
-                     (subCategory == "Agricultural Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                    (subCategory == "Dozers" && company != "All" ? CV.Company == company : true) &&
                                     ((location != "" ? add.State == location : true) ||
                                          (location != "" ? add.District == location : true) ||
                                          (location != "" ? add.Mandal == location : true)) &&
                                          (add.Type == type) &&
                                          (add.Status == Constants.ActiveSatus) &&
-                                         (add.SubCategory == "Agricultural Land") &&
+                                         (add.SubCategory == "Dozers") &&
+
                                          (keyword != "" ? add.Title.Contains(keyword) : true)
                                         select add.AddId).Count();
-                objRE.ShopsOfficesCount = (from RE in db.RealEstates
+
+                    objCV.BackhoeLoaderCount = (from CV in db.ConstructionVehicles
+                                                join add in db.Adds on CV.AddId equals add.AddId
+                                                where
+                                            (subCategory == "Backhoe Loaders" && company != "All" ? CV.Company == company : true) &&
+                                            ((location != "" ? add.State == location : true) ||
+                                                 (location != "" ? add.District == location : true) ||
+                                                 (location != "" ? add.Mandal == location : true)) &&
+                                                 (add.Type == type) &&
+                                                 (add.Status == Constants.ActiveSatus) &&
+                                                 (add.SubCategory == "Backhoe Loaders") &&
+
+                                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                select add.AddId).Count();
+
+                    objCV.ExcavatorsCount = (from CV in db.ConstructionVehicles
+                                             join add in db.Adds on CV.AddId equals add.AddId
+                                             where
+                                         (subCategory == "Excavators" && company != "All" ? CV.Company == company : true) &&
+                                         ((location != "" ? add.State == location : true) ||
+                                              (location != "" ? add.District == location : true) ||
+                                              (location != "" ? add.Mandal == location : true)) &&
+                                              (add.Type == type) &&
+                                              (add.Status == Constants.ActiveSatus) &&
+                                              (add.SubCategory == "Excavators") &&
+
+                                              (keyword != "" ? add.Title.Contains(keyword) : true)
+                                             select add.AddId).Count();
+
+                    objCV.WheelLoaderCount = (from CV in db.ConstructionVehicles
+                                              join add in db.Adds on CV.AddId equals add.AddId
+                                              where
+                                          (subCategory == "Wheel Loaders" && company != "All" ? CV.Company == company : true) &&
+                                          ((location != "" ? add.State == location : true) ||
+                                               (location != "" ? add.District == location : true) ||
+                                               (location != "" ? add.Mandal == location : true)) &&
+                                               (add.Type == type) &&
+                                               (add.Status == Constants.ActiveSatus) &&
+                                               (add.SubCategory == "Wheel Loaders") &&
+
+                                               (keyword != "" ? add.Title.Contains(keyword) : true)
+                                              select add.AddId).Count();
+                    objCV.CraneCount = (from CV in db.ConstructionVehicles
+                                        join add in db.Adds on CV.AddId equals add.AddId
+                                        where
+                                    (subCategory == "Cranes" && company != "All" ? CV.Company == company : true) &&
+                                    ((location != "" ? add.State == location : true) ||
+                                         (location != "" ? add.District == location : true) ||
+                                         (location != "" ? add.Mandal == location : true)) &&
+                                         (add.Type == type) &&
+                                         (add.Status == Constants.ActiveSatus) &&
+                                         (add.SubCategory == "Cranes") &&
+
+                                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                                        select add.AddId).Count();
+
+                    objCV.TransitMixerCount = (from CV in db.ConstructionVehicles
+                                               join add in db.Adds on CV.AddId equals add.AddId
+                                               where
+                                           (subCategory == "Transit Mixers" && company != "All" ? CV.Company == company : true) &&
+                                           ((location != "" ? add.State == location : true) ||
+                                                (location != "" ? add.District == location : true) ||
+                                                (location != "" ? add.Mandal == location : true)) &&
+                                                (add.Type == type) &&
+                                                (add.Status == Constants.ActiveSatus) &&
+                                                (add.SubCategory == "Transit Mixers") &&
+
+                                                (keyword != "" ? add.Title.Contains(keyword) : true)
+                                               select add.AddId).Count();
+
+
+                    objCV.SoilCompactorCount = (from CV in db.ConstructionVehicles
+                                                join add in db.Adds on CV.AddId equals add.AddId
+                                                where
+                                               (subCategory == "Soil Compactors" && company != "All" ? CV.Company == company : true) &&
+                                            ((location != "" ? add.State == location : true) ||
+                                                 (location != "" ? add.District == location : true) ||
+                                                 (location != "" ? add.Mandal == location : true)) &&
+                                                 (add.Type == type) &&
+                                                 (add.Status == Constants.ActiveSatus) &&
+                                                 (add.SubCategory == "Soil Compactors") &&
+
+                                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                select add.AddId).Count();
+                    objCV.TippersCount = (from CV in db.ConstructionVehicles
+                                          join add in db.Adds on CV.AddId equals add.AddId
+                                          where
+                                      (subCategory == "Tippers" && company != "All" ? CV.Company == company : true) &&
+                                      ((location != "" ? add.State == location : true) ||
+                                           (location != "" ? add.District == location : true) ||
+                                           (location != "" ? add.Mandal == location : true)) &&
+                                           (add.Type == type) &&
+                                           (add.Status == Constants.ActiveSatus) &&
+                                           (add.SubCategory == "Tippers") &&
+
+                                           (keyword != "" ? add.Title.Contains(keyword) : true)
+                                          select add.AddId).Count();
+                    #endregion
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetCVSubcount", ex);
+            }
+            return objCV;
+        }
+
+        public TV GetTVSubCount(string location, string type, string keyword, string subCategory, string company)
+        {
+            TV objTV = new TV();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region TV
+                    objTV.Autos3wheelerCount = (from TV in db.TransportationVehicles
+                                                join add in db.Adds on TV.AddId equals add.AddId
+                                                where
+                                             (subCategory == "Autos - 3 wheelers" && company != "All" ? TV.Company == company : true) &&
+                                            ((location != "" ? add.State == location : true) ||
+                                                 (location != "" ? add.District == location : true) ||
+                                                 (location != "" ? add.Mandal == location : true)) &&
+                                                 (add.Type == type) &&
+                                                 (add.Status == Constants.ActiveSatus) &&
+                                                 (add.SubCategory == "Autos - 3 wheelers") &&
+                                                 (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                select add.AddId).Count();
+                    objTV.MiniTrucks4wheelerCount = (from TV in db.TransportationVehicles
+                                                     join add in db.Adds on TV.AddId equals add.AddId
+                                                     where
+                                                 (subCategory == "Mini Trucks - 4 wheelers" && company != "All" ? TV.Company == company : true) &&
+                                                 ((location != "" ? add.State == location : true) ||
+                                                      (location != "" ? add.District == location : true) ||
+                                                      (location != "" ? add.Mandal == location : true)) &&
+                                                      (add.Type == type) &&
+                                                      (add.Status == Constants.ActiveSatus) &&
+                                                      (add.SubCategory == "Mini Trucks - 4 wheelers") &&
+                                                      (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                     select add.AddId).Count();
+                    objTV.LorryTrucksCount = (from TV in db.TransportationVehicles
+                                              join add in db.Adds on TV.AddId equals add.AddId
+                                              where
+                                          (subCategory == "Lorry Trucks" && company != "All" ? TV.Company == company : true) &&
+                                          ((location != "" ? add.State == location : true) ||
+                                               (location != "" ? add.District == location : true) ||
+                                               (location != "" ? add.Mandal == location : true)) &&
+                                               (add.Type == type) &&
+                                               (add.Status == Constants.ActiveSatus) &&
+                                               (add.SubCategory == "Lorry Trucks") &&
+                                               (keyword != "" ? add.Title.Contains(keyword) : true)
+                                              select add.AddId).Count();
+                    objTV.DCMTrucksCount = (from TV in db.TransportationVehicles
+                                            join add in db.Adds on TV.AddId equals add.AddId
+                                            where
+                                        (subCategory == "DCM Trucks" && company != "All" ? TV.Company == company : true) &&
+                                        ((location != "" ? add.State == location : true) ||
+                                             (location != "" ? add.District == location : true) ||
+                                             (location != "" ? add.Mandal == location : true)) &&
+                                             (add.Type == type) &&
+                                             (add.Status == Constants.ActiveSatus) &&
+                                             (add.SubCategory == "DCM Trucks") &&
+                                             (keyword != "" ? add.Title.Contains(keyword) : true)
+                                            select add.AddId).Count();
+                    #endregion
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetCVSubCount", ex);
+            }
+            return objTV;
+        }
+        public PV GetPVSubCount(string location, string type, string keyword,  string subCategory, string company)
+        {
+            PV objPV = new PV();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region PV
+                    objPV.AutosCount = (from PV in db.PassengerVehicles
+                                        join add in db.Adds on PV.AddId equals add.AddId
+                                        where
+                                    (subCategory == "Autos" && company != "All" ? PV.Company == company : true) &&
+                                    ((location != "" ? add.State == location : true) ||
+                                         (location != "" ? add.District == location : true) ||
+                                         (location != "" ? add.Mandal == location : true)) &&
+                                         (add.Type == type) &&
+                                         (add.Status == Constants.ActiveSatus) &&
+                                         (add.SubCategory == "Autos") &&
+                                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                                        select add.AddId).Count();
+                    objPV.CarsCount = (from PV in db.PassengerVehicles
+                                       join add in db.Adds on PV.AddId equals add.AddId
+                                       where
+   (subCategory == "Cars" && company != "All" ? PV.Company == company : true) &&
+                                   ((location != "" ? add.State == location : true) ||
+                                        (location != "" ? add.District == location : true) ||
+                                        (location != "" ? add.Mandal == location : true)) &&
+                                        (add.Type == type) &&
+                                        (add.Status == Constants.ActiveSatus) &&
+                                        (add.SubCategory == "Cars") &&
+                                        (keyword != "" ? add.Title.Contains(keyword) : true)
+                                       select add.AddId).Count();
+
+                    objPV.TravelVansCount = (from PV in db.PassengerVehicles
+                                             join add in db.Adds on PV.AddId equals add.AddId
+                                             where
+                                         (subCategory == "Travel Vans" && company != "All" ? PV.Company == company : true) &&
+                                         ((location != "" ? add.State == location : true) ||
+                                              (location != "" ? add.District == location : true) ||
+                                              (location != "" ? add.Mandal == location : true)) &&
+                                              (add.Type == type) &&
+                                              (add.Status == Constants.ActiveSatus) &&
+                                              (add.SubCategory == "Travel Vans") &&
+                                              (keyword != "" ? add.Title.Contains(keyword) : true)
+                                             select add.AddId).Count();
+
+                    objPV.BikesCount = (from PV in db.PassengerVehicles
+                                        join add in db.Adds on PV.AddId equals add.AddId
+                                        where
+                                    (subCategory == "Bikes" && company != "All" ? PV.Company == company : true) &&
+                                    ((location != "" ? add.State == location : true) ||
+                                         (location != "" ? add.District == location : true) ||
+                                         (location != "" ? add.Mandal == location : true)) &&
+                                         (add.Type == type) &&
+                                         (add.Status == Constants.ActiveSatus) &&
+                                         (add.SubCategory == "Bikes") &&
+                                         (keyword != "" ? add.Title.Contains(keyword) : true)
+                                        select add.AddId).Count();
+                    #endregion
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetPvSubcount", ex);
+            }
+            return objPV;
+        }
+        public RE GetRESubCount(string location, string type, string keyword,  string subCategory, string company,string reFilters)
+        {
+            RE objRE = new RE();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    #region RE
+                    Dictionary<string, object> filterColl = new Dictionary<string, object>();
+                    JavaScriptSerializer j = new JavaScriptSerializer();
+                    object filters = j.Deserialize(reFilters, typeof(object));
+                    string availability = "Construction Status";
+                    string listedBy = "Listed By";
+                    int priceFrom = 0;
+                    int priceTo = 0;
+                    string bedRooms = "Bed Rooms";
+                    if (filters.ToString() != "")
+                    {
+                        filterColl = (Dictionary<string, object>)filters;
+                        subCategory = filterColl["subCategory"].ToString();
+                        availability = filterColl["availability"].ToString();
+                        listedBy = filterColl["listedBy"].ToString();
+                        priceFrom = Convert.ToInt32(filterColl["priceFrom"]);
+                        priceTo = Convert.ToInt32(filterColl["priceTo"]);
+                        bedRooms = filterColl["bedRooms"].ToString();
+                    }
+                    objRE.ApartmentsCount = (from RE in db.RealEstates
+                                             join add in db.Adds on RE.AddId equals add.AddId
+                                             where
+                              (subCategory == "Apartments" && availability != "Construction Status" ? RE.Availability == availability : true) &&
+                             (subCategory == "Apartments" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                              (subCategory == "Apartments" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                              (subCategory == "Apartments" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                              (subCategory == "Apartments" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                         ((location != "" ? add.State == location : true) ||
+                                              (location != "" ? add.District == location : true) ||
+                                              (location != "" ? add.Mandal == location : true)) &&
+                                              (add.Type == type) &&
+                                              (add.Status == Constants.ActiveSatus) &&
+                                              (add.SubCategory == "Apartments") &&
+                                              (keyword != "" ? add.Title.Contains(keyword) : true)
+                                             select add.AddId).Count();
+
+                    objRE.PlotsLandCount = (from RE in db.RealEstates
+                                            join add in db.Adds on RE.AddId equals add.AddId
+                                            where
+                       (subCategory == "Plots/Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
+                       (subCategory == "Plots/Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                        (subCategory == "Plots/Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                        (subCategory == "Plots/Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                        (subCategory == "Plots/Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                        ((location != "" ? add.State == location : true) ||
+                                             (location != "" ? add.District == location : true) ||
+                                             (location != "" ? add.Mandal == location : true)) &&
+                                             (add.Type == type) &&
+                                             (add.Status == Constants.ActiveSatus) &&
+                                             (add.SubCategory == "Plots/Land") &&
+                                             (keyword != "" ? add.Title.Contains(keyword) : true)
+                                            select add.AddId).Count();
+                    objRE.AgriculturalLandCount = (from RE in db.RealEstates
+                                                   join add in db.Adds on RE.AddId equals add.AddId
+                                                   where
+                                   (subCategory == "Agricultural Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
+                               (subCategory == "Agricultural Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                                (subCategory == "Agricultural Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                                (subCategory == "Agricultural Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                                (subCategory == "Agricultural Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                               ((location != "" ? add.State == location : true) ||
+                                                    (location != "" ? add.District == location : true) ||
+                                                    (location != "" ? add.Mandal == location : true)) &&
+                                                    (add.Type == type) &&
+                                                    (add.Status == Constants.ActiveSatus) &&
+                                                    (add.SubCategory == "Agricultural Land") &&
+                                                    (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                   select add.AddId).Count();
+                    objRE.ShopsOfficesCount = (from RE in db.RealEstates
                                                join add in db.Adds on RE.AddId equals add.AddId
                                                where
                       (subCategory == "Shops & Offices" && availability != "Construction Status" ? RE.Availability == availability : true) &&
@@ -621,45 +661,50 @@ namespace Classigoo.Models
                                                 (add.SubCategory == "Shops & Offices") &&
                                                 (keyword != "" ? add.Title.Contains(keyword) : true)
                                                select add.AddId).Count();
-                objRE.IndependentHousesVillasCount = (from RE in db.RealEstates
-                                           join add in db.Adds on RE.AddId equals add.AddId
-                                           where
-                       (subCategory == "Independent Houses & Villas" && availability != "Construction Status" ? RE.Availability == availability : true) &&
-                    (subCategory == "Independent Houses & Villas" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Independent Houses & Villas" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Independent Houses & Villas" && priceTo != 0 ? RE.Price <= priceTo : true) &&
-                     (subCategory == "Independent Houses & Villas" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
-                                       ((location != "" ? add.State == location : true) ||
-                                            (location != "" ? add.District == location : true) ||
-                                            (location != "" ? add.Mandal == location : true)) &&
-                                            (add.Type == type) &&
-                                            (add.Status == Constants.ActiveSatus) &&
-                                            (add.SubCategory == "Independent Houses & Villas") &&
-                                            (keyword != "" ? add.Title.Contains(keyword) : true)
-                                           select add.AddId).Count();
+                    objRE.IndependentHousesVillasCount = (from RE in db.RealEstates
+                                                          join add in db.Adds on RE.AddId equals add.AddId
+                                                          where
+                                      (subCategory == "Independent Houses & Villas" && availability != "Construction Status" ? RE.Availability == availability : true) &&
+                                   (subCategory == "Independent Houses & Villas" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+                                    (subCategory == "Independent Houses & Villas" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                                    (subCategory == "Independent Houses & Villas" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                                    (subCategory == "Independent Houses & Villas" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                                      ((location != "" ? add.State == location : true) ||
+                                                           (location != "" ? add.District == location : true) ||
+                                                           (location != "" ? add.Mandal == location : true)) &&
+                                                           (add.Type == type) &&
+                                                           (add.Status == Constants.ActiveSatus) &&
+                                                           (add.SubCategory == "Independent Houses & Villas") &&
+                                                           (keyword != "" ? add.Title.Contains(keyword) : true)
+                                                          select add.AddId).Count();
 
-                objRE.HostelsPGCount = (from RE in db.RealEstates
-                                                      join add in db.Adds on RE.AddId equals add.AddId
-                                                      where
-                    (subCategory == "Hostels & PG" && availability != "Construction Status" ? RE.Availability == availability : true) &&
-                    (subCategory == "Hostels & PG" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Hostels & PG" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Hostels & PG" && priceTo != 0 ? RE.Price <= priceTo : true) &&
-                     (subCategory == "Hostels & PG" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
-                                                  ((location != "" ? add.State == location : true) ||
-                                                       (location != "" ? add.District == location : true) ||
-                                                       (location != "" ? add.Mandal == location : true)) &&
-                                                       (add.Type == type) &&
-                                                       (add.Status == Constants.ActiveSatus) &&
-                                                       (add.SubCategory == "Hostels & PG") &&
-                                                       (keyword != "" ? add.Title.Contains(keyword) : true)
-                                                      select add.AddId).Count();
+                    objRE.HostelsPGCount = (from RE in db.RealEstates
+                                            join add in db.Adds on RE.AddId equals add.AddId
+                                            where
+          (subCategory == "Hostels & PG" && availability != "Construction Status" ? RE.Availability == availability : true) &&
+          (subCategory == "Hostels & PG" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
+           (subCategory == "Hostels & PG" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+           (subCategory == "Hostels & PG" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+           (subCategory == "Hostels & PG" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
+                                        ((location != "" ? add.State == location : true) ||
+                                             (location != "" ? add.District == location : true) ||
+                                             (location != "" ? add.Mandal == location : true)) &&
+                                             (add.Type == type) &&
+                                             (add.Status == Constants.ActiveSatus) &&
+                                             (add.SubCategory == "Hostels & PG") &&
+                                             (keyword != "" ? add.Title.Contains(keyword) : true)
+                                            select add.AddId).Count();
 
 
+                    #endregion
 
-                return objRE;
-
+                }
             }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At Getresubcatcount",ex);
+            }
+            return objRE;
         }
 
         //public SubCategoryCount GetSubCatCount()

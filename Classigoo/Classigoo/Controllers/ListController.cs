@@ -20,6 +20,7 @@ namespace Classigoo.Controllers
         }
         public ActionResult Index(string subCategory="",string category = "Select Category", string type = "Rent")
         {
+            string subCatJson = "\"\"";
             try
             {
                 FiterOptions filterOptions = new FiterOptions();
@@ -29,12 +30,17 @@ namespace Classigoo.Controllers
                 filterOptions.Type = type;
                 filterOptions.SubCategory = subCategory;
                 ViewBag.FilterValues = filterOptions;
+                if (!string.IsNullOrEmpty(subCategory))
+                {
+                    subCatJson= @"{ 'subCategory': '"+subCategory+"', 'company': 'All'}";
+                }
+               
             }
             catch(Exception ex)
             {
                 Library.WriteLog("At List index",ex);
             }
-            return ApplyFilter("\"\"", 1, category, "", "", type, true);
+            return ApplyFilter(subCatJson, 1, category, "", "", type, true);
         }
         [HttpPost]
         public ActionResult Index(FormCollection coll)
