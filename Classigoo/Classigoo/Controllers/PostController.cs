@@ -223,13 +223,6 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public ActionResult Test()
-        {
-            RedirectToAction("Index", "Post");
-
-            return View("Index");
-        }
-
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
@@ -1767,18 +1760,6 @@ namespace Classigoo.Controllers
             }
 
             return Json("", JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public ActionResult Index1()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Index1(PostAdd postAdd)
-        {
-            return View();
         }
 
     }
