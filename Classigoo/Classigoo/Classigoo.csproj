@@ -252,6 +252,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404NotFound.html" />
     <Content Include="Classigoo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Classigoo.edmx</DependentUpon>
@@ -272,28 +273,19 @@
     <Content Include="Content\CssNew\demo.css" />
     <Content Include="Content\CssNew\font-awesome.min.css" />
     <Content Include="Content\CssNew\jquery-ui.min.css" />
-    <Content Include="Content\CssNew\jquery.bxslider.css" />
-    <Content Include="Content\CssNew\lobipanel.min.css" />
-    <Content Include="Content\CssNew\magnific-popup.css" />
     <Content Include="Content\CssNew\responsive.css" />
-    <Content Include="Content\CssNew\simple-line-icons.css" />
     <Content Include="Content\CssNew\style.css" />
-    <Content Include="Content\CssNew\themify-icons.css" />
     <Content Include="Content\CustomeNew\Index1.css" />
     <Content Include="Content\CustomeNew\loader.css" />
     <Content Include="Content\CustomeNew\Style.css" />
     <Content Include="Content\Custome\account.css" />
     <Content Include="Content\Custome\bootstrap.min.css" />
     <Content Include="Content\Custome\CustomStyles.css" />
-    <Content Include="Content\Custome\easy-autocomplete.min.css" />
-    <Content Include="Content\Custome\easy-autocomplete.themes.min.css" />
     <Content Include="Content\Custome\home.css" />
     <Content Include="Content\Custome\PreviewAdd.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont93e3.svg" />
-    <Content Include="Content\Home\custom-select.css" />
-    <Content Include="Content\Home\selectron.css" />
     <Content Include="Content\img\bx_loader.gif" />
     <Content Include="Content\img\controls.png" />
     <Content Include="Content\img\loading.gif" />
@@ -365,10 +357,17 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="HtmlPage2.html" />
+    <Content Include="HtmlPage3.html" />
     <Content Include="images\4.jpg" />
     <Content Include="images\bg04.png" />
+    <Content Include="images\bike.jpg" />
+    <Content Include="images\car.jpg" />
     <Content Include="images\cg.jpg" />
-    <Content Include="images\Classigoo_logo.png" />
+    <Content Include="images\Classi goo %282%29.png" />
+    <Content Include="images\Classi goo logo.png" />
+    <Content Include="images\Classi goo Logos %281%29.png" />
+    <Content Include="images\Classi goo.png" />
     <Content Include="images\Deletion_icon.svg.png" />
     <Content Include="images\expand.png" />
     <Content Include="images\expandx30.png" />
@@ -449,44 +448,28 @@
     <Content Include="Content\slick\fonts\slick.eot" />
     <Content Include="Content\slick\fonts\slick.ttf" />
     <Content Include="Content\slick\fonts\slick.woff" />
-    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
-    <Content Include="Scripts\Home\custom-select.min.js" />
-    <Content Include="Scripts\Home\selectron.js" />
-    <Content Include="Scripts\jquery-1.12.4.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.js" />
-    <Content Include="Scripts\jquery-1.12.4.min.map" />
-    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Custome\account.js" />
     <Content Include="Scripts\Custome\custom.js" />
     <Content Include="Scripts\Custome\home.js" />
-    <Content Include="Scripts\Custome\jquery.easy-autocomplete.min.js" />
     <Content Include="Scripts\Custome\platform.js" />
     <Content Include="Scripts\Custome\post.js" />
     <Content Include="Scripts\Custome\sdk.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\List\bootstrap.min.js" />
     <Content Include="Scripts\List\custom.js" />
     <Content Include="Scripts\List\dataTables.min.js" />
     <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
-    <Content Include="Scripts\List\jquery.flexslider.js" />
     <Content Include="Scripts\List\responsive.bootstrap.min.js" />
     <Content Include="Scripts\List\responsive.min.js" />
     <Content Include="Scripts\List\search.js" />
     <Content Include="Scripts\List\zoomsl-3.0.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\ScriptsNew\all.js" />
     <Content Include="Scripts\ScriptsNew\bootstrapvalidator.min.js" />
     <Content Include="Scripts\ScriptsNew\jquery.bootpag.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.flexslider.js" />
     <Content Include="Scripts\ScriptsNew\jquery.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.sparkline.min.js" />
-    <Content Include="Scripts\ScriptsNew\retina-1.1.0.min.js" />
     <Content Include="Scripts\ScriptsNew\zoomsl-3.0.min.js" />
     <Content Include="Scripts\Json\categories.json" />
     <Content Include="Scripts\Json\location1.json" />
@@ -494,21 +477,8 @@
     <Content Include="Views\List\Index.cshtml" />
     <Content Include="Views\List\Contact.cshtml" />
     <Content Include="Views\List\About.cshtml" />
-    <Content Include="Scripts\ScriptsNew\custom.js" />
-    <Content Include="Scripts\ScriptsNew\jquery-3.2.1.min.js" />
     <Content Include="Scripts\ScriptsNew\jquery-ui.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.accordion.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.ajaxchimp.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.bxslider.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.counterup.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.magnific-popup.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.slimscroll.min.js" />
-    <Content Include="Scripts\ScriptsNew\jquery.waypoints.min.js" />
-    <Content Include="Scripts\ScriptsNew\lobipanel.min.js" />
-    <Content Include="Scripts\ScriptsNew\markerclusterer.js" />
-    <Content Include="Scripts\ScriptsNew\owl.carousel.min.html" />
-    <Content Include="Scripts\ScriptsNew\tether.min.js" />
-    <Content Include="Scripts\ScriptsNew\tinymce.min.js" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -532,6 +502,7 @@
     <Content Include="Views\List\Home.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
+    <Content Include="Views\Post\Index1.cshtml" />
     <Content Include="Views\List\PreviewAdd.cshtml" />
     <Content Include="Views\User\LoginWithOtp.cshtml" />
     <Content Include="Views\User\VerifyOTP.cshtml" />
@@ -546,8 +517,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Home\" />
     <Folder Include="ImgColl\" />
     <Folder Include="Log\" />
+    <Folder Include="Scripts\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

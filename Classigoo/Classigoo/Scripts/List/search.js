@@ -470,6 +470,10 @@ function SetSubCatValue(currentSubCat)
     else if (category == "Real Estate")
     {
         $('#reSubCategory').val(currentSubCat.trim()).attr("selected", "selected");
+        $('#consructionStatus').val("Construction Status").attr("selected", "selected");
+        $('#listedBy').val("Listed By").attr("selected", "selected");
+        $('#bedRooms').val("Bed Rooms").attr("selected", "selected");
+
     }
 }
 
