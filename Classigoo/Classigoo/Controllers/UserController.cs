@@ -363,6 +363,20 @@ namespace Classigoo.Controllers
                 return RedirectToAction("Login", "User");
             }
         }
+        public JsonResult GetAdminData()
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return Json(addColl, JsonRequestBehavior.AllowGet);
+        }
 
         public bool UpdateAddStatus(int addId, string status, string remarks,string userName,string userPhoneNum)
         {

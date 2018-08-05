@@ -221,6 +221,7 @@
             success: function (data) {
                 window.location.href = "/User/Admin";
                 $(".loader-wrap").hide();
+         //SetCurrentPage();
             },
             failure: function (response) {
                 console.log(response.responseText);
@@ -229,11 +230,31 @@
                 console.log(response.responseText);
             }
         });
+        
     }
+    function SetCurrentPage(){
+         var table = $('#tblAdds').DataTable();
+         var currentPage = table.page();
+        table.page(currentPage).draw(false);
+        //  window.location.href = "/User/Admin";
+        ////var p = table.fnPagingInfo().iPage;
+        ////tbl.fnClearTable();
+        ////for (var i = 0; i < rows.length; i++) {
+        ////    tbl.fnAddData($(rows[i]));
+        ////}
+        ////table.fnPageChange(p);
+       // table.ajax.reload()
+        $(".loader-wrap").hide();
+    }
+
+    
     $(document).ready(function () {
         $('.edit-mode').hide();
         var table = $('#tblAdds').DataTable({
             "responsive": true,
+            //"bProcessing": true,
+            //"iDisplayLength": 10,
+            //"sAjaxSource": {"url":"/User/GetAdminData","dataSrc":""},
             initComplete: function () {
                 this.api().columns([0,3,6,8]).every(function () {
                     var column = this;
