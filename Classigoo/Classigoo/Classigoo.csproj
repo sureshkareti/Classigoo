@@ -252,7 +252,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="404NotFound.html" />
     <Content Include="Classigoo.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Classigoo.edmx</DependentUpon>
@@ -366,17 +365,10 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="HtmlPage2.html" />
-    <Content Include="HtmlPage3.html" />
     <Content Include="images\4.jpg" />
     <Content Include="images\bg04.png" />
-    <Content Include="images\bike.jpg" />
-    <Content Include="images\car.jpg" />
     <Content Include="images\cg.jpg" />
-    <Content Include="images\Classi goo %282%29.png" />
-    <Content Include="images\Classi goo logo.png" />
-    <Content Include="images\Classi goo Logos %281%29.png" />
-    <Content Include="images\Classi goo.png" />
+    <Content Include="images\Classigoo_logo.png" />
     <Content Include="images\Deletion_icon.svg.png" />
     <Content Include="images\expand.png" />
     <Content Include="images\expandx30.png" />
@@ -517,7 +509,6 @@
     <Content Include="Scripts\ScriptsNew\owl.carousel.min.html" />
     <Content Include="Scripts\ScriptsNew\tether.min.js" />
     <Content Include="Scripts\ScriptsNew\tinymce.min.js" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -541,7 +532,6 @@
     <Content Include="Views\List\Home.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
-    <Content Include="Views\Post\Index1.cshtml" />
     <Content Include="Views\List\PreviewAdd.cshtml" />
     <Content Include="Views\User\LoginWithOtp.cshtml" />
     <Content Include="Views\User\VerifyOTP.cshtml" />
