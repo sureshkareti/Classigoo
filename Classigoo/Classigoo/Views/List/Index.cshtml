@@ -116,6 +116,19 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                        <div class="form-group" style="margin-bottom:0px;">
+                                            <span>Bed Rooms</span><br>
+                                            <select class="form-control" name="langOpt[]" id="bedRooms">
+                                                <option selected>Bed Rooms</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">4+</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row form-group" style="margin-bottom:0px;">
                                     @*<div class="col-md-3 col-xs-6 col-sm-6">
@@ -156,7 +169,7 @@
                                                 </select>
                                             </div>
                                         </div>*@
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                    @*<div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Price Range</span><br>
 
@@ -197,8 +210,8 @@
                                                 <option>&#8377;5,00,00,000</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3 col-xs-6 col-sm-6">
+                                    </div>*@
+                                    @*<div class="col-md-3 col-xs-6 col-sm-6">
                                         <div class="form-group" style="margin-bottom:0px;">
                                             <span>Bed Rooms</span><br>
                                             <select class="form-control" name="langOpt[]" id="bedRooms">
@@ -210,7 +223,7 @@
                                                 <option value="5">4+</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
                                 @*<div class="row form-group" style="margin-bottom:0px;">
 
@@ -549,7 +562,7 @@
                                 </a>
                             </div>
                             <div class="slide">
-                                <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Backhoe Loader">
+                                <a class="scrollimg" data-category="Agricultural Vehicles" data-subcategory="Backhoe Loaders">
 
                                     <img src="~/images/scroll/AV/AV5.jpg" /><br>
                                     <span class="direname" style="color:#337ab7">Backhoe Loaders</span>
@@ -815,7 +828,7 @@
                                 </a>
                             </div>
                             <div class="slide">
-                                <a class="scrollimg" data-category="Construction Vehicles" data-subcategory=">Backhoe Loaders">
+                                <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Backhoe Loaders">
 
                                     <img src="~/images/scroll/CV/CV3.jpg" /><br>
                                     <span class="direname" style="color:#337ab7">Backhoe Loaders</span>
@@ -831,7 +844,7 @@
                                 </a>
                             </div>
                             <div class="slide">
-                                <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Wheel Loader">
+                                <a class="scrollimg" data-category="Construction Vehicles" data-subcategory="Wheel Loaders">
 
                                     <img src="~/images/scroll/CV/CV5.jpg" /><br>
                                     <span class="direname" style="color:#337ab7">Wheel Loaders</span>
@@ -867,14 +880,14 @@
                     <div class="scrollHide" id="scrollTV" style="display:none">
                         <section class="autoplay slider slider-index-tv">
                             <div class="slide">
-                                <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Autos - 3 wheeler">
+                                <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Autos - 3 wheelers">
                                     <img src="~/images/scroll/TV/TV1.png" /><br>
                                     <span class="direname" style="color:#337ab7">Autos - 3 wheelers</span>
                                     <span class="direname spnCntTV-Autos3wheelerCount" style="color:#337ab7" ></span>
                                 </a>
                             </div>
                             <div class="slide">
-                                <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Mini Trucks - 4 wheeler">
+                                <a class="scrollimg" data-category="Transportation Vehicles" data-subcategory="Mini Trucks - 4 wheelers">
                                     <img src="~/images/scroll/TV/TV2.jpg" /><br>
                                     <span class="direname" style="color:#337ab7">Mini Trucks - 4 wheelers</span>
                                     <span class="direname spnCntTV-MiniTrucks4wheelerCount" style="color:#337ab7" ></span>
@@ -1656,6 +1669,7 @@
 
         var categorySelected = "@ViewBag.FilterValues.Category";
         var subCatSelected='@ViewBag.FilterValues.SubCategory';
+
         if(subCatSelected!="")
         {
             SetSubCatValue(subCatSelected);

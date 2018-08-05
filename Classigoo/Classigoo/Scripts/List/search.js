@@ -165,7 +165,7 @@ $("#listing_catagory").change(function () {
     category = $("#listing_catagory").val();
     ShowCategoryFilter(category);
     ShowSubCatImgs();
-    filterAdds("", 1, false);
+   filterAdds("", 1, false);
 });
 $("#listing_rent_listGeneral").change(function () {
     $(".loader-wrap").show();
@@ -250,37 +250,37 @@ $('.scrollimg').click(function () {
         ShowSubCatImgs();
     }
    SetSubCatValue(currentSubCat);
-   Filter();
+  Filter();
 });
 
 function Filter() {
     var filterObj = {};
     if (category == "Real Estate") {
         var bedRooms = $("#bedRooms").val();
-        var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
-        var priceTo = $('[id="priceTo"]').filter(':visible').val();
-        if (priceFrom == "Price From") {
-            priceFrom = 0;
-        }
-        else {
-            priceFrom = priceFrom.substring(1, priceFrom.length);
-            priceFrom = priceFrom.replace(/,/g, '');
-        }
-        if (priceTo == "Price To") {
-            priceTo = 0;
-        }
-        else {
-            priceTo = priceTo.substring(1, priceTo.length);
-            priceTo = priceTo.replace(/,/g, '');
-        }
+        //var priceFrom = $('[id="priceFrom"]').filter(':visible').val();
+        //var priceTo = $('[id="priceTo"]').filter(':visible').val();
+        //if (priceFrom == "Price From") {
+        //    priceFrom = 0;
+        //}
+        //else {
+        //    priceFrom = priceFrom.substring(1, priceFrom.length);
+        //    priceFrom = priceFrom.replace(/,/g, '');
+        //}
+        //if (priceTo == "Price To") {
+        //    priceTo = 0;
+        //}
+        //else {
+        //    priceTo = priceTo.substring(1, priceTo.length);
+        //    priceTo = priceTo.replace(/,/g, '');
+        //}
     }
     switch (category) {
         case "Real Estate":
             filterObj.subCategory = $("#reSubCategory").val();
             filterObj.availability = $("#consructionStatus").val();
             filterObj.listedBy = $("#listedBy").val();
-            filterObj.priceFrom = priceFrom;
-            filterObj.priceTo = priceTo;
+          //  filterObj.priceFrom = priceFrom;
+          //  filterObj.priceTo = priceTo;
             filterObj.bedRooms = bedRooms;
 
             break;

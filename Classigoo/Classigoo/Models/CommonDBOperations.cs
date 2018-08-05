@@ -589,8 +589,8 @@ namespace Classigoo.Models
                     object filters = j.Deserialize(reFilters, typeof(object));
                     string availability = "Construction Status";
                     string listedBy = "Listed By";
-                    int priceFrom = 0;
-                    int priceTo = 0;
+                   // int priceFrom = 0;
+                   // int priceTo = 0;
                     string bedRooms = "Bed Rooms";
                     if (filters.ToString() != "")
                     {
@@ -598,8 +598,8 @@ namespace Classigoo.Models
                         subCategory = filterColl["subCategory"].ToString();
                         availability = filterColl["availability"].ToString();
                         listedBy = filterColl["listedBy"].ToString();
-                        priceFrom = Convert.ToInt32(filterColl["priceFrom"]);
-                        priceTo = Convert.ToInt32(filterColl["priceTo"]);
+                        //priceFrom = Convert.ToInt32(filterColl["priceFrom"]);
+                        //priceTo = Convert.ToInt32(filterColl["priceTo"]);
                         bedRooms = filterColl["bedRooms"].ToString();
                     }
                     objRE.ApartmentsCount = (from RE in db.RealEstates
@@ -607,8 +607,8 @@ namespace Classigoo.Models
                                              where
                               (subCategory == "Apartments" && availability != "Construction Status" ? RE.Availability == availability : true) &&
                              (subCategory == "Apartments" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                              (subCategory == "Apartments" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                              (subCategory == "Apartments" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                              //(subCategory == "Apartments" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                             // (subCategory == "Apartments" && priceTo != 0 ? RE.Price <= priceTo : true) &&
                               (subCategory == "Apartments" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                          ((location != "" ? add.State == location : true) ||
                                               (location != "" ? add.District == location : true) ||
@@ -624,8 +624,8 @@ namespace Classigoo.Models
                                             where
                        (subCategory == "Plots/Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
                        (subCategory == "Plots/Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                        (subCategory == "Plots/Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                        (subCategory == "Plots/Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                        //(subCategory == "Plots/Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                       // (subCategory == "Plots/Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
                         (subCategory == "Plots/Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                         ((location != "" ? add.State == location : true) ||
                                              (location != "" ? add.District == location : true) ||
@@ -640,8 +640,8 @@ namespace Classigoo.Models
                                                    where
                                    (subCategory == "Agricultural Land" && availability != "Construction Status" ? RE.Availability == availability : true) &&
                                (subCategory == "Agricultural Land" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                                (subCategory == "Agricultural Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                                (subCategory == "Agricultural Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                               // (subCategory == "Agricultural Land" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                               // (subCategory == "Agricultural Land" && priceTo != 0 ? RE.Price <= priceTo : true) &&
                                 (subCategory == "Agricultural Land" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                                ((location != "" ? add.State == location : true) ||
                                                     (location != "" ? add.District == location : true) ||
@@ -656,8 +656,8 @@ namespace Classigoo.Models
                                                where
                       (subCategory == "Shops & Offices" && availability != "Construction Status" ? RE.Availability == availability : true) &&
                     (subCategory == "Shops & Offices" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                     (subCategory == "Shops & Offices" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (subCategory == "Shops & Offices" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                    // (subCategory == "Shops & Offices" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                   //  (subCategory == "Shops & Offices" && priceTo != 0 ? RE.Price <= priceTo : true) &&
                      (subCategory == "Shops & Offices" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                            ((location != "" ? add.State == location : true) ||
                                                 (location != "" ? add.District == location : true) ||
@@ -672,8 +672,8 @@ namespace Classigoo.Models
                                                           where
                                       (subCategory == "Independent Houses & Villas" && availability != "Construction Status" ? RE.Availability == availability : true) &&
                                    (subCategory == "Independent Houses & Villas" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-                                    (subCategory == "Independent Houses & Villas" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                                    (subCategory == "Independent Houses & Villas" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+                                   // (subCategory == "Independent Houses & Villas" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                                   // (subCategory == "Independent Houses & Villas" && priceTo != 0 ? RE.Price <= priceTo : true) &&
                                     (subCategory == "Independent Houses & Villas" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                                       ((location != "" ? add.State == location : true) ||
                                                            (location != "" ? add.District == location : true) ||
@@ -689,8 +689,8 @@ namespace Classigoo.Models
                                             where
           (subCategory == "Hostels & PG" && availability != "Construction Status" ? RE.Availability == availability : true) &&
           (subCategory == "Hostels & PG" && listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
-           (subCategory == "Hostels & PG" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-           (subCategory == "Hostels & PG" && priceTo != 0 ? RE.Price <= priceTo : true) &&
+           //(subCategory == "Hostels & PG" && priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+           //(subCategory == "Hostels & PG" && priceTo != 0 ? RE.Price <= priceTo : true) &&
            (subCategory == "Hostels & PG" && bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                         ((location != "" ? add.State == location : true) ||
                                              (location != "" ? add.District == location : true) ||

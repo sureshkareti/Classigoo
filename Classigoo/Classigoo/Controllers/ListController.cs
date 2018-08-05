@@ -28,7 +28,7 @@ namespace Classigoo.Controllers
                 filterOptions.Location = "";
                 filterOptions.SearchKeyword = "";
                 filterOptions.Type = type;
-                filterOptions.SubCategory = subCategory;
+                filterOptions.SubCategory = Server.UrlEncode(subCategory);
                 ViewBag.FilterValues = filterOptions;
                 if (!string.IsNullOrEmpty(subCategory))
                 {
@@ -52,6 +52,7 @@ namespace Classigoo.Controllers
                 filterOptions.Location = coll["location"];
                 filterOptions.SearchKeyword = coll["searchKeyword"];
                 filterOptions.Type = coll["type"];
+                filterOptions.SubCategory = "";
                 ViewBag.FilterValues = filterOptions;
             }
             catch(Exception ex)
@@ -299,8 +300,8 @@ namespace Classigoo.Controllers
                     string listedBy = filterOptions["listedBy"].ToString();
                    // int squareFeetsFrom = Convert.ToInt32(filterOptions["squareFeetsFrom"]);
                    // int squareFeetsTo = Convert.ToInt32(filterOptions["squareFeetsTo"]);
-                    int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                    int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                   // int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
+                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
                     string bedRooms = filterOptions["bedRooms"].ToString();
 
                     totalRowCount = (from RE in db.RealEstates
@@ -312,8 +313,8 @@ namespace Classigoo.Controllers
                     (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
                   //   (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
                   //   (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
-                     (priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                     (priceTo != 0 ? RE.Price <= priceTo : true) &&
+                     //(priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                    // (priceTo != 0 ? RE.Price <= priceTo : true) &&
                      (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
 
                                  ((location != "" ? add.State == location : true) ||
@@ -333,8 +334,8 @@ namespace Classigoo.Controllers
                    (listedBy != "Listed By" ? RE.ListedBy == listedBy : true) &&
                    // (squareFeetsFrom != 0 ? RE.SquareFeets >= squareFeetsFrom : true) &&
                    //  (squareFeetsTo != 0 ? RE.SquareFeets <= squareFeetsTo : true) &&
-                    (priceFrom != 0 ? RE.Price >= priceFrom : true) &&
-                    (priceTo != 0 ? RE.Price <= priceTo : true) &&
+                    //(priceFrom != 0 ? RE.Price >= priceFrom : true) &&
+                    //(priceTo != 0 ? RE.Price <= priceTo : true) &&
                     (bedRooms != "Bed Rooms" ? RE.Bedrooms == bedRooms : true) &&
                                     ((location != "" ? add.State == location : true) ||
                                      (location != "" ? add.District == location : true) ||
