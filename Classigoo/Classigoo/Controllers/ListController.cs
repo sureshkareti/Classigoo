@@ -30,6 +30,7 @@ namespace Classigoo.Controllers
                 filterOptions.Type = type;
                 filterOptions.SubCategory = Server.UrlEncode(subCategory);
                 ViewBag.FilterValues = filterOptions;
+               
                 if (!string.IsNullOrEmpty(subCategory))
                 {
                     subCatJson= @"{ 'subCategory': '"+subCategory+"', 'company': 'All'}";

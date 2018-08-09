@@ -359,6 +359,8 @@
     <Content Include="images\4.jpg" />
     <Content Include="images\bg04.png" />
     <Content Include="images\cg.jpg" />
+    <Content Include="images\Classigoo_logox1024.png" />
+    <Content Include="images\Classigoo_Logox50.png" />
     <Content Include="images\expandx30.png" />
     <Content Include="images\icons-bg.PNG" />
     <Content Include="images\icons\home\carx70.png" />
