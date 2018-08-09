@@ -427,3 +427,37 @@ mscorlib ; The given key was not present in the dictionary.
 mscorlib ; The given key was not present in the dictionary.
 05/08/2018 1:34:13 PM : At Filter RE with filter options
 mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:05:52 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:05:52 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:07:18 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:07:18 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:09:01 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:09:01 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:09:59 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:09:59 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:10:46 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:10:46 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:13:43 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:13:43 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:15:44 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:15:44 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:25:45 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:25:59 PM : At Filter RE with filter options
+mscorlib ; The given key was not present in the dictionary.
+09/08/2018 11:32:48 PM : At Getresubcatcount
+mscorlib ; The given key was not present in the dictionary.

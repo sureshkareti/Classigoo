@@ -28,12 +28,20 @@ namespace Classigoo.Controllers
                 filterOptions.Location = "";
                 filterOptions.SearchKeyword = "";
                 filterOptions.Type = type;
-                filterOptions.SubCategory = Server.UrlEncode(subCategory);
+                filterOptions.SubCategory = subCategory;
                 ViewBag.FilterValues = filterOptions;
                
                 if (!string.IsNullOrEmpty(subCategory))
                 {
-                    subCatJson= @"{ 'subCategory': '"+subCategory+"', 'company': 'All'}";
+                    if (category == Constants.RealEstate)
+                    {
+                        subCatJson = @"{ 'subCategory': '" + subCategory +
+                       "', 'availability': 'Construction Status','listedBy':'Listed By','bedRooms':'Bed Rooms'}";
+                    }
+                    else
+                    {
+                        subCatJson = @"{ 'subCategory': '" + subCategory + "', 'company': 'All'}";
+                    }
                 }
                
             }
@@ -296,13 +304,9 @@ namespace Classigoo.Controllers
                 try
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
-                   // string furnishing = filterOptions["furnishing"].ToString();
                     string availability = filterOptions["availability"].ToString();
                     string listedBy = filterOptions["listedBy"].ToString();
-                   // int squareFeetsFrom = Convert.ToInt32(filterOptions["squareFeetsFrom"]);
-                   // int squareFeetsTo = Convert.ToInt32(filterOptions["squareFeetsTo"]);
-                   // int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
+                   
                     string bedRooms = filterOptions["bedRooms"].ToString();
 
                     totalRowCount = (from RE in db.RealEstates
