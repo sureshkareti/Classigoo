@@ -1670,6 +1670,11 @@
         var categorySelected = "@ViewBag.FilterValues.Category";
         var subCatSelected='@ViewBag.FilterValues.SubCategory';
 
+      
+        subCatSelected = subCatSelected.replace("+%26+"," & ");
+
+        //subCatSelected.replace(+%26+
+
         if(subCatSelected!="")
         {
             SetSubCatValue(subCatSelected);
