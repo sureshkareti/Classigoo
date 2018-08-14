@@ -85,7 +85,7 @@
 
 
                                     <td>
-                                        <span> <label id="lblSurName">@item.Status</label></span>
+                                        <span> <label id="lblStatus">@item.Status</label></span>
 
 
                                     </td>
@@ -116,7 +116,7 @@
                                         @Html.TextArea("txtRemarks",item.Remarks, new { @class = "edit-mode", @maxlength = "1000",@style="@width=350px;@height=80px"})
                                     </td>
                                     <td>
-                                        <span class="display-mode"> <label id="lblSurName">@item.Status</label></span>
+                                        <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
                                         @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
                                     </td>
                                     <td>
@@ -207,6 +207,7 @@
     {
         $(".loader-wrap").show();
         var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+        var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
         var status = editElemts.ddlStatus.value;
         var remarks = editElemts.txtRemarks.value
         var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
@@ -219,9 +220,20 @@
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                window.location.href = "/User/Admin";
-                $(".loader-wrap").hide();
-         //SetCurrentPage();
+                //if (data == 'True')
+                //{
+                //    $("#lblStatus").text(status);
+                //   $("#lblAddStatus").text(status);
+                //    // displayElemts[1].innerText = status;
+                //    displayElemts[1].children.lblAddStatus.innerText = status;
+                //}
+                //var oTable = $('#tblAdds').dataTable();
+                 window.location.href = "/User/Admin";lblAddStatus
+               $(".loader-wrap").hide();
+               //var currentPage = oTable.page;
+               //console.log(currentPage);
+              
+        // SetCurrentPage();
             },
             failure: function (response) {
                 console.log(response.responseText);
@@ -235,7 +247,8 @@
     function SetCurrentPage(){
          var table = $('#tblAdds').DataTable();
          var currentPage = table.page();
-        table.page(currentPage).draw(false);
+         table.fnPageChange(3, true);
+       // table.page(currentPage).draw(false);
         //  window.location.href = "/User/Admin";
         ////var p = table.fnPagingInfo().iPage;
         ////tbl.fnClearTable();
