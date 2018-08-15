@@ -64,8 +64,18 @@ namespace Classigoo.Controllers
                     //PostDBOperations objPostDbOpareations = new PostDBOperations();
                     CommonDBOperations objCommonDBOperations = new CommonDBOperations();
                     Add addRecord = objCommonDBOperations.GetAdd(addId);
-
-                    if (userId != addRecord.UserId)
+                    Guid adminUserId = userObj.UserExist("1111111111", "Custom");
+                    bool isAuthorizedUser = false;
+                  
+                    if (userId == addRecord.UserId)//he is owner
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    else if (userId == adminUserId)//he is admin
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    if (!isAuthorizedUser)
                     {
                         return RedirectToAction("Index", "Post");
                     }
