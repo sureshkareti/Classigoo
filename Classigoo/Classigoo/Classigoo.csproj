@@ -368,6 +368,11 @@
     <Content Include="images\icons\home\homex70.png" />
     <Content Include="images\icons\home\itractorx70.png" />
     <Content Include="images\icons\home\transportationx70.png" />
+    <Content Include="images\icons\social\fb.png" />
+    <Content Include="images\icons\social\gplus.png" />
+    <Content Include="images\icons\social\ln.png" />
+    <Content Include="images\icons\social\tw.png" />
+    <Content Include="images\icons\social\yt.png" />
     <Content Include="images\leftx30.png" />
     <Content Include="images\rightx30.png" />
     <Content Include="images\scroll\AV\AV1.jpg" />
