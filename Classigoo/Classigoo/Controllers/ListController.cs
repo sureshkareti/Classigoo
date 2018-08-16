@@ -259,10 +259,20 @@ namespace Classigoo.Controllers
                        
                         break;
                     case Constants.AgriculturalVehicle:
+                        //if(subCategory=="Tractors")
+                        //{
+                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
+                        //}
+                        //else
                         addColl = FilterAV(filterColl, location, keyword, type, pageNum);
                         break;
                     case Constants.ConstructionVehicle:
-                        addColl = FilterCV(filterColl, location, keyword, type, pageNum);
+                        //if (subCategory == "Tractors")
+                        //{
+                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
+                        //}
+                        //else
+                            addColl = FilterCV(filterColl, location, keyword, type, pageNum);
                         break;
                     case Constants.TransportationVehicle:
                         addColl = FilterTV(filterColl, location, keyword, type, pageNum);
@@ -514,7 +524,6 @@ namespace Classigoo.Controllers
 
             int currentPage = pageNum;
             int maxRows = Constants.NoOfAddsPerPage;
-         //   ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> cvColl = new List<CustomAdd>();
             int totalRowCount = 0;
@@ -524,16 +533,11 @@ namespace Classigoo.Controllers
                 {
                     string subCategory = filterOptions["subCategory"].ToString();
                     string company = filterOptions["company"].ToString();
-                   // int priceFrom = Convert.ToInt32(filterOptions["priceFrom"]);
-                   // int priceTo = Convert.ToInt32(filterOptions["priceTo"]);
-
                     totalRowCount = (from CV in db.ConstructionVehicles
                                      join add in db.Adds on CV.AddId equals add.AddId
                                      where
                        (subCategory != "All" ? CV.SubCategory == subCategory : true) &&
                     (company != "All" ? CV.Company == company : true) &&
-                   //  (priceFrom != 0 ? CV.Price >= priceFrom : true) &&
-                   //  (priceTo != 0 ? CV.Price <= priceTo : true) &&
                                  ((location != "" ? add.State == location : true) ||
                                       (location != "" ? add.District == location : true) ||
                                       (location != "" ? add.Mandal == location : true)) &&
@@ -547,9 +551,6 @@ namespace Classigoo.Controllers
                               where
              (subCategory != "All" ? CV.SubCategory == subCategory : true) &&
             (company != "All" ? CV.Company == company : true) &&
-            //(priceFrom != 0 ? CV.Price >= priceFrom : true) &&
-               //      (priceTo != 0 ? CV.Price <= priceTo : true) &&
-
                             ((location != "" ? add.State == location : true) ||
                              (location != "" ? add.District == location : true) ||
                              (location != "" ? add.Mandal == location : true)) &&
@@ -731,7 +732,6 @@ namespace Classigoo.Controllers
         {
             int currentPage = pageNum;
             int maxRows = Constants.NoOfAddsPerPage;
-        //    ClassigooEntities db = new ClassigooEntities();
             AddsModel addColl = new AddsModel();
             List<CustomAdd> pvColl = new List<CustomAdd>();
             int totalRowCount = 0;
@@ -1188,6 +1188,122 @@ namespace Classigoo.Controllers
                 Library.WriteLog("At getsubcount", ex);
             }
             return objSubCatCount;
+        }
+
+        public void GetTractorsCount(Dictionary<string, object> filterOptions, string location, string keyword, string type, int pageNum)
+        {
+            int currentPage = pageNum;
+            int maxRows = Constants.NoOfAddsPerPage;
+            AddsModel addColl = new AddsModel();
+            List<CustomAdd> totalColl = new List<CustomAdd>();
+            List<CustomAdd> avColl = new List<CustomAdd>();
+            List<CustomAdd> cvColl = new List<CustomAdd>();
+            int totalRowCount = 0;
+            if (filterOptions.Count() > 0)
+            {
+                try
+                {
+                    string subCategory = filterOptions["subCategory"].ToString();
+                    string company = filterOptions["company"].ToString();
+
+                    #region TotalRowCount
+                    //AV Total Count
+                 int   avCount = (from AV in db.AgriculturalVehicles
+                                     join add in db.Adds on AV.AddId equals add.AddId
+                                     where
+                       (subCategory != "All" ? AV.SubCategory == subCategory : true) &&
+                    (company != "All" ? AV.Company == company : true) &&
+                                 ((location != "" ? add.State == location : true) ||
+                                      (location != "" ? add.District == location : true) ||
+                                      (location != "" ? add.Mandal == location : true)) &&
+                                      (add.Type == type) &&
+                                      (add.Status == Constants.ActiveSatus) &&
+                                      (keyword != "" ? add.Title.Contains(keyword) : true)
+                                     select add.AddId).Count();
+                    //CV Count
+                    int cvCount = (from CV in db.ConstructionVehicles
+                                     join add in db.Adds on CV.AddId equals add.AddId
+                                     where
+                       (subCategory != "All" ? CV.SubCategory == subCategory : true) &&
+                    (company != "All" ? CV.Company == company : true) &&
+                                 ((location != "" ? add.State == location : true) ||
+                                      (location != "" ? add.District == location : true) ||
+                                      (location != "" ? add.Mandal == location : true)) &&
+                                      (add.Type == type) &&
+                                      (add.Status == Constants.ActiveSatus) &&
+                                      (keyword != "" ? add.Title.Contains(keyword) : true)
+                                     select add.AddId).Count();
+                    totalRowCount = avCount + cvCount;
+                    #endregion
+                    #region GetTotalRows
+                    var addIdColl  = db.Adds.Where(a =>
+                    ((location != "" ? a.State == location : true) ||
+                    (location != "" ? a.District == location : true) ||
+                    (location != "" ? a.Mandal == location : true)) &&
+                    (a.Type == type) &&
+                    (a.Status == Constants.ActiveSatus) &&
+                    (keyword != "" ? a.Title.Contains(keyword) : true) &&
+                    (a.SubCategory == subCategory)).Select(a => a.AddId).ToList();
+
+                    var coll = (from av in db.AgriculturalVehicles
+                                join cv in db.ConstructionVehicles on av.SubCategory equals cv.SubCategory
+
+                                where av.SubCategory == subCategory && cv.SubCategory == subCategory
+
+                                select av.AddId);
+
+                               
+                                    
+
+
+
+
+
+
+                    foreach (int addId in addIdColl)
+                    {
+                        
+                    }
+                  
+
+
+
+                    //var totalRows = (from AV in db.AgriculturalVehicles
+                    //                 where AV.AddId in addIdColl.ToList());
+                    // var whereAmI = from av in db.AgriculturalVehicles
+                    //      join addId in addIdColl on av.AddId equals addId
+                    // join cv in db.ConstructionVehicles
+
+
+                    // select av;
+
+
+
+                    //var result = (from add in db.ConstructionVehicles
+                    //              join av in db.AgriculturalVehicles where add.SubCategory equals  av.SubCategory
+
+                    //             //join cv in db.ConstructionVehicles on add equals cv.AddId
+                    //             // where add.SubCategory == "Tractors" 
+                    //             (addIdColl.Contains((int)av.AddId) || (addIdColl.Contains((int)add.)))
+                    //              select new CustomAdd
+                    //              {
+                    //                 // AddId = add.AddId,
+                    //                 // Location = add.Mandal + "," + add.State,
+                    //                //  CreatedDate = add.Created.ToString(),
+                    //                //  Title = add.Title,
+                    //                  Description = av.Description ,
+                    //                  ImgUrlPrimary = av.ImgUrlPrimary,
+                    //                  Price = av.Price,
+                    //                  Category = Constants.AgriculturalVehicle
+                    //               });
+
+                    #endregion
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At Filter AV with filter options", ex);
+                }
+            }
         }
     }
 }
