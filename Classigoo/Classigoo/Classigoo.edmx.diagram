@@ -23,6 +23,8 @@
         <AssociationConnector Association="ClassigooModel.FK_Messages_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_Messages_Messages" />
         <AssociationConnector Association="ClassigooModel.FK_Messages_Users" />
+        <EntityTypeShape EntityType="ClassigooModel.Survey" Width="1.5" PointX="7.875" PointY="14" />
+        <AssociationConnector Association="ClassigooModel.FK_Survey_Adds" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
