@@ -363,6 +363,44 @@ namespace Classigoo.Controllers
                 return RedirectToAction("Login", "User");
             }
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult CreateBuyerInfo()
+        {
+            if (isAdmin())
+            {
+               
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotFound", "List");
+            }
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult CreateBuyerInfo(FormCollection coll)
+        {
+            if (isAdmin())
+            {
+                string mobileNumber = coll["emailphone"];
+                string name = coll["username"];
+                string addId = coll["addid"];
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("NotFound", "List");
+            }
+
+           
+            //return View();
+        }
+
         public JsonResult GetAdminData()
         {
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();

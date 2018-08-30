@@ -461,3 +461,33 @@ mscorlib ; The given key was not present in the dictionary.
 mscorlib ; The given key was not present in the dictionary.
 09/08/2018 11:32:48 PM : At Getresubcatcount
 mscorlib ; The given key was not present in the dictionary.
+8/30/2018 10:35:20 PM : At GetAVSubcatcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:35:20 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:35:20 PM : At GetCVSubcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:35:20 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:35:21 PM : At GetCVSubCount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:35:21 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:35:21 PM : At GetPvSubcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:35:21 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:35:21 PM : At Getresubcatcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:35:21 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:58:44 PM : At GetCVSubcount
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+8/30/2018 10:58:44 PM : EntityFramework ; Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+8/30/2018 10:59:29 PM : At GetCVSubCount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:59:29 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:59:29 PM : At GetPvSubcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:59:29 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 10:59:29 PM : At Getresubcatcount
+EntityFramework ; The underlying provider failed on Open.
+8/30/2018 10:59:29 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+8/30/2018 11:01:42 PM : At GetCVSubcount
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+8/30/2018 11:01:42 PM : EntityFramework ; Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
