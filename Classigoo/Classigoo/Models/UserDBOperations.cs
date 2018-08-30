@@ -381,7 +381,7 @@ namespace Classigoo.Models
             return isSuccess;
         }
 
-        public void ShowSurvey()
+        public List<CustomSurvey> GetSurvey()
         {
             List<CustomSurvey> customSurveyColl = new List<CustomSurvey>();
             try
@@ -394,7 +394,20 @@ namespace Classigoo.Models
                     {
                         CustomSurvey customSurvey = new CustomSurvey();
                         customSurvey.Survey = survey;
+                        CommonDBOperations objCommon = new CommonDBOperations();
+                        Add add = objCommon.GetAdd(survey.AddId.ToString());
+                        customSurvey.Category = add.Category;
+                        customSurvey.SubCategory = add.SubCategory;
+                        if(add.Type=="Rent")
+                        {
+                            customSurvey.Type = "Consumer";
+                        }
+                        else if(add.Type=="Sale")
+                        {
+                            customSurvey.Type = "Buyer";
+                        }
                         
+                        customSurveyColl.Add(customSurvey);
                     }
                 }
             }
@@ -402,6 +415,8 @@ namespace Classigoo.Models
             {
                 Library.WriteLog("At ShowSurvey db", ex);
             }
+
+            return customSurveyColl;
         }
     }
 }

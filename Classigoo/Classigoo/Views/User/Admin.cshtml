@@ -1,11 +1,13 @@
-﻿@model IEnumerable<AdminAdd>
+﻿@model AdminDashboard
 @{
 
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     List<SelectListItem> statusCollection = new List<SelectListItem>();
-
+    List<SelectListItem> reportType = new List<SelectListItem>();
+    reportType.Add(new SelectListItem { Text = "AddsInfo", Value = "AddsInfo" });
+    reportType.Add(new SelectListItem { Text = "Buyer/ConsumerInfo", Value = "Buyer/ConsumerInfo" });
     statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
@@ -16,6 +18,7 @@
 @using (Html.BeginForm("Admin1", "Post", FormMethod.Get, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
     <div>
+        @Html.DropDownList("ddlReportType", reportType, new { })
  </div>
 
     <div>
@@ -58,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.AddsColl)
                             {
 
                                 <tr>
@@ -170,6 +173,78 @@
         </div>
     </div>
 
+    <div>
+        <div class="add-listing-wrap">
+            <div class="container">
+
+
+                <div class="add-listing-tost-block">
+                    <p></p>
+                </div>
+
+                <div class="add-listing-tost-block" style="width:100%; padding:15px 15px 15px 15px;border-radius:3px;box-shadow:0px 1px 11px -1px rgba(216, 216, 216, 0.75)">
+
+                    <table id="tblSurvey" class="table table-striped table-bordered nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th data-class="expand">AddId</th>
+                                <th data-class="phone">UserName</th>
+                                <th data-class="phone">PhoneNumber</th>
+                                <th data-class="phone">Created</th>
+                                <th data-hide="phone">Category</th>
+                                <th data-hide="phone">Sub Category</th>
+                                <th data-hide="phone">Consumer/Buyer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.SurveyColl)
+                            {
+
+                                <tr>
+                                    <td id="addId">
+                                        @item.Survey.AddId
+                                    </td>
+                                    <td>
+                                        @item.Survey.Name
+                                    </td>
+                                    <td>
+                                        @item.Survey.PhoneNumber
+                                    </td>
+                                    <td>
+                                        @item.Survey.CreatedDate
+                                    </td>
+                                    <td>
+                                        @item.Category
+                                    </td>
+                                    <td>
+                                        @item.SubCategory
+                                    </td>
+                                    <td>
+                                        @item.Type
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th data-class="expand">AddId</th>
+                                <th data-class="phone">UserName</th>
+                                <th data-class="phone">PhoneNumber</th>
+                                <th data-class="phone">Created</th>
+                                <th data-hide="phone">Category</th>
+                                <th data-hide="phone">Sub Category</th>
+                                <th data-hide="phone">Consumer/Buyer</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 }
 
 <div class="loader-wrap" style="display:none">
@@ -293,6 +368,9 @@
 
         });  
 
+        var survey = $('#tblSurvey').DataTable({
+            "responsive": true
+        });
     });
 </script>
 

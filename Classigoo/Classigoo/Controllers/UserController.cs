@@ -347,16 +347,21 @@ namespace Classigoo.Controllers
             if (isAdmin())
             {
                 IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+                IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+                AdminDashboard adminDashboard = new AdminDashboard();
                 try
                 {
                     UserDBOperations db = new UserDBOperations();
                     addColl = db.GetAdminAdds();
+                    surveyColl = db.GetSurvey();
+                    adminDashboard.SurveyColl = surveyColl;
+                    adminDashboard.AddsColl = addColl;
                 }
                 catch (Exception ex)
                 {
                     Library.WriteLog("At Admin", ex);
                 }
-                return View(addColl);
+                return View(adminDashboard);
             }
             else
             {
@@ -386,10 +391,19 @@ namespace Classigoo.Controllers
         {
             if (isAdmin())
             {
-                string mobileNumber = coll["emailphone"];
+                string mobileNumber = coll["phone"];
                 string name = coll["username"];
                 string addId = coll["addid"];
+                #region inserttosurveytable
+                UserDBOperations userDbObj = new UserDBOperations();
+                Survey objSurvey = new Survey();
+                objSurvey.CreatedDate = CustomActions.GetCurrentISTTime();
+                objSurvey.AddId = Convert.ToInt32(addId);
+                objSurvey.PhoneNumber = mobileNumber;
+                objSurvey.Name = name;
+               bool status= userDbObj.AddSurvey(objSurvey);
 
+                #endregion
                 return View();
             }
             else

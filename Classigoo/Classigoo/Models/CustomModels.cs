@@ -380,4 +380,11 @@ namespace Classigoo
 
         public string Type { set; get; }
     }
+
+    public class AdminDashboard
+    {
+        public IEnumerable<CustomSurvey> SurveyColl { set; get; }
+
+        public IEnumerable<AdminAdd> AddsColl { set; get; }
+    }
 }
