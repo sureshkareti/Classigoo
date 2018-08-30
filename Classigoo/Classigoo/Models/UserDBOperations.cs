@@ -356,5 +356,29 @@ namespace Classigoo.Models
             return isPwdEmpty;
         }
         
+        public bool AddSurvey(Survey survey)
+        {
+            bool isSuccess = true;
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+    int count=   db.Surveys.Where(s => s.AddId == survey.AddId).Where(s => s.PhoneNumber == survey.PhoneNumber).Count();
+
+                    if (count <=0)
+                    {
+                        db.Surveys.Add(survey);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At AddSurvey db", ex);
+                isSuccess = false;
+            }
+
+            return isSuccess;
+        }
     }
 }

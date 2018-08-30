@@ -244,6 +244,9 @@
     </Compile>
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Survey.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="TransportationVehicle.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>

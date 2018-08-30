@@ -127,6 +127,16 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Acres" Type="smallmoney" />
         </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AddId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="TransportationVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -264,6 +274,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Survey_Adds">
+          <End Role="Adds" Type="Self.Adds" Multiplicity="1" />
+          <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adds">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="AddId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TransportationVehicle_Adds">
           <End Role="Adds" Type="Self.Adds" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -300,6 +322,7 @@
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassengerVehicle" EntityType="Self.PassengerVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportationVehicle" EntityType="Self.TransportationVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
@@ -333,6 +356,10 @@
           <AssociationSet Name="FK_RealEstate_Adds" Association="Self.FK_RealEstate_Adds">
             <End Role="Adds" EntitySet="Adds" />
             <End Role="RealEstate" EntitySet="RealEstate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Adds" Association="Self.FK_Survey_Adds">
+            <End Role="Adds" EntitySet="Adds" />
+            <End Role="Survey" EntitySet="Survey" />
           </AssociationSet>
           <AssociationSet Name="FK_TransportationVehicle_Adds" Association="Self.FK_TransportationVehicle_Adds">
             <End Role="Adds" EntitySet="Adds" />
@@ -402,6 +429,11 @@
           <AssociationSet Name="FK_Messages_Users" Association="ClassigooModel.FK_Messages_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <EntitySet Name="Surveys" EntityType="ClassigooModel.Survey" />
+          <AssociationSet Name="FK_Survey_Adds" Association="ClassigooModel.FK_Survey_Adds">
+            <End Role="Add" EntitySet="Adds" />
+            <End Role="Survey" EntitySet="Surveys" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="User">
@@ -556,6 +588,7 @@
           <NavigationProperty Name="RealEstates" Relationship="ClassigooModel.FK_RealEstate_Adds" FromRole="Add" ToRole="RealEstate" />
           <NavigationProperty Name="TransportationVehicles" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="Add" ToRole="TransportationVehicle" />
           <NavigationProperty Name="Messages" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Add" ToRole="Message" />
+          <NavigationProperty Name="Surveys" Relationship="ClassigooModel.FK_Survey_Adds" FromRole="Add" ToRole="Survey" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -692,6 +725,29 @@
             </Principal>
             <Dependent Role="Message">
               <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AddId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Add" Relationship="ClassigooModel.FK_Survey_Adds" FromRole="Survey" ToRole="Add" />
+        </EntityType>
+        <Association Name="FK_Survey_Adds">
+          <End Type="ClassigooModel.Add" Role="Add" Multiplicity="1" />
+          <End Type="ClassigooModel.Survey" Role="Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Add">
+              <PropertyRef Name="AddId" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="AddId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -861,6 +917,17 @@
                 <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
                 <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
                 <ScalarProperty Name="MsgId" ColumnName="MsgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surveys">
+            <EntityTypeMapping TypeName="ClassigooModel.Survey">
+              <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AddId" ColumnName="AddId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
