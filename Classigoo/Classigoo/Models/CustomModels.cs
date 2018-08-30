@@ -47,7 +47,7 @@ namespace Classigoo
         public int CraneCount { set; get; }
         public int TransitMixerCount { set; get; }
         public int SoilCompactorCount { set; get; }
-        public int TippersCount { set; get; }    
+        public int TippersCount { set; get; }
     }
 
     public class TV
@@ -180,7 +180,7 @@ namespace Classigoo
 
         public string PVCompany_list { set; get; }
         public string PVOtherCompany { set; get; }
-       
+
         public string txtPV_Model { set; get; }
         //public int txtPV_price { set; get; }
         public string txtPV_price { set; get; }
@@ -356,17 +356,28 @@ namespace Classigoo
         public Guid RequestorUserId { set; get; }
         public int AddId { set; get; }
         public string AddTitle { set; get; }
-       // public int ChatCount { set; get; }
+        // public int ChatCount { set; get; }
     }
 
     public class CustomHomeModel
     {
         public List<CustomAdd> AddColl { set; get; }
 
-         public List<CustomMessage> ChatColl { set; get; }
+        public List<CustomMessage> ChatColl { set; get; }
 
         //public List<CustomMessage> InboxChatColl { set; get; }
 
-       // public List<CustomMessage> SentChatColl { set; get; }
+        // public List<CustomMessage> SentChatColl { set; get; }
+    }
+
+    public class CustomSurvey
+    {
+        public Survey Survey { set; get; }
+
+        public string Category { set; get; }
+
+        public string SubCategory { set; get; }
+
+        public string Type { set; get; }
     }
 }

@@ -380,5 +380,28 @@ namespace Classigoo.Models
 
             return isSuccess;
         }
+
+        public void ShowSurvey()
+        {
+            List<CustomSurvey> customSurveyColl = new List<CustomSurvey>();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    List<Survey> surveyColl = db.Surveys.ToList();
+
+                    foreach(Survey survey in surveyColl)
+                    {
+                        CustomSurvey customSurvey = new CustomSurvey();
+                        customSurvey.Survey = survey;
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At ShowSurvey db", ex);
+            }
+        }
     }
 }
