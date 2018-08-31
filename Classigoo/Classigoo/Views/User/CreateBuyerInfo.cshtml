@@ -12,9 +12,6 @@
     @Html.AntiForgeryToken()
     <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
     <div>
-        @*<div class="breadcrumb-block">
-
-            </div>*@
 
         <div class="user-form-block">
             <div class="container" style="max-width:970px !important;margin:auto;">
@@ -25,6 +22,9 @@
                     </div>
                     <div class="col-md-8 col-xs-12 col-sm-12">
                         <div class="registration-form-block">
+                            <p id="sucessMesg" class="input-success">consumer/buyer information has been stored successfully</p>
+                            <p id="errorMesg" class="input-error" >Sorry, something went wrong ..plese try again later</p>
+
                             <div class="registration-form-title">
                                 <h4>Create Buyer/Consumer Details</h4>
                             </div>
@@ -38,10 +38,10 @@
                                                 <label for="userName">Phone Number*</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="inputEmailPhone" pattern='^\d{10}$' name="phone" placeholder="PhoneNumber" data-error="Please enter a valid PhoneNumber." required  style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
+                                                <input type="text" class="form-control" id="inputEmailPhone" pattern='^\d{10}$' name="phone" placeholder="PhoneNumber" data-error="Please enter a valid PhoneNumber." required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
                                                 <div class="help-block with-errors"></div>
                                             </div>
-                                        </div>                                                                            
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -49,7 +49,7 @@
                                                 <label for="userName">User Name*</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="inputUserName" name="username" placeholder="UserName" data-error="Please enter a User Name." required  style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
+                                                <input type="text" class="form-control" id="inputUserName" name="username" placeholder="UserName" data-error="Please enter a User Name." required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -60,32 +60,59 @@
                                                 <label for="userName">Add Id*</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="inputAddId" name="addid" pattern='@emailPattern|^\d{}$' placeholder="Add Id" data-error="Please enter a valid Add Id." required  style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
+                                                <input type="text" class="form-control" id="inputAddId" name="addid" pattern='@emailPattern|^\d{}$' placeholder="Add Id" data-error="Please enter a valid Add Id." required style="height: auto;font-size: 14px;padding: 11px 0 11px 30px;border-radius: 3px;border: 1px solid #e7e7e7; background: transparent;">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                     </div>
-                                  
+
                                     <div class="form-group">
                                         <div class="form-btn-block">
                                             <button type="submit" class="form-btn">Create</button>
+                                           
                                         </div>
                                     </div>
                                 </form>
-                             
+
                             </div>
                         </div>
                     </div>
                     <!-- panel -->
                 </div>
 
-               
+
             </div>
         </div>
     </div>
 
-
-        @*</div>*@
-
-
 }
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+     
+        if ("@ViewBag.send" !== "") {
+
+            if ("@ViewBag.send" == 'True') {
+                $(".input-success").css("display", "block");
+                $(".input-success").css("display", "block");
+                $(".input-success").css("opacity", "1");
+
+                $(".input-success").fadeTo(4000, 0).slideUp(1500, function () {
+                    $(this).css("display", "none");
+                });
+            }
+            else {
+                $(".input-error").css("display", "block");
+                $(".input-error").css("display", "block");
+                $(".input-error").css("opacity", "1");
+
+                $(".input-error").fadeTo(4000, 0).slideUp(1500, function () {
+                    $(this).css("display", "none");
+                });
+            }
+
+        }
+    });
+</script>

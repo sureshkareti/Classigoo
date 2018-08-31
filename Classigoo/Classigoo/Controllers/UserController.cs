@@ -66,7 +66,7 @@ namespace Classigoo.Controllers
                             return Redirect(ReturnUrl);
                         }
                         else
-                        return RedirectToAction("Admin", "User");
+                            return RedirectToAction("Admin", "User");
                     }
 
                     else
@@ -119,9 +119,9 @@ namespace Classigoo.Controllers
                         objLoginWithOtp.PhoneNumber = user.MobileNumber;
                         objLoginWithOtp.VerifyType = Constants.VerifyOTPFrmRegistration;
                         TempData["UserToAdd"] = user;
-                       // if(!string.IsNullOrEmpty(ReturnUrl))
+                        // if(!string.IsNullOrEmpty(ReturnUrl))
                         //{
-                            TempData["ReturnUrl"] = ReturnUrl;
+                        TempData["ReturnUrl"] = ReturnUrl;
                         //}
                         return View("VerifyOTP", objLoginWithOtp);
                     }
@@ -306,7 +306,7 @@ namespace Classigoo.Controllers
                 homeModel.AddColl = addColl;
                 //homeModel.InboxChatColl = inboxChatColl;
                 //homeModel.SentChatColl = sentChatColl;
-                
+
                 homeModel.ChatColl = chatColl;
             }
             catch (Exception ex)
@@ -375,7 +375,7 @@ namespace Classigoo.Controllers
         {
             if (isAdmin())
             {
-               
+
                 return View();
             }
             else
@@ -401,8 +401,10 @@ namespace Classigoo.Controllers
                 objSurvey.AddId = Convert.ToInt32(addId);
                 objSurvey.PhoneNumber = mobileNumber;
                 objSurvey.Name = name;
-               bool status= userDbObj.AddSurvey(objSurvey);
+                bool status = userDbObj.AddSurvey(objSurvey);
 
+                ViewBag.send = status;
+              
                 #endregion
                 return View();
             }
@@ -411,7 +413,7 @@ namespace Classigoo.Controllers
                 return RedirectToAction("NotFound", "List");
             }
 
-           
+
             //return View();
         }
 
@@ -430,14 +432,14 @@ namespace Classigoo.Controllers
             return Json(addColl, JsonRequestBehavior.AllowGet);
         }
 
-        public bool UpdateAddStatus(int addId, string status, string remarks,string userName,string userPhoneNum)
+        public bool UpdateAddStatus(int addId, string status, string remarks, string userName, string userPhoneNum)
         {
             bool isAddUpdated = false;
             try
             {
                 UserDBOperations db = new UserDBOperations();
                 isAddUpdated = db.UpdateAddStatus(addId, status, remarks);
-                if(isAddUpdated)
+                if (isAddUpdated)
                 {
                     if (status == Constants.ActiveSatus)
                     {
@@ -447,9 +449,9 @@ namespace Classigoo.Controllers
                         message.AppendLine("Your Ad Activated successfully. ");
                         message.AppendLine("View Ad here: ");
                         message.AppendLine(addUrl);
-                        message.AppendLine("Please contact "+Constants.AdminPhoneNum+" for any assistance ");
+                        message.AppendLine("Please contact " + Constants.AdminPhoneNum + " for any assistance ");
                         Communication objComm = new Communication();
-                       objComm.SendMessage(userPhoneNum, message.ToString());
+                        objComm.SendMessage(userPhoneNum, message.ToString());
                     }
                 }
             }
@@ -770,7 +772,7 @@ namespace Classigoo.Controllers
         //    return View();
         //}
 
-        public PartialViewResult LoadChat(int addid,Guid requestorUserId)
+        public PartialViewResult LoadChat(int addid, Guid requestorUserId)
         {
             MessageDBOperations objMsgDbOperations = new MessageDBOperations();
             Guid userId = GetUserId();
@@ -783,7 +785,7 @@ namespace Classigoo.Controllers
                 individualChatColl.RequestorUserId = requestorUserId;
                 individualChatColl.AddId = addid;
                 individualChatColl.AddTitle = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(chatColl[0].AddTitle);
-              //  individualChatColl.ChatCount = chatColl.Count;
+                //  individualChatColl.ChatCount = chatColl.Count;
                 if (requestorUserId == userId)//you are not add owner
                 {
                     foreach (CustomMessage msg in chatColl)
@@ -848,7 +850,7 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public PartialViewResult AddChat(int addId,Guid frmUserId, Guid toUserId,Guid requestorUserId, string userMessage)
+        public PartialViewResult AddChat(int addId, Guid frmUserId, Guid toUserId, Guid requestorUserId, string userMessage)
         {
             Message msg = new Message();
             bool status = false;
@@ -862,17 +864,17 @@ namespace Classigoo.Controllers
                 msg.RequestorUserId = requestorUserId;
                 msg.Message1 = userMessage;
                 status = msgDbObj.AddChat(msg);
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At add chat from dashboard", ex);
             }
             //if(status)
             return PartialView("_SentChat", msg);
-           // else
-          //  {
-               // return RedirectToAction("Home","User");
+            // else
+            //  {
+            // return RedirectToAction("Home","User");
             //}
         }
     }
