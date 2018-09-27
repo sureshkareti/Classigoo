@@ -1558,16 +1558,16 @@
 </style>
 
 @section Styles {
-    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/List/color1.css" rel="stylesheet" />
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
     @*<link href="~/Content/Carousel/style.css" rel="stylesheet" />*@
 
-    <link href="~/Content/slick/slick.css" rel="stylesheet" />
+    @*<link href="~/Content/slick/slick.css" rel="stylesheet" />
     <link href="~/Content/slick/slick-theme.css" rel="stylesheet" />
-    <link href="~/Content/slick/slick-custom.css" rel="stylesheet" />
-
+    <link href="~/Content/slick/slick-custom.css" rel="stylesheet" />*@
+@Styles.Render("~/Content/silk")
 }
 
 
@@ -1582,7 +1582,7 @@
         <script src="~/Scripts/Carousel/core.js"></script>*@
 
     <script src="~/Scripts/slick/slick.min.js"></script>
-}
+
 
 <script>
     $(document).ready(function () {
@@ -1704,3 +1704,5 @@
 
     }
 </script>
+
+}
