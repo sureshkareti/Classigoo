@@ -26,7 +26,14 @@ namespace Classigoo
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/CustomeNew/Index1.css",
                       "~/Content/CustomeNew/Style.css").Include("~/Content/font-awesome.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new StyleBundle("~/Content/silk").Include(
+                    "~/Content/slick/slick.css",
+                    "~/Content/slick/slick-theme.css", "~/Content/slick/slick-custom.css"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

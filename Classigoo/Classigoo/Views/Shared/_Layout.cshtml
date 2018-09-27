@@ -14,14 +14,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     @Styles.Render("~/Content/css")
-
-    <link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" />
-
     @RenderSection("Styles", false)
 
-    <link href="~/Content/CustomeNew/Style.css" rel="stylesheet" />
-
-    @Scripts.Render("~/scripts/jquery-3.2.1.js")
+    @*<link href="~/Content/CustomeNew/Index1.css" rel="stylesheet" />
+    <link href="~/Content/CustomeNew/Style.css" rel="stylesheet" />*@
+    @*@Scripts.Render("~/scripts/jquery-3.2.1.js")*@
 
     <style type="text/css">
         .paddingContent {
@@ -323,6 +320,24 @@
         </footer>
     </div>
 
+   
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122468022-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-122468022-2');
+        </script>*@
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @*@Scripts.Render("~/scripts/bootstrap.js")*@
+
     <script>
         $(document).ready(function () {
 
@@ -345,19 +360,5 @@
             $(".dropdown-content").toggleClass("show");
         }
     </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    @*<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122468022-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-
-            gtag('config', 'UA-122468022-2');
-        </script>*@
-
-
-    @RenderSection("scripts", required: false)
-    @Scripts.Render("~/scripts/bootstrap.js")
 </body>
 </html>

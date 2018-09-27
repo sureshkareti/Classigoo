@@ -363,7 +363,6 @@
 
 
                 </section>
-
             </div>
         </div>
     </div>
@@ -374,93 +373,102 @@
 
 
 @section Styles {
-    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />*@
     <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
 
-    <link href="~/Content/slick/slick.css" rel="stylesheet" />
-    <link href="~/Content/slick/slick-theme.css" rel="stylesheet" />
-    <link href="~/Content/slick/slick-custom.css" rel="stylesheet" />
+
+
+    @*<link href="~/Content/slick/slick.css" rel="stylesheet" />
+        <link href="~/Content/slick/slick-theme.css" rel="stylesheet" />
+        <link href="~/Content/slick/slick-custom.css" rel="stylesheet" />*@
+
+
     @*<link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />*@
+
+    @Styles.Render("~/Content/silk")
+
+}
+
+@section scripts{
+
+    <script src="~/Scripts/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(".autoplay").slick({
+
+                variableWidth: true,
+
+                slidesToShow: 8,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: true,
+                dots: false,
+                pauseOnHover: false,
+                responsive: [
+
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 3
+                        }
+                    }, {
+                        breakpoint: 480,
+                        settings: {
+                            variableWidth: false,
+                            slidesToShow: 2,
+
+                        }
+                    }]
+            });
+
+            $('.scrollimg').click(function () {
+                var currentCat = $(this)[0].getAttribute("data-category");
+                var currentSubCat = $(this)[0].getAttribute("data-subcategory");
+                window.location.href = "/List/Index?category=" + currentCat + "&subCategory=" + escape(currentSubCat);
+            });
+
+            GetAddsCount();
+
+            $("#divCategory a").click(function () {
+                var selectedCategory = $(this).attr("category");
+                var type = $(this).attr("type");
+                //  window.target = "_blank";
+                window.location.href = "/List/Index?category=" + selectedCategory + "&type=" + type;
+            })
+
+            function GetAddsCount() {
+                $.ajax({
+                    url: '/List/GetCount',
+                    type: 'GET',
+                    success: function (data) {
+                        $("#pvSaleCount").text(data.pvSaleCount);
+                        $("#pvRentCount").text(data.pvRentCount);
+                        $("#avRentCount").text(data.avRentCount);
+                        $("#avSaleCount").text(data.avSaleCount);
+                        $("#tvRentCount").text(data.tvRentCount);
+                        $("#tvSaleCount").text(data.tvSaleCount);
+                        $("#cvRentCount").text(data.cvRentCount);
+                        $("#cvSaleCount").text(data.cvSaleCount);
+                        $("#reRentCount").text(data.reRentCount);
+                        $("#reSaleCount").text(data.reSaleCount);
+
+                    },
+                    failure: function (response) {
+                        console.log(response.responseText);
+                    },
+                    error: function (response) {
+                        console.log(response.responseText);
+                    },
+                    complete: function (data) {
+
+                    }
+
+                });
+            }
+        });
+    </script>
 }
 
 
-<script src="~/Scripts/slick/slick.min.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-
-        $(".autoplay").slick({
-
-            variableWidth: true,
-
-            slidesToShow: 8,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            arrows: true,
-            dots: false,
-            pauseOnHover: false,
-            responsive: [
-
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                }, {
-                    breakpoint: 480,
-                    settings: {
-                        variableWidth: false,
-                        slidesToShow: 2,
-
-                    }
-                }]
-        });
-
-        $('.scrollimg').click(function () {
-            var currentCat = $(this)[0].getAttribute("data-category");
-            var currentSubCat = $(this)[0].getAttribute("data-subcategory");
-            window.location.href = "/List/Index?category=" + currentCat + "&subCategory=" + escape(currentSubCat);
-        });
-
-        GetAddsCount();
-
-        $("#divCategory a").click(function () {
-            var selectedCategory = $(this).attr("category");
-            var type = $(this).attr("type");
-            //  window.target = "_blank";
-            window.location.href = "/List/Index?category=" + selectedCategory + "&type=" + type;
-        })
-
-        function GetAddsCount() {
-            $.ajax({
-                url: '/List/GetCount',
-                type: 'GET',
-                success: function (data) {
-                    $("#pvSaleCount").text(data.pvSaleCount);
-                    $("#pvRentCount").text(data.pvRentCount);
-                    $("#avRentCount").text(data.avRentCount);
-                    $("#avSaleCount").text(data.avSaleCount);
-                    $("#tvRentCount").text(data.tvRentCount);
-                    $("#tvSaleCount").text(data.tvSaleCount);
-                    $("#cvRentCount").text(data.cvRentCount);
-                    $("#cvSaleCount").text(data.cvSaleCount);
-                    $("#reRentCount").text(data.reRentCount);
-                    $("#reSaleCount").text(data.reSaleCount);
-
-                },
-                failure: function (response) {
-                    console.log(response.responseText);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
-                },
-                complete: function (data) {
-
-                }
-
-            });
-        }
-    });
-</script>

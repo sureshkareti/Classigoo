@@ -288,6 +288,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="Content\fonts\slick.svg" />
     <Content Include="Content\img\bx_loader.gif" />
     <Content Include="Content\img\controls.png" />
     <Content Include="Content\img\loading.gif" />
@@ -510,6 +511,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Content\fonts\slick.eot" />
+    <Content Include="Content\fonts\slick.ttf" />
+    <Content Include="Content\fonts\slick.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\User\CreateBuyerInfo.cshtml" />
   </ItemGroup>
