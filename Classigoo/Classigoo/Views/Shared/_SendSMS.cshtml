@@ -1,0 +1,68 @@
+﻿@model List<SelectListItem>
+
+    @*<form action="@Url.Action("SendSMS", "User")" method="post">*@
+
+@using (Html.BeginForm("SendSMS", "User", FormMethod.Post))
+{
+    <div>
+        @*<div class="modal-dialog">*@
+
+        Modal content
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Send SMS</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    @Html.ListBox("PhoneNumColl", Model)
+                </p>
+                <p>
+                    @Html.TextArea("txtMsg", null, new { @class = "form-control" })
+                </p>
+                <input type="button" id="btnSubmit" value="Submit">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+        @*</div>*@
+    </div>
+}
+  
+<script type="text/javascript">
+    $(document).ready(function () 
+    {
+        var phoneNumColl = "";
+        var msg = "";
+        $("#btnSubmit").click(function () {
+             msg = $("#txtMsg").val();
+            
+            var selected = $("#PhoneNumColl");
+            selected.each(function () {
+                phoneNumColl += $(this).val();
+                phoneNumColl += ",";
+            });
+            SendMsg();
+        });
+        function SendMsg() {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("SendMsg", "User")',
+                cache: false,
+                data: { "MobileNumbers": phoneNumColl, "message": msg },
+                success: function (data) {
+                    //alert(JSON.stringify(data))
+                    // $('.modal-dialog').html("");
+                    // $('.modal-dialog').html(data);
+                },
+                error: function (response) {
+
+                }
+            })
+        }
+    });
+   
+</script>
+   

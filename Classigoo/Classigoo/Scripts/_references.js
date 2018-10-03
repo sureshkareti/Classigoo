@@ -13,6 +13,7 @@
 /// <reference path="list/bootstrap.min.js" />
 /// <reference path="list/custom.js" />
 /// <reference path="list/datatables.min.js" />
+/// <reference path="list/datatables.select.min.js" />
 /// <reference path="list/jquery.caroufredsel-6.2.1-packed.js" />
 /// <reference path="list/responsive.bootstrap.min.js" />
 /// <reference path="list/responsive.min.js" />

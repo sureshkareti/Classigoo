@@ -299,6 +299,7 @@
     <Content Include="Content\List\color1.css" />
     <Content Include="Content\List\dataTables.bootstrap.min.css" />
     <Content Include="Content\List\responsive.bootstrap.min.css" />
+    <Content Include="Content\List\select.dataTables.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\slick\fonts\slick.svg" />
     <Content Include="Content\slick\slick-custom.css" />
@@ -447,6 +448,7 @@
     <Content Include="Scripts\List\bootstrap.min.js" />
     <Content Include="Scripts\List\custom.js" />
     <Content Include="Scripts\List\dataTables.min.js" />
+    <Content Include="Scripts\List\dataTables.select.min.js" />
     <Content Include="Scripts\List\jquery.carouFredSel-6.2.1-packed.js" />
     <Content Include="Scripts\List\responsive.bootstrap.min.js" />
     <Content Include="Scripts\List\responsive.min.js" />
@@ -516,6 +518,7 @@
     <Content Include="Content\fonts\slick.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\User\CreateBuyerInfo.cshtml" />
+    <Content Include="Views\Shared\_SendSMS.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

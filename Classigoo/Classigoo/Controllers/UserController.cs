@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 
 namespace Classigoo.Controllers
@@ -877,5 +878,33 @@ namespace Classigoo.Controllers
             // return RedirectToAction("Home","User");
             //}
         }
+        [HttpGet]
+        public PartialViewResult SendSMS(string MobileNumbers)
+        {
+            JavaScriptSerializer j = new JavaScriptSerializer();
+            var obj = j.Deserialize<dynamic>(MobileNumbers);
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach (var x in obj){
+
+                // String strvalue = x[“value”];
+             
+                items.Add(new SelectListItem { Text =x, Value = x });
+
+            }
+            return PartialView("_SendSMS",items);
+        }
+       
+        public ActionResult SendMsg(string MobileNumbers,string message)
+        {
+           
+           
+            //List<SelectListItem> itemss = new List<SelectListItem>();
+            //foreach (var x in itemss)
+            //{
+
+            //}
+            return PartialView();
+        }
+
     }
 }
