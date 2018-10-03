@@ -37,10 +37,10 @@
         var phoneNumColl = "";
         var msg = "";
         $("#btnSubmit").click(function () {
+            $(".loader-wrap").show();
              msg = $("#txtMsg").val();
-            
-            var selected = $("#PhoneNumColl");
-            selected.each(function () {
+          var mobileNumColl=   $("#PhoneNumColl option").prop("selected", "true");
+          mobileNumColl.each(function () {
                 phoneNumColl += $(this).val();
                 phoneNumColl += ",";
             });
@@ -53,12 +53,10 @@
                 cache: false,
                 data: { "MobileNumbers": phoneNumColl, "message": msg },
                 success: function (data) {
-                    //alert(JSON.stringify(data))
-                    // $('.modal-dialog').html("");
-                    // $('.modal-dialog').html(data);
+                    $(".loader-wrap").hide();
                 },
                 error: function (response) {
-
+                    $(".loader-wrap").hide();
                 }
             })
         }

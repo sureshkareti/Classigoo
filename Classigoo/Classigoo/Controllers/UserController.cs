@@ -896,13 +896,23 @@ namespace Classigoo.Controllers
        
         public ActionResult SendMsg(string MobileNumbers,string message)
         {
-           
-           
-            //List<SelectListItem> itemss = new List<SelectListItem>();
-            //foreach (var x in itemss)
-            //{
+            try
+            {
+                string[] phoneNumColl = MobileNumbers.Split(',');
+                Communication objComm = new Communication();
+                foreach(string phoneNum in phoneNumColl)
+                {
+                    if(!string.IsNullOrEmpty(phoneNum))
+                    objComm.SendMessage(phoneNum, message);
+                }
+              
 
-            //}
+            }
+           catch(Exception ex)
+            {
+                Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+            }
+           
             return PartialView();
         }
 
