@@ -14,6 +14,7 @@
                 <h4 class="modal-title">Send SMS</h4>
             </div>
             <div class="modal-body">
+                <span id="status" style="display:none">@ViewBag.Status</span>
                 <p>
                     @Html.ListBox("PhoneNumColl", Model)
                 </p>
@@ -32,7 +33,7 @@
 }
   
 <script type="text/javascript">
-    $(document).ready(function () 
+    $(document).ready(function ()
     {
         var phoneNumColl = "";
         var msg = "";
@@ -54,13 +55,17 @@
                 data: { "MobileNumbers": phoneNumColl, "message": msg },
                 success: function (data) {
                     $(".loader-wrap").hide();
+                    $("#status").show();
+                    console.log('@ViewBag.Status');
                 },
                 error: function (response) {
                     $(".loader-wrap").hide();
+                    $("#status").show();
+                    console.log('@ViewBag.Status');
                 }
             })
         }
     });
-   
+
 </script>
    

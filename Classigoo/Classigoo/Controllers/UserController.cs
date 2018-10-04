@@ -904,13 +904,15 @@ namespace Classigoo.Controllers
                 {
                     if(!string.IsNullOrEmpty(phoneNum))
                     objComm.SendMessage(phoneNum, message);
+                    
                 }
-              
+                ViewBag.Status = "Messages have been sent successfully";
 
             }
            catch(Exception ex)
             {
                 Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+                ViewBag.Status = "Error occured while sending Messages.";
             }
            
             return PartialView();
