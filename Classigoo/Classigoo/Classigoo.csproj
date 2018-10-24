@@ -209,6 +209,7 @@
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -519,6 +520,8 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\User\CreateBuyerInfo.cshtml" />
     <Content Include="Views\Shared\_SendSMS.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
