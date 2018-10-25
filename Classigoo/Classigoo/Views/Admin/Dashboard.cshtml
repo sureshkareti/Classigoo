@@ -7,43 +7,90 @@
 
 @using (Html.BeginForm("Dashboard", "Post", FormMethod.Get, new { name = "DashboardForm", id = "DashboardForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
-    <div class="container" style="margin:50px auto;">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card-counter primary">
-                    <i class="fa fa-code-fork"></i>
-                    <span class="count-numbers">12</span>
-                    <span class="count-name">Agricultur Vehicles</span>
-                </div>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+                <strong>BS</strong>
             </div>
-            <div class="col-md-3">
-                <div class="card-counter danger">
-                    <i class="fa fa-ticket"></i>
-                    <span class="count-numbers">599</span>
-                    <span class="count-name">Passenger Vehicles</span>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-briefcase"></i>
+                        About
+                    </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-copy"></i>
+                        Pages
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-counter success">
-                    <i class="fa fa-database"></i>
-                    <span class="count-numbers">6875</span>
-                    <span class="count-name">Transport Vehicles</span>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card-counter info">
-                    <i class="fa fa-users"></i>
-                    <span class="count-numbers">35</span>
-                    <span class="count-name">Users</span>
-                </div>
-            </div>
+            </nav>
         </div>
     </div>
+
+
+
+
 }
 
 @section Styles {
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   @* <link href="~/Content/dashboard.css" rel="stylesheet" />*@
+<link href="~/Content/style4.css" rel="stylesheet" />
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
 
     <style type="text/css">
+
         .card-counter {
             box-shadow: 2px 2px 10px #DADADA;
             margin: 5px;
@@ -103,4 +150,17 @@
                 font-size: 18px;
             }
     </style>
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
+
 }

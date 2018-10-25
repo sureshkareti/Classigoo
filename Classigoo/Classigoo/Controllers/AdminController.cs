@@ -18,5 +18,24 @@ namespace Classigoo.Controllers
         {
             return View();
         }
+
+        public ActionResult Dashboard1()
+        {
+            return View();
+        }
+
+        public ActionResult Dashboard2()
+        {
+            return View();
+        }
+
+        public ActionResult AddsInfo()
+        {
+            return View();
+        }
+        public ActionResult CustInfo()
+        {
+            return View();
+        }
     }
 }

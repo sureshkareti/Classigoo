@@ -266,6 +266,11 @@
       <DependentUpon>Classigoo.edmx</DependentUpon>
       <LastGenOutput>Classigoo.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\Admin2\bootstrap.min.css" />
+    <Content Include="Content\Admin2\flaty-responsive.css" />
+    <Content Include="Content\Admin2\flaty.css" />
+    <Content Include="Content\Admin2\css\font-awesome.min.css" />
+    <Content Include="Content\Admin2\fonts\fontawesome-webfont862f.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -363,6 +368,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="images\4.jpg" />
+    <Content Include="images\Admin\1.png" />
     <Content Include="images\bg04.png" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Classigoo_logox1024.png" />
@@ -411,6 +417,12 @@
     <Content Include="images\scroll\TV\TV3.jpg" />
     <Content Include="images\scroll\TV\TV4.jpg" />
     <Content Include="images\upimglogo1.png" />
+    <Content Include="Scripts\Admin2\bootstrap.min.js" />
+    <Content Include="Scripts\Admin2\flaty-demo-codes.js" />
+    <Content Include="Scripts\Admin2\flaty.js" />
+    <Content Include="Scripts\Admin2\jquery.cookie.js" />
+    <Content Include="Scripts\Admin2\jquery.min.js" />
+    <Content Include="Scripts\Admin2\jquery.slimscroll.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrapValidator.min.js" />
@@ -517,11 +529,20 @@
     <Content Include="Content\fonts\slick.eot" />
     <Content Include="Content\fonts\slick.ttf" />
     <Content Include="Content\fonts\slick.woff" />
+    <Content Include="Content\Admin2\fonts\fontawesome-webfont862f.eot" />
+    <Content Include="Content\Admin2\fonts\fontawesome-webfont862f.ttf" />
+    <Content Include="Content\Admin2\fonts\fontawesome-webfont862f.woff" />
+    <Content Include="Content\Admin2\fonts\fontawesome-webfontd41d.eot" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\User\CreateBuyerInfo.cshtml" />
     <Content Include="Views\Shared\_SendSMS.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\Dashboard1.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin2.cshtml" />
+    <Content Include="Views\Admin\Dashboard2.cshtml" />
+    <Content Include="Views\Admin\AddsInfo.cshtml" />
+    <Content Include="Views\Admin\CustInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

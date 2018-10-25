@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "AddsInfo";
+    Layout = "~/Views/Shared/_LayoutAdmin2.cshtml";
+}
+
+<!-- BEGIN Page Title -->
+<div class="page-title">
+    <div>
+        <h1><i class="fa fa-file-o"></i> Adds Information</h1>
+        <h4>Overview, stats, chat and more</h4>
+    </div>
+</div>
+<!-- END Page Title -->
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.nav-list li.active').removeClass('active');
+
+            $('#liAddsInfo').addClass('active');
+
+            //$('.nav-list').on('click', 'li', function () {
+            //    $('.nav-list li.active').removeClass('active');
+            //    $(this).addClass('active');
+            //});
+        });
+
+    </script>
+}
