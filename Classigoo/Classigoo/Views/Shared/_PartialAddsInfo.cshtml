@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AdminAdd>
 @{
-    ViewBag.Title = "AddsInfo";
-    Layout = "~/Views/Shared/_LayoutAdmin2.cshtml";
+
+    Layout = null;
     List<SelectListItem> statusCollection = new List<SelectListItem>();
     statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
@@ -10,14 +10,7 @@
     statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
 }
 
-<!-- BEGIN Page Title -->
-<div class="page-title">
-    <div>
-        <h1><i class="fa fa-file-o"></i> Adds Information</h1>
-        <h4>Overview, stats, chat and more</h4>
-    </div>
-</div>
-<!-- END Page Title -->
+
 @using (Html.BeginForm("Admin1", "Post", FormMethod.Get, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
     <div id="reportAddsInfo" class="add-listing-tost-block" style="width:100%; padding:15px 15px 15px 15px;border-radius:3px;box-shadow:0px 1px 11px -1px rgba(216, 216, 216, 0.75)">
@@ -52,80 +45,80 @@
                 @foreach (var item in Model)
                 {
 
-                    <tr>
-                        @*<td>@item.PhoneNum</td>*@
-                        <td id="addId">
-                            @item.AddId
-                        </td>
-                        <td>
-                            @item.Created
-                        </td>
-                        <td>
-                            @item.SubCategory
-                        </td>
-                        <td>
-                            @item.Type
-                        </td>
+                <tr>
+                    @*<td>@item.PhoneNum</td>*@
+                    <td id="addId">
+                        @item.AddId
+                    </td>
+                    <td>
+                        @item.Created
+                    </td>
+                    <td>
+                        @item.SubCategory
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
 
-                        <td>
-                            @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                    <td>
+                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
 
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
-                        </td>
-
-
-                        <td>
-                            <span> <label id="lblStatus">@item.Status</label></span>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                    </td>
 
 
-                        </td>
-                        <td>
-                            @item.UserName
-                        </td>
-                        <td>
-                            @item.PhoneNum
-                        </td>
+                    <td>
+                        <span> <label id="lblStatus">@item.Status</label></span>
 
 
-                        <td>
-                            @item.Category
-                        </td>
-                        <td>
-                            @item.State
-                        </td>
-                        <td>
-                            @item.District
-                        </td>
-                        <td>
-                            @item.Mandal
-                        </td>
+                    </td>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>
+                        @item.PhoneNum
+                    </td>
 
 
-                        <td>
-                            <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
-                            @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
-                        </td>
-                        <td>
-                            <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
-                            @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
-                        </td>
-                        <td>
-                            <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
-                            <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
-                            <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
-                        </td>
-                        <td>
-                            @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
-                        </td>
-                        <td>
-                            <span id="userName" class="UserInfo">@item.UserName</span>
-                        </td>
-                        <td>
-                            <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
-                        </td>
-                    </tr>
+                    <td>
+                        @item.Category
+                    </td>
+                    <td>
+                        @item.State
+                    </td>
+                    <td>
+                        @item.District
+                    </td>
+                    <td>
+                        @item.Mandal
+                    </td>
+
+
+                    <td>
+                        <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
+                        @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
+                    </td>
+                    <td>
+                        <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
+                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                    </td>
+                    <td>
+                        <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
+                        <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
+                        <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
+                    </td>
+                    <td>
+                        <span id="userName" class="UserInfo">@item.UserName</span>
+                    </td>
+                    <td>
+                        <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
+                    </td>
+                </tr>
 
                 }
             </tbody>
@@ -157,33 +150,28 @@
 
     </div>
 }
-@section Styles {
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/List/color1.css" rel="stylesheet" />*@
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
-    @*<link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/List/select.dataTables.min.css" rel="stylesheet" />*@
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-}
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
+        <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        <span class="loader-item"></span><span class="loader-item"></span>
+    </div>
+</div>
 
-@section scripts{
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    @*<script src="~/Scripts/List/bootstrap.min.js"></script>*@
-    @*<script src="~/Scripts/List/dataTables.min.js"></script>
-    <script src="~/Scripts/List/responsive.min.js"></script>
-    <script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
-    <script src="~/Scripts/List/dataTables.select.min.js"></script>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/List/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/List/color1.css" rel="stylesheet" />
+<link href="~/Content/List/select.dataTables.min.css" rel="stylesheet" />
 
-    @*<script src="~/Scripts/List/bootstrap.min.js"></script>
-        <script src="~/Scripts/List/responsive.min.js"></script>
-        <script src="~/Scripts/List/responsive.bootstrap.min.js"></script>*@
+<script src="~/Scripts/List/dataTables.min.js"></script>
+<script src="~/Scripts/List/bootstrap.min.js"></script>
+<script src="~/Scripts/List/responsive.min.js"></script>
+<script src="~/Scripts/List/responsive.bootstrap.min.js"></script>
+<script src="~/Scripts/List/dataTables.select.min.js"></script>
 
-    <script type="text/javascript">
+
+<script type="text/javascript">
         function FnEditCancel(e) {
             var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
             var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
@@ -235,17 +223,20 @@
             });
 
         }
+
         $(document).ready(function () {
 
-            $('.nav-list li.active').removeClass('active');
+            //$('.nav-list li.active').removeClass('active');
 
-            $('#liAddsInfo').addClass('active');
+            //$('#liAddsInfo').addClass('active');
 
             //$('.nav-list').on('click', 'li', function () {
             //    $('.nav-list li.active').removeClass('active');
             //    $(this).addClass('active');
             //});
+
             $('.edit-mode').hide();
+
             var table = $('#tblAdds').DataTable({
                 "responsive": true,
                 select: {
@@ -307,5 +298,15 @@
             }
         });
 
-    </script>
+</script>
+
+@section Styles {
+    
+
+}
+
+@section scripts{
+    
+
+  
 }
