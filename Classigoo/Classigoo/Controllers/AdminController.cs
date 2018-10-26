@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classigoo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -31,11 +32,56 @@ namespace Classigoo.Controllers
 
         public ActionResult AddsInfo()
         {
-            return View();
+            //if (isAdmin())
+            //{
+                IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+               // IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+               // AdminDashboard adminDashboard = new AdminDashboard();
+                try
+                {
+                    UserDBOperations db = new UserDBOperations();
+                    addColl = db.GetAdminAdds();
+                   // surveyColl = db.GetSurvey();
+                   // adminDashboard.SurveyColl = surveyColl;
+                   // adminDashboard.AddsColl = addColl;
+                }
+                catch (Exception ex)
+                {
+                    Library.WriteLog("At Admin", ex);
+                }
+                return View(addColl);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
+            
         }
         public ActionResult CustInfo()
         {
-            return View();
+            //if (isAdmin())
+            //{
+           // IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+             IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            // AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                //addColl = db.GetAdminAdds();
+                surveyColl = db.GetSurvey();
+                // adminDashboard.SurveyColl = surveyColl;
+                // adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return View(surveyColl);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
         }
     }
 }
