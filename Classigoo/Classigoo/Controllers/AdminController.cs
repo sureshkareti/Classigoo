@@ -83,5 +83,60 @@ namespace Classigoo.Controllers
             //    return RedirectToAction("Login", "User");
             //}
         }
+
+        public ActionResult Test()
+        {
+            //if (isAdmin())
+            //{
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            // IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            // AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+                // surveyColl = db.GetSurvey();
+                // adminDashboard.SurveyColl = surveyColl;
+                // adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return View(addColl);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
+
+        }
+
+        public ActionResult Info()
+        {
+            //if (isAdmin())
+            //{
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            // IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            // AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+                // surveyColl = db.GetSurvey();
+                // adminDashboard.SurveyColl = surveyColl;
+                // adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return View(addColl);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
+        }
     }
 }

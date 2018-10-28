@@ -1,0 +1,369 @@
+﻿
+@model IEnumerable<AdminAdd>
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    List<SelectListItem> statusCollection = new List<SelectListItem>();
+    statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+}
+
+<header class="head">
+    <div class="main-bar">
+        <div class="row no-gutters">
+            <div class="col-lg-6 col-md-4 col-sm-4">
+                <h4 class="nav_top_align">
+                    <i class="fa fa-th"></i>
+                    Adds Information
+                </h4>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-8">
+                <ol class="breadcrumb float-right nav_breadcrumb_top_align">
+                    <li class="breadcrumb-item">
+                        <a href="index1.html">
+                            <i class="fa fa-home" data-pack="default" data-tags=""></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Adds Info
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+</header>
+
+@using (Html.BeginForm("Info", "Admin", FormMethod.Get, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+{
+    <div class="outer">
+        <div class="inner bg-container">
+            <div class="row">
+                <div class="col-12 data_tables">
+                    <!-- BEGIN EXAMPLE1 TABLE PORTLET-->
+                    <div class="card">
+                        <div class="card-header bg-white">
+                            <i class="fa fa-table"></i> Datatable with Table Tools
+                        </div>
+                        <div class="card-body p-t-25">
+                            
+                            <div id="reportAddsInfo" style="width:100%">
+                                <table id="tblAdds" class="table table-striped table-bordered nowrap table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            @*<th>Mobile No</th>*@
+                                            <th data-class="expand">AddId</th>
+                                            <th data-hide="phone">Date and Time</th>
+                                            <th data-hide="phone">Sub Category</th>
+                                            <th data-hide="phone">Rent/Sale</th>
+                                            <th>Preview</th>
+                                            <th>Edit</th>
+                                            <th>Status</th>
+                                            <th data-hide="phone">User Name</th>
+                                            <th data-hide="phone">Mobile No</th>
+                                            <th data-hide="phone">Category</th>
+                                            <th data-hide="phone">State</th>
+                                            <th data-hide="phone">District</th>
+                                            <th data-hide="phone">Mandal</th>
+                                            <th>Remarks</th>
+                                            <th>Status</th>
+
+                                            <th>Action</th>
+                                            <th>Delete</th>
+                                            <th>User Name</th>
+                                            <th>Mobile No</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+
+                                        <tr>
+                                            @*<td>@item.PhoneNum</td>*@
+                                            <td id="addId">
+                                                @item.AddId
+                                            </td>
+                                            <td>
+                                                @item.Created
+                                            </td>
+                                            <td>
+                                                @item.SubCategory
+                                            </td>
+                                            <td>
+                                                @item.Type
+                                            </td>
+
+                                            <td>
+                                                @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                                            </td>
+
+
+                                            <td>
+                                                <span> <label id="lblStatus">@item.Status</label></span>
+
+
+                                            </td>
+                                            <td>
+                                                @item.UserName
+                                            </td>
+                                            <td>
+                                                @item.PhoneNum
+                                            </td>
+
+
+                                            <td>
+                                                @item.Category
+                                            </td>
+                                            <td>
+                                                @item.State
+                                            </td>
+                                            <td>
+                                                @item.District
+                                            </td>
+                                            <td>
+                                                @item.Mandal
+                                            </td>
+
+
+                                            <td>
+                                                <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
+                                                @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
+                                            </td>
+                                            <td>
+                                                <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
+                                                @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                            </td>
+                                            <td>
+                                                <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
+                                                <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
+                                                <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
+                                            </td>
+                                            <td>
+                                                <span id="userName" class="UserInfo">@item.UserName</span>
+                                            </td>
+                                            <td>
+                                                <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
+                                            </td>
+                                        </tr>
+
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th data-class="expand">AddId</th>
+                                            <th data-hide="phone">Date and Time</th>
+                                            <th data-hide="phone">Sub Category</th>
+                                            <th data-hide="phone">Rent/Sale</th>
+                                            <th>Preview</th>
+                                            <th>Edit</th>
+                                            <th>Status</th>
+                                            <th data-hide="phone">User Name</th>
+                                            <th data-hide="phone">Mobile No</th>
+                                            <th data-hide="phone">Category</th>
+                                            <th data-hide="phone">State</th>
+                                            <th data-hide="phone">District</th>
+                                            <th data-hide="phone">Mandal</th>
+                                            <th>Remarks</th>
+                                            <th>Status</th>
+
+                                            <th>Action</th>
+                                            <th>Delete</th>
+                                            <th>User Name</th>
+                                            <th>Mobile No</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END EXAMPLE1 TABLE PORTLET-->
+
+                </div>
+            </div>
+        </div>
+        <!-- /.inner -->
+    </div>
+}
+
+@section Styles {
+
+
+    <!--plugin styles-->
+    <link href="~/Content/Admin3/css/vendors/datatables/css/scroller.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin3/css/vendors/datatables/css/colReorder.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin3/css/vendors/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin3/css/vendors/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin3/css/pages/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin3/css/vendors/responsive.dataTables.min.css" rel="stylesheet" />
+    <!-- end of plugin styles -->
+    <!--Page level styles-->
+    <link type="text/css" rel="stylesheet" href="~/Content/Admin3/css/pages/tables.css" />
+    <link type="text/css" rel="stylesheet" href="#" id="skin_change" />
+    <!--End of page level styles-->
+}
+
+@section scripts{
+
+
+    <script src="~/Content/Admin3/css/vendors/select2/js/select2.min.js"></script>
+
+    <script src="~/Content/Admin3/css/vendors/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/Scripts/Admin3/pluginjs/dataTables.tableTools.js"></script>
+
+
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.colReorder.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.bootstrap.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.buttons.min.js"></script>
+
+    <script src="~/Scripts/Admin3/pluginjs/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.rowReorder.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/buttons.colVis.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/buttons.html5.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/buttons.print.min.js"></script>
+    <script src="~/Content/Admin3/css/vendors/datatables/js/dataTables.scroller.min.js"></script>
+
+
+    <script src="~/Scripts/Admin3/pages/datatable.js"></script>
+
+    <script type="text/javascript">
+        function FnEditCancel(e) {
+            var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+            var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
+            $(editElemts).each(function (index) {
+                $(this).toggle();
+            });
+            $(displayElemts).each(function (index) {
+                $(this).toggle();
+            });
+        }
+
+        function FnSave(e) {
+            $(".loader-wrap").show();
+            var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+            var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
+            var status = editElemts.ddlStatus.value;
+            var remarks = editElemts.txtRemarks.value
+            var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
+            var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
+            var userName = userElemts.userName.innerText;
+            var userPhoneNum = userElemts.userPhoneNum.innerText;
+            $.ajax({
+                url: '/User/UpdateAddStatus/',
+                data: { addId: addId, status: status, remarks: remarks, userName: userName, userPhoneNum: userPhoneNum },
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    //if (data == 'True')
+                    //{
+                    //    $("#lblStatus").text(status);
+                    //   $("#lblAddStatus").text(status);
+                    //    // displayElemts[1].innerText = status;
+                    //    displayElemts[1].children.lblAddStatus.innerText = status;
+                    //}
+                    //var oTable = $('#tblAdds').dataTable();
+                    window.location.href = "/Admin/AddsInfo"; lblAddStatus
+                    $(".loader-wrap").hide();
+                    //var currentPage = oTable.page;
+                    //console.log(currentPage);
+
+                    // SetCurrentPage();
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+
+        }
+        $(document).ready(function () {
+
+            $('.nav-list li.active').removeClass('active');
+
+            $('#liAddsInfo').addClass('active');
+
+            //$('.nav-list').on('click', 'li', function () {
+            //    $('.nav-list li.active').removeClass('active');
+            //    $(this).addClass('active');
+            //});
+            $('.edit-mode').hide();
+
+            var table = $('#tblAdds').DataTable({
+                "responsive": true,
+                select: {
+                    style: 'multi'
+                },
+                initComplete: function () {
+                    this.api().columns([2, 3, 6]).every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            // select.append('<option value="' + d + '">' + d + '</option>')
+                            var val = $('<div/>').html(d).text();
+                            select.append('<option value="' + val + '">' + val + '</option>');
+                        });
+                    });
+                }
+
+            });
+            // ----------- Send Sms.........//
+
+            $("#btnSendSms").click(function () {
+                var phoneNumColl = new Array();
+                var count = table.rows({ selected: true }).count();
+                for (var i = 0; i < table.rows('.selected').data().length; i++) {
+                    phoneNumColl.push(table.rows('.selected').data()[i][8])
+                }
+                $('#myModal').modal('show');
+                // var value = 0;
+                SendSMS(phoneNumColl);
+
+
+            });
+            function SendSMS(MobileNumbers) {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("SendSMS", "User")',
+                    cache: false,
+                    data: { "MobileNumbers": JSON.stringify(MobileNumbers) },
+                    success: function (data) {
+                        //alert(JSON.stringify(data))
+                        $('.modal-dialog').html("");
+                        $('.modal-dialog').html(data);
+                    },
+                    error: function (response) {
+
+                    }
+                })
+            }
+        });
+
+    </script>
+}
+
