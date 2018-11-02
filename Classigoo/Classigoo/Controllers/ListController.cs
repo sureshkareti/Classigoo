@@ -15,7 +15,8 @@ namespace Classigoo.Controllers
         // GET: List
         public ActionResult Home()
         {
-            SubCategoryCount objSubCategoryCount = GetSubCatCount("", "Rent", "", "", "", "\"\"");
+            SubCategoryCount objSubCategoryCount = new SubCategoryCount();
+            //SubCategoryCount objSubCategoryCount = GetSubCatCount("", "Rent", "", "", "", "\"\"");
             return View(objSubCategoryCount);
         }
         public ActionResult Index(string subCategory="",string category = "Select Category", string type = "Rent")
