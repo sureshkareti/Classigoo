@@ -16,6 +16,7 @@ namespace Classigoo
 
         public int PageCount { get; set; }
 
+       
         //public SubCategoryCount SubCatCount { set; get; }
     }
     public class SubCategoryCount

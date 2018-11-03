@@ -178,22 +178,49 @@ namespace Classigoo.Models
             return addColl;
         }
         
-        public SubCategoryCount GetSubCatCount(string location, string type, string keyword,string subCategory, string company,string reFilters)
+        public SubCategoryCount GetSubCatCount(string category,string location, string type, string keyword,string subCategory, string company,string reFilters)
         {
             SubCategoryCount objSubCatCount = new SubCategoryCount();
             try
             {
-                objSubCatCount.AVSubCat = GetAVSubCount(location,type,keyword,subCategory,company);
-                objSubCatCount.CVSubCat = GetCVSubCount(location, type, keyword, subCategory, company);
-                objSubCatCount.TVSubCat = GetTVSubCount(location, type, keyword, subCategory, company);
-                objSubCatCount.PVSubCat = GetPVSubCount(location, type, keyword, subCategory, company);
-                objSubCatCount.RESubCat = GetRESubCount(location, type, keyword, subCategory, company,reFilters);
+                objSubCatCount.AVSubCat = new AV();
+                objSubCatCount.CVSubCat = new CV();
+                objSubCatCount.TVSubCat = new TV();
+                objSubCatCount.PVSubCat = new PV();
+                objSubCatCount.RESubCat = new RE();
+                switch (category)
+                {
+                    case "Select Category":
+                        objSubCatCount.AVSubCat = GetAVSubCount(location, type, keyword, subCategory, company);
+                        objSubCatCount.CVSubCat = GetCVSubCount(location, type, keyword, subCategory, company);
+                        objSubCatCount.TVSubCat = GetTVSubCount(location, type, keyword, subCategory, company);
+                        objSubCatCount.PVSubCat = GetPVSubCount(location, type, keyword, subCategory, company);
+                        objSubCatCount.RESubCat = GetRESubCount(location, type, keyword, subCategory, company, reFilters);
+                        break;
+                    case Constants.RealEstate:
+                        objSubCatCount.RESubCat = GetRESubCount(location, type, keyword, subCategory, company, reFilters);
+
+                        break;
+                    case Constants.AgriculturalVehicle:
+                        objSubCatCount.AVSubCat = GetAVSubCount(location, type, keyword, subCategory, company);
+                        break;
+                    case Constants.ConstructionVehicle:
+                        objSubCatCount.CVSubCat = GetCVSubCount(location, type, keyword, subCategory, company);
+                        break;
+                    case Constants.TransportationVehicle:
+                        objSubCatCount.TVSubCat = GetTVSubCount(location, type, keyword, subCategory, company);
+                        break;
+                    case Constants.PassengerVehicle:
+                        objSubCatCount.PVSubCat = GetPVSubCount(location, type, keyword, subCategory, company);
+                        break;
+                    default:
+                      //  addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
+                        break;
+                }
+            
 
                 //common subcategories count
-               
-
-
-
+             
             }
             catch(Exception ex)
             {

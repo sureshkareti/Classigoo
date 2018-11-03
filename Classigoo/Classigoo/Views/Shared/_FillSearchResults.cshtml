@@ -163,7 +163,10 @@
             </div>*@
     </div>
 
-
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/List/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script src="~/Scripts/ScriptsNew/jquery.bootpag.min.js"></script>
+@*<script src="~/Scripts/List/search.js"></script>*@
 <script type="text/javascript">
     $(document).ready(function () {
         FillSubCatCount();
@@ -182,6 +185,9 @@
             firstLastUse: true,
             first: 'First',
             last: 'Last'
+        }).on('page', function(event, num){
+            $(".loader-wrap").show();
+            filterAdds("",num,false);
         });
 
 
@@ -190,12 +196,14 @@
     function FillSubCatCount()
     {
         //.............AV...............
-        $(".direname.spnCntAV-BorewellMachineCount").text("(@ViewBag.SubCatCount.AVSubCat.BorewellMachineCount)");
-        $(".direname.spnCntAV-TractorsCount").text("(@ViewBag.SubCatCount.AVSubCat.TractorsCount)")
-        $(".direname.spnCntAV-DozerCount").text("(@ViewBag.SubCatCount.AVSubCat.DozerCount)")
-        $(".direname.spnCntAV-HarvesterCount").text("(@ViewBag.SubCatCount.AVSubCat.HarvesterCount)");
-        $(".direname.spnCntAV-BackhoeLoaderCount").text("(@ViewBag.SubCatCount.AVSubCat.BackhoeLoaderCount)");
-        $(".direname.spnCntAV-ExcavatorsCount").text("(@ViewBag.SubCatCount.AVSubCat.ExcavatorsCount)");
+        
+            $(".direname.spnCntAV-BorewellMachineCount").text("(@ViewBag.SubCatCount.AVSubCat.BorewellMachineCount)");
+            $(".direname.spnCntAV-TractorsCount").text("(@ViewBag.SubCatCount.AVSubCat.TractorsCount)")
+            $(".direname.spnCntAV-DozerCount").text("(@ViewBag.SubCatCount.AVSubCat.DozerCount)")
+            $(".direname.spnCntAV-HarvesterCount").text("(@ViewBag.SubCatCount.AVSubCat.HarvesterCount)");
+            $(".direname.spnCntAV-BackhoeLoaderCount").text("(@ViewBag.SubCatCount.AVSubCat.BackhoeLoaderCount)");
+            $(".direname.spnCntAV-ExcavatorsCount").text("(@ViewBag.SubCatCount.AVSubCat.ExcavatorsCount)");
+        
 
         //.........PV.............
         $(".direname.spnCntPV-AutosCount").text("(@ViewBag.SubCatCount.PVSubCat.AutosCount)");
