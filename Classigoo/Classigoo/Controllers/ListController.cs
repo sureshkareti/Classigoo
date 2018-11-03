@@ -15,9 +15,9 @@ namespace Classigoo.Controllers
         // GET: List
         public ActionResult Home()
         {
-            SubCategoryCount objSubCategoryCount = new SubCategoryCount();
+            //SubCategoryCount objSubCategoryCount = new SubCategoryCount();
             //SubCategoryCount objSubCategoryCount = GetSubCatCount("", "Rent", "", "", "", "\"\"");
-            return View(objSubCategoryCount);
+            return View();
         }
         public ActionResult Index(string subCategory="",string category = "Select Category", string type = "Rent")
         {
@@ -1200,7 +1200,20 @@ namespace Classigoo.Controllers
             }
             return objSubCatCount;
         }
-
+        public JsonResult GetHomeSubCatCount(string location, string type, string keyword, string subCategory, string company, string reFilters)
+        {
+            SubCategoryCount objSubCatCount = new SubCategoryCount();
+            try
+            {
+                CommonDBOperations objCommon = new CommonDBOperations();
+                objSubCatCount = objCommon.GetSubCatCount(location, type, keyword, subCategory, company, reFilters);
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At gethomesubcount", ex);
+            }
+            return Json(objSubCatCount, JsonRequestBehavior.AllowGet);
+        }
         public void GetTractorsCount(Dictionary<string, object> filterOptions, string location, string keyword, string type, int pageNum)
         {
             int currentPage = pageNum;
