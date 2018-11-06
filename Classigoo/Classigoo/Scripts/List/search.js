@@ -127,6 +127,8 @@ function ShowCategoryFilter(category) {
         $("#pvCompany").empty()
         $("#allvCompany").append("<option>" + "All" + "</option>");
         $("#pvCompany").append("<option>" + "All" + "</option>");
+        if(selectedVehicle.length>0)
+            {
         $.each(selectedVehicle[0].VehicleType, function (i, field) {
             {
                 if (category == "Construction Vehicles" || category == "Agricultural Vehicles" || category == "Transportation Vehicles") {
@@ -139,6 +141,7 @@ function ShowCategoryFilter(category) {
             }
 
         });
+    }
     }
     //$(".loader-wrap").show();
     //filterAdds("", 1, false);

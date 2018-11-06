@@ -230,41 +230,6 @@ namespace Classigoo.Controllers
             
                  object filters = j.Deserialize(filterOptions, typeof(object));
                
-                switch (category)
-                {
-                    case "Select Category":
-                        addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
-                        break;
-                    case Constants.RealEstate:
-                        addColl = FilterRE(filterColl, location, keyword, type, pageNum);
-                       
-                        break;
-                    case Constants.AgriculturalVehicle:
-                        //if(subCategory=="Tractors")
-                        //{
-                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
-                        //}
-                        //else
-                        addColl = FilterAV(filterColl, location, keyword, type, pageNum);
-                        break;
-                    case Constants.ConstructionVehicle:
-                        //if (subCategory == "Tractors")
-                        //{
-                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
-                        //}
-                        //else
-                            addColl = FilterCV(filterColl, location, keyword, type, pageNum);
-                        break;
-                    case Constants.TransportationVehicle:
-                        addColl = FilterTV(filterColl, location, keyword, type, pageNum);
-                        break;
-                    case Constants.PassengerVehicle:
-                        addColl = FilterPV(filterColl, location, keyword, type, pageNum);
-                        break;
-                    default:
-                        addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
-                        break;
-                }
                 if (filters.ToString() != "")
                 {
                     filterColl = (Dictionary<string, object>)filters;
@@ -286,6 +251,42 @@ namespace Classigoo.Controllers
                 else
                 {
                     ViewBag.SubCatCount = GetSubCatCount(category, location, type, keyword, subCategory, company, filterOptions);
+                }
+
+                switch (category)
+                {
+                    case "Select Category":
+                        addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
+                        break;
+                    case Constants.RealEstate:
+                        addColl = FilterRE(filterColl, location, keyword, type, pageNum);
+
+                        break;
+                    case Constants.AgriculturalVehicle:
+                        //if(subCategory=="Tractors")
+                        //{
+                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
+                        //}
+                        //else
+                        addColl = FilterAV(filterColl, location, keyword, type, pageNum);
+                        break;
+                    case Constants.ConstructionVehicle:
+                        //if (subCategory == "Tractors")
+                        //{
+                        //    GetTractorsCount(filterColl, location, keyword, type, pageNum);
+                        //}
+                        //else
+                        addColl = FilterCV(filterColl, location, keyword, type, pageNum);
+                        break;
+                    case Constants.TransportationVehicle:
+                        addColl = FilterTV(filterColl, location, keyword, type, pageNum);
+                        break;
+                    case Constants.PassengerVehicle:
+                        addColl = FilterPV(filterColl, location, keyword, type, pageNum);
+                        break;
+                    default:
+                        addColl = FilterCategoryNotSelect(location, keyword, type, pageNum);
+                        break;
                 }
             }
             catch(Exception ex)
