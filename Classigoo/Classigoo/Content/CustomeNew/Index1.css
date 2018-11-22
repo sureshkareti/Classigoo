@@ -4036,8 +4036,8 @@ ul.social {
     .categories a {
         font-size: 14px;
         /*color: #888888;*/
-        color:black;
-        font-weight:bold;
+        color: black;
+        font-weight: bold;
         text-decoration: none;
     }
 
@@ -4070,6 +4070,7 @@ ul.social {
     font-size: 40px;
     line-height: 100px;
     margin-top: -50px;
+    padding: 15px;
 }
 
 .categories-service h4 {
@@ -4079,7 +4080,7 @@ ul.social {
     .categories-service h4 a {
         font-size: 18px;
         /*color: #3f3d59;*/
-        color:black;
+        color: black;
         font-weight: bold;
         text-decoration: none;
         text-transform: uppercase;
@@ -4088,6 +4089,78 @@ ul.social {
         .categories-service h4 a:hover {
             color: #ff7800;
         }
+
+
+/*images in single file css*/
+.sprite {
+    /*background-image: url('../../images/icons/spritesheet.png');*/
+    background-image: url(../../images/icons/spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-carx70 {
+    width: 70px;
+    height: 70px;
+    background-position: -5px -5px;
+}
+
+.sprite-cranex70 {
+    width: 70px;
+    height: 70px;
+    background-position: -85px -5px;
+}
+
+.sprite-fb {
+    width: 30px;
+    height: 30px;
+    background-position: -165px -5px;
+}
+
+.sprite-gplus {
+    width: 30px;
+    height: 30px;
+    background-position: -165px -45px;
+}
+
+.sprite-homex70 {
+    width: 70px;
+    height: 70px;
+    background-position: -5px -85px;
+}
+
+.sprite-itractorx70 {
+    width: 70px;
+    height: 70px;
+    background-position: -85px -85px;
+}
+
+.sprite-ln {
+    width: 30px;
+    height: 30px;
+    background-position: -165px -85px;
+}
+
+.sprite-transportationx70 {
+    width: 70px;
+    height: 70px;
+    background-position: -205px -5px;
+}
+
+.sprite-tw {
+    width: 30px;
+    height: 30px;
+    background-position: -205px -85px;
+}
+
+.sprite-yt {
+    width: 30px;
+    height: 30px;
+    background-position: -245px -85px;
+}
+
+
+
 
 /*********************************************
 	 Categories css

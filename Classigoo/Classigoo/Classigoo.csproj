@@ -410,6 +410,7 @@
     <Content Include="images\icons\social\ln.png" />
     <Content Include="images\icons\social\tw.png" />
     <Content Include="images\icons\social\yt.png" />
+    <Content Include="images\icons\spritesheet.png" />
     <Content Include="images\iconUser.png" />
     <Content Include="images\leftx30.png" />
     <Content Include="images\rightx30.png" />
