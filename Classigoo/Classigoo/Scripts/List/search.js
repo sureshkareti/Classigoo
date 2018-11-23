@@ -5,7 +5,7 @@ FillCategories();
 FillLocations();
 function FillCategories() {
     $.ajax({
-        url: '/Scripts/Json/categories.json',
+        url: '/Scripts/Json/categories.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {
@@ -40,7 +40,7 @@ function FillCategories() {
 function FillLocations() {
     var locationSource = new Array();
     $.ajax({
-        url: '/Scripts/Json/location1.json',
+        url: '/Scripts/Json/location1.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {

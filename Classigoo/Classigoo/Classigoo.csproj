@@ -506,6 +506,7 @@
     <Content Include="Scripts\List\responsive.bootstrap.min.js" />
     <Content Include="Scripts\List\responsive.min.js" />
     <Content Include="Scripts\List\search.js" />
+    <Content Include="Scripts\List\search.min.js" />
     <Content Include="Scripts\List\zoomsl-3.0.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\ScriptsNew\bootstrapvalidator.min.js" />
@@ -593,6 +594,8 @@
     <Content Include="Views\Admin\Test.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Info.cshtml" />
+    <Content Include="Scripts\Json\categories.min.json" />
+    <Content Include="Scripts\Json\location1.min.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

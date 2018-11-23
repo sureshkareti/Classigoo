@@ -884,7 +884,7 @@ function fillFromJson(selectedType) {
 
 
     $.ajax({
-        url: '/Scripts/Json/categories.json',
+        url: '/Scripts/Json/categories.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {
@@ -956,7 +956,7 @@ function fillModels() {
 
 
     $.ajax({
-        url: '/Scripts/Json/categories.json',
+        url: '/Scripts/Json/categories.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {
@@ -1005,7 +1005,7 @@ window.fillModelsForPV = function () {
 
 
     $.ajax({
-        url: '/Scripts/Json/categories.json',
+        url: '/Scripts/Json/categories.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {
@@ -1186,7 +1186,7 @@ window.loadDistrict = function () {
         var locations = new Array();
         var districs = new Array();
         $.ajax({
-            url: '/Scripts/Json/location1.json',
+            url: '/Scripts/Json/location1.min.json',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -1261,7 +1261,7 @@ window.loadMandal = function () {
         var locations = new Array();
         var mandals = new Array();
         $.ajax({
-            url: '/Scripts/Json/location1.json',
+            url: '/Scripts/Json/location1.min.json',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -1336,7 +1336,7 @@ window.loadStates = function () {
     var locations = new Array();
     var states = new Array();
     $.ajax({
-        url: '/Scripts/Json/location1.json',
+        url: '/Scripts/Json/location1.min.json',
         dataType: 'json',
         async: false,
         success: function (data) {
@@ -1398,7 +1398,7 @@ function getDistricts() {
         var locations = new Array();
         var districs = new Array();
         $.ajax({
-            url: '/Scripts/Json/location1.json',
+            url: '/Scripts/Json/location1.min.json',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -1486,7 +1486,7 @@ function getMandal() {
         var locations = new Array();
         var mandals = new Array();
         $.ajax({
-            url: '/Scripts/Json/location1.json',
+            url: '/Scripts/Json/location1.min.json',
             dataType: 'json',
             async: false,
             success: function (data) {
