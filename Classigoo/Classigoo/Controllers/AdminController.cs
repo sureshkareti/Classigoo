@@ -17,7 +17,23 @@ namespace Classigoo.Controllers
 
         public ActionResult Dashboard()
         {
-            return View();
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+                surveyColl = db.GetSurvey();
+                adminDashboard.SurveyColl = surveyColl;
+                adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return View(adminDashboard);
+
         }
 
         public ActionResult Dashboard1()

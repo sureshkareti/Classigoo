@@ -237,15 +237,19 @@ namespace Classigoo.Models
                     {
                         if (type == "Real Estate")
                         {
-                            RealEstate objRealEstate = classigooEntities.RealEstates.First(x => x.AddId == objAdd.AddId);
-                            if (objRealEstate != null)
+                            var objRealEstateTemp = classigooEntities.RealEstates.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                            if (objRealEstateTemp.Count > 0)
                             {
+                                var objRealEstate = objRealEstateTemp[0];
+                                if (objRealEstate != null)
+                                {
 
-                                DeleteImageLocal(new List<string>() { objRealEstate.ImgUrlPrimary, objRealEstate.ImgUrlSeconday, objRealEstate.ImgUrlThird, objRealEstate.ImgUrlFourth });
+                                    DeleteImageLocal(new List<string>() { objRealEstate.ImgUrlPrimary, objRealEstate.ImgUrlSeconday, objRealEstate.ImgUrlThird, objRealEstate.ImgUrlFourth });
 
 
-                                classigooEntities.RealEstates.Remove(objRealEstate);
-                                classigooEntities.SaveChanges();
+                                    classigooEntities.RealEstates.Remove(objRealEstate);
+                                    classigooEntities.SaveChanges();
+                                }
                             }
                         }
                         else if (type == "Construction Vehicles")
@@ -335,7 +339,7 @@ namespace Classigoo.Models
                         {
                             ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objCV != null)
-                            {                                
+                            {
                                 classigooEntities.ConstructionVehicles.Remove(objCV);
                                 classigooEntities.SaveChanges();
                             }
@@ -344,7 +348,7 @@ namespace Classigoo.Models
                         {
                             TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objTV != null)
-                            {                              
+                            {
                                 classigooEntities.TransportationVehicles.Remove(objTV);
                                 classigooEntities.SaveChanges();
                             }
@@ -353,7 +357,7 @@ namespace Classigoo.Models
                         {
                             AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objAV != null)
-                            {                              
+                            {
                                 classigooEntities.AgriculturalVehicles.Remove(objAV);
                                 classigooEntities.SaveChanges();
                             }
@@ -363,11 +367,11 @@ namespace Classigoo.Models
                         {
                             PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
                             if (objPV != null)
-                            {                               
+                            {
                                 classigooEntities.PassengerVehicles.Remove(objPV);
                                 classigooEntities.SaveChanges();
                             }
-                        }                       
+                        }
                     }
                 }
             }
@@ -381,7 +385,7 @@ namespace Classigoo.Models
             return true;
         }
 
-        
+
 
         public bool DeleteImageLocal(List<string> urls)
         {
@@ -395,7 +399,7 @@ namespace Classigoo.Models
                     //domain = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + url;
 
                     //this is for delete subdomain image
-                 
+
                     string[] pathSplits = HttpContext.Current.Server.MapPath("~").Split('\\');
                     string urlForSubdomain = url.Remove(0, 7);
                     domain = pathSplits[0] + "\\" + pathSplits[1] + "\\" + pathSplits[2] + "\\" + urlForSubdomain;

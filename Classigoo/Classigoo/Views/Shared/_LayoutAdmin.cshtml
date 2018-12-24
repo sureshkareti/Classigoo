@@ -14,123 +14,227 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="~/Content/Admin3/css/components.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/Content/Admin3/css/custom.css" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/App1/assets/images/favicon.ico">
 
-    @RenderSection("Styles", false)
+    <!-- App css -->
+    <link href="~/Content/Admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Admin/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Admin/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/Content/Admin/assets/js/modernizr.min.js"></script>
+
+    <style type="text/css">
+        .titletop {
+            z-index: 9999;
+            position: fixed;
+            top: 0;
+        }
+
+            .titletop a {
+                position: absolute;
+                top: 60px;
+                width: 30px;
+                height: 40px;
+                display: block;
+                cursor: pointer;
+                text-align: center;
+                background: linear-gradient(to right,#ff9700,#ffcb80);
+                color: #fff;
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+                padding: 10px 3px;
+            }
+    </style>
+
+    @RenderSection("styles", false);
+
 </head>
 <body>
 
-    <div id="wrap">
-        <div id="top">
-            <!-- .navbar -->
-            <nav class="navbar navbar-static-top">
-                <div class="container-fluid m-0">
-                    <a class="navbar-brand" href="#">
-                        @*<img src="~/images/Classigoo_Logox50.png" alt="Classigoo" style="height:50px;">*@
-                        <h4><img src="~/images/cg.jpg" class="admin_img" alt="logo"> <span style="color:#f70">Classi</span><span style="color:#337ab7;">goo</span> Admin</h4>
-                      
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container-fluid">
+                <!-- Logo container-->
+                <div class="logo">
+                    <!-- Text Logo -->
+                    <!--<a href="index.html" class="logo">-->
+                    <!--<span class="logo-small"><i class="mdi mdi-radar"></i></span>-->
+                    <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
+                    <!--</a>-->
+                    <!-- Image Logo -->
+                    <a href="index.html" class="logo">
+                        <img src="~/Content/Admin/assets/images/logo-sm.png" alt="" height="40" class="logo-small">
+                        <img src="~/Content/Admin/assets/images/logo.png" alt="" height="40" class="logo-large">
                     </a>
-                    <div class="menu mr-sm-auto">
-                        <span class="toggle-left" id="menu-toggle">
-                            <i class="fa fa-bars"></i>
-                        </span>
-                    </div>
-                   
-                    <div class="topnav dropdown-menu-right">
-                       
-
-                        <div class="btn-group">
-                            <div class="user-settings no-bg">
-                                <button type="button" class="btn btn-default no-bg micheal_btn" data-toggle="dropdown">
-
-                                    <img src="~/images/iconUser.png" class="admin_img2 img-thumbnail rounded-circle avatar-img"
-                                         alt="avatar"> <strong>Admin</strong>
-                                    <span class="fa fa-sort-down white_bg"></span>
-                                </button>
-                                <div class="dropdown-menu admire_admin">
-                                    <a class="dropdown-item title" href="#">
-                                        Classigoo Admin
-                                    </a>
-                                   
-                                    <a class="dropdown-item" href="login2.html">
-                                        <i class="fa fa-sign-out"></i>
-                                        Log Out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <!-- /.container-fluid -->
-            </nav>
-            <!-- /.navbar -->
-            <!-- /.head -->
-        </div>
-        <!-- /#top -->
-        <div class="wrapper">
-            <div id="left">
-                <div class="menu_scroll">
-                    <div class="left_media">
-                        <div class="media user-media">
-                            <div class="user-media-toggleHover">
-                                <span class="fa fa-user"></span>
-                            </div>
-                            <div class="user-wrapper">
-                                <a class="user-link" href="#">
-                                    <img class="media-object img-thumbnail user-img rounded-circle admin_img3" alt="User Picture"
-                                         src="~/images/iconUser.png">
-                                    
-                                    <p class="user-info menu_hide">Welcome Admin</p>
+                <!-- End Logo container-->
+
+                <div class="menu-extras topbar-custom">
+                    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                        <li class="menu-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+                        <li class="hide-phone">
+                            <form class="app-search">
+                                <input type="text" placeholder="Search..."
+                                       class="form-control">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </li>
+                        <li>
+                            <!-- Notification -->
+                            @*<div class="notification-box">
+                                    <ul class="list-inline mb-0">
+                                        <li>
+                                            <a href="javascript:void(0);" class="right-bar-toggle">
+                                                <i class="mdi mdi-bell-outline noti-icon"></i>
+                                            </a>
+                                            <div class="noti-dot">
+                                                <span class="dot"></span>
+                                                <span class="pulse"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>*@
+                            <!-- End Notification bar -->
+                        </li>
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="false" aria-expanded="false">
+                                <img src="~/Content/Admin/assets/images/users/avatar-1.png" alt="user" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item" style="cursor:default">
+                                    <i class="ti-user m-r-5"></i> @User.Identity.Name
+                                </a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item" style="cursor:default">
+                                    <i class="ti-settings m-r-5"></i> User
+                                </a>
+
+                                <!-- item-->
+                                <a href="~/Home/SignOut" class="dropdown-item notify-item">
+                                    <i class="ti-power-off m-r-5"></i> Logout
                                 </a>
                             </div>
-                        </div>
-                        <hr />
-                    </div>
-                    <ul id="menu">
-                        <li class="active">
-                            <a href="#">
-                                <i class="fa fa-home"></i>
-                                <span class="link-title menu_hide">&nbsp;Dashboard 1</span>
-                            </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-home"></i>
-                                <span class="link-title menu_hide">&nbsp;Dashboard 2</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-home"></i>
-                                <span class="link-title menu_hide">&nbsp;Dashboard 3</span>
-                            </a>
-                        </li>
-                       
                     </ul>
-                    <!-- /#menu -->
                 </div>
-            </div>
-            <!-- /#left -->
-            <div id="content" class="bg-container">
-              
-                
-                <div>
-                    @RenderBody()
-                </div>
-
-            </div>
-            <!-- /.inner -->
+                <!-- end menu-extras -->
+                <div class="clearfix"></div>
+            </div> <!-- end container -->
         </div>
-        
+
+        <!-- end topbar-main -->
+        <div class="navbar-custom" id="idNavBar">
+            <div class="container-fluid">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+
+                        <li class="has-submenu">
+                            <a href="~/Admin/GetApplications"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="~/Maker/bulkupload"><i class="mdi mdi-cloud-upload"></i> <span> Bulk Upload </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="~/Maker/submitapp"><i class="mdi mdi-server-plus"></i> <span> Submit App</span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="index.html"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="index.html"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
+                        </li>
+
+                        <li class="has-submenu">
+                            <a href="#"><i class="mdi mdi-texture"></i><span> Configurations </span> </a>
+                            <ul class="submenu">
+                                <li><a href="~/Admin/AddUser">User Settings</a></li>
+
+                                <li><a href="~/Admin/EmailSettings">Email Settings</a></li>
+                                <li><a href="~/Admin/ReportSettings">Report Settings</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <!-- End navigation menu -->
+                </div> <!-- end #navigation -->
+            </div> <!-- end container -->
+        </div>
+        <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
+
+    <div class="titletop">
+        <a href="#" id="hideHeader"><i class="mdi mdi-dots-vertical"></i></a>
     </div>
 
-   
+    <div class="wrapper">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
 
-    <!-- global scripts-->
-    <script src="~/Scripts/Admin3/components.js"></script>
-    <script src="~/Scripts/Admin3/custom.js"></script>
+    </div>
+    <!-- end wrapper -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    2018 © Candour.org.in
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <!-- jQuery  -->
+    <script src="~/Content/Admin/assets/js/jquery.min.js"></script>
+    <script src="~/Content/Admin/assets/js/popper.min.js"></script>
+    <script src="~/Content/Admin/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/assets/js/jquery.slimscroll.js"></script>
 
-    @RenderSection("scripts", required: false)
+    <!-- App js -->
+    @*<script src="~/Content/App1/assets/js/jquery.core.js"></script>*@
+    <script src="~/Content/Admin/assets/js/jquery.app.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#hideHeader").click(function () {
+
+                if ($('#idNavBar').is(':hidden')) {
+                    $("#idNavBar").css("display", "block");
+                    $(".wrapper").css("padding-top", "120px");
+                }
+                else {
+                    $("#idNavBar").css("display", "none");
+
+                    $(".wrapper").css("padding-top", "90px");
+                }
+
+            });
+        });
+    </script>
+
+    @RenderSection("scripts", false);
 </body>
 </html>

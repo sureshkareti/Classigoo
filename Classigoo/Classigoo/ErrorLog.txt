@@ -558,3 +558,52 @@ EntityFramework ; The underlying provider failed on Open.
 03/11/2018 12:40:54 AM : At Get num of adds in home page
 EntityFramework ; The underlying provider failed on Open.
 03/11/2018 12:40:54 AM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+12/19/2018 10:32:41 PM : At GetAVSubcatcount
+EntityFramework ; The underlying provider failed on Open.
+12/19/2018 10:32:41 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+12/19/2018 10:44:34 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:53:01 PM : Error occured while sending an email 
+System ; Failure sending mail.
+12/19/2018 10:53:01 PM : System ; Unable to connect to the remote server
+12/19/2018 10:53:30 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:54:40 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:55:37 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:56:00 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:56:26 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:56:56 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:57:29 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 10:58:08 PM : At fill chat
+mscorlib ; Nullable object must have a value.
+12/19/2018 11:40:55 PM : exception at delete complete add postdboperations
+EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/19/2018 11:40:55 PM : EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/19/2018 11:42:14 PM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+12/19/2018 11:44:36 PM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+12/19/2018 11:45:29 PM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+12/19/2018 11:45:39 PM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+12/20/2018 12:06:56 AM : exception at delete complete add postdboperations
+EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/20/2018 12:06:56 AM : EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/22/2018 12:33:16 PM : exception at delete complete add postdboperations
+EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/22/2018 12:33:16 PM : EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+12/22/2018 12:37:51 PM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+12/23/2018 4:16:19 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+12/23/2018 4:16:19 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+12/24/2018 9:50:31 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+12/24/2018 9:50:31 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
