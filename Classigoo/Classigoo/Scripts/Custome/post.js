@@ -904,31 +904,33 @@ function fillFromJson(selectedType) {
 
 
     var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+    if (selectedVehicle.length > 0) {
+        var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory);
 
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory);
+        if (selectedModel.length > 0) {
+        $.each(selectedModel[0].VehicleModel, function (i, field) {
+            {
+                if (selectedType === "AV") {
 
+                    $("#AVCompany_list").append("<option>" + field.name + "</option>");
+                }
+                else if (selectedType === "CV") {
 
-    $.each(selectedModel[0].VehicleModel, function (i, field) {
-        {
-            if (selectedType === "AV") {
+                    $("#CVCompany_list").append("<option>" + field.name + "</option>");
+                }
+                else if (selectedType === "TV") {
 
-                $("#AVCompany_list").append("<option>" + field.name + "</option>");
+                    $("#TVCompany_list").append("<option>" + field.name + "</option>");
+                }
+                else if (selectedType === "PV") {
+
+                    $("#PVCompany_list").append("<option>" + field.name + "</option>");
+                }
+
             }
-            else if (selectedType === "CV") {
-
-                $("#CVCompany_list").append("<option>" + field.name + "</option>");
-            }
-            else if (selectedType === "TV") {
-
-                $("#TVCompany_list").append("<option>" + field.name + "</option>");
-            }
-            else if (selectedType === "PV") {
-
-                $("#PVCompany_list").append("<option>" + field.name + "</option>");
-            }
-
-        }
-    });
+        });
+    }
+}
 }
 
 function fillModels() {
@@ -968,16 +970,18 @@ function fillModels() {
 
 
     var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+    if (selectedVehicle.length > 0) {
+        var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
 
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
+        if (selectedModel.length > 0) {
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    $("#PVModel_list").append("<option>" + field.name + "</option>");
 
-
-    $.each(selectedModel[0].VehicleModel, function (i, field) {
-        {
-            $("#PVModel_list").append("<option>" + field.name + "</option>");
-
+                }
+            });
         }
-    });
+    }
 }
 
 window.fillModelsForPV = function () {
@@ -1017,16 +1021,21 @@ window.fillModelsForPV = function () {
 
 
     var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+    if (selectedVehicle.length > 0)
+    {
+        var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
+    
+        if(selectedModel.length>0)
+            {
+        $.each(selectedModel[0].VehicleModel, function (i, field) {
+            {
+                $("#PVModel_list").append("<option>" + field.name + "</option>");
 
-    var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
-
-
-    $.each(selectedModel[0].VehicleModel, function (i, field) {
-        {
-            $("#PVModel_list").append("<option>" + field.name + "</option>");
-
-        }
-    });
+            }
+    
+        });
+    }
+}
 }
 
 
