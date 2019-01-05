@@ -25,6 +25,9 @@
         <AssociationConnector Association="ClassigooModel.FK_Messages_Users" />
         <EntityTypeShape EntityType="ClassigooModel.Survey" Width="1.5" PointX="7.875" PointY="14" />
         <AssociationConnector Association="ClassigooModel.FK_Survey_Adds" />
+        <EntityTypeShape EntityType="ClassigooModel.Category" Width="1.5" PointX="5.375" PointY="1" />
+        <EntityTypeShape EntityType="ClassigooModel.SubCategory" Width="1.5" PointX="7.625" PointY="0.875" />
+        <AssociationConnector Association="ClassigooModel.FK__SubCatego__Categ__3E1D39E1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -41,6 +41,13 @@
           <Property Name="ManufacturingYear" Type="varchar" MaxLength="4" />
           <Property Name="Model" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="ConstructionVehicle">
           <Key>
             <PropertyRef Name="Id" />
@@ -127,6 +134,14 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Acres" Type="smallmoney" />
         </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
         <EntityType Name="Survey">
           <Key>
             <PropertyRef Name="Id" />
@@ -168,6 +183,18 @@
           <Property Name="Type" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
+        <Association Name="FK__SubCatego__Categ__3E1D39E1">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Adds_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -317,14 +344,20 @@
         <EntityContainer Name="ClassigooModelStoreContainer">
           <EntitySet Name="Adds" EntityType="Self.Adds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgriculturalVehicle" EntityType="Self.AgriculturalVehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConstructionVehicle" EntityType="Self.ConstructionVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassengerVehicle" EntityType="Self.PassengerVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportationVehicle" EntityType="Self.TransportationVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__SubCatego__Categ__3E1D39E1" Association="Self.FK__SubCatego__Categ__3E1D39E1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
           <AssociationSet Name="FK_Adds_Users" Association="Self.FK_Adds_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Adds" EntitySet="Adds" />
@@ -434,6 +467,12 @@
           <AssociationSet Name="FK_Survey_Adds" Association="ClassigooModel.FK_Survey_Adds">
             <End Role="Add" EntitySet="Adds" />
             <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="ClassigooModel.Category" />
+          <EntitySet Name="SubCategories" EntityType="ClassigooModel.SubCategory" />
+          <AssociationSet Name="FK__SubCatego__Categ__3E1D39E1" Association="ClassigooModel.FK__SubCatego__Categ__3E1D39E1">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="User">
@@ -751,6 +790,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubCategories" Relationship="ClassigooModel.FK__SubCatego__Categ__3E1D39E1" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="ClassigooModel.FK__SubCatego__Categ__3E1D39E1" FromRole="SubCategory" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK__SubCatego__Categ__3E1D39E1">
+          <End Type="ClassigooModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="ClassigooModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -926,6 +994,23 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="AddId" ColumnName="AddId" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ClassigooModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="ClassigooModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

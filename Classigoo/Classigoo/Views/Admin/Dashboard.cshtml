@@ -3,10 +3,12 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-    List<SelectListItem> statusCollection = new List<SelectListItem>();
+
     List<SelectListItem> reportType = new List<SelectListItem>();
     reportType.Add(new SelectListItem { Text = "AddsInfo", Value = "AddsInfo" });
     reportType.Add(new SelectListItem { Text = "Buyer/ConsumerInfo", Value = "Buyer/ConsumerInfo" });
+
+    List<SelectListItem> statusCollection = new List<SelectListItem>();
     statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
@@ -31,7 +33,7 @@
     <div class="col-sm-12">
         <div class="form-group row">
             <div class="col-xl-11 col-md-6 pull-right">
-                <input type="button" class="btn btn-sm btn-danger pull-right" value="Send SMS" id="btnSendSms" />               
+                <input type="button" class="btn btn-sm btn-danger pull-right" value="Send SMS" id="btnSendSms" />
             </div>
             <div class="col-xl-1 col-md-6 pull-right">
                 <input type="button" class="btn btn-sm btn-danger pull-right" value="Refresh" id="btnRefresh" />
@@ -45,6 +47,8 @@
 <div class="row">
 
     <div class="col-sm-12">
+
+
 
         <div class="row">
 
@@ -100,9 +104,9 @@
                     </p>
                     <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
                         <thead>
-                            <tr>    
-                                <th></th>     
-                                <th data-class="expand">AddId</th>                                                                                     
+                            <tr>
+                                <th></th>
+                                <th data-class="expand">AddId</th>
                                 <th data-class="expand">AddId</th>
                                 <th data-hide="phone">Date and Time</th>
                                 <th data-hide="phone">Sub Category</th>
@@ -132,10 +136,10 @@
 
                                 <tr>
                                     @*<td>@item.PhoneNum</td>*@
-                                    <td></td> 
+                                    <td></td>
                                     <td>
                                         @item.AddId
-                                    </td>                                                               
+                                    </td>
                                     <td id="addId">
                                         @item.AddId
                                     </td>
@@ -231,29 +235,39 @@
 
                 <div class="col-md-12">
                     <div>
-                        <h4 class="m-t-0 m-b-30 header-title">Task Properties</h4>
+                        <h4 class="m-t-0 m-b-30 header-title">Send Message</h4>
 
                         <div id="divFormFields">
 
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-2 col-form-label">Emails</label>
+                                <label for="inputPassword3" class="col-2 col-form-label">Add Id's</label>
                                 <div class="col-8">
                                     <div class="tags-default">
-                                        <input type="text" id="txtMobileNumbers" value="suresh" data-role="tagsinput" placeholder="add emails" />
+                                        <input type="text" id="txtMobileNumbers" data-role="tagsinput" placeholder="add addids" />
                                     </div>
                                 </div>
                                 <div class="col-2">
 
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-2 col-form-label">Message</label>
+                                <div class="col-8">
+                                    <textarea class="form-control" id="txtMessage" rows="5"></textarea>
+                                </div>
+                                <div class="col-2">
 
-
-
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group mb-0 justify-content-end row">
-                            <div class="col-9">
-                                <button type="button" id="btnReloadPartial" class="btn btn-info waves-effect waves-light">Create Task</button>
+
+                            <div class="col-8">
+                                <button type="button" id="btnSendSMSFromModal" class="btn btn-info waves-effect waves-light">Send SMS</button>
+                            </div>
+                            <div class="col-2">
+
                             </div>
                         </div>
 
@@ -278,10 +292,13 @@
     <link href="~/Content/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     @*<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
-<link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
 
     @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
-<link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+
+    <!-- Notification css (Toastr) -->
+    <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
 }
 
 @section scripts {
@@ -295,11 +312,17 @@
     <script src="~/Content/Admin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     @*<script src="~/Content/Admin/assets/plugins/datatables/dataTables.select.min.js"></script>*@
 
-<script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
 
 
-<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+
     <script type="text/javascript">
+
+        var toastCount = 0;
 
         $(document).ready(function () {
 
@@ -309,19 +332,19 @@
                 stateSave: true,
                 columnDefs: [
                                 {
-                                  targets: 1,
-                                  checkboxes: {
-                                  selectRow: true
-                                 },
-                                 
-                               },
+                                    targets: 1,
+                                    checkboxes: {
+                                        selectRow: true
+                                    },
+
+                                },
                                {
                                    targets: 0,
-                                   orderable:false
-                                   
+                                   orderable: false
+
                                }
-                               
-                             ],
+
+                ],
                 select: {
                     style: 'multi'
                 }
@@ -384,10 +407,152 @@
 
             $("#btnSendSms").on('click', function () {
 
-               console.log( $("#txtMobileNumbers").val());
+
+                // Handle form submission event
+                var rows_selected = table.column(1).checkboxes.selected();
+
+                var selectedNumbers = '';
+                // Iterate over all selected checkboxes
+                $.each(rows_selected, function (index, rowId) {
+                    selectedNumbers += rowId + ',';
+                });
+
+                $("#txtMobileNumbers").tagsinput('add', selectedNumbers);
+
                 $("#myModal").modal("show");
             });
 
+            $("#btnSendSMSFromModal").on('click', function () {
+                console.log($("#txtMobileNumbers").val());
+
+                ShowSucessToaster("Sucessfully Created !!!!", 'success');
+
+                ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');
+
+            });
+
         });
+
+
+        function ShowSucessToaster(message, state) {
+
+            var shortCutFunction = state;
+            var msg = message;
+            var title = 'Status';
+            var showDuration = "300";
+            var hideDuration = "1000";
+            var timeOut = "5000";
+            var extendedTimeOut = "1000";
+            var showEasing = "swing";
+            var hideEasing = "linear";
+            var showMethod = "fadeIn";
+            var hideMethod = "fadeOut";
+            var toastIndex = toastCount++;
+            var addClear = $('#addClear').prop('checked');
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+
+            if ($('#addBehaviorOnToastClick').prop('checked')) {
+                toastr.options.onclick = function () {
+                    alert('You can perform some custom action after a toast goes away');
+                };
+            }
+
+            if (showDuration.length) {
+                toastr.options.showDuration = showDuration;
+            }
+
+            if (hideDuration.length) {
+                toastr.options.hideDuration = hideDuration;
+            }
+
+            if (timeOut.length) {
+                toastr.options.timeOut = addClear ? 0 : timeOut;
+            }
+
+            if (extendedTimeOut.length) {
+                toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
+            }
+
+            if (showEasing.length) {
+                toastr.options.showEasing = showEasing;
+            }
+
+            if (hideEasing.length) {
+                toastr.options.hideEasing = hideEasing;
+            }
+
+            if (showMethod.length) {
+                toastr.options.showMethod = showMethod;
+            }
+
+            if (hideMethod.length) {
+                toastr.options.hideMethod = hideMethod;
+            }
+
+            if (addClear) {
+                msg = getMessageWithClearButton(msg);
+                toastr.options.tapToDismiss = false;
+            }
+            if (!msg) {
+                msg = getMessage();
+            }
+
+            $('#toastrOptions').text('Command: toastr["'
+                + shortCutFunction
+                + '"]("'
+                + msg
+                + (title ? '", "' + title : '')
+                + '")\n\ntoastr.options = '
+                + JSON.stringify(toastr.options, null, 2)
+            );
+
+            var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+            $toastlast = $toast;
+
+            if (typeof $toast === 'undefined') {
+                return;
+            }
+
+            if ($toast.find('#okBtn').length) {
+                $toast.delegate('#okBtn', 'click', function () {
+                    alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                    $toast.remove();
+                });
+            }
+            if ($toast.find('#surpriseBtn').length) {
+                $toast.delegate('#surpriseBtn', 'click', function () {
+                    alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                });
+            }
+            if ($toast.find('.clear').length) {
+                $toast.delegate('.clear', 'click', function () {
+                    toastr.clear($toast, { force: true });
+                });
+            }
+
+
+
+        }
+
+
+
+
     </script>
 }

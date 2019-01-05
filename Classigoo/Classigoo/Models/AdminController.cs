@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Caching;
+using Classigoo.Models.Search;
+using Newtonsoft.Json;
 
 namespace Classigoo.Controllers
 {
@@ -36,14 +39,54 @@ namespace Classigoo.Controllers
 
         }
 
-        public ActionResult Dashboard1()
+        public ActionResult SendMessage()
         {
+            //var cachedCategories = HttpContext.Cache.Get("Categories") as List<Category>;
+
+
+            //if (cachedCategories == null)
+            //{
+            //    List<Category> categoriesList = AdminService.GetCatagories();
+            //    HttpContext.Cache.Insert("Categories", categoriesList, null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration);
+
+            //    ViewBag.TotalStudents = categoriesList;
+            //}
+            //else
+            //{
+            //    ViewBag.TotalStudents = cachedCategories;
+            //}
+
+
+            List<Category> categoriesList = AdminService.GetCatagories();
+
+            List<SelectListItem> categorySelectList = new List<SelectListItem>();
+            foreach(Category category in categoriesList)
+            {
+                categorySelectList.Add(new SelectListItem { Text = category.Name, Value = Convert.ToString( category.Id )});
+
+            }
+
+            ViewData["Category"] = categorySelectList;
+
             return View();
         }
 
-        public ActionResult Dashboard2()
+        public JsonResult getSubcategory(int id)
         {
-            return View();
+            List<Category> categoriesList = AdminService.GetCatagories();
+
+            var subcategories = categoriesList.FindAll(x => x.Id == id).Select(x => x.SubCategories).ToList();
+
+            List<SelectListItem> subcategorySelectList = new List<SelectListItem>();
+            if (subcategories.Count == 1)
+            {
+                foreach (SubCategory subCaretogry in subcategories[0])
+                {
+                    subcategorySelectList.Add(new SelectListItem { Text = subCaretogry.Name, Value = Convert.ToString(subCaretogry.Id) });
+
+                }
+            }       
+            return Json(new SelectList(subcategorySelectList, "Value", "Text", JsonRequestBehavior.AllowGet));
         }
 
         public ActionResult AddsInfo()
@@ -73,6 +116,7 @@ namespace Classigoo.Controllers
             //}
             
         }
+
         public ActionResult CustInfo()
         {
             //if (isAdmin())
@@ -153,6 +197,24 @@ namespace Classigoo.Controllers
             //{
             //    return RedirectToAction("Login", "User");
             //}
+        }
+
+        public JsonResult SearchOwenersData(string searchEntity)
+        {
+            //if(searchEntity !=null && searchEntity != string.Empty)
+            //{
+            //    var x = JsonConvert.DeserializeObject<SearchAddsEntity>(searchEntity);
+
+            //    return Json("", JsonRequestBehavior.AllowGet);
+            //}
+            //else
+            //{
+                AjaxResponse<string> objAjaxResponse = new AjaxResponse<string>() { Status = ResponseStatus.failure, Data = "Invalid Input" };
+                return Json(JsonConvert.SerializeObject(objAjaxResponse), JsonRequestBehavior.AllowGet);
+            //}
+            
+           
+            
         }
     }
 }
