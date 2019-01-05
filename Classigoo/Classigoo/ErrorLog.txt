@@ -607,3 +607,8 @@ EntityFramework ; The underlying provider failed on Open.
 12/24/2018 9:50:31 PM : At Admin db
 EntityFramework ; The underlying provider failed on Open.
 12/24/2018 9:50:31 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+12/26/2018 11:17:26 PM : exception at get GetCatagories()
+EntityFramework ; A specified Include path is not valid. The EntityType 'ClassigooModel.Category' does not declare a navigation property with the name 'SubCategory'.
+12/30/2018 9:25:03 AM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+12/30/2018 9:25:03 AM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)

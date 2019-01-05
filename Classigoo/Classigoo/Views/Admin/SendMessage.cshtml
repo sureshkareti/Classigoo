@@ -1,0 +1,651 @@
+﻿
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    List<SelectListItem> statusCollection = new List<SelectListItem>();
+    statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+
+
+    List<SelectListItem> categoryCollection = new List<SelectListItem>();
+    categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.ConstructionVehicle, Value = Constants.ConstructionVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.PassengerVehicle, Value = Constants.PassengerVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.RealEstate, Value = Constants.RealEstate });
+    categoryCollection.Add(new SelectListItem { Text = Constants.TransportationVehicle, Value = Constants.TransportationVehicle });
+
+    List<Category> categories = (List<Category>)@ViewBag.TotalStudents;
+}
+
+<div>
+
+    @Html.Partial("_PatialSearchAddsData")
+
+
+    <div id="grid" style="display:none">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+
+                            <h4 class="m-t-0 header-title">Adds</h4>
+                            <div style="float:right">
+                                <input type="button" class="btn btn-danger" value="Refresh" id="btnRefreshGrid" />
+                                <input type="button" class="btn btn-warning" value="Send SMS" id="btnSendSMSGrid" />
+                            </div>
+                            <p class="text-muted font-14 m-b-30">
+                                following are the adds which are <code> submitted by users</code>.
+                            </p>
+                            <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th data-class="expand">AddId</th>
+                                        <th data-class="expand">AddId</th>
+                                        <th data-hide="phone">Date and Time</th>
+                                        <th data-hide="phone">Sub Category</th>
+                                        <th data-hide="phone">Rent/Sale</th>
+                                        <th>Preview</th>
+                                        <th>Status</th>
+                                        <th data-hide="phone">User Name</th>
+                                        <th data-hide="phone">Mobile No</th>
+                                        <th data-hide="phone">Category</th>
+                                        <th data-hide="phone">State</th>
+                                        <th data-hide="phone">District</th>
+                                        <th data-hide="phone">Mandal</th>
+                                        <th>Remarks</th>
+                                        <th>Status</th>
+                                        <th>User Name</th>
+                                        <th>Mobile No</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        @*<td>@item.PhoneNum</td>*@
+                                        <td></td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td id="addId">
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+
+                                        <td>
+                                            test
+                                        </td>
+
+                                        <td>
+                                            test
+
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+
+
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+                                        <td>
+                                            test
+                                        </td>
+
+
+                                        <td>
+                                            <span class="display-mode"> <label id="lblRemarks">test</label></span>
+                                        </td>
+                                        <td>
+                                            <span class="display-mode"> <label id="lblAddStatus">test</label></span>
+
+                                        </td>
+
+                                        <td>
+                                            <span id="userName" class="UserInfo">zdzcz</span>
+                                        </td>
+                                        <td>
+                                            <span id="userPhoneNum" class="UserInfo">cxcxc</span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="messageBlock" style="display:block">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+                            <h4 class="m-t-0 header-title">Adds</h4>
+                            <div class="form-group row">
+                                <h5></h5>
+                                <label for="inputEmail3" class="col-sm-2 col-xs-12 col-form-label pull-left">Message:</label>
+                                <div class="col-sm-8 col-xs-12">
+                                    <h5></h5>
+                                    <textarea class="form-control" id="txtMessage" placeholder="type message here..." rows="5"></textarea>
+                                </div>
+                                <div class="col-2">
+
+                                </div>
+                            </div><!-- end row -->
+                            <div class="form-group mb-0 justify-content-end row">
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light">Send SMS</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div>
+        </div>
+
+    </div>
+
+    <div id="messsageBoxWithOutGid" style="display:none">
+    </div>
+
+</div>
+
+@section Styles {
+    <!-- DataTables -->
+    @*<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+
+    <!-- Notification css (Toastr) -->
+    <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/Admin/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+
+
+
+
+@section scripts{
+    <!-- Required datatable js -->
+    <script src="~//Scripts/ScriptsNew/jquery-ui.min.js"></script>
+
+
+    <script src="~/Content/Admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>*@
+    <script src="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    @*<script src="~/Content/Admin/assets/plugins/datatables/dataTables.select.min.js"></script>*@
+
+    <script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Content/Admin/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            loadStates();
+
+            var table = $('#tblAdds').DataTable({
+                "responsive": true,
+                stateSave: true,
+                AutoWidth: false,
+                columnDefs: [
+                                {
+                                    targets: 1,
+                                    checkboxes: {
+                                        selectRow: true
+                                    },
+
+                                },
+                               {
+                                   targets: 0,
+                                   orderable: false
+
+                               }
+
+                ],
+                select: {
+                    style: 'multi'
+                }
+               ,
+                order: [[2, 'asc']]
+
+            });
+
+
+            $("#btnRefreshGrid").click(function () {
+                table.destroy();
+
+                table = $('#tblAdds').DataTable({
+                    "responsive": true,
+                    stateSave: true,
+                    AutoWidth: false,
+                    columnDefs: [
+                                    {
+                                        targets: 1,
+                                        checkboxes: {
+                                            selectRow: true
+                                        },
+
+                                    },
+                                   {
+                                       targets: 0,
+                                       orderable: false
+
+                                   }
+
+                    ],
+                    select: {
+                        style: 'multi'
+                    },
+                    order: [[2, 'asc']]
+
+                });
+            });
+
+
+            $(document).on('change', 'input[type=radio][name=customRadioMode]', function () {
+
+                var selectedMode = $(this).attr('id');
+                if (selectedMode != null && selectedMode != '') {
+                    if (selectedMode == 'customRadioWithGrid') {
+
+                        $("#messageBlock").css('display', 'none');
+                        $("#grid").css('display', 'block');
+
+                        $("#btnSearchConsumersData").css('display', 'block');
+                        $("#btnSearchWonersData").css('display', 'block');
+
+                        table.destroy();
+
+                        table = $('#tblAdds').DataTable({
+                            "responsive": true,
+                            stateSave: true,
+                            AutoWidth: false,
+                            columnDefs: [
+                                            {
+                                                targets: 1,
+                                                checkboxes: {
+                                                    selectRow: true
+                                                },
+
+                                            },
+                                           {
+                                               targets: 0,
+                                               orderable: false
+
+                                           }
+
+                            ],
+                            select: {
+                                style: 'multi'
+                            },
+                            order: [[2, 'asc']]
+
+                        });
+                    }
+                    else if (selectedMode == 'customRadioWithOutGrid') {
+                        $("#grid").css('display', 'none');
+                        $("#messageBlock").css('display', 'block');
+
+                        $("#btnSearchConsumersData").css('display', 'block');
+                        $("#btnSearchWonersData").css('display', 'block');
+                    }
+
+                }
+            });
+
+            $(document).on('change', 'input[type=radio][name=customRadioType]', function () {
+                var selectedType = $(this).attr('id');
+                if (selectedType != null && selectedType != '') {
+                    if (selectedType == 'allConsumersData') {
+                        $("#filterConsumersData").css('display', 'none');
+                        $("#filterOwnersData").css('display', 'none');
+                    }
+                    else if (selectedType == 'allWonersData') {
+                        $("#filterConsumersData").css('display', 'none');
+                        $("#filterOwnersData").css('display', 'none');
+                    }
+                    else if (selectedType == 'ownersData') {
+                        $("#filterConsumersData").css('display', 'none');
+                        $("#filterOwnersData").css('display', 'block');
+                    }
+                    else if (selectedType == 'consumersData') {
+                        $("#filterConsumersData").css('display', 'block');
+                        $("#filterOwnersData").css('display', 'none');
+                    }
+
+                }
+            });
+
+
+            $(document).on('change', '#ddlCategoryOData', function () {
+
+                $("#ddlSubCategoryOData").empty();
+                loadSubCategories($(this).val());
+                return false;
+            });
+
+            $(document).on('click', "#btnSearchWonersData", function () {
+                var type = $("#ddlType").val();
+                var addStatus = $("#ddlStatus").val();
+                var mobileNumber = $("#txtMobileNumberOData").val();
+                var locationState = $("#txtStates").val();
+                var locationDistricts = $("#txtDistrict").val();
+                var locationMandal = $("#txtMandal").val();
+                var category = $("#ddlCategoryOData").val();
+                var subCategory = $("#ddlSubCategoryOData").val();
+
+                var searchOwnersEntity = {
+                    Type: type,
+                    Status: addStatus,
+                    MobileNumber: mobileNumber,
+                    State: locationState,
+                    District: locationDistricts,
+                    Mandal: locationMandal,
+                    Category: category,
+                    SubCaregory: subCategory,
+                }
+
+                loadOwenersSearchData(JSON.stringify(searchOwnersEntity));
+            });
+
+
+        });
+
+
+        function loadSubCategories(category) {
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSubcategory")',
+                dataType: 'json',
+                data: { id: category },
+                success: function (subcategories) {
+                    $("#ddlSubCategoryOData").append("<option>select</option>");
+
+                    $.each(subcategories, function (i, subcategorys) {
+
+                        $("#ddlSubCategoryOData").append('<option value="'
+                                                   + subcategorys.Value + '">'
+                                             + subcategorys.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+        function loadOwenersSearchData(searchOwnersData) {
+         
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SearchOwenersData")',
+                dataType: 'json',
+                data: { searchEntity: searchOwnersData },
+                success: function (subcategories) {
+
+                    var response = jQuery.parseJSON(subcategories);
+                    console.log(subcategories);
+                    if (response.Status == 1) {
+
+                        $("#tblAdds").find("tr").remove();
+
+                        table.destroy();
+
+                        table = $('#tblAdds').DataTable({
+                            "responsive": true,
+                            stateSave: true,
+                            AutoWidth: false,
+                            columnDefs: [
+                                            {
+                                                targets: 1,
+                                                checkboxes: {
+                                                    selectRow: true
+                                                },
+
+                                            },
+                                           {
+                                               targets: 0,
+                                               orderable: false
+
+                                           }
+
+                            ],
+                            select: {
+                                style: 'multi'
+                            },
+                            order: [[2, 'asc']]
+
+                        });
+                    }
+                    else {
+
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+        }
+
+        function loadStates() {
+
+            var locations = new Array();
+            var states = new Array();
+            $.ajax({
+                url: '/Scripts/Json/location1.min.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+                        locations.push(field);
+                    });
+                }
+            });
+
+            $.each(locations, function (i1, field1) {
+                states.push(field1.name);
+                console.log(field1.name);
+            });
+
+            console.log(states);
+
+            $("#txtStates").autocomplete({
+                source: states,
+                minLength: 1, autoFocus: true,
+                scroll: true,
+                matchContains: true,
+                minChars: 2,
+                autoFill: true,
+                mustMatch: false,
+                cacheLength: 20,
+                max: 20,
+                close: function () {
+                },
+                select: function (event, ui) {
+                    //TestOnSelection();
+                    //$(this).blur();
+
+                    getDistricts();
+                    //$("#txtDistrict").focus();
+                }
+            }).focus(function () {
+                $(this).data("uiAutocomplete").search('e');
+            });
+
+
+        };
+
+
+        function getDistricts() {
+
+            var selectedState = $.trim($("#txtStates").val());
+            $("#txtDistrict").val("");
+            $("#txtMandal").val("");
+            if (selectedState !== "") {
+
+                var locations = new Array();
+                var districs = new Array();
+                $.ajax({
+                    url: '/Scripts/Json/location1.min.json',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        $.each(data, function (i, field) {
+                            locations.push(field);
+                        });
+                    }
+                });
+
+                var selectedVehicle = locations.filter(a=>a.name === selectedState);
+
+                $.each(selectedVehicle[0].District, function (i1, field1) {
+
+                    districs.push(field1.name);
+                });
+
+                $("#txtDistrict").autocomplete({
+                    source: districs
+                    ,
+                    minLength: 1,
+                    autoFocus: true,
+                    scroll: true,
+                    matchContains: true,
+                    minChars: 2,
+                    autoFill: true,
+                    mustMatch: false,
+                    cacheLength: 20,
+                    max: 20,
+                    close: function () {
+
+                    },
+                    select: function (event, ui) {
+                        //TestOnSelection();
+                        //$(this).blur();
+
+                        getMandal();
+                        //$("#txtDistrict").focus();
+                    }
+                }).focus(function () {
+                    $(this).data("uiAutocomplete").search('e');
+                });
+
+
+
+            }
+            else {
+
+            }
+
+        }
+
+        function getMandal() {
+
+            var selectedDistric = $.trim($("#txtDistrict").val());
+            $("#txtMandal").val("");
+            if (selectedDistric !== "") {
+
+
+                var locations = new Array();
+                var mandals = new Array();
+                $.ajax({
+                    url: '/Scripts/Json/location1.min.json',
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        $.each(data, function (i, field) {
+                            $.each(field.District, function (i1, field1) {
+                                locations.push(field1);
+
+                            });
+
+                        });
+                    }
+                });
+
+                var selectedStae = locations.filter(a=>a.name === selectedDistric);
+                $.each(selectedStae[0].Mondal, function (i1, field1) {
+
+                    mandals.push(field1.name);
+                });
+
+                $("#txtMandal").autocomplete({
+                    source: mandals
+                    ,
+                    minLength: 1,
+                    autoFocus: true,
+                    scroll: true,
+                    matchContains: true,
+                    minChars: 2,
+                    autoFill: true,
+                    mustMatch: false,
+                    cacheLength: 20,
+                    max: 20,
+                    close: function () {
+
+                    }
+                }).focus(function () {
+                    $(this).data("uiAutocomplete").search('e');
+                });
+            }
+            else {
+
+            }
+        }
+
+
+
+    </script>
+
+}

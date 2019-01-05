@@ -1,0 +1,226 @@
+﻿@{
+    List<SelectListItem> statusCollection = new List<SelectListItem>();
+    statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+
+
+    List<SelectListItem> categoryCollection = new List<SelectListItem>();
+    categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.ConstructionVehicle, Value = Constants.ConstructionVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.PassengerVehicle, Value = Constants.PassengerVehicle });
+    categoryCollection.Add(new SelectListItem { Text = Constants.RealEstate, Value = Constants.RealEstate });
+    categoryCollection.Add(new SelectListItem { Text = Constants.TransportationVehicle, Value = Constants.TransportationVehicle });
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card-box">
+            <form class="form-horizontal" role="form">
+                <div class="row">
+                    <label for="inputEmail3" class="col-sm-2 col-xs-12 col-form-label">Type:</label>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="allWonersData" checked name="customRadioType" class="custom-control-input">
+                                    <label class="custom-control-label" for="allWonersData">All Owners</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="allConsumersData" name="customRadioType" class="custom-control-input">
+                                    <label class="custom-control-label" for="allConsumersData">All Consumers</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="ownersData" name="customRadioType" class="custom-control-input">
+                                    <label class="custom-control-label" for="ownersData">Filter OwnersData</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="consumersData" name="customRadioType" class="custom-control-input">
+                                    <label class="custom-control-label" for="consumersData">Filter ConsumersData</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-xs-12 col-form-label">Mode</label>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadioWithGrid" name="customRadioMode" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioWithGrid">With Grid</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="customRadioWithOutGrid" checked name="customRadioMode" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioWithOutGrid">With Out Grid</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="filterOwnersData" style="display:block">
+                    <h4 class="header-title m-t-0 m-b-30">Filter On Woners Data</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>Type</b></h5>
+                            @Html.DropDownList("ddlType", new List<SelectListItem> {
+                                            new SelectListItem { Text = "Rent", Value = "Rent"},
+                                            new SelectListItem { Text = "Sale", Value = "Sale"}}, new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Status</b></h5>
+                            @Html.DropDownList("ddlStatus", statusCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Mobile Number</b></h5>
+                            <input type="text" id="txtMobileNumberOData" pattern="^(\d{10})$" data-error="Please enter phone number" required class="form-control" />
+
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>State</b></h5>
+                            <input type="text" id="txtStates" autocomplete="off" onclick="this.value=''" onfocusout="getDistricts()" placeholder="state" class="form-control typeahead" />
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <h5><b>District</b></h5>
+                            <input type="text" id="txtDistrict" autocomplete="off" onclick="this.value = ''" onfocusout="getMandal()" placeholder="district" class="form-control typeahead" />
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <h5><b>Mandal</b></h5>
+                            <input type="text" id="txtMandal" autocomplete="off" onclick="this.value=''" placeholder="mandal" class="form-control typeahead" />
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>Category</b></h5>
+                            @Html.DropDownList("ddlCategoryOData", new SelectList(ViewBag.Category, "Value", "Text"), "select", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <h5><b>Sub Caregory</b></h5>
+                            @Html.DropDownList("ddlSubCategoryOData", new SelectList(string.Empty, "Value", "Text"), "select", new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            @*<h5><b>Duration</b></h5>
+                            <div class="input-daterange input-group" id="date-range">
+                                <input type="text" class="form-control" name="start" id="dateStart" />
+                                <input type="text" class="form-control" name="end" id="dateEnd" />
+                            </div>*@
+                        </div>
+                    </div>
+                   
+
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b></b></h5>
+                            <button type="button" style="display:none" id="btnSearchWonersData" class="btn btn-warning waves-effect waves-light pull-right">Search</button>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+                </div>
+
+                <div id="filterConsumersData" style="display:none">
+                    <h4 class="header-title m-t-0 m-b-30">Filter On Consumers Data</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>Type</b></h5>
+                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Status</b></h5>
+                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Mobile Number</b></h5>
+                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>Category</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Sub Caregory</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Company</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>State</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>District</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>Mandal</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>From</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b>To</b></h5>
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+                            <h5><b></b></h5>
+                            <button type="button" style="display:none" id="btnSearchConsumersData" class="btn btn-warning waves-effect waves-light pull-right">Search</button>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>

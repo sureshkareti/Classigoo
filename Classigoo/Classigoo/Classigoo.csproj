@@ -190,6 +190,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Category.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classigoo.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,7 +212,7 @@
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Models\AdminController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -225,6 +228,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminService.cs" />
     <Compile Include="Models\CommonDBOperations.cs" />
     <Compile Include="Models\Communication.cs" />
     <Compile Include="Models\CustomActions.cs" />
@@ -234,6 +238,7 @@
     <Compile Include="Models\MessageDBOperations.cs" />
     <Compile Include="Models\MyMembershipProvider.cs" />
     <Compile Include="Models\PostDBOperations.cs" />
+    <Compile Include="Models\Search\SearchAddsEntity.cs" />
     <Compile Include="Models\UserDBOperations.cs" />
     <Compile Include="PassengerVehicle.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
@@ -245,6 +250,9 @@
     </Compile>
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="SubCategory.cs">
+      <DependentUpon>Classigoo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Survey.cs">
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
@@ -330,6 +338,7 @@
     <Content Include="Content\Admin\assets\pages\jquery.ui-sliders.js" />
     <Content Include="Content\Admin\assets\pages\jquery.xeditable.js" />
     <Content Include="Content\Admin\assets\pages\jvectormap.init.js" />
+    <Content Include="Content\Admin\assets\plugins\auto-complete\typeahead.bundle.js" />
     <Content Include="Content\Admin\assets\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\Admin\assets\plugins\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
     <Content Include="Content\Admin\assets\plugins\bootstrap-daterangepicker\daterangepicker.css" />
@@ -784,6 +793,9 @@
     <Content Include="Views\Admin\Info.cshtml" />
     <Content Include="Scripts\Json\categories.min.json" />
     <Content Include="Scripts\Json\location1.min.json" />
+    <Content Include="Views\Admin\SendMessage.cshtml" />
+    <Content Include="Scripts\Json\category_data.json" />
+    <Content Include="Views\Shared\_PatialSearchAddsData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
