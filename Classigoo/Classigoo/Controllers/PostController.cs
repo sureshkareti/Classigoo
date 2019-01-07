@@ -66,7 +66,7 @@ namespace Classigoo.Controllers
                     Add addRecord = objCommonDBOperations.GetAdd(addId);
                     Guid adminUserId = userObj.UserExist("1111111111", "Custom");
                     bool isAuthorizedUser = false;
-                  
+
                     if (userId == addRecord.UserId)//he is owner
                     {
                         isAuthorizedUser = true;
@@ -793,23 +793,24 @@ namespace Classigoo.Controllers
 
                     //to find isCategoryChange
                     bool isCategoryCnaged = false;
+                    bool isSubCategoryCnaged = false;
                     CommonDBOperations objCommonDBOperations = new CommonDBOperations();
                     Add addRecord = objCommonDBOperations.GetAdd(postId.ToString());
-                    if (addRecord.Category != postAdd.hdnCateFristLevel || addRecord.SubCategory != postAdd.hdnCateSecondLevel)
+
+                    if (addRecord != null)
                     {
-                        isCategoryCnaged = true;
+                        if (addRecord.Category != postAdd.hdnCateFristLevel)
+                        {
+                            isCategoryCnaged = true;
 
-                    }
+                        }
 
-
-                    bool isAddUpdated = objPostDbOpareations.UpdateAdd(add);
-
-                    if (isAddUpdated)
-                    {
                         string img1 = string.Empty;
                         string img2 = string.Empty;
                         string img3 = string.Empty;
                         string img4 = string.Empty;
+
+                        bool isChilUpdated = false;
 
                         try
                         {
@@ -988,57 +989,39 @@ namespace Classigoo.Controllers
                             ViewBag.Message = "error";
                         }
 
+                        string[] currentIamgeUrl = new string[4] { img1, img2, img3, img4 };
 
-                        if (isCategoryCnaged)
+                        string[] updatedImagesUrls = GetOldImages(addRecord.Category, currentIamgeUrl, postAdd.AddId);
+
+
+                        if (postAdd.hdnCateFristLevel == "Real Estate")
                         {
-                            if (postAdd.hdnCateFristLevel == "Real Estate")
+                            #region RealEstate
+                            try
                             {
-                                #region RealEstate
-
-                                try
+                                RealEstate objRealEstate = new RealEstate()
                                 {
+                                    SubCategory = postAdd.hdnCateSecondLevel,
 
-                                    RealEstate objPreviousRealEstate = objCommonDBOperations.GetRealEstate(Convert.ToString(postId));
-                                    if (img1 == string.Empty)
-                                    {
-                                        img1 = objPreviousRealEstate.ImgUrlPrimary;
-                                    }
+                                    Price = Convert.ToInt32(postAdd.txtPro_Price),
+                                    Availability = postAdd.ddlAvailability,
+                                    ListedBy = postAdd.ddlPostedBy,
+                                    Furnishing = postAdd.ddlFurnishing,
+                                    Bedrooms = postAdd.ddlBedrooms,
+                                    SquareFeets = Convert.ToInt32(postAdd.txtSquareFeet),
+                                    Squareyards = Convert.ToInt32(postAdd.txtSquareYards),
+                                    Acres = Convert.ToDecimal(postAdd.txtAcres),
+                                    Description = postAdd.txtAddDetails,
 
-                                    if (img2 == string.Empty)
-                                    {
-                                        img2 = objPreviousRealEstate.ImgUrlSeconday;
-                                    }
+                                    AddId = postId,
+                                    ImgUrlPrimary = updatedImagesUrls[0],
+                                    ImgUrlSeconday = updatedImagesUrls[1],
+                                    ImgUrlThird = updatedImagesUrls[2],
+                                    ImgUrlFourth = updatedImagesUrls[3]
+                                };
 
-                                    if (img3 == string.Empty)
-                                    {
-                                        img3 = objPreviousRealEstate.ImgUrlThird;
-                                    }
-
-                                    if (img4 == string.Empty)
-                                    {
-                                        img4 = objPreviousRealEstate.ImgUrlFourth;
-                                    }
-
-                                    RealEstate objRealEstate = new RealEstate()
-                                    {
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        Price = Convert.ToInt32(postAdd.txtPro_Price),
-                                        Availability = postAdd.ddlAvailability,
-                                        ListedBy = postAdd.ddlPostedBy,
-                                        Furnishing = postAdd.ddlFurnishing,
-                                        Bedrooms = postAdd.ddlBedrooms,
-                                        SquareFeets = Convert.ToInt32(postAdd.txtSquareFeet),
-                                        Squareyards = Convert.ToInt32(postAdd.txtSquareYards),
-                                        Acres = Convert.ToDecimal(postAdd.txtAcres),
-                                        Description = postAdd.txtAddDetails,
-
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
+                                if (isCategoryCnaged)
+                                {
 
                                     bool isRealestateadedd = objPostDbOpareations.RealEstate(objRealEstate);
 
@@ -1049,142 +1032,154 @@ namespace Classigoo.Controllers
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
                                         //return RedirectToAction("Home", "User");
+
+                                        isChilUpdated = true;
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Library.WriteLog("At create realestate", ex);
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
+                                    bool isRealEstaeUpdated = objPostDbOpareations.UpdateRealEstate(objRealEstate);
+
+                                    if (isRealEstaeUpdated)
+                                    {
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
+                                        isChilUpdated = true;
+                                    }
+                                    else
+                                    {
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        ViewBag.Message = "error";
+                                        isChilUpdated = false;
+                                        return View();
+                                    }
                                 }
-
-
-
-                                #endregion
                             }
-                            else if (postAdd.hdnCateFristLevel == "Construction Vehicles")
+                            catch (Exception ex)
                             {
-                                #region CV
-                                try
+                                Library.WriteLog("At update  realestate", ex);
+                                //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+
+                                isChilUpdated = false;
+                                return View();
+                            }
+
+
+                            #endregion
+                        }
+                        else if (postAdd.hdnCateFristLevel == "Construction Vehicles")
+                        {
+                            #region CV
+                            try
+                            {
+                                ConstructionVehicle objConstructionVehicle = new ConstructionVehicle()
                                 {
-                                    ConstructionVehicle objPreviousCV = objCommonDBOperations.GetCV(Convert.ToString(postId));
-                                    if (img1 == string.Empty)
-                                    {
-                                        img1 = objPreviousCV.ImgUrlPrimary;
-                                    }
+                                    Company = postAdd.CVCompany_list,
+                                    OtherCompany = postAdd.CVOtherCompany,
+                                    SubCategory = postAdd.hdnCateSecondLevel,
 
-                                    if (img2 == string.Empty)
-                                    {
-                                        img2 = objPreviousCV.ImgUrlSeconday;
-                                    }
+                                    ManufacturingYear = postAdd.txtCV_MYear,
+                                    Model = postAdd.txtCV_Model,
 
-                                    if (img3 == string.Empty)
-                                    {
-                                        img3 = objPreviousCV.ImgUrlThird;
-                                    }
+                                    Price = Convert.ToInt32(postAdd.txtCV_Price),
+                                    Description = postAdd.txtAddDetails,
+                                    AddId = postId,
+                                    ImgUrlPrimary = updatedImagesUrls[0],
+                                    ImgUrlSeconday = updatedImagesUrls[1],
+                                    ImgUrlThird = updatedImagesUrls[2],
+                                    ImgUrlFourth = updatedImagesUrls[3]
+                                };
 
-                                    if (img4 == string.Empty)
-                                    {
-                                        img4 = objPreviousCV.ImgUrlFourth;
-                                    }
+                                if (isCategoryCnaged)
+                                {
+                                    bool isConstructionAdded = objPostDbOpareations.ConstructionVehicle(objConstructionVehicle);
 
-                                    ConstructionVehicle objConstructionVehicle = new ConstructionVehicle()
-                                    {
-                                        Company = postAdd.CVCompany_list,
-                                        OtherCompany = postAdd.CVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtCV_MYear,
-                                        Model = postAdd.txtCV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtCV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
-
-                                    bool isCVadedd = objPostDbOpareations.ConstructionVehicle(objConstructionVehicle);
-
-                                    if (isCVadedd)
+                                    if (isConstructionAdded)
                                     {
                                         objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
 
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
+                                        isChilUpdated = true;
                                         //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Library.WriteLog("At create creating construction vehicles", ex);
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
+                                    bool isConstructionVehicleUpdated = objPostDbOpareations.UpdateCV(objConstructionVehicle);
+
+                                    if (isConstructionVehicleUpdated)
+                                    {
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        isChilUpdated = true;
+                                        //return RedirectToAction("Home", "User");
+                                    }
+                                    else
+                                    {
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        ViewBag.Message = "error";
+                                        isChilUpdated = false;
+                                        return View();
+                                    }
                                 }
 
-                                #endregion
+
                             }
-                            else if (postAdd.hdnCateFristLevel == "Transportation Vehicles")
+                            catch (Exception ex)
                             {
-                                #region TV
-                                try
+                                Library.WriteLog("At create updationg construction vehicles", ex);
+                                //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                isChilUpdated = false;
+                                return View();
+                            }
+
+
+
+                            #endregion
+                        }
+                        else if (postAdd.hdnCateFristLevel == "Transportation Vehicles")
+                        {
+                            #region TV
+                            try
+                            {
+                                TransportationVehicle objTransportationVehicle = new TransportationVehicle()
                                 {
-                                    TransportationVehicle objPreviousTV = objCommonDBOperations.GetTV(Convert.ToString(postId));
-                                    if (img1 == string.Empty)
-                                    {
-                                        img1 = objPreviousTV.ImgUrlPrimary;
-                                    }
+                                    Company = postAdd.TVCompany_list,
+                                    OtherCompany = postAdd.TVOtherCompany,
+                                    SubCategory = postAdd.hdnCateSecondLevel,
 
-                                    if (img2 == string.Empty)
-                                    {
-                                        img2 = objPreviousTV.ImgUrlSeconday;
-                                    }
+                                    ManufacturingYear = postAdd.txtTV_MYear,
+                                    Model = postAdd.txtTV_Model,
 
-                                    if (img3 == string.Empty)
-                                    {
-                                        img3 = objPreviousTV.ImgUrlThird;
-                                    }
+                                    Price = Convert.ToInt32(postAdd.txtTV_Price),
+                                    Description = postAdd.txtAddDetails,
+                                    AddId = postId,
+                                    ImgUrlPrimary = updatedImagesUrls[0],
+                                    ImgUrlSeconday = updatedImagesUrls[1],
+                                    ImgUrlThird = updatedImagesUrls[2],
+                                    ImgUrlFourth = updatedImagesUrls[3]
+                                };
 
-                                    if (img4 == string.Empty)
-                                    {
-                                        img4 = objPreviousTV.ImgUrlFourth;
-                                    }
-
-                                    TransportationVehicle objTransportationVehicle = new TransportationVehicle()
-                                    {
-                                        Company = postAdd.TVCompany_list,
-                                        OtherCompany = postAdd.TVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtTV_MYear,
-                                        Model = postAdd.txtTV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtTV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
+                                if (isCategoryCnaged)
+                                {
                                     bool isTVadedd = objPostDbOpareations.TransportationVehicle(objTransportationVehicle);
 
 
@@ -1193,73 +1188,77 @@ namespace Classigoo.Controllers
                                         objPostDbOpareations.DeleteAddWhenCategoryChange(Convert.ToString(postId));
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
+                                        isChilUpdated = true;
                                         //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Library.WriteLog("At create creating transportation vehicles", ex);
+                                    bool isTransportationVehicleUpdated = objPostDbOpareations.UpdateTV(objTransportationVehicle);
 
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
+
+                                    if (isTransportationVehicleUpdated)
+                                    {
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        //return RedirectToAction("Home", "User");
+                                        isChilUpdated = true;
+                                    }
+                                    else
+                                    {
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        ViewBag.Message = "error";
+                                        isChilUpdated = false;
+                                        return View();
+                                    }
                                 }
 
-
-                                #endregion
                             }
-                            else if (postAdd.hdnCateFristLevel == "Agricultural Vehicles")
+                            catch (Exception ex)
                             {
+                                Library.WriteLog("At create updating transportation vehicles", ex);
 
-                                #region AV
-                                try
+                                //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
+                            }
+
+
+                            #endregion
+                        }
+                        else if (postAdd.hdnCateFristLevel == "Agricultural Vehicles")
+                        {
+
+                            #region AV
+                            try
+                            {
+                                AgriculturalVehicle objAgriculturalVehicle = new AgriculturalVehicle()
                                 {
-                                    AgriculturalVehicle objPreviousAV = objCommonDBOperations.GetAV(Convert.ToString(postId));
-                                    if (img1 == string.Empty)
-                                    {
-                                        img1 = objPreviousAV.ImgUrlPrimary;
-                                    }
+                                    Company = postAdd.AVCompany_list,
+                                    OtherCompany = postAdd.AVOtherCompany,
+                                    SubCategory = postAdd.hdnCateSecondLevel,
 
-                                    if (img2 == string.Empty)
-                                    {
-                                        img2 = objPreviousAV.ImgUrlSeconday;
-                                    }
+                                    ManufacturingYear = postAdd.txtAV_MYear,
+                                    Model = postAdd.txtAV_Model,
 
-                                    if (img3 == string.Empty)
-                                    {
-                                        img3 = objPreviousAV.ImgUrlThird;
-                                    }
+                                    Price = Convert.ToInt32(postAdd.txtAV_Price),
+                                    Description = postAdd.txtAddDetails,
+                                    AddId = postId,
+                                    ImgUrlPrimary = updatedImagesUrls[0],
+                                    ImgUrlSeconday = updatedImagesUrls[1],
+                                    ImgUrlThird = updatedImagesUrls[2],
+                                    ImgUrlFourth = updatedImagesUrls[3]
+                                };
 
-                                    if (img4 == string.Empty)
-                                    {
-                                        img4 = objPreviousAV.ImgUrlFourth;
-                                    }
-
-
-                                    AgriculturalVehicle objAgriculturalVehicle = new AgriculturalVehicle()
-                                    {
-                                        Company = postAdd.AVCompany_list,
-                                        OtherCompany = postAdd.AVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtAV_MYear,
-                                        Model = postAdd.txtAV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtAV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
+                                if (isCategoryCnaged)
+                                {
                                     bool isAVadedd = objPostDbOpareations.AgriculturalVehicle(objAgriculturalVehicle);
 
                                     if (isAVadedd)
@@ -1268,86 +1267,89 @@ namespace Classigoo.Controllers
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
                                         //return RedirectToAction("Home", "User");
+                                        isChilUpdated = true;
 
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Library.WriteLog("At create creating agricultural vehicles", ex);
-
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
+                                    bool isAgriculturalVehicleUpdated = objPostDbOpareations.UpdateAV(objAgriculturalVehicle);
 
 
-                                #endregion
-                            }
-                            else if (postAdd.hdnCateFristLevel == "Passenger Vehicles")
-                            {
-                                #region PV
-                                try
-                                {
-                                    PassengerVehicle objPreviousPV = objCommonDBOperations.GetPV(Convert.ToString(postId));
-                                    if (img1 == string.Empty)
+                                    if (isAgriculturalVehicleUpdated)
                                     {
-                                        img1 = objPreviousPV.ImgUrlPrimary;
-                                    }
-
-                                    if (img2 == string.Empty)
-                                    {
-                                        img2 = objPreviousPV.ImgUrlSeconday;
-                                    }
-
-                                    if (img3 == string.Empty)
-                                    {
-                                        img3 = objPreviousPV.ImgUrlThird;
-                                    }
-
-                                    if (img4 == string.Empty)
-                                    {
-                                        img4 = objPreviousPV.ImgUrlFourth;
-                                    }
-
-                                    string model = string.Empty;
-
-                                    if (postAdd.hdnCateSecondLevel.Trim() == "Cars" || postAdd.hdnCateSecondLevel.Trim() == "Bikes")
-                                    {
-                                        model = postAdd.PVModel_list;
+                                        ViewBag.addId = postId;
+                                        ViewBag.Message = "updated";
+                                        isChilUpdated = true;
+                                        //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
-                                        model = postAdd.txtPV_Model;
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        ViewBag.Message = "error";
+                                        isChilUpdated = false;
+                                        return View();
                                     }
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Library.WriteLog("At create updating agricultural vehicles", ex);
+
+                                //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                isChilUpdated = false;  
+                                return View();
+                            }
 
 
+                            #endregion
+                        }
+                        else if (postAdd.hdnCateFristLevel == "Passenger Vehicles")
+                        {
+                            #region PV
+                            try
+                            {
+                                string modelUpdate = string.Empty;
 
+                                if (postAdd.hdnCateSecondLevel.Trim() == "Cars" || postAdd.hdnCateSecondLevel.Trim() == "Bikes")
+                                {
+                                    modelUpdate = postAdd.PVModel_list;
+                                }
+                                else
+                                {
+                                    modelUpdate = postAdd.txtPV_Model;
+                                }
 
-                                    PassengerVehicle objPassengerVehicle = new PassengerVehicle()
-                                    {
-                                        Company = postAdd.PVCompany_list,
-                                        OtherCompany = postAdd.PVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
+                                PassengerVehicle objPassengerVehicle = new PassengerVehicle()
+                                {
+                                    Company = postAdd.PVCompany_list,
+                                    OtherCompany = postAdd.PVOtherCompany,
+                                    SubCategory = postAdd.hdnCateSecondLevel,
 
-                                        Price = Convert.ToInt32(postAdd.txtPV_price),
-                                        Model = model, //postAdd.PVModel_list,
-                                        Year = Convert.ToInt32(postAdd.txtPV_Year),
-                                        FuelType = postAdd.PVfueltype_list,
-                                        KMDriven = Convert.ToInt32(postAdd.txtPV_kmdriven),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
+                                    Price = Convert.ToInt32(postAdd.txtPV_price),
+                                    Model = modelUpdate,//postAdd.PVModel_list,
+                                    Year = Convert.ToInt32(postAdd.txtPV_Year),
+                                    FuelType = postAdd.PVfueltype_list,
+                                    KMDriven = Convert.ToInt32(postAdd.txtPV_kmdriven),
+                                    Description = postAdd.txtAddDetails,
+                                    AddId = postId,
+                                    ImgUrlPrimary = updatedImagesUrls[0],
+                                    ImgUrlSeconday = updatedImagesUrls[1],
+                                    ImgUrlThird = updatedImagesUrls[2],
+                                    ImgUrlFourth = updatedImagesUrls[3]
+                                };
 
+                                if (isCategoryCnaged)
+                                {
                                     bool isPVadedd = objPostDbOpareations.PassengerVehicle(objPassengerVehicle);
 
 
@@ -1357,302 +1359,61 @@ namespace Classigoo.Controllers
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
                                         //return RedirectToAction("Home", "User");
+                                        isChilUpdated = true;
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
+                                else
                                 {
-                                    Library.WriteLog("At create creating passenger vehicles", ex);
-
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-
-
-                                }
-                                #endregion
-                            }
-                        }
-                        else
-                        {
-                            if (postAdd.hdnCateFristLevel == "Real Estate")
-                            {
-                                #region RealEstate
-                                try
-                                {
-
-                                    RealEstate objRealEstate = new RealEstate()
-                                    {
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        Price = Convert.ToInt32(postAdd.txtPro_Price),
-                                        Availability = postAdd.ddlAvailability,
-                                        ListedBy = postAdd.ddlPostedBy,
-                                        Furnishing = postAdd.ddlFurnishing,
-                                        Bedrooms = postAdd.ddlBedrooms,
-                                        SquareFeets = Convert.ToInt32(postAdd.txtSquareFeet),
-                                        Squareyards = Convert.ToInt32(postAdd.txtSquareYards),
-                                        Acres = Convert.ToDecimal(postAdd.txtAcres),
-                                        Description = postAdd.txtAddDetails,
-
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
-                                    bool isRealEstaeUpdated = objPostDbOpareations.UpdateRealEstate(objRealEstate);
-
-                                    if (isRealEstaeUpdated)
-                                    {
-                                        ViewBag.addId = postId;
-                                        ViewBag.Message = "updated";
-                                        //return RedirectToAction("Home", "User");
-                                    }
-                                    else
-                                    {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                        ViewBag.Message = "error";
-                                        return View();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At create realestate", ex);
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
-
-
-                                #endregion
-                            }
-                            else if (postAdd.hdnCateFristLevel == "Construction Vehicles")
-                            {
-                                #region CV
-                                try
-                                {
-                                    ConstructionVehicle objConstructionVehicle = new ConstructionVehicle()
-                                    {
-                                        Company = postAdd.CVCompany_list,
-                                        OtherCompany = postAdd.CVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtCV_MYear,
-                                        Model = postAdd.txtCV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtCV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
-                                    bool isConstructionVehicleUpdated = objPostDbOpareations.UpdateCV(objConstructionVehicle);
-
-                                    if (isConstructionVehicleUpdated)
-                                    {
-                                        ViewBag.addId = postId;
-                                        ViewBag.Message = "updated";
-                                        //return RedirectToAction("Home", "User");
-                                    }
-                                    else
-                                    {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                        ViewBag.Message = "error";
-                                        return View();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At create creating construction vehicles", ex);
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
-
-
-
-                                #endregion
-                            }
-                            else if (postAdd.hdnCateFristLevel == "Transportation Vehicles")
-                            {
-                                #region TV
-                                try
-                                {
-                                    TransportationVehicle objTransportationVehicle = new TransportationVehicle()
-                                    {
-                                        Company = postAdd.TVCompany_list,
-                                        OtherCompany = postAdd.TVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtTV_MYear,
-                                        Model = postAdd.txtTV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtTV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
-
-                                    bool isTransportationVehicleUpdated = objPostDbOpareations.UpdateTV(objTransportationVehicle);
-
-
-                                    if (isTransportationVehicleUpdated)
-                                    {
-                                        ViewBag.addId = postId;
-                                        ViewBag.Message = "updated";
-                                        //return RedirectToAction("Home", "User");
-                                    }
-                                    else
-                                    {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                        ViewBag.Message = "error";
-                                        return View();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At create creating transportation vehicles", ex);
-
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
-
-
-                                #endregion
-                            }
-                            else if (postAdd.hdnCateFristLevel == "Agricultural Vehicles")
-                            {
-
-                                #region AV
-                                try
-                                {
-                                    AgriculturalVehicle objAgriculturalVehicle = new AgriculturalVehicle()
-                                    {
-                                        Company = postAdd.AVCompany_list,
-                                        OtherCompany = postAdd.AVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        ManufacturingYear = postAdd.txtAV_MYear,
-                                        Model = postAdd.txtAV_Model,
-
-                                        Price = Convert.ToInt32(postAdd.txtAV_Price),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
-
-                                    bool isAgriculturalVehicleUpdated = objPostDbOpareations.UpdateAV(objAgriculturalVehicle);
-
-
-                                    if (isAgriculturalVehicleUpdated)
-                                    {
-                                        ViewBag.addId = postId;
-                                        ViewBag.Message = "updated";
-                                        //return RedirectToAction("Home", "User");
-                                    }
-                                    else
-                                    {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                        ViewBag.Message = "error";
-                                        return View();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At create creating agricultural vehicles", ex);
-
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
-
-
-                                #endregion
-                            }
-                            else if (postAdd.hdnCateFristLevel == "Passenger Vehicles")
-                            {
-                                #region PV
-                                try
-                                {
-                                    string modelUpdate = string.Empty;
-
-                                    if (postAdd.hdnCateSecondLevel.Trim() == "Cars" || postAdd.hdnCateSecondLevel.Trim() == "Bikes")
-                                    {
-                                        modelUpdate = postAdd.PVModel_list;
-                                    }
-                                    else
-                                    {
-                                        modelUpdate = postAdd.txtPV_Model;
-                                    }
-
-                                    PassengerVehicle objPassengerVehicle = new PassengerVehicle()
-                                    {
-                                        Company = postAdd.PVCompany_list,
-                                        OtherCompany = postAdd.PVOtherCompany,
-                                        SubCategory = postAdd.hdnCateSecondLevel,
-
-                                        Price = Convert.ToInt32(postAdd.txtPV_price),
-                                        Model = modelUpdate,//postAdd.PVModel_list,
-                                        Year = Convert.ToInt32(postAdd.txtPV_Year),
-                                        FuelType = postAdd.PVfueltype_list,
-                                        KMDriven = Convert.ToInt32(postAdd.txtPV_kmdriven),
-                                        Description = postAdd.txtAddDetails,
-                                        AddId = postId,
-                                        ImgUrlPrimary = img1,
-                                        ImgUrlSeconday = img2,
-                                        ImgUrlThird = img3,
-                                        ImgUrlFourth = img4
-                                    };
-
                                     bool isPassengerVehicleUpdated = objPostDbOpareations.UpdatePV(objPassengerVehicle);
 
                                     if (isPassengerVehicleUpdated)
                                     {
                                         ViewBag.addId = postId;
                                         ViewBag.Message = "updated";
+                                        isChilUpdated = true;
                                         //return RedirectToAction("Home", "User");
                                     }
                                     else
                                     {
-                                        DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                        //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                         ViewBag.Message = "error";
+                                        isChilUpdated = false;
                                         return View();
                                     }
                                 }
-                                catch (Exception ex)
-                                {
-                                    Library.WriteLog("At create creating passenger vehicles", ex);
-
-                                    DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
-                                    ViewBag.Message = "error";
-                                    return View();
-                                }
 
 
-                                #endregion
                             }
+                            catch (Exception ex)
+                            {
+                                Library.WriteLog("At create updating passenger vehicles", ex);
+
+                                DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
+                                ViewBag.Message = "error";
+                                return View();
+                            }
+
+
+                            #endregion
                         }
 
+                        if (isChilUpdated)
+                        {
+                            bool isAddUpdated = objPostDbOpareations.UpdateAdd(add);
+                        }
+                        
 
+                    }
+                    else
+                    {
+                        Library.WriteLog("No Records were found !!! with id " + postId);
                     }
                 }
                 catch (Exception ex)
@@ -1770,6 +1531,238 @@ namespace Classigoo.Controllers
             }
 
             return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+        public string[] GetOldImages(string category, string[] Oldimages, string addId)
+        {
+
+            CommonDBOperations objCommonDBOperation = new CommonDBOperations();
+            string[] imges = new string[4];
+
+            #region switch 
+            switch (category)
+            {
+                case Constants.AgriculturalVehicle:
+                    var av = objCommonDBOperation.GetAV(addId);
+
+                    if (av != null)
+                    {
+
+                        if (Oldimages[0] == string.Empty)
+                        {
+                            imges[0] = av.ImgUrlPrimary;
+                        }
+                        else
+                        {
+                            imges[0] = Oldimages[0];
+                        }
+
+                        if (Oldimages[1] == string.Empty)
+                        {
+                            imges[1] = av.ImgUrlSeconday;
+                        }
+                        else
+                        {
+                            imges[1] = Oldimages[1];
+                        }
+
+                        if (Oldimages[2] == string.Empty)
+                        {
+                            imges[2] = av.ImgUrlThird;
+                        }
+                        else
+                        {
+                            imges[2] = Oldimages[2];
+                        }
+
+                        if (Oldimages[3] == string.Empty)
+                        {
+                            imges[3] = av.ImgUrlFourth;
+                        }
+                        else
+                        {
+                            imges[3] = Oldimages[3];
+                        }
+                    }
+                    break;
+                case Constants.TransportationVehicle:
+                    var tv = objCommonDBOperation.GetTV(addId);
+
+                    if (tv != null)
+                    {
+
+                        if (Oldimages[0] == string.Empty)
+                        {
+                            imges[0] = tv.ImgUrlPrimary;
+                        }
+                        else
+                        {
+                            imges[0] = Oldimages[0];
+                        }
+
+                        if (Oldimages[1] == string.Empty)
+                        {
+                            imges[1] = tv.ImgUrlSeconday;
+                        }
+                        else
+                        {
+                            imges[1] = Oldimages[1];
+                        }
+
+                        if (Oldimages[2] == string.Empty)
+                        {
+                            imges[2] = tv.ImgUrlThird;
+                        }
+                        else
+                        {
+                            imges[2] = Oldimages[2];
+                        }
+
+                        if (Oldimages[3] == string.Empty)
+                        {
+                            imges[3] = tv.ImgUrlFourth;
+                        }
+                        else
+                        {
+                            imges[3] = Oldimages[3];
+                        }
+                    }
+                    break;
+                case Constants.PassengerVehicle:
+                    var pv = objCommonDBOperation.GetPV(addId);
+
+                    if (pv != null)
+                    {
+
+                        if (Oldimages[0] == string.Empty)
+                        {
+                            imges[0] = pv.ImgUrlPrimary;
+                        }
+                        else
+                        {
+                            imges[0] = Oldimages[0];
+                        }
+
+                        if (Oldimages[1] == string.Empty)
+                        {
+                            imges[1] = pv.ImgUrlSeconday;
+                        }
+                        else
+                        {
+                            imges[1] = Oldimages[1];
+                        }
+
+                        if (Oldimages[2] == string.Empty)
+                        {
+                            imges[2] = pv.ImgUrlThird;
+                        }
+                        else
+                        {
+                            imges[2] = Oldimages[2];
+                        }
+
+                        if (Oldimages[3] == string.Empty)
+                        {
+                            imges[3] = pv.ImgUrlFourth;
+                        }
+                        else
+                        {
+                            imges[3] = Oldimages[3];
+                        }
+                    }
+                    break;
+                case Constants.RealEstate:
+                    var re = objCommonDBOperation.GetRealEstate(addId);
+
+                    if (re != null)
+                    {
+
+                        if (Oldimages[0] == string.Empty)
+                        {
+                            imges[0] = re.ImgUrlPrimary;
+                        }
+                        else
+                        {
+                            imges[0] = Oldimages[0];
+                        }
+
+                        if (Oldimages[1] == string.Empty)
+                        {
+                            imges[1] = re.ImgUrlSeconday;
+                        }
+                        else
+                        {
+                            imges[1] = Oldimages[1];
+                        }
+
+                        if (Oldimages[2] == string.Empty)
+                        {
+                            imges[2] = re.ImgUrlThird;
+                        }
+                        else
+                        {
+                            imges[2] = Oldimages[2];
+                        }
+
+                        if (Oldimages[3] == string.Empty)
+                        {
+                            imges[3] = re.ImgUrlFourth;
+                        }
+                        else
+                        {
+                            imges[3] = Oldimages[3];
+                        }
+                    }
+                    break;
+                case Constants.ConstructionVehicle:
+                    var cv = objCommonDBOperation.GetCV(addId);
+
+                    if (cv != null)
+                    {
+
+                        if (Oldimages[0] == string.Empty)
+                        {
+                            imges[0] = cv.ImgUrlPrimary;
+                        }
+                        else
+                        {
+                            imges[0] = Oldimages[0];
+                        }
+
+                        if (Oldimages[1] == string.Empty)
+                        {
+                            imges[1] = cv.ImgUrlSeconday;
+                        }
+                        else
+                        {
+                            imges[1] = Oldimages[1];
+                        }
+
+                        if (Oldimages[2] == string.Empty)
+                        {
+                            imges[2] = cv.ImgUrlThird;
+                        }
+                        else
+                        {
+                            imges[2] = Oldimages[2];
+                        }
+
+                        if (Oldimages[3] == string.Empty)
+                        {
+                            imges[3] = cv.ImgUrlFourth;
+                        }
+                        else
+                        {
+                            imges[3] = Oldimages[3];
+                        }
+                    }
+                    break;
+
+
+            }
+            #endregion
+
+            return imges;
         }
 
     }
