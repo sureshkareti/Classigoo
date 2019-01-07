@@ -30,5 +30,47 @@ namespace Classigoo.Models
 
             return null;
         }
+
+        public List<string> GetOwnersMobileNos()
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+          List<string> mnColl = classigooEntities.Adds.Include("User").ToList().Select(add => add.User.MobileNumber).ToList();
+                    // .//Include("User").Select(user=>user.User.MobileNumber)
+
+                    return mnColl.Distinct<string>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
+
+        public List<string> GetConsumersMobileNos()
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    List<string> mnColl = classigooEntities.Surveys.Select(consumer => consumer.PhoneNumber).ToList();
+                    // .//Include("User").Select(user=>user.User.MobileNumber)
+
+                    return mnColl.Distinct<string>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetConsumersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
     }
 }

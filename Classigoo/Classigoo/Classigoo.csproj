@@ -212,7 +212,7 @@
       <DependentUpon>Classigoo.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Models\AdminController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\PostApiController.cs" />
     <Compile Include="Controllers\PostController.cs" />

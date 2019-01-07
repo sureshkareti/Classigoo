@@ -164,7 +164,7 @@
                             </div><!-- end row -->
                             <div class="form-group mb-0 justify-content-end row">
                                 <div class="col-10">
-                                    <button type="submit" class="btn btn-info waves-effect waves-light">Send SMS</button>
+                                    <button type="button" class="btn btn-info waves-effect waves-light" id="btnSendSms">Send SMS</button>
                                 </div>
                             </div>
                         </div>
@@ -644,7 +644,22 @@
             }
         }
 
+        $("#btnSendSms").click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("SendSMS", "Admin")',
+                cache: false,
+                data: { "msg": "gjgjgj" },
+                success: function (data) {
+                    //alert(JSON.stringify(data))
+                   // $('.modal-dialog').html("");
+                    //$('.modal-dialog').html(data);
+                },
+                error: function (response) {
 
+                }
+            })
+        });
 
     </script>
 

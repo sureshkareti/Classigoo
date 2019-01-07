@@ -216,5 +216,31 @@ namespace Classigoo.Controllers
            
             
         }
+
+        public ActionResult SendSms(string msg)
+        {
+            try
+            {
+                AdminService objAdmin = new AdminService();
+            List<string> phoneNumColl=  objAdmin.GetOwnersMobileNos();
+               
+                Communication objComm = new Communication();
+                foreach (string phoneNum in phoneNumColl)
+                {
+                    if (!string.IsNullOrEmpty(phoneNum))
+                        objComm.SendMessage(phoneNum, msg);
+
+                }
+                ViewBag.Status = "Messages have been sent successfully";
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+                ViewBag.Status = "Error occured while sending Messages.";
+            }
+
+            return PartialView();
+        }
     }
 }
