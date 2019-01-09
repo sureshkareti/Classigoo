@@ -254,49 +254,84 @@ namespace Classigoo.Models
                         }
                         else if (type == "Construction Vehicles")
                         {
-                            ConstructionVehicle objCV = classigooEntities.ConstructionVehicles.First(x => x.AddId == objAdd.AddId);
-                            if (objCV != null)
+                            var objCVTemp = classigooEntities.ConstructionVehicles.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                            if (objCVTemp.Count > 0)
                             {
-                                DeleteImageLocal(new List<string>() { objCV.ImgUrlPrimary, objCV.ImgUrlSeconday, objCV.ImgUrlThird, objCV.ImgUrlFourth });
+                                var objCV = objCVTemp[0];
+                                if (objCV != null)
+                                {
+                                    DeleteImageLocal(new List<string>() { objCV.ImgUrlPrimary, objCV.ImgUrlSeconday, objCV.ImgUrlThird, objCV.ImgUrlFourth });
 
 
-                                classigooEntities.ConstructionVehicles.Remove(objCV);
-                                classigooEntities.SaveChanges();
+                                    classigooEntities.ConstructionVehicles.Remove(objCV);
+                                    classigooEntities.SaveChanges();
+                                }
                             }
                         }
                         else if (type == "Transportation Vehicles")
                         {
-                            TransportationVehicle objTV = classigooEntities.TransportationVehicles.First(x => x.AddId == objAdd.AddId);
-                            if (objTV != null)
-                            {
-                                DeleteImageLocal(new List<string>() { objTV.ImgUrlPrimary, objTV.ImgUrlSeconday, objTV.ImgUrlThird, objTV.ImgUrlFourth });
 
-                                classigooEntities.TransportationVehicles.Remove(objTV);
-                                classigooEntities.SaveChanges();
+                            var objTVTemp = classigooEntities.TransportationVehicles.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                            if (objTVTemp.Count>0)
+                            {
+                                var objTV = objTVTemp[0];
+                                if (objTV != null)
+                                {
+                                    DeleteImageLocal(new List<string>() { objTV.ImgUrlPrimary, objTV.ImgUrlSeconday, objTV.ImgUrlThird, objTV.ImgUrlFourth });
+
+                                    classigooEntities.TransportationVehicles.Remove(objTV);
+                                    classigooEntities.SaveChanges();
+                                }
                             }
+                            
                         }
                         else if (type == "Agricultural Vehicles")
                         {
-                            AgriculturalVehicle objAV = classigooEntities.AgriculturalVehicles.First(x => x.AddId == objAdd.AddId);
-                            if (objAV != null)
+                            var objAVTemp = classigooEntities.AgriculturalVehicles.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                            if (objAVTemp.Count > 0)
                             {
-                                DeleteImageLocal(new List<string>() { objAV.ImgUrlPrimary, objAV.ImgUrlSeconday, objAV.ImgUrlThird, objAV.ImgUrlFourth });
+                                var objAV = objAVTemp[0];
 
-                                classigooEntities.AgriculturalVehicles.Remove(objAV);
-                                classigooEntities.SaveChanges();
+                                if (objAV != null)
+                                {
+                                    DeleteImageLocal(new List<string>() { objAV.ImgUrlPrimary, objAV.ImgUrlSeconday, objAV.ImgUrlThird, objAV.ImgUrlFourth });
+
+                                    classigooEntities.AgriculturalVehicles.Remove(objAV);
+                                    classigooEntities.SaveChanges();
+                                }
                             }
 
                         }
                         else if (type == "Passenger Vehicles")
                         {
-                            PassengerVehicle objPV = classigooEntities.PassengerVehicles.First(x => x.AddId == objAdd.AddId);
-                            if (objPV != null)
+                            var objPVTemp = classigooEntities.PassengerVehicles.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                            if (objPVTemp.Count > 0)
                             {
-                                DeleteImageLocal(new List<string>() { objPV.ImgUrlPrimary, objPV.ImgUrlSeconday, objPV.ImgUrlThird, objPV.ImgUrlFourth });
+                                var objPV = objPVTemp[0];
+                                if (objPV != null)
+                                {
+                                    DeleteImageLocal(new List<string>() { objPV.ImgUrlPrimary, objPV.ImgUrlSeconday, objPV.ImgUrlThird, objPV.ImgUrlFourth });
 
-                                classigooEntities.PassengerVehicles.Remove(objPV);
-                                classigooEntities.SaveChanges();
+                                    classigooEntities.PassengerVehicles.Remove(objPV);
+                                    classigooEntities.SaveChanges();
+                                }
                             }
+                            
+                        }
+                        //deleting messages for add
+                        var objMessagesTemp = classigooEntities.Messages.ToList().FindAll(x => x.AdId == objAdd.AddId);
+
+                        if (objMessagesTemp.Count > 0)
+                        {
+                            classigooEntities.Messages.RemoveRange(objMessagesTemp);
+                        }
+
+                        //deleting servay for add
+                        var objServayTemp = classigooEntities.Surveys.ToList().FindAll(x => x.AddId == objAdd.AddId);
+
+                        if (objServayTemp.Count > 0)
+                        {
+                            classigooEntities.Surveys.RemoveRange(objServayTemp);
                         }
 
                         classigooEntities.Adds.Remove(objAdd);

@@ -11,3 +11,23 @@ System ; Failure sending mail.
 mscorlib ; Nullable object must have a value.
 1/8/2019 1:14:45 AM : At fill chat
 mscorlib ; Nullable object must have a value.
+1/9/2019 12:48:24 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+1/9/2019 12:53:24 AM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+1/9/2019 12:54:10 AM : exception at delete complete add postdboperations
+System.Core ; Sequence contains no elements
+1/9/2019 1:03:23 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+1/9/2019 1:12:45 AM : exception at delete complete add postdboperations
+EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+1/9/2019 1:12:45 AM : EntityFramework ; An error occurred while updating the entries. See the inner exception for details.
+1/9/2019 1:13:12 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+1/9/2019 1:13:20 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+1/9/2019 1:19:38 AM : At fill chat
+mscorlib ; Nullable object must have a value.
+1/9/2019 2:05:46 AM : Error occured while sending an email 
+System ; Failure sending mail.
+1/9/2019 2:05:46 AM : System ; Unable to connect to the remote server

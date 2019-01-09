@@ -778,7 +778,7 @@ function DisplayRespectiveFields() {
         fillFromJson("AV");
 
         var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory === "Borewell Machine") {
+        if (selectedSubCategory === "Borewell Machines") {
             $("#divAVPrice").css('display', 'none');
         }
         else {
@@ -1132,7 +1132,7 @@ window.BindEdit = function () {
         fillFromJson("AV");
 
         var selectedSubCategory = $("#hdnCateSecondLevel").val();
-        if (selectedSubCategory === "Borewell Machine") {
+        if (selectedSubCategory === "Borewell Machines") {
             $("#divAVPrice").css('display', 'none');
         }
         else {
