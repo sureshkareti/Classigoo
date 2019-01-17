@@ -62,10 +62,12 @@
                     <!--<span class="logo-large"><i class="mdi mdi-radar"></i> Adminto</span>-->
                     <!--</a>-->
                     <!-- Image Logo -->
-                    <a href="index.html" class="logo">
-                        <img src="~/Content/Admin/assets/images/logo-sm.png" alt="" height="40" class="logo-small">
-                        <img src="~/Content/Admin/assets/images/logo.png" alt="" height="40" class="logo-large">
+                    <a href="~/Admin/Dashboard" class="logo">
+
+                        <img src="~/images/cg.jpg" alt="" height="40" class="logo-small">
+                        <img src="~/images/Classigoo_Logox50.png" alt="" height="40" class="logo-large">
                     </a>
+
                 </div>
                 <!-- End Logo container-->
 
@@ -122,7 +124,7 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="~/Home/SignOut" class="dropdown-item notify-item">
+                                <a href="~/Login/SignOut" class="dropdown-item notify-item">
                                     <i class="ti-power-off m-r-5"></i> Logout
                                 </a>
                             </div>
@@ -140,41 +142,31 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->
                     <ul class="navigation-menu">
+                        @if ( Convert.ToString( @HttpContext.Current.Session["LoginUserRole"]) == "Admin")
+                        {
+                            <li class="has-submenu">
+                                <a href="~/Admin/Dashboard"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="~/Admin/SendMessage"><i class="mdi mdi-cloud-upload"></i> <span> Send Messages </span> </a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#"><i class="mdi mdi-texture"></i><span> Configurations </span> </a>
+                                <ul class="submenu">
+                                    <li><a href="~/Admin/AddUser">User Settings</a></li>
 
-                        <li class="has-submenu">
-                            <a href="~/Admin/GetApplications"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="~/Maker/bulkupload"><i class="mdi mdi-cloud-upload"></i> <span> Bulk Upload </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="~/Maker/submitapp"><i class="mdi mdi-server-plus"></i> <span> Submit App</span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                        </li>
-                        <li class="has-submenu">
-                            <a href="index.html"><i class="mdi mdi-account-search"></i> <span> Search </span> </a>
-                        </li>
+                                    <li><a href="~/Admin/EmailSettings">Email Settings</a></li>
+                                    <li><a href="~/Admin/ReportSettings">Report Settings</a></li>
+                                </ul>
+                            </li>
+                        }
 
-                        <li class="has-submenu">
-                            <a href="#"><i class="mdi mdi-texture"></i><span> Configurations </span> </a>
-                            <ul class="submenu">
-                                <li><a href="~/Admin/AddUser">User Settings</a></li>
-
-                                <li><a href="~/Admin/EmailSettings">Email Settings</a></li>
-                                <li><a href="~/Admin/ReportSettings">Report Settings</a></li>
-                            </ul>
-                        </li>
+                        @if (Convert.ToString(@HttpContext.Current.Session["LoginUserRole"]) == "Employee")
+                        {
+                            <li class="has-submenu">
+                                <a href="~/Admin/EmployeeDashboard"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                            </li>
+                        }
 
                     </ul>
                     <!-- End navigation menu -->
@@ -201,7 +193,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    2018 © Candour.org.in
+                    2018 © Classigoo.org.in
                 </div>
             </div>
         </div>
@@ -219,6 +211,8 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+           
             $("#hideHeader").click(function () {
 
                 if ($('#idNavBar').is(':hidden')) {

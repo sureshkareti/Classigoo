@@ -20,7 +20,6 @@ namespace Classigoo
         public ClassigooEntities()
             : base("name=ClassigooEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -40,6 +39,8 @@ namespace Classigoo
         public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
+        public virtual DbSet<LoginUser> LoginUsers { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
     
         public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, Nullable<System.DateTime> createdDate, ObjectParameter addId)
         {

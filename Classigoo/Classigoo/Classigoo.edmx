@@ -78,6 +78,17 @@
           <Property Name="UserId" Type="varchar" MaxLength="250" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="LoginUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="15" />
+          <Property Name="FirstName" Type="varchar" MaxLength="500" />
+          <Property Name="LastName" Type="varchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
         <EntityType Name="Messages">
           <Key>
             <PropertyRef Name="MsgId" />
@@ -134,6 +145,13 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="Acres" Type="smallmoney" />
         </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="SubCategory">
           <Key>
             <PropertyRef Name="Id" />
@@ -183,6 +201,18 @@
           <Property Name="Type" Type="varchar" MaxLength="10" />
           <Property Name="Created" Type="datetime" />
         </EntityType>
+        <Association Name="FK__LoginUser__RoleI__51300E55">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="LoginUsers" Type="Self.LoginUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoginUsers">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SubCatego__Categ__3E1D39E1">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
@@ -347,13 +377,19 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConstructionVehicle" EntityType="Self.ConstructionVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginUsers" EntityType="Self.LoginUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PassengerVehicle" EntityType="Self.PassengerVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RealEstate" EntityType="Self.RealEstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransportationVehicle" EntityType="Self.TransportationVehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__LoginUser__RoleI__51300E55" Association="Self.FK__LoginUser__RoleI__51300E55">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="LoginUsers" EntitySet="LoginUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK__SubCatego__Categ__3E1D39E1" Association="Self.FK__SubCatego__Categ__3E1D39E1">
             <End Role="Category" EntitySet="Category" />
             <End Role="SubCategory" EntitySet="SubCategory" />
@@ -473,6 +509,12 @@
           <AssociationSet Name="FK__SubCatego__Categ__3E1D39E1" Association="ClassigooModel.FK__SubCatego__Categ__3E1D39E1">
             <End Role="Category" EntitySet="Categories" />
             <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <EntitySet Name="LoginUsers" EntityType="ClassigooModel.LoginUser" />
+          <EntitySet Name="Roles" EntityType="ClassigooModel.Role" />
+          <AssociationSet Name="FK__LoginUser__RoleI__51300E55" Association="ClassigooModel.FK__LoginUser__RoleI__51300E55">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="LoginUser" EntitySet="LoginUsers" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="User">
@@ -819,6 +861,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="LoginUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="ClassigooModel.FK__LoginUser__RoleI__51300E55" FromRole="LoginUser" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LoginUsers" Relationship="ClassigooModel.FK__LoginUser__RoleI__51300E55" FromRole="Role" ToRole="LoginUser" />
+        </EntityType>
+        <Association Name="FK__LoginUser__RoleI__51300E55">
+          <End Type="ClassigooModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="ClassigooModel.LoginUser" Role="LoginUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LoginUser">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1012,6 +1086,26 @@
               <MappingFragment StoreEntitySet="SubCategory">
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginUsers">
+            <EntityTypeMapping TypeName="ClassigooModel.LoginUser">
+              <MappingFragment StoreEntitySet="LoginUsers">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ClassigooModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

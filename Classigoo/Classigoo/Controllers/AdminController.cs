@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Caching;
 using Classigoo.Models.Search;
 using Newtonsoft.Json;
+using Classigoo.Business;
 
 namespace Classigoo.Controllers
 {
@@ -18,6 +19,7 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult Dashboard()
         {
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
@@ -35,10 +37,21 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At Admin", ex);
             }
+
+            ViewBag.role = "Admin";
+
             return View(adminDashboard);
 
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult EmployeeDashboard()
+        {
+            ViewBag.role = "Employee";
+            return View();
+        }
+
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult SendMessage()
         {
             //var cachedCategories = HttpContext.Cache.Get("Categories") as List<Category>;

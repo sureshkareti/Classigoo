@@ -37,6 +37,10 @@ namespace Classigoo.Controllers
             //{
             //    userId = (Guid)Session["UserId"];
             //}
+
+            string addId = Request.QueryString["addId"];
+
+
             userId = objUserCont.GetUserId();
             if (userId != Guid.Empty)
             {
@@ -48,7 +52,6 @@ namespace Classigoo.Controllers
                 ViewBag.Number = user.MobileNumber;
             }
 
-            string addId = Request.QueryString["addId"];
 
             if (addId != null)
             {
@@ -64,6 +67,8 @@ namespace Classigoo.Controllers
                     //PostDBOperations objPostDbOpareations = new PostDBOperations();
                     CommonDBOperations objCommonDBOperations = new CommonDBOperations();
                     Add addRecord = objCommonDBOperations.GetAdd(addId);
+                    User user = userObj.GetUser((Guid)addRecord.UserId);
+
                     Guid adminUserId = userObj.UserExist("1111111111", "Custom");
                     bool isAuthorizedUser = false;
 
@@ -92,6 +97,10 @@ namespace Classigoo.Controllers
                         objPostAdd.Mandal = addRecord.Mandal;
                         objPostAdd.LocalArea = addRecord.NearestArea;
                         objPostAdd.ddlRentOrSale = addRecord.Type;
+
+                        ViewBag.Name = user.Name;
+                        ViewBag.Number = user.MobileNumber;
+
 
 
                         if (addRecord.Category == Constants.RealEstate)
@@ -752,6 +761,10 @@ namespace Classigoo.Controllers
                     ViewBag.Message = "nologin";
                     return View();
                 }
+                else if ((Session["LoginUserRole"] != null) && ((string)Session["LoginUserRole"] != "Admin"))
+                {
+                    bool isAuthorizedUser = true;
+                }
                 else
                 {
                     bool isAuthorizedUser = false;
@@ -1306,7 +1319,7 @@ namespace Classigoo.Controllers
 
                                 //DeleteAdd(postAdd.hdnCateFristLevel, Convert.ToString(postId));
                                 ViewBag.Message = "error";
-                                isChilUpdated = false;  
+                                isChilUpdated = false;
                                 return View();
                             }
 
@@ -1408,7 +1421,7 @@ namespace Classigoo.Controllers
                         {
                             bool isAddUpdated = objPostDbOpareations.UpdateAdd(add);
                         }
-                        
+
 
                     }
                     else
