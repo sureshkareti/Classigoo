@@ -69,10 +69,10 @@
                         <h4><a href="#" category="Passenger Vehicles" type="Rent">Passenger Vehicles</a></h4>
 
                         <div class="categories">
-                            <a href="#" category="Passenger Vehicles" type="Rent"> For Rent (<span id="pvRentCount">0</span>)</a>
+                            <a href="#" category="Passenger Vehicles" type="Rent"> For Rent @*(<span id="pvRentCount">0</span>)*@</a>
                         </div>
                         <div class="categories">
-                            <a href="#" category="Passenger Vehicles" type="Sale">For Sale (<span id="pvSaleCount">0</span>)</a>
+                            <a href="#" category="Passenger Vehicles" type="Sale">For Sale @*(<span id="pvSaleCount">0</span>)*@</a>
                         </div>
                     </div>
                 </div>
@@ -88,10 +88,10 @@
                         <h4><a href="#" category="Agricultural Vehicles" type="Rent">Agricultural Vehicles</a></h4>
 
                         <div class="categories">
-                            <a href="#" category="Agricultural Vehicles" type="Rent">For Rent (<span id="avRentCount">0</span> )</a>
+                            <a href="#" category="Agricultural Vehicles" type="Rent">For Rent @*(<span id="avRentCount">0</span> )*@</a>
                         </div>
                         <div class="categories">
-                            <a href="#" category="Agricultural Vehicles" type="Sale">For Sale (<span id="avSaleCount">0</span> )</a>
+                            <a href="#" category="Agricultural Vehicles" type="Sale">For Sale @*(<span id="avSaleCount">0</span> )*@</a>
                         </div>
                     </div>
                 </div>
@@ -117,10 +117,10 @@
                         <h4><a href="#" category="Transportation Vehicles" type="Rent">Transportation Vehicles</a></h4>
 
                         <div class="categories">
-                            <a href="#" category="Transportation Vehicles" type="Rent">For Rent (<span id="tvRentCount">0</span> )</a>
+                            <a href="#" category="Transportation Vehicles" type="Rent">For Rent @*(<span id="tvRentCount">0</span> )*@</a>
                         </div>
                         <div class="categories">
-                            <a href="#" category="Transportation Vehicles" type="Sale">For Sale (<span id="tvSaleCount">0</span> )</a>
+                            <a href="#" category="Transportation Vehicles" type="Sale">For Sale @*(<span id="tvSaleCount">0</span> )*@</a>
                         </div>
                     </div>
                 </div>
@@ -134,10 +134,10 @@
                         <h4><a href="#" category="Construction Vehicles" type="Rent">Construction Vehicles</a></h4>
 
                         <div class="categories">
-                            <a href="#" category="Construction Vehicles" type="Rent">For Rent (<span id="cvRentCount">0</span> )</a>
+                            <a href="#" category="Construction Vehicles" type="Rent">For Rent @*(<span id="cvRentCount">0</span> )*@</a>
                         </div>
                         <div class="categories">
-                            <a href="#" category="Construction Vehicles" type="Sale">For Sale (<span id="cvSaleCount">0</span> )</a>
+                            <a href="#" category="Construction Vehicles" type="Sale">For Sale @*(<span id="cvSaleCount">0</span> )*@</a>
                         </div>
                     </div>
                 </div>
@@ -163,10 +163,10 @@
                         <h4><a href="#" category="Real Estate" type="Rent">Real Estate</a></h4>
 
                         <div class="categories">
-                            <a href="#" category="Real Estate" type="Rent">For Rent (<span id="reRentCount">0</span> )</a>
+                            <a href="#" category="Real Estate" type="Rent">For Rent @*(<span id="reRentCount">0</span> )*@</a>
                         </div>
                         <div class="categories">
-                            <a href="#" category="Real Estate" type="Sale">For Sale (<span id="reSaleCount">0</span> )</a>
+                            <a href="#" category="Real Estate" type="Sale">For Sale @*(<span id="reSaleCount">0</span> )*@</a>
                         </div>
                     </div>
                 </div>
@@ -433,8 +433,8 @@
                 window.location.href = "/List/Index?category=" + currentCat + "&subCategory=" + escape(currentSubCat);
             });
 
-            GetAddsCount();
-            GetSubCatCount();
+            //GetAddsCount();
+            //GetSubCatCount();
             $("#divCategory a").click(function () {
                 var selectedCategory = $(this).attr("category");
                 var type = $(this).attr("type");
