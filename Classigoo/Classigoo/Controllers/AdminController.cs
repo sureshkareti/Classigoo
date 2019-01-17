@@ -73,9 +73,9 @@ namespace Classigoo.Controllers
             List<Category> categoriesList = AdminService.GetCatagories();
 
             List<SelectListItem> categorySelectList = new List<SelectListItem>();
-            foreach(Category category in categoriesList)
+            foreach (Category category in categoriesList)
             {
-                categorySelectList.Add(new SelectListItem { Text = category.Name, Value = Convert.ToString( category.Id )});
+                categorySelectList.Add(new SelectListItem { Text = category.Name, Value = Convert.ToString(category.Id) });
 
             }
 
@@ -98,7 +98,7 @@ namespace Classigoo.Controllers
                     subcategorySelectList.Add(new SelectListItem { Text = subCaretogry.Name, Value = Convert.ToString(subCaretogry.Id) });
 
                 }
-            }       
+            }
             return Json(new SelectList(subcategorySelectList, "Value", "Text", JsonRequestBehavior.AllowGet));
         }
 
@@ -106,36 +106,36 @@ namespace Classigoo.Controllers
         {
             //if (isAdmin())
             //{
-                IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
-               // IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
-               // AdminDashboard adminDashboard = new AdminDashboard();
-                try
-                {
-                    UserDBOperations db = new UserDBOperations();
-                    addColl = db.GetAdminAdds();
-                   // surveyColl = db.GetSurvey();
-                   // adminDashboard.SurveyColl = surveyColl;
-                   // adminDashboard.AddsColl = addColl;
-                }
-                catch (Exception ex)
-                {
-                    Library.WriteLog("At Admin", ex);
-                }
-                return View(addColl);
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            // IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            // AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+                // surveyColl = db.GetSurvey();
+                // adminDashboard.SurveyColl = surveyColl;
+                // adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin", ex);
+            }
+            return View(addColl);
             //}
             //else
             //{
             //    return RedirectToAction("Login", "User");
             //}
-            
+
         }
 
         public ActionResult CustInfo()
         {
             //if (isAdmin())
             //{
-           // IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
-             IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            // IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
             // AdminDashboard adminDashboard = new AdminDashboard();
             try
             {
@@ -222,12 +222,12 @@ namespace Classigoo.Controllers
             //}
             //else
             //{
-                AjaxResponse<string> objAjaxResponse = new AjaxResponse<string>() { Status = ResponseStatus.failure, Data = "Invalid Input" };
-                return Json(JsonConvert.SerializeObject(objAjaxResponse), JsonRequestBehavior.AllowGet);
+            AjaxResponse<string> objAjaxResponse = new AjaxResponse<string>() { Status = ResponseStatus.failure, Data = "Invalid Input" };
+            return Json(JsonConvert.SerializeObject(objAjaxResponse), JsonRequestBehavior.AllowGet);
             //}
-            
-           
-            
+
+
+
         }
 
         public ActionResult SendSms(string msg)
@@ -235,8 +235,8 @@ namespace Classigoo.Controllers
             try
             {
                 AdminService objAdmin = new AdminService();
-            List<string> phoneNumColl=  objAdmin.GetOwnersMobileNos();
-               
+                List<string> phoneNumColl = objAdmin.GetOwnersMobileNos();
+
                 Communication objComm = new Communication();
                 foreach (string phoneNum in phoneNumColl)
                 {
@@ -254,6 +254,22 @@ namespace Classigoo.Controllers
             }
 
             return PartialView();
+        }
+
+        public JsonResult GetOwnersData()
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Json(addColl, JsonRequestBehavior.AllowGet);
         }
     }
 }

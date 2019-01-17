@@ -168,7 +168,7 @@ namespace Classigoo.Models
                         .Where(add=>add.Type.ToLower()==type.ToLower())
                         .Where(add=>add.Status==Constants.ActiveSatus)
                         .OrderByDescending(add => add.Created)
-                                   .Take(4).ToList();
+                                   .Take(9).ToList();
                 }
             }
             catch(Exception ex)
