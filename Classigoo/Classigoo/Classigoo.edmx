@@ -22,6 +22,7 @@
           <Property Name="SubCategory" Type="varchar" MaxLength="500" />
           <Property Name="NearestArea" Type="varchar" MaxLength="500" />
           <Property Name="Remarks" Type="varchar" MaxLength="1500" />
+          <Property Name="PostedBy" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="AgriculturalVehicle">
           <Key>
@@ -670,6 +671,7 @@
           <NavigationProperty Name="TransportationVehicles" Relationship="ClassigooModel.FK_TransportationVehicle_Adds" FromRole="Add" ToRole="TransportationVehicle" />
           <NavigationProperty Name="Messages" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Add" ToRole="Message" />
           <NavigationProperty Name="Surveys" Relationship="ClassigooModel.FK_Survey_Adds" FromRole="Add" ToRole="Survey" />
+          <Property Name="PostedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -1030,6 +1032,7 @@
           <EntitySetMapping Name="Adds">
             <EntityTypeMapping TypeName="ClassigooModel.Add">
               <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />
                 <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />

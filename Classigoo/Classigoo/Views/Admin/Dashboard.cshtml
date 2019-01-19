@@ -329,6 +329,7 @@
             $('.edit-mode').hide();
             var table = $('#tblAdds').DataTable({
                 "responsive": true,
+                "pageLength": 40,
                 stateSave: true,
                 columnDefs: [
                                 {
@@ -378,25 +379,25 @@
 
             $('#txtAddidSearch').on('keyup', function () {
                 table
-                    .columns(1)
+                    .columns(2)
                     .search(this.value)
                     .draw();
             });
             $('#txtSubcategorySearch').on('keyup', function () {
                 table
-                    .columns(3)
+                    .columns(4)
                     .search(this.value)
                     .draw();
             });
             $('#ddlCategorySearch').on('change', function () {
                 table
-                      .columns(10)
+                      .columns(11)
                       .search(this.value)
                       .draw();
             });
             $('#ddlStatusSearch').on('change', function () {
                 table
-                      .columns(7)
+                      .columns(8)
                       .search(this.value)
                       .draw();
             });
