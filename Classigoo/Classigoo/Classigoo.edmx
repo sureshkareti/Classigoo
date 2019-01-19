@@ -370,6 +370,7 @@
           <Parameter Name="Status" Type="varchar" Mode="In" />
           <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="PostedBy" Type="varchar" Mode="In" />
           <Parameter Name="AddId" Type="int" Mode="InOut" />
         </Function>
         <EntityContainer Name="ClassigooModelStoreContainer">
@@ -454,6 +455,7 @@
             <Parameter Name="Status" Mode="In" Type="String" />
             <Parameter Name="UserId" Mode="In" Type="Guid" />
             <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PostedBy" Mode="In" Type="String" />
             <Parameter Name="AddId" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Logs" EntityType="ClassigooModel.Log" />

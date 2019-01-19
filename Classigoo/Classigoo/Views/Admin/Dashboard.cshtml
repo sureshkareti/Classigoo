@@ -284,7 +284,12 @@
 </div><!-- /.modal -->
 
 
-
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
+        <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        <span class="loader-item"></span><span class="loader-item"></span>
+    </div>
+</div>
 @section Styles {
     <!-- DataTables -->
     @*<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />*@
@@ -293,7 +298,7 @@
     @*<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-
+   @*<link href="~/Content/List/color1.css" rel="stylesheet" />*@
     @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
     <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
 
@@ -323,9 +328,49 @@
     <script type="text/javascript">
 
         var toastCount = 0;
+        function FnEditCancel(e) {
+            var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+            var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
+            $(editElemts).each(function (index) {
+                $(this).toggle();
+            });
+            $(displayElemts).each(function (index) {
+                $(this).toggle();
+            });
+        }
 
+        function FnSave(e) {
+            $(".loader-wrap").show();
+            var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
+            var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
+            var status = editElemts.ddlStatus.value;
+            var remarks = editElemts.txtRemarks.value
+            var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
+            var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
+            var userName = userElemts.userName.innerText;
+            var userPhoneNum = userElemts.userPhoneNum.innerText;
+            $.ajax({
+                url: '/User/UpdateAddStatus/',
+                data: { addId: addId, status: status, remarks: remarks, userName: userName, userPhoneNum: userPhoneNum },
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+
+                    window.location.href = "/Admin/Dashboard";
+                    $(".loader-wrap").hide();
+
+                },
+                failure: function (response) {
+                    console.log(response.responseText);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+
+        }
         $(document).ready(function () {
-
+           
             $('.edit-mode').hide();
             var table = $('#tblAdds').DataTable({
                 "responsive": true,

@@ -42,7 +42,7 @@ namespace Classigoo
         public virtual DbSet<LoginUser> LoginUsers { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
     
-        public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, Nullable<System.DateTime> createdDate, ObjectParameter addId)
+        public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, Nullable<System.DateTime> createdDate, string postedBy, ObjectParameter addId)
         {
             var categoryParameter = category != null ?
                 new ObjectParameter("Category", category) :
@@ -88,7 +88,11 @@ namespace Classigoo
                 new ObjectParameter("CreatedDate", createdDate) :
                 new ObjectParameter("CreatedDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryParameter, subCategoryParameter, stateParameter, districtParameter, mandalParameter, nearestAreaParameter, titleParameter, typeParameter, statusParameter, userIdParameter, createdDateParameter, addId);
+            var postedByParameter = postedBy != null ?
+                new ObjectParameter("PostedBy", postedBy) :
+                new ObjectParameter("PostedBy", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FillAds", categoryParameter, subCategoryParameter, stateParameter, districtParameter, mandalParameter, nearestAreaParameter, titleParameter, typeParameter, statusParameter, userIdParameter, createdDateParameter, postedByParameter, addId);
         }
     }
 }

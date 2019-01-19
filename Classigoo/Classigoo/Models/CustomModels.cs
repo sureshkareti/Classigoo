@@ -307,6 +307,7 @@ namespace Classigoo
         public string Mandal { get; set; }
         public string Type { get; set; }
         public string Remarks { get; set; }
+        public string PostedBy { get; set; }
     }
 
     public class LoginWithOTP

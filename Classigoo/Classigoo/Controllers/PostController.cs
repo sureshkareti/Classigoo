@@ -1516,13 +1516,25 @@ namespace Classigoo.Controllers
         public ActionResult Delete()
         {
             string addId = Request.QueryString["addId"];
-
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
             if (addId != null)
             {
                 bool isDeleted = new PostDBOperations().DeleteAdd(addId);
                 if (isDeleted)
                 {
-                    return RedirectToAction("Home", "User");
+                    if (cookieRole != null && cookieRole.Value == "Admin")
+                    {
+                        return RedirectToAction("Dashboard", "Admin");
+                    }
+                    else if (cookieRole != null && cookieRole.Value == "Employee")
+                    {
+                        return RedirectToAction("EmployeeDashboard", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Home", "User");
+                    }
+                   
                 }
                 else
                 {

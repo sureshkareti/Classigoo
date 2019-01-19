@@ -54,8 +54,12 @@ namespace Classigoo.Controllers
         [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult EmployeeDashboard()
         {
+            AdminService objAdmin = new AdminService();
+            var cookieName = Request.Cookies["ClassigooLoginUser"];
+            IEnumerable<AdminAdd> empAddColl=  objAdmin.GetEmpAdds(cookieName.Value);
+
             ViewBag.role = "Employee";
-            return View();
+            return View(empAddColl);
         }
 
       //  [CustomAuthorization(LoginPage = "~/Login/Index")]
