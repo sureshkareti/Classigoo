@@ -47,17 +47,18 @@
                                         @*<th></th>*@
                                         @*<th data-class="expand">AddId</th>*@
                                         <th data-class="expand">AddId</th>
-                                        <th data-hide="phone">Date and Time</th>
-                                        <th data-hide="phone">Sub Category</th>
-                                        <th data-hide="phone">Rent/Sale</th>
-                                        <th>Preview</th>
-                                        <th>Status</th>
-                                        <th data-hide="phone">User Name</th>
+                                        @*<th data-hide="phone">Date and Time</th>*@
+                                        @*<th data-hide="phone">Sub Category</th>
+                                        <th data-hide="phone">Rent/Sale</th>*@
+                                        @*<th>Preview</th>*@
+                                        @*<th>Status</th>*@
                                         <th data-hide="phone">Mobile No</th>
-                                        <th data-hide="phone">Category</th>
+                                        <th data-hide="phone">User Name</th>
+                                        
+                                        @*<th data-hide="phone">Category</th>
                                         <th data-hide="phone">State</th>
                                         <th data-hide="phone">District</th>
-                                        <th data-hide="phone">Mandal</th>
+                                        <th data-hide="phone">Mandal</th>*@
                                         @*<th>Remarks</th>
                                         <th>Status</th>
                                         <th>User Name</th>
@@ -312,12 +313,13 @@
                                     data: data,
                                     columns: [
                                         { data: 'AddId' },
-                                        { data: 'Created' },
-                                        { data: 'SubCategory' },
-                                        { data: 'Type' },
-                                        { data: 'Status' },
+                                        //{ data: 'Created' },
+                                        //{ data: 'SubCategory' },
+                                        //{ data: 'Type' },
+                                        //{ data: 'Status' },
+                                         { data: 'PhoneNum' },
                                         { data: 'UserName' },
-                                        { data: 'PhoneNum' }
+                                       
                                         //{ data: 'Created' },
                                         //{ data: 'AddId' },
                                         //{ data: 'Created' }
@@ -716,7 +718,7 @@
 
            // $("#myModal").modal("show")
             // Handle form submission event
-            var rows_selected = table.column(1).checkboxes.selected();
+            var rows_selected = table.api().column(1).checkboxes.selected();
 
             var selectedNumbers = '';
             // Iterate over all selected checkboxes
@@ -732,9 +734,9 @@
         $("#btnSendSMSFromModal").on('click', function () {
             console.log($("#txtMobileNumbers").val());
 
-            ShowSucessToaster("Sucessfully Created !!!!", 'success');
+           // ShowSucessToaster("Sucessfully Created !!!!", 'success');
 
-            ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');
+           // ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');
 
         });
 

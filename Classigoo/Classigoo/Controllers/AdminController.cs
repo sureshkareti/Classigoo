@@ -51,7 +51,7 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        [CustomAuthorization(LoginPage = "~/Login/Index")]
+      //  [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult SendMessage()
         {
             //var cachedCategories = HttpContext.Cache.Get("Categories") as List<Category>;
@@ -239,6 +239,31 @@ namespace Classigoo.Controllers
 
                 Communication objComm = new Communication();
                 foreach (string phoneNum in phoneNumColl)
+                {
+                    if (!string.IsNullOrEmpty(phoneNum))
+                        objComm.SendMessage(phoneNum, msg);
+
+                }
+                ViewBag.Status = "Messages have been sent successfully";
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+                ViewBag.Status = "Error occured while sending Messages.";
+            }
+
+            return PartialView();
+        }
+        public ActionResult SendSms(string msg,string phoneNumColl)
+        {
+            try
+            {
+                AdminService objAdmin = new AdminService();
+                // List<string> phoneNumColl = objAdmin.GetOwnersMobileNos();
+                string[] mnColl = phoneNumColl.Split(',');
+                Communication objComm = new Communication();
+                foreach (string phoneNum in mnColl)
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                         objComm.SendMessage(phoneNum, msg);
