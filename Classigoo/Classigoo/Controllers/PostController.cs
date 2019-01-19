@@ -62,6 +62,10 @@ namespace Classigoo.Controllers
                 }
                 else
                 {
+
+
+
+
                     PostAdd objPostAdd = new PostAdd();
 
                     //PostDBOperations objPostDbOpareations = new PostDBOperations();
@@ -70,9 +74,23 @@ namespace Classigoo.Controllers
                     User user = userObj.GetUser((Guid)addRecord.UserId);
 
                     Guid adminUserId = userObj.UserExist("1111111111", "Custom");
+
+                    var cookieName = Request.Cookies["ClassigooLoginUser"];
+                    var cookieRole = Request.Cookies["ClassigooLoginRole"];
+
+
                     bool isAuthorizedUser = false;
 
-                    if (userId == addRecord.UserId)//he is owner
+
+                    if (cookieRole != null && cookieRole.Value == "Admin")
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    if (cookieRole != null && cookieRole.Value == "Employee")
+                    {
+                        isAuthorizedUser = true;
+                    }
+                    else if (userId == addRecord.UserId)//he is owner
                     {
                         isAuthorizedUser = true;
                     }
@@ -245,6 +263,9 @@ namespace Classigoo.Controllers
         [HttpPost]
         public ActionResult Index(PostAdd postAdd, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, string addId)
         {
+            var cookieName = Request.Cookies["ClassigooLoginUser"];
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
+
 
             PostDBOperations objPostDbOpareations = new PostDBOperations();
             Communication objComm = new Communication();
@@ -284,7 +305,12 @@ namespace Classigoo.Controllers
                         if (newUserId != null)//user added successfully
                         {
                             userId = newUserId;
-                            objUserCont.SetUserId(userId, false);
+
+                            if (cookieRole == null && (cookieRole.Value == "Admin" || cookieRole.Value == "Employee"))
+                            {
+                                objUserCont.SetUserId(userId, false);
+                            } 
+                            
                             //Session["UserId"] = userId;
                         }
                         else//unbale to add register user
@@ -294,8 +320,12 @@ namespace Classigoo.Controllers
                     }
                     else//Phone Num Eixst already
                     {
-                        userId = userExist;
-                        objUserCont.SetUserId(userId, false);
+                        userId = userExist;                       
+                        if (cookieRole == null && (cookieRole.Value == "Admin" || cookieRole.Value == "Employee"))
+                        {
+                            objUserCont.SetUserId(userId, false);
+                        }
+
                         // Session["UserId"] = userId;
                     }
                 }
@@ -306,6 +336,15 @@ namespace Classigoo.Controllers
 
 
                 //  Guid userId = new Guid("280bf190-3fe3-4e1c-8f6e-e66edd7e272f");
+                string postedBy = string.Empty;
+                if (cookieRole != null && cookieRole.Value == "Admin")
+                {
+                    postedBy = cookieName.Value;
+                }
+                else if (cookieRole != null && cookieRole.Value == "Employee")
+                {
+                    postedBy = cookieName.Value;
+                }
 
                 Add add = new Add()
                 {
@@ -319,7 +358,8 @@ namespace Classigoo.Controllers
                     Type = postAdd.ddlRentOrSale,
                     Status = Constants.PendingSatus,
                     UserId = userId,
-                    Created = CustomActions.GetCurrentISTTime()
+                    Created = CustomActions.GetCurrentISTTime(),
+                    PostedBy= postedBy
                 };
 
 
@@ -756,18 +796,32 @@ namespace Classigoo.Controllers
                 //{
                 //    userId = (Guid)Session["UserId"];
                 //}
-                if (userId == Guid.Empty)
+
+              
+
+                bool isAuthorizedUser = false;
+
+
+                if (cookieRole != null && cookieRole.Value == "Admin")
+                {
+                    isAuthorizedUser = true;
+                }
+                else if (cookieRole != null && cookieRole.Value == "Employee")
+                {
+                    isAuthorizedUser = true;
+                }
+                else if (userId == Guid.Empty)
                 {
                     ViewBag.Message = "nologin";
                     return View();
                 }
                 else if ((Session["LoginUserRole"] != null) && ((string)Session["LoginUserRole"] != "Admin"))
                 {
-                    bool isAuthorizedUser = true;
+                     isAuthorizedUser = true;
                 }
                 else
                 {
-                    bool isAuthorizedUser = false;
+                    isAuthorizedUser = false;
                     MessageDBOperations objMsgDbOper = new MessageDBOperations();
                     Guid addOwnerUserId = (Guid)objMsgDbOper.GetAddOwnerUserId(postId);
                     Guid adminUserId = userObj.UserExist("1111111111", "Custom");
@@ -1420,6 +1474,15 @@ namespace Classigoo.Controllers
                         if (isChilUpdated)
                         {
                             bool isAddUpdated = objPostDbOpareations.UpdateAdd(add);
+
+                            if (cookieRole != null && cookieRole.Value == "Admin" )
+                            {
+                                return RedirectToAction("Dashboard", "Admin");
+                            }
+                            else if (cookieRole != null &&  cookieRole.Value == "Employee")
+                            {
+                                return RedirectToAction("EmployeeDashboard", "Admin");
+                            }                          
                         }
 
 
@@ -1438,6 +1501,14 @@ namespace Classigoo.Controllers
                 #endregion
             }
 
+            if (cookieRole != null && cookieRole.Value == "Admin")
+            {
+                return RedirectToAction("Dashboard", "Admin");
+            }
+            else if (cookieRole != null && cookieRole.Value == "Employee")
+            {
+                return RedirectToAction("EmployeeDashboard", "Admin");
+            }
 
             return View();
         }

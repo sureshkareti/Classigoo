@@ -339,6 +339,24 @@ namespace Classigoo.Controllers
 
             }
 
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("ClassigooLoginUser"))
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["ClassigooLoginUser"];
+                if (cookie != null)
+                {
+                    cookie.Expires = DateTime.Now.AddDays(-1);
+                    this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+                }
+
+                HttpCookie signinUserCookie = this.ControllerContext.HttpContext.Request.Cookies["ClassigooLoginRole"];
+                if (signinUserCookie != null)
+                {
+                    signinUserCookie.Expires = DateTime.Now.AddDays(-1);
+                    this.ControllerContext.HttpContext.Response.Cookies.Add(signinUserCookie);
+                }
+            }
+
+
             FormsAuthentication.SignOut();
             return RedirectToAction("Home", "List");
         }

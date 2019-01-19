@@ -10,6 +10,8 @@ using Classigoo.Business;
 using Microsoft.Owin.Security.Cookies;
 using System.Web.Security;
 using Classigoo.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace Classigoo.Controllers
 {
@@ -31,6 +33,8 @@ namespace Classigoo.Controllers
 
             }
 
+            
+
             return View();
         }
 
@@ -44,8 +48,8 @@ namespace Classigoo.Controllers
 
                 if (user == null) return View();
 
-                var isAuthorized = true; 
-
+                var isAuthorized = true;
+               
                 if (isAuthorized)
                 {
                     SetUserId(user, false);

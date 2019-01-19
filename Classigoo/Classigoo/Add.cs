@@ -39,6 +39,7 @@ namespace Classigoo
         public string SubCategory { get; set; }
         public string NearestArea { get; set; }
         public string Remarks { get; set; }
+        public string PostedBy { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -22,6 +22,13 @@ namespace Classigoo.Controllers
         [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult Dashboard()
         {
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
+
+            if (cookieRole != null && cookieRole.Value == "Employee")
+            {
+               return RedirectToAction("EmployeeDashboard", "Admin");
+            }
+
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
             IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
             AdminDashboard adminDashboard = new AdminDashboard();

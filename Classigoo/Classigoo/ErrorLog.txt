@@ -31,3 +31,12 @@ mscorlib ; Nullable object must have a value.
 1/9/2019 2:05:46 AM : Error occured while sending an email 
 System ; Failure sending mail.
 1/9/2019 2:05:46 AM : System ; Unable to connect to the remote server
+1/19/2019 4:56:19 PM : Error occured while sending an email 
+System ; Failure sending mail.
+1/19/2019 4:56:19 PM : System ; Unable to connect to the remote server
+1/19/2019 4:56:43 PM : Error occured while sending an email 
+System ; Failure sending mail.
+1/19/2019 4:56:43 PM : System ; Unable to connect to the remote server
+1/19/2019 5:07:27 PM : Error occured while sending an email 
+System ; Failure sending mail.
+1/19/2019 5:07:27 PM : System ; Unable to connect to the remote server
