@@ -62,7 +62,7 @@ namespace Classigoo.Controllers
             return View(empAddColl);
         }
 
-      //  [CustomAuthorization(LoginPage = "~/Login/Index")]
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult SendMessage()
         {
             //var cachedCategories = HttpContext.Cache.Get("Categories") as List<Category>;
@@ -241,19 +241,21 @@ namespace Classigoo.Controllers
 
         }
 
-        public ActionResult SendSms(string msg)
+        public ActionResult SendSms(string msg, string selectedOption,string searchQuery)
         {
             try
             {
+                
                 AdminService objAdmin = new AdminService();
-                List<string> phoneNumColl = objAdmin.GetOwnersMobileNos();
+                List<string> phoneNumColl = GetPhoneNumColl(selectedOption, searchQuery);
 
                 Communication objComm = new Communication();
                 foreach (string phoneNum in phoneNumColl)
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
-                        objComm.SendMessage(phoneNum, msg);
-
+                    {
+                        //objComm.SendMessage(phoneNum, msg);
+                    }
                 }
                 ViewBag.Status = "Messages have been sent successfully";
 
@@ -266,7 +268,8 @@ namespace Classigoo.Controllers
 
             return PartialView();
         }
-        public ActionResult SendSms(string msg,string phoneNumColl)
+        
+        public ActionResult SendSmsFromgrid(string msg,string phoneNumColl)
         {
             try
             {
@@ -277,7 +280,9 @@ namespace Classigoo.Controllers
                 foreach (string phoneNum in mnColl)
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
-                        objComm.SendMessage(phoneNum, msg);
+                    {
+                        // objComm.SendMessage(phoneNum, msg);
+                    }
 
                 }
                 ViewBag.Status = "Messages have been sent successfully";
@@ -289,7 +294,7 @@ namespace Classigoo.Controllers
                 ViewBag.Status = "Error occured while sending Messages.";
             }
 
-            return PartialView();
+            return PartialView("SendMessage");
         }
 
         public JsonResult GetOwnersData()
@@ -306,6 +311,46 @@ namespace Classigoo.Controllers
             }
 
             return Json(addColl, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<string> GetPhoneNumColl(string selectedOption,string searchQuery)
+        {
+            List<string> phoneNumColl = new List<string>();
+            AdminService objAdminService = new AdminService();
+            try
+            {
+                switch(selectedOption)
+                {
+                    case "allConsumersData":
+                        phoneNumColl = objAdminService.GetConsumersMobileNos();
+                        break;
+                    case "allWonersData":
+                        phoneNumColl = objAdminService.GetOwnersMobileNos();
+                        break;
+                    case "ownersData":
+                        if (searchQuery != null && searchQuery != string.Empty)
+                        {
+            SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+
+                            phoneNumColl= objAdminService.GetOwnersMobileNos(ownersSearchObj);
+                        }
+                        break;
+                    case "consumersData":
+                        break;
+                    default:
+
+                        break;
+
+                }
+
+            }
+
+            catch(Exception ex)
+            {
+
+            }
+
+            return phoneNumColl;
         }
     }
 }

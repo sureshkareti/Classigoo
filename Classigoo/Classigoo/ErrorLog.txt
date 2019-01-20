@@ -40,3 +40,5 @@ System ; Failure sending mail.
 1/19/2019 5:07:27 PM : Error occured while sending an email 
 System ; Failure sending mail.
 1/19/2019 5:07:27 PM : System ; Unable to connect to the remote server
+20/01/2019 6:01:44 PM : Error occured while sending an email 
+System ; The operation has timed out.

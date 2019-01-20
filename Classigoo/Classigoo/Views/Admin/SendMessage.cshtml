@@ -146,7 +146,7 @@
                             <div class="form-group row">
                                 <label for="inputPassword3" class="col-2 col-form-label">Message</label>
                                 <div class="col-8">
-                                    <textarea class="form-control" id="txtMessage" rows="5"></textarea>
+                                    <textarea class="form-control" id="txtMessageFromModal" rows="5"></textarea>
                                 </div>
                                 <div class="col-2">
 
@@ -230,6 +230,8 @@
 
             loadStates();
             var table;
+            
+            
             //var table = $('#tblAdds').DataTable({
             //    "responsive": true,
             //    stateSave: true,
@@ -301,7 +303,8 @@
                         $("#btnSearchConsumersData").css('display', 'block');
                         $("#btnSearchWonersData").css('display', 'block');
 
-                       // table.destroy();
+                        // table.destroy();
+                     
                         $.ajax({
                             type: 'GET',
                             url: '@Url.Action("GetOwnersData", "Admin")',
@@ -419,7 +422,12 @@
             $(document).on('change', '#ddlCategoryOData', function () {
 
                 $("#ddlSubCategoryOData").empty();
-                loadSubCategories($(this).val());
+                $("#ddlSubCategoryOData").append('<option value="'
+                                                   + "select" + '">'
+                                             + "select" + '</option>');
+                if ($(this).val() != "") {
+                    loadSubCategories($(this).val());
+                }
                 return false;
             });
 
@@ -447,8 +455,55 @@
                 loadOwenersSearchData(JSON.stringify(searchOwnersEntity));
             });
 
+            function GetOwnerSearchQuery()
+            {
+                var type = $("#ddlType").val();
+                var addStatus = $("#ddlStatus").val();
+                var mobileNumber = $("#txtMobileNumberOData").val();
+                var locationState = $("#txtStates").val();
+                var locationDistricts = $("#txtDistrict").val();
+                var locationMandal = $("#txtMandal").val();
+                var category = $('select[id="ddlCategoryOData"] option:selected').text();
+                var subCategory = $('select[id="ddlSubCategoryOData"] option:selected').text();
 
-        //});
+                var searchOwnersEntity = {
+                    Type: type,
+                    Status: addStatus,
+                    MobileNumber: mobileNumber,
+                    State: locationState,
+                    District: locationDistricts,
+                    Mandal: locationMandal,
+                    Category: category,
+                    SubCategory: subCategory,
+                }
+
+                return searchOwnersEntity;
+            }
+
+            function GetConsumerSearchQuery()
+            {
+                var type = $("#ddlType").val();
+                var addStatus = $("#ddlStatus").val();
+                var mobileNumber = $("#txtMobileNumberOData").val();
+                var locationState = $("#txtStates").val();
+                var locationDistricts = $("#txtDistrict").val();
+                var locationMandal = $("#txtMandal").val();
+                var category = $('select[id="ddlCategoryOData"] option:selected').text();  
+                var subCategory = $('select[id="ddlSubCategoryOData"] option:selected').text();
+
+                var searchConsumerEntity = {
+                    Type: type,
+                    Status: addStatus,
+                    MobileNumber: mobileNumber,
+                    State: locationState,
+                    District: locationDistricts,
+                    Mandal: locationMandal,
+                    Category: category,
+                    SubCaregory: subCategory,
+                }
+
+                return searchConsumerEntity;
+            }
 
 
         function loadSubCategories(category) {
@@ -693,11 +748,22 @@
         }
 
         $("#btnSendSms").click(function () {
+            var radioValue = $("input[name='customRadioType']:checked")[0].id;
+            var query = "";
+            if (radioValue == "ownersData")
+            {
+                query = GetOwnerSearchQuery();
+            }
+            else if (radioValue == "consumersData")
+             {
+                query = GetConsumerSearchQuery();
+             }
+            var msg = $("#txtMessage").val();
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("SendSMS", "Admin")',
                 cache: false,
-                data: { "msg": "gjgjgj" },
+                data: { "msg": msg, "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
                 success: function (data) {
                     //alert(JSON.stringify(data))
                    // $('.modal-dialog').html("");
@@ -729,11 +795,28 @@
             $("#txtMobileNumbers").tagsinput('add', selectedNumbers);
 
             $("#myModal").modal("show");
+           
         });
 
         $("#btnSendSMSFromModal").on('click', function () {
-            console.log($("#txtMobileNumbers").val());
+            //console.log($("#txtMobileNumbers").val());
+            var msg = $("#txtMessageFromModal").val();
+            var phoneNumColl=$("#txtMobileNumbers").val();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("SendSmsFromgrid", "Admin")',
+                cache: false,
+                data: { "msg": msg, "phoneNumColl": phoneNumColl },
+                success: function (data) {
+                    //alert(JSON.stringify(data))
+                    // $('.modal-dialog').html("");
+                    //$('.modal-dialog').html(data);
+                    table.rows('.row').deselect();
+                },
+                error: function (response) {
 
+                }
+            })
            // ShowSucessToaster("Sucessfully Created !!!!", 'success');
 
            // ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classigoo.Models.Search;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -120,6 +121,40 @@ namespace Classigoo.Models
                 Library.WriteLog("At empadds db", ex);
             }
             return addColl;
+        }
+
+        public List<string> GetOwnersMobileNos(SearchOwnerAddsEntity searchQuery)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                   
+                    List<string> mnColl = (from add in classigooEntities.Adds
+                                           join user in classigooEntities.Users on add.UserId equals user.UserId
+                                           where
+                          (add.Type == searchQuery.Type) &&
+                         (searchQuery.Status != "" ? add.Status == searchQuery.Status : true) &&
+                           (searchQuery.MobileNumber != "" ? user.MobileNumber == searchQuery.MobileNumber : true) &&
+                                         ((searchQuery.State != "" ? add.State == searchQuery.State : true) ||
+                                          (searchQuery.District != "" ? add.District == searchQuery.District : true) ||
+                                          (searchQuery.Mandal != "" ? add.Mandal == searchQuery.Mandal : true)) &&
+                                        (searchQuery.Category != "select" ? add.Category == searchQuery.Category : true) &&
+                                         (searchQuery.SubCategory != "select" ? add.SubCategory == searchQuery.SubCategory : true)
+
+                                           select user.MobileNumber).ToList();
+                              
+
+                    return mnColl.Distinct<string>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
         }
     }
 }
