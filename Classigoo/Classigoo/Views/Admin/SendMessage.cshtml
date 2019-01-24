@@ -176,10 +176,16 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
+        <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        <span class="loader-item"></span><span class="loader-item"></span>
+    </div>
+</div>
 @section Styles {
     <!-- DataTables -->
     @*<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
 
     <link href="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -291,7 +297,7 @@
                 });
             });
 
-
+            //with grid with out grid click
             $(document).on('change', 'input[type=radio][name=customRadioMode]', function () {
 
                 var selectedMode = $(this).attr('id');
@@ -304,13 +310,21 @@
                         $("#btnSearchConsumersData").css('display', 'block');
                         $("#btnSearchWonersData").css('display', 'block');
 
-                        // table.destroy();
-                     
+                         table.destroy();
+                        var radioValue = $("input[name='customRadioType']:checked")[0].id;
+                        var query = "";
+                        if (radioValue == "ownersData") {
+                            query = GetOwnerSearchQuery();
+                        }
+                        else if (radioValue == "consumersData") {
+                            query = GetConsumerSearchQuery();
+                        }
+                        
                         $.ajax({
                             type: 'GET',
-                            url: '@Url.Action("GetOwnersData", "Admin")',
+                            url: '@Url.Action("FillGrid", "Admin")',
                             cache: false,
-                            //data: { "msg": "gjgjgj" },
+                            data: { "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
                             success: function (data) {
 
                                 table = $('#tblAdds').dataTable({
@@ -407,7 +421,7 @@
 
                 }
             });
-
+            // owner, consumer,filter owner, consumer click
             $(document).on('change', 'input[type=radio][name=customRadioType]', function () {
                 var selectedType = $(this).attr('id');
                 if (selectedType != null && selectedType != '') {
@@ -761,6 +775,12 @@
         }
 
         $("#btnSendSms").click(function () {
+            var msg = $("#txtMessage").val();
+            if (msg == "") {
+                alert("Please write message to send");
+                return false;
+            }
+            $(".loader-wrap").show();
             var radioValue = $("input[name='customRadioType']:checked")[0].id;
             var query = "";
             if (radioValue == "ownersData")
@@ -771,24 +791,25 @@
              {
                 query = GetConsumerSearchQuery();
              }
-            var msg = $("#txtMessage").val();
-            if (msg == "")
-            {
-                alert("Please write message to send");
-                return false;
-            }
+            
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("SendSMS", "Admin")',
                 cache: false,
                 data: { "msg": msg, "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
                 success: function (data) {
-                    //alert(JSON.stringify(data))
-                   // $('.modal-dialog').html("");
-                    //$('.modal-dialog').html(data);
+                    $(".loader-wrap").hide();
+                    if (data == 'True') {
+                       // ShowSucessToaster("Messages have been sent successfully", 'success');
+                    }
+                    else
+                    {
+                        //ShowSucessToaster("There is a  problem while sening messages", 'error');
+                    }
                 },
                 error: function (response) {
-
+                    $(".loader-wrap").hide();
+                    //ShowSucessToaster("There is a  problem while sening messages", 'error');
                 }
             })
         });
@@ -817,8 +838,13 @@
         });
 
         $("#btnSendSMSFromModal").on('click', function () {
-            //console.log($("#txtMobileNumbers").val());
+           
             var msg = $("#txtMessageFromModal").val();
+            if (msg == "") {
+                alert("Please write message to send");
+                return false;
+            }
+            $(".loader-wrap").show();
             var phoneNumColl=$("#txtMobileNumbers").val();
             $.ajax({
                 type: 'GET',
@@ -826,13 +852,11 @@
                 cache: false,
                 data: { "msg": msg, "phoneNumColl": phoneNumColl },
                 success: function (data) {
-                    //alert(JSON.stringify(data))
-                    // $('.modal-dialog').html("");
-                    //$('.modal-dialog').html(data);
+                    $(".loader-wrap").hide();
                     table.rows('.row').deselect();
                 },
                 error: function (response) {
-
+                    $(".loader-wrap").hide();
                 }
             })
            // ShowSucessToaster("Sucessfully Created !!!!", 'success');
@@ -840,7 +864,122 @@
            // ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');
 
         });
+            function ShowSucessToaster(message, state) {
 
+                var shortCutFunction = state;
+                var msg = message;
+                var title = 'Status';
+                var showDuration = "300";
+                var hideDuration = "1000";
+                var timeOut = "5000";
+                var extendedTimeOut = "1000";
+                var showEasing = "swing";
+                var hideEasing = "linear";
+                var showMethod = "fadeIn";
+                var hideMethod = "fadeOut";
+                var toastIndex = toastCount++;
+                var addClear = $('#addClear').prop('checked');
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+
+                if (showDuration.length) {
+                    toastr.options.showDuration = showDuration;
+                }
+
+                if (hideDuration.length) {
+                    toastr.options.hideDuration = hideDuration;
+                }
+
+                if (timeOut.length) {
+                    toastr.options.timeOut = addClear ? 0 : timeOut;
+                }
+
+                if (extendedTimeOut.length) {
+                    toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
+                }
+
+                if (showEasing.length) {
+                    toastr.options.showEasing = showEasing;
+                }
+
+                if (hideEasing.length) {
+                    toastr.options.hideEasing = hideEasing;
+                }
+
+                if (showMethod.length) {
+                    toastr.options.showMethod = showMethod;
+                }
+
+                if (hideMethod.length) {
+                    toastr.options.hideMethod = hideMethod;
+                }
+
+                if (addClear) {
+                    msg = getMessageWithClearButton(msg);
+                    toastr.options.tapToDismiss = false;
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+
+                $('#toastrOptions').text('Command: toastr["'
+                    + shortCutFunction
+                    + '"]("'
+                    + msg
+                    + (title ? '", "' + title : '')
+                    + '")\n\ntoastr.options = '
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+
+                if (typeof $toast === 'undefined') {
+                    return;
+                }
+
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+                if ($toast.find('.clear').length) {
+                    $toast.delegate('.clear', 'click', function () {
+                        toastr.clear($toast, { force: true });
+                    });
+                }
+
+
+
+            }
         });
     </script>
 

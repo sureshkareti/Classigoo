@@ -243,6 +243,7 @@ namespace Classigoo.Controllers
 
         public ActionResult SendSms(string msg, string selectedOption,string searchQuery)
         {
+            bool status = true;
             try
             {
                 
@@ -254,19 +255,18 @@ namespace Classigoo.Controllers
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                     {
-                        //objComm.SendMessage(phoneNum, msg);
+                      // objComm.SendMessage(phoneNum, msg);
                     }
                 }
-                ViewBag.Status = "Messages have been sent successfully";
-
+               
             }
             catch (Exception ex)
             {
                 Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
-                ViewBag.Status = "Error occured while sending Messages.";
+                status = false;
             }
 
-            return PartialView();
+            return PartialView("SendMessage", status);
         }
         
         public ActionResult SendSmsFromgrid(string msg,string phoneNumColl)
@@ -351,6 +351,54 @@ namespace Classigoo.Controllers
             }
 
             return phoneNumColl;
+        }
+
+        public JsonResult FillGrid(string selectedOption, string searchQuery)
+        {
+            bool status = true;
+            UserDBOperations db = new UserDBOperations();
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                List<string> phoneNumColl = new List<string>();
+                AdminService objAdminService = new AdminService();
+                
+                    switch (selectedOption)
+                    {
+                        case "allConsumersData":
+                        
+                            addColl = db.GetAdminAdds();
+                       
+                        break;
+                        case "allWonersData":
+                        addColl = db.GetAdminAdds();
+                        break;
+                        case "ownersData":
+                            if (searchQuery != null && searchQuery != string.Empty)
+                            {
+                                SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+
+                                phoneNumColl = objAdminService.GetOwnersMobileNos(ownersSearchObj);
+                            }
+                            break;
+                        case "consumersData":
+                            break;
+                        default:
+
+                            break;
+
+                    }
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+                status = false;
+            }
+
+            return Json(addColl, JsonRequestBehavior.AllowGet);
         }
     }
 }
