@@ -273,7 +273,10 @@ namespace Classigoo.Models
                                    UserName = add.User.Name,
                                    PhoneNum = add.User.MobileNumber,
                                    Remarks=add.Remarks,
-                                   SubCategory=add.SubCategory
+                                   SubCategory=add.SubCategory,
+                                   AddStatus = add.AddStatus,
+                                   ReceiptNumber=add.ReceiptNumber
+
                                }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
                                      {
@@ -288,7 +291,9 @@ namespace Classigoo.Models
                                          UserName = add.UserName,
                                          PhoneNum = add.PhoneNum,
                                          Remarks = add.Remarks,
-                                         SubCategory=add.SubCategory
+                                         SubCategory=add.SubCategory,
+                                         AddStatus = add.AddStatus,
+                                         ReceiptNumber = add.ReceiptNumber
                                      });
                 }
             }
@@ -299,7 +304,7 @@ namespace Classigoo.Models
             return addColl;
         }
         
-        public bool UpdateAddStatus(int addId, string status,string remarks)
+        public bool UpdateAddStatus(int addId, string status,string remarks, string addStatus, string reciptNumber)
         {
             int response = 0;
             try
@@ -311,7 +316,10 @@ namespace Classigoo.Models
                     {
                         add.Status = status;
                         add.Remarks = remarks;
+                        add.AddStatus = addStatus;
+                        add.ReceiptNumber = reciptNumber;
                         response = db.SaveChanges();
+                        
                     }
                 }
             }

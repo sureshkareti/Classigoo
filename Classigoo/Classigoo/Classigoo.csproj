@@ -589,6 +589,7 @@
     <Content Include="images\4.jpg" />
     <Content Include="images\Admin\1.png" />
     <Content Include="images\bg04.png" />
+    <Content Include="images\Card_allimages.jpg" />
     <Content Include="images\cg.jpg" />
     <Content Include="images\Classigoo_logox1024.png" />
     <Content Include="images\Classigoo_Logox50.png" />
@@ -609,6 +610,7 @@
     <Content Include="images\iconUser.png" />
     <Content Include="images\leftx30.png" />
     <Content Include="images\poster.JPG" />
+    <Content Include="images\poster_new.jpg" />
     <Content Include="images\rightx30.png" />
     <Content Include="images\scroll\AV\AV1.jpg" />
     <Content Include="images\scroll\AV\AV2.jpg" />

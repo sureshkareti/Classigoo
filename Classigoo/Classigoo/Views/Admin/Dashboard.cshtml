@@ -12,8 +12,15 @@
     statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+
+    List<SelectListItem> addStatusCollection = new List<SelectListItem>();
+    addStatusCollection.Add(new SelectListItem { Text = Constants.SoldSatus, Value = Constants.SoldSatus });
+    addStatusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
+    addStatusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+    addStatusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+
 
 
     List<SelectListItem> categoryCollection = new List<SelectListItem>();
@@ -68,6 +75,41 @@
                         <h5>Sub Category</h5>
                     </div>
                 </div>
+
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+                      
+                        @Html.DropDownList("ddlAddTypeSearch", new List<SelectListItem> {
+                                            new SelectListItem { Text = "Rent", Value = "Rent"},
+                                            new SelectListItem { Text = "Sale", Value = "Sale"}}, "select", new { @class = "form-control" })
+
+                        <h5>Type</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+                        @Html.DropDownList("ddlAddStatusSearch", addStatusCollection, "select", new { @class = "form-control" })
+                        <h5>Add Status</h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+                        <input type="text" class="form-control" id="txtMobileNumberSearch" />
+                        <h5>Mobile Number</h5>
+                    </div>
+                </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card-box widget-user">
@@ -84,6 +126,14 @@
                     <div class="text-center">
                         @Html.DropDownList("ddlStatusSearch", statusCollection, "select", new { @class = "form-control" })
                         <h5>Status</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+                        <input type="text" class="form-control" id="txtReciptNumberSearch" />
+                        <h5>Receipt Number</h5>
                     </div>
                 </div>
             </div>
@@ -113,8 +163,8 @@
                                 <th data-hide="phone">Rent/Sale</th>
                                 <th>Preview</th>
                                 <th>Edit</th>
-                                <th>Status</th>
-                                <th data-hide="phone">User Name</th>
+                                <th>Add Status</th>
+                                <th data-hide="phone">Status</th>
                                 <th data-hide="phone">Mobile No</th>
                                 <th data-hide="phone">Category</th>
                                 <th data-hide="phone">State</th>
@@ -122,6 +172,8 @@
                                 <th data-hide="phone">Mandal</th>
                                 <th>Remarks</th>
                                 <th>Status</th>
+                                <th>Receipt Number</th>
+                                <th>Add Status</th>
                                 <th>Action</th>
                                 <th>Delete</th>
                                 <th>User Name</th>
@@ -134,84 +186,92 @@
                             @foreach (var item in Model.AddsColl)
                             {
 
-                                <tr>
-                                    @*<td>@item.PhoneNum</td>*@
-                                    <td></td>
-                                    <td>
-                                        @item.AddId
-                                    </td>
-                                    <td id="addId">
-                                        @item.AddId
-                                    </td>
-                                    <td>
-                                        @item.Created
-                                    </td>
-                                    <td>
-                                        @item.SubCategory
-                                    </td>
-                                    <td>
-                                        @item.Type
-                                    </td>
+                            <tr>
+                                @*<td>@item.PhoneNum</td>*@
+                                <td></td>
+                                <td>
+                                    @item.AddId
+                                </td>
+                                <td id="addId">
+                                    @item.AddId
+                                </td>
+                                <td>
+                                    @item.Created
+                                </td>
+                                <td>
+                                    @item.SubCategory
+                                </td>
+                                <td>
+                                    @item.Type
+                                </td>
 
-                                    <td>
-                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                                <td>
+                                    @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
 
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
-                                    </td>
-
-
-                                    <td>
-                                        <span> <label id="lblStatus">@item.Status</label></span>
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                                </td>
 
 
-                                    </td>
-                                    <td>
-                                        @item.UserName
-                                    </td>
-                                    <td>
-                                        @item.PhoneNum
-                                    </td>
+                                <td>
+                                    <span> <label id="lblStatus">@item.AddStatus</label></span>
+                                </td>
+                                <td>
+                                    @*@item.UserName*@
+                                    @item.Status
+                                </td>
+                                <td>
+                                    @item.PhoneNum
+                                </td>
 
 
-                                    <td>
-                                        @item.Category
-                                    </td>
-                                    <td>
-                                        @item.State
-                                    </td>
-                                    <td>
-                                        @item.District
-                                    </td>
-                                    <td>
-                                        @item.Mandal
-                                    </td>
+                                <td>
+                                    @item.Category
+                                </td>
+                                <td>
+                                    @item.State
+                                </td>
+                                <td>
+                                    @item.District
+                                </td>
+                                <td>
+                                    @item.Mandal
+                                </td>
 
 
-                                    <td>
-                                        <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
-                                        @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
-                                    </td>
-                                    <td>
-                                        <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
-                                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
-                                    </td>
-                                    <td>
-                                        <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
-                                        <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
-                                        <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
-                                    </td>
-                                    <td>
-                                        <span id="userName" class="UserInfo">@item.UserName</span>
-                                    </td>
-                                    <td>
-                                        <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
-                                    </td>
-                                </tr>
+                                <td>
+                                    <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
+                                    @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
+                                </td>
+                                <td>
+                                    @*<span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>*@
+                                    <span class="display-mode"> @item.Status</span>
+                                    @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                </td>
+                                <td>
+                                    <span class="display-mode"> <label id="lblReceiptNumber">@item.ReceiptNumber</label></span>
+                                    @Html.TextBox("txtReciptNumber", item.Remarks, new { @class = "edit-mode" })
+                                </td>
+                                <td>
+                                    <span class="display-mode"> <label id="lblNewAddStatus">@item.AddStatus</label></span>
+                                    @Html.DropDownList("ddlAddStatus", addStatusCollection, new { @class = "edit-mode" })
+                                </td>
+                                <td>
+                                    <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
+                                    <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
+                                    <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
+                                </td>
+                                <td>
+                                    <span id="userName" class="UserInfo">@item.UserName</span>
+                                </td>
+                                <td>
+                                    <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
+                                </td>
+                            </tr>
 
                             }
                         </tbody>
@@ -298,7 +358,7 @@
     @*<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-   @*<link href="~/Content/List/color1.css" rel="stylesheet" />*@
+    @*<link href="~/Content/List/color1.css" rel="stylesheet" />*@
     @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
     <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
 
@@ -344,14 +404,18 @@
             var editElemts = e.srcElement.offsetParent.getElementsByClassName('edit-mode');
             var displayElemts = e.srcElement.offsetParent.getElementsByClassName('display-mode');
             var status = editElemts.ddlStatus.value;
-            var remarks = editElemts.txtRemarks.value
+            var remarks = editElemts.txtRemarks.value;
+
+            var addStatus = editElemts.ddlAddStatus.value;
+            var reciptNumber = editElemts.txtReciptNumber.value;
+
             var addId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.addId.innerText;
             var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
             var userName = userElemts.userName.innerText;
             var userPhoneNum = userElemts.userPhoneNum.innerText;
             $.ajax({
                 url: '/User/UpdateAddStatus/',
-                data: { addId: addId, status: status, remarks: remarks, userName: userName, userPhoneNum: userPhoneNum },
+                data: { addId: addId, status: status, remarks: remarks, userName: userName, userPhoneNum: userPhoneNum, addStatus: addStatus, reciptNumber: reciptNumber },
                 type: 'GET',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
@@ -370,7 +434,7 @@
 
         }
         $(document).ready(function () {
-           
+
             $('.edit-mode').hide();
             var table = $('#tblAdds').DataTable({
                 "responsive": true,
@@ -428,24 +492,59 @@
                     .search(this.value)
                     .draw();
             });
+
+            $('#ddlAddTypeSearch').on('change', function () {
+                table
+                    .columns(5)
+                    .search(this.value)
+                    .draw();
+            });
+
+            $('#txtMobileNumberSearch').on('keyup', function () {
+                table
+                    .columns(10)
+                    .search(this.value)
+                    .draw();
+            });
+
+
+
             $('#txtSubcategorySearch').on('keyup', function () {
                 table
                     .columns(4)
                     .search(this.value)
                     .draw();
             });
+            $('#txtReciptNumberSearch').on('keyup', function () {
+                table
+                    .columns(17)
+                    .search(this.value)
+                    .draw();
+            });
+
+            
             $('#ddlCategorySearch').on('change', function () {
                 table
                       .columns(11)
                       .search(this.value)
                       .draw();
             });
-            $('#ddlStatusSearch').on('change', function () {
+
+
+            $('#ddlAddStatusSearch').on('change', function () {
                 table
                       .columns(8)
                       .search(this.value)
                       .draw();
             });
+
+            $('#ddlStatusSearch').on('change', function () {
+                table
+                      .columns(9)
+                      .search(this.value)
+                      .draw();
+            });
+
             $("#btnRefresh").on('click', function () {
                 table.state.clear();
                 window.location.reload();

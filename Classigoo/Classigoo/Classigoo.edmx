@@ -23,6 +23,8 @@
           <Property Name="NearestArea" Type="varchar" MaxLength="500" />
           <Property Name="Remarks" Type="varchar" MaxLength="1500" />
           <Property Name="PostedBy" Type="varchar" MaxLength="500" />
+          <Property Name="AddStatus" Type="varchar" MaxLength="100" />
+          <Property Name="ReceiptNumber" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="AgriculturalVehicle">
           <Key>
@@ -674,6 +676,8 @@
           <NavigationProperty Name="Messages" Relationship="ClassigooModel.FK_Messages_Adds" FromRole="Add" ToRole="Message" />
           <NavigationProperty Name="Surveys" Relationship="ClassigooModel.FK_Survey_Adds" FromRole="Add" ToRole="Survey" />
           <Property Name="PostedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AddStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Adds_Users">
           <End Type="ClassigooModel.User" Role="User" Multiplicity="0..1">
@@ -1034,6 +1038,8 @@
           <EntitySetMapping Name="Adds">
             <EntityTypeMapping TypeName="ClassigooModel.Add">
               <MappingFragment StoreEntitySet="Adds">
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="AddStatus" ColumnName="AddStatus" />
                 <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="NearestArea" ColumnName="NearestArea" />

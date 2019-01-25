@@ -46,7 +46,7 @@ namespace Classigoo.Controllers
             }
 
             ViewBag.role = "Admin";
-
+            Session["LoginUserRole"] = "Admin";
             return View(adminDashboard);
 
         }
@@ -59,6 +59,7 @@ namespace Classigoo.Controllers
             IEnumerable<AdminAdd> empAddColl=  objAdmin.GetEmpAdds(cookieName.Value);
 
             ViewBag.role = "Employee";
+            Session["LoginUserRole"] = "Employee";
             return View(empAddColl);
         }
 

@@ -20,7 +20,6 @@ namespace Classigoo
         public ClassigooEntities()
             : base("name=ClassigooEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

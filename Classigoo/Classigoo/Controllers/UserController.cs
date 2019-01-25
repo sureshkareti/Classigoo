@@ -451,13 +451,13 @@ namespace Classigoo.Controllers
             return Json(addColl, JsonRequestBehavior.AllowGet);
         }
 
-        public bool UpdateAddStatus(int addId, string status, string remarks, string userName, string userPhoneNum)
+        public bool UpdateAddStatus(int addId, string status, string remarks, string userName, string userPhoneNum,string addStatus,string reciptNumber)
         {
             bool isAddUpdated = false;
             try
             {
                 UserDBOperations db = new UserDBOperations();
-                isAddUpdated = db.UpdateAddStatus(addId, status, remarks);
+                isAddUpdated = db.UpdateAddStatus(addId, status, remarks, addStatus, reciptNumber);
                 if (isAddUpdated)
                 {
                     if (status == Constants.ActiveSatus)

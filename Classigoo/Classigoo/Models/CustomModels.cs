@@ -239,6 +239,7 @@ namespace Classigoo
         public const string ActiveSatus = "Active";
         public const string DeactiveSatus = "Deactive";
         public const string RejectSatus = "Rejected";
+        public const string SoldSatus = "Sold";
 
 
         public const string RealEstate = "Real Estate";
@@ -308,6 +309,8 @@ namespace Classigoo
         public string Type { get; set; }
         public string Remarks { get; set; }
         public string PostedBy { get; set; }
+        public string AddStatus { get; set; }
+        public string ReceiptNumber { get; set; }
     }
 
     public class LoginWithOTP
