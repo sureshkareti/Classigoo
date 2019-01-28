@@ -417,7 +417,7 @@ namespace Classigoo.Controllers
                 UserDBOperations userDbObj = new UserDBOperations();
                 Survey objSurvey = new Survey();
                 objSurvey.CreatedDate = CustomActions.GetCurrentISTTime();
-                objSurvey.AddId = Convert.ToInt32(addId);
+                objSurvey.AddIdColl = addId;
                 objSurvey.PhoneNumber = mobileNumber;
                 objSurvey.Name = name;
                 bool status = userDbObj.AddSurvey(objSurvey);

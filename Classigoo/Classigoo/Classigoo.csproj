@@ -812,6 +812,8 @@
     <Content Include="Views\Shared\_PatialSearchAddsData.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Admin\EmployeeDashboard.cshtml" />
+    <Content Include="Views\Admin\CustomerInfo.cshtml" />
+    <Content Include="Views\Admin\CustomerDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

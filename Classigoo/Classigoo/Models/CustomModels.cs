@@ -240,7 +240,9 @@ namespace Classigoo
         public const string DeactiveSatus = "Deactive";
         public const string RejectSatus = "Rejected";
         public const string SoldSatus = "Sold";
-
+        public const string ProcessingStatus = "Processing";
+        public const string ConfirmedStatus = "Confirmed";
+        public const string ClosedStatus = "Closed";
 
         public const string RealEstate = "Real Estate";
         public const string ConstructionVehicle = "Construction Vehicles";
@@ -391,5 +393,24 @@ namespace Classigoo
         public IEnumerable<CustomSurvey> SurveyColl { set; get; }
 
         public IEnumerable<AdminAdd> AddsColl { set; get; }
+    }
+    public partial class CustomerInfo
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public int AddId { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string UserType { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public string State { get; set; }
+        public string District { get; set; }
+        public string Mandal { get; set; }
+        public string Status { get; set; }
+        public string hdnCateFristLevel { set; get; }
+        public string hdnCateSecondLevel { set; get; }
+
+        public virtual Add Add { get; set; }
     }
 }

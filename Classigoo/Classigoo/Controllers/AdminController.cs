@@ -242,7 +242,7 @@ namespace Classigoo.Controllers
 
         }
 
-        public ActionResult SendSms(string msg, string selectedOption,string searchQuery)
+        public bool SendSms(string msg, string selectedOption,string searchQuery)
         {
             bool status = true;
             try
@@ -267,11 +267,12 @@ namespace Classigoo.Controllers
                 status = false;
             }
 
-            return PartialView("SendMessage", status);
+            return status;
         }
         
-        public ActionResult SendSmsFromgrid(string msg,string phoneNumColl)
+        public bool SendSmsFromgrid(string msg,string phoneNumColl)
         {
+            bool status = true;
             try
             {
                 AdminService objAdmin = new AdminService();
@@ -286,16 +287,17 @@ namespace Classigoo.Controllers
                     }
 
                 }
-                ViewBag.Status = "Messages have been sent successfully";
+               // ViewBag.Status = "Messages have been sent successfully";
 
             }
             catch (Exception ex)
             {
+                 status = false;
                 Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
-                ViewBag.Status = "Error occured while sending Messages.";
+               // ViewBag.Status = "Error occured while sending Messages.";
             }
 
-            return PartialView("SendMessage");
+            return status;
         }
 
         public JsonResult GetOwnersData()
@@ -400,6 +402,62 @@ namespace Classigoo.Controllers
             }
 
             return Json(addColl, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CustomerInfo()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CustomerInfo(Survey survey,string hdnCateFristLevel,string hdnCateSecondLevel)
+        {
+            try
+            {
+                survey.Category = hdnCateFristLevel;
+                survey.SubCategory = hdnCateSecondLevel;
+                survey.CreatedDate = CustomActions.GetCurrentISTTime();
+                AdminService objAdmin = new AdminService();
+                ViewBag.Status = objAdmin.AddSurvey(survey);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return View();
+        }
+
+        public ActionResult CustomerDashboard()
+        {
+            List < Survey > surveyColl = new List<Survey>();
+            try
+            {
+                AdminService objAdmin = new AdminService();
+                 surveyColl = objAdmin.GetSurveys();
+                
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return View(surveyColl);
+        }
+
+        public bool UpdateCustomerStatus(int cId, string status)
+        {
+            bool isAddUpdated = false;
+            try
+            {
+                AdminService db = new AdminService();
+                isAddUpdated = db.UpdateCustomerStatus(cId, status);
+                
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At updating add status addId - " , ex);
+            }
+
+            return isAddUpdated;
         }
     }
 }

@@ -327,12 +327,12 @@ namespace Classigoo.Models
                         }
 
                         //deleting servay for add
-                        var objServayTemp = classigooEntities.Surveys.ToList().FindAll(x => x.AddId == objAdd.AddId);
+                        //var objServayTemp = classigooEntities.Surveys.ToList().FindAll(x => x.AddId == objAdd.AddId);
 
-                        if (objServayTemp.Count > 0)
-                        {
-                            classigooEntities.Surveys.RemoveRange(objServayTemp);
-                        }
+                        //if (objServayTemp.Count > 0)
+                        //{
+                        //    classigooEntities.Surveys.RemoveRange(objServayTemp);
+                        //}
 
                         classigooEntities.Adds.Remove(objAdd);
                         classigooEntities.SaveChanges();

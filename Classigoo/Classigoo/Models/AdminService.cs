@@ -1,6 +1,7 @@
 ﻿using Classigoo.Models.Search;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -155,6 +156,76 @@ namespace Classigoo.Models
             }
 
             return null;
+        }
+
+        public bool AddSurvey(Survey survey)
+        {
+            bool isSuccess = true;
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                   
+                    db.Surveys.Add(survey);
+                    db.SaveChanges();
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At AddSurvey db", ex);
+                isSuccess = false;
+            }
+
+            return isSuccess;
+        }
+
+        public List<Survey> GetSurveys()
+        {
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+
+                    db.Surveys.ToList();
+                   
+                    return db.Surveys.ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                Library.WriteLog("At GetSurvey db", ex);
+                return null;
+            }
+        }
+
+        public bool UpdateCustomerStatus(int cId, string status)
+        {
+            int response = 0;
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    Survey survey = db.Surveys.Find(cId);
+                    if (survey != null)
+                    {
+                        survey.Status = status;
+                        db.Entry(survey).State = EntityState.Modified;
+                        response = db.SaveChanges();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At UpdatingUserDetails UserId - " , ex);
+            }
+            if (response == 1)
+                return true;
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -42,3 +42,7 @@ System ; Failure sending mail.
 1/19/2019 5:07:27 PM : System ; Unable to connect to the remote server
 20/01/2019 6:01:44 PM : Error occured while sending an email 
 System ; The operation has timed out.
+27/01/2019 6:13:17 PM : At Preview add addid- 1
+Classigoo ; Object reference not set to an instance of an object.
+27/01/2019 7:20:52 PM : At Preview add addid- 1
+Classigoo ; Object reference not set to an instance of an object.

@@ -1162,7 +1162,7 @@ namespace Classigoo.Controllers
                     #region inserttosurveytable
                     Survey objSurvey = new Survey();
                     objSurvey.CreatedDate= CustomActions.GetCurrentISTTime();
-                    objSurvey.AddId= Convert.ToInt32(AddId);
+                    objSurvey.AddIdColl = AddId;
                     objSurvey.PhoneNumber = frmUserInfo.MobileNumber;
                     objSurvey.Name = frmUserInfo.Name;
                     userDbObj.AddSurvey(objSurvey);

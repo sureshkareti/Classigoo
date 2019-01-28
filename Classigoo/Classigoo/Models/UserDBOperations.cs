@@ -371,13 +371,13 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-    int count=   db.Surveys.Where(s => s.AddId == survey.AddId).Where(s => s.PhoneNumber == survey.PhoneNumber).Count();
+   // int count=   db.Surveys.Where(s => s.AddId == survey.AddId).Where(s => s.PhoneNumber == survey.PhoneNumber).Count();
 
-                    if (count <=0)
-                    {
+                   // if (count <=0)
+                    //{
                         db.Surveys.Add(survey);
                         db.SaveChanges();
-                    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -403,17 +403,17 @@ namespace Classigoo.Models
                         CustomSurvey customSurvey = new CustomSurvey();
                         customSurvey.Survey = survey;
                         CommonDBOperations objCommon = new CommonDBOperations();
-                        Add add = objCommon.GetAdd(survey.AddId.ToString());
-                        customSurvey.Category = add.Category;
-                        customSurvey.SubCategory = add.SubCategory;
-                        if(add.Type=="Rent")
-                        {
-                            customSurvey.Type = "Consumer";
-                        }
-                        else if(add.Type=="Sale")
-                        {
-                            customSurvey.Type = "Buyer";
-                        }
+                      //  Add add = objCommon.GetAdd(survey.AddId.ToString());
+                       // customSurvey.Category = add.Category;
+                       // customSurvey.SubCategory = add.SubCategory;
+                        //if(add.Type=="Rent")
+                        //{
+                        //    customSurvey.Type = "Consumer";
+                        //}
+                        //else if(add.Type=="Sale")
+                        //{
+                        //    customSurvey.Type = "Buyer";
+                        //}
                         
                         customSurveyColl.Add(customSurvey);
                     }

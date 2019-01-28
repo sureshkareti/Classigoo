@@ -17,9 +17,14 @@ namespace Classigoo
         public int Id { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
-        public int AddId { get; set; }
         public System.DateTime CreatedDate { get; set; }
-    
-        public virtual Add Add { get; set; }
+        public string UserType { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public string State { get; set; }
+        public string District { get; set; }
+        public string Mandal { get; set; }
+        public string Status { get; set; }
+        public string AddIdColl { get; set; }
     }
 }

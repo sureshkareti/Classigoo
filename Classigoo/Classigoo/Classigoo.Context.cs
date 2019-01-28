@@ -36,11 +36,11 @@ namespace Classigoo
         public virtual DbSet<RealEstate> RealEstates { get; set; }
         public virtual DbSet<Add> Adds { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<LoginUser> LoginUsers { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Survey> Surveys { get; set; }
     
         public virtual int FillAds(string category, string subCategory, string state, string district, string mandal, string nearestArea, string title, string type, string status, Nullable<System.Guid> userId, Nullable<System.DateTime> createdDate, string postedBy, ObjectParameter addId)
         {

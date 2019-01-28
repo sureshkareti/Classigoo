@@ -234,38 +234,12 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-
+            var toastCount = 0;
             loadStates();
             var table;
+            $("#filterConsumersData").css('display', 'none');
+            $("#filterOwnersData").css('display', 'none');
             
-            
-            //var table = $('#tblAdds').DataTable({
-            //    "responsive": true,
-            //    stateSave: true,
-            //    AutoWidth: false,
-            //    columnDefs: [
-            //                    {
-            //                        targets: 1,
-            //                        checkboxes: {
-            //                            selectRow: true
-            //                        },
-
-            //                    },
-            //                   {
-            //                       targets: 0,
-            //                       orderable: false
-
-            //                   }
-
-            //    ],
-            //    select: {
-            //        style: 'multi'
-            //    }
-            //   ,
-            //    order: [[2, 'asc']]
-
-            //});
-
 
             $("#btnRefreshGrid").click(function () {
                 table.destroy();
@@ -303,14 +277,14 @@
                 var selectedMode = $(this).attr('id');
                 if (selectedMode != null && selectedMode != '') {
                     if (selectedMode == 'customRadioWithGrid') {
-
+                        $(".loader-wrap").show();
                         $("#messageBlock").css('display', 'none');
                         $("#grid").css('display', 'block');
 
                         $("#btnSearchConsumersData").css('display', 'block');
                         $("#btnSearchWonersData").css('display', 'block');
-
-                         table.destroy();
+                        //if (table!=null)
+                        //table.destroy();
                         var radioValue = $("input[name='customRadioType']:checked")[0].id;
                         var query = "";
                         if (radioValue == "ownersData") {
@@ -326,8 +300,9 @@
                             cache: false,
                             data: { "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
                             success: function (data) {
-
+                               
                                 table = $('#tblAdds').dataTable({
+                                    destroy: true,
                                     data: data,
                                     columns: [
                                          { data: 'AddId' },
@@ -380,43 +355,20 @@
                                         order: [[2, 'asc']]
 
                                 });
+                                $(".loader-wrap").hide();
                             },
                             error: function (response) {
-
+                                $(".loader-wrap").hide();
                             }
                         })
-                        //table = $('#tblAdds').DataTable({
-                        //    "responsive": true,
-                        //    stateSave: true,
-                        //    AutoWidth: false,
-                        //    columnDefs: [
-                        //                    {
-                        //                        targets: 1,
-                        //                        checkboxes: {
-                        //                            selectRow: true
-                        //                        },
-
-                        //                    },
-                        //                   {
-                        //                       targets: 0,
-                        //                       orderable: false
-
-                        //                   }
-
-                        //    ],
-                        //    select: {
-                        //        style: 'multi'
-                        //    },
-                        //    order: [[2, 'asc']]
-
-                        //});
+                        
                     }
                     else if (selectedMode == 'customRadioWithOutGrid') {
                         $("#grid").css('display', 'none');
                         $("#messageBlock").css('display', 'block');
 
-                        $("#btnSearchConsumersData").css('display', 'block');
-                        $("#btnSearchWonersData").css('display', 'block');
+                        $("#btnSearchConsumersData").css('display', 'none');
+                        $("#btnSearchWonersData").css('display', 'none');
                     }
 
                 }
@@ -800,16 +752,16 @@
                 success: function (data) {
                     $(".loader-wrap").hide();
                     if (data == 'True') {
-                       // ShowSucessToaster("Messages have been sent successfully", 'success');
+                       ShowSucessToaster("Messages have been sent successfully", 'success');
                     }
                     else
                     {
-                        //ShowSucessToaster("There is a  problem while sening messages", 'error');
+                        ShowSucessToaster("There is a  problem while sening messages", 'error');
                     }
                 },
                 error: function (response) {
                     $(".loader-wrap").hide();
-                    //ShowSucessToaster("There is a  problem while sening messages", 'error');
+                    ShowSucessToaster("There is a  problem while sening messages", 'error');
                 }
             })
         });
@@ -853,15 +805,20 @@
                 data: { "msg": msg, "phoneNumColl": phoneNumColl },
                 success: function (data) {
                     $(".loader-wrap").hide();
-                    table.rows('.row').deselect();
+                    if (data = 'True') {
+                        ShowSucessToaster("Messages have been sent successfully", 'success');
+                    }
+                    else
+                    {
+                        ShowSucessToaster("There is a  problem while sening messages", 'error');
+                    }
                 },
                 error: function (response) {
                     $(".loader-wrap").hide();
+                    ShowSucessToaster("There is a  problem while sening messages", 'error');
                 }
             })
-           // ShowSucessToaster("Sucessfully Created !!!!", 'success');
-
-           // ShowSucessToaster("There is problem while Creating Task Try again !!!!", 'error');
+           
 
         });
             function ShowSucessToaster(message, state) {

@@ -23,14 +23,13 @@
         <AssociationConnector Association="ClassigooModel.FK_Messages_Adds" />
         <AssociationConnector Association="ClassigooModel.FK_Messages_Messages" />
         <AssociationConnector Association="ClassigooModel.FK_Messages_Users" />
-        <EntityTypeShape EntityType="ClassigooModel.Survey" Width="1.5" PointX="7.875" PointY="14" />
-        <AssociationConnector Association="ClassigooModel.FK_Survey_Adds" />
         <EntityTypeShape EntityType="ClassigooModel.Category" Width="1.5" PointX="5.375" PointY="1" />
         <EntityTypeShape EntityType="ClassigooModel.SubCategory" Width="1.5" PointX="7.625" PointY="0.875" />
         <AssociationConnector Association="ClassigooModel.FK__SubCatego__Categ__3E1D39E1" />
         <EntityTypeShape EntityType="ClassigooModel.LoginUser" Width="1.5" PointX="7.625" PointY="4" />
         <EntityTypeShape EntityType="ClassigooModel.Role" Width="1.5" PointX="5.375" PointY="4.375" />
         <AssociationConnector Association="ClassigooModel.FK__LoginUser__RoleI__51300E55" />
+        <EntityTypeShape EntityType="ClassigooModel.Survey" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
