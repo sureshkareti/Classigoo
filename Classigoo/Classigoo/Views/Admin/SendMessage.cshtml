@@ -3,20 +3,20 @@
     ViewBag.Title = "SendMessage";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-    List<SelectListItem> statusCollection = new List<SelectListItem>();
-    statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
-    statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
+    //List<SelectListItem> statusCollection = new List<SelectListItem>();
+    //statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.ReviewSatus, Value = Constants.ReviewSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.ActiveSatus, Value = Constants.ActiveSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
+    //statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
 
 
-    List<SelectListItem> categoryCollection = new List<SelectListItem>();
-    categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
-    categoryCollection.Add(new SelectListItem { Text = Constants.ConstructionVehicle, Value = Constants.ConstructionVehicle });
-    categoryCollection.Add(new SelectListItem { Text = Constants.PassengerVehicle, Value = Constants.PassengerVehicle });
-    categoryCollection.Add(new SelectListItem { Text = Constants.RealEstate, Value = Constants.RealEstate });
-    categoryCollection.Add(new SelectListItem { Text = Constants.TransportationVehicle, Value = Constants.TransportationVehicle });
+    //List<SelectListItem> categoryCollection = new List<SelectListItem>();
+    //categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
+    //categoryCollection.Add(new SelectListItem { Text = Constants.ConstructionVehicle, Value = Constants.ConstructionVehicle });
+    //categoryCollection.Add(new SelectListItem { Text = Constants.PassengerVehicle, Value = Constants.PassengerVehicle });
+    //categoryCollection.Add(new SelectListItem { Text = Constants.RealEstate, Value = Constants.RealEstate });
+    //categoryCollection.Add(new SelectListItem { Text = Constants.TransportationVehicle, Value = Constants.TransportationVehicle });
 
     List<Category> categories = (List<Category>)@ViewBag.TotalStudents;
 }
@@ -392,6 +392,7 @@
                     else if (selectedType == 'consumersData') {
                         $("#filterConsumersData").css('display', 'block');
                         $("#filterOwnersData").css('display', 'none');
+                        loadStates();
                     }
 
                 }
