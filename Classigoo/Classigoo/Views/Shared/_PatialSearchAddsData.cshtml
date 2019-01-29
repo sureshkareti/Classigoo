@@ -6,6 +6,12 @@
     statusCollection.Add(new SelectListItem { Text = Constants.DeactiveSatus, Value = Constants.DeactiveSatus });
     statusCollection.Add(new SelectListItem { Text = Constants.RejectSatus, Value = Constants.RejectSatus });
 
+    List<SelectListItem> consumerStatusCollection = new List<SelectListItem>();
+    statusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ProcessingStatus, Value = Constants.ProcessingStatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ConfirmedStatus, Value = Constants.ConfirmedStatus });
+    statusCollection.Add(new SelectListItem { Text = Constants.ClosedStatus, Value = Constants.ClosedStatus });
+
 
     List<SelectListItem> categoryCollection = new List<SelectListItem>();
     categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
@@ -149,60 +155,59 @@
                     <h4 class="header-title m-t-0 m-b-30">Filter On Consumers Data</h4>
                     <div class="row">
                         <div class="col-md-4">
-                            <h5><b>Type</b></h5>
-                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                            <h5><b>User Type</b></h5>
+                            @Html.DropDownList("ddlType", new List<SelectListItem> {
+                                            new SelectListItem { Text = "Consumer", Value = "Consumer"},
+                                            new SelectListItem { Text = "Buyer", Value = "Buyer"}}, new { @class = "form-control" })
                         </div><!-- end col -->
                         <div class="col-md-4">
                             <h5><b>Status</b></h5>
-                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                            @Html.DropDownList("ddlConsumerStatus",consumerStatusCollection, "select", new { @class = "form-control" })
                         </div><!-- end col -->
                         <div class="col-md-4">
                             <h5><b>Mobile Number</b></h5>
-                            <input type="text" class="form-control" maxlength="25" name="defaultconfig" id="defaultconfig" />
+                            <input type="text" id="txtMobileNumberOData" pattern="^(\d{10})$" data-error="Please enter phone number" required class="form-control" />
+
                         </div><!-- end col -->
                     </div><!-- end row -->
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>State</b></h5>
+                            <input type="text" id="txtStates" autocomplete="off" onclick="this.value = ''" onfocusout="getDistricts()" placeholder="state" class="form-control typeahead" />
+
+                        </div>
+                        <div class="col-md-4">
+                            <h5><b>District</b></h5>
+                            <input type="text" id="txtDistrict" autocomplete="off" onclick="this.value = ''" onfocusout="getMandal()" placeholder="district" class="form-control typeahead" />
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <h5><b>Mandal</b></h5>
+                            <input type="text" id="txtMandal" autocomplete="off" onclick="this.value=''" placeholder="mandal" class="form-control typeahead" />
+
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-4">
                             <h5><b>Category</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
+                            @Html.DropDownList("ddlCategoryOData", new SelectList(ViewBag.Category, "Value", "Text"), "select", new { @class = "form-control" })
+                        </div>
                         <div class="col-md-4">
                             <h5><b>Sub Caregory</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
+                            @Html.DropDownList("ddlSubCategoryOData", new SelectList(string.Empty, "Value", "Text"), "select", new { @class = "form-control" })
+                        </div>
                         <div class="col-md-4">
-                            <h5><b>Company</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h5><b>State</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                        <div class="col-md-4">
-                            <h5><b>District</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                        <div class="col-md-4">
-                            <h5><b>Mandal</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                    </div><!-- end row -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h5><b>From</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                        <div class="col-md-4">
-                            <h5><b>To</b></h5>
-                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-                        </div><!-- end col -->
-                        <div class="col-md-4">
+                            @*<h5><b>Duration</b></h5>
+                <div class="input-daterange input-group" id="date-range">
+                    <input type="text" class="form-control" name="start" id="dateStart" />
+                    <input type="text" class="form-control" name="end" id="dateEnd" />
+                </div>*@
+                        </div>
+                    </div>
 
-                        </div><!-- end col -->
-                    </div><!-- end row -->
 
                     <div class="row">
                         <div class="col-md-4">
@@ -212,7 +217,7 @@
                         </div><!-- end col -->
                         <div class="col-md-4">
                             <h5><b></b></h5>
-                            <button type="button" style="display:none" id="btnSearchConsumersData" class="btn btn-warning waves-effect waves-light pull-right">Search</button>
+                            <button type="button" style="display:none" id="btnSearchWonersData" class="btn btn-warning waves-effect waves-light pull-right">Search</button>
                         </div><!-- end col -->
                     </div><!-- end row -->
 
@@ -224,3 +229,173 @@
     </div>
 
 </div>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+       // var toastCount = 0;
+        loadStates();
+    });
+    function getDistricts() {
+
+        var selectedState = $.trim($("#txtStates").val());
+        $("#txtDistrict").val("");
+        $("#txtMandal").val("");
+        if (selectedState !== "") {
+
+            var locations = new Array();
+            var districs = new Array();
+            $.ajax({
+                url: '/Scripts/Json/location1.min.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+                        locations.push(field);
+                    });
+                }
+            });
+
+            var selectedVehicle = locations.filter(a=>a.name === selectedState);
+
+            $.each(selectedVehicle[0].District, function (i1, field1) {
+
+                districs.push(field1.name);
+            });
+
+            $("#txtDistrict").autocomplete({
+                source: districs
+                ,
+                minLength: 1,
+                autoFocus: true,
+                scroll: true,
+                matchContains: true,
+                minChars: 2,
+                autoFill: true,
+                mustMatch: false,
+                cacheLength: 20,
+                max: 20,
+                close: function () {
+
+                },
+                select: function (event, ui) {
+                    //TestOnSelection();
+                    //$(this).blur();
+
+                    getMandal();
+                    //$("#txtDistrict").focus();
+                }
+            }).focus(function () {
+                $(this).data("uiAutocomplete").search('e');
+            });
+
+
+
+        }
+        else {
+
+        }
+
+    }
+
+    function getMandal() {
+
+        var selectedDistric = $.trim($("#txtDistrict").val());
+        $("#txtMandal").val("");
+        if (selectedDistric !== "") {
+
+
+            var locations = new Array();
+            var mandals = new Array();
+            $.ajax({
+                url: '/Scripts/Json/location1.min.json',
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    $.each(data, function (i, field) {
+                        $.each(field.District, function (i1, field1) {
+                            locations.push(field1);
+
+                        });
+
+                    });
+                }
+            });
+
+            var selectedStae = locations.filter(a=>a.name === selectedDistric);
+            $.each(selectedStae[0].Mondal, function (i1, field1) {
+
+                mandals.push(field1.name);
+            });
+
+            $("#txtMandal").autocomplete({
+                source: mandals
+                ,
+                minLength: 1,
+                autoFocus: true,
+                scroll: true,
+                matchContains: true,
+                minChars: 2,
+                autoFill: true,
+                mustMatch: false,
+                cacheLength: 20,
+                max: 20,
+                close: function () {
+
+                }
+            }).focus(function () {
+                $(this).data("uiAutocomplete").search('e');
+            });
+        }
+        else {
+
+        }
+    }
+
+    function loadStates() {
+
+        var locations = new Array();
+        var states = new Array();
+        $.ajax({
+            url: '/Scripts/Json/location1.min.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i, field) {
+                    locations.push(field);
+                });
+            }
+        });
+
+        $.each(locations, function (i1, field1) {
+            states.push(field1.name);
+            console.log(field1.name);
+        });
+
+        console.log(states);
+
+        $("#txtStates").autocomplete({
+            source: states,
+            minLength: 1, autoFocus: true,
+            scroll: true,
+            matchContains: true,
+            minChars: 2,
+            autoFill: true,
+            mustMatch: false,
+            cacheLength: 20,
+            max: 20,
+            close: function () {
+            },
+            select: function (event, ui) {
+                //TestOnSelection();
+                //$(this).blur();
+
+                getDistricts();
+                //$("#txtDistrict").focus();
+            }
+        }).focus(function () {
+            $(this).data("uiAutocomplete").search('e');
+        });
+
+
+    };
+</script>
