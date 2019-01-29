@@ -179,6 +179,7 @@
           <Property Name="Mandal" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="AddIdColl" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Remarks" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TransportationVehicle">
           <Key>
@@ -880,6 +881,7 @@
           <Property Name="Mandal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AddIdColl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1093,6 +1095,7 @@
           <EntitySetMapping Name="Surveys">
             <EntityTypeMapping TypeName="ClassigooModel.Survey">
               <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="AddIdColl" ColumnName="AddIdColl" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Mandal" ColumnName="Mandal" />

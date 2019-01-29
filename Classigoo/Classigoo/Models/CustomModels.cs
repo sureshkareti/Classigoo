@@ -232,6 +232,28 @@ namespace Classigoo
         public string LocalArea { set; get; }
     }
 
+    public class PostSurvey
+    {
+        public string custId { set; get; }
+        public string UserType { set; get; }
+        public string hdnCateFristLevel { set; get; }
+        public string hdnCateSecondLevel { set; get; }
+
+        
+
+        
+
+        public string Name { set; get; }
+        public string PhoneNumber { set; get; }
+
+        public string State { set; get; }
+        public string District { set; get; }
+        public string Mandal { set; get; }
+        public string Remarks { set; get; }
+        public string AddIdColl { get; set; }
+        public string Status { set; get; }
+    }
+
     public class Constants
     {
         public const string PendingSatus = "Pending";

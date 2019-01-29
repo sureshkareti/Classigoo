@@ -1,4 +1,4 @@
-﻿@model Classigoo.Survey
+﻿@model  PostSurvey
 
 @{
     ViewBag.Title = "CustomerInfo";
@@ -15,549 +15,539 @@
 @using (Html.BeginForm("CustomerInfo", "Admin", FormMethod.Post, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div class="add-listing-wrap">
-        <div class="container" style="width:100%;padding:0;">
-            <div style="width:74%;float:left;">
-                <div style="max-width:970px !important;margin:auto;">
-                    <div class="listing-block businessinfo-listing">
-                        <div class="row">
-                            <div class="col-md-12">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Name<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-7">
 
 
-                                        @Html.TextBoxFor(model => model.Name, new { data_error = "Please enter the name", pattern = ".*[^ ].*", placeholder = "Ex- Car for Rent in Nalgonda", @class = "form-control col-md-7 input-lg", required = "required" })
-                                        @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
+    <div class="row">
 
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Phone Number<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-7">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                                        @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter the name", pattern = ".*[^ ].*", placeholder = "Ex- Car for Rent in Nalgonda", @class = "form-control col-md-7 input-lg", required = "required" })
-                                        @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">UserType<span style="color:#C91414">*</span></label>
 
-                                @*<div class="form-group">
-                                    @Html.LabelFor(model => model.AddId, "AddId", htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.DropDownList("AddId", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.AddId, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>*@
-
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-7 col-sm-12 col-xs-12">
-
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item" id="cat-nav-l0"><a id="btnedithome" href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
-                                            <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a id="btneditedit" href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
-                                        </ol>
-                                        <div>
-                                            @*@Html.HiddenFor(model => model.hdnCateFristLevel)
-                                            @Html.HiddenFor(model => model.hdnCateSecondLevel)*@
-
-                                            <input type="hidden" id="hdnCateFristLevel" name="hdnCateFristLevel" />
-                                            <input type="hidden" id="hdnCateSecondLevel" name="hdnCateSecondLevel"/>
-                                            <input type="hidden" id="hdnCateThirdLevel" name="hdnCateThirdLevel"/>
-                                        </div>
-
-                                        <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
-                                            <div class="panel-heading">
-                                                <ul class="nav nav-tabs idtabCategoriesul">
-                                                    <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                    <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
-                                                    <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
-                                                    <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
-                                                    <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
-                                                    <li style="display:none" id="idtabPV"><a href="#tabPV" data-id="Passenger Vehicles" data-toggle="tab">Passenger Vehicles</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade in active sub-category-items" id="tabCategories">
-                                                        <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
-                                                        <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
-
-                                                        <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
-                                                    </div>
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machines</a><br />
-                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                        <a href="javascript:void(0)" data-value="Dozer">Dozers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvesters</a><br />
-                                                        <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loaders</a><br />
-                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                    </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
-                                                        <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe Loaders</a><br />
-                                                        <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
-                                                        <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loaders</a><br />
-                                                        <a href="javascript:void(0)" data-value="Crane">Cranes</a><br />
-                                                        <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactors</a><br />
-
-                                                    </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
-                                                        <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
-                                                        <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
-                                                        <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheelers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheelers</a><br />
-                                                        <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
-                                                        <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
-                                                        @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
-                                                        <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
-                                                        <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
-                                                        <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
-                                                        <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
-                                                        <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
-                                                        <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
-                                                        <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
-                                                    </div>
-
-
-                                                    <div class="tab-pane fade in" id="tabProSale">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs ">
-                                                                    <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
-                                                                    <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content tabProChilds">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
-                                                                        <a href="javascript:void(0)">Plots/Land</a><br />
-                                                                        <a href="javascript:void(0)">Agricultural Land</a><br />
-                                                                        <a href="javascript:void(0)">Shops & Offices</a><br />
-                                                                        <a href="javascript:void(0)">Apartments</a><br />
-                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a>
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
-                                                                        <a href="javascript:void(0)">Apartments</a><br />
-                                                                        <a href="javascript:void(0)">Independent Houses & Villas</a><br />
-                                                                        <a href="javascript:void(0)">Hostels & PG</a><br />
-                                                                        <a href="javascript:void(0)">Shops & Offices</a>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade in" id="tabCars">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
-                                                                        <a href='javascript:void(0)'>Maruti Suzuki</a><br />
-                                                                        <a href='javascript:void(0)'>Hyundai</a><br />
-                                                                        <a href='javascript:void(0)'>Tata</a><br />
-                                                                        <a href='javascript:void(0)'>Mahindra</a><br />
-                                                                        <a href='javascript:void(0)'>Toyoto</a><br />
-                                                                        <a href='javascript:void(0)'>Honda</a><br />
-                                                                        <a href='javascript:void(0)'>Chevrolet</a><br />
-                                                                        <a href='javascript:void(0)'>Ford</a><br />
-                                                                        <a href='javascript:void(0)'>Skoda</a><br />
-                                                                        <a href='javascript:void(0)'>Volkswagen</a><br />
-                                                                        <a href='javascript:void(0)'>Fiat</a><br />
-                                                                        <a href='javascript:void(0)'>Nissan</a><br />
-                                                                        <a href='javascript:void(0)'>Renault</a><br />
-                                                                        <a href='javascript:void(0)'>Mitsubishi</a><br />
-                                                                        <a href='javascript:void(0)'>Mercedes-Benz</a><br />
-                                                                        <a href='javascript:void(0)'>Audi</a><br />
-                                                                        <a href='javascript:void(0)'>Mahindra Renault</a><br />
-                                                                        <a href='javascript:void(0)'>BMW</a><br />
-                                                                        <a href='javascript:void(0)'>Hindustan Motors</a>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade in" id="tabBikes">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <div class="panel with-nav-tabs panel-default">
-                                                            <div class="panel-heading">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
-                                                                    <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
-                                                                    <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
-                                                                    <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="tab-content tabBikesChilds">
-                                                                    <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
-                                                                        <a href="javascript:void(0)">Bajaj</a><br />
-                                                                        <a href="javascript:void(0)">Hero Honda</a><br />
-                                                                        <a href="javascript:void(0)">Yamaha</a><br />
-                                                                        <a href="javascript:void(0)">Royal Enfield</a><br />
-                                                                        <a href="javascript:void(0)">Honda</a><br />
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">TVS</a><br />
-                                                                        <a href="javascript:void(0)">Suzuki</a><br />
-                                                                        <a href="javascript:void(0)">KTM</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a><br />
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
-                                                                        <a href="javascript:void(0)">Honda</a><br />
-                                                                        <a href="javascript:void(0)">TVS</a><br />
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">Suzuki</a><br />
-                                                                        <a href="javascript:void(0)">Bajaj</a><br />
-                                                                        <a href="javascript:void(0)">Mahindra</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a>
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
-                                                                        <a href="javascript:void(0)">Hero</a><br />
-                                                                        <a href="javascript:void(0)">Hercules</a><br />
-                                                                        <a href="javascript:void(0)">Other Brands</a><br />
-
-                                                                    </div>
-                                                                    <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
-                                                                        <a href="javascript:void(0)">Spare Parts</a><br />
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
-                                                        <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
-                                                        <a href="javascript:void(0)">Computers & Laptops</a><br />
-                                                        <a href="javascript:void(0)">TVs, Video - Audio</a><br />
-                                                        <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
-                                                        <a href="javascript:void(0)">ACs</a><br />
-                                                        <a href="javascript:void(0)">Washing Machines</a><br />
-                                                        <a href="javascript:void(0)">Fridges</a><br />
-                                                        <a href="javascript:void(0)">Computer Accessories</a><br />
-                                                        <a href="javascript:void(0)">Cameras & Lenses</a><br />
-                                                        <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
-                                                        <a href="javascript:void(0)">Games & Entertainment</a>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which you want to submiting add</div>
-                                        @*<input type="button" id="tstButton" value="test me" />*@
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">UserType<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                        @Html.DropDownListFor(model => model.UserType, new List<SelectListItem> {
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                @Html.DropDownListFor(model => model.UserType, new List<SelectListItem> {
                                             new SelectListItem { Text = "Consumer", Value = "Consumer"},
-                                            new SelectListItem { Text = "Buyer", Value = "Buyer"}}, new {  @class = "form-control", required = "required" })
-                                    </div>
+                                            new SelectListItem { Text = "Buyer", Value = "Buyer"}}, new { @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Select Category<span style="color:#C91414">*</span></label>
+
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" id="cat-nav-l0"><a id="btnedithome" href="javascript:void(0)" style="color:#ffd800"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item" id="cat-nav-l1" style="display:none"><span></span></li>
+                                    <li class="breadcrumb-item" id="cat-nav-l2" style="display:none"><span></span></li>
+                                    <li class="breadcrumb-item" id="cat-nav-l3" style="display:none"><span></span></li>
+                                    <li class="breadcrumb-item" id="cat-nav-l4" style="display:none"><a id="btneditedit" href="javascript:void(0)" style="color:#ff0000"><i class="fa fa-edit"></i></a></li>
+                                </ol>
+                                <div>
+                                    @Html.HiddenFor(model => model.hdnCateFristLevel)
+                                    @Html.HiddenFor(model => model.hdnCateSecondLevel)
+                                    @*<input type="hidden" id="hdnCateFristLevel" name="hdnCateFristLevel" />
+                                    <input type="hidden" id="hdnCateSecondLevel" name="hdnCateSecondLevel" />*@
+                                    <input type="hidden" id="hdnCateThirdLevel" name="hdnCateThirdLevel" />
                                 </div>
 
-
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
-
+                                <div class="panel with-nav-tabs panel-default" id="divCategories" style="display:block">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs idtabCategoriesul">
+                                            <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
+                                            <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
+                                            <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
+                                            <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
+                                            <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
+                                            <li style="display:none" id="idtabPV"><a href="#tabPV" data-id="Passenger Vehicles" data-toggle="tab">Passenger Vehicles</a></li>
+                                        </ul>
                                     </div>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", pattern = ".*[^ ].*", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in active sub-category-items" id="tabCategories">
+                                                <a href='javascript:void(0)' id="catAV">Agricultural Vehicles</a><br />
+                                                <a href='javascript:void(0)' id="catCV">Construction Vehicles</a><br />
+                                                <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
+                                                <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
 
-                                <div class="form-group row" id="user-district" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
-                                    </div>
-                                    <div class="col-md-4">
-
-                                        @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
-
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group row" id="user-mandal" style="display:none">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4">
-
-                                        @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
-
-
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-                                
-
-                                    <div class="form-group row">
-                                        <div class="col-md-3" style="text-align:right">
-                                            <label for="listing_name" class="input-lg" style="font-weight:100">Add Id's</label>
+                                                <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="tags-default">
-                                                    @*<input type="text" id="AddIdColl" data-role="tagsinput" placeholder="add addids" />*@
-                                                    @Html.TextBoxFor(model => model.AddIdColl, new { data_error = "Please enter the name", pattern = ".*[^ ].*", placeholder = "Enter add ids separated by comma", @class = "form-control col-md-7 input-lg", @data_role = "tagsinput" })
 
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">
+                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                <a href="javascript:void(0)" data-value="Borewell_Machine">Borewell Machines</a><br />
+                                                <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                <a href="javascript:void(0)" data-value="Dozer">Dozers</a><br />
+                                                <a href="javascript:void(0)" data-value="Combine_Harvester">Combine Harvesters</a><br />
+                                                <a href="javascript:void(0)" data-value="Backhoe_Loader">Backhoe Loaders</a><br />
+                                                <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                            </div>
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabCV">
+                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                <a href="javascript:void(0)" data-value="Tractors">Tractors</a><br />
+                                                <a href="javascript:void(0)" data-value="Tippers">Tippers</a><br />
+                                                <a href="javascript:void(0)" data-value="Dozers">Dozers</a><br />
+                                                <a href="javascript:void(0)" data-value="Backhoe Loader">Backhoe Loaders</a><br />
+                                                <a href="javascript:void(0)" data-value="Excavators">Excavators</a><br />
+                                                <a href="javascript:void(0)" data-value="Wheel_Loader">Wheel Loaders</a><br />
+                                                <a href="javascript:void(0)" data-value="Crane">Cranes</a><br />
+                                                <a href="javascript:void(0)" data-value="Transit_Mixer">Transit Mixers</a><br />
+                                                <a href="javascript:void(0)" data-value="Soil_Compactor">Soil Compactors</a><br />
+
+                                            </div>
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabPV">
+                                                @*<div><a href="javascript:void(0)" class="backHome11"><i class="fa fa-backward"></i></a></div>*@
+                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                <a href="javascript:void(0)" data-value="Autos">Autos</a><br />
+                                                <a href="javascript:void(0)" data-value="Cars">Cars</a><br />
+                                                <a href="javascript:void(0)" data-value="Travel_Vans">Travel Vans</a><br />
+                                                <a href="javascript:void(0)" data-value="Bikes">Bikes</a><br />
+                                            </div>
+
+
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabTV">
+                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                <a href="javascript:void(0)" data-value="Autos">Autos - 3 wheelers</a><br />
+                                                <a href="javascript:void(0)" data-value="Mini_Trucks">Mini Trucks - 4 wheelers</a><br />
+                                                <a href="javascript:void(0)" data-value="Lorry_Trucks ">Lorry Trucks</a><br />
+                                                <a href="javascript:void(0)" data-value="DCM_Trucks">DCM Trucks</a><br />
+                                            </div>
+
+
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items tabProChilds" id="tabPro">
+                                                @*<div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>*@
+                                                <div class="backHome" style="cursor:pointer"><span><i class="fa fa-backward"></i></span></div>
+                                                <a href="javascript:void(0)" data-value="Apartments_Sale">Apartments</a><br />
+                                                <a href="javascript:void(0)" data-value="Plots/Land_Sale">Plots/Land</a><br />
+                                                <a href="javascript:void(0)" data-value="Agricultural_Land_Sale">Agricultural Land</a><br />
+                                                <a href="javascript:void(0)" data-value="ShopsandOffices_Sale">Shops & Offices</a><br />
+                                                <a href="javascript:void(0)" data-value="Independent_Houses_Sale">Independent Houses & Villas</a><br />
+                                                <a href="javascript:void(0)" data-value=">HostelsandPG_Rent">Hostels & PG</a><br />
+                                            </div>
+
+
+                                            <div class="tab-pane fade in" id="tabProSale">
+                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                <div class="panel with-nav-tabs panel-default">
+                                                    <div class="panel-heading">
+                                                        <ul class="nav nav-tabs ">
+                                                            <li class="active"><a href="#tabProForSale" data-toggle="tab">For Sale</a></li>
+                                                            <li><a href="#tabProForRent" data-toggle="tab">For Rent</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="tab-content tabProChilds">
+                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabProForSale">
+                                                                <a href="javascript:void(0)">Plots/Land</a><br />
+                                                                <a href="javascript:void(0)">Agricultural Land</a><br />
+                                                                <a href="javascript:void(0)">Shops & Offices</a><br />
+                                                                <a href="javascript:void(0)">Apartments</a><br />
+                                                                <a href="javascript:void(0)">Independent Houses & Villas</a>
+                                                            </div>
+                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabProForRent">
+                                                                <a href="javascript:void(0)">Apartments</a><br />
+                                                                <a href="javascript:void(0)">Independent Houses & Villas</a><br />
+                                                                <a href="javascript:void(0)">Hostels & PG</a><br />
+                                                                <a href="javascript:void(0)">Shops & Offices</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="tab-pane fade in" id="tabCars">
+                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                <div class="panel with-nav-tabs panel-default">
+                                                    <div class="panel-heading">
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="active"><a href="#tabCarsModel" data-toggle="tab">Company</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabCarsModel">
+                                                                <a href='javascript:void(0)'>Maruti Suzuki</a><br />
+                                                                <a href='javascript:void(0)'>Hyundai</a><br />
+                                                                <a href='javascript:void(0)'>Tata</a><br />
+                                                                <a href='javascript:void(0)'>Mahindra</a><br />
+                                                                <a href='javascript:void(0)'>Toyoto</a><br />
+                                                                <a href='javascript:void(0)'>Honda</a><br />
+                                                                <a href='javascript:void(0)'>Chevrolet</a><br />
+                                                                <a href='javascript:void(0)'>Ford</a><br />
+                                                                <a href='javascript:void(0)'>Skoda</a><br />
+                                                                <a href='javascript:void(0)'>Volkswagen</a><br />
+                                                                <a href='javascript:void(0)'>Fiat</a><br />
+                                                                <a href='javascript:void(0)'>Nissan</a><br />
+                                                                <a href='javascript:void(0)'>Renault</a><br />
+                                                                <a href='javascript:void(0)'>Mitsubishi</a><br />
+                                                                <a href='javascript:void(0)'>Mercedes-Benz</a><br />
+                                                                <a href='javascript:void(0)'>Audi</a><br />
+                                                                <a href='javascript:void(0)'>Mahindra Renault</a><br />
+                                                                <a href='javascript:void(0)'>BMW</a><br />
+                                                                <a href='javascript:void(0)'>Hindustan Motors</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in" id="tabBikes">
+                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                <div class="panel with-nav-tabs panel-default">
+                                                    <div class="panel-heading">
+                                                        <ul class="nav nav-tabs">
+                                                            <li class="active"><a href="#tabBikesMotorcycles" data-toggle="tab">Motorcycles</a></li>
+                                                            <li><a href="#tabBikesScooters" data-toggle="tab">Scooters</a></li>
+                                                            <li><a href="#tabBikesBicycles" data-toggle="tab">Bicycles</a></li>
+                                                            <li><a href="#tabBikesSpareParts" data-toggle="tab">Spare Parts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="tab-content tabBikesChilds">
+                                                            <div class="tab-pane fade in active max-length-subcategory sub-category-items" id="tabBikesMotorcycles">
+                                                                <a href="javascript:void(0)">Bajaj</a><br />
+                                                                <a href="javascript:void(0)">Hero Honda</a><br />
+                                                                <a href="javascript:void(0)">Yamaha</a><br />
+                                                                <a href="javascript:void(0)">Royal Enfield</a><br />
+                                                                <a href="javascript:void(0)">Honda</a><br />
+                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                <a href="javascript:void(0)">TVS</a><br />
+                                                                <a href="javascript:void(0)">Suzuki</a><br />
+                                                                <a href="javascript:void(0)">KTM</a><br />
+                                                                <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                            </div>
+                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesScooters">
+                                                                <a href="javascript:void(0)">Honda</a><br />
+                                                                <a href="javascript:void(0)">TVS</a><br />
+                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                <a href="javascript:void(0)">Suzuki</a><br />
+                                                                <a href="javascript:void(0)">Bajaj</a><br />
+                                                                <a href="javascript:void(0)">Mahindra</a><br />
+                                                                <a href="javascript:void(0)">Other Brands</a>
+
+                                                            </div>
+                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesBicycles">
+                                                                <a href="javascript:void(0)">Hero</a><br />
+                                                                <a href="javascript:void(0)">Hercules</a><br />
+                                                                <a href="javascript:void(0)">Other Brands</a><br />
+
+                                                            </div>
+                                                            <div class="tab-pane fade max-length-subcategory sub-category-items" id="tabBikesSpareParts">
+                                                                <a href="javascript:void(0)">Spare Parts</a><br />
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabME">
+                                                <div><a href="javascript:void(0)" class="backHome"><i class="fa fa-backward"></i></a></div>
+                                                <a href="javascript:void(0)">Computers & Laptops</a><br />
+                                                <a href="javascript:void(0)">TVs, Video - Audio</a><br />
+                                                <a href="javascript:void(0)">Hard Disks, Printers & Monitors</a><br />
+                                                <a href="javascript:void(0)">ACs</a><br />
+                                                <a href="javascript:void(0)">Washing Machines</a><br />
+                                                <a href="javascript:void(0)">Fridges</a><br />
+                                                <a href="javascript:void(0)">Computer Accessories</a><br />
+                                                <a href="javascript:void(0)">Cameras & Lenses</a><br />
+                                                <a href="javascript:void(0)">Kitchen & Other Appliances</a><br />
+                                                <a href="javascript:void(0)">Games & Entertainment</a>
 
                                             </div>
+
                                         </div>
-                                    
-                                
-                                <div class="form-group row">
-                                    <div class="col-md-3" style="text-align:right">
-                                        <label for="listing_name" class="input-lg" style="font-weight:100">Status<span style="color:#C91414">*</span></label>
-
-                                    </div>
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-
-                                        @Html.DropDownList("Status", statusCollection, new { @class = "form-control" })
-                                        @*@Html.TextBoxFor(model => model.Status, new { data_error = "Please enter the name", pattern = ".*[^ ].*", placeholder = "Ex- Car for Rent in Nalgonda", @class = "form-control col-md-7 input-lg", required = "required" })*@
-                                        @*<input type="text" class="form-control col-md-7 input-lg" id="txtTitle" data-error="Please define the add with title" placeholder="enter title here" required>*@
-                                        <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
+                                <div class="help-block with-errors" id="categoryValidationid" style="display:none;color:#a94442;font-size:14px;font-weight:400;font-family:'Poppins', sans-serif;text-rendering:optimizeLegibility">select category in which you want to submiting add</div>
+                                @*<input type="button" id="tstButton" value="test me" />*@
+                            </div>
 
-                                <div class="form-group row">
-                                    <div class="col-md-9" style="text-align:right">
-                                        @*<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a>*@
-                                    </div>
-                                    <div class="col-md-3">
-                                        <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Submit" style="background-color:#f70;color:white;border:1px solid #f70;cursor:pointer" />
-                                    </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
+
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.State, new { data_error = "Please enter state", onclick = "this.value=''", pattern = ".*[^ ].*", onfocusout = "getDistricts()", placeholder = "state", @class = "form-control col-md-7", required = "required" })
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" id="user-district" style="display:none">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
+                            </div>
+                            <div class="col-md-5">
+
+                                @Html.TextBoxFor(model => model.District, new { data_error = "Please enter district", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getMandal()", placeholder = "district", @class = "form-control col-md-7", required = "required" })
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="user-mandal" style="display:none">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
+
+                            </div>
+                            <div class="col-md-5">
+
+                                @Html.TextBoxFor(model => model.Mandal, new { data_error = "Please enter mandal", pattern = ".*[^ ].*", onclick = "this.value=''", onfocusout = "getLocal()", placeholder = "mandal", @class = "form-control col-md-7", required = "required" })
+
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Add Id's</label>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="tags-default">
+                                    @Html.TextBoxFor(model => model.AddIdColl, new { data_error = "Please enter the name", pattern = ".*[^ ].*", placeholder = "Enter add ids separated by comma", @class = "form-control col-md-7 input-lg", @data_role = "tagsinput" })
+
                                 </div>
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Name<span style="color:#C91414">*</span></label>
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                @Html.TextBoxFor(model => model.Name, new { data_error = "Please enter the name", pattern = ".*[^ ].*", @class = "form-control", required = "required" })
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Phone Number<span style="color:#C91414">*</span></label>
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { data_error = "Please enter the phone numebr", @class = "form-control", required = "required" })
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Remarks<span style="color:#C91414">*</span></label>
+
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+
+                                @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control" })
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right">
+                                <label for="listing_name" style="font-weight:100">Status<span style="color:#C91414">*</span></label>
+
+                            </div>
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+
+                                @Html.DropDownListFor(model=>model.Status, statusCollection, new { @class = "form-control" })
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-9" style="text-align:right">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" id="btnSubmit" class="btn btn-primary btn-lg" value="Add" style="background-color:#f70;color:white;border:1px solid #f70;cursor:pointer" />
                             </div>
                         </div>
                     </div>
-
                 </div>
+
+
             </div>
         </div>
-        </div>
+    </div>
+
+
+}
+@section Styles {
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+
+    <link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <!-- Notification css (Toastr) -->
+    <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
+    <script src="~/Scripts/Custome/post.js"></script>
+    <script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <!-- Toastr js -->
+    <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var toastCount = 0;
+            loadStates();
+            if ("@ViewBag.Status" == "True") {
+                ShowSucessToaster("Customer information added successfully", 'success');
+                ClearControls();
             }
-            @section Styles {
-                <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-                <link href="@Url.Content("~/Content/CssNew/responsive.css")" rel="stylesheet" />
-                <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
-                <link href="@Url.Content("~/Content/CustomeNew/Index1.css")" rel="stylesheet" type="text/css" />
-                
-                <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
-
-               <link href="@Url.Content("~/Content/CssNew/style.css")" rel="stylesheet" />
-<link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-                 <!-- Notification css (Toastr) -->
-<link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+            else if ("@ViewBag.Status" == "False") {
+                ShowSucessToaster("Error occured while inserting customer data ", 'error');
             }
-            @section scripts{
+            function ShowSucessToaster(message, state) {
 
+                var shortCutFunction = state;
+                var msg = message;
+                var title = 'Status';
+                var showDuration = "300";
+                var hideDuration = "1000";
+                var timeOut = "5000";
+                var extendedTimeOut = "1000";
+                var showEasing = "swing";
+                var hideEasing = "linear";
+                var showMethod = "fadeIn";
+                var hideMethod = "fadeOut";
+                var toastIndex = toastCount++;
+                var addClear = $('#addClear').prop('checked');
 
-                <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-                <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
-                <script src="~/Scripts/Custome/post.js"></script>
-<script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
-                <!-- Toastr js -->
-<script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        var toastCount = 0;
-                        loadStates();
-                        if ("@ViewBag.Status" == "True") {
-                            ShowSucessToaster("Customer information added successfully", 'success');
-                            ClearControls();
-                        }
-                        else if ("@ViewBag.Status" == "False")
-                        {
-                            ShowSucessToaster("Error occured while inserting customer data ", 'error');
-                        }
-                        function ShowSucessToaster(message, state) {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
 
-                            var shortCutFunction = state;
-                            var msg = message;
-                            var title = 'Status';
-                            var showDuration = "300";
-                            var hideDuration = "1000";
-                            var timeOut = "5000";
-                            var extendedTimeOut = "1000";
-                            var showEasing = "swing";
-                            var hideEasing = "linear";
-                            var showMethod = "fadeIn";
-                            var hideMethod = "fadeOut";
-                            var toastIndex = toastCount++;
-                            var addClear = $('#addClear').prop('checked');
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
 
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": false,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "5000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            };
+                if (showDuration.length) {
+                    toastr.options.showDuration = showDuration;
+                }
 
-                            if ($('#addBehaviorOnToastClick').prop('checked')) {
-                                toastr.options.onclick = function () {
-                                    alert('You can perform some custom action after a toast goes away');
-                                };
-                            }
+                if (hideDuration.length) {
+                    toastr.options.hideDuration = hideDuration;
+                }
 
-                            if (showDuration.length) {
-                                toastr.options.showDuration = showDuration;
-                            }
+                if (timeOut.length) {
+                    toastr.options.timeOut = addClear ? 0 : timeOut;
+                }
 
-                            if (hideDuration.length) {
-                                toastr.options.hideDuration = hideDuration;
-                            }
+                if (extendedTimeOut.length) {
+                    toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
+                }
 
-                            if (timeOut.length) {
-                                toastr.options.timeOut = addClear ? 0 : timeOut;
-                            }
+                if (showEasing.length) {
+                    toastr.options.showEasing = showEasing;
+                }
 
-                            if (extendedTimeOut.length) {
-                                toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
-                            }
+                if (hideEasing.length) {
+                    toastr.options.hideEasing = hideEasing;
+                }
 
-                            if (showEasing.length) {
-                                toastr.options.showEasing = showEasing;
-                            }
+                if (showMethod.length) {
+                    toastr.options.showMethod = showMethod;
+                }
 
-                            if (hideEasing.length) {
-                                toastr.options.hideEasing = hideEasing;
-                            }
+                if (hideMethod.length) {
+                    toastr.options.hideMethod = hideMethod;
+                }
 
-                            if (showMethod.length) {
-                                toastr.options.showMethod = showMethod;
-                            }
+                if (addClear) {
+                    msg = getMessageWithClearButton(msg);
+                    toastr.options.tapToDismiss = false;
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
 
-                            if (hideMethod.length) {
-                                toastr.options.hideMethod = hideMethod;
-                            }
+                $('#toastrOptions').text('Command: toastr["'
+                    + shortCutFunction
+                    + '"]("'
+                    + msg
+                    + (title ? '", "' + title : '')
+                    + '")\n\ntoastr.options = '
+                    + JSON.stringify(toastr.options, null, 2)
+                );
 
-                            if (addClear) {
-                                msg = getMessageWithClearButton(msg);
-                                toastr.options.tapToDismiss = false;
-                            }
-                            if (!msg) {
-                                msg = getMessage();
-                            }
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
 
-                            $('#toastrOptions').text('Command: toastr["'
-                                + shortCutFunction
-                                + '"]("'
-                                + msg
-                                + (title ? '", "' + title : '')
-                                + '")\n\ntoastr.options = '
-                                + JSON.stringify(toastr.options, null, 2)
-                            );
+                if (typeof $toast === 'undefined') {
+                    return;
+                }
 
-                            var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
-                            $toastlast = $toast;
-
-                            if (typeof $toast === 'undefined') {
-                                return;
-                            }
-
-                            if ($toast.find('#okBtn').length) {
-                                $toast.delegate('#okBtn', 'click', function () {
-                                    alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
-                                    $toast.remove();
-                                });
-                            }
-                            if ($toast.find('#surpriseBtn').length) {
-                                $toast.delegate('#surpriseBtn', 'click', function () {
-                                    alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
-                                });
-                            }
-                            if ($toast.find('.clear').length) {
-                                $toast.delegate('.clear', 'click', function () {
-                                    toastr.clear($toast, { force: true });
-                                });
-                            }
-
-
-
-                        }
-
-                        function ClearControls()
-                        {
-                            $("#Name").val('');
-                            $("#PhoneNumber").val('');
-                            $("#AddIdColl").val('');
-                            $("#State").val('');
-                            $("#Mandal").val('');
-                            $("#District").val('');
-                        }
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
                     });
-                </script>
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+                if ($toast.find('.clear').length) {
+                    $toast.delegate('.clear', 'click', function () {
+                        toastr.clear($toast, { force: true });
+                    });
+                }
+
+
+
             }
+
+            function ClearControls() {
+                $("#Name").val('');
+                $("#PhoneNumber").val('');
+                $("#AddIdColl").val('');
+                $("#State").val('');
+                $("#Mandal").val('');
+                $("#District").val('');
+            }
+        });
+    </script>
+}

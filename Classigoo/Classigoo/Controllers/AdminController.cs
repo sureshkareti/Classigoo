@@ -26,7 +26,7 @@ namespace Classigoo.Controllers
 
             if (cookieRole != null && cookieRole.Value == "Employee")
             {
-               return RedirectToAction("EmployeeDashboard", "Admin");
+                return RedirectToAction("EmployeeDashboard", "Admin");
             }
 
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
@@ -56,7 +56,7 @@ namespace Classigoo.Controllers
         {
             AdminService objAdmin = new AdminService();
             var cookieName = Request.Cookies["ClassigooLoginUser"];
-            IEnumerable<AdminAdd> empAddColl=  objAdmin.GetEmpAdds(cookieName.Value);
+            IEnumerable<AdminAdd> empAddColl = objAdmin.GetEmpAdds(cookieName.Value);
 
             ViewBag.role = "Employee";
             Session["LoginUserRole"] = "Employee";
@@ -242,12 +242,12 @@ namespace Classigoo.Controllers
 
         }
 
-        public bool SendSms(string msg, string selectedOption,string searchQuery)
+        public bool SendSms(string msg, string selectedOption, string searchQuery)
         {
             bool status = true;
             try
             {
-                
+
                 AdminService objAdmin = new AdminService();
                 List<string> phoneNumColl = GetPhoneNumColl(selectedOption, searchQuery);
 
@@ -256,10 +256,10 @@ namespace Classigoo.Controllers
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                     {
-                      // objComm.SendMessage(phoneNum, msg);
+                        // objComm.SendMessage(phoneNum, msg);
                     }
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -269,8 +269,8 @@ namespace Classigoo.Controllers
 
             return status;
         }
-        
-        public bool SendSmsFromgrid(string msg,string phoneNumColl)
+
+        public bool SendSmsFromgrid(string msg, string phoneNumColl)
         {
             bool status = true;
             try
@@ -287,14 +287,14 @@ namespace Classigoo.Controllers
                     }
 
                 }
-               // ViewBag.Status = "Messages have been sent successfully";
+                // ViewBag.Status = "Messages have been sent successfully";
 
             }
             catch (Exception ex)
             {
-                 status = false;
+                status = false;
                 Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
-               // ViewBag.Status = "Error occured while sending Messages.";
+                // ViewBag.Status = "Error occured while sending Messages.";
             }
 
             return status;
@@ -316,13 +316,13 @@ namespace Classigoo.Controllers
             return Json(addColl, JsonRequestBehavior.AllowGet);
         }
 
-        public List<string> GetPhoneNumColl(string selectedOption,string searchQuery)
+        public List<string> GetPhoneNumColl(string selectedOption, string searchQuery)
         {
             List<string> phoneNumColl = new List<string>();
             AdminService objAdminService = new AdminService();
             try
             {
-                switch(selectedOption)
+                switch (selectedOption)
                 {
                     case "allConsumersData":
                         phoneNumColl = objAdminService.GetConsumersMobileNos();
@@ -333,9 +333,9 @@ namespace Classigoo.Controllers
                     case "ownersData":
                         if (searchQuery != null && searchQuery != string.Empty)
                         {
-            SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+                            SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
 
-                            phoneNumColl= objAdminService.GetOwnersMobileNos(ownersSearchObj);
+                            phoneNumColl = objAdminService.GetOwnersMobileNos(ownersSearchObj);
                         }
                         break;
                     case "consumersData":
@@ -348,7 +348,7 @@ namespace Classigoo.Controllers
 
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -365,34 +365,34 @@ namespace Classigoo.Controllers
             {
                 List<string> phoneNumColl = new List<string>();
                 AdminService objAdminService = new AdminService();
-                
-                    switch (selectedOption)
-                    {
-                        case "allConsumersData":
-                        
-                            addColl = db.GetAdminAdds();
-                       
+
+                switch (selectedOption)
+                {
+                    case "allConsumersData":
+
+                        addColl = db.GetAdminAdds();
+
                         break;
-                        case "allWonersData":
+                    case "allWonersData":
                         addColl = db.GetAdminAdds();
                         break;
-                        case "ownersData":
-                            if (searchQuery != null && searchQuery != string.Empty)
-                            {
-                                SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+                    case "ownersData":
+                        if (searchQuery != null && searchQuery != string.Empty)
+                        {
+                            SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
 
-                                phoneNumColl = objAdminService.GetOwnersMobileNos(ownersSearchObj);
-                            }
-                            break;
-                        case "consumersData":
-                            break;
-                        default:
+                            phoneNumColl = objAdminService.GetOwnersMobileNos(ownersSearchObj);
+                        }
+                        break;
+                    case "consumersData":
+                        break;
+                    default:
 
-                            break;
+                        break;
 
-                    }
+                }
 
-                
+
 
             }
             catch (Exception ex)
@@ -406,21 +406,38 @@ namespace Classigoo.Controllers
 
         public ActionResult CustomerInfo()
         {
+            string custId = Request.QueryString["custId"];
 
+            if (custId != null)
+            {
+                if (!User.Identity.IsAuthenticated)
+                {
+
+                    return RedirectToAction("Index", "Post");
+                }
+                else
+                {
+
+                }
+            }
             return View();
         }
+
         [HttpPost]
-        public ActionResult CustomerInfo(Survey survey,string hdnCateFristLevel,string hdnCateSecondLevel)
+        public ActionResult CustomerInfo(PostSurvey survey, string hdnCateFristLevel, string hdnCateSecondLevel)
         {
             try
             {
-                survey.Category = hdnCateFristLevel;
-                survey.SubCategory = hdnCateSecondLevel;
-                survey.CreatedDate = CustomActions.GetCurrentISTTime();
-                AdminService objAdmin = new AdminService();
-                ViewBag.Status = objAdmin.AddSurvey(survey);
+
+                //Server 
+
+                //survey.Category = hdnCateFristLevel;
+                //survey.SubCategory = hdnCateSecondLevel;
+                //survey.CreatedDate = CustomActions.GetCurrentISTTime();
+                //AdminService objAdmin = new AdminService();
+                //ViewBag.Status = objAdmin.AddSurvey(survey);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -429,14 +446,14 @@ namespace Classigoo.Controllers
 
         public ActionResult CustomerDashboard()
         {
-            List < Survey > surveyColl = new List<Survey>();
+            List<Survey> surveyColl = new List<Survey>();
             try
             {
                 AdminService objAdmin = new AdminService();
-                 surveyColl = objAdmin.GetSurveys();
-                
+                surveyColl = objAdmin.GetSurveys();
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -450,11 +467,11 @@ namespace Classigoo.Controllers
             {
                 AdminService db = new AdminService();
                 isAddUpdated = db.UpdateCustomerStatus(cId, status);
-                
+
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At updating add status addId - " , ex);
+                Library.WriteLog("At updating add status addId - ", ex);
             }
 
             return isAddUpdated;

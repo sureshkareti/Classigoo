@@ -26,5 +26,6 @@ namespace Classigoo
         public string Mandal { get; set; }
         public string Status { get; set; }
         public string AddIdColl { get; set; }
+        public string Remarks { get; set; }
     }
 }
