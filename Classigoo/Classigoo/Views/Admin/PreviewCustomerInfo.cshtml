@@ -1,0 +1,78 @@
+﻿@model  PostSurvey
+@{
+    ViewBag.Title = "PreviewCustomerInfo";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Preview CustomerInfo </h2>
+
+<div class="row" >
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8" >
+        <div class="card-box task-detail">
+            
+            <div class="media m-b-30">
+                <img class="d-flex mr-3 rounded-circle" alt="64x64" src="~/Content/Admin/assets/images/users/avatar-1.png" style="width: 48px; height: 48px;">
+                <div class="media-body">
+                    <h4 class="media-heading mb-0 mt-0">@Model.Name</h4>
+                    <span class="badge badge-danger">@Model.UserType</span>
+                </div>
+            </div>
+            <h4 class="font-600 m-b-20">Details</h4>
+            <p>
+                Phone Number : @Model.PhoneNumber
+            </p>
+            <p>
+                Category : @Model.hdnCateFristLevel
+            </p>
+            <p>
+                Sub Category : @Model.hdnCateSecondLevel
+            </p>
+            <p>
+                State : @Model.State
+            </p>
+            <p>
+                District : @Model.District  
+            </p>
+            <p>
+                Mandal : @Model.Mandal
+            </p>
+            <p>
+                Status : @Model.Status
+            </p>
+            <p>
+                Remarks : @Model.Remarks
+            </p>
+           
+            <ul class="list-inline task-dates m-b-0 m-t-20">
+                <li>
+                    <h5 class="font-600 m-b-5">Created Date</h5>
+                    <p> @Model.CreatedDate</p>
+                </li>
+               
+            </ul>
+            <div class="clearfix"></div>
+           
+            <div class="assign-team m-t-30">
+                <h5 class="font-600 m-b-5">Add Id's</h5>
+                <div>
+                    @{
+                        if (Model.AddIdColl != null)
+                        {
+                            string[] addIds = Model.AddIdColl.Split(',');
+                            foreach (string addId in addIds)
+                            {
+                                @Html.ActionLink(addId, "PreviewAdd", "List", new { addId = addId }, new { target = "_blank", style = "color:#337ab7;" })
+                            }
+                        }
+
+                    }
+                   
+                </div>
+            </div>
+           
+        </div>
+    </div><!-- end col -->
+</div>

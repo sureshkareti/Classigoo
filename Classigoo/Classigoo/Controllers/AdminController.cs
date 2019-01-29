@@ -96,6 +96,158 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult CustomerInfo()
+        {
+            string custId = Request.QueryString["custId"];
+
+            if (custId != null)
+            {
+                PostSurvey objPostSurvey = new PostSurvey();
+
+                AdminService objAdmin = new AdminService();
+                Survey survey = objAdmin.GetSurvey(custId);
+                if (survey != null)
+                {
+                    PostSurvey postSurvey = new PostSurvey()
+                    {
+                        hdnCateFristLevel = survey.Category,
+                        hdnCateSecondLevel = survey.SubCategory,
+                        State = survey.State,
+                        District = survey.District,
+                        Mandal = survey.Mandal,
+
+                        AddIdColl = survey.AddIdColl,
+                        Name = survey.Name,
+                        PhoneNumber = survey.PhoneNumber,
+                        Remarks = survey.Remarks,
+                        UserType = survey.UserType,
+                        custId = survey.Id,
+                        Status = survey.Status
+                    };
+
+                    return View(postSurvey);
+                }
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CustomerInfo(PostSurvey postSurvey)
+        {
+            try
+            {
+                string queryStringForEdit = Request.QueryString["custId"];
+                if (postSurvey.custId == 0)
+                {
+                    Survey survey = new Survey()
+                    {
+                        Category = postSurvey.hdnCateFristLevel,
+                        SubCategory = postSurvey.hdnCateSecondLevel,
+                        State = postSurvey.State.Trim(),
+                        District = postSurvey.District.Trim(),
+                        Mandal = postSurvey.Mandal.Trim(),
+
+                        AddIdColl = postSurvey.AddIdColl.Trim(),
+                        Name = postSurvey.Name.Trim(),
+                        PhoneNumber = postSurvey.PhoneNumber.Trim(),
+                        Remarks = postSurvey.Remarks.Trim(),
+                        UserType = postSurvey.UserType.Trim(),
+                        CreatedDate = CustomActions.GetCurrentISTTime(),
+                        Status = postSurvey.Status
+                    };
+
+
+                    AdminService objAdmin = new AdminService();
+                    ViewBag.Status = objAdmin.AddSurvey(survey);
+                }
+                else
+                {
+                    Survey survey = new Survey()
+                    {
+                        Category = postSurvey.hdnCateFristLevel,
+                        SubCategory = postSurvey.hdnCateSecondLevel,
+                        State = postSurvey.State.Trim(),
+                        District = postSurvey.District.Trim(),
+                        Mandal = postSurvey.Mandal.Trim(),
+
+                        AddIdColl = postSurvey.AddIdColl.Trim(),
+                        Name = postSurvey.Name.Trim(),
+                        PhoneNumber = postSurvey.PhoneNumber.Trim(),
+                        Remarks = postSurvey.Remarks.Trim(),
+                        UserType = postSurvey.UserType.Trim(),
+                        Status = postSurvey.Status,
+                        Id=postSurvey.custId
+                    };
+
+                    AdminService objAdmin = new AdminService();
+                    ViewBag.Status = objAdmin.UpdateSurvey(survey);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult PreviewCustomerInfo()
+        {
+            string custId = Request.QueryString["custId"];
+
+            if (custId != null)
+            {
+                PostSurvey objPostSurvey = new PostSurvey();
+
+                AdminService objAdmin = new AdminService();
+                Survey survey = objAdmin.GetSurvey(custId);
+                if (survey != null)
+                {
+                    PostSurvey postSurvey = new PostSurvey()
+                    {
+                        hdnCateFristLevel = survey.Category,
+                        hdnCateSecondLevel = survey.SubCategory,
+                        State = survey.State,
+                        District = survey.District,
+                        Mandal = survey.Mandal,
+
+                        AddIdColl = survey.AddIdColl,
+                        Name = survey.Name,
+                        PhoneNumber = survey.PhoneNumber,
+                        Remarks = survey.Remarks,
+                        UserType = survey.UserType,
+                        custId = survey.Id,
+                        Status = survey.Status,
+                        CreatedDate = survey.CreatedDate.ToShortTimeString()
+                    };
+
+                    return View(postSurvey);
+                }
+
+            }
+            return View();
+        }
+
+        public ActionResult CustomerDashboard()
+        {
+            List<Survey> surveyColl = new List<Survey>();
+            try
+            {
+                AdminService objAdmin = new AdminService();
+                surveyColl = objAdmin.GetSurveys();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View(surveyColl);
+        }
+
         public JsonResult getSubcategory(int id)
         {
             List<Category> categoriesList = AdminService.GetCatagories();
@@ -404,62 +556,7 @@ namespace Classigoo.Controllers
             return Json(addColl, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CustomerInfo()
-        {
-            string custId = Request.QueryString["custId"];
-
-            if (custId != null)
-            {
-                if (!User.Identity.IsAuthenticated)
-                {
-
-                    return RedirectToAction("Index", "Post");
-                }
-                else
-                {
-
-                }
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CustomerInfo(PostSurvey survey, string hdnCateFristLevel, string hdnCateSecondLevel)
-        {
-            try
-            {
-
-                //Server 
-
-                //survey.Category = hdnCateFristLevel;
-                //survey.SubCategory = hdnCateSecondLevel;
-                //survey.CreatedDate = CustomActions.GetCurrentISTTime();
-                //AdminService objAdmin = new AdminService();
-                //ViewBag.Status = objAdmin.AddSurvey(survey);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return View();
-        }
-
-        public ActionResult CustomerDashboard()
-        {
-            List<Survey> surveyColl = new List<Survey>();
-            try
-            {
-                AdminService objAdmin = new AdminService();
-                surveyColl = objAdmin.GetSurveys();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return View(surveyColl);
-        }
-
+       
         public bool UpdateCustomerStatus(int cId, string status)
         {
             bool isAddUpdated = false;

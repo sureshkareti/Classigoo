@@ -16,7 +16,6 @@
     addStatusCollection.Add(new SelectListItem { Text = Constants.PendingSatus, Value = Constants.PendingSatus });
 
 
-
     List<SelectListItem> categoryCollection = new List<SelectListItem>();
     categoryCollection.Add(new SelectListItem { Text = Constants.AgriculturalVehicle, Value = Constants.AgriculturalVehicle });
     categoryCollection.Add(new SelectListItem { Text = Constants.ConstructionVehicle, Value = Constants.ConstructionVehicle });
@@ -28,13 +27,12 @@
 
 }
 
-
-@*<div class="row">
+<div class="row">
 
     <div class="col-sm-12">
         <div class="form-group row">
             <div class="col-xl-11 col-md-6 pull-right">
-                <input type="button" class="btn btn-sm btn-danger pull-right" value="Send SMS" id="btnSendSms" />
+                <a href="/Admin/CustomerInfo" class="btn btn-sm btn-danger pull-right" target="_blank">+ Customer</a>
             </div>
             <div class="col-xl-1 col-md-6 pull-right">
                 <input type="button" class="btn btn-sm btn-danger pull-right" value="Refresh" id="btnRefresh" />
@@ -45,11 +43,10 @@
 
 </div>
 
+
 <div class="row">
 
     <div class="col-sm-12">
-
-
 
         <div class="row">
 
@@ -57,8 +54,8 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box widget-user" style="cursor:pointer" id="id1">
                     <div class="text-center">
-                        <input type="text" class="form-control" id="txtAddidSearch" />
-                        <h5>Add Id</h5>
+                        <input type="text" class="form-control" id="txtcustidSearch" />
+                        <h5>Customer Id</h5>
                     </div>
                 </div>
             </div>
@@ -75,9 +72,9 @@
                 <div class="card-box widget-user">
                     <div class="text-center">
 
-                        @Html.DropDownList("ddlAddTypeSearch", new List<SelectListItem> {
-                                            new SelectListItem { Text = "Rent", Value = "Rent"},
-                                            new SelectListItem { Text = "Sale", Value = "Sale"}}, "select", new { @class = "form-control" })
+                        @Html.DropDownList("ddlcustTypeSearch", new List<SelectListItem> {
+                                                new SelectListItem { Text = "Consumer", Value = "Consumer"},
+                                                new SelectListItem { Text = "Buyer", Value = "Buyer"}}, "select", new { @class = "form-control" })
 
                         <h5>Type</h5>
                     </div>
@@ -87,7 +84,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box widget-user">
                     <div class="text-center">
-                        @Html.DropDownList("ddlAddStatusSearch", addStatusCollection, "select", new { @class = "form-control" })
+                        @Html.DropDownList("ddlstatusSearch", statusCollection, "select", new { @class = "form-control" })
                         <h5>Add Status</h5>
                     </div>
                 </div>
@@ -115,26 +112,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card-box widget-user">
-                    <div class="text-center">
-                        @Html.DropDownList("ddlStatusSearch", statusCollection, "select", new { @class = "form-control" })
-                        <h5>Status</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card-box widget-user">
-                    <div class="text-center">
-                        <input type="text" class="form-control" id="txtReciptNumberSearch" />
-                        <h5>Receipt Number</h5>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 
-</div>*@
+</div>
+
+
 <div class="row">
 
     <div class="col-sm-12">
@@ -142,32 +126,27 @@
         <div class="row">
             <div class="col-12">
                 <div class="card-box table-responsive">
-                    <h4 class="m-t-0 header-title">Adds</h4>
+                    <h4 class="m-t-0 header-title">Consumers</h4>
                     <p class="text-muted font-14 m-b-30">
-                        following are the adds which are <code> submitted by users</code>.
+                        following are the <code> consumers </code>data.
                     </p>
                     <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
                         <thead>
                             <tr>
-                                @*<th></th>*@
                                 <th data-class="expand">CId</th>
-                                @*<th >CId</th>*@
                                 <th data-hide="phone">Date and Time</th>
                                 <th data-hide="phone">Category</th>
                                 <th data-hide="phone">Sub Category</th>
                                 <th data-hide="phone">User Type</th>
                                 <th>Preview</th>
                                 <th>Edit</th>
-                                @*<th> Status</th>*@
                                 <th data-hide="phone">Status</th>
                                 <th data-hide="phone">Mobile No</th>
-                                
                                 <th data-hide="phone">State</th>
                                 <th data-hide="phone">District</th>
                                 <th data-hide="phone">Mandal</th>
-                               
                                 <th>Status</th>
-                                
+                                <th>Remarks</th>
                                 <th>Action</th>
                                 <th>Delete</th>
                                 <th>User Name</th>
@@ -181,15 +160,13 @@
                             {
 
                                 <tr>
-                                    @*<td>@item.PhoneNum</td>*@
-                                    @*<td></td>*@
                                     <td id="CId">
                                         @item.Id
                                     </td>
-                                    <td >
+                                    <td>
                                         @item.CreatedDate
                                     </td>
-                                    <td >
+                                    <td>
                                         @item.Category
                                     </td>
                                     <td>
@@ -198,26 +175,23 @@
                                     <td>
                                         @item.UserType
                                     </td>
-                                   
 
                                     <td>
-                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
+                                        @Html.ActionLink("Preview", "PreviewCustomerInfo", "Admin", new { custId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
 
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
+                                        @Html.ActionLink("Edit", "CustomerInfo", "Admin", new { custId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
                                     </td>
-
-
                                     <td>
                                         <span> <label id="lblStatus">@item.Status</label></span>
                                     </td>
-                                    
+
                                     <td>
                                         @item.PhoneNumber
                                     </td>
 
-                                   
+
                                     <td>
                                         @item.State
                                     </td>
@@ -230,13 +204,16 @@
 
                                     @*<td>
                                         @*<span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>*@
-                                        @*<span class="display-mode"> @item.Status</span>
-                                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
-                                    </td>*@*
-                                    
+                                    @*<span class="display-mode"> @item.Status</span>
+                                            @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                        </td>*@*
+
                                     <td>
                                         <span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>
                                         @Html.DropDownList("ddlAddStatus", statusCollection, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        @item.Remarks
                                     </td>
                                     <td>
                                         <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
@@ -244,7 +221,7 @@
                                         <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.Id }, new { target = "", style = "color:#337ab7;" })
+                                        @Html.ActionLink("Delete", "Delete", "Admin", new { custId = @item.Id }, new { target = "", style = "color:#337ab7;" })
                                     </td>
                                     <td>
                                         <span id="userName" class="UserInfo">@item.Name</span>
@@ -342,7 +319,7 @@
     @*<link href="~/Content/List/color1.css" rel="stylesheet" />*@
     @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
     <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
-<link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
     <!-- Notification css (Toastr) -->
     <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
 }
@@ -387,11 +364,11 @@
             var status = editElemts.ddlAddStatus.value;
             //var remarks = editElemts.txtRemarks.value;
 
-           // var addStatus = editElemts.ddlAddStatus.value;
-           // var reciptNumber = editElemts.txtReciptNumber.value;
+            // var addStatus = editElemts.ddlAddStatus.value;
+            // var reciptNumber = editElemts.txtReciptNumber.value;
 
             var cId = e.srcElement.offsetParent.parentElement.previousElementSibling.children.CId.innerText;
-           // var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
+            // var userElemts = e.srcElement.offsetParent.getElementsByClassName('UserInfo');
             //var userName = userElemts.userName.innerText;
             //var userPhoneNum = userElemts.userPhoneNum.innerText;
             $.ajax({
@@ -467,35 +444,36 @@
             });
 
 
-            //$('#txtAddidSearch').on('keyup', function () {
-            //    table
-            //        .columns(2)
-            //        .search(this.value)
-            //        .draw();
-            //});
+            $('#txtcustidSearch').on('keyup', function () {
+                table
+                    .columns(0)
+                    .search(this.value)
+                    .draw();
+            });
 
-            //$('#ddlAddTypeSearch').on('change', function () {
-            //    table
-            //        .columns(5)
-            //        .search(this.value)
-            //        .draw();
-            //});
+            $('#ddlcustTypeSearch').on('change', function () {
+                table
+                    .columns(4)
+                    .search(this.value)
+                    .draw();
+            });
 
-            //$('#txtMobileNumberSearch').on('keyup', function () {
-            //    table
-            //        .columns(10)
-            //        .search(this.value)
-            //        .draw();
-            //});
+            $('#txtMobileNumberSearch').on('keyup', function () {
+                table
+                    .columns(8)
+                    .search(this.value)
+                    .draw();
+            });
 
 
 
-            //$('#txtSubcategorySearch').on('keyup', function () {
-            //    table
-            //        .columns(4)
-            //        .search(this.value)
-            //        .draw();
-            //});
+            $('#txtSubcategorySearch').on('keyup', function () {
+                table
+                    .columns(3)
+                    .search(this.value)
+                    .draw();
+            });
+
             //$('#txtReciptNumberSearch').on('keyup', function () {
             //    table
             //        .columns(17)
@@ -504,12 +482,12 @@
             //});
 
 
-            //$('#ddlCategorySearch').on('change', function () {
-            //    table
-            //          .columns(11)
-            //          .search(this.value)
-            //          .draw();
-            //});
+            $('#ddlCategorySearch').on('change', function () {
+                table
+                      .columns(2)
+                      .search(this.value)
+                      .draw();
+            });
 
 
             //$('#ddlAddStatusSearch').on('change', function () {
@@ -519,12 +497,12 @@
             //          .draw();
             //});
 
-            //$('#ddlStatusSearch').on('change', function () {
-            //    table
-            //          .columns(9)
-            //          .search(this.value)
-            //          .draw();
-            //});
+            $('#ddlstatusSearch').on('change', function () {
+                table
+                      .columns(7)
+                      .search(this.value)
+                      .draw();
+            });
 
             $("#btnRefresh").on('click', function () {
                 table.state.clear();

@@ -180,6 +180,32 @@ namespace Classigoo.Models
             return isSuccess;
         }
 
+        public Survey GetSurvey(string custId)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(custId);
+                    Survey objAdd = classigooEntities.Surveys.SingleOrDefault(a => a.Id == id);
+
+                    if (objAdd != null)
+                    {
+                        return objAdd;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get add post survey operations", ex);
+            }
+
+            return null;
+
+        }
+
         public List<Survey> GetSurveys()
         {
             try
@@ -197,6 +223,49 @@ namespace Classigoo.Models
                 Library.WriteLog("At GetSurvey db", ex);
                 return null;
             }
+        }
+
+        public bool UpdateSurvey(Survey survey)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    Survey objSurvey = classigooEntities.Surveys.SingleOrDefault(a => a.Id == survey.Id);
+
+                    if (objSurvey != null)
+                    {
+                        objSurvey.Category = survey.Category;
+                        objSurvey.SubCategory = survey.SubCategory;
+                        objSurvey.State = survey.State;
+                        objSurvey.District = survey.District;
+                        objSurvey.Mandal = survey.Mandal;
+                     
+                        objSurvey.Name = survey.Name;
+                        objSurvey.PhoneNumber = survey.PhoneNumber;
+
+                        objSurvey.UserType = survey.UserType;
+                        objSurvey.Status = survey.Status;
+                        objSurvey.AddIdColl = survey.AddIdColl;
+                        objSurvey.Remarks = survey.Remarks;
+
+                        int response = classigooEntities.SaveChanges();
+                        if (response == 1)
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at update add post survey operations", ex);
+                return false;
+            }
+
+            return true;
         }
 
         public bool UpdateCustomerStatus(int cId, string status)

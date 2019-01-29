@@ -234,14 +234,14 @@ namespace Classigoo
 
     public class PostSurvey
     {
-        public string custId { set; get; }
+        public int custId { set; get; }
         public string UserType { set; get; }
         public string hdnCateFristLevel { set; get; }
         public string hdnCateSecondLevel { set; get; }
 
         
 
-        
+        public string CreatedDate { set; get; }
 
         public string Name { set; get; }
         public string PhoneNumber { set; get; }
