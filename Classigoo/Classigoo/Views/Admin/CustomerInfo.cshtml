@@ -408,12 +408,15 @@
 @section scripts{
 
 
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
-    <script src="~/Scripts/Custome/post.js"></script>
+
     <script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <!-- Toastr js -->
     <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/Custome/post.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var toastCount = 0;
@@ -560,10 +563,10 @@
             var isEdit = true;
             var addId = "@ViewBag.addId";
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 loadStates();
                 BindEdit();
-               
+
                 loadDistrict();
                 loadMandal();
 
@@ -579,7 +582,7 @@
         <script type="text/javascript">
             var isEdit = false;
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 loadStates();
             });
         </script>

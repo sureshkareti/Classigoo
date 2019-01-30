@@ -44,7 +44,7 @@
                             <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
                                 <thead>
                                     <tr>
-                                        @*<th></th>*@   
+                                        @*<th></th>*@
                                         <th data-class="expand">AddId</th>
                                         <th data-class="expand">PhoneNum</th>
                                         <th data-hide="phone">Date and Time</th>
@@ -55,24 +55,20 @@
                                         <th>Status</th>
                                         <th data-hide="phone">Mobile No</th>
                                         <th data-hide="phone">User Name</th>
-                                        
+
                                         @*<th data-hide="phone">Category</th>
-                                        <th data-hide="phone">State</th>
-                                        <th data-hide="phone">District</th>
-                                        <th data-hide="phone">Mandal</th>*@
+                                            <th data-hide="phone">State</th>
+                                            <th data-hide="phone">District</th>
+                                            <th data-hide="phone">Mandal</th>*@
                                         @*<th>Remarks</th>
-                                        <th>Status</th>
-                                        <th>User Name</th>
-                                        <th>Mobile No</th>*@
+                                            <th>Status</th>
+                                            <th>User Name</th>
+                                            <th>Mobile No</th>*@
                                     </tr>
 
                                 </thead>
 
-                                <tbody>
-
-                                    
-
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
@@ -176,6 +172,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
 <div class="loader-wrap" style="display:none">
     <div class="loader">
         <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
@@ -185,7 +182,7 @@
 @section Styles {
     <!-- DataTables -->
     @*<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />*@
-<link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
     <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
 
     <link href="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -239,7 +236,7 @@
             var table;
             $("#filterConsumersData").css('display', 'none');
             $("#filterOwnersData").css('display', 'none');
-            
+
 
             $("#btnRefreshGrid").click(function () {
                 table.destroy();
@@ -293,14 +290,14 @@
                         else if (radioValue == "consumersData") {
                             query = GetConsumerSearchQuery();
                         }
-                        
+
                         $.ajax({
                             type: 'GET',
                             url: '@Url.Action("FillGrid", "Admin")',
                             cache: false,
                             data: { "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
                             success: function (data) {
-                               
+
                                 table = $('#tblAdds').dataTable({
                                     destroy: true,
                                     data: data,
@@ -310,7 +307,7 @@
                                         {
                                             data: 'Created',
                                             "type": "date ",
-                                            "render":function (value) {
+                                            "render": function (value) {
                                                 if (value === null) return "";
 
                                                 var pattern = /Date\(([^)]+)\)/;
@@ -319,40 +316,40 @@
 
                                                 return (dt.getDate() + 1) + "/" + dt.getMonth() + "/" + dt.getFullYear();
                                             }
-                                         },
+                                        },
                                         { data: 'Category' },
                                         { data: 'SubCategory' },
                                         { data: 'Type' },
                                         { data: 'Status' },
                                          { data: 'PhoneNum' },
                                         { data: 'UserName' },
-                                       
-                                        
+
+
 
                                     ],
                                     "responsive": true,
-                                       stateSave: true,
-                                        AutoWidth: false,
-                                       columnDefs: [
-                                                      {
-                                                         targets: 1,
-                                                            checkboxes: {
-                                                                selectRow: true
-                                                            },
+                                    stateSave: true,
+                                    AutoWidth: false,
+                                    columnDefs: [
+                                                   {
+                                                       targets: 1,
+                                                       checkboxes: {
+                                                           selectRow: true
+                                                       },
 
-                                                        },
-                                                       {
-                                                           targets: 0,
-                                                           orderable: false
+                                                   },
+                                                    {
+                                                        targets: 0,
+                                                        orderable: false
 
-                                                       }
+                                                    }
 
-                                        ],
-                                        select: {
-                                            style: 'multi'
-                                        }
+                                    ],
+                                    select: {
+                                        style: 'multi'
+                                    }
                                        ,
-                                        order: [[2, 'asc']]
+                                    order: [[2, 'asc']]
 
                                 });
                                 $(".loader-wrap").hide();
@@ -361,7 +358,7 @@
                                 $(".loader-wrap").hide();
                             }
                         })
-                        
+
                     }
                     else if (selectedMode == 'customRadioWithOutGrid') {
                         $("#grid").css('display', 'none');
@@ -435,8 +432,7 @@
                 loadOwenersSearchData(JSON.stringify(searchOwnersEntity));
             });
 
-            function GetOwnerSearchQuery()
-            {
+            function GetOwnerSearchQuery() {
                 var type = $("#ddlType").val();
                 var addStatus = $("#ddlStatus").val();
                 var mobileNumber = $("#txtMobileNumberOData").val();
@@ -460,15 +456,14 @@
                 return searchOwnersEntity;
             }
 
-            function GetConsumerSearchQuery()
-            {
+            function GetConsumerSearchQuery() {
                 var type = $("#ddlType").val();
                 var addStatus = $("#ddlStatus").val();
                 var mobileNumber = $("#txtMobileNumberOData").val();
                 var locationState = $("#txtStates").val();
                 var locationDistricts = $("#txtDistrict").val();
                 var locationMandal = $("#txtMandal").val();
-                var category = $('select[id="ddlCategoryOData"] option:selected').text();  
+                var category = $('select[id="ddlCategoryOData"] option:selected').text();
                 var subCategory = $('select[id="ddlSubCategoryOData"] option:selected').text();
 
                 var searchConsumerEntity = {
@@ -486,140 +481,86 @@
             }
 
 
-        function loadSubCategories(category) {
+            function loadSubCategories(category) {
 
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("getSubcategory")',
-                dataType: 'json',
-                data: { id: category },
-                success: function (subcategories) {
-                    $("#ddlSubCategoryOData").append("<option>select</option>");
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("getSubcategory")',
+                    dataType: 'json',
+                    data: { id: category },
+                    success: function (subcategories) {
+                        $("#ddlSubCategoryOData").append("<option>select</option>");
 
-                    $.each(subcategories, function (i, subcategorys) {
+                        $.each(subcategories, function (i, subcategorys) {
 
-                        $("#ddlSubCategoryOData").append('<option value="'
-                                                   + subcategorys.Value + '">'
-                                             + subcategorys.Text + '</option>');
-                    });
-                },
-                error: function (ex) {
-                    alert('Failed.' + ex);
-                }
-            });
-        }
-
-        function loadOwenersSearchData(searchOwnersData) {
-         
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("SearchOwenersData")',
-                dataType: 'json',
-                data: { searchEntity: searchOwnersData },
-                success: function (subcategories) {
-
-                    var response = jQuery.parseJSON(subcategories);
-                    console.log(subcategories);
-                    if (response.Status == 1) {
-
-                        $("#tblAdds").find("tr").remove();
-
-                        table.destroy();
-
-                        table = $('#tblAdds').DataTable({
-                            "responsive": true,
-                            stateSave: true,
-                            AutoWidth: false,
-                            columnDefs: [
-                                            {
-                                                targets: 1,
-                                                checkboxes: {
-                                                    selectRow: true
-                                                },
-
-                                            },
-                                           {
-                                               targets: 0,
-                                               orderable: false
-
-                                           }
-
-                            ],
-                            select: {
-                                style: 'multi'
-                            },
-                            order: [[2, 'asc']]
-
+                            $("#ddlSubCategoryOData").append('<option value="'
+                                                       + subcategorys.Value + '">'
+                                                 + subcategorys.Text + '</option>');
                         });
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
                     }
-                    else {
+                });
+            }
 
+            function loadOwenersSearchData(searchOwnersData) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SearchOwenersData")',
+                    dataType: 'json',
+                    data: { searchEntity: searchOwnersData },
+                    success: function (subcategories) {
+
+                        var response = jQuery.parseJSON(subcategories);
+                        console.log(subcategories);
+                        if (response.Status == 1) {
+
+                            $("#tblAdds").find("tr").remove();
+
+                            table.destroy();
+
+                            table = $('#tblAdds').DataTable({
+                                "responsive": true,
+                                stateSave: true,
+                                AutoWidth: false,
+                                columnDefs: [
+                                                {
+                                                    targets: 1,
+                                                    checkboxes: {
+                                                        selectRow: true
+                                                    },
+
+                                                },
+                                               {
+                                                   targets: 0,
+                                                   orderable: false
+
+                                               }
+
+                                ],
+                                select: {
+                                    style: 'multi'
+                                },
+                                order: [[2, 'asc']]
+
+                            });
+                        }
+                        else {
+
+                        }
+                    },
+                    error: function (ex) {
+                        alert('Failed.' + ex);
                     }
-                },
-                error: function (ex) {
-                    alert('Failed.' + ex);
-                }
-            });
-        }
+                });
+            }
 
-        function loadStates() {
-
-            var locations = new Array();
-            var states = new Array();
-            $.ajax({
-                url: '/Scripts/Json/location1.min.json',
-                dataType: 'json',
-                async: false,
-                success: function (data) {
-                    $.each(data, function (i, field) {
-                        locations.push(field);
-                    });
-                }
-            });
-
-            $.each(locations, function (i1, field1) {
-                states.push(field1.name);
-                console.log(field1.name);
-            });
-
-            console.log(states);
-
-            $("#txtStates").autocomplete({
-                source: states,
-                minLength: 1, autoFocus: true,
-                scroll: true,
-                matchContains: true,
-                minChars: 2,
-                autoFill: true,
-                mustMatch: false,
-                cacheLength: 20,
-                max: 20,
-                close: function () {
-                },
-                select: function (event, ui) {
-                    //TestOnSelection();
-                    //$(this).blur();
-
-                    getDistricts();
-                    //$("#txtDistrict").focus();
-                }
-            }).focus(function () {
-                $(this).data("uiAutocomplete").search('e');
-            });
-
-
-        };
-
-
-        function getDistricts() {
-
-            var selectedState = $.trim($("#txtStates").val());
-            $("#txtDistrict").val("");
-            $("#txtMandal").val("");
-            if (selectedState !== "") {
+            function loadStates() {
 
                 var locations = new Array();
-                var districs = new Array();
+                var states = new Array();
                 $.ajax({
                     url: '/Scripts/Json/location1.min.json',
                     dataType: 'json',
@@ -631,18 +572,16 @@
                     }
                 });
 
-                var selectedVehicle = locations.filter(a=>a.name === selectedState);
-
-                $.each(selectedVehicle[0].District, function (i1, field1) {
-
-                    districs.push(field1.name);
+                $.each(locations, function (i1, field1) {
+                    states.push(field1.name);
+                    console.log(field1.name);
                 });
 
-                $("#txtDistrict").autocomplete({
-                    source: districs
-                    ,
-                    minLength: 1,
-                    autoFocus: true,
+                console.log(states);
+
+                $("#txtStates").autocomplete({
+                    source: states,
+                    minLength: 1, autoFocus: true,
                     scroll: true,
                     matchContains: true,
                     minChars: 2,
@@ -651,13 +590,12 @@
                     cacheLength: 20,
                     max: 20,
                     close: function () {
-
                     },
                     select: function (event, ui) {
                         //TestOnSelection();
                         //$(this).blur();
 
-                        getMandal();
+                        getDistricts();
                         //$("#txtDistrict").focus();
                     }
                 }).focus(function () {
@@ -665,163 +603,216 @@
                 });
 
 
+            };
+
+
+            function getDistricts() {
+
+                var selectedState = $.trim($("#txtStates").val());
+                $("#txtDistrict").val("");
+                $("#txtMandal").val("");
+                if (selectedState !== "") {
+
+                    var locations = new Array();
+                    var districs = new Array();
+                    $.ajax({
+                        url: '/Scripts/Json/location1.min.json',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            $.each(data, function (i, field) {
+                                locations.push(field);
+                            });
+                        }
+                    });
+
+                    var selectedVehicle = locations.filter(a=>a.name === selectedState);
+
+                    $.each(selectedVehicle[0].District, function (i1, field1) {
+
+                        districs.push(field1.name);
+                    });
+
+                    $("#txtDistrict").autocomplete({
+                        source: districs
+                        ,
+                        minLength: 1,
+                        autoFocus: true,
+                        scroll: true,
+                        matchContains: true,
+                        minChars: 2,
+                        autoFill: true,
+                        mustMatch: false,
+                        cacheLength: 20,
+                        max: 20,
+                        close: function () {
+
+                        },
+                        select: function (event, ui) {
+                            //TestOnSelection();
+                            //$(this).blur();
+
+                            getMandal();
+                            //$("#txtDistrict").focus();
+                        }
+                    }).focus(function () {
+                        $(this).data("uiAutocomplete").search('e');
+                    });
+
+
+
+                }
+                else {
+
+                }
 
             }
-            else {
 
-            }
+            function getMandal() {
 
-        }
-
-        function getMandal() {
-
-            var selectedDistric = $.trim($("#txtDistrict").val());
-            $("#txtMandal").val("");
-            if (selectedDistric !== "") {
+                var selectedDistric = $.trim($("#txtDistrict").val());
+                $("#txtMandal").val("");
+                if (selectedDistric !== "") {
 
 
-                var locations = new Array();
-                var mandals = new Array();
-                $.ajax({
-                    url: '/Scripts/Json/location1.min.json',
-                    dataType: 'json',
-                    async: false,
-                    success: function (data) {
-                        $.each(data, function (i, field) {
-                            $.each(field.District, function (i1, field1) {
-                                locations.push(field1);
+                    var locations = new Array();
+                    var mandals = new Array();
+                    $.ajax({
+                        url: '/Scripts/Json/location1.min.json',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            $.each(data, function (i, field) {
+                                $.each(field.District, function (i1, field1) {
+                                    locations.push(field1);
+
+                                });
 
                             });
+                        }
+                    });
 
-                        });
-                    }
-                });
+                    var selectedStae = locations.filter(a=>a.name === selectedDistric);
+                    $.each(selectedStae[0].Mondal, function (i1, field1) {
 
-                var selectedStae = locations.filter(a=>a.name === selectedDistric);
-                $.each(selectedStae[0].Mondal, function (i1, field1) {
+                        mandals.push(field1.name);
+                    });
 
-                    mandals.push(field1.name);
-                });
+                    $("#txtMandal").autocomplete({
+                        source: mandals
+                        ,
+                        minLength: 1,
+                        autoFocus: true,
+                        scroll: true,
+                        matchContains: true,
+                        minChars: 2,
+                        autoFill: true,
+                        mustMatch: false,
+                        cacheLength: 20,
+                        max: 20,
+                        close: function () {
 
-                $("#txtMandal").autocomplete({
-                    source: mandals
-                    ,
-                    minLength: 1,
-                    autoFocus: true,
-                    scroll: true,
-                    matchContains: true,
-                    minChars: 2,
-                    autoFill: true,
-                    mustMatch: false,
-                    cacheLength: 20,
-                    max: 20,
-                    close: function () {
+                        }
+                    }).focus(function () {
+                        $(this).data("uiAutocomplete").search('e');
+                    });
+                }
+                else {
 
-                    }
-                }).focus(function () {
-                    $(this).data("uiAutocomplete").search('e');
-                });
+                }
             }
-            else {
 
-            }
-        }
+            $("#btnSendSms").click(function () {
+                var msg = $("#txtMessage").val();
+                if (msg == "") {
+                    alert("Please write message to send");
+                    return false;
+                }
+                $(".loader-wrap").show();
+                var radioValue = $("input[name='customRadioType']:checked")[0].id;
+                var query = "";
+                if (radioValue == "ownersData") {
+                    query = GetOwnerSearchQuery();
+                }
+                else if (radioValue == "consumersData") {
+                    query = GetConsumerSearchQuery();
+                }
 
-        $("#btnSendSms").click(function () {
-            var msg = $("#txtMessage").val();
-            if (msg == "") {
-                alert("Please write message to send");
-                return false;
-            }
-            $(".loader-wrap").show();
-            var radioValue = $("input[name='customRadioType']:checked")[0].id;
-            var query = "";
-            if (radioValue == "ownersData")
-            {
-                query = GetOwnerSearchQuery();
-            }
-            else if (radioValue == "consumersData")
-             {
-                query = GetConsumerSearchQuery();
-             }
-            
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("SendSMS", "Admin")',
-                cache: false,
-                data: { "msg": msg, "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
-                success: function (data) {
-                    $(".loader-wrap").hide();
-                    if (data == 'True') {
-                       ShowSucessToaster("Messages have been sent successfully", 'success');
-                    }
-                    else
-                    {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("SendSMS", "Admin")',
+                    cache: false,
+                    data: { "msg": msg, "selectedOption": radioValue, "searchQuery": JSON.stringify(query) },
+                    success: function (data) {
+                        $(".loader-wrap").hide();
+                        if (data == 'True') {
+                            ShowSucessToaster("Messages have been sent successfully", 'success');
+                        }
+                        else {
+                            ShowSucessToaster("There is a  problem while sening messages", 'error');
+                        }
+                    },
+                    error: function (response) {
+                        $(".loader-wrap").hide();
                         ShowSucessToaster("There is a  problem while sening messages", 'error');
                     }
-                },
-                error: function (response) {
-                    $(".loader-wrap").hide();
-                    ShowSucessToaster("There is a  problem while sening messages", 'error');
-                }
-            })
-        });
-
-        //$("#customRadioWithGrid").click(function () {
-            
-           
-            
-        //});
-        $("#btnSendSMSGrid").on('click', function () {
-
-           // $("#myModal").modal("show")
-            // Handle form submission event
-            var rows_selected = table.api().column(1).checkboxes.selected();
-
-            var selectedNumbers = '';
-            // Iterate over all selected checkboxes
-            $.each(rows_selected, function (index, rowId) {
-                selectedNumbers += rowId + ',';
+                })
             });
 
-            $("#txtMobileNumbers").tagsinput('add', selectedNumbers);
+            //$("#customRadioWithGrid").click(function () {
 
-            $("#myModal").modal("show");
-           
-        });
 
-        $("#btnSendSMSFromModal").on('click', function () {
-           
-            var msg = $("#txtMessageFromModal").val();
-            if (msg == "") {
-                alert("Please write message to send");
-                return false;
-            }
-            $(".loader-wrap").show();
-            var phoneNumColl=$("#txtMobileNumbers").val();
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("SendSmsFromgrid", "Admin")',
-                cache: false,
-                data: { "msg": msg, "phoneNumColl": phoneNumColl },
-                success: function (data) {
-                    $(".loader-wrap").hide();
-                    if (data = 'True') {
-                        ShowSucessToaster("Messages have been sent successfully", 'success');
-                    }
-                    else
-                    {
+
+            //});
+            $("#btnSendSMSGrid").on('click', function () {
+
+                // $("#myModal").modal("show")
+                // Handle form submission event
+                var rows_selected = table.api().column(1).checkboxes.selected();
+
+                var selectedNumbers = '';
+                // Iterate over all selected checkboxes
+                $.each(rows_selected, function (index, rowId) {
+                    selectedNumbers += rowId + ',';
+                });
+
+                $("#txtMobileNumbers").tagsinput('add', selectedNumbers);
+
+                $("#myModal").modal("show");
+
+            });
+
+            $("#btnSendSMSFromModal").on('click', function () {
+
+                var msg = $("#txtMessageFromModal").val();
+                if (msg == "") {
+                    alert("Please write message to send");
+                    return false;
+                }
+                $(".loader-wrap").show();
+                var phoneNumColl = $("#txtMobileNumbers").val();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("SendSmsFromgrid", "Admin")',
+                    cache: false,
+                    data: { "msg": msg, "phoneNumColl": phoneNumColl },
+                    success: function (data) {
+                        $(".loader-wrap").hide();
+                        if (data = 'True') {
+                            ShowSucessToaster("Messages have been sent successfully", 'success');
+                        }
+                        else {
+                            ShowSucessToaster("There is a  problem while sening messages", 'error');
+                        }
+                    },
+                    error: function (response) {
+                        $(".loader-wrap").hide();
                         ShowSucessToaster("There is a  problem while sening messages", 'error');
                     }
-                },
-                error: function (response) {
-                    $(".loader-wrap").hide();
-                    ShowSucessToaster("There is a  problem while sening messages", 'error');
-                }
-            })
-           
+                })
 
-        });
+
+            });
             function ShowSucessToaster(message, state) {
 
                 var shortCutFunction = state;

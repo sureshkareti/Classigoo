@@ -39,7 +39,7 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-          List<string> mnColl = classigooEntities.Adds.Include("User").ToList().Select(add => add.User.MobileNumber).ToList();
+                    List<string> mnColl = classigooEntities.Adds.Include("User").ToList().Select(add => add.User.MobileNumber).ToList();
                     // .//Include("User").Select(user=>user.User.MobileNumber)
 
                     return mnColl.Distinct<string>().ToList();
@@ -97,8 +97,8 @@ namespace Classigoo.Models
                                    PhoneNum = add.User.MobileNumber,
                                    Remarks = add.Remarks,
                                    SubCategory = add.SubCategory,
-                                   PostedBy=add.PostedBy
-                               }).OrderByDescending(add => add.Created).Where(add=>add.PostedBy== empId).ToList()
+                                   PostedBy = add.PostedBy
+                               }).OrderByDescending(add => add.Created).Where(add => add.PostedBy == empId).ToList()
                                      .Select(add => new AdminAdd()
                                      {
                                          AddId = add.AddId,
@@ -113,7 +113,7 @@ namespace Classigoo.Models
                                          PhoneNum = add.PhoneNum,
                                          Remarks = add.Remarks,
                                          SubCategory = add.SubCategory,
-                                         PostedBy=add.PostedBy
+                                         PostedBy = add.PostedBy
                                      });
                 }
             }
@@ -130,7 +130,7 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                   
+
                     List<string> mnColl = (from add in classigooEntities.Adds
                                            join user in classigooEntities.Users on add.UserId equals user.UserId
                                            where
@@ -144,7 +144,7 @@ namespace Classigoo.Models
                                          (searchQuery.SubCategory != "select" ? add.SubCategory == searchQuery.SubCategory : true)
 
                                            select user.MobileNumber).ToList();
-                              
+
 
                     return mnColl.Distinct<string>().ToList();
                 }
@@ -165,10 +165,10 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                   
+
                     db.Surveys.Add(survey);
                     db.SaveChanges();
-                   
+
                 }
             }
             catch (Exception ex)
@@ -214,11 +214,11 @@ namespace Classigoo.Models
                 {
 
                     db.Surveys.ToList();
-                   
+
                     return db.Surveys.ToList();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At GetSurvey db", ex);
                 return null;
@@ -227,34 +227,37 @@ namespace Classigoo.Models
 
         public bool UpdateSurvey(Survey survey)
         {
-
             try
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
 
-                    Survey objSurvey = classigooEntities.Surveys.SingleOrDefault(a => a.Id == survey.Id);
+                    var objAddTemp = classigooEntities.Surveys.ToList().FindAll(x => x.Id == survey.Id);
 
-                    if (objSurvey != null)
+                    if (objAddTemp.Count > 0)
                     {
-                        objSurvey.Category = survey.Category;
-                        objSurvey.SubCategory = survey.SubCategory;
-                        objSurvey.State = survey.State;
-                        objSurvey.District = survey.District;
-                        objSurvey.Mandal = survey.Mandal;
-                     
-                        objSurvey.Name = survey.Name;
-                        objSurvey.PhoneNumber = survey.PhoneNumber;
-
-                        objSurvey.UserType = survey.UserType;
-                        objSurvey.Status = survey.Status;
-                        objSurvey.AddIdColl = survey.AddIdColl;
-                        objSurvey.Remarks = survey.Remarks;
-
-                        int response = classigooEntities.SaveChanges();
-                        if (response == 1)
+                        var objSurvey = objAddTemp[0];
+                        if (objSurvey != null)
                         {
+                            objSurvey.Category = survey.Category;
+                            objSurvey.SubCategory = survey.SubCategory;
+                            objSurvey.State = survey.State;
+                            objSurvey.District = survey.District;
+                            objSurvey.Mandal = survey.Mandal;
 
+                            objSurvey.Name = survey.Name;
+                            objSurvey.PhoneNumber = survey.PhoneNumber;
+
+                            objSurvey.UserType = survey.UserType;
+                            objSurvey.Status = survey.Status;
+                            objSurvey.AddIdColl = survey.AddIdColl;
+                            objSurvey.Remarks = survey.Remarks;
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+
+                            }
                         }
                     }
                 }
@@ -287,7 +290,7 @@ namespace Classigoo.Models
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At UpdatingUserDetails UserId - " , ex);
+                Library.WriteLog("At UpdatingUserDetails UserId - ", ex);
             }
             if (response == 1)
                 return true;
@@ -296,5 +299,37 @@ namespace Classigoo.Models
                 return false;
             }
         }
+
+        public bool DeleteSurvey(string custId)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(custId);
+
+                    var objAddTemp = classigooEntities.Surveys.ToList().FindAll(x => x.Id == id);
+                    if (objAddTemp.Count > 0)
+                    {
+                        var objAdd = objAddTemp[0];
+                        if (objAdd != null)
+                        {
+                            classigooEntities.Surveys.Remove(objAdd);
+                            classigooEntities.SaveChanges();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get add delete survey operations", ex);
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

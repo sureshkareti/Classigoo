@@ -23,8 +23,8 @@
                     <div class="col-md-8 col-sm-6">
                         <h2 style="text-align:left;"> @Model.Add.Title </h2>
                         <div>
-                            <i class="fa fa-map-marker"></i> @Model.Add.Location  
-                            <br /><i class="fa fa-calendar"></i> Posted on: @Model.Add.CreatedDate 
+                            <i class="fa fa-map-marker"></i> @Model.Add.Location
+                            <br /><i class="fa fa-calendar"></i> Posted on: @Model.Add.CreatedDate
                             <br /> Add id: @Model.Add.AddId
                         </div>
                     </div>
@@ -56,18 +56,18 @@
                         <div class="col-md-10 col-xs-10 col-sm-10">
 
                             <ul class="thumbnails mainimage clearfix image-frame">
-                                <li> <img class="my-foto-container image-frame" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary" alt=""  data-id="1" /> </li>
+                                <li> <img class="my-foto-container image-frame" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary" alt="" data-id="1" /> </li>
                             </ul>
                             <ul class="thumbnails mainimage clearfix mt10">
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3" style="position:relative">
-                                    <img class="zoom image-grid image-grid1" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary"  alt=""  data-id="1" >
+                                    <img class="zoom image-grid image-grid1" src="@Model.Add.ImgUrlPrimary" data-large="@Model.Add.ImgUrlPrimary" alt="" data-id="1">
                                     <div class="image-hover"></div>
                                 </li>
                                 <li class="producthtumb col-lg-3 col-md-3 col-xs-3 col-sm-3">
                                     @{
                                         if (Model.Add.ImgUrlSeconday != "")
                                         {
-                                            <img class="zoom image-grid image-grid2" src="@Model.Add.ImgUrlSeconday" data-large="@Model.Add.ImgUrlSeconday" alt="" data-id="2" >
+                                            <img class="zoom image-grid image-grid2" src="@Model.Add.ImgUrlSeconday" data-large="@Model.Add.ImgUrlSeconday" alt="" data-id="2">
                                             <div class="image-hover"></div>
                                         }
 
@@ -79,7 +79,7 @@
                                     @{
                                         if (Model.Add.ImgUrlThird != "")
                                         {
-                                            <img class="zoom image-grid image-grid3" src="@Model.Add.ImgUrlThird" data-large="@Model.Add.ImgUrlThird"  alt="" data-id="3">
+                                            <img class="zoom image-grid image-grid3" src="@Model.Add.ImgUrlThird" data-large="@Model.Add.ImgUrlThird" alt="" data-id="3">
                                             <div class="image-hover"></div>
                                         }
 
@@ -91,7 +91,7 @@
                                     @{
                                         if (Model.Add.ImgUrlFourth != "")
                                         {
-                                            <img class="zoom image-grid image-grid4" src="@Model.Add.ImgUrlFourth" data-large="@Model.Add.ImgUrlFourth"  alt="" data-id="4" >
+                                            <img class="zoom image-grid image-grid4" src="@Model.Add.ImgUrlFourth" data-large="@Model.Add.ImgUrlFourth" alt="" data-id="4">
                                             <div class="image-hover"></div>
                                         }
 
@@ -146,6 +146,13 @@
                                             <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
                                             <a id="loginToChat" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
                                         </div>
+                                        <div class="col-md-1 col-xs-12 col-sm-12" style="text-align:center">
+                                            <span style="padding:0 15px 0 15px;" id="contactOrSendmessage">or</span>
+                                        </div>
+                                        <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
+
+                                            <a id="btnNotify" class="btn btn-orange btn-mini;" style="background-color:#337ab7;">Notifhy</a>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-5 pull-left" style="display:none">
@@ -155,7 +162,7 @@
                                             <a id="loginToChat" class="pull-right btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
 
                                 <div class="clearfix">
@@ -165,7 +172,7 @@
                                 <br />
                                 @using (Html.BeginForm("AddChat", "List", FormMethod.Post, new { id = "Chat" }))
                                 {
-                                    @Html.HiddenFor(m => m.Add.AddId,new { Name = "AddId" })
+                                    @Html.HiddenFor(m => m.Add.AddId, new { Name = "AddId" })
                                     <div id="chat" style="display:none">
                                         <div class="control-group">
                                             <label class="control-label">Message</label>
@@ -283,12 +290,12 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
                 <div class="row mt20">
                     <div class="col-md-12">
                         <div class="pull-left">
-                           <span style="font-size:24px;font-weight:bold;"><span style="color:#337ab7">HOT </span><span style="color:#f70">DEALS:</span> </span> 
+                            <span style="font-size:24px;font-weight:bold;"><span style="color:#337ab7">HOT </span><span style="color:#f70">DEALS:</span> </span>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -300,6 +307,84 @@
     </div>
 </div>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card-box">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group row">
+                                <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                    <label for="listing_name" style="font-weight:100">Name <span style="color:#C91414">*</span></label>
+                                </div>
+                                <div class="col-md-5 col-sm-12 col-xs-12">
+                                    <input type="text" id="txtName" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3 col-sm-12 col-xs-12" style="text-align:right">
+                                    <label for="listing_name" style="font-weight:100">Mobile Number <span style="color:#C91414">*</span></label>
+                                </div>
+                                <div class="col-md-5 col-sm-12 col-xs-12">
+                                    <input type="text" id="txtMobileNumber" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" style="font-weight:100">Select State<span style="color:#C91414">*</span></label>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="State" class="form-control" onclick="this.value = ''" onfocusout="getDistricts()" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="user-district" style="display:none">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" style="font-weight:100">Select District<span style="color:#C91414">*</span></label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="District" class="form-control" onclick="this.value = ''" onfocusout="getMandal()" />
+
+
+                                </div>
+                            </div>
+                            <div class="form-group row" id="user-mandal" style="display:none">
+                                <div class="col-md-3" style="text-align:right">
+                                    <label for="listing_name" style="font-weight:100">Select Mandal<span style="color:#C91414">*</span></label>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" id="Mandal" class="form-control" onclick="this.value = ''" onfocusout="getLocal()" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-9" style="text-align:right">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="button" id="btnNotify" class="btn btn-primary btn-lg" value="Notify" style="background-color:#f70;color:white;border:1px solid #f70;cursor:pointer" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 
 
 
@@ -308,173 +393,181 @@
     <link href="~/Content/List/color1.css" rel="stylesheet" />
     @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/Content/CustomeNew/Style.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+
+
+    <style type="text/css">
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
 
 }
 
 @section scripts{
-
+   
     <script src="~/Scripts/ScriptsNew/jquery.js"></script>
     @*<script src="~/Scripts/bootstrap.min.js"></script>**@
     <script src="~/Scripts/ScriptsNew/zoomsl-3.0.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/ScriptsNew/bootstrapvalidator.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/Custome/post.js"></script>
 
-<script type="text/javascript">
-
-
-    $(document).ready(function () {
-
-        var isUserLoggedIn = '@User.Identity.IsAuthenticated';
-        var isOwner = '@ViewBag.IsOwner';
-        if (isOwner == 'False') {
-            if (isUserLoggedIn == 'True') {
-
-                $("#chatWithUser").css("display", "block");
-                $("#contactOrSendmessage").css("display", "block");
-            }
-            else {
-                // $("#chatWithUser").css("display", "block");
-
-                $("#loginToChat").css("display", "block");
-                $("#contactOrSendmessage").css("display", "block");
-            }
-        }
-
-        $("#chatWithUser").click(function () {
-
-            $("#chat").css("display", "block");
-        });
-
-        $("#btnCancelMsg").click(function () {
-
-            $("#chat").css("display", "none");
-        });
-        $("#loginToChat").click(function () {
-
-            window.location.href = "/User/Register?ReturnUrl=/List/PreviewAdd?addId=@Model.Add.AddId";
-        });
-
-        //$(".my-foto-container").fadeOut(100, function () {
-        //    $(this).attr("src", $(That).attr("src"))
-        //    .attr("data-large", $(That).attr("data-large")).fadeIn(200)
-        //    .attr("data-title", $(That).attr("data-title"))
-        //    .attr("data-help", $(That).attr("data-help"))
-        //    .attr("data-id", $(That).attr("data-id"))
-        //});?ReturnUrl=List/PreviewAdd?addId=23";?ReturnUrl=%2fUser%2fadmin
+    <script type="text/javascript">
 
 
+        $(document).ready(function () {
 
-        $('#myTab a').click(function (e) {
-            e.preventDefault()
-            //var selectedTab = $(this).context.innerText;
-            var selectedTab = $(this).context.name;
-            var selectedCategory = '@Model.Add.Category';
-            ClearTabs();
-            if (selectedTab == "Specification") {
-                $("#tabspec").addClass("active");
-                switch (selectedCategory) {
-                    case "Real Estate":
-                        $("#re-specification").css("display", "block");
-                        break;
-                    case "Construction Vehicles":
-                        $("#cv-specification").css("display", "block");
-                        break;
-                    case "Transportation Vehicles":
-                        $("#tv-specification").css("display", "block");
-                        break;
-                    case "Agricultural Vehicles":
-                        $("#av-specification").css("display", "block");
-                        break;
-                    case "Passenger Vehicles":
-                        $("#pv-specification").css("display", "block");
-                        break;
-                }
-            }
-            else if (selectedTab == "Description") {
-                $("#description").css("display", "block");
+            var isUserLoggedIn = '@User.Identity.IsAuthenticated';
+            var isOwner = '@ViewBag.IsOwner';
+            if (isOwner == 'False') {
+                if (isUserLoggedIn == 'True') {
 
-                $("#tabdesc").addClass("active");
-
-            }
-            //else if (selectedTab == "Send Message") {
-            //    $("#contact").css("display", "block");
-
-            //    $("#tabcontact").addClass("active");
-            //}
-        })
-
-        $('#myTab a:first').tab('show') // Select first tab
-
-        function ClearTabs() {
-            $(".tab-content > .tab-pane").removeClass("active");
-            $(".tab-content > .tab-pane").css("display", "none");
-            $('#myTab li').removeClass("active");
-
-
-        }
-
-
-        ShowunhoverImage();
-
-    });
-
-
-    $("#imgLeft").click(function () {
-
-        var dataId = $(".my-foto-container").attr("data-id");
-
-        $(".image-hover").css('display', 'block');
-
-
-        var That;
-        var imageUrl = "";
-        if (dataId == "1") {
-
-            That = $(".image-grid4");
-
-            imageUrl = $(That).attr('src');
-
-
-            if (imageUrl != undefined) {
-
-                $(".image-grid4").parent().find(".image-hover").css('display', 'none');
-            }
-            else {
-
-                That = $(".image-grid3");
-                if ($(That).attr('src') != undefined) {
-                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    $("#chatWithUser").css("display", "block");
+                    $("#contactOrSendmessage").css("display", "block");
                 }
                 else {
+                    // $("#chatWithUser").css("display", "block");
 
-                    That = $(".image-grid2");
-                    if ($(That).attr('src') != undefined) {
-                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
-                    }
-                    else {
-
-                        That = $(".image-grid1");
-                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
-                    }
+                    $("#loginToChat").css("display", "block");
+                    $("#contactOrSendmessage").css("display", "block");
                 }
             }
-        }
-        else if (dataId == "2") {
 
-            That = $(".image-grid1");
+            $("#chatWithUser").click(function () {
 
-            imageUrl = $(That).attr('src');
+                $("#chat").css("display", "block");
+            });
+
+            $("#btnCancelMsg").click(function () {
+
+                $("#chat").css("display", "none");
+            });
+            $("#loginToChat").click(function () {
+
+                window.location.href = "/User/Register?ReturnUrl=/List/PreviewAdd?addId=@Model.Add.AddId";
+            });
+
+            //$(".my-foto-container").fadeOut(100, function () {
+            //    $(this).attr("src", $(That).attr("src"))
+            //    .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+            //    .attr("data-title", $(That).attr("data-title"))
+            //    .attr("data-help", $(That).attr("data-help"))
+            //    .attr("data-id", $(That).attr("data-id"))
+            //});?ReturnUrl=List/PreviewAdd?addId=23";?ReturnUrl=%2fUser%2fadmin
 
 
-            if (imageUrl != undefined) {
 
-                $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+            $('#myTab a').click(function (e) {
+                e.preventDefault()
+                //var selectedTab = $(this).context.innerText;
+                var selectedTab = $(this).context.name;
+                var selectedCategory = '@Model.Add.Category';
+                ClearTabs();
+                if (selectedTab == "Specification") {
+                    $("#tabspec").addClass("active");
+                    switch (selectedCategory) {
+                        case "Real Estate":
+                            $("#re-specification").css("display", "block");
+                            break;
+                        case "Construction Vehicles":
+                            $("#cv-specification").css("display", "block");
+                            break;
+                        case "Transportation Vehicles":
+                            $("#tv-specification").css("display", "block");
+                            break;
+                        case "Agricultural Vehicles":
+                            $("#av-specification").css("display", "block");
+                            break;
+                        case "Passenger Vehicles":
+                            $("#pv-specification").css("display", "block");
+                            break;
+                    }
+                }
+                else if (selectedTab == "Description") {
+                    $("#description").css("display", "block");
+
+                    $("#tabdesc").addClass("active");
+
+                }
+                //else if (selectedTab == "Send Message") {
+                //    $("#contact").css("display", "block");
+
+                //    $("#tabcontact").addClass("active");
+                //}
+            })
+
+            $('#myTab a:first').tab('show') // Select first tab
+
+            function ClearTabs() {
+                $(".tab-content > .tab-pane").removeClass("active");
+                $(".tab-content > .tab-pane").css("display", "none");
+                $('#myTab li').removeClass("active");
+
+
             }
-            else {
+
+
+            ShowunhoverImage();
+
+        });
+
+
+        $("#imgLeft").click(function () {
+
+            var dataId = $(".my-foto-container").attr("data-id");
+
+            $(".image-hover").css('display', 'block');
+
+
+            var That;
+            var imageUrl = "";
+            if (dataId == "1") {
 
                 That = $(".image-grid4");
-                if ($(That).attr('src') != undefined) {
+
+                imageUrl = $(That).attr('src');
+
+
+                if (imageUrl != undefined) {
+
                     $(".image-grid4").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
@@ -486,30 +579,27 @@
                     else {
 
                         That = $(".image-grid2");
-                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid1");
+                            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
             }
+            else if (dataId == "2") {
+
+                That = $(".image-grid1");
+
+                imageUrl = $(That).attr('src');
 
 
+                if (imageUrl != undefined) {
 
-        }
-        else if (dataId == "3") {
-
-            That = $(".image-grid2");
-
-            imageUrl = $(That).attr('src');
-
-
-            if (imageUrl != undefined) {
-
-                $(".image-grid2").parent().find(".image-hover").css('display', 'none');
-            }
-            else {
-
-                That = $(".image-grid3");
-                if ($(That).attr('src') != undefined) {
-                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    $(".image-grid1").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
 
@@ -519,78 +609,144 @@
                     }
                     else {
 
-                        That = $(".image-grid1");
-                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        That = $(".image-grid3");
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid2");
+                            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
+
+
+
             }
-
-        }
-        else if (dataId == "4") {
-
-            That = $(".image-grid3");
-
-            imageUrl = $(That).attr('src');
-
-
-            if (imageUrl != undefined) {
-
-                $(".image-grid3").parent().find(".image-hover").css('display', 'none');
-            }
-            else {
+            else if (dataId == "3") {
 
                 That = $(".image-grid2");
-                if ($(That).attr('src') != undefined) {
+
+                imageUrl = $(That).attr('src');
+
+
+                if (imageUrl != undefined) {
+
                     $(".image-grid2").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
 
-                    That = $(".image-grid1");
+                    That = $(".image-grid3");
                     if ($(That).attr('src') != undefined) {
-                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
                     }
                     else {
 
                         That = $(".image-grid4");
-                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid1");
+                            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        }
+                    }
+                }
+
+            }
+            else if (dataId == "4") {
+
+                That = $(".image-grid3");
+
+                imageUrl = $(That).attr('src');
+
+
+                if (imageUrl != undefined) {
+
+                    $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid2");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid1");
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid4");
+                            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
             }
-        }
 
-        $(".my-foto-container").fadeOut(100, function () {
-            $(this).attr("src", $(That).attr("src"))
-            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
-            .attr("data-title", $(That).attr("data-title"))
-            .attr("data-help", $(That).attr("data-help"))
-            .attr("data-id", $(That).attr("data-id"))
+            $(".my-foto-container").fadeOut(100, function () {
+                $(this).attr("src", $(That).attr("src"))
+                .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+                .attr("data-title", $(That).attr("data-title"))
+                .attr("data-help", $(That).attr("data-help"))
+                .attr("data-id", $(That).attr("data-id"))
+            });
+
+            //ShowunhoverImage();
         });
 
-        //ShowunhoverImage();
-    });
+        $("#imgRigth").click(function () {
+            var dataId = $(".my-foto-container").attr("data-id");
 
-    $("#imgRigth").click(function () {
-        var dataId = $(".my-foto-container").attr("data-id");
+            $(".image-hover").css('display', 'block');
 
-        $(".image-hover").css('display', 'block');
+            var That;
+            var imageUrl = "";
+            if (dataId == "1") {
 
-        var That;
-        var imageUrl = "";
-        if (dataId == "1") {
+                That = $(".image-grid2");
 
-            That = $(".image-grid2");
-
-            imageUrl = $(That).attr('src');
+                imageUrl = $(That).attr('src');
 
 
-            if (imageUrl != undefined) {
+                if (imageUrl != undefined) {
 
-                $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                    $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                }
+                else {
+
+                    That = $(".image-grid3");
+                    if ($(That).attr('src') != undefined) {
+                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                    }
+                    else {
+
+                        That = $(".image-grid4");
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid1");
+                            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        }
+                    }
+                }
+
             }
-            else {
+            else if (dataId == "2") {
 
                 That = $(".image-grid3");
-                if ($(That).attr('src') != undefined) {
+
+                imageUrl = $(That).attr('src');
+
+
+                if (imageUrl != undefined) {
+
                     $(".image-grid3").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
@@ -602,27 +758,25 @@
                     else {
 
                         That = $(".image-grid1");
-                        $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid2");
+                            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
             }
-
-        }
-        else if (dataId == "2") {
-
-            That = $(".image-grid3");
-
-            imageUrl = $(That).attr('src');
-
-
-            if (imageUrl != undefined) {
-
-                $(".image-grid3").parent().find(".image-hover").css('display', 'none');
-            }
-            else {
+            else if (dataId == "3") {
 
                 That = $(".image-grid4");
-                if ($(That).attr('src') != undefined) {
+
+                imageUrl = $(That).attr('src');
+
+                if (imageUrl != undefined) {
+
                     $(".image-grid4").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
@@ -634,25 +788,25 @@
                     else {
 
                         That = $(".image-grid2");
-                        $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid3");
+                            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
             }
-        }
-        else if (dataId == "3") {
-
-            That = $(".image-grid4");
-
-            imageUrl = $(That).attr('src');
-
-            if (imageUrl != undefined) {
-
-                $(".image-grid4").parent().find(".image-hover").css('display', 'none');
-            }
-            else {
+            else if (dataId == "4") {
 
                 That = $(".image-grid1");
-                if ($(That).attr('src') != undefined) {
+
+                imageUrl = $(That).attr('src');
+
+                if (imageUrl != undefined) {
+
                     $(".image-grid1").parent().find(".image-hover").css('display', 'none');
                 }
                 else {
@@ -664,144 +818,190 @@
                     else {
 
                         That = $(".image-grid3");
-                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                        if ($(That).attr('src') != undefined) {
+                            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+                        }
+                        else {
+
+                            That = $(".image-grid4");
+                            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+                        }
                     }
                 }
             }
-        }
-        else if (dataId == "4") {
 
-            That = $(".image-grid1");
+            $(".my-foto-container").fadeOut(100, function () {
+                $(this).attr("src", $(That).attr("src"))
+                .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+                .attr("data-title", $(That).attr("data-title"))
+                .attr("data-help", $(That).attr("data-help"))
+                .attr("data-id", $(That).attr("data-id"))
+            });
 
-            imageUrl = $(That).attr('src');
+            //ShowunhoverImage();
+        });
 
-            if (imageUrl != undefined) {
 
+
+        //$(".image-hover").hover(
+
+        //    function () {
+
+        //        //$(".image-hover").css('display', 'block');
+
+        //        $(this).parent().find(".image-hover").css('display', 'none');
+
+        //    }, function () {
+
+        //        $(this).parent().find(".image-hover").css('display', 'block');
+        //        //ShowunhoverImage();
+        //    }
+
+
+        //);
+
+        $(".image-hover").mouseout(function () {
+
+        }).mouseover(function () {
+
+            $(this).parent().find(".image-hover").css('display', 'none');
+
+        });
+
+        $(".zoom").mouseout(function () {
+            var dataId = $(".my-foto-container").attr("data-id");
+            //alert(dataId + $(this).attr('data-id'));
+            if (dataId != $(this).attr('data-id')) {
+                $(this).parent().find(".image-hover").css('display', 'block');
+
+            }
+
+
+        }).mouseover(function () {
+
+        });
+
+        $(".image-maximize img").click(function () {
+
+            var href = $(".my-foto-container").attr('src');
+
+            window.open(href, '_blank');
+            //window.location.href = href; //causes the browser to refresh and load the requested url
+        });
+
+        function ShowunhoverImage() {
+
+            $(".image-hover").css('display', 'block');
+
+            var dataId = $(".my-foto-container").attr("data-id");
+
+            if (dataId == "1") {
                 $(".image-grid1").parent().find(".image-hover").css('display', 'none');
             }
-            else {
+            else if (dataId == "2") {
+                $(".image-grid2").parent().find(".image-hover").css('display', 'none');
+            }
+            else if (dataId == "3") {
+                $(".image-grid3").parent().find(".image-hover").css('display', 'none');
+            }
+            else if (dataId == "4") {
+                $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+            }
 
-                That = $(".image-grid2");
-                if ($(That).attr('src') != undefined) {
-                    $(".image-grid2").parent().find(".image-hover").css('display', 'none');
-                }
-                else {
 
-                    That = $(".image-grid3");
-                    if ($(That).attr('src') != undefined) {
-                        $(".image-grid3").parent().find(".image-hover").css('display', 'none');
-                    }
-                    else {
+        }
 
-                        That = $(".image-grid4");
-                        $(".image-grid4").parent().find(".image-hover").css('display', 'none');
-                    }
-                }
+        $(".zoom").click(function () {
+
+
+            var That = this;
+            $(".my-foto-container").fadeOut(100, function () {
+                $(this).attr("src", $(That).attr("src"))
+                .attr("data-large", $(That).attr("data-large")).fadeIn(200)
+                .attr("data-title", $(That).attr("data-title"))
+                .attr("data-help", $(That).attr("data-help"))
+                .attr("data-id", $(That).attr("data-id"))
+            });
+
+
+            $(".image-hover").css('display', 'block');
+            $(this).parent().find(".image-hover").css('display', 'none');
+
+
+        });
+
+
+
+    </script>
+
+    <script type="text/javascript">
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("btnNotify");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+            loadStates();
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
 
-        $(".my-foto-container").fadeOut(100, function () {
-            $(this).attr("src", $(That).attr("src"))
-            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
-            .attr("data-title", $(That).attr("data-title"))
-            .attr("data-help", $(That).attr("data-help"))
-            .attr("data-id", $(That).attr("data-id"))
-        });
+        function sendCustomersInfo() {
+            var name = $("#txtName").val();
+            var mobileNumber = $("#txtMobileNumber").val();
+            var state = $("#State").val();
+            var dt = $("#District").val();
+            var mdl = $("#Mandal").val();
+            var addId = getUrlVars()["addId"];
+            
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("saveConsumerInfo")',
+                dataType: 'json',
+                data: { name: name, mobileNumber: mobileNumber, state: state, dt: dt, mdl: mdl, addId: addId },
+                success: function (subcategories) {
+                    $("#ddlSubCategoryOData").append("<option>select</option>");
 
-        //ShowunhoverImage();
-    });
+                    $.each(subcategories, function (i, subcategorys) {
 
-
-
-    //$(".image-hover").hover(
-
-    //    function () {
-
-    //        //$(".image-hover").css('display', 'block');
-
-    //        $(this).parent().find(".image-hover").css('display', 'none');
-
-    //    }, function () {
-
-    //        $(this).parent().find(".image-hover").css('display', 'block');
-    //        //ShowunhoverImage();
-    //    }
-
-
-    //);
-
-    $(".image-hover").mouseout(function () {
-
-    }).mouseover(function () {
-
-        $(this).parent().find(".image-hover").css('display', 'none');
-
-    });
-
-    $(".zoom").mouseout(function () {
-        var dataId = $(".my-foto-container").attr("data-id");
-        //alert(dataId + $(this).attr('data-id'));
-        if (dataId != $(this).attr('data-id')) {
-            $(this).parent().find(".image-hover").css('display', 'block');
-
+                        $("#ddlSubCategoryOData").append('<option value="'
+                                                   + subcategorys.Value + '">'
+                                             + subcategorys.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
         }
 
-
-    }).mouseover(function () {
-
-    });
-
-    $(".image-maximize img").click(function () {
-
-        var href = $(".my-foto-container").attr('src');
-
-        window.open(href, '_blank');
-        //window.location.href = href; //causes the browser to refresh and load the requested url
-    });
-
-    function ShowunhoverImage() {
-
-        $(".image-hover").css('display', 'block');
-
-        var dataId = $(".my-foto-container").attr("data-id");
-
-        if (dataId == "1") {
-            $(".image-grid1").parent().find(".image-hover").css('display', 'none');
-        }
-        else if (dataId == "2") {
-            $(".image-grid2").parent().find(".image-hover").css('display', 'none');
-        }
-        else if (dataId == "3") {
-            $(".image-grid3").parent().find(".image-hover").css('display', 'none');
-        }
-        else if (dataId == "4") {
-            $(".image-grid4").parent().find(".image-hover").css('display', 'none');
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
         }
 
-
-    }
-
-    $(".zoom").click(function () {
-
-
-        var That = this;
-        $(".my-foto-container").fadeOut(100, function () {
-            $(this).attr("src", $(That).attr("src"))
-            .attr("data-large", $(That).attr("data-large")).fadeIn(200)
-            .attr("data-title", $(That).attr("data-title"))
-            .attr("data-help", $(That).attr("data-help"))
-            .attr("data-id", $(That).attr("data-id"))
-        });
-
-
-        $(".image-hover").css('display', 'block');
-        $(this).parent().find(".image-hover").css('display', 'none');
-
-
-    });
-
-
-
-</script>
+    </script>
 
 }

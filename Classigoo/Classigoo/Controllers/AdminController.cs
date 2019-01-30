@@ -93,6 +93,9 @@ namespace Classigoo.Controllers
 
             ViewData["Category"] = categorySelectList;
 
+
+            ViewBag.role = "Admin";
+            Session["LoginUserRole"] = "Admin";
             return View();
         }
 
@@ -126,10 +129,16 @@ namespace Classigoo.Controllers
                         Status = survey.Status
                     };
 
+                    ViewBag.role = "Admin";
+                    Session["LoginUserRole"] = "Admin";
                     return View(postSurvey);
                 }
 
             }
+
+
+            ViewBag.role = "Admin";
+            Session["LoginUserRole"] = "Admin";
             return View();
         }
 
@@ -178,7 +187,7 @@ namespace Classigoo.Controllers
                         Remarks = postSurvey.Remarks.Trim(),
                         UserType = postSurvey.UserType.Trim(),
                         Status = postSurvey.Status,
-                        Id=postSurvey.custId
+                        Id = postSurvey.custId
                     };
 
                     AdminService objAdmin = new AdminService();
@@ -232,6 +241,7 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
         public ActionResult CustomerDashboard()
         {
             List<Survey> surveyColl = new List<Survey>();
@@ -245,7 +255,77 @@ namespace Classigoo.Controllers
             {
 
             }
+
+            ViewBag.role = "Admin";
+            Session["LoginUserRole"] = "Admin";
             return View(surveyColl);
+        }
+
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult Delete()
+        {
+            string addId = Request.QueryString["custId"];
+
+            if (addId != null)
+            {
+                AdminService objAdmin = new AdminService();
+                bool isDeleted = objAdmin.DeleteSurvey(addId);
+                if (isDeleted)
+                {
+                    return RedirectToAction("CustomerDashboard", "Admin");
+                }
+                else
+                {
+                    ViewBag.Message = "error";
+                }
+            }
+
+
+            return View();
+        }
+
+        public JsonResult saveConsumerInfo(string name, string mobileNumber, string state, string dt, string mdl,string addId)
+        {
+            try
+            {
+                if(addId != string.Empty && addId != null)
+                {
+
+                    CommonDBOperations objCommonDBOperations = new CommonDBOperations();
+                    Add addRecord = objCommonDBOperations.GetAdd(addId);
+                    if (addRecord != null)
+                    {
+                        Survey survey = new Survey()
+                        {
+                            Category = addRecord.Category,
+                            SubCategory = addRecord.SubCategory,
+                            State = state,
+                            District = dt,
+                            Mandal = mdl,
+
+                            AddIdColl = addId,
+                            Name = name,
+                            //PhoneNumber = mobileNumber,
+                            //Remarks = postSurvey.Remarks.Trim(),
+                            //UserType = postSurvey.UserType.Trim(),
+                            //CreatedDate = CustomActions.GetCurrentISTTime(),
+                            //Status = postSurvey.Status
+                        };
+
+
+                        AdminService objAdmin = new AdminService();
+                        ViewBag.Status = objAdmin.AddSurvey(survey);
+                    }
+                    
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult getSubcategory(int id)
@@ -556,7 +636,7 @@ namespace Classigoo.Controllers
             return Json(addColl, JsonRequestBehavior.AllowGet);
         }
 
-       
+
         public bool UpdateCustomerStatus(int cId, string status)
         {
             bool isAddUpdated = false;

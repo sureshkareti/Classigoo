@@ -52,3 +52,49 @@ Classigoo ; Object reference not set to an instance of an object.
 Classigoo ; Object reference not set to an instance of an object.
 1/30/2019 1:13:19 AM : At Preview add addid- 
 Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:09:12 PM : exception at get add postdboperations
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+1/30/2019 10:09:12 PM : EntityFramework ; A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+1/30/2019 10:09:12 PM : At Preview add addid- 23
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:10:19 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:10:19 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:10:20 PM : At Preview add addid- 23
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:25:28 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:25:28 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:25:28 PM : At Preview add addid- 25
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:27:45 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:27:45 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:27:45 PM : At Preview add addid- 25
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:36:26 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:36:26 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:36:26 PM : At Preview add addid- 27
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:37:01 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:37:01 PM : EntityFramework ; Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=5633; handshake=11284; 
+1/30/2019 10:37:01 PM : At Preview add addid- 23
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:37:01 PM : At Preview add addid- 
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 10:40:45 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:40:45 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:40:45 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:40:45 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:59:36 PM : exception at get add postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 10:59:36 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+1/30/2019 10:59:36 PM : At Preview add addid- 23
+Classigoo ; Object reference not set to an instance of an object.
+1/30/2019 11:14:51 PM : exception at get tv postdboperations
+EntityFramework ; The underlying provider failed on Open.
+1/30/2019 11:14:51 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)

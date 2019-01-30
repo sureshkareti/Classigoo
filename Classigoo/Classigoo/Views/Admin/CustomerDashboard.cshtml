@@ -149,6 +149,7 @@
                                 <th>Remarks</th>
                                 <th>Action</th>
                                 <th>Delete</th>
+                                <th>Add Id's</th>
                                 <th>User Name</th>
                                 <th>Mobile No</th>
                             </tr>
@@ -224,6 +225,18 @@
                                         @Html.ActionLink("Delete", "Delete", "Admin", new { custId = @item.Id }, new { target = "", style = "color:#337ab7;" })
                                     </td>
                                     <td>
+                                        @{
+                                            if (item.AddIdColl != null)
+                                            {
+                                                string[] addIds = item.AddIdColl.Split(',');
+                                                foreach (string addId in addIds)
+                                                {
+                                                    @Html.ActionLink(addId, "PreviewAdd", "List", new { addId = addId }, new { target = "_blank", style = "color:#337ab7;padding-right:10px;" })
+
+                                                }
+                                            }
+                                        }
+                                    <td>
                                         <span id="userName" class="UserInfo">@item.Name</span>
                                     </td>
                                     <td>
@@ -231,7 +244,7 @@
                                     </td>
                                 </tr>
 
-                            }
+                                            }
                         </tbody>
                     </table>
                 </div>
