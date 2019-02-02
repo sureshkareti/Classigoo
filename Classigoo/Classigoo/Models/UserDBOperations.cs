@@ -280,7 +280,7 @@ namespace Classigoo.Models
                                }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
                                      {
-                                         AddId = add.AddId,
+                                         AddId = add.AddId.ToString(),
                                          Created = add.Created,
                                          Category = add.Category,
                                          State = add.State,
@@ -303,7 +303,58 @@ namespace Classigoo.Models
             }
             return addColl;
         }
-        
+        public IEnumerable<AdminAdd> GetConsumerAdds()
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+                    addColl = (from add in db.Surveys
+                               select new
+                               {
+                                   AddId = add.AddIdColl,
+                                   Created = add.CreatedDate,
+                                   Category = add.Category,
+                                   State = add.State,
+                                   District = add.District,
+                                   Mandal = add.Mandal,
+                                   Status = add.Status,
+                                   Type = add.UserType,
+                                   UserName = add.Name,
+                                   PhoneNum = add.PhoneNumber,
+                                   Remarks = add.Remarks,
+                                   SubCategory = add.SubCategory,
+                                   AddStatus = add.Status,
+                                  // ReceiptNumber = add.ReceiptNumber
+
+                               }).OrderByDescending(add => add.Created).ToList()
+                                     .Select(add => new AdminAdd()
+                                     {
+                                         AddId = add.AddId.ToString(),
+                                         Created = add.Created,
+                                         Category = add.Category,
+                                         State = add.State,
+                                         District = add.District,
+                                         Mandal = add.Mandal,
+                                         Status = add.Status,
+                                         Type = add.Type,
+                                         UserName = add.UserName,
+                                         PhoneNum = add.PhoneNum,
+                                         Remarks = add.Remarks,
+                                         SubCategory = add.SubCategory,
+                                         AddStatus = add.AddStatus,
+                                        // ReceiptNumber = add.ReceiptNumber
+                                     });
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At Admin db", ex);
+            }
+            return addColl;
+        }
+
         public bool UpdateAddStatus(int addId, string status,string remarks, string addStatus, string reciptNumber)
         {
             int response = 0;

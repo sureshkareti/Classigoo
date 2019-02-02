@@ -571,6 +571,12 @@ namespace Classigoo.Controllers
                         }
                         break;
                     case "consumersData":
+                        if (searchQuery != null && searchQuery != string.Empty)
+                        {
+                            SearchOwnerAddsEntity consumerSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+
+                            phoneNumColl = objAdminService.GetConsumerMobileNos(consumerSearchObj);
+                        }
                         break;
                     default:
 
@@ -602,7 +608,7 @@ namespace Classigoo.Controllers
                 {
                     case "allConsumersData":
 
-                        addColl = db.GetAdminAdds();
+                        addColl = db.GetConsumerAdds();
 
                         break;
                     case "allWonersData":
@@ -613,10 +619,16 @@ namespace Classigoo.Controllers
                         {
                             SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
 
-                            phoneNumColl = objAdminService.GetOwnersMobileNos(ownersSearchObj);
+                            addColl = objAdminService.GetOwnersAdds(ownersSearchObj);
                         }
                         break;
                     case "consumersData":
+                        if (searchQuery != null && searchQuery != string.Empty)
+                        {
+                            SearchOwnerAddsEntity ownersSearchObj = JsonConvert.DeserializeObject<SearchOwnerAddsEntity>(searchQuery);
+
+                            addColl = objAdminService.GetConsumersAdds(ownersSearchObj);
+                        }
                         break;
                     default:
 

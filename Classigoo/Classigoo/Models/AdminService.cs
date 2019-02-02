@@ -101,7 +101,7 @@ namespace Classigoo.Models
                                }).OrderByDescending(add => add.Created).Where(add => add.PostedBy == empId).ToList()
                                      .Select(add => new AdminAdd()
                                      {
-                                         AddId = add.AddId,
+                                         AddId = add.AddId.ToString(),
                                          Created = add.Created,
                                          Category = add.Category,
                                          State = add.State,
@@ -137,9 +137,9 @@ namespace Classigoo.Models
                           (add.Type == searchQuery.Type) &&
                          (searchQuery.Status != "" ? add.Status == searchQuery.Status : true) &&
                            (searchQuery.MobileNumber != "" ? user.MobileNumber == searchQuery.MobileNumber : true) &&
-                                         ((searchQuery.State != "" ? add.State == searchQuery.State : true) ||
-                                          (searchQuery.District != "" ? add.District == searchQuery.District : true) ||
-                                          (searchQuery.Mandal != "" ? add.Mandal == searchQuery.Mandal : true)) &&
+                                         (searchQuery.State != "" ? add.State == searchQuery.State : true) &&
+                                          (searchQuery.District != "" ? add.District == searchQuery.District : true) &&
+                                          (searchQuery.Mandal != "" ? add.Mandal == searchQuery.Mandal : true) &&
                                         (searchQuery.Category != "select" ? add.Category == searchQuery.Category : true) &&
                                          (searchQuery.SubCategory != "select" ? add.SubCategory == searchQuery.SubCategory : true)
 
@@ -147,6 +147,177 @@ namespace Classigoo.Models
 
 
                     return mnColl.Distinct<string>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
+
+        public List<string> GetConsumerMobileNos(SearchOwnerAddsEntity searchQuery)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    List<string> mnColl = (from survey in classigooEntities.Surveys
+                                           //join user in classigooEntities.Users on survey.UserId equals user.UserId
+                                           where
+                          (survey.UserType == searchQuery.Type) &&
+                         (searchQuery.Status != "" ? survey.Status == searchQuery.Status : true) &&
+                           (searchQuery.MobileNumber != "" ? survey.PhoneNumber == searchQuery.MobileNumber : true) &&
+                                         (searchQuery.State != "" ? survey.State == searchQuery.State : true) &&
+                                          (searchQuery.District != "" ? survey.District == searchQuery.District : true) &&
+                                          (searchQuery.Mandal != "" ? survey.Mandal == searchQuery.Mandal : true) &&
+                                        (searchQuery.Category != "select" ? survey.Category == searchQuery.Category : true) &&
+                                         (searchQuery.SubCategory != "select" ? survey.SubCategory == searchQuery.SubCategory : true)
+
+                                           select survey.PhoneNumber).ToList();
+
+
+                    return mnColl.Distinct<string>().ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
+
+        public IEnumerable<AdminAdd> GetOwnersAdds(SearchOwnerAddsEntity searchQuery)
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    addColl = (from add in classigooEntities.Adds
+                               join user in classigooEntities.Users on add.UserId equals user.UserId
+                               where
+              (add.Type == searchQuery.Type) &&
+             (searchQuery.Status != "" ? add.Status == searchQuery.Status : true) &&
+               (searchQuery.MobileNumber != "" ? user.MobileNumber == searchQuery.MobileNumber : true) &&
+                             (searchQuery.State != "" ? add.State == searchQuery.State : true) &&
+                              (searchQuery.District != "" ? add.District == searchQuery.District : true) &&
+                              (searchQuery.Mandal != "" ? add.Mandal == searchQuery.Mandal : true) &&
+                            (searchQuery.Category != "select" ? add.Category == searchQuery.Category : true) &&
+                             (searchQuery.SubCategory != "select" ? add.SubCategory == searchQuery.SubCategory : true)
+
+                               select new
+                               {
+                                   AddId = add.AddId,
+                                   Created = add.Created,
+                                   Category = add.Category,
+                                   State = add.State,
+                                   District = add.District,
+                                   Mandal = add.Mandal,
+                                   Status = add.Status,
+                                   Type = add.Type,
+                                   UserName = add.User.Name,
+                                   PhoneNum = add.User.MobileNumber,
+                                   Remarks = add.Remarks,
+                                   SubCategory = add.SubCategory,
+                                   AddStatus = add.AddStatus,
+                                   ReceiptNumber = add.ReceiptNumber
+
+                               }).OrderByDescending(add => add.Created).ToList()
+                                           .Select(add => new AdminAdd()
+                                           {
+                                               AddId = add.AddId.ToString(),
+                                               Created = add.Created,
+                                               Category = add.Category,
+                                               State = add.State,
+                                               District = add.District,
+                                               Mandal = add.Mandal,
+                                               Status = add.Status,
+                                               Type = add.Type,
+                                               UserName = add.UserName,
+                                               PhoneNum = add.PhoneNum,
+                                               Remarks = add.Remarks,
+                                               SubCategory = add.SubCategory,
+                                               AddStatus = add.AddStatus,
+                                               ReceiptNumber = add.ReceiptNumber
+                                           });
+
+
+                    return addColl;
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
+        public IEnumerable<AdminAdd> GetConsumersAdds(SearchOwnerAddsEntity searchQuery)
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    addColl = (from survey in classigooEntities.Surveys
+                               //join user in classigooEntities.Users on add.UserId equals user.UserId
+                               where
+              (survey.UserType == searchQuery.Type) &&
+             (searchQuery.Status != "" ? survey.Status == searchQuery.Status : true) &&
+               (searchQuery.MobileNumber != "" ? survey.PhoneNumber == searchQuery.MobileNumber : true) &&
+                             (searchQuery.State != "" ? survey.State == searchQuery.State : true) &&
+                              (searchQuery.District != "" ? survey.District == searchQuery.District : true) &&
+                              (searchQuery.Mandal != "" ? survey.Mandal == searchQuery.Mandal : true) &&
+                            (searchQuery.Category != "select" ? survey.Category == searchQuery.Category : true) &&
+                             (searchQuery.SubCategory != "select" ? survey.SubCategory == searchQuery.SubCategory : true)
+
+                               select new
+                               {
+                                   AddId = survey.AddIdColl,
+                                   Created = survey.CreatedDate,
+                                   Category = survey.Category,
+                                   State = survey.State,
+                                   District = survey.District,
+                                   Mandal = survey.Mandal,
+                                   Status = survey.Status,
+                                   Type = survey.UserType,
+                                   UserName = survey.Name,
+                                   PhoneNum = survey.PhoneNumber,
+                                   Remarks = survey.Remarks,
+                                   SubCategory = survey.SubCategory,
+                                   AddStatus = survey.Status,
+                                  // ReceiptNumber = survey.re
+
+                               }).OrderByDescending(add => add.Created).ToList()
+                                           .Select(add => new AdminAdd()
+                                           {
+                                               AddId = add.AddId,
+                                               Created = add.Created,
+                                               Category = add.Category,
+                                               State = add.State,
+                                               District = add.District,
+                                               Mandal = add.Mandal,
+                                               Status = add.Status,
+                                               Type = add.Type,
+                                               UserName = add.UserName,
+                                               PhoneNum = add.PhoneNum,
+                                               Remarks = add.Remarks,
+                                               SubCategory = add.SubCategory,
+                                               AddStatus = add.AddStatus,
+                                              // ReceiptNumber = add.ReceiptNumber
+                                           });
+
+
+                    return addColl;
                 }
             }
             catch (Exception ex)

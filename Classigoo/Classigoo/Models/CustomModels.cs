@@ -320,7 +320,7 @@ namespace Classigoo
     }
     public class AdminAdd
     {
-        public int AddId { get; set; }
+        public string AddId { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
         public string UserName { get; set; }
         public string PhoneNum { get; set; }

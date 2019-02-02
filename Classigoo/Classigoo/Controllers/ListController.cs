@@ -1165,6 +1165,20 @@ namespace Classigoo.Controllers
                     objSurvey.AddIdColl = AddId;
                     objSurvey.PhoneNumber = frmUserInfo.MobileNumber;
                     objSurvey.Name = frmUserInfo.Name;
+                    objSurvey.Category = add.Category;
+                    objSurvey.SubCategory = add.SubCategory;
+                    if (add.Type == "Rent")
+                    {
+                        objSurvey.UserType = "Consumer";
+                    }
+                    else if (add.Type == "Sale")
+                    {
+                        objSurvey.UserType = "Buyer";
+                    }
+                    objSurvey.State = add.State;
+                    objSurvey.District = add.District;
+                    objSurvey.Mandal = add.Mandal;
+                    objSurvey.State = Constants.PendingSatus;
                     userDbObj.AddSurvey(objSurvey);
                     
                     #endregion
