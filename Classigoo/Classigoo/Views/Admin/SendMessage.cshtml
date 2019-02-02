@@ -116,10 +116,10 @@
                         <div id="divFormFields">
 
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-2 col-form-label">Add Id's</label>
+                                <label for="inputPassword3" class="col-2 col-form-label">Mobile Numbers</label>
                                 <div class="col-8">
                                     <div class="tags-default">
-                                        <input type="text" id="txtMobileNumbers" data-role="tagsinput" placeholder="add addids" />
+                                        <input type="text" id="txtMobileNumbers" data-role="tagsinput" placeholder="Mobile Numbers" />
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -225,33 +225,23 @@
 
 
             $("#btnRefreshGrid").click(function () {
-                table.destroy();
-
-                table = $('#tblAdds').DataTable({
-                    "responsive": true,
-                    stateSave: true,
-                    AutoWidth: false,
-                    columnDefs: [
-                                    {
-                                        targets: 1,
-                                        checkboxes: {
-                                            selectRow: true
-                                        },
-
-                                    },
-                                   {
-                                       targets: 0,
-                                       orderable: false
-
-                                   }
-
-                    ],
-                    select: {
-                        style: 'multi'
-                    },
-                    order: [[2, 'asc']]
-
-                });
+                //table.destroy();
+                $(".loader-wrap").show();
+               
+                //if (table!=null)
+                //table.destroy();
+                var radioValue = $("input[name='customRadioType']:checked")[0].id;
+                var query = "";
+                if (radioValue == "ownersData") {
+                    $("#btnSearchWonersData").css('display', 'block');
+                    query = GetOwnerSearchQuery();
+                }
+                else if (radioValue == "consumersData") {
+                    $("#btnSearchConsumersData").css('display', 'block');
+                    query = GetConsumerSearchQuery();
+                }
+                FillGrid(radioValue, query);
+              
             });
 
             //with grid with out grid click
@@ -443,7 +433,7 @@
                     data: { id: category },
                     success: function (subcategories) {
                         if (radioValue == "ownersData") {
-                            $("#ddlSubCategoryOData").append("<option>select</option>");
+                           // $("#ddlSubCategoryOData").append("<option>select</option>");
 
                             $.each(subcategories, function (i, subcategorys) {
 
@@ -453,7 +443,7 @@
                             });
                         }
                         else if (radioValue == "consumersData") {
-                            $("#ddlConsumerSubCategoryOData").append("<option>select</option>");
+                            //$("#ddlConsumerSubCategoryOData").append("<option>select</option>");
 
                             $.each(subcategories, function (i, subcategorys) {
 
@@ -524,171 +514,7 @@
                 });
             }
 
-            //function loadStates() {
-
-            //    var locations = new Array();
-            //    var states = new Array();
-            //    $.ajax({
-            //        url: '/Scripts/Json/location1.min.json',
-            //        dataType: 'json',
-            //        async: false,
-            //        success: function (data) {
-            //            $.each(data, function (i, field) {
-            //                locations.push(field);
-            //            });
-            //        }
-            //    });
-
-            //    $.each(locations, function (i1, field1) {
-            //        states.push(field1.name);
-            //        console.log(field1.name);
-            //    });
-
-            //    console.log(states);
-
-            //    $("#txtStates").autocomplete({
-            //        source: states,
-            //        minLength: 1, autoFocus: true,
-            //        scroll: true,
-            //        matchContains: true,
-            //        minChars: 2,
-            //        autoFill: true,
-            //        mustMatch: false,
-            //        cacheLength: 20,
-            //        max: 20,
-            //        close: function () {
-            //        },
-            //        select: function (event, ui) {
-            //            //TestOnSelection();
-            //            //$(this).blur();
-
-            //            getDistricts();
-            //            //$("#txtDistrict").focus();
-            //        }
-            //    }).focus(function () {
-            //        $(this).data("uiAutocomplete").search('e');
-            //    });
-
-
-            //};
-
-
-            //function getDistricts() {
-
-            //    var selectedState = $.trim($("#txtStates").val());
-            //    $("#txtDistrict").val("");
-            //    $("#txtMandal").val("");
-            //    if (selectedState !== "") {
-
-            //        var locations = new Array();
-            //        var districs = new Array();
-            //        $.ajax({
-            //            url: '/Scripts/Json/location1.min.json',
-            //            dataType: 'json',
-            //            async: false,
-            //            success: function (data) {
-            //                $.each(data, function (i, field) {
-            //                    locations.push(field);
-            //                });
-            //            }
-            //        });
-
-            //        var selectedVehicle = locations.filter(a=>a.name === selectedState);
-
-            //        $.each(selectedVehicle[0].District, function (i1, field1) {
-
-            //            districs.push(field1.name);
-            //        });
-
-            //        $("#txtDistrict").autocomplete({
-            //            source: districs
-            //            ,
-            //            minLength: 1,
-            //            autoFocus: true,
-            //            scroll: true,
-            //            matchContains: true,
-            //            minChars: 2,
-            //            autoFill: true,
-            //            mustMatch: false,
-            //            cacheLength: 20,
-            //            max: 20,
-            //            close: function () {
-
-            //            },
-            //            select: function (event, ui) {
-            //                //TestOnSelection();
-            //                //$(this).blur();
-
-            //                getMandal();
-            //                //$("#txtDistrict").focus();
-            //            }
-            //        }).focus(function () {
-            //            $(this).data("uiAutocomplete").search('e');
-            //        });
-
-
-
-            //    }
-            //    else {
-
-            //    }
-
-            //}
-
-            //function getMandal() {
-
-            //    var selectedDistric = $.trim($("#txtDistrict").val());
-            //    $("#txtMandal").val("");
-            //    if (selectedDistric !== "") {
-
-
-            //        var locations = new Array();
-            //        var mandals = new Array();
-            //        $.ajax({
-            //            url: '/Scripts/Json/location1.min.json',
-            //            dataType: 'json',
-            //            async: false,
-            //            success: function (data) {
-            //                $.each(data, function (i, field) {
-            //                    $.each(field.District, function (i1, field1) {
-            //                        locations.push(field1);
-
-            //                    });
-
-            //                });
-            //            }
-            //        });
-
-            //        var selectedStae = locations.filter(a=>a.name === selectedDistric);
-            //        $.each(selectedStae[0].Mondal, function (i1, field1) {
-
-            //            mandals.push(field1.name);
-            //        });
-
-            //        $("#txtMandal").autocomplete({
-            //            source: mandals
-            //            ,
-            //            minLength: 1,
-            //            autoFocus: true,
-            //            scroll: true,
-            //            matchContains: true,
-            //            minChars: 2,
-            //            autoFill: true,
-            //            mustMatch: false,
-            //            cacheLength: 20,
-            //            max: 20,
-            //            close: function () {
-
-            //            }
-            //        }).focus(function () {
-            //            $(this).data("uiAutocomplete").search('e');
-            //        });
-            //    }
-            //    else {
-
-            //    }
-            //}
-
+         
             $("#btnSendSms").click(function () {
                 var msg = $("#txtMessage").val();
                 if (msg == "") {
@@ -714,6 +540,7 @@
                         $(".loader-wrap").hide();
                         if (data == 'True') {
                             ShowSucessToaster("Messages have been sent successfully", 'success');
+                            $("#txtMessage").val("");
                         }
                         else {
                             ShowSucessToaster("There is a  problem while sening messages", 'error');
@@ -767,14 +594,15 @@
                         $(".loader-wrap").hide();
                         if (data = 'True') {
                             ShowSucessToaster("Messages have been sent successfully", 'success');
+                            $("#txtMessageFromModal").val("");
                         }
                         else {
-                            ShowSucessToaster("There is a  problem while sening messages", 'error');
+                            ShowSucessToaster("There is a  problem while sending messages", 'error');
                         }
                     },
                     error: function (response) {
                         $(".loader-wrap").hide();
-                        ShowSucessToaster("There is a  problem while sening messages", 'error');
+                        ShowSucessToaster("There is a  problem while sending messages", 'error');
                     }
                 })
 
