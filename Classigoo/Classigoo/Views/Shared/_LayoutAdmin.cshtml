@@ -151,9 +151,9 @@
                                 <a href="~/Admin/SendMessage"><i class="mdi mdi-cloud-upload"></i> <span> Send Messages </span> </a>
                             </li>
                             <li class="has-submenu">
-                                <a href="~/Admin/CustomerDashboard"><i class="mdi mdi-cloud-upload"></i> <span> Customer Dashboard </span> </a>
+                                <a href="~/Admin/CustomerDashboard"><i class="mdi mdi-checkerboard"></i> <span> Customer Dashboard </span> </a>
                             </li>
-                            <li class="has-submenu">
+                            @*<li class="has-submenu">
                                 <a href="#"><i class="mdi mdi-texture"></i><span> Configurations </span> </a>
                                 <ul class="submenu">
                                     <li><a href="~/Admin/AddUser">User Settings</a></li>
@@ -161,7 +161,7 @@
                                     <li><a href="~/Admin/EmailSettings">Email Settings</a></li>
                                     <li><a href="~/Admin/ReportSettings">Report Settings</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                         }
 
                         @if (Convert.ToString(@HttpContext.Current.Session["LoginUserRole"]) == "Employee")

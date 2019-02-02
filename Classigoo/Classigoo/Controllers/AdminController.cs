@@ -284,17 +284,28 @@ namespace Classigoo.Controllers
             return View();
         }
 
-        public JsonResult saveConsumerInfo(string name, string mobileNumber, string state, string dt, string mdl,string addId)
+        public JsonResult saveConsumerInfo(string name, string mobileNumber, string state, string dt, string mdl, string addId)
         {
             try
             {
-                if(addId != string.Empty && addId != null)
+                if (addId != string.Empty && addId != null)
                 {
 
                     CommonDBOperations objCommonDBOperations = new CommonDBOperations();
                     Add addRecord = objCommonDBOperations.GetAdd(addId);
+
                     if (addRecord != null)
                     {
+                        string userType = string.Empty;
+                        if (addRecord.Type == "Rent")
+                        {
+                            userType = "Consumer";
+                        }
+                        else
+                        {
+                            userType = "Buyer";
+                        }
+
                         Survey survey = new Survey()
                         {
                             Category = addRecord.Category,
@@ -305,18 +316,23 @@ namespace Classigoo.Controllers
 
                             AddIdColl = addId,
                             Name = name,
-                            //PhoneNumber = mobileNumber,
-                            //Remarks = postSurvey.Remarks.Trim(),
-                            //UserType = postSurvey.UserType.Trim(),
-                            //CreatedDate = CustomActions.GetCurrentISTTime(),
-                            //Status = postSurvey.Status
+                            PhoneNumber = mobileNumber,
+                            Status = "Pending",
+                            UserType = userType,
+                            CreatedDate = CustomActions.GetCurrentISTTime(),
+
                         };
 
 
                         AdminService objAdmin = new AdminService();
-                        ViewBag.Status = objAdmin.AddSurvey(survey);
+                        bool isAdded = objAdmin.AddSurvey(survey);
+
+                        if (isAdded)
+                        {
+                            return Json("sucess", JsonRequestBehavior.AllowGet);
+                        }
                     }
-                    
+
 
                 }
 
@@ -649,13 +665,13 @@ namespace Classigoo.Controllers
         }
 
 
-        public bool UpdateCustomerStatus(int cId, string status)
+        public bool UpdateCustomerStatus(int cId, string status,string remarks,string reciptNumber)
         {
             bool isAddUpdated = false;
             try
             {
                 AdminService db = new AdminService();
-                isAddUpdated = db.UpdateCustomerStatus(cId, status);
+                isAddUpdated = db.UpdateCustomerStatus(cId, status , remarks, reciptNumber);
 
             }
             catch (Exception ex)

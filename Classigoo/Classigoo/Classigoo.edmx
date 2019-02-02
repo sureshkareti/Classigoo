@@ -180,6 +180,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="AddIdColl" Type="nvarchar" MaxLength="1500" />
           <Property Name="Remarks" Type="varchar(max)" />
+          <Property Name="ReceiptNumber" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="TransportationVehicle">
           <Key>
@@ -882,6 +883,7 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AddIdColl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1095,6 +1097,7 @@
           <EntitySetMapping Name="Surveys">
             <EntityTypeMapping TypeName="ClassigooModel.Survey">
               <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="AddIdColl" ColumnName="AddIdColl" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

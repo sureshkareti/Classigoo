@@ -252,6 +252,7 @@ namespace Classigoo
         public string Remarks { set; get; }
         public string AddIdColl { get; set; }
         public string Status { set; get; }
+        public string ReceiptNumber { set; get; }
     }
 
     public class Constants

@@ -370,7 +370,7 @@
                                 <div class="col-md-9" style="text-align:right">
                                 </div>
                                 <div class="col-md-3">
-                                    <input type="button" id="btnNotify" class="btn btn-primary btn-lg" value="Notify" style="background-color:#f70;color:white;border:1px solid #f70;cursor:pointer" />
+                                    <input type="button" id="btnSubmitNotify" class="btn btn-primary btn-lg" value="Notify" style="background-color:#f70;color:white;border:1px solid #f70;cursor:pointer" />
                                 </div>
                             </div>
                         </div>
@@ -382,6 +382,38 @@
         </div>
     </div>
 
+</div>
+
+
+<div class="loader-wrap" style="display:none">
+    <div class="loader">
+        <span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span><span class="loader-item"></span>
+        <span class="loader-item"></span><span class="loader-item"></span>
+    </div>
+</div>
+
+<div id="addSuccessAlert" style="display:none;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background-color: #ffffff;opacity: 1;z-index: 9999;opacity: 0.9;">
+    <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
+        <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
+            <span style="font-size: 32px;"></span><br />
+            <span>Your Request has been posted.</span><br />          
+        </div>
+        <div style="height:100px;width:100%;padding-top:30px;">
+            <a id="closeStatus" class="closeStatus" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">close</a>           
+        </div>
+    </div>
+</div>
+
+<div id="addFailureAlert" style="display:none;position: fixed;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background-color: #ffffff;opacity: 1;z-index: 9999;opacity: 0.9;">
+    <div style="position: absolute;left: 0;right: 0; top: 0;bottom: 0;margin: auto;max-height:200px; width:300px;border:1px solid #ccc;text-align:center">
+        <div style="min-height:60px;width:100%;background-color:#337ab7;text-align:center;color:white;font-weight:bold;padding:15px 0 5px 0">
+            <span style="font-size: 32px;"></span><br />
+            <span>Please try again later.</span><br />
+        </div>
+        <div style="height:100px;width:100%;padding-top:30px;">
+            <a id="closeStatus1" class="closeStatus" style="border: 1px solid #ccc; padding: 5px 10px;border-radius: 25px;min-width: 80px;background: #fff;cursor:pointer">close</a>
+        </div>
+    </div>
 </div>
 
 
@@ -962,34 +994,63 @@
             }
         }
 
+        $("#btnSubmitNotify").click(function () {
+            sendCustomersInfo();
+        });
+
         function sendCustomersInfo() {
+
+            $(".loader-wrap").css("display", "block");
+
             var name = $("#txtName").val();
             var mobileNumber = $("#txtMobileNumber").val();
             var state = $("#State").val();
             var dt = $("#District").val();
             var mdl = $("#Mandal").val();
             var addId = getUrlVars()["addId"];
-            
+
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("saveConsumerInfo")',
+                url: '@Url.Action("saveConsumerInfo1","Admin")',
                 dataType: 'json',
                 data: { name: name, mobileNumber: mobileNumber, state: state, dt: dt, mdl: mdl, addId: addId },
-                success: function (subcategories) {
-                    $("#ddlSubCategoryOData").append("<option>select</option>");
+                success: function (responce) {
 
-                    $.each(subcategories, function (i, subcategorys) {
+                    if (responce == "sucess") {
 
-                        $("#ddlSubCategoryOData").append('<option value="'
-                                                   + subcategorys.Value + '">'
-                                             + subcategorys.Text + '</option>');
-                    });
+                        $(".loader-wrap").css("display", "none");
+
+                        $("#addSuccessAlert").css("display", "block");
+                    }
+                    else {
+                        $(".loader-wrap").css("display", "none");
+                        $("#addFailureAlert").css("display", "block");
+                    }
+
+
                 },
                 error: function (ex) {
-                    alert('Failed.' + ex);
+
+                    $(".loader-wrap").css("display", "none");
+                    $("#addFailureAlert").css("display", "block");
+
+
                 }
             });
+
+
         }
+
+        $("#closeStatus").click(function () {
+            $("#addSuccessAlert").css("display", "none");
+            modal.style.display = "none";
+        });
+
+        $("#closeStatus1").click(function () {
+            $("#addFailureAlert").css("display", "none");
+            modal.style.display = "none";
+        });
+
 
         function getUrlVars() {
             var vars = [], hash;

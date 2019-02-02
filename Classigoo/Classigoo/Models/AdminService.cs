@@ -442,7 +442,7 @@ namespace Classigoo.Models
             return true;
         }
 
-        public bool UpdateCustomerStatus(int cId, string status)
+        public bool UpdateCustomerStatus(int cId, string status,string ramarks,string reciptNumber)
         {
             int response = 0;
             try
@@ -453,6 +453,8 @@ namespace Classigoo.Models
                     if (survey != null)
                     {
                         survey.Status = status;
+                        survey.Remarks = ramarks;
+                        survey.ReceiptNumber = reciptNumber;
                         db.Entry(survey).State = EntityState.Modified;
                         response = db.SaveChanges();
                     }
