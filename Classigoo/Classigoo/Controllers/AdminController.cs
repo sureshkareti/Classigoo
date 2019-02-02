@@ -488,7 +488,7 @@ namespace Classigoo.Controllers
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                     {
-                        // objComm.SendMessage(phoneNum, msg);
+                         objComm.SendMessage(phoneNum, msg);
                     }
                 }
 
@@ -515,7 +515,7 @@ namespace Classigoo.Controllers
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                     {
-                        // objComm.SendMessage(phoneNum, msg);
+                        objComm.SendMessage(phoneNum, msg);
                     }
 
                 }

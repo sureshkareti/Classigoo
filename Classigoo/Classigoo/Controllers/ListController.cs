@@ -1178,7 +1178,7 @@ namespace Classigoo.Controllers
                     objSurvey.State = add.State;
                     objSurvey.District = add.District;
                     objSurvey.Mandal = add.Mandal;
-                    objSurvey.State = Constants.PendingSatus;
+                    objSurvey.Status = Constants.PendingSatus;
                     userDbObj.AddSurvey(objSurvey);
                     
                     #endregion
