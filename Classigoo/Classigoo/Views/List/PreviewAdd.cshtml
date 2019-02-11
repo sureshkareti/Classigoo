@@ -143,15 +143,16 @@
                                             <span style="padding:0 15px 0 15px;display:none" id="contactOrSendmessage">or</span>
                                         </div>
                                         <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
-                                            <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
-                                            <a id="loginToChat" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
+
+                                            <a id="btnNotify" class="btn btn-orange btn-mini;" style="background-color:#337ab7;">Notify</a>
                                         </div>
+                                      
                                         <div class="col-md-1 col-xs-12 col-sm-12" style="text-align:center">
                                             <span style="padding:0 15px 0 15px;" id="contactOrSendmessage">or</span>
                                         </div>
                                         <div class="col-md-3 col-xs-12 col-sm-12" style="text-align:center">
-
-                                            <a id="btnNotify" class="btn btn-orange btn-mini;" style="background-color:#337ab7;">Notifhy</a>
+                                            <a id="chatWithUser" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
+                                            <a id="loginToChat" class="btn btn-orange btn-mini;" style="background-color:#337ab7;display:none">Send Message</a>
                                         </div>
                                     </div>
 
@@ -1011,7 +1012,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("saveConsumerInfo1","Admin")',
+                url: '@Url.Action("saveConsumerInfo","Admin")',
                 dataType: 'json',
                 data: { name: name, mobileNumber: mobileNumber, state: state, dt: dt, mdl: mdl, addId: addId },
                 success: function (responce) {

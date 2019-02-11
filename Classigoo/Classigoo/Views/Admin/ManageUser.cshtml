@@ -1,0 +1,231 @@
+﻿@model LoginUser
+
+@{
+    ViewBag.Title = "ManageUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-2">
+
+    </div>
+    <div class="col-xl-8">
+        <div class="card-box">
+
+            <h4 class="header-title m-t-0 m-b-30">ManageUser</h4>
+            @using (Html.BeginForm("ManageUser", "Admin", FormMethod.Post, new { name = "defaultForm", id = "defaultForm", data_toggle = "validator", @enctype = "multipart/form-data" }))
+            {
+
+                <form class="form-horizontal" role="form" data-parsley-validate novalidate>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">ID</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.Id, new { @class = "form-control", required = "required", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">User Name</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.UserId, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">First Name</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Last Name</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hori-pass1" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-7">
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="hori-pass2" class="col-sm-4 col-form-label">
+                            Confirm Password
+                        </label>
+                        <div class="col-sm-7">
+                            <input data-parsley-equalto="#Password" type="password" required placeholder="Password" class="form-control" id="hori-pass2">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="offset-sm-4 col-sm-8">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                Save
+                            </button>
+                            <button type="reset"
+                                    class="btn btn-secondary waves-effect waves-light m-l-5">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            }
+
+        </div>
+    </div><!-- end col -->
+</div>
+<!-- end row -->
+
+
+@section scripts{
+    <script src="~/Content/Admin/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var toastCount = 0;
+
+            if ("@ViewBag.Status" == "updated") {
+                ShowSucessToaster("Employee updated successfully", 'success');
+                ClearControls();
+            }
+            else if ("@ViewBag.Status" == "done") {
+                ShowSucessToaster("Employee added successfully", 'success');
+                ClearControls();
+            }
+            else if ("@ViewBag.Status" == "existed") {
+                ShowSucessToaster("With this user id user already existed", 'error');
+            }
+            else if ("@ViewBag.Status" == "error") {
+                ShowSucessToaster("Error occured contact admin", 'error');
+            }
+
+            function ShowSucessToaster(message, state) {
+
+                var shortCutFunction = state;
+                var msg = message;
+                var title = 'Status';
+                var showDuration = "300";
+                var hideDuration = "1000";
+                var timeOut = "5000";
+                var extendedTimeOut = "1000";
+                var showEasing = "swing";
+                var hideEasing = "linear";
+                var showMethod = "fadeIn";
+                var hideMethod = "fadeOut";
+                var toastIndex = toastCount++;
+                var addClear = $('#addClear').prop('checked');
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+
+                if (showDuration.length) {
+                    toastr.options.showDuration = showDuration;
+                }
+
+                if (hideDuration.length) {
+                    toastr.options.hideDuration = hideDuration;
+                }
+
+                if (timeOut.length) {
+                    toastr.options.timeOut = addClear ? 0 : timeOut;
+                }
+
+                if (extendedTimeOut.length) {
+                    toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
+                }
+
+                if (showEasing.length) {
+                    toastr.options.showEasing = showEasing;
+                }
+
+                if (hideEasing.length) {
+                    toastr.options.hideEasing = hideEasing;
+                }
+
+                if (showMethod.length) {
+                    toastr.options.showMethod = showMethod;
+                }
+
+                if (hideMethod.length) {
+                    toastr.options.hideMethod = hideMethod;
+                }
+
+                if (addClear) {
+                    msg = getMessageWithClearButton(msg);
+                    toastr.options.tapToDismiss = false;
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+
+                $('#toastrOptions').text('Command: toastr["'
+                    + shortCutFunction
+                    + '"]("'
+                    + msg
+                    + (title ? '", "' + title : '')
+                    + '")\n\ntoastr.options = '
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+
+                if (typeof $toast === 'undefined') {
+                    return;
+                }
+
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+                if ($toast.find('.clear').length) {
+                    $toast.delegate('.clear', 'click', function () {
+                        toastr.clear($toast, { force: true });
+                    });
+                }
+
+
+
+            }
+
+            function ClearControls() {
+                $("#Id").val('');
+                $("#UserId").val('');
+                $("#FirstName").val('');
+                $("#LastName").val('');
+                $("#Password").val('');               
+            }
+        });
+    </script>
+}

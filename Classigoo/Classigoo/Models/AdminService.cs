@@ -166,7 +166,7 @@ namespace Classigoo.Models
                 {
 
                     List<string> mnColl = (from survey in classigooEntities.Surveys
-                                           //join user in classigooEntities.Users on survey.UserId equals user.UserId
+                                               //join user in classigooEntities.Users on survey.UserId equals user.UserId
                                            where
                           (survey.UserType == searchQuery.Type) &&
                          (searchQuery.Status != "" ? survey.Status == searchQuery.Status : true) &&
@@ -269,7 +269,7 @@ namespace Classigoo.Models
                 {
 
                     addColl = (from survey in classigooEntities.Surveys
-                               //join user in classigooEntities.Users on add.UserId equals user.UserId
+                                   //join user in classigooEntities.Users on add.UserId equals user.UserId
                                where
               (survey.UserType == searchQuery.Type) &&
              (searchQuery.Status != "" ? survey.Status == searchQuery.Status : true) &&
@@ -295,7 +295,7 @@ namespace Classigoo.Models
                                    Remarks = survey.Remarks,
                                    SubCategory = survey.SubCategory,
                                    AddStatus = survey.Status,
-                                  // ReceiptNumber = survey.re
+                                   // ReceiptNumber = survey.re
 
                                }).OrderByDescending(add => add.Created).ToList()
                                            .Select(add => new AdminAdd()
@@ -313,7 +313,7 @@ namespace Classigoo.Models
                                                Remarks = add.Remarks,
                                                SubCategory = add.SubCategory,
                                                AddStatus = add.AddStatus,
-                                              // ReceiptNumber = add.ReceiptNumber
+                                               // ReceiptNumber = add.ReceiptNumber
                                            });
 
 
@@ -442,7 +442,7 @@ namespace Classigoo.Models
             return true;
         }
 
-        public bool UpdateCustomerStatus(int cId, string status,string ramarks,string reciptNumber)
+        public bool UpdateCustomerStatus(int cId, string status, string ramarks, string reciptNumber)
         {
             int response = 0;
             try
@@ -504,5 +504,137 @@ namespace Classigoo.Models
             return true;
         }
 
+
+
+        public Classigoo.LoginUser GetEmployee(string empId)
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(empId);
+                    var objEmp = classigooEntities.LoginUsers.SingleOrDefault(a => a.Id == id);
+
+                    if (objEmp != null)
+                    {
+                        return objEmp;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get get employee to update", ex);
+            }
+
+            return null;
+
+        }
+
+        public Classigoo.LoginUser GetEmployeeLastId()
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    //int id = Convert.ToInt32(empId);
+                    //var objEmp = classigooEntities.LoginUsers.Where(x => x.RoleId == 2).ToList();
+
+
+                    var orderByDescendingResult = from s in classigooEntities.LoginUsers
+                                                  orderby s.Id descending
+                                                  select s;
+
+                    List<Classigoo.LoginUser> allresults = orderByDescendingResult.ToList();
+
+                    if (allresults.Count > 0)
+                    {
+                        return allresults[0];
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get last employee id", ex);
+            }
+
+            return null;
+
+        }
+
+        public string UpdateEmployee(Classigoo.LoginUser loginUser)
+        {
+            string returnString = string.Empty;
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    var objEmpTemp = classigooEntities.LoginUsers.ToList().FindAll(x => x.Id == loginUser.Id);
+
+                    if (objEmpTemp.Count > 0)
+                    {
+                        var objEmp = objEmpTemp[0];
+                        if (objEmp != null)
+                        {
+                            objEmp.UserId = loginUser.UserId;
+                            objEmp.FirstName = loginUser.FirstName;
+                            objEmp.LastName = loginUser.LastName;                           
+                            objEmp.Password = loginUser.Password;
+                            objEmp.RoleId = 2;
+
+                            int response = classigooEntities.SaveChanges();
+                            if (response == 1)
+                            {
+                              
+                            }
+                        }
+                    }
+                    else
+                    {
+                        returnString =   AddEmployee(loginUser);
+                        return returnString;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at update add post survey operations", ex);
+                return "error";
+            }
+
+            return "updated";
+        }
+
+        public string AddEmployee(Classigoo.LoginUser loginUser)
+        {
+         
+            try
+            {
+                using (ClassigooEntities db = new ClassigooEntities())
+                {
+
+                    var objEmp = db.LoginUsers.SingleOrDefault(a => a.UserId == loginUser.UserId);
+
+                    if(objEmp == null)
+                    {
+                        loginUser.RoleId = 2;
+                        db.LoginUsers.Add(loginUser);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        return "existed";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At emp db", ex);
+               
+            }
+
+            return "done";
+        }
     }
 }

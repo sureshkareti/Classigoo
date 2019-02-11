@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LoginUser>
+@{
+    ViewBag.Title = "ManageEmployees";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ManageEmployees</h2>
+
+<div class="row">
+
+    <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-box table-responsive">
+                    <h4 class="m-t-0 header-title">Adds</h4>
+                    <p class="text-muted font-14 m-b-30">
+                        following are the Employees which are <code> submitted added by admin</code>.
+                    </p>
+                    <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th data-class="expand">Employee Id</th>
+                                <th data-class="expand">First Name</th>
+                                <th data-hide="phone">Last Name</th>
+                                
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    @*<td>@item.PhoneNum</td>*@
+                                    <td></td>
+                                    <td>
+                                        @item.UserId
+                                    </td>
+                                    <td id="addId">
+                                        @item.FirstName
+                                    </td>
+                                    <td>
+                                        @item.LastName
+                                    </td>
+                                  
+                                    <td>
+                                      @Html.ActionLink("Edit", "ManageUser", "Admin", new { empId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Edit", "ManageUser", "Admin", new { empId = @item.Id }, new { target = "_blank", style = "color:#337ab7;" })
+                                    </td>
+                                 
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div>
+
+</div>

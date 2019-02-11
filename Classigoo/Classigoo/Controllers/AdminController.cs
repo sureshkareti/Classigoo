@@ -472,6 +472,88 @@ namespace Classigoo.Controllers
             //}
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult ManageUser()
+        {
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
+
+            if (cookieRole != null && cookieRole.Value == "Employee")
+            {
+                return RedirectToAction("EmployeeDashboard", "Admin");
+            }
+
+            string userId = Request.QueryString["empId"];
+
+            AdminService objAdmin = new AdminService();
+            if (userId != null)
+            {
+
+                Classigoo.LoginUser loginUser1 = objAdmin.GetEmployee(userId);
+                if (loginUser1 != null)
+                {
+                    ViewBag.role = "Admin";
+                    Session["LoginUserRole"] = "Admin";
+
+                    return View(loginUser1);
+                }
+
+            }
+
+
+            Classigoo.LoginUser loginUser = objAdmin.GetEmployeeLastId();
+            if (loginUser != null)
+            {
+
+                Classigoo.LoginUser user = new LoginUser();
+                user.Id = loginUser.Id + 1;
+
+                ViewBag.role = "Admin";
+                Session["LoginUserRole"] = "Admin";
+
+                return View(user);
+            }
+
+
+            ViewBag.role = "Admin";
+            Session["LoginUserRole"] = "Admin";
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult ManageUser(Classigoo.LoginUser loginUser)
+        {
+            try
+            {
+                AdminService objAdmin = new AdminService();
+                ViewBag.Status = objAdmin.UpdateEmployee(loginUser);
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return View();
+        }
+
+
+
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult ManageEmployees()
+        {
+            AdminService objAdmin = new AdminService();
+            var cookieName = Request.Cookies["ClassigooLoginUser"];
+            IEnumerable<AdminAdd> empAddColl = objAdmin.GetEmpAdds(cookieName.Value);
+
+            ViewBag.role = "Employee";
+            Session["LoginUserRole"] = "Employee";
+            return View(empAddColl);
+        }
+
+
+
         public JsonResult SearchOwenersData(string searchEntity)
         {
             //if(searchEntity !=null && searchEntity != string.Empty)
@@ -504,7 +586,7 @@ namespace Classigoo.Controllers
                 {
                     if (!string.IsNullOrEmpty(phoneNum))
                     {
-                         objComm.SendMessage(phoneNum, msg);
+                        objComm.SendMessage(phoneNum, msg);
                     }
                 }
 
@@ -665,13 +747,13 @@ namespace Classigoo.Controllers
         }
 
 
-        public bool UpdateCustomerStatus(int cId, string status,string remarks,string reciptNumber)
+        public bool UpdateCustomerStatus(int cId, string status, string remarks, string reciptNumber)
         {
             bool isAddUpdated = false;
             try
             {
                 AdminService db = new AdminService();
-                isAddUpdated = db.UpdateCustomerStatus(cId, status , remarks, reciptNumber);
+                isAddUpdated = db.UpdateCustomerStatus(cId, status, remarks, reciptNumber);
 
             }
             catch (Exception ex)
