@@ -20,18 +20,18 @@ namespace Classigoo.Models
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
                     User user = db.Users.Find(id);
-                    if(user!=null)
-                    return user;
+                    if (user != null)
+                        return user;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At Get User", ex);
-               
+
             }
 
             return null;
-               
+
         }
 
         public Guid AddUser(User user)
@@ -48,14 +48,14 @@ namespace Classigoo.Models
                     var message = new StringBuilder();
                     message.AppendLine("Hi Admin!");
                     message.AppendLine("New user registered");
-                    message.AppendLine("Name: "+user.Name);
+                    message.AppendLine("Name: " + user.Name);
                     message.AppendLine("PhoneNumber: " + user.MobileNumber);
                     Communication objComm = new Communication();
                     objComm.SendMessage(Constants.AdminPhoneNum, message.ToString());
                     Library.SendEmailFromGodaddy("New User Registered", message.ToString());
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At AddUser db", ex);
                 return Guid.Empty;
@@ -63,7 +63,7 @@ namespace Classigoo.Models
 
             return user.UserId;
         }
-      
+
         public Guid UserExist(string id, string type)
         {
             User user = new User();
@@ -90,7 +90,7 @@ namespace Classigoo.Models
                 Library.WriteLog("At UserExist db UserName- " + id, ex);
                 return Guid.Empty;
             }
-            if (user!= null)
+            if (user != null)
             {
                 return user.UserId;
             }
@@ -125,7 +125,7 @@ namespace Classigoo.Models
 
             if (user != null)
             {
-               return user.UserId;
+                return user.UserId;
             }
             else
             {
@@ -142,13 +142,13 @@ namespace Classigoo.Models
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
                     db.Entry(user).State = EntityState.Modified;
-                    response = db.SaveChanges();  
+                    response = db.SaveChanges();
                 }
-                
+
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At UpdatingUserDetails UserId - "+user.UserId, ex);
+                Library.WriteLog("At UpdatingUserDetails UserId - " + user.UserId, ex);
             }
             if (response == 1)
                 return true;
@@ -157,7 +157,7 @@ namespace Classigoo.Models
                 return false;
             }
         }
-       
+
         public List<CustomAdd> GetMyAdds(Guid userId)
         {
             List<CustomAdd> addColl = new List<CustomAdd>();
@@ -179,10 +179,10 @@ namespace Classigoo.Models
                             customAdd.Status = add.Status;
                             CommonDBOperations objCommonDbOperations = new CommonDBOperations();
                             #region RealEstates
-                            if (add.Category==Constants.RealEstate)
+                            if (add.Category == Constants.RealEstate)
                             {
                                 RealEstate re = objCommonDbOperations.GetRealEstate(add.AddId.ToString());
-                                if(re!=null)
+                                if (re != null)
                                 {
                                     customAdd.ImgUrlPrimary = re.ImgUrlPrimary;
                                     customAdd.Price = re.Price;
@@ -190,10 +190,10 @@ namespace Classigoo.Models
                             }
                             #endregion
                             #region TransportationVehicles
-                            else if (add.Category==Constants.TransportationVehicle)
+                            else if (add.Category == Constants.TransportationVehicle)
                             {
                                 TransportationVehicle tv = objCommonDbOperations.GetTV(add.AddId.ToString());
-                                if(tv!=null)
+                                if (tv != null)
                                 {
                                     customAdd.ImgUrlPrimary = tv.ImgUrlPrimary;
                                     customAdd.Price = tv.Price;
@@ -201,10 +201,10 @@ namespace Classigoo.Models
                             }
                             #endregion
                             #region ConstructionVehicles
-                            else if (add.Category==Constants.ConstructionVehicle)
+                            else if (add.Category == Constants.ConstructionVehicle)
                             {
                                 ConstructionVehicle cv = objCommonDbOperations.GetCV(add.AddId.ToString());
-                                if(cv!=null)
+                                if (cv != null)
                                 {
                                     customAdd.ImgUrlPrimary = cv.ImgUrlPrimary;
                                     customAdd.Price = cv.Price;
@@ -215,7 +215,7 @@ namespace Classigoo.Models
                             else if (add.Category == Constants.AgriculturalVehicle)
                             {
                                 AgriculturalVehicle av = objCommonDbOperations.GetAV(add.AddId.ToString());
-                                if(av!=null)
+                                if (av != null)
                                 {
                                     customAdd.ImgUrlPrimary = av.ImgUrlPrimary;
                                     customAdd.Price = av.Price;
@@ -226,7 +226,7 @@ namespace Classigoo.Models
                             else if (add.Category == Constants.PassengerVehicle)
                             {
                                 PassengerVehicle pv = objCommonDbOperations.GetPV(add.AddId.ToString());
-                                if(pv!=null)
+                                if (pv != null)
                                 {
                                     customAdd.ImgUrlPrimary = pv.ImgUrlPrimary;
                                     customAdd.Price = pv.Price;
@@ -238,7 +238,7 @@ namespace Classigoo.Models
                         }
                         catch (Exception ex)
                         {
-                            Library.WriteLog("Checking Category for getmyadds addid- "+add.AddId, ex);
+                            Library.WriteLog("Checking Category for getmyadds addid- " + add.AddId, ex);
                             continue;
                         }
                     }
@@ -251,35 +251,38 @@ namespace Classigoo.Models
             return addColl;
 
         }
-       
-        public IEnumerable<AdminAdd>  GetAdminAdds()
+
+        public IEnumerable<AdminAdd> GetAdminAdds()
         {
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
             try
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                    addColl = (from add in db.Adds
-                               select new
-                               {
-                                   AddId = add.AddId,
-                                   Created = add.Created,
-                                   Category = add.Category,
-                                   State = add.State,
-                                   District = add.District,
-                                   Mandal = add.Mandal,
-                                   Status = add.Status,
-                                   Type = add.Type,
-                                   UserName = add.User.Name,
-                                   PhoneNum = add.User.MobileNumber,
-                                   Remarks=add.Remarks,
-                                   SubCategory=add.SubCategory,
-                                   AddStatus = add.AddStatus,
-                                   ReceiptNumber=add.ReceiptNumber
 
-                               }).OrderByDescending(add => add.Created).ToList()
+
+                    addColl = (from add in db.Adds
+                                    select new
+                                    {
+                                        AddId = add.AddId,
+                                        Created = add.Created,
+                                        Category = add.Category,
+                                        State = add.State,
+                                        District = add.District,
+                                        Mandal = add.Mandal,
+                                        Status = add.Status,
+                                        Type = add.Type,
+                                        UserName = add.User.Name,
+                                        PhoneNum = add.User.MobileNumber,
+                                        Remarks = add.Remarks,
+                                        SubCategory = add.SubCategory,
+                                        AddStatus = add.AddStatus,
+                                        ReceiptNumber = add.ReceiptNumber
+
+                                    }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
                                      {
+
                                          AddId = add.AddId.ToString(),
                                          Created = add.Created,
                                          Category = add.Category,
@@ -291,13 +294,108 @@ namespace Classigoo.Models
                                          UserName = add.UserName,
                                          PhoneNum = add.PhoneNum,
                                          Remarks = add.Remarks,
-                                         SubCategory=add.SubCategory,
+                                         SubCategory = add.SubCategory,
                                          AddStatus = add.AddStatus,
                                          ReceiptNumber = add.ReceiptNumber
+
                                      });
+
+
+                    //var addColl1 = db.Adds
+                    //           .Include("User")
+                    //          .OrderByDescending(add => add.Created).ToList<Add>();
+
+
+
+
+                    //foreach(var add  in addColl1)
+                    //{
+
+                    //    string companyName = string.Empty;
+                    //    string model = string.Empty;
+
+                    //    if (add.Category == Constants.AgriculturalVehicle)
+                    //    {
+                    //        var objAddTemp = db.AgriculturalVehicles.ToList().FindAll(x => x.AddId == add.AddId);
+                    //        if (objAddTemp.Count > 0)
+                    //        {
+                    //            var objAdd = objAddTemp[0];
+                    //            if (objAdd != null)
+                    //            {
+                    //                companyName = objAdd.Company;
+                    //                model = objAdd.Model;
+                    //            }
+                    //        }
+                    //    }
+                    //    else if (add.Category == Constants.ConstructionVehicle)
+                    //    {
+                    //        var objAddTemp = db.ConstructionVehicles.ToList().FindAll(x => x.AddId == add.AddId);
+                    //        if (objAddTemp.Count > 0)
+                    //        {
+                    //            var objAdd = objAddTemp[0];
+                    //            if (objAdd != null)
+                    //            {
+                    //                companyName = objAdd.Company;
+                    //                model = objAdd.Model;
+                    //            }
+                    //        }
+                    //    }
+                    //    else if (add.Category == Constants.TransportationVehicle)
+                    //    {
+                    //        var objAddTemp = db.TransportationVehicles.ToList().FindAll(x => x.AddId == add.AddId);
+                    //        if (objAddTemp.Count > 0)
+                    //        {
+                    //            var objAdd = objAddTemp[0];
+                    //            if (objAdd != null)
+                    //            {
+                    //                companyName = objAdd.Company;
+                    //                model = objAdd.Model;
+                    //            }
+                    //        }
+                    //    }
+                    //    else if (add.Category == Constants.PassengerVehicle)
+                    //    {
+                    //        var objAddTemp = db.PassengerVehicles.ToList().FindAll(x => x.AddId == add.AddId);
+                    //        if (objAddTemp.Count > 0)
+                    //        {
+                    //            var objAdd = objAddTemp[0];
+                    //            if (objAdd != null)
+                    //            {
+                    //                companyName = objAdd.Company;
+                    //                model = objAdd.Model;
+                    //            }
+                    //        }
+                    //    }
+
+
+                    //    if (add.AgriculturalVehicles != null)
+                    //    {
+                    //        addColl.Add(new AdminAdd()
+                    //        {
+                    //            AddId = add.AddId.ToString(),
+                    //            Created = add.Created,
+                    //            Category = add.Category,
+                    //            State = add.State,
+                    //            District = add.District,
+                    //            Mandal = add.Mandal,
+                    //            Status = add.Status,
+                    //            Type = add.Type,
+                    //            UserName = add.User.Name,
+                    //            PhoneNum = add.User.MobileNumber,
+                    //            Remarks = add.Remarks,
+                    //            SubCategory = add.SubCategory,
+                    //            AddStatus = add.AddStatus,
+                    //            ReceiptNumber = add.ReceiptNumber,
+                    //            Company = companyName,
+                    //            Model=model
+                    //        });
+                    //    }
+
+
+                    //}
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At Admin db", ex);
             }
@@ -326,7 +424,7 @@ namespace Classigoo.Models
                                    Remarks = add.Remarks,
                                    SubCategory = add.SubCategory,
                                    AddStatus = add.Status,
-                                  // ReceiptNumber = add.ReceiptNumber
+                                   // ReceiptNumber = add.ReceiptNumber
 
                                }).OrderByDescending(add => add.Created).ToList()
                                      .Select(add => new AdminAdd()
@@ -344,7 +442,7 @@ namespace Classigoo.Models
                                          Remarks = add.Remarks,
                                          SubCategory = add.SubCategory,
                                          AddStatus = add.AddStatus,
-                                        // ReceiptNumber = add.ReceiptNumber
+                                         // ReceiptNumber = add.ReceiptNumber
                                      });
                 }
             }
@@ -355,7 +453,7 @@ namespace Classigoo.Models
             return addColl;
         }
 
-        public bool UpdateAddStatus(int addId, string status,string remarks, string addStatus, string reciptNumber)
+        public bool UpdateAddStatus(int addId, string status, string remarks, string addStatus, string reciptNumber)
         {
             int response = 0;
             try
@@ -370,21 +468,21 @@ namespace Classigoo.Models
                         add.AddStatus = addStatus;
                         add.ReceiptNumber = reciptNumber;
                         response = db.SaveChanges();
-                        
+
                     }
                 }
             }
             catch (Exception ex)
             {
-                Library.WriteLog("At Updating Add Status db addId- "+addId, ex);
+                Library.WriteLog("At Updating Add Status db addId- " + addId, ex);
             }
             if (response == 1)
             {
-               
+
                 return true;
             }
             else
-            { 
+            {
                 return false;
             }
         }
@@ -396,10 +494,10 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-                 User user= db.Users.Find(userId);
-                    if(user!=null)
+                    User user = db.Users.Find(userId);
+                    if (user != null)
                     {
-                        if(string.IsNullOrEmpty(user.Password))
+                        if (string.IsNullOrEmpty(user.Password))
                         {
                             isPwdEmpty = true;
 
@@ -408,13 +506,13 @@ namespace Classigoo.Models
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Library.WriteLog("At checking Password empty userid - " + userId, ex);
             }
             return isPwdEmpty;
         }
-        
+
         public bool AddSurvey(Survey survey)
         {
             bool isSuccess = true;
@@ -422,12 +520,12 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities db = new ClassigooEntities())
                 {
-   // int count=   db.Surveys.Where(s => s.AddId == survey.AddId).Where(s => s.PhoneNumber == survey.PhoneNumber).Count();
+                    // int count=   db.Surveys.Where(s => s.AddId == survey.AddId).Where(s => s.PhoneNumber == survey.PhoneNumber).Count();
 
-                   // if (count <=0)
+                    // if (count <=0)
                     //{
-                        db.Surveys.Add(survey);
-                        db.SaveChanges();
+                    db.Surveys.Add(survey);
+                    db.SaveChanges();
                     //}
                 }
             }
@@ -449,14 +547,14 @@ namespace Classigoo.Models
                 {
                     List<Survey> surveyColl = db.Surveys.ToList();
 
-                    foreach(Survey survey in surveyColl)
+                    foreach (Survey survey in surveyColl)
                     {
                         CustomSurvey customSurvey = new CustomSurvey();
                         customSurvey.Survey = survey;
                         CommonDBOperations objCommon = new CommonDBOperations();
-                      //  Add add = objCommon.GetAdd(survey.AddId.ToString());
-                       // customSurvey.Category = add.Category;
-                       // customSurvey.SubCategory = add.SubCategory;
+                        //  Add add = objCommon.GetAdd(survey.AddId.ToString());
+                        // customSurvey.Category = add.Category;
+                        // customSurvey.SubCategory = add.SubCategory;
                         //if(add.Type=="Rent")
                         //{
                         //    customSurvey.Type = "Consumer";
@@ -465,7 +563,7 @@ namespace Classigoo.Models
                         //{
                         //    customSurvey.Type = "Buyer";
                         //}
-                        
+
                         customSurveyColl.Add(customSurvey);
                     }
                 }

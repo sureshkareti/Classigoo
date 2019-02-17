@@ -8,6 +8,7 @@ using System.Web.Caching;
 using Classigoo.Models.Search;
 using Newtonsoft.Json;
 using Classigoo.Business;
+using System.Text;
 
 namespace Classigoo.Controllers
 {
@@ -36,7 +37,7 @@ namespace Classigoo.Controllers
             {
                 UserDBOperations db = new UserDBOperations();
                 addColl = db.GetAdminAdds();
-                surveyColl = db.GetSurvey();
+                //surveyColl = db.GetSurvey();
                 adminDashboard.SurveyColl = surveyColl;
                 adminDashboard.AddsColl = addColl;
             }
@@ -44,6 +45,24 @@ namespace Classigoo.Controllers
             {
                 Library.WriteLog("At Admin", ex);
             }
+
+
+
+            List<Category> categoriesList = AdminService.GetCatagories();
+
+            List<SelectListItem> subcategorySelectList = new List<SelectListItem>();
+            if (categoriesList != null)
+            {
+                foreach (Category category in categoriesList)
+                {
+                    foreach (SubCategory sbcate in category.SubCategories)
+                    {
+                        subcategorySelectList.Add(new SelectListItem { Text = sbcate.Name, Value = category.Name });
+                    }
+                }
+            }
+            ViewData["SubCategory"] = subcategorySelectList;
+
 
             ViewBag.role = "Admin";
             Session["LoginUserRole"] = "Admin";
@@ -94,8 +113,8 @@ namespace Classigoo.Controllers
             ViewData["Category"] = categorySelectList;
 
 
-            ViewBag.role = "Admin";
-            Session["LoginUserRole"] = "Admin";
+            //ViewBag.role = "Admin";
+            //Session["LoginUserRole"] = "Admin";
             return View();
         }
 
@@ -154,15 +173,15 @@ namespace Classigoo.Controllers
                     {
                         Category = postSurvey.hdnCateFristLevel,
                         SubCategory = postSurvey.hdnCateSecondLevel,
-                        State = postSurvey.State.Trim(),
-                        District = postSurvey.District.Trim(),
-                        Mandal = postSurvey.Mandal.Trim(),
+                        State = postSurvey.State,
+                        District = postSurvey.District,
+                        Mandal = postSurvey.Mandal,
 
-                        AddIdColl = postSurvey.AddIdColl.Trim(),
-                        Name = postSurvey.Name.Trim(),
-                        PhoneNumber = postSurvey.PhoneNumber.Trim(),
-                        Remarks = postSurvey.Remarks.Trim(),
-                        UserType = postSurvey.UserType.Trim(),
+                        AddIdColl = postSurvey.AddIdColl,
+                        Name = postSurvey.Name,
+                        PhoneNumber = postSurvey.PhoneNumber,
+                        Remarks = postSurvey.Remarks,
+                        UserType = postSurvey.UserType,
                         CreatedDate = CustomActions.GetCurrentISTTime(),
                         Status = postSurvey.Status
                     };
@@ -177,15 +196,15 @@ namespace Classigoo.Controllers
                     {
                         Category = postSurvey.hdnCateFristLevel,
                         SubCategory = postSurvey.hdnCateSecondLevel,
-                        State = postSurvey.State.Trim(),
-                        District = postSurvey.District.Trim(),
-                        Mandal = postSurvey.Mandal.Trim(),
+                        State = postSurvey.State,
+                        District = postSurvey.District,
+                        Mandal = postSurvey.Mandal,
 
-                        AddIdColl = postSurvey.AddIdColl.Trim(),
-                        Name = postSurvey.Name.Trim(),
-                        PhoneNumber = postSurvey.PhoneNumber.Trim(),
-                        Remarks = postSurvey.Remarks.Trim(),
-                        UserType = postSurvey.UserType.Trim(),
+                        AddIdColl = postSurvey.AddIdColl,
+                        Name = postSurvey.Name,
+                        PhoneNumber = postSurvey.PhoneNumber,
+                        Remarks = postSurvey.Remarks,
+                        UserType = postSurvey.UserType,
                         Status = postSurvey.Status,
                         Id = postSurvey.custId
                     };
@@ -249,6 +268,21 @@ namespace Classigoo.Controllers
             {
                 AdminService objAdmin = new AdminService();
                 surveyColl = objAdmin.GetSurveys();
+
+                List<Category> categoriesList = AdminService.GetCatagories();
+
+                List<SelectListItem> subcategorySelectList = new List<SelectListItem>();
+                if (categoriesList != null)
+                {
+                    foreach (Category category in categoriesList)
+                    {
+                        foreach (SubCategory sbcate in category.SubCategories)
+                        {
+                            subcategorySelectList.Add(new SelectListItem { Text = sbcate.Name, Value = category.Name });
+                        }
+                    }
+                }
+                ViewData["SubCategory"] = subcategorySelectList;
 
             }
             catch (Exception ex)
@@ -329,6 +363,14 @@ namespace Classigoo.Controllers
 
                         if (isAdded)
                         {
+
+                            var message = new StringBuilder();
+                            message.AppendLine("Congracts," + name + "!");
+                            message.AppendLine("Your Request Has Sent successfully. ");                          
+                            message.AppendLine("Please contact " + Constants.AdminPhoneNum + " for any assistance ");
+                            Communication objComm = new Communication();
+                            objComm.SendMessage(mobileNumber, message.ToString());
+
                             return Json("sucess", JsonRequestBehavior.AllowGet);
                         }
                     }
@@ -545,11 +587,32 @@ namespace Classigoo.Controllers
         {
             AdminService objAdmin = new AdminService();
             var cookieName = Request.Cookies["ClassigooLoginUser"];
-            IEnumerable<AdminAdd> empAddColl = objAdmin.GetEmpAdds(cookieName.Value);
+            IEnumerable<LoginUser> empAddColl = objAdmin.GetEmployees();
 
-            ViewBag.role = "Employee";
-            Session["LoginUserRole"] = "Employee";
             return View(empAddColl);
+        }
+
+        public ActionResult DeleteEmployee()
+        {
+            string userId = Request.QueryString["empId"];
+
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
+            if (userId != null)
+            {
+                AdminService objAdmin = new AdminService();
+                bool isDeleted = objAdmin.DeleteEmployee(userId);
+                if (isDeleted)
+                {
+                    
+                }
+                else
+                {
+                    ViewBag.Message = "error";
+                }
+            }
+
+
+            return RedirectToAction("ManageEmployees", "Admin");
         }
 
 

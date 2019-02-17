@@ -161,7 +161,7 @@ $("#btnFucSecondDelete").click(function () {
 
         $("#btnFucSecondDelete").parent().css('display', 'none');
     }
-    
+
 
 });
 
@@ -185,15 +185,15 @@ $("#btnFucFourDelete").click(function () {
 
         $("#btnFucFourDelete").parent().css('display', 'none');
     }
-    
+
 
 });
 
 
 function DeleteImage(imageUrl, category, position, id) {
-  
+
     $(".loader-wrap").css("display", "block");
-  
+
     $.ajax({
         type: "POST",
         url: '/Post/DeleteImageEdit',
@@ -205,7 +205,7 @@ function DeleteImage(imageUrl, category, position, id) {
         success: function (msg) {
 
             $(".loader-wrap").css("display", "none");
-           
+
             if (msg === "error") {
                 alert("there is problem with deleting image please try again");
             }
@@ -216,11 +216,11 @@ function DeleteImage(imageUrl, category, position, id) {
                 var imgUrl3 = msg[2];
                 var imgUrl4 = msg[3];
 
-           
+
 
                 if (imgUrl1 !== "") {
 
-                    $('#imgFucFirst').attr('src',  imgUrl1 );
+                    $('#imgFucFirst').attr('src', imgUrl1);
                 }
                 else {
 
@@ -236,9 +236,9 @@ function DeleteImage(imageUrl, category, position, id) {
 
                 if (imgUrl2 !== "") {
 
-                    $('#imgFucSecond').attr('src',  imgUrl2 );
+                    $('#imgFucSecond').attr('src', imgUrl2);
                 }
-                else {               
+                else {
                     $("#fucSecond").replaceWith($("#fucSecond").val('').clone(true));
                     $('#imgFucSecond').attr('src', '/images/upimglogo1.png');
 
@@ -253,7 +253,7 @@ function DeleteImage(imageUrl, category, position, id) {
 
                 if (imgUrl3 !== "") {
 
-                    $('#imgFucThird').attr('src',  imgUrl3 );
+                    $('#imgFucThird').attr('src', imgUrl3);
                 }
                 else {
                     $("#fucThird").replaceWith($("#fucThird").val('').clone(true));
@@ -269,7 +269,7 @@ function DeleteImage(imageUrl, category, position, id) {
 
                 if (imgUrl4 !== "") {
 
-                    $('#imgFucFour').attr('src',  imgUrl4 );
+                    $('#imgFucFour').attr('src', imgUrl4);
                 }
                 else {
                     $("#fucFour").replaceWith($("#fucFour").val('').clone(true));
@@ -908,29 +908,29 @@ function fillFromJson(selectedType) {
         var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory);
 
         if (selectedModel.length > 0) {
-        $.each(selectedModel[0].VehicleModel, function (i, field) {
-            {
-                if (selectedType === "AV") {
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    if (selectedType === "AV") {
 
-                    $("#AVCompany_list").append("<option>" + field.name + "</option>");
+                        $("#AVCompany_list").append("<option>" + field.name + "</option>");
+                    }
+                    else if (selectedType === "CV") {
+
+                        $("#CVCompany_list").append("<option>" + field.name + "</option>");
+                    }
+                    else if (selectedType === "TV") {
+
+                        $("#TVCompany_list").append("<option>" + field.name + "</option>");
+                    }
+                    else if (selectedType === "PV") {
+
+                        $("#PVCompany_list").append("<option>" + field.name + "</option>");
+                    }
+
                 }
-                else if (selectedType === "CV") {
-
-                    $("#CVCompany_list").append("<option>" + field.name + "</option>");
-                }
-                else if (selectedType === "TV") {
-
-                    $("#TVCompany_list").append("<option>" + field.name + "</option>");
-                }
-                else if (selectedType === "PV") {
-
-                    $("#PVCompany_list").append("<option>" + field.name + "</option>");
-                }
-
-            }
-        });
+            });
+        }
     }
-}
 }
 
 function fillModels() {
@@ -1021,26 +1021,112 @@ window.fillModelsForPV = function () {
 
 
     var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
-    if (selectedVehicle.length > 0)
-    {
+    if (selectedVehicle.length > 0) {
         var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
-    
-        if(selectedModel.length>0)
-            {
-        $.each(selectedModel[0].VehicleModel, function (i, field) {
-            {
-                $("#PVModel_list").append("<option>" + field.name + "</option>");
 
-            }
-    
-        });
+        if (selectedModel.length > 0) {
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    $("#PVModel_list").append("<option>" + field.name + "</option>");
+
+                }
+
+            });
+        }
     }
 }
+
+
+
+window.GetSubcategory = function (category , subcaregory) {
+
+    var selectedCategory = category;
+    var selectedSubCategory = subcaregory;
+
+
+    $("#SubCateCompany_list").find('option').remove();
+    $("#SubCateCompany_list").append('<option value="">Select</option>');
+
+    var VehiclesColl = new Array();
+
+
+    $.ajax({
+        url: '/Scripts/Json/categories.min.json',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            $.each(data, function (i, field) {
+                VehiclesColl.push(field);
+            });
+        }
+    });
+
+    var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+    if (selectedVehicle.length > 0) {
+        var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory);
+
+        if (selectedModel.length > 0) {
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    $("#SubCateCompany_list").append("<option>" + field.name + "</option>");
+
+                }
+            });
+        }
+    }
 }
 
+window.GetModelsForPV = function (subcaregory,companyName) {
+
+    var selectedSubCategory = subcaregory;
+    var selectedCategory = "";
+
+    if (selectedSubCategory === "Cars") {
+
+        selectedCategory = "Cars Models";
+    }
+    else if (selectedSubCategory === "Bikes") {
+
+        selectedCategory = "Bikes Models";
+    }
 
 
+    var selectedSubCategory1 = companyName;
 
+    $("#Model_list").find('option').remove();
+    $("#Model_list").append('<option value="">Select</option>');
+
+
+    var VehiclesColl = new Array();
+
+
+    $.ajax({
+        url: '/Scripts/Json/categories.min.json',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            $.each(data, function (i, field) {
+                VehiclesColl.push(field);
+            });
+        }
+    });
+
+
+    var selectedVehicle = VehiclesColl.filter(a=>a.name === selectedCategory);
+    if (selectedVehicle.length > 0) {
+        var selectedModel = selectedVehicle[0].VehicleType.filter(v=>v.name === selectedSubCategory1);
+
+        if (selectedModel.length > 0) {
+            $.each(selectedModel[0].VehicleModel, function (i, field) {
+                {
+                    $("#Model_list").append("<option>" + field.name + "</option>");
+
+                }
+
+            });
+        }
+    }
+}
 
 //---------------------binding json data---------------------------------------//
 
@@ -1397,7 +1483,7 @@ window.loadStates = function () {
 
 function getDistricts() {
 
-    var selectedState = $.trim( $("#State").val());
+    var selectedState = $.trim($("#State").val());
     $("#District").val("");
     if (selectedState !== "") {
 
@@ -1458,7 +1544,7 @@ function getDistricts() {
             $(this).data("uiAutocomplete").search('e');
         });
 
-        
+
 
     }
     else {
@@ -1485,7 +1571,7 @@ function getDistricts() {
 function getMandal() {
 
 
-    var selectedDistric = $.trim( $("#District").val());
+    var selectedDistric = $.trim($("#District").val());
     $("#Mandal").val("");
     if (selectedDistric !== "") {
 
@@ -1551,7 +1637,7 @@ function getMandal() {
             $(this).data("uiAutocomplete").search('e');
         });
 
-       
+
 
     }
     else {
@@ -1624,7 +1710,7 @@ function testFunction() {
 
             $(window).scrollTop($('#scrolltoCat').offset().top);
 
-            
+
             return false;
 
         }
@@ -1640,7 +1726,7 @@ function testFunction() {
             }
         }
     }
-    
+
 
     if ($.trim($("#txtAddDetails").val()) !== "") {
 
@@ -1677,13 +1763,13 @@ function testFunction() {
 
     selectElements.each(function () {
         if ($.trim($(this).val()) === "") {
-                  
+
             $("select").prop('required', true);
             isValid = "false";
             $(this).focus();
 
             return false;
-          
+
         }
 
     });
@@ -1707,9 +1793,9 @@ function testFunction() {
 
         selectElements1.each(function () {
             $(this).removeAttr('required');
-          
+
         });
-    
+
         $(".loader-wrap").css("display", "block");
     }
     else {

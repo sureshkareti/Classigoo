@@ -336,6 +336,9 @@ namespace Classigoo
         public string PostedBy { get; set; }
         public string AddStatus { get; set; }
         public string ReceiptNumber { get; set; }
+
+        public string Company { get; set; }
+        public string Model { get; set; }
     }
 
     public class LoginWithOTP

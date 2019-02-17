@@ -100,3 +100,101 @@ EntityFramework ; The underlying provider failed on Open.
 1/30/2019 11:14:51 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
 2/2/2019 11:50:51 PM : At Preview add addid- 
 Classigoo ; Object reference not set to an instance of an object.
+2/14/2019 9:00:27 PM : exception at get get employee to update
+EntityFramework ; The underlying provider failed on Open.
+2/14/2019 9:00:27 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+2/14/2019 9:00:27 PM : exception at get last employee id
+EntityFramework ; The underlying provider failed on Open.
+2/14/2019 9:00:27 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+2/17/2019 7:20:44 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 7:20:44 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 7:41:38 PM : exception at get last employee id
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 7:41:38 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 7:50:41 PM : exception at get get employee to update
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+2/17/2019 7:50:41 PM : EntityFramework ; A transport-level error has occurred when receiving results from the server. (provider: Session Provider, error: 19 - Physical connection is not usable)
+2/17/2019 8:41:51 PM : At Get Login User
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 8:41:51 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+2/17/2019 8:43:16 PM : At Get Login User
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 8:43:16 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 9:43:40 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 9:43:40 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 9:43:41 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 9:43:41 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 9:43:41 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 9:43:41 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:09:48 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:09:48 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:09:48 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:09:48 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:09:48 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:09:48 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:09:48 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:09:48 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:31:06 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:31:06 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:35:18 PM : At Admin db
+EntityFramework.SqlServer ; An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy.
+2/17/2019 10:35:18 PM : EntityFramework.SqlServer ; The underlying provider failed on Open.
+2/17/2019 10:35:56 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:35:56 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:38:22 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:38:22 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:38:32 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:38:32 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:39:23 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:39:23 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:39:23 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:39:23 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:39:39 PM : At ShowSurvey db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:39:39 PM : EntityFramework ; Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+2/17/2019 10:39:55 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:39:55 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:40:20 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:40:20 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 10:42:42 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 10:42:42 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 11:22:59 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:22:59 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+2/17/2019 11:22:59 PM : exception at get GetCatagories()
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:22:59 PM : EntityFramework ; A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+2/17/2019 11:26:16 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:26:16 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 11:29:46 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:29:46 PM : EntityFramework ; Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+2/17/2019 11:30:18 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:30:18 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 11:30:18 PM : At Admin db
+EntityFramework ; The underlying provider failed on Open.
+2/17/2019 11:30:18 PM : EntityFramework ; A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2/17/2019 11:47:40 PM : At Admin db
+EntityFramework ; An error occurred while executing the command definition. See the inner exception for details.
+2/17/2019 11:47:40 PM : EntityFramework ; Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2/18/2019 12:24:30 AM : At Preview add addid- 21
+Classigoo ; Object reference not set to an instance of an object.

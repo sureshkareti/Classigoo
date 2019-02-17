@@ -62,7 +62,7 @@
                                 Save
                             </button>
                             <button type="reset"
-                                    class="btn btn-secondary waves-effect waves-light m-l-5">
+                                    class="btn btn-secondary waves-effect waves-light m-l-5" id="btnCancel">
                                 Cancel
                             </button>
                         </div>
@@ -76,6 +76,11 @@
 </div>
 <!-- end row -->
 
+@section styles{
+    <!-- Notification css (Toastr) -->
+    <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+}
+
 
 @section scripts{
     <script src="~/Content/Admin/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
@@ -84,22 +89,29 @@
     <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
 
     <script type="text/javascript">
+
+
         $(document).ready(function () {
             var toastCount = 0;
 
             if ("@ViewBag.Status" == "updated") {
                 ShowSucessToaster("Employee updated successfully", 'success');
+                location.href = '@Url.Action("ManageEmployees", "Admin")';
                 ClearControls();
             }
             else if ("@ViewBag.Status" == "done") {
                 ShowSucessToaster("Employee added successfully", 'success');
-                ClearControls();
+                //redirectToHome();
+                location.reload();
+                //ClearControls();
             }
             else if ("@ViewBag.Status" == "existed") {
                 ShowSucessToaster("With this user id user already existed", 'error');
+
             }
             else if ("@ViewBag.Status" == "error") {
                 ShowSucessToaster("Error occured contact admin", 'error');
+
             }
 
             function ShowSucessToaster(message, state) {
@@ -224,8 +236,24 @@
                 $("#UserId").val('');
                 $("#FirstName").val('');
                 $("#LastName").val('');
-                $("#Password").val('');               
+                $("#Password").val('');
             }
-        });
+
+
+            $("#btnCancel").click(function () {
+                //window.close();
+                //redirectToHome();
+                 location.href = '@Url.Action("ManageEmployees", "Admin")';
+            });
+
+
+            function redirectToHome() {
+                //location.href = '@Url.Action("ManageEmployees", "Admin")';
+                //window.location.href('@Url.Action("ManageEmployees", "Admin")');
+            }
+
+        })
+
+
     </script>
 }

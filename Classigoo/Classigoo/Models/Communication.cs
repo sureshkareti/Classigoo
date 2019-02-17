@@ -18,13 +18,13 @@ namespace Classigoo.Models
             bool isOTPSent = true;
             try
             {
-            string authKey = "222262AHv0m83QXj5b2fa36c";
-            string mobileNumber = "91" + phoneNumber;
-            string senderId = "MSGCLG";
-            string message = HttpUtility.UrlEncode("Dear Classigoo User, The OTP for login on Classigoo is ");
-            int otp = GenarateOTP();
-            message += otp;
-           
+                string authKey = "222262AHv0m83QXj5b2fa36c";
+                string mobileNumber = "91" + phoneNumber;
+                string senderId = "MSGCLG";
+                string message = HttpUtility.UrlEncode("Dear Classigoo User, The OTP for login on Classigoo is ");
+                int otp = GenarateOTP();
+                message += otp;
+
                 var client = new RestSharp.RestClient("http://control.msg91.com/api/sendotp.php");
                 var request = new RestSharp.RestRequest(RestSharp.Method.POST);
                 request.AddParameter("authkey", authKey);
@@ -34,12 +34,12 @@ namespace Classigoo.Models
                 request.AddParameter("otp", otp);
                 RestSharp.IRestResponse response = client.Execute(request);
                 Status status = JsonConvert.DeserializeObject<Status>(response.Content);
-                if (status.type=="error")
+                if (status.type == "error")
                 {
-                   isOTPSent = false;
-                   Library.WriteLog("Unable to send OTP, error msg - " + status.message);
+                    isOTPSent = false;
+                    Library.WriteLog("Unable to send OTP, error msg - " + status.message);
                 }
-             
+
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace Classigoo.Models
             return isOTPSent;
         }
 
-        public bool VerifyOTP(string phoneNumber,string otp)
+        public bool VerifyOTP(string phoneNumber, string otp)
         {
             bool isVerified = true;
             try
@@ -116,36 +116,40 @@ namespace Classigoo.Models
             return _rdm.Next(_min, _max);
         }
 
-        public void SendMessage(string phoneNumber,string message)
+        public void SendMessage(string phoneNumber, string message)
         {
+
             try
             {
-                string authKey = "222262AHv0m83QXj5b2fa36c";
-                string mobileNumber = "91" + phoneNumber;
-                string senderId = "MSGCLG";
-                //string homePageUrl = Constants.DomainName + "/User/Home";
-               // var message = new StringBuilder();
-                //message.AppendLine("Congracts," + userName+"!");
-                //message.AppendLine("Your Ad published successfully. ");
-                //message.AppendLine("View and manage adds here: ");
-                //message.AppendLine(homePageUrl);
-             
-                var client = new RestSharp.RestClient("http://control.msg91.com/api/sendhttp.php");
-                var request = new RestSharp.RestRequest(RestSharp.Method.POST);
-                request.AddParameter("authkey", authKey);
-                request.AddParameter("mobiles", mobileNumber);
-                request.AddParameter("message", message);
-                request.AddParameter("sender", senderId);
-                request.AddParameter("route", "4");
-                request.AddParameter("country", "91");
-                RestSharp.IRestResponse response = client.Execute(request);
-                //Status status = JsonConvert.DeserializeObject<Status>(response.Content);
-                //if (status.type == "error")
-                //{
-                //    isMsgSent = false;
-                //    Library.WriteLog("Unable to send Message, error msg - " + status.message);
-                //}
+                if (phoneNumber != null && phoneNumber != string.Empty)
+                {
 
+                    string authKey = "222262AHv0m83QXj5b2fa36c";
+                    string mobileNumber = "91" + phoneNumber;
+                    string senderId = "CLSIGO";
+                    //string homePageUrl = Constants.DomainName + "/User/Home";
+                    // var message = new StringBuilder();
+                    //message.AppendLine("Congracts," + userName+"!");
+                    //message.AppendLine("Your Ad published successfully. ");
+                    //message.AppendLine("View and manage adds here: ");
+                    //message.AppendLine(homePageUrl);
+
+                    var client = new RestSharp.RestClient("http://control.msg91.com/api/sendhttp.php");
+                    var request = new RestSharp.RestRequest(RestSharp.Method.POST);
+                    request.AddParameter("authkey", authKey);
+                    request.AddParameter("mobiles", mobileNumber);
+                    request.AddParameter("message", message);
+                    request.AddParameter("sender", senderId);
+                    request.AddParameter("route", "4");
+                    request.AddParameter("country", "91");
+                    RestSharp.IRestResponse response = client.Execute(request);
+                    //Status status = JsonConvert.DeserializeObject<Status>(response.Content);
+                    //if (status.type == "error")
+                    //{
+                    //    isMsgSent = false;
+                    //    Library.WriteLog("Unable to send Message, error msg - " + status.message);
+                    //}
+                }
             }
             catch (Exception ex)
             {

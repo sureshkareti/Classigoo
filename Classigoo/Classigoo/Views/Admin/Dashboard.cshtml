@@ -39,12 +39,18 @@
 
     <div class="col-sm-12">
         <div class="form-group row">
-            <div class="col-xl-11 col-md-6 pull-right">
+            <div class="col-xl-10 col-md-6 pull-right">
                 <input type="button" class="btn btn-sm btn-danger pull-right" value="Send SMS" id="btnSendSms" />
             </div>
             <div class="col-xl-1 col-md-6 pull-right">
                 <input type="button" class="btn btn-sm btn-danger pull-right" value="Refresh" id="btnRefresh" />
+
             </div>
+            <div class="col-xl-1 col-md-6 pull-right">
+
+                <a href="~/Post/Index" target="_blank" class="btn btn-sm btn-danger pull-right" id="btnPostAdd">Post Add</a>
+            </div>
+
         </div>
 
     </div>
@@ -61,26 +67,39 @@
 
 
             <div class="col-xl-3 col-md-6">
-                <div class="card-box widget-user" style="cursor:pointer" id="id1">
-                    <div class="text-center">
-                        <input type="text" class="form-control" id="txtAddidSearch" />
-                        <h5>Add Id</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
                 <div class="card-box widget-user">
                     <div class="text-center">
-                        <input type="text" class="form-control" id="txtSubcategorySearch" />
+                        @*<input type="text" class="form-control" id="txtSubcategorySearch" />*@
+                        @Html.DropDownList("ddlSubCategoryOData", new SelectList(ViewBag.SubCategory, "Value", "Text"), "select", new { @class = "form-control" })
+
                         <h5>Sub Category</h5>
                     </div>
                 </div>
 
             </div>
             <div class="col-xl-3 col-md-6">
+
                 <div class="card-box widget-user">
                     <div class="text-center">
-                      
+                        @Html.DropDownList("SubCateCompany_list", new List<SelectListItem> { }, "Select Company", new { onchange = "showothercompany()", @class = "form-control" })
+
+                        <h5>Company</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+                        @Html.DropDownList("Model_list", new List<SelectListItem> { }, "Select Model", new { onchange = "showothercompany()", @class = "form-control" })
+
+                        <h5>Model</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-box widget-user">
+                    <div class="text-center">
+
                         @Html.DropDownList("ddlAddTypeSearch", new List<SelectListItem> {
                                             new SelectListItem { Text = "Rent", Value = "Rent"},
                                             new SelectListItem { Text = "Sale", Value = "Sale"}}, "select", new { @class = "form-control" })
@@ -89,14 +108,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card-box widget-user">
-                    <div class="text-center">
-                        @Html.DropDownList("ddlAddStatusSearch", addStatusCollection, "select", new { @class = "form-control" })
-                        <h5>Add Status</h5>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -106,18 +117,25 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box widget-user">
                     <div class="text-center">
-                        <input type="text" class="form-control" id="txtMobileNumberSearch" />
-                        <h5>Mobile Number</h5>
+                        @Html.DropDownList("ddlAddStatusSearch", addStatusCollection, "select", new { @class = "form-control" })
+                        <h5>Add Status</h5>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
+                @*<div class="card-box widget-user">
+                        <div class="text-center">
+
+                            @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
+
+                            <h5>Category</h5>
+                        </div>
+                    </div>*@
+
                 <div class="card-box widget-user">
                     <div class="text-center">
-
-                        @Html.DropDownList("ddlCategorySearch", categoryCollection, "select", new { @class = "form-control" })
-
-                        <h5>Category</h5>
+                        <input type="text" class="form-control" id="txtMobileNumberSearch" />
+                        <h5>Mobile Number</h5>
                     </div>
                 </div>
             </div>
@@ -130,10 +148,16 @@
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card-box widget-user">
+                @*<div class="card-box widget-user">
+                        <div class="text-center">
+                            <input type="text" class="form-control" id="txtReciptNumberSearch" />
+                            <h5>Receipt Number</h5>
+                        </div>
+                    </div>*@
+                <div class="card-box widget-user" style="cursor:pointer" id="id1">
                     <div class="text-center">
-                        <input type="text" class="form-control" id="txtReciptNumberSearch" />
-                        <h5>Receipt Number</h5>
+                        <input type="text" class="form-control" id="txtAddidSearch" />
+                        <h5>Add Id</h5>
                     </div>
                 </div>
             </div>
@@ -170,6 +194,8 @@
                                 <th data-hide="phone">State</th>
                                 <th data-hide="phone">District</th>
                                 <th data-hide="phone">Mandal</th>
+                                <th>Company</th>
+                                <th>Model</th>
                                 <th>Remarks</th>
                                 <th>Status</th>
                                 <th>Receipt Number</th>
@@ -186,92 +212,97 @@
                             @foreach (var item in Model.AddsColl)
                             {
 
-                            <tr>
-                                @*<td>@item.PhoneNum</td>*@
-                                <td></td>
-                                <td>
-                                    @item.AddId
-                                </td>
-                                <td id="addId">
-                                    @item.AddId
-                                </td>
-                                <td>
-                                    @item.Created
-                                </td>
-                                <td>
-                                    @item.SubCategory
-                                </td>
-                                <td>
-                                    @item.Type
-                                </td>
+                                <tr>
+                                    @*<td>@item.PhoneNum</td>*@
+                                    <td></td>
+                                    <td>
+                                        @item.AddId
+                                    </td>
+                                    <td id="addId">
+                                        @item.AddId
+                                    </td>
+                                    <td>
+                                        @item.Created
+                                    </td>
+                                    <td>
+                                        @item.SubCategory
+                                    </td>
+                                    <td>
+                                        @item.Type
+                                    </td>
 
-                                <td>
-                                    @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                                    <td>
+                                        @Html.ActionLink("Preview", "PreviewAdd", "List", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
 
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
-                                </td>
-
-
-                                <td>
-                                    <span> <label id="lblStatus">@item.AddStatus</label></span>
-                                </td>
-                                <td>
-                                    @*@item.UserName*@
-                                    @item.Status
-                                </td>
-                                <td>
-                                    @item.PhoneNum
-                                </td>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Index", "Post", new { addId = @item.AddId }, new { target = "_blank", style = "color:#337ab7;" })
+                                    </td>
 
 
-                                <td>
-                                    @item.Category
-                                </td>
-                                <td>
-                                    @item.State
-                                </td>
-                                <td>
-                                    @item.District
-                                </td>
-                                <td>
-                                    @item.Mandal
-                                </td>
+                                    <td>
+                                        <span> <label id="lblStatus">@item.AddStatus</label></span>
+                                    </td>
+                                    <td>
+                                        @*@item.UserName*@
+                                        @item.Status
+                                    </td>
+                                    <td>
+                                        @item.PhoneNum
+                                    </td>
 
 
-                                <td>
-                                    <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
-                                    @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
-                                </td>
-                                <td>
-                                    @*<span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>*@
-                                    <span class="display-mode"> @item.Status</span>
-                                    @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
-                                </td>
-                                <td>
-                                    <span class="display-mode"> <label id="lblReceiptNumber">@item.ReceiptNumber</label></span>
-                                    @Html.TextBox("txtReciptNumber", item.Remarks, new { @class = "edit-mode" })
-                                </td>
-                                <td>
-                                    <span class="display-mode"> <label id="lblNewAddStatus">@item.AddStatus</label></span>
-                                    @Html.DropDownList("ddlAddStatus", addStatusCollection, new { @class = "edit-mode" })
-                                </td>
-                                <td>
-                                    <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
-                                    <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
-                                    <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
-                                </td>
-                                <td>
-                                    <span id="userName" class="UserInfo">@item.UserName</span>
-                                </td>
-                                <td>
-                                    <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
-                                </td>
-                            </tr>
+                                    <td>
+                                        @item.Category
+                                    </td>
+                                    <td>
+                                        @item.State
+                                    </td>
+                                    <td>
+                                        @item.District
+                                    </td>
+                                    <td>
+                                        @item.Mandal
+                                    </td>
+
+                                    <td>
+                                        @item.Company
+                                    </td>
+                                    <td>
+                                        @item.Model
+                                    </td>
+                                    <td>
+                                        <span class="display-mode"> <label id="lblRemarks">@item.Remarks</label></span>
+                                        @Html.TextArea("txtRemarks", item.Remarks, new { @class = "edit-mode", @maxlength = "1000", @style = "@width=350px;@height=80px" })
+                                    </td>
+                                    <td>
+                                        @*<span class="display-mode"> <label id="lblAddStatus">@item.Status</label></span>*@
+                                        <span class="display-mode"> @item.Status</span>
+                                        @Html.DropDownList("ddlStatus", statusCollection, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        <span class="display-mode"> <label id="lblReceiptNumber">@item.ReceiptNumber</label></span>
+                                        @Html.TextBox("txtReciptNumber", item.Remarks, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        <span class="display-mode"> <label id="lblNewAddStatus">@item.AddStatus</label></span>
+                                        @Html.DropDownList("ddlAddStatus", addStatusCollection, new { @class = "edit-mode" })
+                                    </td>
+                                    <td>
+                                        <input type="button" value="Edit" class="edit-user display-mode" style="color:#337ab7;" onclick="FnEditCancel(event);" />
+                                        <input type="button" class="save-user edit-mode" style="color:#337ab7;" value="Save" onclick="FnSave(event)" />
+                                        <input type="button" class="cancel-user edit-mode" style="color:#337ab7;" value="Cancel" onclick="FnEditCancel(event);" />
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Delete", "Delete", "Post", new { addId = @item.AddId }, new { target = "", style = "color:#337ab7;" })
+                                    </td>
+                                    <td>
+                                        <span id="userName" class="UserInfo">@item.UserName</span>
+                                    </td>
+                                    <td>
+                                        <span id="userPhoneNum" class="UserInfo">@item.PhoneNum</span>
+                                    </td>
+                                </tr>
 
                             }
                         </tbody>
@@ -385,6 +416,7 @@
     <!-- Toastr js -->
     <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
 
+    <script src="~/Scripts/Custome/post.js"></script>
     <script type="text/javascript">
 
         var toastCount = 0;
@@ -509,26 +541,48 @@
 
 
 
-            $('#txtSubcategorySearch').on('keyup', function () {
+            $('#ddlSubCategoryOData').on('change', function () {
+                var textValue = $("#ddlSubCategoryOData option:selected").text();
                 table
                     .columns(4)
-                    .search(this.value)
+                    .search(textValue)
                     .draw();
-            });
-            $('#txtReciptNumberSearch').on('keyup', function () {
-                table
-                    .columns(17)
-                    .search(this.value)
-                    .draw();
+
+                GetSubcategory($("#ddlSubCategoryOData").val(), $("#ddlSubCategoryOData option:selected").text());
             });
 
+            //$('#SubCateCompany_list').on('change', function () {
+            //    table
+            //        .columns(15)
+            //        .search(this.value)
+            //        .draw();
+
+            //    GetModelsForPV($("#ddlSubCategoryOData option:selected").text(), $("#SubCateCompany_list").val());
+            //});
+
+            //$('#Model_list').on('change', function () {
+            //    table
+            //        .columns(16)
+            //        .search(this.value)
+            //        .draw();
             
-            $('#ddlCategorySearch').on('change', function () {
-                table
-                      .columns(11)
-                      .search(this.value)
-                      .draw();
-            });
+            //});
+
+
+            //$('#txtReciptNumberSearch').on('keyup', function () {
+            //    table
+            //        .columns(17)
+            //        .search(this.value)
+            //        .draw();
+            //});
+
+
+            //$('#ddlCategorySearch').on('change', function () {
+            //    table
+            //          .columns(11)
+            //          .search(this.value)
+            //          .draw();
+            //});
 
 
             $('#ddlAddStatusSearch').on('change', function () {

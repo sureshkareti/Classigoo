@@ -32,6 +32,7 @@ namespace Classigoo.Models
 
             return null;
         }
+     
 
         public List<string> GetOwnersMobileNos()
         {
@@ -505,7 +506,25 @@ namespace Classigoo.Models
         }
 
 
+        public List<Classigoo.LoginUser> GetEmployees()
+        {
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    
+                    return classigooEntities.LoginUsers.ToList().FindAll(x=>x.RoleId==2);
 
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get get employee to update", ex);
+            }
+
+            return null;
+
+        }
         public Classigoo.LoginUser GetEmployee(string empId)
         {
             try
@@ -635,6 +654,37 @@ namespace Classigoo.Models
             }
 
             return "done";
+        }
+
+        public bool DeleteEmployee(string empId)
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    int id = Convert.ToInt32(empId);
+
+                    var objAddTemp = classigooEntities.LoginUsers.ToList().FindAll(x => x.Id == id);
+                    if (objAddTemp.Count > 0)
+                    {
+                        var objAdd = objAddTemp[0];
+                        if (objAdd != null)
+                        {
+                            classigooEntities.LoginUsers.Remove(objAdd);
+                            classigooEntities.SaveChanges();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get add delete survey operations", ex);
+                return false;
+            }
+
+            return true;
         }
     }
 }
