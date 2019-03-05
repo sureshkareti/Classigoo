@@ -1,0 +1,346 @@
+﻿
+@{
+    ViewBag.Title = "FilterEmpoyeeAdds";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>FilterEmpoyeeAdds</h2>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card-box">
+            <form class="form-horizontal" role="form">
+
+                <div id="filterConsumersData">
+                  
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5><b>Select User</b></h5>
+                         
+
+                            @Html.DropDownList("ddlEmpData", new SelectList(ViewBag.EmpData, "Value", "Text"), "select", new { @class = "form-control" })
+                            
+                        </div><!-- end col -->
+                        <div class="col-md-4">
+
+
+                        </div><!-- end row -->
+                        <div class="col-md-4">
+                            <h5><b>&nbsp;</b></h5>
+                            <button type="button" id="btnFilterAdds" class="btn btn-warning waves-effect waves-light pull-right">Search</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div id="grid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box table-responsive">
+
+                        <h4 class="m-t-0 header-title">Adds</h4>
+                      
+                        <p class="text-muted font-14 m-b-30">
+                            following are the adds which are <code> submitted by employees</code>.
+                        </p>
+                        <table id="tblAdds" class="table table-striped table-bordered nowrap display responsive" style="width:100%">
+                            <thead>
+                                <tr>
+                                    @*<th></th>*@
+                                    <th data-class="expand">AddId</th>
+                                    <th data-class="expand">PhoneNum</th>
+                                    <th data-hide="phone">Date and Time</th>
+                                    <th data-hide="phone">Category</th>
+                                    <th data-hide="phone">Sub Category</th>
+                                    <th data-hide="phone">Rent/Sale</th>
+                                    @*<th>Preview</th>*@
+                                    <th>Status</th>
+                                    <th data-hide="phone">Mobile No</th>
+                                    <th data-hide="phone">User Name</th>
+
+                                    @*<th data-hide="phone">Category</th>
+                                        <th data-hide="phone">State</th>
+                                        <th data-hide="phone">District</th>
+                                        <th data-hide="phone">Mandal</th>*@
+                                    @*<th>Remarks</th>
+                                        <th>Status</th>
+                                        <th>User Name</th>
+                                        <th>Mobile No</th>*@
+                                </tr>
+
+                            </thead>
+
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- end row -->
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+    <!-- DataTables -->
+    @*<link href="~/Content/List/responsive.bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/CustomeNew/loader.css" rel="stylesheet" />
+    <link href="~/Content/CssNew/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Admin/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    @*<link href="~/Content/Admin/assets/plugins/datatables/select.bootstrap4.min.css" rel="stylesheet" />*@
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
+
+    <!-- Notification css (Toastr) -->
+    <link href="~/Content/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/Admin/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+
+
+
+
+@section scripts{
+    <!-- Required datatable js -->
+    <script src="~//Scripts/ScriptsNew/jquery-ui.min.js"></script>
+
+
+    <script src="~/Content/Admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    @*<script type="text/javascript" src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>*@
+    <script src="~/Content/Admin/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    @*<script src="~/Content/Admin/assets/plugins/datatables/dataTables.select.min.js"></script>*@
+
+    <script src="~/Content/Admin/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+
+    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Content/Admin/assets/plugins/toastr/toastr.min.js"></script>
+
+    <script src="~/Content/Admin/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Admin/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var toastCount = 0;
+            
+            var table;
+           
+            $(document).on('click', "#btnFilterAdds", function () {
+               var empId = $("#ddlEmpData").val();
+               FillGrid(empId);
+            });
+           
+            
+            function ShowSucessToaster(message, state) {
+
+                var shortCutFunction = state;
+                var msg = message;
+                var title = 'Status';
+                var showDuration = "300";
+                var hideDuration = "1000";
+                var timeOut = "5000";
+                var extendedTimeOut = "1000";
+                var showEasing = "swing";
+                var hideEasing = "linear";
+                var showMethod = "fadeIn";
+                var hideMethod = "fadeOut";
+                var toastIndex = toastCount++;
+                var addClear = $('#addClear').prop('checked');
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                if ($('#addBehaviorOnToastClick').prop('checked')) {
+                    toastr.options.onclick = function () {
+                        alert('You can perform some custom action after a toast goes away');
+                    };
+                }
+
+                if (showDuration.length) {
+                    toastr.options.showDuration = showDuration;
+                }
+
+                if (hideDuration.length) {
+                    toastr.options.hideDuration = hideDuration;
+                }
+
+                if (timeOut.length) {
+                    toastr.options.timeOut = addClear ? 0 : timeOut;
+                }
+
+                if (extendedTimeOut.length) {
+                    toastr.options.extendedTimeOut = addClear ? 0 : extendedTimeOut;
+                }
+
+                if (showEasing.length) {
+                    toastr.options.showEasing = showEasing;
+                }
+
+                if (hideEasing.length) {
+                    toastr.options.hideEasing = hideEasing;
+                }
+
+                if (showMethod.length) {
+                    toastr.options.showMethod = showMethod;
+                }
+
+                if (hideMethod.length) {
+                    toastr.options.hideMethod = hideMethod;
+                }
+
+                if (addClear) {
+                    msg = getMessageWithClearButton(msg);
+                    toastr.options.tapToDismiss = false;
+                }
+                if (!msg) {
+                    msg = getMessage();
+                }
+
+                $('#toastrOptions').text('Command: toastr["'
+                    + shortCutFunction
+                    + '"]("'
+                    + msg
+                    + (title ? '", "' + title : '')
+                    + '")\n\ntoastr.options = '
+                    + JSON.stringify(toastr.options, null, 2)
+                );
+
+                var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+                $toastlast = $toast;
+
+                if (typeof $toast === 'undefined') {
+                    return;
+                }
+
+                if ($toast.find('#okBtn').length) {
+                    $toast.delegate('#okBtn', 'click', function () {
+                        alert('you clicked me. i was toast #' + toastIndex + '. goodbye!');
+                        $toast.remove();
+                    });
+                }
+                if ($toast.find('#surpriseBtn').length) {
+                    $toast.delegate('#surpriseBtn', 'click', function () {
+                        alert('Surprise! you clicked me. i was toast #' + toastIndex + '. You could perform an action here.');
+                    });
+                }
+                if ($toast.find('.clear').length) {
+                    $toast.delegate('.clear', 'click', function () {
+                        toastr.clear($toast, { force: true });
+                    });
+                }
+
+
+
+            }
+
+            function FillGrid(empId)
+            {
+
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GridEmloyeeAdds", "Admin")',
+                    cache: false,
+                    data: { "empId": empId },
+                    success: function (data) {
+
+                        table = $('#tblAdds').dataTable({
+                            destroy: true,
+                            data: data,
+                            columns: [
+                                 { data: 'AddId' },
+                                { data: 'PhoneNum' },
+                                {
+                                    data: 'Created',
+                                    "type": "date ",
+                                    "render": function (value) {
+                                        if (value === null) return "";
+
+                                        var pattern = /Date\(([^)]+)\)/;
+                                        var results = pattern.exec(value);
+                                        var dt = new Date(parseFloat(results[1]));
+
+                                        return (dt.getDate() + 1) + "/" + dt.getMonth() + "/" + dt.getFullYear();
+                                    }
+                                },
+                                { data: 'Category' },
+                                { data: 'SubCategory' },
+                                { data: 'Type' },
+                                { data: 'Status' },
+                                 { data: 'PhoneNum' },
+                                { data: 'UserName' },
+
+
+
+                            ],
+                            "responsive": true,
+                            stateSave: true,
+                            AutoWidth: false,
+                            columnDefs: [
+                                           {
+                                               targets: 1,
+                                               checkboxes: {
+                                                   selectRow: true
+                                               },
+
+                                           },
+                                            {
+                                                targets: 0,
+                                                orderable: false
+
+                                            }
+
+                            ],
+                            select: {
+                                style: 'multi'
+                            }
+                               ,
+                            order: [[2, 'asc']]
+
+                        });
+                        $(".loader-wrap").hide();
+                    },
+                    error: function (response) {
+                        $(".loader-wrap").hide();
+                    }
+                })
+            }
+        });
+    </script>
+
+}

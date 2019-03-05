@@ -32,7 +32,30 @@ namespace Classigoo.Models
 
             return null;
         }
-     
+
+        public static List<Classigoo.LoginUser> GetEmployeesData()
+        {
+
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+                    List<Classigoo.LoginUser> objRealestae = classigooEntities.LoginUsers.ToList<Classigoo.LoginUser>();
+
+                    if (objRealestae != null)
+                    {
+                        return objRealestae;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetEmployees()", ex);
+
+            }
+
+            return null;
+        }
 
         public List<string> GetOwnersMobileNos()
         {
@@ -330,6 +353,69 @@ namespace Classigoo.Models
             return null;
         }
 
+        public IEnumerable<AdminAdd> GetOwnersAddsByEmpId(string empId)
+        {
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                using (ClassigooEntities classigooEntities = new ClassigooEntities())
+                {
+
+                    addColl = (from add in classigooEntities.Adds
+                               where
+              (add.PostedBy == empId)
+
+                               select new
+                               {
+                                   AddId = add.AddId,
+                                   Created = add.Created,
+                                   Category = add.Category,
+                                   State = add.State,
+                                   District = add.District,
+                                   Mandal = add.Mandal,
+                                   Status = add.Status,
+                                   Type = add.Type,
+                                   UserName = add.User.Name,
+                                   PhoneNum = add.User.MobileNumber,
+                                   Remarks = add.Remarks,
+                                   SubCategory = add.SubCategory,
+                                   AddStatus = add.AddStatus,
+                                   ReceiptNumber = add.ReceiptNumber
+
+                               }).OrderByDescending(add => add.Created).ToList()
+                                           .Select(add => new AdminAdd()
+                                           {
+                                               AddId = add.AddId.ToString(),
+                                               Created = add.Created,
+                                               Category = add.Category,
+                                               State = add.State,
+                                               District = add.District,
+                                               Mandal = add.Mandal,
+                                               Status = add.Status,
+                                               Type = add.Type,
+                                               UserName = add.UserName,
+                                               PhoneNum = add.PhoneNum,
+                                               Remarks = add.Remarks,
+                                               SubCategory = add.SubCategory,
+                                               AddStatus = add.AddStatus,
+                                               ReceiptNumber = add.ReceiptNumber
+                                           });
+
+
+                    return addColl;
+                }
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("exception at get GetOwnersMobileNos()", ex);
+
+            }
+
+            return null;
+        }
+
+
+
         public bool AddSurvey(Survey survey)
         {
             bool isSuccess = true;
@@ -512,8 +598,8 @@ namespace Classigoo.Models
             {
                 using (ClassigooEntities classigooEntities = new ClassigooEntities())
                 {
-                    
-                    return classigooEntities.LoginUsers.ToList().FindAll(x=>x.RoleId==2);
+
+                    return classigooEntities.LoginUsers.ToList().FindAll(x => x.RoleId == 2);
 
                 }
             }
@@ -598,20 +684,20 @@ namespace Classigoo.Models
                         {
                             objEmp.UserId = loginUser.UserId;
                             objEmp.FirstName = loginUser.FirstName;
-                            objEmp.LastName = loginUser.LastName;                           
+                            objEmp.LastName = loginUser.LastName;
                             objEmp.Password = loginUser.Password;
                             objEmp.RoleId = 2;
 
                             int response = classigooEntities.SaveChanges();
                             if (response == 1)
                             {
-                              
+
                             }
                         }
                     }
                     else
                     {
-                        returnString =   AddEmployee(loginUser);
+                        returnString = AddEmployee(loginUser);
                         return returnString;
                     }
                 }
@@ -627,7 +713,7 @@ namespace Classigoo.Models
 
         public string AddEmployee(Classigoo.LoginUser loginUser)
         {
-         
+
             try
             {
                 using (ClassigooEntities db = new ClassigooEntities())
@@ -635,7 +721,7 @@ namespace Classigoo.Models
 
                     var objEmp = db.LoginUsers.SingleOrDefault(a => a.UserId == loginUser.UserId);
 
-                    if(objEmp == null)
+                    if (objEmp == null)
                     {
                         loginUser.RoleId = 2;
                         db.LoginUsers.Add(loginUser);
@@ -650,7 +736,7 @@ namespace Classigoo.Models
             catch (Exception ex)
             {
                 Library.WriteLog("At emp db", ex);
-               
+
             }
 
             return "done";

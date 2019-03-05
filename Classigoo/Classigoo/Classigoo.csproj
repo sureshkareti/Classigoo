@@ -818,6 +818,7 @@
     <Content Include="Views\Admin\PreviewCustomerInfo.cshtml" />
     <Content Include="Views\Admin\ManageUser.cshtml" />
     <Content Include="Views\Admin\ManageEmployees.cshtml" />
+    <Content Include="Views\Admin\FilterEmpoyeeAdds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

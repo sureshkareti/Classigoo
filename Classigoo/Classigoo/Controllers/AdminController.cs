@@ -75,11 +75,48 @@ namespace Classigoo.Controllers
         {
             AdminService objAdmin = new AdminService();
             var cookieName = Request.Cookies["ClassigooLoginUser"];
-            IEnumerable<AdminAdd> empAddColl = objAdmin.GetEmpAdds(cookieName.Value);
+
+            //IEnumerable<AdminAdd> empAddColl = objAdmin.GetEmpAdds(cookieName.Value);
+
+
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            IEnumerable<CustomSurvey> surveyColl = new List<CustomSurvey>();
+            AdminDashboard adminDashboard = new AdminDashboard();
+            try
+            {
+                UserDBOperations db = new UserDBOperations();
+                addColl = db.GetAdminAdds();
+                //surveyColl = db.GetSurvey();
+                adminDashboard.SurveyColl = surveyColl;
+                adminDashboard.AddsColl = addColl;
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At employee dashboadr login", ex);
+            }
+
+
+
+            List<Category> categoriesList = AdminService.GetCatagories();
+
+            List<SelectListItem> subcategorySelectList = new List<SelectListItem>();
+            if (categoriesList != null)
+            {
+                foreach (Category category in categoriesList)
+                {
+                    foreach (SubCategory sbcate in category.SubCategories)
+                    {
+                        subcategorySelectList.Add(new SelectListItem { Text = sbcate.Name, Value = category.Name });
+                    }
+                }
+            }
+            ViewData["SubCategory"] = subcategorySelectList;
+
+
 
             ViewBag.role = "Employee";
             Session["LoginUserRole"] = "Employee";
-            return View(empAddColl);
+            return View(adminDashboard);
         }
 
         [CustomAuthorization(LoginPage = "~/Login/Index")]
@@ -366,7 +403,7 @@ namespace Classigoo.Controllers
 
                             var message = new StringBuilder();
                             message.AppendLine("Congracts," + name + "!");
-                            message.AppendLine("Your Request Has Sent successfully. ");                          
+                            message.AppendLine("Your Request Has Sent successfully. ");
                             message.AppendLine("Please contact " + Constants.AdminPhoneNum + " for any assistance ");
                             Communication objComm = new Communication();
                             objComm.SendMessage(mobileNumber, message.ToString());
@@ -580,6 +617,38 @@ namespace Classigoo.Controllers
             return View();
         }
 
+        [CustomAuthorization(LoginPage = "~/Login/Index")]
+        public ActionResult FilterEmpoyeeAdds()
+        {
+            var cookieRole = Request.Cookies["ClassigooLoginRole"];
+
+            if (cookieRole != null && cookieRole.Value == "Employee")
+            {
+                return RedirectToAction("EmployeeDashboard", "Admin");
+            }
+
+            List<Classigoo.LoginUser> categoriesList = AdminService.GetEmployeesData();
+
+            List<SelectListItem> subcategorySelectList = new List<SelectListItem>();
+            if (categoriesList != null)
+            {
+                foreach (Classigoo.LoginUser category in categoriesList)
+                {
+                    if (category.RoleId != 1)
+                    {
+                        subcategorySelectList.Add(new SelectListItem { Text = category.UserId, Value = Convert.ToString( category.Id )});
+                    }
+                    
+
+                  
+                }
+            }
+
+            ViewBag.EmpData = subcategorySelectList;
+
+            return View();
+        }
+
 
 
         [CustomAuthorization(LoginPage = "~/Login/Index")]
@@ -603,7 +672,7 @@ namespace Classigoo.Controllers
                 bool isDeleted = objAdmin.DeleteEmployee(userId);
                 if (isDeleted)
                 {
-                    
+
                 }
                 else
                 {
@@ -798,6 +867,28 @@ namespace Classigoo.Controllers
                 }
 
 
+
+            }
+            catch (Exception ex)
+            {
+                Library.WriteLog("At sendmsg while sending msg from admin dashboard", ex);
+                status = false;
+            }
+
+            return Json(addColl, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GridEmloyeeAdds(string empId)
+        {
+            bool status = true;
+            
+            IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
+            try
+            {
+                List<string> phoneNumColl = new List<string>();
+                AdminService objAdminService = new AdminService();
+
+                addColl = objAdminService.GetOwnersAddsByEmpId(empId);
 
             }
             catch (Exception ex)

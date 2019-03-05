@@ -103,6 +103,9 @@ namespace Classigoo.Controllers
                 HttpCookie signinCookie = new HttpCookie("ClassigooLoginUser");
                 signinCookie.Value = userName.UserId.ToString();
 
+                HttpCookie signinCookieUserId = new HttpCookie("ClassigooLoginUserID");
+                signinCookieUserId.Value = userName.Id.ToString();
+
                 HttpCookie signinUserCookie = new HttpCookie("ClassigooLoginRole");
                 signinUserCookie.Value = userName.Role.RoleName;
 
@@ -111,11 +114,13 @@ namespace Classigoo.Controllers
                 {
                     signinCookie.Expires = DateTime.Now.AddDays(5);
                     signinUserCookie.Expires = DateTime.Now.AddDays(5);
+                    signinCookieUserId.Expires = DateTime.Now.AddDays(5);
                 }
                 else
                 {
                     signinCookie.Expires = DateTime.Now.AddDays(2);
                     signinUserCookie.Expires = DateTime.Now.AddDays(2);
+                    signinCookieUserId.Expires = DateTime.Now.AddDays(2);
                 }
 
                 //Session["UserName"] = user.Name;
@@ -126,6 +131,7 @@ namespace Classigoo.Controllers
 
                 this.ControllerContext.HttpContext.Response.Cookies.Add(signinCookie);
                 this.ControllerContext.HttpContext.Response.Cookies.Add(signinUserCookie);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(signinCookieUserId);
             }
             catch (Exception ex)
             {

@@ -265,6 +265,7 @@ namespace Classigoo.Controllers
         {
             try
             {
+                var cookieId = Request.Cookies["ClassigooLoginUserID"];
                 var cookieName = Request.Cookies["ClassigooLoginUser"];
                 var cookieRole = Request.Cookies["ClassigooLoginRole"];
 
@@ -341,11 +342,13 @@ namespace Classigoo.Controllers
                     string postedBy = string.Empty;
                     if (cookieRole != null && cookieRole.Value == "Admin")
                     {
-                        postedBy = cookieName.Value;
+                        //postedBy = cookieName.Value;
+                        postedBy = cookieId.Value;
                     }
                     else if (cookieRole != null && cookieRole.Value == "Employee")
                     {
-                        postedBy = cookieName.Value;
+                        //postedBy = cookieName.Value;
+                        postedBy = cookieId.Value;
                     }
 
                     Add add = new Add()
