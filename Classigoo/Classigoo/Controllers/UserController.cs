@@ -705,7 +705,7 @@ namespace Classigoo.Controllers
             {
                 Communication objCommunication = new Communication();
                 bool isVerified = objCommunication.VerifyOTP(loginWithOtp.PhoneNumber, loginWithOtp.OTP);
-                if (isVerified)
+                if (isVerified) // isVerified
                 {
                     UserDBOperations db = new UserDBOperations();
                     if (loginWithOtp.VerifyType == Constants.VerifyOTPFrmRegistration)// verifying otp from registeration page so lets add user

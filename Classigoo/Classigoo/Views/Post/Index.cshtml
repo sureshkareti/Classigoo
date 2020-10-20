@@ -36,7 +36,6 @@
                                         <div class="form-group row">
                                             <div class="col-md-3" style="text-align:right">
                                                 <label for="listing_name" class="input-lg" style="font-weight:100">Title<span style="color:#C91414">*</span></label>
-
                                             </div>
                                             <div class="col-md-7">
                                                 @Html.HiddenFor(model => model.AddId)
@@ -90,7 +89,7 @@
                                                     <div class="panel-heading">
                                                         <ul class="nav nav-tabs idtabCategoriesul">
                                                             <li class="active" id="idtabCategories"><a id="idtabCategories" href="#tabCategories" data-toggle="tab">Categories</a></li>
-                                                            <li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>
+                                                            @*<li style="display:none" id="idtabPro"><a href="#tabPro" data-id="Real Estate" data-toggle="tab">Real Estate</a></li>*@
                                                             <li style="display:none" id="idtabCV"><a href="#tabCV" data-id="Construction Vehicles" data-toggle="tab">Construction Vehicles</a></li>
                                                             <li style="display:none" id="idtabTV"><a href="#tabTV" data-id="Transportation Vehicles" data-toggle="tab">Transportation Vehicles</a></li>
                                                             <li style="display:none" id="idtabAV"><a href="#tabAV" data-id="Agricultural Vehicles" data-toggle="tab">Agricultural Vehicles</a></li>
@@ -105,7 +104,7 @@
                                                                 <a href='javascript:void(0)' id="catPV">Passenger Vehicles</a><br />
                                                                 <a href='javascript:void(0)' id="catTV">Transportation Vehicles</a><br />
 
-                                                                <a href='javascript:void(0)' id="catPro">Real Estate</a><br />
+                                                                @*<a href='javascript:void(0)' id="catPro">Real Estate</a><br />*@
                                                             </div>
 
                                                             <div class="tab-pane fade in max-length-subcategory sub-category-items" id="tabAV">

@@ -16,7 +16,7 @@ function FillCategories() {
         }
     });
     $.each(categoryColl, function (i, field) {
-        if (field.name !== "Cars Models" && field.name !== "Bikes Models") {
+        if (field.name !== "Cars Models" && field.name !== "Bikes Models" && field.name !=="Real Estate") {
             $("#listing_catagory_list").append("<option value=\"" + field.name + "\">" + field.name + "</option>");
             $("#listing_catagory").append("<option value=\"" + field.name + "\">" + field.name + "</option>");
         }

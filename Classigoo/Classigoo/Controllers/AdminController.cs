@@ -636,11 +636,11 @@ namespace Classigoo.Controllers
                 {
                     if (category.RoleId != 1)
                     {
-                        subcategorySelectList.Add(new SelectListItem { Text = category.UserId, Value = Convert.ToString( category.Id )});
+                        subcategorySelectList.Add(new SelectListItem { Text = category.UserId, Value = Convert.ToString(category.Id) });
                     }
-                    
 
-                  
+
+
                 }
             }
 
@@ -714,13 +714,16 @@ namespace Classigoo.Controllers
                 List<string> phoneNumColl = GetPhoneNumColl(selectedOption, searchQuery);
 
                 Communication objComm = new Communication();
-                foreach (string phoneNum in phoneNumColl)
-                {
-                    if (!string.IsNullOrEmpty(phoneNum))
-                    {
-                        objComm.SendMessage(phoneNum, msg);
-                    }
-                }
+
+
+                objComm.SendMessages(phoneNumColl, msg);
+                //foreach (string phoneNum in phoneNumColl)
+                //{
+                //    if (!string.IsNullOrEmpty(phoneNum))
+                //    {
+                //        objComm.SendMessage(phoneNum, msg);
+                //    }
+                //}
 
             }
             catch (Exception ex)
@@ -741,14 +744,19 @@ namespace Classigoo.Controllers
                 // List<string> phoneNumColl = objAdmin.GetOwnersMobileNos();
                 string[] mnColl = phoneNumColl.Split(',');
                 Communication objComm = new Communication();
-                foreach (string phoneNum in mnColl)
-                {
-                    if (!string.IsNullOrEmpty(phoneNum))
-                    {
-                        objComm.SendMessage(phoneNum, msg);
-                    }
 
-                }
+
+                objComm.SendMessages(mnColl.ToList(), msg);
+
+                //foreach (string phoneNum in mnColl)
+                //{
+                //    if (!string.IsNullOrEmpty(phoneNum))
+                //    {
+                //        objComm.SendMessage(phoneNum, msg);
+                //    }
+
+                //}
+
                 // ViewBag.Status = "Messages have been sent successfully";
 
             }
@@ -881,7 +889,7 @@ namespace Classigoo.Controllers
         public JsonResult GridEmloyeeAdds(string empId)
         {
             bool status = true;
-            
+
             IEnumerable<AdminAdd> addColl = new List<AdminAdd>();
             try
             {
